@@ -1,0 +1,7 @@
+# Git Ignore
+*.npy
+*.pyc
+*.png
+*.jpeg
+spectro/
+mseed/

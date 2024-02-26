@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DATES="2022-01-01 2022-12-30"
+DATES="2022-12-01 2022-12-30"
 ID="IT"
 #PYTHON="/usr/bin/python"
 PYTHON3="/home/ipt/.config/geo/bin/python3"
@@ -27,3 +27,6 @@ done
 
 #~ echo "Cleaning up..."
 #~ rm events*.csv
+#
+
+$PYTHON3 cria_pred.py

@@ -106,91 +106,11 @@ class Exporter(object):
 
             return True
 
-# if __name__ == "__main__":
-#     ta = UTCDateTime(sys.argv[1])
-#     te = UTCDateTime(sys.argv[2])
-#     ID = sys.argv[3]
-#     mode = "t"
-
-#     ID_dict = {"MC": '8091',
-#                "IT": '8091',
-#                "SP": '8085',
-#                "PB": '8093',
-#                "BC": '8089'}
-#
-#     _CL = fdsn.Client('http://localhost:' + ID_dict[ID])
-#     print('Client = %s' % _CL)
-#
-#     while ta < te:
-#         if mode == "m":
-#             taa = UTCDateTime(ta.datetime + relativedelta(months=1))
-#             filename = ta.strftime("events-%Y-%m-%d") + "-%s.csv" % ID
-#         else:
-#             taa = te
-#             filename = "events-all.csv"
-#
-#         try:
-#             print("Time interval from {} to {}.".format(ta, taa))
-#             catalog = _CL.get_events(ta, taa)
-#             with Exporter(where=filename) as exporter:
-#                 for e in catalog:
-#                     o = e.preferred_origin()
-#                     m = e.preferred_magnitude()
-#                     exporter.feed(e, o, m, ID)
-#             print("")
-#         except fdsn.header.FDSNNoDataException:
-#             print("No data for the period {} to {}".format(ta, taa))
-#
-#         ta = taa
-#
-#     df = pd.read_csv('./files/events-all.csv', sep=';')
-#
-#     for index, row in df.iterrows():
-#         if index < 2:
-#             continue
-#         # Obter a hora de origem do evento
-#         print(row)
-#         origin_time = UTCDateTime(row['Hora de Origem (UTC)'])
-#
-#         # Definir o período de tempo para download (por exemplo,
-# 10 minutos em torno do evento)
-#         start_time = origin_time - 10
-#         end_time = origin_time + 50
-#
-#         # Especificar a rede, estação, local e canal se necessário
-#         network = ID
-#         station = ["IT9", "IT1"]
-#         location = "*"
-#         channel = "HH?"
-#
-#         for sta in station:
-#             stream = Stream()  # Cria um Stream vazio para coletar dados de todos os canais
-#
-#             try:
-#                 st = _CL.get_waveforms(network, sta, location, channel, start_time, end_time)
-#                 stream += st  # Adiciona os dados ao Stream
-#             except Exception as e:
-#                 print(f"Erro ao baixar canal {channel} da estação {sta}: {e}")
-#                 continue
-#
-#             if not stream:
-#                 print(f"Nenhum dado baixado para a estação {sta}.")
-#                 continue
-#
-#             event_dir = os.path.join("mseed", create_event_dirname(origin_time))
-#             mseed_filename = os.path.join(event_dir, f"{network}_{sta}_{create_event_dirname(origin_time)}.mseed")
-#             try:
-#                 os.makedirs(event_dir, exist_ok=True)
-#                 stream.write(mseed_filename, format="MSEED")  # Escreve todos os canais em um arquivo mseed
-#
-#             except Exception as e:
-#                 print(f"Erro ao escrever dados no arquivo {mseed_filename}: {e}")
-
 
 def get_catalog(client, start_time, end_time):
     try:
         print("Time interval from {} to {}.".format(start_time, end_time))
-        return client.get_events(starttime=start_time, endtime=end_time)
+        return client.get_events(starttime=start_time, endtime=end_time, includearrivals=True)
     except fdsn.header.FDSNNoDataException:
         print("No data for the period {} to {}".format(start_time, end_time))
         return None
@@ -217,7 +137,7 @@ def download_and_save_waveforms(client, df, network_id, station_list,
 
         print(row)
         origin_time = UTCDateTime(row['Hora de Origem (UTC)'])
-        start_time, end_time = origin_time - 10 * 60, origin_time + 50 * 60
+        start_time, end_time = origin_time - 10, origin_time + 50
         download_waveforms(client, network_id, station_list,
                            channel_pattern, start_time, end_time, origin_time)
 
@@ -246,6 +166,7 @@ def save_waveforms(stream, network, station, origin_time):
 
 
 def main(start_time, end_time, network_id, mode):
+    print(f"Start time: {start_time}")
     client = fdsn.Client('http://localhost:' + ID_dict[network_id])
     print('Client = %s' % client)
 
@@ -259,7 +180,7 @@ def main(start_time, end_time, network_id, mode):
 
         start_time = taa
 
-    df = pd.read_csv(f'./files/{filename}', sep=';')
+    df = pd.read_csv(f'./{filename}', sep=';')
     download_and_save_waveforms(client, df, network_id, ["IT9", "IT1"], "HH?")
 
 

@@ -8,12 +8,6 @@ caminho_csv = './files/events-all.csv'
 # Lendo o arquivo events-all.csv
 df_events = pd.read_csv(caminho_csv, sep=';')  # Lendo com o separador correto
 
-# Mostrando as primeiras linhas do DataFrame e os nomes das colunas
-print(df_events.head())
-print('')
-print(df_events.columns)
-print('')
-
 # Mapeando categorias para números
 mapeamento_cat = {'Q': 1, 'E': 0, 'I': 0, 'N': 2}
 
@@ -34,12 +28,12 @@ for nome_pasta in os.listdir(pasta_mseed):
         continue
 
     label_cat = id_para_label.get(id_sismo, 'X')  # Usando X como padrão para IDs não encontrados
-
     # Adicionando ao DataFrame
     dados_pred.append({'time': nome_pasta, 'label_cat': label_cat})
 
 # Criando um DataFrame a partir dos dados coletados
 df_pred = pd.DataFrame(dados_pred)
 
+print(f' -> {len(df_pred)} sismo(s) encontrados')
 # Salvando o DataFrame em um arquivo CSV
-df_pred.to_csv('./pred.csv', index=False)
+df_pred.to_csv('./files/pred.csv', index=False)
