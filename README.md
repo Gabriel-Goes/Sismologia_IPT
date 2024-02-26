@@ -1,9 +1,7 @@
 # Pŕoximos Passos
-
-
 ## Eventos 100% Antrópicos
 
-- [x] Plotar no mapa;
+- [ ] Plotar no mapa;
 - [ ] Localizações de pedreiras já conhecidas;
 - [ ] Histograma geral dia e horários de ocorrências; [UTC]
 - [ ] Olhar o catálogo do IAG;

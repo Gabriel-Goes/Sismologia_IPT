@@ -10,15 +10,10 @@ from dateutil.relativedelta import relativedelta
 
 # Nome da pasta mseed
 folder_name = "mseed"
-
 # Cria pasta se ela não existir
 os.makedirs(folder_name, exist_ok=True)
-
-
 def create_event_dirname(origin_time):
     return origin_time.strftime("%Y%m%d%H%M%S")
-
-
 class Exporter(object):
     def __init__(self, sep=";", where=sys.stderr):
         self._ = False
@@ -119,6 +114,7 @@ def get_catalog(client, start_time, end_time):
 def write_event_data(event, exporter, network_id):
     origin = event.preferred_origin()
     magnitude = event.preferred_magnitude()
+    print(f" event.preferred_origin: {event.preferred_origin()}")
     return exporter.feed(event, origin, magnitude, network_id)
 
 
@@ -171,10 +167,11 @@ def main(start_time, end_time, network_id, mode):
     print('Client = %s' % client)
 
     while start_time < end_time:
+        print(' -    Iniciou! ')
         taa = UTCDateTime(start_time.datetime + relativedelta(months=1)) if mode == "m" else end_time
         filename = start_time.strftime("events-%Y-%m-%d") + f"-{network_id}.csv" if mode == "m" else "events-all.csv"
-
         catalog = get_catalog(client, start_time, taa)
+
         if catalog:
             process_catalog(catalog, filename, network_id)
 
