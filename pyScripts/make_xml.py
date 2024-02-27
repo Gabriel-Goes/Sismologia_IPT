@@ -20,13 +20,11 @@ catalog = client.get_events(starttime=start_time,
 # Inicialize um DataFrame para armazenar os dados dos eventos
 df_events = pd.DataFrame(columns=['time', 'label_cat', 'mag', 'lat', 'lon'])
 
-
 # Elemento raiz
 root = ET.Element("Seiscomp3")
 
-
 def create_event_dirname(origin_time):
-    return origin_time.strftime("%Y%m%d%H%M%S")
+    return origin_time.strftime("%Y%m%dT%H%M%S")
 
 
 # Função para determinar a categoria do evento

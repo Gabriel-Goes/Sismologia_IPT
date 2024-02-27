@@ -1,19 +1,23 @@
 # -*- coding: utf-8 -*-
+# ----------------------------  IMPORTS   -------------------------------------
 import pandas as pd
 from obspy import UTCDateTime
 from obspy.clients import fdsn
 import sys
 import os
 import utm
-# from obspy import Stream
 from dateutil.relativedelta import relativedelta
-
+# from obspy import Stream
+# ---------------------------- CONSTANTES -------------------------------------
 # Nome da pasta mseed
 folder_name = "mseed"
 # Cria pasta se ela não existir
 os.makedirs(folder_name, exist_ok=True)
+# Função para criar pasta para cada evento dentro de mseed
 def create_event_dirname(origin_time):
-    return origin_time.strftime("%Y%m%d%H%M%S")
+    return origin_time.strftime("%Y%m%dT%H%M%S")
+# -----------------------------------------------------------------------------
+# Classe Exporter
 class Exporter(object):
     def __init__(self, sep=";", where=sys.stderr):
         self._ = False
@@ -42,7 +46,8 @@ class Exporter(object):
             'induced or triggered event': 'I'
         }
         if evtype not in evlist:
-            return None
+            # Alterei None para esta string
+            return 'Not defined in the list'
         return evlist[evtype]
 
     def flushheader(self):
@@ -58,6 +63,7 @@ class Exporter(object):
     def feed(self, e, o, m, ID):
         if e.event_type not in ['earthquake', 'quarry blast',
                                 'induced or triggered event']:
+            print("Event type not supported: {}".format(e.event_type))
             return False
 
         self.flushheader()
@@ -101,20 +107,21 @@ class Exporter(object):
 
             return True
 
-
+# FUNÇÃO PARA ADQUIRIR EVENTOS DO CLIENT
 def get_catalog(client, start_time, end_time):
     try:
-        print("Time interval from {} to {}.".format(start_time, end_time))
+        print(f"Time interval from {start_time} to {end_time}.")
         return client.get_events(starttime=start_time, endtime=end_time, includearrivals=True)
+
     except fdsn.header.FDSNNoDataException:
-        print("No data for the period {} to {}".format(start_time, end_time))
+        print(' ------------------------------ Sem dados ------------------------------ ')
+        print(f"No data for the period {start_time} to {end_time}.")
         return None
 
 
 def write_event_data(event, exporter, network_id):
     origin = event.preferred_origin()
     magnitude = event.preferred_magnitude()
-    print(f" event.preferred_origin: {event.preferred_origin()}")
     return exporter.feed(event, origin, magnitude, network_id)
 
 
@@ -162,21 +169,23 @@ def save_waveforms(stream, network, station, origin_time):
 
 
 def main(start_time, end_time, network_id, mode):
-    print(f"Start time: {start_time}")
     client = fdsn.Client('http://localhost:' + ID_dict[network_id])
-    print('Client = %s' % client)
-
+    print(f' --> Client:\n  {client}')
+    print('')
     while start_time < end_time:
-        print(' -    Iniciou! ')
+        print(f"Start time: {start_time}")
         taa = UTCDateTime(start_time.datetime + relativedelta(months=1)) if mode == "m" else end_time
         filename = start_time.strftime("events-%Y-%m-%d") + f"-{network_id}.csv" if mode == "m" else "events-all.csv"
+        print(' ------------------------------ Acessando Catálogo ------------------------------ ')
         catalog = get_catalog(client, start_time, taa)
 
         if catalog:
+            print(' ----------------------------- Processando Catálogo ---------------------------- ')
             process_catalog(catalog, filename, network_id)
 
         start_time = taa
 
+    print(' ----------- Baixando waveforms -----------')
     df = pd.read_csv(f'./{filename}', sep=';')
     download_and_save_waveforms(client, df, network_id, ["IT9", "IT1"], "HH?")
 
@@ -192,4 +201,5 @@ if __name__ == "__main__":
                "PB": '8093',
                "BC": '8089'}
 
+    print(" --------- Iniciando o fdsnwscsv_ggrl.py --------- ")
     main(ta, te, ID, mode)
