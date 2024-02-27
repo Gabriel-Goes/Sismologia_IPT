@@ -19,5 +19,5 @@ $SEISCOMP exec $PYTHON3 pyScripts/Processar_Dados_Sismicos.py $DATES $ID
 #echo " -------------- Processo de criação de mapas iniciado ------------------"
 #exec Criar_Mapas.sh
 
-#echo " ---------------- Iniciando o cria_pred.py ---------------------------- "
-#$PYTHON3 pyScripts/Gerar_predcsv.py
+echo " ---------------- Iniciando o cria_pred.py ---------------------------- "
+$PYTHON3 pyScripts/Gerar_predcsv.py

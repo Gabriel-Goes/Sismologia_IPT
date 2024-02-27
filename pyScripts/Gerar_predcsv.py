@@ -20,14 +20,16 @@ dados_pred = []
 # Lendo os nomes das pastas dentro de mseed_demo/
 for nome_pasta in os.listdir(pasta_mseed):
     # Verificando se o nome da pasta tem o comprimento esperado
-    if len(nome_pasta) == 14:
+    if len(nome_pasta) == 15:
         # Formatando o nome da pasta para corresponder ao formato no dicionário
-        id_sismo = "IT_" + nome_pasta[:8] + "_" + nome_pasta[8:]
+        id_sismo = "IT_" + nome_pasta[:8] + "_" + nome_pasta[9:]
     else:
         # Se não, usa um valor padrão ou ignora esta pasta
         continue
 
-    label_cat = id_para_label.get(id_sismo, 'X')  # Usando X como padrão para IDs não encontrados
+    print(f' - {id_sismo}')
+    label_cat = id_para_label.get(id_sismo, 'X - ID NÃO ENCONTRADO')  # Usando X como padrão para IDs não encontrados
+
     # Adicionando ao DataFrame
     dados_pred.append({'time': nome_pasta, 'label_cat': label_cat})
 
