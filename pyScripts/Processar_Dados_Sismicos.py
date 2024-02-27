@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+# ----------------------------  DESCRIPTION  -----------------------------------
+# Script para processar dados sismicos
+# Autor: Gabriel Góes Rocha de Lima
+# Alterado de fdsnwscsv.py (por Bianchi)
+# Versão: 1.0
+# Data: 2024-02-27
 # ----------------------------  IMPORTS   -------------------------------------
 import pandas as pd
 from obspy import UTCDateTime
