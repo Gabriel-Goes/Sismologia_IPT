@@ -7,10 +7,10 @@
 DATES="2023-11-01 2023-11-15"
 ID="USP"
 # -----------------------------------------------------------------------------
-PYTHON3="/home/ipt/.config/geo/bin/python3"
-SEISCOMP="/home/ipt/softwares/seiscomp/bin/seiscomp"
-ENERGYFIG="/home/ipt/lucas_bin/energy_fig.py"
-CREATEMAP="/home/ipt/lucas_bin/make_maps_"$ID".py"
+PYTHON3="$HOME/.config/geo/bin/python3"
+SEISCOMP="$HOME/softwares/seiscomp/bin/seiscomp"
+ENERGYFIG="$HOME/lucas_bin/energy_fig.py"
+CREATEMAP="$HOME/lucas_bin/make_maps_"$ID".py"
 EVENTS=$(find ./files/ -maxdepth 1 -name "events-*.csv")
 # -----------------------------------------------------------------------------
 echo " ---------------- Iniciando do Pipeline --------------------------------"
