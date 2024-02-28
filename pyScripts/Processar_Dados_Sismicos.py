@@ -25,6 +25,92 @@ os.makedirs(folder_name, exist_ok=True)
 # Função para criar pasta para cada evento dentro de mseed
 def create_event_dirname(origin_time):
     return origin_time.strftime("%Y%m%dT%H%M%S")
+
+
+# FUNÇÃO PARA ADQUIRIR EVENTOS DO CLIENT
+def get_catalog(client, start_time, end_time):
+    try:
+        print(f"Time interval from {start_time} to {end_time}.")
+        return client.get_events(starttime=start_time,
+                                 endtime=end_time,
+                                 includearrivals=True)
+
+    except fdsn.header.FDSNNoDataException:
+        print(' ------------------------------ Sem dados ------------------------------ ')
+        print(f"No data for the period {start_time} to {end_time}.")
+        return None
+
+
+def write_event_data(event, exporter, network_id):
+    origin = event.preferred_origin()
+    magnitude = event.preferred_magnitude()
+    return exporter.feed(event, origin, magnitude, network_id)
+
+
+def process_catalog(catalog, filename, network_id):
+    with Exporter(where=filename) as exporter:
+        for event in catalog:
+            if not write_event_data(event, exporter, network_id):
+                print(f"Skipped event {event.resource_id.id}")
+
+
+def download_and_save_waveforms(client, df, network_id, station_list,
+                                channel_pattern):
+    for index, row in df.iterrows():
+        if index < 2:
+            continue
+
+        # print(row)
+        origin_time = UTCDateTime(row['Hora de Origem (UTC)'])
+        start_time, end_time = origin_time - 10, origin_time + 50
+        download_waveforms(client, network_id, station_list,
+                           channel_pattern, start_time, end_time, origin_time)
+
+
+def download_waveforms(client, network, stations,
+                       channel, start_time, end_time, origin_time):
+    for station in stations:
+        try:
+            st = client.get_waveforms(network, station, "*",
+                                      channel, start_time, end_time)
+            save_waveforms(st, network, station, origin_time)
+        except Exception as e:
+            print(f"Erro ao baixar canal {channel} da estação {station}: {e}")
+
+
+def save_waveforms(stream, network, station, origin_time):
+    if not stream:
+        print(f"Nenhum dado baixado para a estação {station}.")
+        return
+
+    event_dir = os.path.join(folder_name, create_event_dirname(origin_time))
+    mseed_filename = os.path.join(event_dir, f"{network}_{station}_{create_event_dirname(origin_time)}.mseed")
+
+    os.makedirs(event_dir, exist_ok=True)
+    stream.write(mseed_filename, format="MSEED")
+
+
+def main(start_time, end_time, network_id, mode):
+    client = fdsn.Client('USP')
+    # client = fdsn.Client('http://localhost:' + ID_dict[network_id])
+    print(f' --> Client:\n  {client}')
+    print('')
+    while start_time < end_time:
+        print(f"Start time: {start_time}")
+        taa = UTCDateTime(start_time.datetime + relativedelta(months=1)) if mode == "m" else end_time
+        filename = start_time.strftime("./files/events-%Y-%m-%d") + f"-{network_id}.csv" if mode == "m" else "./files/events-all.csv"
+        print(' ------------------------------ Acessando Catálogo ------------------------------ ')
+        catalog = get_catalog(client, start_time, taa)
+
+        if catalog:
+            print(' ----------------------------- Processando Catálogo ---------------------------- ')
+            process_catalog(catalog, filename, network_id)
+
+        start_time = taa
+
+    print(' ----------- Baixando waveforms -----------')
+    df = pd.read_csv(f'./{filename}', sep=';')
+    download_and_save_waveforms(client, df, network_id, ["IT9", "IT1"], "HH?")
 # -----------------------------------------------------------------------------
 
 
@@ -119,91 +205,7 @@ class Exporter(object):
             return True
 
 
-# FUNÇÃO PARA ADQUIRIR EVENTOS DO CLIENT
-def get_catalog(client, start_time, end_time):
-    try:
-        print(f"Time interval from {start_time} to {end_time}.")
-        return client.get_events(starttime=start_time,
-                                 endtime=end_time,
-                                 includearrivals=True)
-
-    except fdsn.header.FDSNNoDataException:
-        print(' ------------------------------ Sem dados ------------------------------ ')
-        print(f"No data for the period {start_time} to {end_time}.")
-        return None
-
-
-def write_event_data(event, exporter, network_id):
-    origin = event.preferred_origin()
-    magnitude = event.preferred_magnitude()
-    return exporter.feed(event, origin, magnitude, network_id)
-
-
-def process_catalog(catalog, filename, network_id):
-    with Exporter(where=filename) as exporter:
-        for event in catalog:
-            if not write_event_data(event, exporter, network_id):
-                print(f"Skipped event {event.resource_id.id}")
-
-
-def download_and_save_waveforms(client, df, network_id, station_list,
-                                channel_pattern):
-    for index, row in df.iterrows():
-        if index < 2:
-            continue
-
-        # print(row)
-        origin_time = UTCDateTime(row['Hora de Origem (UTC)'])
-        start_time, end_time = origin_time - 10, origin_time + 50
-        download_waveforms(client, network_id, station_list,
-                           channel_pattern, start_time, end_time, origin_time)
-
-
-def download_waveforms(client, network, stations,
-                       channel, start_time, end_time, origin_time):
-    for station in stations:
-        try:
-            st = client.get_waveforms(network, station, "*",
-                                      channel, start_time, end_time)
-            save_waveforms(st, network, station, origin_time)
-        except Exception as e:
-            print(f"Erro ao baixar canal {channel} da estação {station}: {e}")
-
-
-def save_waveforms(stream, network, station, origin_time):
-    if not stream:
-        print(f"Nenhum dado baixado para a estação {station}.")
-        return
-
-    event_dir = os.path.join(folder_name, create_event_dirname(origin_time))
-    mseed_filename = os.path.join(event_dir, f"{network}_{station}_{create_event_dirname(origin_time)}.mseed")
-
-    os.makedirs(event_dir, exist_ok=True)
-    stream.write(mseed_filename, format="MSEED")
-
-
-def main(start_time, end_time, network_id, mode):
-    client = fdsn.Client('http://localhost:' + ID_dict[network_id])
-    print(f' --> Client:\n  {client}')
-    print('')
-    while start_time < end_time:
-        print(f"Start time: {start_time}")
-        taa = UTCDateTime(start_time.datetime + relativedelta(months=1)) if mode == "m" else end_time
-        filename = start_time.strftime("./files/events-%Y-%m-%d") + f"-{network_id}.csv" if mode == "m" else "./files/events-all.csv"
-        print(' ------------------------------ Acessando Catálogo ------------------------------ ')
-        catalog = get_catalog(client, start_time, taa)
-
-        if catalog:
-            print(' ----------------------------- Processando Catálogo ---------------------------- ')
-            process_catalog(catalog, filename, network_id)
-
-        start_time = taa
-
-    print(' ----------- Baixando waveforms -----------')
-    df = pd.read_csv(f'./{filename}', sep=';')
-    download_and_save_waveforms(client, df, network_id, ["IT9", "IT1"], "HH?")
-
-
+# ---------------------------- MAIN -------------------------------------------
 if __name__ == "__main__":
     ta = UTCDateTime(sys.argv[1])
     te = UTCDateTime(sys.argv[2])
@@ -215,6 +217,5 @@ if __name__ == "__main__":
                "SP": '8085',
                "PB": '8093',
                "BC": '8089'}
-
     print(" --------- Iniciando o fdsnwscsv.py --------- ")
     main(ta, te, ID, mode)

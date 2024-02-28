@@ -6,6 +6,7 @@
 # -----------------------------------------------------------------------------
 DATES="2023-11-01 2023-11-15"
 ID="IT"
+
 # -----------------------------------------------------------------------------
 #PYTHON="/usr/bin/python"
 PYTHON3="/home/ipt/.config/geo/bin/python3"
@@ -16,8 +17,8 @@ echo " ---------------- Iniciando do Pipeline --------------------------------"
 echo " -> Executando  Processar_Dados_Sismicos.py..."
 $SEISCOMP exec $PYTHON3 pyScripts/Processar_Dados_Sismicos.py $DATES $ID
 
-#echo " -------------- Processo de criação de mapas iniciado ------------------"
-#exec Criar_Mapas.sh
+# echo " -------------- Processo de criação de mapas iniciado ------------------"
+# exec Criar_Mapas.sh
 
-echo " ---------------- Iniciando o cria_pred.py ---------------------------- "
-$PYTHON3 pyScripts/Gerar_predcsv.py
+# echo " ---------------- Iniciando o cria_pred.py ---------------------------- "
+# $PYTHON3 pyScripts/Gerar_predcsv.py

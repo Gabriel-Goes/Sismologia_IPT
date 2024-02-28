@@ -28,7 +28,7 @@ for nome_pasta in os.listdir(pasta_mseed):
         continue
 
     print(f' - {id_sismo}')
-    label_cat = id_para_label.get(id_sismo, 'X - ID NÃO ENCONTRADO')  # Usando X como padrão para IDs não encontrados
+    label_cat = id_para_label.get(id_sismo, 'X')  # Usando X como padrão para IDs não encontrados
 
     # Adicionando ao DataFrame
     dados_pred.append({'time': nome_pasta, 'label_cat': label_cat})
