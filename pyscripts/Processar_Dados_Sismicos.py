@@ -91,8 +91,11 @@ def save_waveforms(stream, network, station, origin_time):
 
 
 def main(start_time, end_time, network_id, mode):
-    client = fdsn.Client('USP')
-    # client = fdsn.Client('http://localhost:' + ID_dict[network_id])
+    # Para conectar ao servidor MOHO IAG (USP)
+    if network_id == 'USP':
+        client = fdsn.Client('USP')
+    else:
+        client = fdsn.Client('http://localhost:' + ID_dict[network_id])
     print(f' --> Client:\n  {client}')
     print('')
     while start_time < end_time:
@@ -216,6 +219,7 @@ if __name__ == "__main__":
                "IT": '8091',
                "SP": '8085',
                "PB": '8093',
-               "BC": '8089'}
+               "BC": '8089',
+               'USP': 'USP'}
     print(" --------- Iniciando o fdsnwscsv.py --------- ")
     main(ta, te, ID, mode)
