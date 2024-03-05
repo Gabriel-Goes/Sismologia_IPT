@@ -69,7 +69,7 @@ class Exporter(object):
             return False
         self.flushheader()
         data = []
-        if e.resource_id.id.split("/")[-1].split("_")[0] == ID or\
+        if e.resource_id.id.split("/")[-1].split("_")[0] == network_id or\
                 e.resource_id.id.split("/")[-1].split("z")[0] == 'gf' or\
                 e.resource_id.id.split("/")[-1][:3] == 'usp':
             # Id
