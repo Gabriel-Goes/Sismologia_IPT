@@ -25,7 +25,7 @@ if [ -n "${ID_dict[$ID]}" ]; then
     # Use the ID to determine the port number
     PORT="${ID_dict[$ID]}"
     # Create an SSH tunnel
-    ssh -L "$PORT:localhost:$PORT" gabrielgoes@sismo.ipt.br -i ~/.ssh/id_rsa -N
+    ssh -L "$PORT:localhost:$PORT" gabrielgoes@sismo.ipt.br -i ~/.ssh/id_rsa -N &
     echo "!Conexão encerrada!"
 else
     echo "Invalid ID. Please enter MC, IT, SP, PB, or BC."
