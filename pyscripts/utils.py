@@ -16,6 +16,7 @@ from obspy import UTCDateTime
 from obspy.clients import fdsn
 import os
 
+# Classe adaptada do Bianchi (fdsnwscsv.py)
 from Exporter import Exporter
 
 
@@ -50,7 +51,6 @@ def create_event_dirname(origin_time):
 # FUNÇÃO PARA ADQUIRIR EVENTOS DO CLIENT
 def get_catalog(client, start_time, end_time):
     try:
-        print(f"Time interval from {start_time} to {end_time}.")
         return client.get_events(starttime=start_time,
                                  endtime=end_time,
                                  includearrivals=True)
@@ -66,7 +66,8 @@ def save_waveforms(stream, network, station, origin_time):
         return
 
     event_dir = os.path.join(folder_name, create_event_dirname(origin_time))
-    mseed_filename = os.path.join(event_dir, f"{network}_{station}_{create_event_dirname(origin_time)}.mseed")
+    mseed_filename = os.path.join(event_dir,
+                                  f"{network}_{station}_{create_event_dirname(origin_time)}.mseed")
     os.makedirs(event_dir, exist_ok=True)
     stream.write(mseed_filename, format="MSEED")
 

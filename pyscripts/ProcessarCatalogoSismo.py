@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 # Python 3.10
-# ./Classificador_Sismologico/pyscripts/Processar_Dados_Sismicos.py
+# ./Classificador_Sismologico/pyscripts/ProcessarCatalogoSismo.py
 
 
 # ----------------------------  DESCRIPTION  -----------------------------------
-# Script para processar dados sismicos
+# Script para gerar catálogo de sismos
 # Autor: Gabriel Góes Rocha de Lima
 # Versão: 0.1
-# Data: 2024-02-27
+# Data: 2024-03-05
 
 
 # ----------------------------  IMPORTS   -------------------------------------
@@ -15,13 +15,11 @@ from obspy import UTCDateTime
 from obspy.clients import fdsn
 from dateutil.relativedelta import relativedelta
 import sys
-from utils import get_catalog, write_catalog
-# , download_and_save_waveforms
-# import pandas as pd
+from utils import get_catalog
 
 
 # ---------------------------- FUNÇÕES ----------------------------------------
-def main(start_time, end_time, network_id, mode):
+def catalogo(start_time, end_time, network_id, mode):
     # Para conectar ao servidor MOHO IAG (USP)
     if network_id == 'USP':
         client = fdsn.Client('USP')
@@ -33,18 +31,14 @@ def main(start_time, end_time, network_id, mode):
         print(f" -> Data de Início: {start_time.date}")
         print(f" -> Data de Fim:    {end_time.date}")
         taa = UTCDateTime(start_time.datetime + relativedelta(months=1)) if mode == "m" else end_time
-        filename = start_time.strftime("./files/events-%Y-%m-%d") + f"-{network_id}.csv" if mode == "m" else "./files/events-all.csv"
         print('')
         print(' ------------------------------ Acessando Catálogo ------------------------------ ')
         catalog = get_catalog(client, start_time, taa)
         if catalog:
             print('')
             print(' ----------------------------- Processando Catálogo ---------------------------- ')
-            write_catalog(catalog, filename, network_id)
+        # Termina o while com starttime = endtime
         start_time = taa
-    # print(' ----------- Baixando waveforms -----------')
-    # df = pd.read_csv(f'./{filename}', sep=';')
-    # download_and_save_waveforms(client, df, network_id, ["IT9", "IT1"], "HH?")
 
 
 # ---------------------------- MAIN -------------------------------------------

@@ -41,7 +41,7 @@ SEISCOMP=${SEISCOMP:-"$HOME/softwares/seiscomp/bin/seiscomp"}
 # ------------------------- INICIO DO PIPELINE  ------------------------------
 echo ''
 echo " ---------------- Iniciando do Pipeline --------------------------------"
-echo " -> Executando  Processar_Dados_Sismicos.py..."
+echo ' -> Executando Processar_Dados_Sismicos.py...'
 $SEISCOMP exec $PYTHON3 pyscripts/Processar_Dados_Sismicos.py $DATES $CLIENT_ID
 
 # ------------------------- ETAPA DE GERAR MAPAS  -----------------------------
