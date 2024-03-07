@@ -34,11 +34,10 @@ from obspy.geodetics import gps2dist_azimuth
 
 import os
 
-from utils import get_sta_xy, delimt
+from utils import get_sta_xy, delimt, mseed_folder
 
-# ---------------------------- PARAMETROS -------------------------------------
-# Nome da pasta mseed
-mseed_folder = "./mseed"
+from tqdm import tqdm
+
 # Cria pasta se ela não existir
 os.makedirs(mseed_folder, exist_ok=True)
 # ---------------------------- FUNÇÕES ----------------------------------------
@@ -46,16 +45,19 @@ os.makedirs(mseed_folder, exist_ok=True)
 
 # Função para criar pasta para cada evento dentro de mseed
 def create_event_dirname(origin_time):
-    return origin_time.strftime("%Y%m%dT%H%M%S")
+    dir_name = origin_time.strftime("%Y%m%dT%H%M%S")
+    print(f" - Criando pasta para o evento: {dir_name}")
+    return dir_name
 
 
 def save_waveforms(stream, network, station, origin_time):
     if not stream:
         print(f"Nenhum dado baixado para a estação {station}.")
         return
-    event_dir = os.path.join(mseed_folder, create_event_dirname(origin_time))
+    event_name = create_event_dirname(origin_time)
+    event_dir = os.path.join(mseed_folder, event_name)
     mseed_filename = os.path.join(event_dir,
-                                  f"{network}_{station}_{create_event_dirname(origin_time)}.mseed")
+                                  f"{network}_{station}_{event_name}.mseed")
     os.makedirs(event_dir, exist_ok=True)
     stream.write(mseed_filename, format="MSEED")
 
@@ -87,8 +89,12 @@ def baixar_waveform(eventos, client, inventario):
     '''
     Baixa a forma de onda (.mseed) de um evento sísmico se a estação estiver a menos de 400 km do epicentro.
     '''
-    for evento in eventos:
-        print(f"Evento: {evento.resource_id.id}")
+    print(' --> Baixando Forma de Onda')
+    # print(f' - Número de eventos: {len(eventos)}')
+    # print(f' - Client: {client}')
+    # print(f' - Tamanho do Inventário: {len(inventario)}')
+    for evento in tqdm(eventos):
+        # print(f" - Resource ID: {evento.resource_id.id}")
         if not evento.picks:
             print('Sem picks')
             continue
@@ -103,13 +109,13 @@ def baixar_waveform(eventos, client, inventario):
 
             net = pick.waveform_id.network_code
             sta = pick.waveform_id.station_code
-            print(f'net: {net}, sta: {sta}')
+            print(f' - Net: {net}\n - Sta: {sta}')
 
             sta_lat, sta_lon = get_sta_xy(net, sta, inventario)  # Assume que get_sta_xy retorna (latitude, longitude)
             if sta_lat is None or sta_lon is None:
                 print(f"Estação {sta} da rede {net} não encontrada no inventário.")
                 continue
-            print(f'sta_xy: ({sta_lat}, {sta_lon})')
+            print(f'- (X,Y) {net}.{sta}: ({sta_lat}, {sta_lon})')
 
             dist, az, baz = gps2dist_azimuth(origem_lat, origem_lon, sta_lat, sta_lon)
             dist_km = dist / 1000  # Converte de metros para quilômetros
@@ -124,7 +130,7 @@ def baixar_waveform(eventos, client, inventario):
             end_time = pick.time + 50   # 50 segundos depois do pick
 
             # Baixa a forma de onda para a estação e intervalo de tempo específicos
-            print('Baixando forma de onda...')
+            print(' baixando...')
             download_waveforms(client, net, [sta], '*', start_time, end_time, pick.time)
             print(delimt)
 

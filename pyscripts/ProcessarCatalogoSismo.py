@@ -19,6 +19,8 @@ from utils import ID_dict, delimt
 # Classe adaptada do Bianchi (fdsnwscsv.py)
 from Exporter import Exporter
 
+from tqdm import tqdm
+
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 # Função que retorna o catalogo de enventos sismicos
@@ -66,7 +68,7 @@ def gera_catalogo_event_id(IDs, network_id):
     try:
         from obspy.core.event.catalog import Catalog
         catalogo = Catalog()
-        for id in IDs:
+        for id in tqdm(IDs):
             # print(f" -> Event ID: {id}")
             temp_cat = client.get_events(eventid=id, includearrivals=True)
             catalogo.append(temp_cat.events[0])
@@ -75,7 +77,7 @@ def gera_catalogo_event_id(IDs, network_id):
         print(' ------------------------------ Sem dados ------------------------------ ')
         print(f"No data for the event id {IDs}.")
         return None
-    return catalogo
+    return catalogo, client
 
 
 # --------------------------------------------------------------------------- #

@@ -43,7 +43,7 @@ SEISCOMP=${SEISCOMP:-"$HOME/softwares/seiscomp/bin/seiscomp"}
 echo ''
 echo " ---------------- Iniciando do Pipeline --------------------------------"
 echo ' -> Executando Processar_Dados_Sismicos.py...'
-$SEISCOMP exec $PYTHON3 pyscripts/ProcessarID.py $LIST_IDS $CLIENT_ID
+#$SEISCOMP exec $PYTHON3 pyscripts/ProcessarID.py $LIST_IDS $CLIENT_ID
 
 # ------------------------- ETAPA DE GERAR MAPAS  -----------------------------
 # Condicionalmente executa partes do script
@@ -83,7 +83,7 @@ fi
 
 
 # --------- ETAPA DE GERAR LISTA PARA CLASSIFICAÇÃO ( EVENTO | LABEL ) -----------
-PROCESS_PRED=${PROCESS_PRED:-false}
+PROCESS_PRED=${PROCESS_PRED:-true}
 if [ "$PROCESS_PRED" = true ]; then
     # chega se o arquivo de predições já existe, se existir, move para uma pasta de backup
     if [ -f "files/pred-*.csv" ]; then

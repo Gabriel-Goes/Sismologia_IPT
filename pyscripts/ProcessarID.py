@@ -28,17 +28,20 @@ from utils import csv2list, cria_sta_dic, list_inventario, delimt
 def main(lista, network_id):
     # Gera o catálogo de eventos por ID
     IDs = csv2list(lista)
-    lil_IDs = IDs[:2]
-    catalogo = gera_catalogo_event_id(lil_IDs, network_id)
+    lil_IDs = IDs[:50]
+    catalogo, client = gera_catalogo_event_id(lil_IDs, network_id)
     # Constroi o inventario de estações
     inventario = {}
     print(' --> Inventário de Estações:')
     for txt in list_inventario:
         inventario = cria_sta_dic('./files/inventario/' + txt, inventario)
-        print(f' - {len(inventario)}')
+        # print(f' - {len(inventario)}')
     print(delimt)
     # Baixa a forma de onda
-    baixar_waveform(catalogo.events, network_id, inventario)
+    # print(f' Catalog.events: {catalogo.events}')
+    # print(f' Client: {client}')
+    # print(f' Inventário: {inventario}')
+    baixar_waveform(catalogo.events, client, inventario)
     return catalogo
 
 

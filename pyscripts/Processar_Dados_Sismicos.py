@@ -28,7 +28,6 @@ def main(network_id, mode, start_time=False, end_time=False):
     IDs = csv2list('./files/catalogo-moho.csv')
     catalogo = gera_catalogo_event_id(IDs, network_id)
     print(catalogo.events[0].picks[0].waveform_id)
-
     return catalogo
 
 

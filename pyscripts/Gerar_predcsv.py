@@ -1,8 +1,8 @@
 import os
 import pandas as pd
+from utils import mseed_folder
 
 # Caminho para a pasta mseed_demo/ e para o arquivo events-all.csv
-pasta_mseed = './mseed/'
 caminho_csv = './files/events-all.csv'
 
 # Lendo o arquivo events-all.csv
@@ -18,7 +18,7 @@ id_para_label = {row['ID']: mapeamento_cat.get(row['Cat'], 0) for _, row in df_e
 dados_pred = []
 
 # Lendo os nomes das pastas dentro de mseed_demo/
-for nome_pasta in os.listdir(pasta_mseed):
+for nome_pasta in os.listdir(mseed_folder):
     # Verificando se o nome da pasta tem o comprimento esperado
     if len(nome_pasta) == 15:
         # Formatando o nome da pasta para corresponder ao formato no dicionário

@@ -16,6 +16,11 @@ import os
 
 
 # ---------------------------- PARAMETROS -------------------------------------
+# Nome da pasta mseed
+PROJETO_DIR = "$HOME/Classificador_Sismologico"
+mseed_folder = PROJETO_DIR + "/files/mseed"
+
+
 # Dicionário de Netowrk ID
 # MOHO IAG = https://www.moho.iag.usp.br/fdsnws/ -> 'USP'
 ID_dict = {"MC": '8091',
