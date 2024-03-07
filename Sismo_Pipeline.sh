@@ -24,6 +24,7 @@ INICIO=${1:-"2023-01-01"}
 FIM=${2:-"2023-01-10"}
 CLIENT_ID=${3:-"USP"}
 DATES=${4:-"$INICIO $FIM"}
+LIST_IDS=${5:-"$HOME/projetos/Classificador_Sismologico/files/catalogo/catalogo-moho.csv"}
 # Define um diretório base, todas as funções são relativas a este diretório base,
 BASE_DIR=${BASE_DIR:-"$HOME/projetos/Classificador_Sismologico"}
 # devido o comando cd $BASE_DIR.
@@ -42,7 +43,7 @@ SEISCOMP=${SEISCOMP:-"$HOME/softwares/seiscomp/bin/seiscomp"}
 echo ''
 echo " ---------------- Iniciando do Pipeline --------------------------------"
 echo ' -> Executando Processar_Dados_Sismicos.py...'
-$SEISCOMP exec $PYTHON3 pyscripts/Processar_Dados_Sismicos.py $DATES $CLIENT_ID
+$SEISCOMP exec $PYTHON3 pyscripts/ProcessarID.py $LIST_IDS $CLIENT_ID
 
 # ------------------------- ETAPA DE GERAR MAPAS  -----------------------------
 # Condicionalmente executa partes do script

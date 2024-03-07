@@ -12,84 +12,110 @@
 
 
 # ----------------------------  IMPORTS   -------------------------------------
-from obspy import UTCDateTime
-from obspy.clients import fdsn
 import os
-
-# Classe adaptada do Bianchi (fdsnwscsv.py)
-from Exporter import Exporter
 
 
 # ---------------------------- PARAMETROS -------------------------------------
-# Nome da pasta mseed
-folder_name = "./mseed"
-# Cria pasta se ela não existir
-os.makedirs(folder_name, exist_ok=True)
+# Dicionário de Netowrk ID
+# MOHO IAG = https://www.moho.iag.usp.br/fdsnws/ -> 'USP'
+ID_dict = {"MC": '8091',
+           "IT": '8091',
+           "SP": '8085',
+           "PB": '8093',
+           "BC": '8089',
+           'USP': 'USP'}
+
+# Delimitador para prints
+delimt = "-------------------------------------------------\n"
+
+# Caminho para diretório de invetário de redes sismológicas
+path_inventario = './files/inventario/'
+list_inventario = os.listdir(path_inventario)
 
 
 # ---------------------------- FUNÇÕES ----------------------------------------
-# Função que chama o exporter.feed(event, origin, magnitude, network_id)
-def write_event_data(event, exporter, network_id):
-    origin = event.preferred_origin()
-    magnitude = event.preferred_magnitude()
-    return exporter.feed(event, origin, magnitude, network_id)
+# Função para criar um dicionário a partir de um csv
+def csv2list(csv_file, data=False):
+    '''
+    Recebe um csv e retorna uma lista de EventID
+    evid é a primeira coluna do header do csv
+    evid = usp0000XXXX
+    Se data for uma ano (ex: 2022), retorna uma lista com eventos a partir do ano até hoje
+    ex: data = 2010 -> retorna evid
+    '''
+    if data:
+        with open(csv_file, 'r') as f:
+            lines = f.readlines()
+            evids = [line.split(',')[0] for line in lines[1:]]
+            # split depois do usp, e pega só o ano '0000' e split o XXXXX as letras
+            evid = [int(evid.split('usp')[1][:4]) for evid in evids]
+            if evid < data:
+                return None
+            else:
+                return evid
+    else:
+        with open(csv_file, 'r') as f:
+            lines = f.readlines()
+            return [line.split(',')[0] for line in lines[1:]]
 
 
-def write_catalog(catalog, filename, network_id):
-    with Exporter(where=filename) as exporter:
-        print(f" --> Catalogo com {len(catalog)} eventos.")
-        for event in catalog:
-            if not write_event_data(event, exporter, network_id):
-                print(f"Skipped event {event.resource_id.id}")
+# Função para ler um .txt e extrair o Netorw, Station e Latitute, Longitude e Depth e salvar  em um dicionário.
+def cria_sta_dic(file, dic=None):
+    '''
+    Recebe:
+        file: caminho do arquivo .txt com informações da rede sismológica
+        dic: Dicionário possivelmente vazio ou com prévias informações de network, station, latitude, longitude e depth.
+
+    Retorna:
+        Dicionário com as informações de network, station, latitude, longitude e depth de cada estação.
+
+    Exemplo de arquivo .txt:
+
+    #Network|Station|Location|Channel|Latitude|Longitude|Elevation|Depth|Azimuth|Dip|SensorDescription|Scale|ScaleFreq|ScaleUnits|SampleRate|StartTime|EndTime
+    BR|AGBLB||BHE|-9.03868|-37.045358|448.0|0.0|90.0|0.0|STS-2, 120 s, 1500 V/m/s, generation 1 electronics|936717000.0|0.05|M/S|40.0|2010-05-10T00:38:13.615|2012-09-14T00:44:13.24
+
+    '''
+    if not dic:
+        dic = {}
+
+    with open(file, 'r') as f:
+        header = f.readline().strip().split('|')
+        header = [h.replace('#', '') for h in header]
+        idx_network = header.index('Network')
+        idx_station = header.index('Station')
+        idx_latitude = header.index('Latitude')
+        idx_longitude = header.index('Longitude')
+        idx_depth = header.index('Depth')
+
+        for line in f:
+            line = line.strip().split('|')
+            network = line[idx_network]
+            station = line[idx_station]
+            latitude = float(line[idx_latitude])
+            longitude = float(line[idx_longitude])
+            depth = float(line[idx_depth])
+
+            key = f"{network}.{station}"
+            if key not in dic:
+                dic[key] = []
+
+            dic[key].append({
+                'network': network,
+                'station': station,
+                'latitude': latitude,
+                'longitude': longitude,
+                'depth': depth
+            })
+
+    return dic
 
 
-# Função para criar pasta para cada evento dentro de mseed
-def create_event_dirname(origin_time):
-    return origin_time.strftime("%Y%m%dT%H%M%S")
-
-
-# FUNÇÃO PARA ADQUIRIR EVENTOS DO CLIENT
-def get_catalog(client, start_time, end_time):
-    try:
-        return client.get_events(starttime=start_time,
-                                 endtime=end_time,
-                                 includearrivals=True)
-    except fdsn.header.FDSNNoDataException:
-        print(' ------------------------------ Sem dados ------------------------------ ')
-        print(f"No data for the period {start_time} to {end_time}.")
-        return None
-
-
-def save_waveforms(stream, network, station, origin_time):
-    if not stream:
-        print(f"Nenhum dado baixado para a estação {station}.")
-        return
-
-    event_dir = os.path.join(folder_name, create_event_dirname(origin_time))
-    mseed_filename = os.path.join(event_dir,
-                                  f"{network}_{station}_{create_event_dirname(origin_time)}.mseed")
-    os.makedirs(event_dir, exist_ok=True)
-    stream.write(mseed_filename, format="MSEED")
-
-
-def download_waveforms(client, network, stations,
-                       channel, start_time, end_time, origin_time):
-    for station in stations:
-        try:
-            st = client.get_waveforms(network, station, "*",
-                                      channel, start_time, end_time)
-            save_waveforms(st, network, station, origin_time)
-        except Exception as e:
-            print(f"Erro ao baixar canal {channel} da estação {station}: {e}")
-
-
-def download_and_save_waveforms(client, df, network_id, station_list,
-                                channel_pattern):
-    for index, row in df.iterrows():
-        if index < 2:
-            continue
-        # print(row)
-        origin_time = UTCDateTime(row['Hora de Origem (UTC)'])
-        start_time, end_time = origin_time - 10, origin_time + 50
-        download_waveforms(client, network_id, station_list,
-                           channel_pattern, start_time, end_time, origin_time)
+# Função para pegar o a ('net.sta','lat','lon','depth') e retornar um dicionário com as informações
+def get_sta_xy(net, sta, inventario):
+    key = f"{net}.{sta}"
+    if key in inventario:
+        # Retorna a latitude e longitude encontradas no dicionário
+        return inventario[key][0]['latitude'], inventario[key][0]['longitude']
+    else:
+        # Retorna None para ambos se a estação não for encontrada
+        return None, None
