@@ -13,11 +13,12 @@
 
 # ----------------------------  IMPORTS   -------------------------------------
 import os
+import xml.etree.ElementTree as ET
 
 
 # ---------------------------- PARAMETROS -------------------------------------
 # Nome da pasta mseed
-PROJETO_DIR = "$HOME/Classificador_Sismologico"
+PROJETO_DIR = "/home/ipt/projetos/Classificador_Sismologico"
 mseed_folder = PROJETO_DIR + "/files/mseed"
 
 
@@ -112,6 +113,51 @@ def cria_sta_dic(file, dic=None):
                 'depth': depth
             })
 
+    return dic
+
+
+def get_inventory_from_xml(file, dic=None):
+    '''
+    Lê um arquivo XML e extrai informações da rede sismológica para atualizar ou criar um dicionário.
+
+    Parâmetros:
+        file: caminho para o arquivo XML com as informações da rede sismológica.
+        dic: dicionário possivelmente vazio ou com informações prévias de network, station, latitude, longitude e depth.
+
+    Retorna:
+        Dicionário atualizado com as informações de network, station, latitude, longitude e depth de cada estação.
+    '''
+    if dic is None:
+        dic = {}
+
+    # Carrega o conteúdo do XML
+    tree = ET.parse(file)
+    root = tree.getroot()
+    # Namespace para buscar as tags corretamente
+    ns = {'ns': 'http://www.fdsn.org/xml/station/1'}
+
+    # Itera sobre cada estação no XML
+    for network in root.findall('ns:Network', ns):
+        network_code = network.get('code')
+        for station in network.findall('ns:Station', ns):
+            station_code = station.get('code')
+            latitude = station.find('ns:Latitude', ns).text
+            longitude = station.find('ns:Longitude', ns).text
+            elevation = station.find('ns:Elevation', ns).text  # Você pode precisar adaptar se a profundidade estiver em outra tag ou calcular com base na elevação, se aplicável.
+
+            # Gera a chave única para cada estação
+            key = f"{network_code}.{station_code}"
+            # Verifica se a estação já existe no dicionário
+            if key not in dic:
+                dic[key] = []
+            # Adiciona ou atualiza a entrada da estação no dicionário
+            dic[key].append({
+                'network': network_code,
+                'station': station_code,
+                'latitude': float(latitude),
+                'longitude': float(longitude),
+                'depth': float(elevation)  # Assumindo que depth possa ser calculado ou igualado a elevation, ajuste conforme necessário.
+            })
     return dic
 
 

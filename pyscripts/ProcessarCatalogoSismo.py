@@ -14,7 +14,7 @@ from obspy import UTCDateTime
 from obspy.clients import fdsn
 from dateutil.relativedelta import relativedelta
 
-from utils import ID_dict, delimt
+from utils import ID_dict
 
 # Classe adaptada do Bianchi (fdsnwscsv.py)
 from Exporter import Exporter
@@ -56,28 +56,20 @@ def gera_catalogo_datetime(start_time, end_time, network_id, mode):
 
 
 # Gera catalogo por event id
-def gera_catalogo_event_id(IDs, network_id):
-    if network_id == 'USP':
-        # Servidor MOHO IAG (USP)
-        client = fdsn.Client('USP')
-    else:
-        # Servidor IPT
-        client = fdsn.Client('http://localhost:' + ID_dict[network_id])
-    print(f' --> Client:\n  {client}')
-    print(delimt)
+def gera_catalogo_event_id(IDs, network_id, catalog_client):
     try:
         from obspy.core.event.catalog import Catalog
         catalogo = Catalog()
         for id in tqdm(IDs):
             # print(f" -> Event ID: {id}")
-            temp_cat = client.get_events(eventid=id, includearrivals=True)
+            temp_cat = catalog_client.get_events(eventid=id, includearrivals=True)
             catalogo.append(temp_cat.events[0])
 
     except fdsn.header.FDSNNoDataException:
         print(' ------------------------------ Sem dados ------------------------------ ')
         print(f"No data for the event id {IDs}.")
         return None
-    return catalogo, client
+    return catalogo
 
 
 # --------------------------------------------------------------------------- #

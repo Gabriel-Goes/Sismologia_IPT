@@ -20,28 +20,33 @@ import sys
 from ProcessarCatalogoSismo import gera_catalogo_event_id
 from BaixarFormaOnda import baixar_waveform
 
-from utils import csv2list, cria_sta_dic, list_inventario, delimt
+from utils import csv2list, cria_sta_dic, list_inventario, delimt, ID_dict, get_inventory_from_xml
+
+from obspy.clients import fdsn
 
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 # função main que conterá as chamadas das funções
-def main(lista, network_id):
-    # Gera o catálogo de eventos por ID
-    IDs = csv2list(lista)
-    lil_IDs = IDs[:50]
-    catalogo, client = gera_catalogo_event_id(lil_IDs, network_id)
+def main():
+    catalogo = gera_catalogo_event_id(IDs, network_id, catalog_Client)
     # Constroi o inventario de estações
     inventario = {}
     print(' --> Inventário de Estações:')
-    for txt in list_inventario:
-        inventario = cria_sta_dic('./files/inventario/' + txt, inventario)
+    for file in list_inventario:
+        # Check if the file is a .txt
+        if file.endswith('.txt'):
+            txt = file
+            print(f' - Arquivo: {txt}')
+            inventario = cria_sta_dic('./files/inventario/' + txt, inventario)
         # print(f' - {len(inventario)}')
+    inventory = get_inventory_from_xml('./files/inventario/inventario_rsbr.xml',
+                                       inventario)
     print(delimt)
     # Baixa a forma de onda
     # print(f' Catalog.events: {catalogo.events}')
     # print(f' Client: {client}')
     # print(f' Inventário: {inventario}')
-    baixar_waveform(catalogo.events, client, inventario)
+    baixar_waveform(catalogo.events, data_Client, data_Client_bkp, inventory)
     return catalogo
 
 
@@ -53,6 +58,18 @@ if __name__ == "__main__":
     csv_file = sys.argv[1]
     network_id = sys.argv[2]
     mode = "t"  # Supondo que o modo sempre será "t"
+    IDs = csv2list(csv_file)
+    data_Client = fdsn.Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
+    data_Client_bkp = fdsn.Client('USP')
+    if network_id == 'USP':
+        # Servidor MOHO IAG (USP)
+        catalog_Client = fdsn.Client('USP')
+    else:
+        # Servidor IPT
+        catalog_Client = fdsn.Client('http://localhost:' + ID_dict[network_id])
+        data_Client = catalog_Client
+    print(f' --> Client:\n  {catalog_Client}')
+    print(delimt)
     print('')
     print(" --------- Iniciando o ProcessarID.py --------- ")
-    main(csv_file, network_id)
+    main()
