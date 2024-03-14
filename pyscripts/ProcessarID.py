@@ -15,19 +15,17 @@
 
 # ----------------------------  IMPORTS   -------------------------------------
 import sys
+from obspy.clients import fdsn
 
 # ClassificadorSismologico
 from ProcessarCatalogoSismo import gera_catalogo_event_id
 from BaixarFormaOnda import baixar_waveform
-
-from utils import csv2list, cria_sta_dic, list_inventario, delimt, ID_dict, get_inventory_from_xml
-
-from obspy.clients import fdsn
+from utils import csv2list, cria_sta_dic, list_inventario, delimt, get_inventory_from_xml
 
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 # função main que conterá as chamadas das funções
-def main():
+def main(IDs, network_id, catalog_Client, data_Client, data_Client_bkp):
     catalogo = gera_catalogo_event_id(IDs, network_id, catalog_Client)
     # Constroi o inventario de estações
     inventario = {}
@@ -59,17 +57,21 @@ if __name__ == "__main__":
     network_id = sys.argv[2]
     mode = "t"  # Supondo que o modo sempre será "t"
     IDs = csv2list(csv_file)
-    data_Client = fdsn.Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
+    data_Client_main = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
+    data_Client_USP = fdsn.Client('USP')
+    data_Client_bkp = fdsn.Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
+#    if network_id == 'USP':
+#        # Servidor MOHO IAG (USP)
+#        data_catalog_Client = fdsn.Client('USP')
+#    else:
+#        # Servidor IPT
+#        catalog_Client = fdsn.Client('http://localhost:' + ID_dict[network_id])
+#        data_Client = catalog_Client
+    catalog_Client = fdsn.Client('http://seisarc.sismo.iag.usp.br')
     data_Client_bkp = fdsn.Client('USP')
-    if network_id == 'USP':
-        # Servidor MOHO IAG (USP)
-        catalog_Client = fdsn.Client('USP')
-    else:
-        # Servidor IPT
-        catalog_Client = fdsn.Client('http://localhost:' + ID_dict[network_id])
-        data_Client = catalog_Client
+    data_Client = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
     print(f' --> Client:\n  {catalog_Client}')
     print(delimt)
     print('')
     print(" --------- Iniciando o ProcessarID.py --------- ")
-    main()
+    main(IDs, network_id, catalog_Client, data_Client, data_Client_bkp)

@@ -37,12 +37,16 @@ ENERGYFIG="$HOME/lucas_bin/energy_fig.py"
 CREATEMAP="$HOME/lucas_bin/make_maps_"$CLIENT_ID".py"
 PYTHON3=${PYTHON3:-"$HOME/.config/geo/bin/python3"}
 SEISCOMP=${SEISCOMP:-"$HOME/softwares/seiscomp/bin/seiscomp"}
-
+DELIMT1='########################################################################'
 
 # ------------------------- INICIO DO PIPELINE  ------------------------------
 echo ''
+echo $DELIMT1
 echo " ---------------- Iniciando do Pipeline --------------------------------"
-PROCESSAR_IDS=${PROCESSAR_IDS:-true}
+echo ''
+
+# ------------------------- ETAPA DE AQUISIÇÃO DE DADOS  ----------------------
+PROCESSAR_IDS=${PROCESSAR_IDS:-false}
 if [ "$PROCESSAR_IDS" = true ]; then
     echo ' -> Executando Processar_Dados_Sismicos.py...'
     $SEISCOMP exec $PYTHON3 pyscripts/ProcessarID.py $LIST_IDS $CLIENT_ID
@@ -77,7 +81,7 @@ fi
 PROCESS_ENERGY=${PROCESS_ENERGY:-false}
 if [ "$PROCESS_ENERGY" = true ]; then
     # Executa etapa de processamento de energia
-    echo " ---------------- Iniciando o energy_fig.py ---------------------------- "
+    echo " ----------------- Iniciando o energy_fig.py ---------------------------- "
     echo "Creating energy plots..."
     $PYTHON $ENERGYFIG $OUTPUT
     echo "Cleaning up..."
@@ -86,7 +90,7 @@ fi
 
 
 # --------- ETAPA DE GERAR LISTA PARA CLASSIFICAÇÃO ( EVENTO | LABEL ) -----------
-PROCESS_PRED=${PROCESS_PRED:-false}
+PROCESS_PRED=${PROCESS_PRED:-true}
 if [ "$PROCESS_PRED" = true ]; then
     # chega se o arquivo de predições já existe, se existir, move para uma pasta de backup
     if [ -f "files/pred-*.csv" ]; then
@@ -95,3 +99,6 @@ if [ "$PROCESS_PRED" = true ]; then
     echo " ---------------- Iniciando o cria_pred.py ---------------------------- "
     $PYTHON3 pyscripts/Gerar_predcsv.py
 fi
+echo ''
+echo " ---------------------- Fim do Pipeline --------------------------------"
+echo ''

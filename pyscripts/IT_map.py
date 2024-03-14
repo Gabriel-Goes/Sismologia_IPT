@@ -4,6 +4,7 @@ import geopandas as gpd
 import os
 import tempfile
 
+
 def plot_evs(fig, data, colour):
     try:
         fig.plot(x=data['lon'], y=data['lat'], fill=colour,
