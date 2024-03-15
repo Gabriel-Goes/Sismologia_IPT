@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 from utils import mseed_folder
+from datetime import datetime
 
 # Caminho para a pasta mseed_demo/ e para o arquivo events-all.csv
 caminho_csv = './files/events-all.csv'
@@ -15,7 +16,8 @@ mapeamento_cat = {'Q': 1, 'E': 0, 'I': 0, 'N': 2}
 id_para_label = {row['ID']: mapeamento_cat.get(row['Cat'], 0) for _, row in df_events.iterrows()}
 
 # Inicializando a lista para o novo DataFrame
-dados_pred = []
+commercial_pred = []
+notcommercial_pred = []
 pastas_ignoradas = []
 
 
@@ -35,24 +37,32 @@ def constroi_dados_pred():
             continue
 
         label_cat = id_para_label.get(id_sismo, 0)  # Usando X como padrão para IDs não encontrados
+        # Verificando se o sismo ocorreu em horário comercial
+        print(id_sismo)
+        id_datetime = datetime.strptime(id_sismo, '%Y%m%dT%H%M%S')
+        if 11 <= id_datetime.hour < 22:
+            commercial_pred.append({'time': nome_pasta, 'label_cat': label_cat})
 
-        # Adicionando ao DataFrame
-        dados_pred.append({'time': nome_pasta, 'label_cat': label_cat})
+        else:
+            notcommercial_pred.append({'time': nome_pasta, 'label_cat': label_cat})
 
     # DataFrame com os nomes das pastas ignoradas
     df_erros = pd.DataFrame(pastas_ignoradas, columns=['pastas_ignoradas'])
     # Criando um DataFrame a partir dos dados coletados
-    df_pred = pd.DataFrame(dados_pred)
+    commercial_df = pd.DataFrame(commercial_pred)
+    notcommercial_df = pd.DataFrame(notcommercial_pred)
     print(f' -> {len(pastas_ignoradas)} pasta(s) ignorada(s)')
-    print(f' -> {len(df_pred)} sismo(s) encontrados')
+    print(f' -> {len(commercial_df)} sismo(s) encontrados em  horário comercial')
+    print(f' -> {len(notcommercial_df)} sismo(s) encontrados fora do horário comercial')
 
-    return df_pred, df_erros
+    return commercial_df, notcommercial_df, df_erros
 
 
 # ------------------------------ MAIN -----------------------------------------
 if __name__ == '__main__':
-    df_pred, df_erros = constroi_dados_pred()
+    commercial_df, notcommercial_df, df_erros = constroi_dados_pred()
     # Salva os erros de pastas ignoradas em um csv
     df_erros.to_csv('./files/erros.csv', index=False)
     # Salvando o DataFrame em um arquivo CSV
-    df_pred.to_csv('./files/pred.csv', index=False)
+    commercial_df.to_csv('./files/commercial_pred.csv', index=False)
+    notcommercial_df.to_csv('./files/notcommercial_pred.csv', index=False)

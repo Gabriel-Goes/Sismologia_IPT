@@ -15,7 +15,7 @@
 
 # ----------------------------  IMPORTS   -------------------------------------
 import sys
-from obspy.clients import fdsn
+from obspy.clients import fds
 
 # ClassificadorSismologico
 from ProcessarCatalogoSismo import gera_catalogo_event_id
