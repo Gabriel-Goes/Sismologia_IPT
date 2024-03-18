@@ -12,13 +12,13 @@
 # ----------------------------  IMPORTS   -------------------------------------
 from obspy import UTCDateTime
 from obspy.clients import fdsn
+from obspy.core.event.catalog import Catalog
 from dateutil.relativedelta import relativedelta
 
 from utils import ID_dict
 
 # Classe adaptada do Bianchi (fdsnwscsv.py)
 from Exporter import Exporter
-
 from tqdm import tqdm
 
 
@@ -56,20 +56,27 @@ def gera_catalogo_datetime(start_time, end_time, network_id, mode):
 
 
 # Gera catalogo por event id
-def gera_catalogo_event_id(IDs, network_id, catalog_client):
-    try:
-        from obspy.core.event.catalog import Catalog
-        catalogo = Catalog()
-        for id in tqdm(IDs):
-            # print(f" -> Event ID: {id}")
-            temp_cat = catalog_client.get_events(eventid=id, includearrivals=True)
+def gera_catalogo_event_id(IDs, data_Client, data_Client_bkp):
+    print(' ------------------------------ Acessando Catálogo ------------------------------ ')
+    catalogo = Catalog()
+    missing_ids = []
+    for id in tqdm(IDs):
+        try:
+            temp_cat = data_Client.get_events(eventid=id, includearrivals=True)
             catalogo.append(temp_cat.events[0])
 
-    except fdsn.header.FDSNNoDataException:
-        print(' ------------------------------ Sem dados ------------------------------ ')
-        print(f"No data for the event id {IDs}.")
-        return None
-    return catalogo
+        except Exception:
+            try:
+                print(' Catalogo USP não encontrado. Tentando no servidor da RSBR.')
+                temp_cat = data_Client_bkp.get_events(eventid=id, includearrivals=True)
+                catalogo.append(temp_cat.events[0])
+
+            except Exception:
+                print(' ------------------------------ Sem dados ------------------------------ ')
+                print(f"ID {id} não encontrado.")
+                missing_ids.append(id)
+
+    return catalogo, missing_ids
 
 
 # --------------------------------------------------------------------------- #

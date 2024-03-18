@@ -22,9 +22,8 @@
 # Se não escolher nada, estes valores padrão serão usados:
 INICIO=${1:-"2023-01-01"}
 FIM=${2:-"2023-01-10"}
-CLIENT_ID=${3:-"USP"}
 DATES=${4:-"$INICIO $FIM"}
-LIST_IDS=${5:-"$HOME/projetos/Classificador_Sismologico/files/catalogo/catalogo-moho.csv"}
+MOHO_CATALOG="$HOME/projetos/Classificador_Sismologico/files/catalogo/catalogo-moho.csv"
 # Define um diretório base, todas as funções são relativas a este diretório base,
 BASE_DIR=${BASE_DIR:-"$HOME/projetos/Classificador_Sismologico"}
 # devido o comando cd $BASE_DIR.
@@ -46,10 +45,11 @@ echo " ---------------- Iniciando do Pipeline --------------------------------"
 echo ''
 
 # ------------------------- ETAPA DE AQUISIÇÃO DE DADOS  ----------------------
-PROCESSAR_IDS=${PROCESSAR_IDS:-false}
-if [ "$PROCESSAR_IDS" = true ]; then
+# ---- CRIANDO CATÁLOGO DE EVENTOS SISMICOS ----
+PROCESSAR_SISMOS=${PROCESSAR_SISMOS:-true}
+if [ "$PROCESSAR_SISMOS" = true ]; then
     echo ' -> Executando Processar_Dados_Sismicos.py...'
-    $SEISCOMP exec $PYTHON3 pyscripts/ProcessarID.py $LIST_IDS $CLIENT_ID
+    $SEISCOMP exec $PYTHON3 pyscripts/ProcessarID.py $MOHO_CATALOG $CLIENT_ID
 fi
 
 # ------------------------- ETAPA DE GERAR MAPAS  -----------------------------
@@ -90,7 +90,7 @@ fi
 
 
 # --------- ETAPA DE GERAR LISTA PARA CLASSIFICAÇÃO ( EVENTO | LABEL ) -----------
-PROCESS_PRED=${PROCESS_PRED:-true}
+PROCESS_PRED=${PROCESS_PRED:-false}
 if [ "$PROCESS_PRED" = true ]; then
     # chega se o arquivo de predições já existe, se existir, move para uma pasta de backup
     if [ -f "files/pred-*.csv" ]; then
@@ -101,4 +101,5 @@ if [ "$PROCESS_PRED" = true ]; then
 fi
 echo ''
 echo " ---------------------- Fim do Pipeline --------------------------------"
+echo $DELIMT1
 echo ''

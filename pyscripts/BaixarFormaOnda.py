@@ -31,6 +31,7 @@
 # ----------------------------  IMPORTS   -------------------------------------
 from obspy.geodetics import gps2dist_azimuth
 import numpy as np
+import csv
 
 import os
 
@@ -86,29 +87,29 @@ def download_waveforms(data_client, data_client_bkp, network, stations,
 
 
 # Fixa a semente para garantir a reprodução
-def download_and_save_waveforms_random(origin_time, data_client, data_client_bkp,
+def download_and_save_waveforms_random(pick_time, origin_time, data_client, data_client_bkp,
                                        network_id, station_list, channel_pattern):
     np.random.seed(42)
     # Extrai o tempo de origem do evento
     # Gera um deslocamento aleatório entre 5 a 20 segundos
     random_offset = np.random.randint(5, 21)
     # Calcula os novos tempos de início e fim baseado no deslocamento aleatório
-    start_time = origin_time - random_offset
+    start_time = pick_time - random_offset
     end_time = start_time + 60  # Mantém a janela de 60 segundos
     # Chama a função para baixar as formas de onda
     download_waveforms(data_client, data_client_bkp, network_id, station_list,
                        channel_pattern, start_time, end_time, origin_time)
-    # Substitua 'client', 'df', 'network_id', 'station_list', e 'channel_pattern' pelos seus valores reais
 
 
-def baixar_waveform(eventos, data_client, data_client_bkp, inventario):
+def iterate_events(eventos, data_client, data_client_bkp, inventario, baixar=False):
     '''
     Baixa a forma de onda (.mseed) de um evento sísmico se a estação estiver a menos de 400 km do epicentro.
     '''
-    print(' --> Baixando Forma de Onda')
+    print(' --> Iterando sobre eventos')
     # print(f' - Número de eventos: {len(eventos)}')
     # print(f' - Client: {client}')
     # print(f' - Tamanho do Inventário: {len(inventario)}')
+    data_to_save = []  # Lista para coletar os dados que serão salvos no CSV
     count = 0
     for evento in tqdm(eventos):
         count += 1
@@ -117,11 +118,6 @@ def baixar_waveform(eventos, data_client, data_client_bkp, inventario):
         if not evento.picks:
             print('Sem picks')
             continue
-
-        origem = evento.preferred_origin()
-        origem_lat = origem.latitude
-        origem_lon = origem.longitude
-        origin_time = origem.time
 
         for pick in evento.picks:
             if pick.phase_hint != 'P':
@@ -139,6 +135,11 @@ def baixar_waveform(eventos, data_client, data_client_bkp, inventario):
                 continue
             print(f'- (X,Y) {net}.{sta}: ({sta_lat}, {sta_lon})')
 
+            origem = evento.preferred_origin()
+            origem_lat = origem.latitude
+            origem_lon = origem.longitude
+            origin_time = origem.time
+
             dist, az, baz = gps2dist_azimuth(origem_lat, origem_lon, sta_lat, sta_lon)
             dist_km = dist / 1000  # Converte de metros para quilômetros
             print(f'Distância até o epicentro: {dist_km} km')
@@ -147,12 +148,49 @@ def baixar_waveform(eventos, data_client, data_client_bkp, inventario):
                 print("Estação a mais de 400 km do epicentro, forma de onda não será baixada.")
                 continue
 
-            # Baixa a forma de onda para a estação e intervalo de tempo específicos
-            print(' baixando...')
-            print(f' pick.time -> {pick.time}')
-            print(f' origin_time -> {origin_time}')
-            print(f' Channel -> {cha}')
-            download_and_save_waveforms_random(pick.time, data_client, data_client_bkp, net, [sta], 'HH*')
-            print(delimt)
+            if baixar:
+                # Baixa a forma de onda para a estação e intervalo de tempo específicos
+                pick_time = pick.time
+                print(' baixando...')
+                print(f' pick.time -> {pick.time}')
+                print(f' origin_time -> {origin_time}')
+                print(f' Channel -> {cha}')
+                download_and_save_waveforms_random(pick_time, origin_time, data_client, data_client_bkp, net, [sta], 'HH*')
+                print(delimt)
+
+            try:
+                magnitude = evento.preferred_magnitude().mag
+            except Exception as e:
+                print(f" -> Erro ao obter magnitude: {e}")
+                magnitude = "None"
+
+            folder = origin_time.strftime("%Y%m%dT%H%M%S")
+            event_id = evento.resource_id.id.split("/")[-1]
+            # Aqui, você deve ajustar de acordo com os dados exatos que você quer salvar.
+            # Isso é apenas um exemplo baseado no que você forneceu.
+            data_to_save.append({
+                'ID': event_id,  # Substitua pela identificação correta do evento
+                'Hora de Origem (UTC)': origin_time,
+                'Longitude': origem_lon,
+                'Latitude': origem_lat,
+                'MLv': magnitude,  # Substitua pela magnitude do evento, se disponível
+                'Distance': dist_km,
+                'Folder': folder,
+                'Cat': evento.event_type,  # Substitua pela categoria do evento, se aplicável
+                'Certainty': evento.event_type_certainty  # Substitua pela certeza do evento, se aplicável
+            })
+            break
+
+    # Escrever os dados coletados no arquivo CSV
+    csv_file_path = './files/events-moho-catalog.csv'  # Substitua pelo caminho correto
+    with open(csv_file_path, mode='w', newline='\n', encoding='utf-8') as csv_file:
+        fieldnames = ['ID', 'Hora de Origem (UTC)', 'Longitude', 'Latitude', 'MLv', 'Distance', 'Folder', 'Cat', 'Certainty']
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+
+        writer.writeheader()
+        for data in data_to_save:
+            writer.writerow(data)
+
+    print(f'Dados salvos com sucesso em {csv_file_path}')
 
     return None

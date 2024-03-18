@@ -15,18 +15,21 @@
 
 # ----------------------------  IMPORTS   -------------------------------------
 import sys
-from obspy.clients import fds
+from obspy.clients import fdsn
 
 # ClassificadorSismologico
 from ProcessarCatalogoSismo import gera_catalogo_event_id
-from BaixarFormaOnda import baixar_waveform
+from BaixarFormaOnda import iterate_events
 from utils import csv2list, cria_sta_dic, list_inventario, delimt, get_inventory_from_xml
+
+fdsn
 
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 # função main que conterá as chamadas das funções
-def main(IDs, network_id, catalog_Client, data_Client, data_Client_bkp):
-    catalogo = gera_catalogo_event_id(IDs, network_id, catalog_Client)
+def main(IDs, data_Client, data_Client_bkp):
+    catalogo, missing_ids = gera_catalogo_event_id(IDs, data_Client, data_Client_bkp)
+
     # Constroi o inventario de estações
     inventario = {}
     print(' --> Inventário de Estações:')
@@ -37,41 +40,31 @@ def main(IDs, network_id, catalog_Client, data_Client, data_Client_bkp):
             print(f' - Arquivo: {txt}')
             inventario = cria_sta_dic('./files/inventario/' + txt, inventario)
         # print(f' - {len(inventario)}')
-    inventory = get_inventory_from_xml('./files/inventario/inventario_rsbr.xml',
+    inventory = get_inventory_from_xml('files/inventario/inventario_rsbr.xml',
                                        inventario)
     print(delimt)
     # Baixa a forma de onda
-    # print(f' Catalog.events: {catalogo.events}')
-    # print(f' Client: {client}')
-    # print(f' Inventário: {inventario}')
-    baixar_waveform(catalogo.events, data_Client, data_Client_bkp, inventory)
-    return catalogo
+    iterate_events(catalogo.events, data_Client, data_Client_bkp, inventory,
+                   baixar=False)
+
+    # Save missing_ids list to csv file
+    with open('missing_ids.csv', 'w') as f:
+        for item in missing_ids:
+            f.write("%s\n" % item)
+    return catalogo, missing_ids
 
 
 # ---------------------------- MAIN -------------------------------------------
 if __name__ == "__main__":
     print('')
     print(f' - Argumento 1: {sys.argv[1]}')
-    print(f' - Argumento 2: {sys.argv[2]}')
-    csv_file = sys.argv[1]
-    network_id = sys.argv[2]
-    mode = "t"  # Supondo que o modo sempre será "t"
-    IDs = csv2list(csv_file)
-    data_Client_main = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
-    data_Client_USP = fdsn.Client('USP')
-    data_Client_bkp = fdsn.Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
-#    if network_id == 'USP':
-#        # Servidor MOHO IAG (USP)
-#        data_catalog_Client = fdsn.Client('USP')
-#    else:
-#        # Servidor IPT
-#        catalog_Client = fdsn.Client('http://localhost:' + ID_dict[network_id])
-#        data_Client = catalog_Client
-    catalog_Client = fdsn.Client('http://seisarc.sismo.iag.usp.br')
-    data_Client_bkp = fdsn.Client('USP')
+    moho_catalog_csv = sys.argv[1]
+    IDs = csv2list(moho_catalog_csv)
     data_Client = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
-    print(f' --> Client:\n  {catalog_Client}')
+    data_Client_bkp = fdsn.Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
+    print(f' --> Client:\n  {data_Client}')
+    print(f' --> Client Backup:\n  {data_Client_bkp}')
     print(delimt)
     print('')
     print(" --------- Iniciando o ProcessarID.py --------- ")
-    main(IDs, network_id, catalog_Client, data_Client, data_Client_bkp)
+    main(IDs, data_Client, data_Client_bkp)
