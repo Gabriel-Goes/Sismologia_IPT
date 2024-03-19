@@ -1,0 +1,184 @@
+
+############ Event 354: usp2023xjvl ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBLV
+ - X,Y NB.NBLV: -7.357693, -36.921745
+ - Distância até o epicentro: 258.34664785818376 km
+ Downloading ...
+ Pick Time -> 2023-11-29T16:23:39.296433Z
+ Origin Time -> 2023-11-29T16:22:59.923406Z
+ Channel -> HHZ
+ - Saving File: 20231129T162259/NB_NBLV_20231129T162259.mseed
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBLA
+ - X,Y NB.NBLA: -10.99255, -37.789
+ - Distância até o epicentro: 189.12608501627898 km
+ Downloading ...
+ Pick Time -> 2023-11-29T16:23:30.386375Z
+ Origin Time -> 2023-11-29T16:22:59.923406Z
+ Channel -> HHZ
+ - Saving File: 20231129T162259/NB_NBLA_20231129T162259.mseed
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: NB
+ - Sta: NBCA
+ - X,Y NB.NBCA: -8.2256, -36.01296
+ - Distância até o epicentro: 176.95597734351801 km
+ Downloading ...
+ Pick Time -> 2023-11-29T16:23:28.477887Z
+ Origin Time -> 2023-11-29T16:22:59.923406Z
+ Channel -> HHZ
+ - Saving File: 20231129T162259/NB_NBCA_20231129T162259.mseed
+-----------------------------------------------------
+
+--> Pick 4
+ - Net: NB
+ - Sta: NBAN
+ - X,Y NB.NBAN: -9.668694, -36.2745
+ - Distância até o epicentro: 44.6130204050287 km
+ Downloading ...
+ Pick Time -> 2023-11-29T16:23:07.768098Z
+ Origin Time -> 2023-11-29T16:22:59.923406Z
+ Channel -> HHZ
+ - Saving File: 20231129T162259/NB_NBAN_20231129T162259.mseed
+-----------------------------------------------------
+
+ - Event: usp2023xjvl
+ - Pwave Picks: 4
+ - Streams: 4
+#####################################################
+
+############ Event 355: usp2012tkqn ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBPN
+ - X,Y NB.NBPN: -10.84685, -40.1988
+ - Distância até o epicentro: 525.9595065356475 km
+Estação a mais de 400 km do epicentro, forma de onda não será baixada.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBCL
+ - X,Y NB.NBCL: -4.224352, -38.290972
+ - Distância até o epicentro: 498.9482089761192 km
+Estação a mais de 400 km do epicentro, forma de onda não será baixada.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: NB
+ - Sta: NBPB
+ - X,Y NB.NBPB: -5.545966, -39.583675
+ - Distância até o epicentro: 476.71314508062466 km
+Estação a mais de 400 km do epicentro, forma de onda não será baixada.
+-----------------------------------------------------
+
+--> Pick 4
+ - Net: NB
+ - Sta: NBLA
+ - X,Y NB.NBLA: -10.99255, -37.789
+ - Distância até o epicentro: 352.3058410565843 km
+ Downloading ...
+ Pick Time -> 2012-10-03T04:53:38.556594Z
+ Origin Time -> 2012-10-03T04:52:47.696524Z
+ Channel -> HHZ
+ - Saving File: 20121003T045247/NB_NBLA_20121003T045247.mseed
+-----------------------------------------------------
+
+--> Pick 5
+ - Net: NB
+ - Sta: NBMA
+ - X,Y NB.NBMA: -7.365445, -38.764044
+ - Distância até o epicentro: 297.9905854352653 km
+ Downloading ...
+ Pick Time -> 2012-10-03T04:53:32.036555Z
+ Origin Time -> 2012-10-03T04:52:47.696524Z
+ Channel -> HHZ
+ - Saving File: 20121003T045247/NB_NBMA_20121003T045247.mseed
+-----------------------------------------------------
+
+--> Pick 6
+ - Net: NB
+ - Sta: NBTA
+ - X,Y NB.NBTA: -9.121932, -38.063215
+ - Distância até o epicentro: 227.5806585104401 km
+ Downloading ...
+ Pick Time -> 2012-10-03T04:53:23.232737Z
+ Origin Time -> 2012-10-03T04:52:47.696524Z
+ Channel -> HHZ
+ - Saving File: 20121003T045247/NB_NBTA_20121003T045247.mseed
+-----------------------------------------------------
+
+--> Pick 7
+ - Net: NB
+ - Sta: NBPV
+ - X,Y NB.NBPV: -6.417527, -35.290516
+ - Distância até o epicentro: 223.67790013157654 km
+ Downloading ...
+ Pick Time -> 2012-10-03T04:53:22.475173Z
+ Origin Time -> 2012-10-03T04:52:47.696524Z
+ Channel -> HHZ
+ - Saving File: 20121003T045247/NB_NBPV_20121003T045247.mseed
+-----------------------------------------------------
+
+--> Pick 8
+ - Net: NB
+ - Sta: NBCA
+ - X,Y NB.NBCA: -8.2256, -36.01296
+ - Distância até o epicentro: 20.931607338652096 km
+ Downloading ...
+ Pick Time -> 2012-10-03T04:52:51.430406Z
+ Origin Time -> 2012-10-03T04:52:47.696524Z
+ Channel -> HHZ
+ - Saving File: 20121003T045247/NB_NBCA_20121003T045247.mseed
+-----------------------------------------------------
+
+--> Pick 9
+ - Net: IU
+ - Sta: RCBR
+Estação RCBR da rede IU não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 10
+ - Net: NB
+ - Sta: NBAN
+ - X,Y NB.NBAN: -9.668694, -36.2745
+ - Distância até o epicentro: 160.0535638944267 km
+ Downloading ...
+ Pick Time -> 2012-10-03T04:53:14.283638Z
+ Origin Time -> 2012-10-03T04:52:47.696524Z
+ Channel -> HHZ
+ - Saving File: 20121003T045247/NB_NBAN_20121003T045247.mseed
+-----------------------------------------------------
+
+--> Pick 11
+ - Net: NB
+ - Sta: NBRF
+ - X,Y NB.NBRF: -8.679466, -35.127172
+ - Distância até o epicentro: 128.75444812848417 km
+ Downloading ...
+ Pick Time -> 2012-10-03T04:53:09.243963Z
+ Origin Time -> 2012-10-03T04:52:47.696524Z
+ Channel -> HHZ
+ - Saving File: 20121003T045247/NB_NBRF_20121003T045247.mseed
+-----------------------------------------------------
+
+--> Pick 12
+ - Net: NB
+ - Sta: NBLI
+Estação NBLI da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2012tkqn
+ - Pwave Picks: 12
+ - Streams: 7
+#####################################################
+
+

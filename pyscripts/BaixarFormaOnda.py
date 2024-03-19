@@ -35,7 +35,7 @@ import csv
 
 import os
 
-from utils import get_sta_xy, delimt, mseed_folder
+from utils import get_sta_xy, delimt, mseed_folder, delimt2
 
 from tqdm import tqdm
 
@@ -47,7 +47,7 @@ os.makedirs(mseed_folder, exist_ok=True)
 # Função para criar pasta para cada evento dentro de mseed
 def create_event_dirname(origin_time):
     dir_name = origin_time.strftime("%Y%m%dT%H%M%S")
-    print(f" - Criando pasta para o evento: {dir_name}")
+    print(f" - Nomeando diretório com origin_time: {dir_name}")
     return dir_name
 
 
@@ -57,38 +57,41 @@ def save_waveforms(stream, network, station, origin_time):
         return
     event_name = create_event_dirname(origin_time)
     event_dir = os.path.join(mseed_folder, event_name)
-    mseed_filename = os.path.join(event_dir,
-                                  f"{network}_{station}_{event_name}.mseed")
+    event_path = os.path.join(event_dir,
+                              f"{network}_{station}_{event_name}.mseed")
     os.makedirs(event_dir, exist_ok=True)
-    stream.write(mseed_filename, format="MSEED")
+    stream.write(event_path, format="MSEED")
 
 
-def download_waveforms(data_client, data_client_bkp, network, stations,
-                       channel, start_time, end_time, origin_time):
-    for station in stations:
+def download_waveforms(data_client, data_client_bkp,
+                       net, sta, loc, chn,
+                       start_time, end_time, origin_time):
+    try:
+        st = data_client.get_waveforms(net, sta, loc, chn,
+                                       start_time, end_time)
+        print(f" - Forma de onda baixada para:\n   - estação {sta}\n   - canal: {chn}")
+    # If data_client fails, try data_client_bkp
+    except Exception as e:
+        print(f" ! Erro ao baixar canal {chn} da estação {sta}!\n   ERROR:  {e}")
         try:
-            st = data_client.get_waveforms(network, station, "*",
-                                           channel, start_time, end_time)
-            save_waveforms(st, network, station, origin_time)
-            print(f" - Forma de onda baixada para a estação {station}.")
-        # If data_client fails, try data_client_bkp
+            st = data_client_bkp.get_waveforms(net, sta, loc, chn,
+                                               start_time, end_time)
+            print(f" try 2 - Forma de onda baixada para a estação {sta}.")
+            print(delimt)
         except Exception as e:
-            print(f" ! Erro ao baixar canal {channel} da estação {station}: {e}")
-            try:
-                st = data_client_bkp.get_waveforms(network, station, "*",
-                                                   channel, start_time, end_time)
-                save_waveforms(st, network, station, origin_time)
-                print(f" try 2 - Forma de onda baixada para a estação {station}.")
+            print(f" ! Erro ao baixar canal {chn} da estação {sta}: {e}")
 
-            except Exception as e:
-                print(f" ! Erro ao baixar canal {channel} da estação {station}: {e}")
-        except Exception as e:
-            print(f" Falhou para todos os clientes: {e}")
+    except Exception as e:
+        print(f" Falhou para todos os clientes: {e}")
+
+    # save_waveforms(st, network, station, origin_time)
+    return st
 
 
 # Fixa a semente para garantir a reprodução
-def download_and_save_waveforms_random(pick_time, origin_time, data_client, data_client_bkp,
-                                       network_id, station_list, channel_pattern):
+def download_and_save_waveforms_random(data_client, data_client_bkp,
+                                       net, sta, loc, chn,
+                                       pick_time, origin_time):
     np.random.seed(42)
     # Extrai o tempo de origem do evento
     # Gera um deslocamento aleatório entre 5 a 20 segundos
@@ -97,96 +100,127 @@ def download_and_save_waveforms_random(pick_time, origin_time, data_client, data
     start_time = pick_time - random_offset
     end_time = start_time + 60  # Mantém a janela de 60 segundos
     # Chama a função para baixar as formas de onda
-    download_waveforms(data_client, data_client_bkp, network_id, station_list,
-                       channel_pattern, start_time, end_time, origin_time)
+    download_waveforms(data_client, data_client_bkp,
+                       net, sta, loc, chn,
+                       start_time, end_time, origin_time)
 
 
 def iterate_events(eventos, data_client, data_client_bkp, inventario, baixar=False):
     '''
     Baixa a forma de onda (.mseed) de um evento sísmico se a estação estiver a menos de 400 km do epicentro.
     '''
+    # Agora, tanto print() quanto print(f'') serão exibidos no terminal e escritos em output.txt
     print(' --> Iterando sobre eventos')
-    # print(f' - Número de eventos: {len(eventos)}')
-    # print(f' - Client: {client}')
-    # print(f' - Tamanho do Inventário: {len(inventario)}')
+    print(f' - Número de eventos: {len(eventos)}')
+    print(f' - Client: {data_client.base_url}')
+    print(f' - Client Backup: {data_client_bkp.base_url}')
+    print(f' - Itens no Inventário: {len(inventario)}')
+    input("Press Enter to continue ...\n")
     data_to_save = []  # Lista para coletar os dados que serão salvos no CSV
-    count = 0
+    event_count = 0
     for evento in tqdm(eventos):
-        count += 1
-        print(f' ---> Event {count}')
-        # print(f" - Resource ID: {evento.resource_id.id}")
+        event_id = evento.resource_id.id.split("/")[-1]
+        event_count += 1
+        print(f'############ Event {event_count}: {event_id} ############\n')
+        # Get number of picks in event
         if not evento.picks:
             print('Sem picks')
+            print(delimt)
             continue
 
+        origem = evento.preferred_origin()
+        origem_lat = origem.latitude
+        origem_lon = origem.longitude
+        origin_time = origem.time
+        dir_name = origin_time.strftime("%Y%m%dT%H%M%S")
+        pick_count = 0
+        stream_count = 0
         for pick in evento.picks:
-            if pick.phase_hint != 'P':
+            # Se pick.phase_hint for diferente de P ou Pg, continue
+            if pick.phase_hint not in ['P', 'Pg', 'Pn']:
+                # print(f" - Pick {pick.phase_hint} != 'P', continue")
+                # print(delimt)
                 continue
 
+            pick_count += 1
+            print(f'--> Pick {pick_count}')
             net = pick.waveform_id.network_code
             sta = pick.waveform_id.station_code
             cha = pick.waveform_id.channel_code
+            loc = pick.waveform_id.location_code
             print(f' - Net: {net}\n - Sta: {sta}')
 
             sta_lat, sta_lon = get_sta_xy(net, sta, inventario)  # Assume que get_sta_xy retorna (latitude, longitude)
             if sta_lat is None or sta_lon is None:
-                print(f"Estação {sta} da rede {net} não encontrada no inventário.")
-                print(delimt)
                 continue
-            print(f'- (X,Y) {net}.{sta}: ({sta_lat}, {sta_lon})')
 
-            origem = evento.preferred_origin()
-            origem_lat = origem.latitude
-            origem_lon = origem.longitude
-            origin_time = origem.time
+            print(f' - X,Y {net}.{sta}: {sta_lat}, {sta_lon}')
 
             dist, az, baz = gps2dist_azimuth(origem_lat, origem_lon, sta_lat, sta_lon)
             dist_km = dist / 1000  # Converte de metros para quilômetros
-            print(f'Distância até o epicentro: {dist_km} km')
+            print(f' - Distância até o epicentro: {dist_km} km')
 
             if dist_km > 400:
                 print("Estação a mais de 400 km do epicentro, forma de onda não será baixada.")
+                print(delimt)
                 continue
 
             if baixar:
                 # Baixa a forma de onda para a estação e intervalo de tempo específicos
+                np.random.seed(42)  # Fixa a semente para garantir a reprodução
+                random_time = np.random.randint(5, 21)  # Deslocamento aleatório entre 5 e 20 segundos
                 pick_time = pick.time
-                print(' baixando...')
-                print(f' pick.time -> {pick.time}')
-                print(f' origin_time -> {origin_time}')
+                start_time = pick_time - random_time
+                end_time = start_time + 60  # Mantém a janela de 60 segundos
+
+                print(' Downloading ...')
+                print(f' Pick Time -> {pick.time}')
+                print(f' Origin Time -> {origin_time}')
                 print(f' Channel -> {cha}')
-                download_and_save_waveforms_random(pick_time, origin_time, data_client, data_client_bkp, net, [sta], 'HH*')
+
+                try:
+                    # st = download_waveforms(data_client, data_client_bkp, net, [sta], loc, cha, start_time, end_time, origin_time)
+                    st = data_client.get_waveforms(net, sta, loc, 'HH*', start_time, end_time)
+                    os.makedirs(f'./files/mseed/{dir_name}', exist_ok=True)
+                    st.write(f'./files/mseed/{dir_name}/{net}_{sta}_{dir_name}.mseed', format="MSEED")
+                    stream_count += 1
+                    print(f' - Saving File: {dir_name}/{net}_{sta}_{dir_name}.mseed')
+
+                except Exception as e:
+                    print(f"Error downloading waveform: {e}")
+
+                try:
+                    magnitude = evento.preferred_magnitude().mag
+                except Exception as e:
+                    print(f" -> Erro ao obter magnitude: {e}")
+                    magnitude = "None"
+
+                # Aqui, você deve ajustar de acordo com os dados exatos que você quer salvar.
+                # Isso é apenas um exemplo baseado no que você forneceu.
+                data_to_save.append({
+                    'ID': event_id,  # Substitua pela identificação correta do evento
+                    'Hora de Origem (UTC)': origin_time,
+                    'Longitude': origem_lon,
+                    'Latitude': origem_lat,
+                    'MLv': magnitude,  # Substitua pela magnitude do evento, se disponível
+                    'Distance': dist_km,
+                    'Folder': dir_name,
+                    'Cat': evento.event_type,  # Substitua pela categoria do evento, se aplicável
+                    'Certainty': evento.event_type_certainty  # Substitua pela certeza do evento, se aplicável
+                })
+
                 print(delimt)
-
-            try:
-                magnitude = evento.preferred_magnitude().mag
-            except Exception as e:
-                print(f" -> Erro ao obter magnitude: {e}")
-                magnitude = "None"
-
-            folder = origin_time.strftime("%Y%m%dT%H%M%S")
-            event_id = evento.resource_id.id.split("/")[-1]
-            # Aqui, você deve ajustar de acordo com os dados exatos que você quer salvar.
-            # Isso é apenas um exemplo baseado no que você forneceu.
-            data_to_save.append({
-                'ID': event_id,  # Substitua pela identificação correta do evento
-                'Hora de Origem (UTC)': origin_time,
-                'Longitude': origem_lon,
-                'Latitude': origem_lat,
-                'MLv': magnitude,  # Substitua pela magnitude do evento, se disponível
-                'Distance': dist_km,
-                'Folder': folder,
-                'Cat': evento.event_type,  # Substitua pela categoria do evento, se aplicável
-                'Certainty': evento.event_type_certainty  # Substitua pela certeza do evento, se aplicável
-            })
-            break
+        # Print number of Pwave Picks
+        print(f' - Event: {event_id}')
+        print(f' - Pwave Picks: {pick_count}')
+        print(f' - Streams: {stream_count}')
+        print(delimt2)
 
     # Escrever os dados coletados no arquivo CSV
     csv_file_path = './files/events-moho-catalog.csv'  # Substitua pelo caminho correto
     with open(csv_file_path, mode='w', newline='\n', encoding='utf-8') as csv_file:
         fieldnames = ['ID', 'Hora de Origem (UTC)', 'Longitude', 'Latitude', 'MLv', 'Distance', 'Folder', 'Cat', 'Certainty']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-
         writer.writeheader()
         for data in data_to_save:
             writer.writerow(data)

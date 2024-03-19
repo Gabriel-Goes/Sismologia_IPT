@@ -20,15 +20,14 @@ from obspy.clients import fdsn
 # ClassificadorSismologico
 from ProcessarCatalogoSismo import gera_catalogo_event_id
 from BaixarFormaOnda import iterate_events
-from utils import csv2list, cria_sta_dic, list_inventario, delimt, get_inventory_from_xml
-
-fdsn
+from utils import csv2list, cria_sta_dic, list_inventario, delimt, get_inventory_from_xml, DualOutput
 
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 # função main que conterá as chamadas das funções
 def main(IDs, data_Client, data_Client_bkp):
-    catalogo, missing_ids = gera_catalogo_event_id(IDs, data_Client, data_Client_bkp)
+    sys.stdout = DualOutput("files/logs/iterate_events.txt")
+    catalogo, missing_ids = gera_catalogo_event_id(IDs[:-1], data_Client, data_Client_bkp)
 
     # Constroi o inventario de estações
     inventario = {}
@@ -45,7 +44,7 @@ def main(IDs, data_Client, data_Client_bkp):
     print(delimt)
     # Baixa a forma de onda
     iterate_events(catalogo.events, data_Client, data_Client_bkp, inventory,
-                   baixar=False)
+                   baixar=True)
 
     # Save missing_ids list to csv file
     with open('missing_ids.csv', 'w') as f:
@@ -62,8 +61,8 @@ if __name__ == "__main__":
     IDs = csv2list(moho_catalog_csv)
     data_Client = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
     data_Client_bkp = fdsn.Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
-    print(f' --> Client:\n  {data_Client}')
-    print(f' --> Client Backup:\n  {data_Client_bkp}')
+    print(f' --> Client:\n  {data_Client.base_url}')
+    print(f' --> Client Backup:\n  {data_Client_bkp.base_url}')
     print(delimt)
     print('')
     print(" --------- Iniciando o ProcessarID.py --------- ")

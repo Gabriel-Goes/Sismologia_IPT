@@ -14,6 +14,7 @@
 # ----------------------------  IMPORTS   -------------------------------------
 import os
 import xml.etree.ElementTree as ET
+import sys
 
 
 # ---------------------------- PARAMETROS -------------------------------------
@@ -32,7 +33,8 @@ ID_dict = {"MC": '8091',
            'USP': 'USP'}
 
 # Delimitador para prints
-delimt = "-------------------------------------------------\n"
+delimt = "-----------------------------------------------------\n"
+delimt2 = "#####################################################\n"
 
 # Caminho para diretório de invetário de redes sismológicas
 path_inventario = './files/inventario/'
@@ -84,11 +86,14 @@ def cria_sta_dic(file, dic=None):
     if not dic:
         dic = {}
 
+    # print(f' - Arquivo: {file}')
+
     with open(file, 'r') as f:
         header = f.readline().strip().split('|')
         header = [h.replace('#', '') for h in header]
         idx_network = header.index('Network')
         idx_station = header.index('Station')
+        idx_location = header.index('Location')
         idx_latitude = header.index('Latitude')
         idx_longitude = header.index('Longitude')
         idx_depth = header.index('Depth')
@@ -97,6 +102,7 @@ def cria_sta_dic(file, dic=None):
             line = line.strip().split('|')
             network = line[idx_network]
             station = line[idx_station]
+            location = line[idx_location]
             latitude = float(line[idx_latitude])
             longitude = float(line[idx_longitude])
             depth = float(line[idx_depth])
@@ -108,10 +114,13 @@ def cria_sta_dic(file, dic=None):
             dic[key].append({
                 'network': network,
                 'station': station,
+                'location': location,
                 'latitude': latitude,
                 'longitude': longitude,
                 'depth': depth
             })
+            # print(f' - net: {network}\n - sta: {station}\n - lat: {latitude}\n - lon: {longitude}\n - depth: {depth}')
+            # print(delimt)
 
     return dic
 
@@ -169,4 +178,22 @@ def get_sta_xy(net, sta, inventario):
         return inventario[key][0]['latitude'], inventario[key][0]['longitude']
     else:
         # Retorna None para ambos se a estação não for encontrada
+        print(f"Estação {sta} da rede {net} não encontrada no inventário.")
+        print(delimt)
         return None, None
+
+
+class DualOutput(object):
+    def __init__(self, filename):
+        self.terminal = sys.stdout
+        self.log = open(filename, "a")
+
+    def write(self, message):
+        self.terminal.write(message)
+        self.log.write(message)
+
+    def flush(self):  # necessário para a interface de arquivo
+        self.terminal.flush()
+        self.log.flush()
+
+
