@@ -6,3 +6,4 @@
 *.mseed
 spectro/
 mseed/
+__pycache__/
