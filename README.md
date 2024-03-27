@@ -6,9 +6,9 @@
 - [x] Passa-Alta 2Hz;
 - [x] Histograma geral dia e horários de ocorrências; [UTC]
 - [x] Sinais fora de horário Comercial;
-- [o] Olhar forma de onde no Snuffler;
+- [-] Olhar forma de onde no Snuffler;
     - Procurar por eventos apenas ruído. 
-- [o] Plotar no mapa;
+- [-] Plotar no mapa;
     - Adicionar mapas no plot visualizacao.py.
 - [ ] Localizações de pedreiras já conhecidas;
     - Utilizar shapefiles da ANM.
