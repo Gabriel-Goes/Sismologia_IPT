@@ -23,31 +23,22 @@ import obspy as op
 
 # ---------------------------------------------------------------------------- #
 files_path = '/home/ipt/projetos/Classificador_Sismologico/files/'
-
-
 # # Visualization of a record and the prediction associated
-pred_net = pd.read_csv(files_path + "output/non_commercial/validation_network_level.csv")
-stream_c = None
-stream = None
-pred_net
-
-
+# pred_net = pd.read_csv(files_path + "output/non_commercial/validation_network_level.csv")
+# stream_c = None
+# stream = None
+# pred_net
 pred_sta = pd.read_csv(files_path + "output/non_commercial/validation_station_level.csv")
 stream_c = None
 stream = None
 pred_sta
-
-
-df = pred_net
-# df = pred_sta
-
+# df = pred_net
+df = pred_sta
 # Dropdown para escolha do evento
 dropdown_event = widgets.Dropdown(description='Eventos')
 dropdown_event.options = df['event'].unique()  # Change to df['file_name'].unique() if using pred_net
 dropdown_event.value = dropdown_event.options[0]
-
 dropdown_station = widgets.Dropdown(description='Estações')
-
 dropdown_network = widgets.Dropdown(description='Redes')
 
 
@@ -88,7 +79,6 @@ def get_stations_and_networks(event_folder):
             print("Erro")
     print(list(stations))
     print(list(networks))
-
     return list(networks), list(stations)
 
 
@@ -100,8 +90,6 @@ def update_stations_and_networks(event):
     dropdown_station.options = stations
     dropdown_station.value = dropdown_station.options[0]
     dropdown_network.value = dropdown_network.options[0]
-
-
 
 
 # Função para atualizar a lista de eventos com base nos critérios selecionados
@@ -171,22 +159,22 @@ def plot_interativo(event, station, network, freqmin, freqmax):
 
             # Create Axes from a given Figure
             ax2.pcolormesh(T, F, psd_mat.T, vmin=0, vmax=0.5, cmap=cmap, shading='gouraud', label='HH*')
-            #ax_cbar = fig.add_axes([0.81, 0.8, 0.01, 0.35])  # colorbar
+            # ax_cbar = fig.add_axes([0.81, 0.8, 0.01, 0.35])  # colorbar
 
             # Plot the spectrogram
             plot_spectro = ax2.pcolormesh(T, F, psd_mat.T,
-                                                vmin=0, vmax=0.5,
-                                                cmap=cmap, shading='gouraud', label='HHZ')
+                                          vmin=0, vmax=0.5,
+                                          cmap=cmap, shading='gouraud', label='HHZ')
 
             # Beautify spectrogram
             ax2.set_xlim((0.0, 60.0))
             ax2.set_ylabel('Frequency [Hz]', fontsize=16)
             ax2.set_xlabel('Time [s]', fontsize=16)
-            ax2.tick_params(labelsize = 14)
+            ax2.tick_params(labelsize=14)
 
             # Plot text as legend
             ax2.text(x=59, y=47, s=f'{stream_c[0].stats.component}',
-                            color='black', fontsize=16)#, weight='bold')
+                     color='black', fontsize=16)  # , weight='bold')
 
             get_stations_and_networks(files_path + 'mseed/' + str(event))
             plt.tight_layout()  # Ajusta automaticamente o layout

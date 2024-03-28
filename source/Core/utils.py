@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 # Python 3.10
-# ./Classificador_Sismologico/pyscripts/utils.py
+# ./Classificador_Sismologico/source/Core/utils.py
 
 
 # ----------------------------  DESCRIPTION  -----------------------------------
 # Script para processar dados sismicos
 # Autor: Gabriel Góes Rocha de Lima
 # Funções de utilidade para Processar_Dados_Sismicos.py
-# Versão: 0.1
+# Versão: 0.2
 # Data: 2024-02-27
+# Modificação 2024-03-28
 
 
 # ----------------------------  IMPORTS   -------------------------------------
