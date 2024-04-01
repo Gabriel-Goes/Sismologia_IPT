@@ -193,7 +193,6 @@ tensorboard==2.14.1
 tensorboard-data-server==0.7.1
 tensorflow==2.14.0
 tensorflow-estimator==2.14.0
-tensorflow-io-gcs-filesyste==0.34.0
 termcolor==2.3.0
 terminado==0.17.1
 tezign==0.1.4

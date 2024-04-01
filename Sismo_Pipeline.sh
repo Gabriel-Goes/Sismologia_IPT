@@ -3,7 +3,7 @@
 #
 #
 # -----------------------------------------------------------------------------
-# ./Classificador_Sismologico/Sismo_Pipeline.sh
+# ./ClassificadorSismologico/Sismo_Pipeline.sh
 # Autor: Gabriel Góes Rocha de Lima
 # Versão: 0.1
 # Data: 2024-03-05
@@ -23,9 +23,9 @@
 INICIO=${1:-"2023-01-01"}
 FIM=${2:-"2023-01-10"}
 DATES=${4:-"$INICIO $FIM"}
-MOHO_CATALOG="$HOME/projetos/Classificador_Sismologico/files/catalogo/catalogo-moho.csv"
+MOHO_CATALOG="$HOME/projetos/ClassificadorSismologico/files/catalogo/catalogo-moho.csv"
 # Define um diretório base, todas as funções são relativas a este diretório base,
-BASE_DIR=${BASE_DIR:-"$HOME/projetos/Classificador_Sismologico"}
+BASE_DIR=${BASE_DIR:-"$HOME/projetos/ClassificadorSismologico"}
 # devido o comando cd $BASE_DIR.
 cd $BASE_DIR
 mkdir -p files
@@ -34,8 +34,11 @@ mkdir -p figures
 EVENTS=$(find files/ -maxdepth 1 -name "events-*.csv")
 ENERGYFIG="$HOME/lucas_bin/energy_fig.py"
 CREATEMAP="$HOME/lucas_bin/make_maps_"$CLIENT_ID".py"
-PYTHON3=${PYTHON3:-"$HOME/.config/geo/bin/python3"}
-SEISCOMP=${SEISCOMP:-"$HOME/softwares/seiscomp/bin/seiscomp"}
+#PYTHON3=${PYTHON3:-"$HOME/.config/geo/bin/python3"}
+# SEISCOMP=${SEISCOMP:-"$HOME/softwares/seiscomp/bin/seiscomp"}
+PYTHON3=${PYTHON3:-"$HOME/.pyenv/versions/sismologia/bin/python3"}
+SEISCOMP=${SEISCOMP:-"/opt/seiscomp/bin/seiscomp"}
+SISMOLOGIA=${SISMOLOGIA:-"$HOME/projetos/ClassificadorSismologico"}
 DELIMT1='########################################################################'
 
 # ------------------------- INICIO DO PIPELINE  ------------------------------
@@ -49,7 +52,7 @@ echo ''
 PROCESSAR_SISMOS=${PROCESSAR_SISMOS:-true}
 if [ "$PROCESSAR_SISMOS" = true ]; then
     echo ' -> Executando Processar_Dados_Sismicos.py...'
-    $SEISCOMP exec $PYTHON3 pyscripts/ProcessarID.py $MOHO_CATALOG $CLIENT_ID
+    $SEISCOMP exec $PYTHON3 $SISMOLOGIA/source/Core/ProcessarID.py $MOHO_CATALOG $CLIENT_ID
 fi
 
 # ------------------------- ETAPA DE GERAR MAPAS  -----------------------------

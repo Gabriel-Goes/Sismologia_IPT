@@ -17,10 +17,11 @@ import os
 import xml.etree.ElementTree as ET
 import sys
 
+PROJETO_DIR = os.environ['HOME'] + "/projetos/ClassificadorSismologico"
+
 
 # ---------------------------- PARAMETROS -------------------------------------
 # Nome da pasta mseed
-PROJETO_DIR = "/home/ipt/projetos/Classificador_Sismologico"
 mseed_folder = PROJETO_DIR + "/files/mseed"
 
 
@@ -38,7 +39,7 @@ delimt = "-----------------------------------------------------\n"
 delimt2 = "#####################################################\n"
 
 # Caminho para diretório de invetário de redes sismológicas
-path_inventario = './files/inventario/'
+path_inventario = PROJETO_DIR + '/files/inventario/'
 list_inventario = os.listdir(path_inventario)
 
 

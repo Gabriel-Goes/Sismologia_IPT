@@ -17,7 +17,8 @@ from PyQt5.QtCore import Qt
 
 from Core.utils import delimt
 
-sys.path.append('/home/ipt/projetos/Classificador_Sismologico/source/')
+PROJETO_DIR = os.environ['HOME'] + '/projetos/ClassificadorSismologico'
+sys.path.append(PROJETO_DIR + '/source')
 
 
 # -------------------------------- Classe SeletorEventoApp ------------------- #
@@ -27,8 +28,8 @@ class SeletorEventoApp(QMainWindow):
         super().__init__()
         self.setWindowTitle('Seletor de Eventos, Redes e Estações')
         self.setGeometry(50, 50, 200, 150)
-        self.files_path = '/home/ipt/projetos/Classificador_Sismologico/files/'
-        self.df = pd.read_csv(self.files_path + "output/non_commercial/validation_network_level.csv")
+        self.files_path = PROJETO_DIR + '/files'
+        self.df = pd.read_csv(self.files_path + "/output/non_commercial/validation_network_level.csv")
         self.central_widget = QWidget(self)
         self.setCentralWidget(self.central_widget)
         self.layout = QVBoxLayout(self.central_widget)

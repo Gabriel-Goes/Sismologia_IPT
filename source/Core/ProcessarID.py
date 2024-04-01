@@ -27,7 +27,7 @@ from utils import csv2list, cria_sta_dic, list_inventario, delimt, get_inventory
 # função main que conterá as chamadas das funções
 def main(IDs, data_Client, data_Client_bkp):
     sys.stdout = DualOutput("files/logs/iterate_events.txt")
-    catalogo, missing_ids = gera_catalogo_event_id(IDs[:-1], data_Client, data_Client_bkp)
+    catalogo, missing_ids = gera_catalogo_event_id(IDs[:100], data_Client, data_Client_bkp)
 
     # Constroi o inventario de estações
     inventario = {}

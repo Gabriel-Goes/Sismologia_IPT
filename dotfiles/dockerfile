@@ -1,0 +1,40 @@
+# Especifica a imagem base
+FROM nvidia/cuda:11.8.0-base-ubuntu20.04
+
+# Evita prompts interativos durante a instalação de pacotes
+ARG DEBIAN_FRONTEND=noninteractive
+
+# Instala dependências necessárias
+RUN apt-get update && apt-get install -y \
+    build-essential libssl-dev zlib1g-dev libbz2-dev \
+    libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev \
+    libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev git python3-openssl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instala pyenv
+RUN curl https://pyenv.run | bash
+
+# Configura o ambiente para usar pyenv
+ENV PATH="/root/.pyenv/bin:/root/.pyenv/shims:$PATH"
+RUN pyenv install 3.7.9 && \
+    pyenv global 3.7.9
+
+# Opcional: Atualiza o pip para a versão especificada
+RUN pip install --upgrade pip==22.0.3
+
+# Instala as bibliotecas Python necessárias
+RUN pip install \
+    ipython==7.28.0 \
+    matplotlib==3.4.3 \
+    numpy==1.21.3 \
+    obspy==1.2.2 \
+    pandas==1.2.0 \
+    tensorflow==2.8.0 \
+    tensorflow-estimator \
+    keras==2.8.0 \
+    keras-applications==1.0.8 \
+    tensorflow-io-gcs-filesystem==0.24.0 \
+    protobuf==3.20.0
+
+# Define o diretório de trabalho
+WORKDIR /app
