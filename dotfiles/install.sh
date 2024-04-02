@@ -17,7 +17,7 @@ install_pyenv() {
         # Define comandos de instalação baseado na distribuição
         declare -A OS_INSTALL_CMD=(
             ["/etc/arch-release"]="sudo pacman -Syu && sudo pacman -S docker base-devel openssl zlib bzip2 readline sqlite curl llvm wget ncurses xz tk libffi python-pyopenssl git --needed"
-            ["/etc/debian_version"]="sudo apt update && sudo apt upgrade -y && sudo apt install -y docker build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev python-openssl git"
+            ["/etc/debian_version"]="sudo apt update && sudo apt upgrade -y && sudo apt install -y docker docker.io build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev python3-pyopenssl git"
         )
 
         for file in "${!OS_INSTALL_CMD[@]}"; do

@@ -1,5 +1,16 @@
 # Classificador Sismológico
 
+# Sumário
+- [Foco](#foco)
+- [Instalação](#instalação)
+- [Utilização](#utilização)
+    - [Adiquirindo Dados Sismológicos](#adiquirindo-dados-sismológicos)
+    - [Testando o Classificador](#testando-o-classificador)
+        - [Ambiente virtual do 'discrimination_eq_q'](#ambiente-virtual-do-discrimination_eq_q)
+    - [Testando o Discriminador](#testando-o-discriminador)
+- [Referências](#referências)
+
+
 ## Pŕoximos Passos
 ### Eventos 100% Naturais ( Catálogo do IAG-USP )
 
@@ -96,23 +107,34 @@ virtual com compatibilidade de versão. Para isto, está disponibilizado um dock
 que cria o ambiente virtual contêinerizado e instala as dependências necessárias.
 
 ```bash
+# Failed to enable unit: Unit file docker.service does not exist.
 sudo systemctl enable docker
 sudo systemctl start docker
-
 sudo usermod -aG docker $USER
+```
 
+Para efetivar a adição do grupo, é necessário executar o login novamente.
+No mesmo terminal, você pode executar estes comandos:
+
+```bash
+sudo login $USER
+cd ~/projetos/ClassificadorSismologico
 DOCKER_BUILDKIT=1 docker build -t discrim:0.1.0 ./dotfiles
 docker run -it --rm -v $HOME/projetos:/app discrim:0.1.0
-```
+``` 
 
 ### Testando o Discriminador
 Dentro do contêiner, podemos testar o algoritmo com nossos dados sismológicos.
+
 ```bash 
-export CS_files=../projetos/ClassificadorSismologico/files
-python run.py\
+export CS_files=./ClassificadorSismologico/files
+python ./discrimination_eq_q/run.py\
     --data_dir $CS_files/mseed \
     --spectro_dir $CS_files/spectro \
     --output_dir $CS_files/output/non_commercial/ \
     --csv_dir $CS_files/predcsv/pred_not_commercial.csv \
     --valid
 ```
+
+## Referências
+- [Laboratório de Planetologia e Geociências da Universidade de Nantes](https://univ-nantes.io/E181658E/discrimination_eq_q)
