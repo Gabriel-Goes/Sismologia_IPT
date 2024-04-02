@@ -1,5 +1,5 @@
 import sys
-
+import subprocess
 import os
 import re
 
@@ -149,6 +149,15 @@ class SeletorEventoApp(QMainWindow):
         self.eventText.setText(f'Evento: {event}')
         selected_event = self.eventSelector.currentText()
         filtered_df = self.df.loc[self.df['event'] == selected_event, 'pred']
+        self.mseed_file_path = os.path.join(self.files_path,
+                                            'mseed', event,
+                                            f'{network}_{station}_{event}.mseed')
+        # Aqui chamamos o Snuffler passando o caminho do arquivo mseed
+        try:
+            subprocess.Popen(['snuffler', self.mseed_file_path])
+            print(f"Snuffler iniciado com {self.mseed_file_path}")
+        except Exception as e:
+            print(f"Erro ao iniciar o Snuffler: {e}")
         if not filtered_df.empty:
             prediction = filtered_df.iloc[0]
         else:
