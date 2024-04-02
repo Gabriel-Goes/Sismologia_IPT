@@ -2,6 +2,13 @@ from pyrocko.snuffling import Snuffling, Param, Switch, Choice
 import os
 import pandas as pd
 
+#  Error
+'''
+  File "/home/ipt/.snufflings/SnufferFarejador.py", line 28, in call
+    self.add_message(f"Rede: {row['network']} Estação: {row['station']} Prob. Natural: {row['prob_nat']}")
+    ^^^^^^^^^^^^^^^^
+AttributeError: 'SeletorEventoSnuffling' object has no attribute 'add_message'
+'''
 class SeletorEventoSnuffling(Snuffling):
     def setup(self):
         self.set_name('Seletor de Eventos, Redes e Estações')
@@ -15,24 +22,22 @@ class SeletorEventoSnuffling(Snuffling):
         if eventos.size > 0:
             self.add_parameter(Choice('Escolha o Evento', 'evento_selecionado', eventos[0], eventos))
         else:
-            self.log('Nenhum evento encontrado no arquivo CSV.')
-
+            self.add_message('Nenhum evento encontrado')
 
     def call(self):
-        # Aplicar filtro se 'alta_probabilidade' estiver marcado
+        # Aplicar filtro de alta probabilidade se necessário
         if self.alta_probabilidade:
             self.df = self.df[self.df['prob_nat'] > self.prob_nat_limiar]
 
         df_selecionado = self.df[self.df['event'] == self.evento_selecionado]
-        # Log de informações do evento selecionado
+        # Registrar informações do evento selecionado
         for _, row in df_selecionado.iterrows():
-            self.log(f"Evento: {row['event']}, Probabilidade: {row['prob_nat']}")
+            self.add_message(f"Rede: {row['network']} Estação: {row['station']} Prob. Natural: {row['prob_nat']}")
 
-        # Carregar automaticamente arquivos mseed para o evento filtrado
+        # Demonstração de como carregar mseed (implementação depende do seu caso de uso)
         mseed_path = self._find_mseed_for_event(self.evento_selecionado)
         if mseed_path:
             self._load_mseed(mseed_path)
-
 
     def _find_mseed_for_event(self, event):
         mseed_dir = os.path.join(self.files_path, 'mseed')
@@ -42,7 +47,7 @@ class SeletorEventoSnuffling(Snuffling):
         return None
 
     def _load_mseed(self, mseed_path):
-        # Carrega o arquivo mseed no Snuffler
+        # Exemplo de carregamento de arquivo mseed
         self.pile_viewer().load_pile(mseed_path)
 
 def __snufflings__():
