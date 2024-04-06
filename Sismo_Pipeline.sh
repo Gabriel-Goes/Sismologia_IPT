@@ -8,32 +8,33 @@
 # Versão: 0.1
 # Data: 2024-03-05
 #
-#
+
 # ----------------------------  DESCRIPTION  -----------------------------------
 # Este código recebe uma data de início e uma data de fim e um CLIENT_ID de rede sismo
 # lógica. Com estas informações cria um arquivo event-<CLIENT_ID>.csv com os eventos sismicos
 # que ocorreram no intervalo de tempo especificado e foram capturados pela rede sismológica.
 # Com este arquivo, segue-se para o passo de aquisição das formas de onda e criação dos mapas.
-#
-#
+
 # ----------------------------  USAGE  -----------------------------------------
 # Para executar este script, basta rodar o comando abaixo:
 # ./Sismo_Pipeline.sh [INICIO] [FIM] [CLIENT_ID]
 # Se não escolher nada, estes valores padrão serão usados:
-INICIO=${1:-"2023-01-01"}
-FIM=${2:-"2023-01-10"}
-DATES=${4:-"$INICIO $FIM"}
-MOHO_CATALOG="$HOME/projetos/ClassificadorSismologico/files/catalogo/catalogo-moho.csv"
+# INICIO=${1:-"2023-01-01"}
+# FIM=${2:-"2023-01-10"}
+# DATES=${4:-"$INICIO $FIM"}
+
 # Define um diretório base, todas as funções são relativas a este diretório base,
 BASE_DIR=${BASE_DIR:-"$HOME/projetos/ClassificadorSismologico"}
-# devido o comando cd $BASE_DIR.
+MOHO_CATALOG="$BASE_DIR/files/catalogo/catalogo-moho.csv"
 cd $BASE_DIR
 mkdir -p files
 mkdir -p figures
+
 # Usa os diretórios base para arquivos e figuras
 EVENTS=$(find files/ -maxdepth 1 -name "events-*.csv")
 ENERGYFIG="$HOME/lucas_bin/energy_fig.py"
 CREATEMAP="$HOME/lucas_bin/make_maps_"$CLIENT_ID".py"
+
 #PYTHON3=${PYTHON3:-"$HOME/.config/geo/bin/python3"}
 # SEISCOMP=${SEISCOMP:-"$HOME/softwares/seiscomp/bin/seiscomp"}
 PYTHON3=${PYTHON3:-"$HOME/.pyenv/versions/sismologia/bin/python3"}
@@ -102,6 +103,7 @@ if [ "$PROCESS_PRED" = true ]; then
     echo " ---------------- Iniciando o cria_pred.py ---------------------------- "
     $PYTHON3 pyscripts/Gerar_predcsv.py
 fi
+
 echo ''
 echo " ---------------------- Fim do Pipeline --------------------------------"
 echo $DELIMT1
