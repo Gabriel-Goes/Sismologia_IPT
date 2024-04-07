@@ -18,10 +18,11 @@
 # ----------------------------  USAGE  -----------------------------------------
 # Para executar este script, basta rodar o comando abaixo:
 # ./Sismo_Pipeline.sh [INICIO] [FIM] [CLIENT_ID]
+
 # Se não escolher nada, estes valores padrão serão usados:
-# INICIO=${1:-"2023-01-01"}
-# FIM=${2:-"2023-01-10"}
-# DATES=${4:-"$INICIO $FIM"}
+INICIO=${1:-"2023-01-01"}
+FIM=${2:-"2023-01-10"}
+DATES=${4:-"$INICIO $FIM"}
 
 # Define um diretório base, todas as funções são relativas a este diretório base,
 BASE_DIR=${BASE_DIR:-"$HOME/projetos/ClassificadorSismologico"}
@@ -30,7 +31,6 @@ cd $BASE_DIR
 mkdir -p files
 mkdir -p figures
 
-# Usa os diretórios base para arquivos e figuras
 EVENTS=$(find files/ -maxdepth 1 -name "events-*.csv")
 ENERGYFIG="$HOME/lucas_bin/energy_fig.py"
 CREATEMAP="$HOME/lucas_bin/make_maps_"$CLIENT_ID".py"

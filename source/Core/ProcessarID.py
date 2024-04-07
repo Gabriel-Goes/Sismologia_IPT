@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Python 3.10
+# Python 3.11.8
 # ./Classificador_Sismologico/pyscripts/ProcessarID.py
 
 
@@ -16,16 +16,25 @@
 # ----------------------------  IMPORTS   -------------------------------------
 import sys
 from obspy.clients import fdsn
+from obspy.core.event.catalog import Catalog
 
 # ClassificadorSismologico
 from ProcessarCatalogoSismo import gera_catalogo_event_id
 from BaixarFormaOnda import iterate_events
 from utils import csv2list, cria_sta_dic, list_inventario, delimt, get_inventory_from_xml, DualOutput
 
+from typing import List, Str
+
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 # função main que conterá as chamadas das funções
-def main(IDs, data_Client, data_Client_bkp):
+def main(IDs: List,
+         data_Client: Str,
+         data_Client_bkp: Str) -> [Catalog, List]:
+    '''
+    Função para processar os eventos sísmicos a partir de um catálogo de
+    eventos previamente adquirido e disponibilizado no formato de um arquivo csv.
+    '''
     sys.stdout = DualOutput("files/logs/iterate_events.txt")
     catalogo, missing_ids = gera_catalogo_event_id(IDs[:100], data_Client, data_Client_bkp)
 
@@ -42,6 +51,7 @@ def main(IDs, data_Client, data_Client_bkp):
     inventory = get_inventory_from_xml('files/inventario/inventario_rsbr.xml',
                                        inventario)
     print(delimt)
+
     # Baixa a forma de onda
     iterate_events(catalogo.events, data_Client, data_Client_bkp, inventory,
                    baixar=True)
@@ -57,13 +67,16 @@ def main(IDs, data_Client, data_Client_bkp):
 if __name__ == "__main__":
     print('')
     print(f' - Argumento 1: {sys.argv[1]}')
+
     moho_catalog_csv = sys.argv[1]
     IDs = csv2list(moho_catalog_csv)
     data_Client = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
     data_Client_bkp = fdsn.Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
+
     print(f' --> Client:\n  {data_Client.base_url}')
     print(f' --> Client Backup:\n  {data_Client_bkp.base_url}')
     print(delimt)
     print('')
+
     print(" --------- Iniciando o ProcessarID.py --------- ")
     main(IDs, data_Client, data_Client_bkp)
