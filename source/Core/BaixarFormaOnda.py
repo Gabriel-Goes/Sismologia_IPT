@@ -10,99 +10,65 @@
 # Data: 2024-03-06
 
 
-# Catalogo: MOHO-IAG-USP Brasileiro
-#
-# Client -> 'USP'
-#
-# EVENTOS -> ID de eventos ( 'Catalogo de Eventos' )
-#
-# Iterando sobre os eventos do catálogo:
-#     - Se não houver PICKS, continue
-#     - Obter a origem preferida (lat, long, profundidade)
-#     Iterando sobre os picks do evento:
-#         - Se pick.phase_hint != 'P', continue
-#         - net = pick.waveform_id.network_code
-#         - sta = pick.waveform_id.station_code
-#         - sta_xy = get_sta_xy(net.sta)
-#         - dist = get_distance(hypocenter, sta_xy)
-#         - Se dist > 400, continue
-#         - get_waveform(net, sta, pick.time, pick.time + 60)
-
 # ----------------------------  IMPORTS   -------------------------------------
 from obspy.geodetics import gps2dist_azimuth
 import numpy as np
 import csv
-
 import os
-
-from utils import get_sta_xy, delimt, mseed_folder, delimt2
-
 from tqdm import tqdm
 
-# Cria pasta se ela não existir
-os.makedirs(mseed_folder, exist_ok=True)
-# ---------------------------- FUNÇÕES ----------------------------------------
+# NOSSAS FUNÇÕES
+from utils import get_sta_xy, mseed_folder, delimt, delimt2
 
 
-# Função para criar pasta para cada evento dentro de mseed
-def create_event_dirname(origin_time):
-    dir_name = origin_time.strftime("%Y%m%dT%H%M%S")
-    print(f" - Nomeando diretório com origin_time: {dir_name}")
-    return dir_name
+# --------------------------------- FUNÇÕES ---------------------------------- #
+# Fixa a semente para garantir a reprodução
+def download_and_save_waveforms_random(data_client, data_client_bkp,
+                                       net, sta, loc, chn,
+                                       pick_time, origin_time):
+    np.random.seed(42)
+    random_offset = np.random.randint(5, 21)
+    start_time = pick_time - random_offset
+    end_time = start_time + 60  # Mantém a janela de 60 segundos
 
-
-def save_waveforms(stream, network, station, origin_time):
-    if not stream:
-        print(f"Nenhum dado baixado para a estação {station}.")
-        return
-    event_name = create_event_dirname(origin_time)
-    event_dir = os.path.join(mseed_folder, event_name)
-    event_path = os.path.join(event_dir,
-                              f"{network}_{station}_{event_name}.mseed")
-    os.makedirs(event_dir, exist_ok=True)
-    stream.write(event_path, format="MSEED")
-
-
-def download_waveforms(data_client, data_client_bkp,
-                       net, sta, loc, chn,
-                       start_time, end_time, origin_time):
     try:
-        st = data_client.get_waveforms(net, sta, loc, chn,
-                                       start_time, end_time)
+        st = data_client.get_waveforms(
+            net, sta, loc, chn,
+            start_time, end_time)
         print(f" - Forma de onda baixada para:\n   - estação {sta}\n   - canal: {chn}")
+
     # If data_client fails, try data_client_bkp
     except Exception as e:
         print(f" ! Erro ao baixar canal {chn} da estação {sta}!\n   ERROR:  {e}")
         try:
-            st = data_client_bkp.get_waveforms(net, sta, loc, chn,
-                                               start_time, end_time)
+            st = data_client_bkp.get_waveforms(
+                net, sta, loc, chn,
+                start_time, end_time)
             print(f" try 2 - Forma de onda baixada para a estação {sta}.")
             print(delimt)
+
         except Exception as e:
             print(f" ! Erro ao baixar canal {chn} da estação {sta}: {e}")
 
     except Exception as e:
         print(f" Falhou para todos os clientes: {e}")
 
-    # save_waveforms(st, network, station, origin_time)
+    # Cria pasta se ela não existir
+    os.makedirs(mseed_folder, exist_ok=True)
+
+    event_name = origin_time.strftime("%Y%m%dT%H%M%S")
+    print(f" - Nomeando diretório com origin_time: {event_name}")
+    if not st:
+        print(f"Nenhum dado baixado para a estação {sta}.")
+        return
+
+    event_dir = os.path.join(mseed_folder, origin_time.strftime("%Y%m%dT%H%M%S"))
+    event_path = os.path.join(event_dir,
+                              f"{net}_{sta}_{event_name}.mseed")
+    os.makedirs(event_dir, exist_ok=True)
+    st.write(event_path, format="MSEED")
+
     return st
-
-
-# Fixa a semente para garantir a reprodução
-def download_and_save_waveforms_random(data_client, data_client_bkp,
-                                       net, sta, loc, chn,
-                                       pick_time, origin_time):
-    np.random.seed(42)
-    # Extrai o tempo de origem do evento
-    # Gera um deslocamento aleatório entre 5 a 20 segundos
-    random_offset = np.random.randint(5, 21)
-    # Calcula os novos tempos de início e fim baseado no deslocamento aleatório
-    start_time = pick_time - random_offset
-    end_time = start_time + 60  # Mantém a janela de 60 segundos
-    # Chama a função para baixar as formas de onda
-    download_waveforms(data_client, data_client_bkp,
-                       net, sta, loc, chn,
-                       start_time, end_time, origin_time)
 
 
 def iterate_events(eventos, data_client, data_client_bkp, inventario, baixar=False):

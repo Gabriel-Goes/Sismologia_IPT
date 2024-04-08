@@ -10,112 +10,152 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 from obspy.core import UTCDateTime, AttribDict
-import datetime, argparse
+from obspy import Trace
+import datetime
 from obspy.clients.fdsn import Client
-from mpl_toolkits import mplot3d
-from matplotlib.lines import Line2D
+import argparse
 
 
-#
-## Get traces and data
-def get(startime, endtime, network, station, location, channel):
-	global USER, PASSWD
-	client = Client("http://10.100.0.150:8080", user=USER, password=PASSWD)
-	
-	try:
-		stream = client.get_waveforms(network, station, location, channel, starttime=startime, endtime=endtime)
-	except:
-		return None
-	
-	trace = stream[0]
-	if trace.stats.starttime > startime or trace.stats.endtime < endtime: return None
-	
-	return trace
+# GET TRACES AND DATA
+def get(startime: datetime.datetime,
+        endtime: datetime.datetime,
+        network: str,
+        station: str,
+        location: str,
+        channel: str) -> Trace:
+    '''
+    Get a trace from a given network, station, location and channel
+    between the given startime and endtime.
 
-#
-##
-def prepare(trace, filtro,  noisewindow, pwindow, swindow):
-	trace = trace.copy()
-	
-	# Pre-process
-	trace.detrend('linear')
-	trace.filter("bandpass", corners=4, freqmin = filtro.pa, freqmax = filtro.pb)
-	
-	# Copy & trim
-	noise   = trace.copy().trim(noisewindow.t - noisewindow.w / 2, noisewindow.t + noisewindow.w / 2)
-	pwindow = trace.copy().trim(pwindow.t - pwindow.w / 2, pwindow.t + pwindow.w / 2)
-	swindow = trace.copy().trim(swindow.t - swindow.w / 2, swindow.t + swindow.w / 2)
-	
-	return noise.data, pwindow.data, swindow.data
+    :param startime: Start time of the trace
+    :param endtime: End time of the trace
+    :param network: Network code
+    :param station: Station code
+    :param location: Location code
+    :param channel: Channel code
 
+    :return: Trace object
+    '''
+    global USER, PASSWD
+    client = Client("http://10.100.0.150:8080", user=USER, password=PASSWD)
 
-#
-## Calculates signal to noise ratio of each phase
-def ratios(trace, filtros, noisewindow, pwindow, swindow):
-	for filtro in filtros:
-		noise, trace_p, trace_s = prepare(trace, filtro, noisewindow, pwindow, swindow)
-		
-		filtro.noise = np.mean(np.abs(noise))
-		filtro.p     = np.mean(np.abs(trace_p))
-		filtro.s     = np.mean(np.abs(trace_s))
-		filtro.snrp   = filtro.p / filtro.noise
-		filtro.snrs   = filtro.s / filtro.noise
+    try:
+        stream = client.get_waveforms(
+            network,
+            station,
+            location,
+            channel,
+            starttime=startime,
+            endtime=endtime)
+
+    except Exception as e:
+        print("Error: ", e)
+        return None
+
+    trace = stream[0]
+    if trace.stats.starttime > startime or trace.stats.endtime < endtime:
+        return None
+
+    return trace
 
 
-#
-## Creates a list of filter values to be used by the fdsn client
+# PREPARE THE TRACE FOR ANALYSIS
+def prepare(trace: Trace,
+            filtro: AttribDict,
+            noisewindow: AttribDict,
+            pwindow: AttribDict,
+            swindow: AttribDict) -> (np.ndarray, np.ndarray, np.ndarray):
+    '''
+    Prepare the trace for the analysis.
+
+    :param trace: Trace object
+    :param filtro: Filter object
+    :param noisewindow: Noise window object
+    :param pwindow: P window object
+    :param swindow: S window object
+
+    :return: Tuple with the noise, P and S windows
+    '''
+    trace = trace.copy()
+    # Pre-process
+    trace.detrend('linear')
+    trace.filter("bandpass", corners=4, freqmin=filtro.pa, freqmax=filtro.pb)
+    # Copy & trim
+    noise = trace.copy().trim(noisewindow.t - noisewindow.w / 2, noisewindow.t + noisewindow.w / 2)
+    pwindow = trace.copy().trim(pwindow.t - pwindow.w / 2, pwindow.t + pwindow.w / 2)
+    swindow = trace.copy().trim(swindow.t - swindow.w / 2, swindow.t + swindow.w / 2)
+
+    return noise.data, pwindow.data, swindow.data
+
+
+# CALCULATES SIGNAL TO NOISE RATIO OF EACH PHASE
+def ratios(trace,
+           filtros,
+           noisewindow,
+           pwindow,
+           swindow):
+    for filtro in filtros:
+        noise, trace_p, trace_s = prepare(trace, filtro, noisewindow, pwindow, swindow)
+        filtro.noise = np.mean(np.abs(noise))
+        filtro.p = np.mean(np.abs(trace_p))
+        filtro.s = np.mean(np.abs(trace_s))
+        filtro.snrp = filtro.p / filtro.noise
+        filtro.snrs = filtro.s / filtro.noise
+
+
+# CREATES A LIST OF FILTER VALUES TO BE USED BY THE FDSN CLIENT
 def filterCombos(start=1, end=35, minw = 2, maxw = 6):
-	filtros = list()
-	
-	for j in np.arange(start, end - minw + 1., 1.):
-		for i in np.arange(j, end + 1., 1.):
-			if (i-j) >= minw and (i-j) <= maxw:
-				filtros.append(AttribDict({
-					'pa'    : j,
-					'pb'    : i,
-					'noise' : -1,
-					'p'     : -1,
-					's'     : -1,
-					'snrp'  : -1,
-					'snrs'  : -1
-				}))
-	return filtros
+    filtros = list()
+
+    for j in np.arange(start, end - minw + 1., 1.):
+        for i in np.arange(j, end + 1., 1.):
+            if (i-j) >= minw and (i-j) <= maxw:
+                filtros.append(AttribDict({
+                    'pa': j,
+                    'pb': i,
+                    'noise': -1,
+                    'p': -1,
+                    's': -1,
+                    'snrp': -1,
+                    'snrs': -1
+                }))
+    return filtros
 
 
-#
-## Writes output to file 
+# WRITES OUTPUT TO FILE
 def write(data):
-	raise Exception("No funciona mais!")
-	
-	fout = open("filters.txt", "w")
-	z_p = np.array([data[key].p for key in sorted(data.keys())])
-	norm_p = np.max(z_p)
-	z_s = np.array([data[key].s for key in sorted(data.keys())])
-	norm_s = np.max(z_s)
-	fout.write("# pa pb snr_p snr_s\n")
-	for key in sorted(data.keys()):
-		fout.write("%s %.03f %.03f\n" % (key, data[key].p/norm_p, data[key].s/norm_s))
-	fout.close()
+    raise Exception("No funciona mais!")
+
+    fout = open("filters.txt", "w")
+    z_p = np.array([data[key].p for key in sorted(data.keys())])
+    norm_p = np.max(z_p)
+    z_s = np.array([data[key].s for key in sorted(data.keys())])
+    norm_s = np.max(z_s)
+    fout.write("# pa pb snr_p snr_s\n")
+    for key in sorted(data.keys()):
+        fout.write("%s %.03f %.03f\n" % (key,
+                                         data[key].p / norm_p,
+                                         data[key].s / norm_s))
+    fout.close()
 
 
-#
-## Makes the command line parser
+# MAKES THE COMMAND LINE PARSER
 def make_cmdline_parser():
-	parser = argparse.ArgumentParser(description = 'Display event summary', usage= '%(prog)s [options]')
-	
-	parser.add_argument("-wn", dest = "wn", default = None, help = "Noise window specification Date/Length." )
-	parser.add_argument("-wp", dest = "wp", default = None, help = "P-window specification Date/Length." )
-	parser.add_argument("-ws", dest = "ws", default = None, help = "S-window specification Date/Length." )
-	parser.add_argument("-S" , dest = "ns", default = None, help = "Network.Station.Location.Channel to make the analysis")
-	
-	parser.add_argument("-p", "--preview-window", action = "store_true", dest = "preview", default = False, help = "Preview data & windows that will be used." )
-	parser.add_argument("-jp", "---just-preview", action = "store_true", dest = "justpreview", default = False, help = "Preview data & windows that will be used and quit." )
-	parser.add_argument("-g", "--graph",          action = "store_true", dest = "graph",   default = False, help = "Plot graphs as scatter points" )
-	parser.add_argument("-t", "--trisurf",        action="store_true",   dest = "trisurf", default = False, help = "Draw a surface connecting points")
-	parser.add_argument("-m", "--mesh",           action = "store_true", dest = "mesh",    default = False, help = "Plot meshes for p and s" )
-	parser.add_argument("-o", "--output",         action = "store_true", dest = "makeoutput",    default = False, help = "Save results as PNG." )
+    parser = argparse.ArgumentParser(description = 'Display event summary', usage= '%(prog)s [options]')
 
-	return parser
+    parser.add_argument("-wn", dest = "wn", default = None, help = "Noise window specification Date/Length." )
+    parser.add_argument("-wp", dest = "wp", default = None, help = "P-window specification Date/Length." )
+    parser.add_argument("-ws", dest = "ws", default = None, help = "S-window specification Date/Length." )
+    parser.add_argument("-S" , dest = "ns", default = None, help = "Network.Station.Location.Channel to make the analysis")
+
+    parser.add_argument("-p", "--preview-window", action = "store_true", dest = "preview", default = False, help = "Preview data & windows that will be used." )
+    parser.add_argument("-jp", "---just-preview", action = "store_true", dest = "justpreview", default = False, help = "Preview data & windows that will be used and quit." )
+    parser.add_argument("-g", "--graph",          action = "store_true", dest = "graph",   default = False, help = "Plot graphs as scatter points" )
+    parser.add_argument("-t", "--trisurf",        action="store_true",   dest = "trisurf", default = False, help = "Draw a surface connecting points")
+    parser.add_argument("-m", "--mesh",           action = "store_true", dest = "mesh",    default = False, help = "Plot meshes for p and s" )
+    parser.add_argument("-o", "--output",         action = "store_true", dest = "makeoutput",    default = False, help = "Save results as PNG." )
+
+    return parser
 
 
 #

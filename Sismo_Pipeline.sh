@@ -1,7 +1,6 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 #
-#
 # -----------------------------------------------------------------------------
 # ./ClassificadorSismologico/Sismo_Pipeline.sh
 # Autor: Gabriel Góes Rocha de Lima
@@ -35,12 +34,20 @@ EVENTS=$(find files/ -maxdepth 1 -name "events-*.csv")
 ENERGYFIG="$HOME/lucas_bin/energy_fig.py"
 CREATEMAP="$HOME/lucas_bin/make_maps_"$CLIENT_ID".py"
 
-#PYTHON3=${PYTHON3:-"$HOME/.config/geo/bin/python3"}
+# PYTHON3=${PYTHON3:-"$HOME/.config/geo/bin/python3"}
 # SEISCOMP=${SEISCOMP:-"$HOME/softwares/seiscomp/bin/seiscomp"}
 PYTHON3=${PYTHON3:-"$HOME/.pyenv/versions/sismologia/bin/python3"}
 SEISCOMP=${SEISCOMP:-"/opt/seiscomp/bin/seiscomp"}
 SISMOLOGIA=${SISMOLOGIA:-"$HOME/projetos/ClassificadorSismologico"}
 DELIMT1='########################################################################'
+
+# Define o diretório de logs e cria o arquivo de log
+LOG_DIR="$BASE_DIR/logs"
+mkdir -p $LOG_DIR
+LOG_FILE="$LOG_DIR/$(date +%Y%m%d%H%M%S)_Sismo_Pipeline.log"
+touch "$LOG_FILE"
+exec 1> >(tee -a "$LOG_FILE") 2>&1
+
 
 # ------------------------- INICIO DO PIPELINE  ------------------------------
 echo ''
@@ -80,7 +87,6 @@ if [ "$PROCESS_MAPS" = true ]; then
     done
 fi
 
-
 # ----------------- ETAPA DE GERAR FIGURAS DE ENERGIA  ------------------------
 PROCESS_ENERGY=${PROCESS_ENERGY:-false}
 if [ "$PROCESS_ENERGY" = true ]; then
@@ -91,7 +97,6 @@ if [ "$PROCESS_ENERGY" = true ]; then
     echo "Cleaning up..."
     mv events*.csv files/
 fi
-
 
 # --------- ETAPA DE GERAR LISTA PARA CLASSIFICAÇÃO ( EVENTO | LABEL ) -----------
 PROCESS_PRED=${PROCESS_PRED:-false}

@@ -59,39 +59,44 @@ para criar e instalar o python 3.11.
 sudo chmod +x ./dotfiles/install.sh
 source ./dotfiles/install.sh
 pyenv local sismologia
+# Devo reduzir o número de dependências para o ambiente virtual.
 pip install -r requirements.txt
 ```
 
 ## Utilização
 
 ### Adiquirindo Dados Sismológicos
-O primeiro passo é adquirir os dados dos eventos sismológicos. Para isso, foi construída
-uma pipeline que automatiza o processo de filtragem e download dos dados. Existem 
-até agora duas formas de iniciar o processo de filtragem, a primeira é utilizando
-um intervalo de tempo e a segunda é utilizando uma lista de eventos sismológicos.
+O primeiro passo é adquirir os dados dos eventos sismológicos. Para isso, foi
+construída uma pipeline que automatiza o processo de filtragem e download dos
+dados. Existem até agora duas formas de iniciar o processo de filtragem, a
+primeira é utilizando um intervalo de tempo e a segunda é utilizando uma lista
+de eventos sismológicos.
 
-¡Por padrão, a pipeline irá baixar _**apenas os 100 primeiros eventos**_ do catálogo de eventos
-da MOHO, adquiridos no [site](http://moho.iag.usp.br/) e acessíveis no diretório
-['./files/catalogo geo/catalogo-moho.csv'](https://github.com/Gabriel-Goes/sismologia_ipt/blob/main/files/catalogo/catalogo-moho.csv)
-do repositório!
-
+**Atenção:**
+Por padrão, a pipeline irá baixar _**apenas os 100 primeiros eventos**_ do
+catálogo de eventos da MOHO, adquiridos no [site](http://moho.iag.usp.br/) e
+acessíveis no diretório ['./files/catalogo geo/catalogo-moho.csv'](https://github.com/Gabriel-Goes/sismologia_ipt/blob/main/files/catalogo/catalogo-moho.csv)
+do repositório.
 
 ```bash
-# Recomenda-se utilizar o tmux para executar a pipeline.
+# Execute o script de pipeline
 sudo chmod +x ./Sismo_Pipeline.sh
 ./Sismo_Pipeline.sh
 ```
 
 Este processo criará um diretório ./files/mseed/ com subdiretórios nomeados pelo
-código do evento no formato 'YYYYMMDDTHHMMSS'. Cada subdiretório conterá os arquivos
+código do evento no formato `'YYYYMMDDTHHMMSS'`. Cada subdiretório conterá os arquivos
 .mseed com 60 segundos de dados sismológicos, com 200Hz de taxa de amostragem.
 
 A janela de aquisição do dado é iniciada com um valor aleatório entre 5 e 25 segundos
-antes da onda 'P', mantendo sempre 60 segundos de janela total.
+antes da chegada da onda 'P', mantendo sempre 60 segundos de janela total.
+
+Para relizar análises de razões de sinal-ruído, será necessário, talvez, adquirir
+janelas de tempo maiores, assim como adquirir a chegada da onda 'S'.
 
 
 ### Testando o Classificador
-Coms os dados sismológicos adquiridos, podemos prosseguir para a classificação
+Com os dados sismológicos adquiridos, podemos prosseguir para a classificação
 dos eventos sismológicos utilizando o algoritmo de redes neurais convolucionais.
 
 ```bash
