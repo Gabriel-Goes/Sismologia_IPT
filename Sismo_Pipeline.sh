@@ -59,8 +59,8 @@ echo ''
 # ---- CRIANDO CATÁLOGO DE EVENTOS SISMICOS ----
 PROCESSAR_SISMOS=${PROCESSAR_SISMOS:-true}
 if [ "$PROCESSAR_SISMOS" = true ]; then
-    echo ' -> Executando Processar_Dados_Sismicos.py...'
-    $SEISCOMP exec $PYTHON3 $SISMOLOGIA/source/Core/ProcessarID.py $MOHO_CATALOG $CLIENT_ID
+    echo ' -> Executando ProcessarDadosSismologicos.py...'
+    $SEISCOMP exec $PYTHON3 $SISMOLOGIA/source/Core/ProcessarDadosSismologicos.py $MOHO_CATALOG $CLIENT_ID
 fi
 
 # ------------------------- ETAPA DE GERAR MAPAS  -----------------------------
