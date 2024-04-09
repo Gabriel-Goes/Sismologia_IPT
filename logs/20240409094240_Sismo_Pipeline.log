@@ -1,0 +1,7 @@
+
+########################################################################
+ ---------------- Iniciando do Pipeline --------------------------------
+
+ -> Executando ProcessarDadosSismologicos.py...
+./Sismo_Pipeline.sh: linha 65: /home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py: Permissão negada
+./Sismo_Pipeline.sh: linha 65: exec: /home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py: impossível executar: Permissão negada

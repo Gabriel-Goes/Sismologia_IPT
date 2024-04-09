@@ -1,5 +1,16 @@
 # Classificador Sismológico
 
+Utilizando redes neurais convolucionais para classificar espectrogramas de sismos
+entre eventos naturais e antropogênicos. Algoritmo desenvolvido em Python pelo
+Laboratório de Planetologia e Geociências da Universidade de Nantes, França 
+disponível no [GitLab](https://univ-nantes.io/E181658E/discrimination_eq_q).
+
+Este repositório armazena os códigos desenvolvidos por G.G., Rocha de Lima em 
+conjunto com o setor de Sismologia do IPT comandado por L. A., Schirbel. Este
+código possibilita a automação do algoritmo de classificação de Houcard, dede
+a etapa de aquisição, armazenamento e pré-processamento até a análise das 
+métricas de seu modelo.
+
 # Sumário
 - [Foco](#foco)
 - [Instalação](#instalação)
@@ -10,9 +21,18 @@
     - [Testando o Discriminador](#testando-o-discriminador)
 - [Referências](#referências)
 
-
 ## Pŕoximos Passos
-### Eventos 100% Naturais ( Catálogo do IAG-USP )
+
+### Testando Algoritmo com Eventos Naturais
+A ideia inicial é utilizar o catálogo do MOHO ( IAG-USP ) para adquirir apenas 
+dados sismicos de eventos naturais para testar a eficiencia do algoritmo para 
+discriminar eventos antrópicos dos naturais no território brasileiro.
+
+Além de adquirir apenas dados que foram rotulados por especialistas, nós
+separamos os eventos em duas categorias, os que ocorreram em horário comercial
+e não-comercial. Sendo a janela de separação 11:00 UTC até 23:00 UTC, visto que
+o território
+brasileiro abrange a zona do -3 UTC à -5 UTC.
 
 - [x] Olhar o catálogo do IAG;
 - [x] Primeira rodada separada; (100% Natural)
@@ -20,7 +40,7 @@
 - [x] Histograma geral dia e horários de ocorrências; [UTC]
 - [x] Sinais fora de horário Comercial;
 - [ ] Olhar forma de onde no Snuffler;
-    - Procurar por eventos apenas ruído. 
+    - Desenvolvimento de [Snuffling](www.pyrocko.com). 
 - [ ] Plotar no mapa;
     - Adicionar mapas no plot visualizacao.py.
 - [ ] Localizações de pedreiras já conhecidas;
@@ -30,22 +50,21 @@
 
 ## Foco
 
-Utilizando redes neurais convolucionais para classificar espectrogramas de sismos
-entre eventos naturais e antropogênicos. Algoritmo desenvolvido em Python pelo
-Laboratório de Planetologia e Geociências da Universidade de Nantes, França 
-disponível no [GitLab](https://univ-nantes.io/E181658E/discrimination_eq_q).
-
 O objetivo deste projeto é construir um sistema que possibilite a utilização do
-algoritmo francês de forma dinâmica e eficiente, a fim, inicialmente, de aferir
-a eficácia deste em eventos sismológicos brasileiros, e, caso positivo,  revisar
+algoritmo francês de forma dinâmica e eficiente, a fim, inicialmente, aferir a
+eficácia deste em eventos sismológicos brasileiros, e, caso positivo,  revisar
 o catálogo de sismos do IAG-USP e do IPT.
 
 ## Instalação
 
-### Clone do Repositório
+Siga os tópicos abaixo copiando e colando os códigos em seu terminal. Este 
+roteiro, tem compatibilidade testada para as distribuições GNU/Linux que utilizam
+os gerenciadores de pacotes APT (Debian e derivados) e PACMAN ( Arch Linux e
+derivados).
 
+### Clone do Repositório
 ```bash
-mkdir ~/projetos/
+mkdir ~/projetos/  # CRIE ESTE DIRETÓRIO PARA MELHOR ORGANIZAÇÃO
 git clone git@github.com:Gabriel-Goes/sismologia_ipt.git\
     ~/projetos/ClassificadorSismologico && cd projetos/ClassificadorSismologico
 git switch desenvolvimento  # Ainda não houve merge com a branch main
@@ -59,18 +78,20 @@ para criar e instalar o python 3.11.
 sudo chmod +x ./dotfiles/install.sh
 source ./dotfiles/install.sh
 pyenv local sismologia
-# Devo reduzir o número de dependências para o ambiente virtual.
+
+# DEVO REDUZIR O NÚMERO DE DEPENDÊÊCIAS PARA O AMBIENTE VIRTUAL.
+# E TALVEZ CRIAR UMA IMAGEM DOCKER PARA ESTE CÓDIGO TAMBÉM.
 pip install -r requirements.txt
 ```
 
 ## Utilização
+Com o repositório instalado e o ambiente virtual python configurado, basta seguir
+os passos a seguir.
 
 ### Adiquirindo Dados Sismológicos
-O primeiro passo é adquirir os dados dos eventos sismológicos. Para isso, foi
-construída uma pipeline que automatiza o processo de filtragem e download dos
-dados. Existem até agora duas formas de iniciar o processo de filtragem, a
-primeira é utilizando um intervalo de tempo e a segunda é utilizando uma lista
-de eventos sismológicos.
+Primeiro vamos adquirir os dados dos eventos sismológicos. Para isso, foi
+construída uma pipeline que automatiza o processo de filtragem e armazenamento 
+dos dados. Por enquanto, temos apenas uma forma de executar a (pipeline](https://github.com/Gabriel-Goes/sismologia_ipt/blob/main/)
 
 **Atenção:**
 Por padrão, a pipeline irá baixar _**apenas os 100 primeiros eventos**_ do
@@ -84,7 +105,7 @@ sudo chmod +x ./Sismo_Pipeline.sh
 ./Sismo_Pipeline.sh
 ```
 
-Este processo criará um diretório ./files/mseed/ com subdiretórios nomeados pelo
+Este processo criará um dietório ./files/mseed/ com subdiretórios nomeados pelo
 código do evento no formato `'YYYYMMDDTHHMMSS'`. Cada subdiretório conterá os arquivos
 .mseed com 60 segundos de dados sismológicos, com 200Hz de taxa de amostragem.
 

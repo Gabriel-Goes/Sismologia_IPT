@@ -15,37 +15,22 @@ from obspy.core.event.catalog import Catalog
 import sys
 import os
 from tqdm import tqdm
-from typing import List, Str
+from typing import List, Str, Dictionary
 
 # ClassificadorSismologico
 from BaixarFormaOnda import iterate_events
-from utils import csv2list, bkp_time, cria_sta_dic, list_inventario, delimt, get_inventory_from_xml
+from utils import bkp_time, csv2list, delimt, inventory
 
 
 # ---------------------------- FUNÇÕES ----------------------------------------
-# função main que conterá as chamadas das funções
+# FUNÇÃO MAIN QUE CONTERÁ AS CHAMADAS DAS FUNÇÕES
 def main(IDs: List,
          data_Client: Str,
-         data_Client_bkp: Str) -> [Catalog, List]:
+         data_Client_bkp: Str) -> [Catalog, Dictionary, List]:
     '''
     Função para processar os eventos sísmicos a partir de um catálogo de
     eventos previamente adquirido e disponibilizado no formato de um arquivo csv.
     '''
-    # CONSTROI O INVENTARIO DE ESTAÇÕES
-    inventario = {}
-    print(' --> Inventário de Estações:')
-    for file in list_inventario:
-        # CHECK IF THE FILE IS A .TXT
-        if file.endswith('.txt'):
-            txt = file
-            print(f' - Arquivo: {txt}')
-            inventario = cria_sta_dic('./files/inventario/' + txt, inventario)
-        # print(f' - {len(inventario)}')
-    inventory = get_inventory_from_xml(
-        'files/inventario/inventario_rsbr.xml',
-        inventario)
-    print(delimt)
-
     # GERAR O CATÁLOGO DE EVENTOS
     print(' ------------------------------ Acessando Catálogo ------------------------------ ')
     catalogo = Catalog()
@@ -66,7 +51,7 @@ def main(IDs: List,
                 print(f"ID {id} não encontrado.")
                 missing_ids.append(id)
 
-    # Baixa a forma de onda
+    # BAIXA A FORMA DE ONDA
     iterate_events(
         catalogo.events,
         data_Client,
@@ -74,7 +59,7 @@ def main(IDs: List,
         inventory,
         baixar=True)  # FUNÇÃO PRINCIPAL DO SCRIPT
 
-    # Save missing_ids list to csv file
+    # SAVE MISSING_IDS LIST TO CSV FILE
     os.mkdir('files/logs/erros/bkp', exist_ok=True)
     if os.path.exists('files/logs/erros/*_missing_ids.csv'):
         os.move('files/logs/erros/*_missing_ids.csv',
@@ -93,7 +78,7 @@ if __name__ == "__main__":
     print(f' - Argumento 1: {sys.argv[1]}')
 
     moho_catalog_csv = sys.argv[1]
-    IDs = csv2list(moho_catalog_csv)
+    IDs = csv2list(moho_catalog_csv, data=None)  # ADICIONE O ANO MAIS ANTIGO
     data_Client = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
     data_Client_bkp = fdsn.Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
 

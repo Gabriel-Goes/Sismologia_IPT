@@ -18,7 +18,8 @@ import os
 from tqdm import tqdm
 
 # NOSSAS FUNÇÕES
-from utils import get_sta_xy, mseed_folder, delimt, delimt2
+from utils import MSEED_DIR
+from utils import get_sta_xy, delimt, delimt2
 
 
 # --------------------------------- FUNÇÕES ---------------------------------- #
@@ -54,7 +55,7 @@ def download_and_save_waveforms_random(data_client, data_client_bkp,
         print(f" Falhou para todos os clientes: {e}")
 
     # Cria pasta se ela não existir
-    os.makedirs(mseed_folder, exist_ok=True)
+    os.makedirs(MSEED_DIR, exist_ok=True)
 
     event_name = origin_time.strftime("%Y%m%dT%H%M%S")
     print(f" - Nomeando diretório com origin_time: {event_name}")
@@ -62,7 +63,7 @@ def download_and_save_waveforms_random(data_client, data_client_bkp,
         print(f"Nenhum dado baixado para a estação {sta}.")
         return
 
-    event_dir = os.path.join(mseed_folder, origin_time.strftime("%Y%m%dT%H%M%S"))
+    event_dir = os.path.join(MSEED_DIR, origin_time.strftime("%Y%m%dT%H%M%S"))
     event_path = os.path.join(event_dir,
                               f"{net}_{sta}_{event_name}.mseed")
     os.makedirs(event_dir, exist_ok=True)

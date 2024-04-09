@@ -4,7 +4,11 @@
 
 
 # ----------------------------  DESCRIPTION  -----------------------------------
-# Script para processar dados sismicos
+# FUNÇÕES E VARIÁVEIS UTILITAŔIAS PARA O PROJETO
+# Estas funções estão escritas aqui para melhorar a leitura dos scripts
+# principais, aumentando a fluidez dos códigos deixando explícito apenas o que
+# é realmente importante.
+
 # Autor: Gabriel Góes Rocha de Lima
 # Funções de utilidade para Processar_Dados_Sismicos.py
 # Versão: 0.2
@@ -23,6 +27,7 @@ from obspy.clients.fdsn import Client as fdsn
 from dateutil.relativedelta import relativedelta
 from obspy import read_inventory
 
+# FUNÇÃO ADAPATADA DE fdsnws.py ( CÓDIGO DE M. BIANCHI )
 from Exporter import Exporter
 
 
@@ -30,7 +35,7 @@ from Exporter import Exporter
 # Diretório do projeto
 PROJETO_DIR = os.environ['HOME'] + "/projetos/ClassificadorSismologico"
 # Nome da pasta mseed
-mseed_folder = PROJETO_DIR + "/files/mseed"
+MSEED_DIR = PROJETO_DIR + "/files/mseed"
 
 # Dicionário de Netowrk ID
 # MOHO IAG = https://www.moho.iag.usp.br/fdsnws/ -> 'USP'
@@ -45,17 +50,34 @@ ID_dict = {"MC": '8091',
 delimt = "-----------------------------------------------------\n"
 delimt2 = "#####################################################\n"
 
-# Caminho para diretório de invetário de redes sismológicas
-path_inventario = PROJETO_DIR + '/files/inventario/'
-list_inventario = os.listdir(path_inventario)
-
 # Configura string de data para salvar arquivos
 bkp_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
+# Caminho para diretório de invetário de redes sismológicas
+path_inventario = PROJETO_DIR + '/files/inventario/'
+list_inventarios = os.listdir(path_inventario)
+
 
 # ---------------------------- FUNÇÕES ----------------------------------------
-# Função para criar um dicionário a partir de um csv
-def csv2list(csv_file, data=False):
+# FUNÇÃO PARA GERAR LOGS
+class DualOutput(object):
+    def __init__(self, filename):
+        self.terminal = sys.stdout
+        self.log = open(filename, "a")
+
+    def write(self,
+              message: str) -> None:
+        self.terminal.write(message)
+        self.log.write(message)
+
+    def flush(self) -> None:  # NECESSÁRIO PARA A INTERFACE DE ARQUIVO
+        self.terminal.flush()
+        self.log.flush()
+
+
+# FUNÇÃO PARA CRIAR UM DICIONÁRIO A PARTIR DE UM CSV
+def csv2list(csv_file: str,
+             data=False):
     '''
     Recebe um csv e retorna uma lista de EventID
     evid é a primeira coluna do header do csv
@@ -67,7 +89,7 @@ def csv2list(csv_file, data=False):
         with open(csv_file, 'r') as f:
             lines = f.readlines()
             evids = [line.split(',')[0] for line in lines[1:]]
-            # split depois do usp, e pega só o ano '0000' e split o XXXXX as letras
+            # SPLIT DEPOIS DO USP, E PEGA SÓ O ANO '0000' E SPLIT O XXXXX AS LETRAS
             evid = [int(evid.split('usp')[1][:4]) for evid in evids]
             if evid < data:
                 return None
@@ -80,7 +102,8 @@ def csv2list(csv_file, data=False):
 
 
 # Função para ler um .txt e extrair o Netorw, Station e Latitute, Longitude e Depth e salvar  em um dicionário.
-def cria_sta_dic(file, dic=None):
+def cria_sta_dic(file: str,
+                 dic):
     '''
     Recebe:
         file: caminho do arquivo .txt com informações da rede sismológica
@@ -137,7 +160,8 @@ def cria_sta_dic(file, dic=None):
     return dic
 
 
-def get_inventory_from_xml(file, dic=None):
+def get_inventory_from_xml(file: str,
+                           dic):
     '''
     Lê um arquivo XML e extrai informações da rede sismológica para atualizar ou criar um dicionário.
 
@@ -195,21 +219,41 @@ def get_sta_xy(net, sta, inventario):
         return None, None
 
 
-class DualOutput(object):
-    def __init__(self, filename):
-        self.terminal = sys.stdout
-        self.log = open(filename, "a")
+def constroi_inventario():
+    # CONSTROI O INVENTARIO DE ESTAÇÕES
+    inventario = {}
+    print(' --> Inventário de Estações:')
+    for file in list_inventarios:
+        # CHECK IF THE FILE IS A .TXT
+        if file.endswith('.txt'):
+            txt = file
+            print(f' - Arquivo: {txt}')
+            inventario = cria_sta_dic('./files/inventario/' + txt, inventario)
+        print(f' - {len(inventario)}')
+    inventory = get_inventory_from_xml(
+        'files/inventario/inventario_rsbr.xml',
+        inventario)
+    print(delimt)
 
-    def write(self, message):
-        self.terminal.write(message)
-        self.log.write(message)
-
-    def flush(self):  # necessário para a interface de arquivo
-        self.terminal.flush()
-        self.log.flush()
+    return inventory, inventario
 
 
-# --------------------------------------------------------------------------- #
+inventory = constroi_inventario()
+
+
+# FUNÇÃO PARA GERAR INVENTÁRIO DE ESTAÇÕES SISMOLÓGICAS
+def gera_inventario_txt(inv):
+    inv = read_inventory("files/inventario.xml")
+    inventario_txt = open("files/inventario.txt", "w")
+    inventario_txt.write("Station,Latitude,Longitude\n")
+    # cria um arquivo de texto com station code, latitude e longitude
+    for network in inv:
+        for station in network:
+            lat = station.latitude
+            lon = station.longitude
+            inventario_txt.write(f"{station.code},{lat},{lon}\n")
+
+
 # Função que chama o exporter.feed(event, origin, magnitude, network_id)
 def write_event_data(event, exporter, network_id):
     origin = event.preferred_origin()
@@ -237,6 +281,7 @@ def get_catalog(client, start_time, end_time):
         return None
 
 
+# --------------------------------------------------------------------------- #
 # Função que retorna o catalogo de enventos sismicos de acordo com o periodo
 def gera_catalogo_datetime(start_time, end_time, network_id, mode):
     if network_id == 'USP':
@@ -267,16 +312,3 @@ def gera_catalogo_datetime(start_time, end_time, network_id, mode):
         # Termina o while com starttime = endtime
         start_time = taa
     return catalog
-
-
-# FUNÇÃO PARA GERAR INVENTÁRIO DE ESTAÇÕES SISMOLÓGICAS
-def gera_inventario_txt(inv):
-    inv = read_inventory("files/inventario.xml")
-    inventario_txt = open("files/inventario.txt", "w")
-    inventario_txt.write("Station,Latitude,Longitude\n")
-    # cria um arquivo de texto com station code, latitude e longitude
-    for network in inv:
-        for station in network:
-            lat = station.latitude
-            lon = station.longitude
-            inventario_txt.write(f"{station.code},{lat},{lon}\n")

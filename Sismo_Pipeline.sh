@@ -9,14 +9,16 @@
 #
 
 # ----------------------------  DESCRIPTION  -----------------------------------
-# Este código recebe uma data de início e uma data de fim e um CLIENT_ID de rede sismo
-# lógica. Com estas informações cria um arquivo event-<CLIENT_ID>.csv com os eventos sismicos
-# que ocorreram no intervalo de tempo especificado e foram capturados pela rede sismológica.
-# Com este arquivo, segue-se para o passo de aquisição das formas de onda e criação dos mapas.
+# Este código recebe uma lista de IDs eventos ou uma data de início e fim e com
+# estas informações cria um arquivo event-<CLIENT_ID>.csv com os eventos
+# sismicos que ocorreram no intervalo de tempo especificado e foram capturados
+# pela rede sismológica. Com este arquivo, segue-se para o passo de aquisição
+# das formas de onda e criação dos mapas.
 
 # ----------------------------  USAGE  -----------------------------------------
 # Para executar este script, basta rodar o comando abaixo:
 # ./Sismo_Pipeline.sh [INICIO] [FIM] [CLIENT_ID]
+# ./Sismo_Pipeline.sh 
 
 # Se não escolher nada, estes valores padrão serão usados:
 INICIO=${1:-"2023-01-01"}
@@ -36,8 +38,8 @@ CREATEMAP="$HOME/lucas_bin/make_maps_"$CLIENT_ID".py"
 
 # PYTHON3=${PYTHON3:-"$HOME/.config/geo/bin/python3"}
 # SEISCOMP=${SEISCOMP:-"$HOME/softwares/seiscomp/bin/seiscomp"}
-PYTHON3=${PYTHON3:-"$HOME/.pyenv/versions/sismologia/bin/python3"}
-SEISCOMP=${SEISCOMP:-"/opt/seiscomp/bin/seiscomp"}
+# PYTHON3=${PYTHON3:-"$HOME/.pyenv/versions/sismologia/bin/python3"}
+# SEISCOMP=${SEISCOMP:-"/opt/seiscomp/bin/seiscomp"}
 SISMOLOGIA=${SISMOLOGIA:-"$HOME/projetos/ClassificadorSismologico"}
 DELIMT1='########################################################################'
 
@@ -60,7 +62,8 @@ echo ''
 PROCESSAR_SISMOS=${PROCESSAR_SISMOS:-true}
 if [ "$PROCESSAR_SISMOS" = true ]; then
     echo ' -> Executando ProcessarDadosSismologicos.py...'
-    $SEISCOMP exec $PYTHON3 $SISMOLOGIA/source/Core/ProcessarDadosSismologicos.py $MOHO_CATALOG $CLIENT_ID
+    # $SEISCOMP exec $PYTHON3 $SISMOLOGIA/source/Core/ProcessarDadosSismologicos.py $MOHO_CATALOG $CLIENT_ID
+    python3 $SISMOLOGIA/source/Core/ProcessarDadosSismologicos.py $MOHO_CATALOG $CLIENT_ID
 fi
 
 # ------------------------- ETAPA DE GERAR MAPAS  -----------------------------

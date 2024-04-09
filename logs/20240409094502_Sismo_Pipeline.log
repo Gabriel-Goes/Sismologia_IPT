@@ -1,0 +1,13 @@
+
+########################################################################
+ ---------------- Iniciando do Pipeline --------------------------------
+
+ -> Executando ProcessarDadosSismologicos.py...
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 12, in <module>
+    from obspy.clients import fdsn
+ModuleNotFoundError: No module named 'obspy'
+
+ ---------------------- Fim do Pipeline --------------------------------
+########################################################################
+

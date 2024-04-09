@@ -142,6 +142,8 @@ echo ' ------------------------------------ '
 echo ' Instalação concluída com sucesso!'
 echo ' Para efetivar as mudanças reinicie o terminal:'
 echo ' ! AVISO ! Variáveis de ambiente definidas neste Shell serão perdidas.'
+echo ' ! será executado source $HOME/.bash_profile.'
+echo ' Caso não deseje, utilize <C-C>
 read -p 'Pressione enter para continuar...'
 
 source $HOME/.bash_profile
