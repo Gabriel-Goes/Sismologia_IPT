@@ -77,7 +77,7 @@ pyenv local sismologia
 
 # DEVO REDUZIR O NÚMERO DE DEPENDÊÊCIAS PARA O AMBIENTE VIRTUAL.
 # E TALVEZ CRIAR UMA IMAGEM DOCKER PARA ESTE CÓDIGO TAMBÉM.
-pip install -r requirements.txt
+pip install -r ./dotfiles/requirements.txt
 ```
 
 ## Utilização
