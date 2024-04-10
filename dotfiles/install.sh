@@ -143,11 +143,11 @@ echo ' Instalação concluída com sucesso!'
 echo ' Para efetivar as mudanças reinicie o terminal:'
 echo ' ! AVISO ! Variáveis de ambiente definidas neste Shell serão perdidas.'
 echo ' ! será executado source $HOME/.bash_profile.'
-echo ' Caso não deseje, utilize <C-C>
+echo ' Caso não deseje, utilize <C-C>'
 read -p 'Pressione enter para continuar...'
 
 source $HOME/.bash_profile
 echo 'Ambiente virtual configurado com sucesso!'
 echo 'Navegue até o diretório do projeto e execute:'
-echo '!pyenv local $VENV_NAME para ativar o ambiente virtual.'
+echo '!`pyenv local $VENV_NAME` para ativar o ambiente virtual.'
 # ---------------------------------------------------------------------------- #
