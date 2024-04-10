@@ -21,24 +21,20 @@ métricas de seu modelo.
     - [Testando o Discriminador](#testando-o-discriminador)
 - [Referências](#referências)
 
-## Pŕoximos Passos
+## Primeiros-Passos
 
 ### Testando Algoritmo com Eventos Naturais
 A ideia inicial é utilizar o catálogo do MOHO ( IAG-USP ) para adquirir apenas 
-dados sismicos de eventos naturais para testar a eficiencia do algoritmo para 
-discriminar eventos antrópicos dos naturais no território brasileiro.
+dados sismicos de eventos naturais para testar a eficiencia do algoritmo em 
+discriminar eventos antrópicos dos naturais do território brasileiro.
 
 Além de adquirir apenas dados que foram rotulados por especialistas, nós
 separamos os eventos em duas categorias, os que ocorreram em horário comercial
 e não-comercial. Sendo a janela de separação 11:00 UTC até 23:00 UTC, visto que
-o território
-brasileiro abrange a zona do -3 UTC à -5 UTC.
+o território brasileiro abrange a zona do -3 UTC à -5 UTC.
 
-- [x] Olhar o catálogo do IAG;
-- [x] Primeira rodada separada; (100% Natural)
-- [x] Passa-Alta 2Hz;
-- [x] Histograma geral dia e horários de ocorrências; [UTC]
-- [x] Sinais fora de horário Comercial;
+- [x] Adquirir [catálogo](https://github.com/Gabriel-Goes/sismologia_ipt/blob/main/files/catalogo/catalogo-moho.csv) de eventos naturais do IAG-USP;
+- [x] Seperar eventos entre comericias e não-comerciais;
 - [ ] Olhar forma de onde no Snuffler;
     - Desenvolvimento de [Snuffling](www.pyrocko.com). 
 - [ ] Plotar no mapa;

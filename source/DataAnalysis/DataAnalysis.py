@@ -1,32 +1,30 @@
 import pandas as pd
-# from datetime import datetime
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import seaborn as sns
 
-import os
 from obspy import UTCDateTime
-# import obspy
+
+from typing import List
 
 
 # ----------------- Functions -----------------
-# Read mseed file
-def list_events_dir(events_dir):
-    list_events = os.listdir(events_dir)
-    return list_events
 
-
-# Read pred_csv file
-def list_events(pred_csv):
+def list_events(pred_csv: str) -> List[str]:
+    '''
+    Recebe caminho do arquivo predcsv;
+    Retorna uma lista de ID eventos;
+    '''
     list_events = pd.read_csv(pred_csv)
     return list_events['time'].tolist()
 
 
-def sep_event_commercial(list_events):
-    # Separete the events in two lists:
-    # - events between 11am to 22pm are commercial events
-    # else are non-commercial events
+def sep_event_commercial(list_events: List[str]) -> [List[str], List[str]]:
+    '''
+    Recebe uma lista de eventos;
+    Retorna uma lista de eventos em horário comercial e uma de não-comercial
+    '''
     commercial_events = []
     non_commercial_events = []
     for event in list_events:
@@ -38,7 +36,6 @@ def sep_event_commercial(list_events):
     return commercial_events, non_commercial_events
 
 
-# remove commercial_events from dataframe
 def remove_commercial_events(df, commercial_events):
     for event in commercial_events:
         df = df[df['event'] != event]

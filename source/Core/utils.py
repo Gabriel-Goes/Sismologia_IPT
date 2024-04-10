@@ -3,7 +3,7 @@
 # ./Classificador_Sismologico/source/Core/utils.py
 
 
-# ----------------------------  DESCRIPTION  -----------------------------------
+# ----------------------------  DESCRIPTION  ----------------------------------
 # FUNÇÕES E VARIÁVEIS UTILITAŔIAS PARA O PROJETO
 # Estas funções estão escritas aqui para melhorar a leitura dos scripts
 # principais, aumentando a fluidez dos códigos deixando explícito apenas o que
@@ -11,9 +11,9 @@
 
 # Autor: Gabriel Góes Rocha de Lima
 # Funções de utilidade para Processar_Dados_Sismicos.py
-# Versão: 0.2
+# Versão: 0.2.1
 # Data: 2024-02-27
-# Modificação 2024-03-28
+# Modificação 2024-04-10
 
 
 # ----------------------------  IMPORTS   -------------------------------------
@@ -28,7 +28,7 @@ from dateutil.relativedelta import relativedelta
 from obspy import read_inventory
 
 # FUNÇÃO ADAPATADA DE fdsnws.py ( CÓDIGO DE M. BIANCHI )
-from Exporter import Exporter
+from Core import Exporter
 
 
 # ---------------------------- PARAMETROS -------------------------------------
@@ -82,14 +82,16 @@ def csv2list(csv_file: str,
     Recebe um csv e retorna uma lista de EventID
     evid é a primeira coluna do header do csv
     evid = usp0000XXXX
-    Se data for uma ano (ex: 2022), retorna uma lista com eventos a partir do ano até hoje
+    Se data for uma ano (ex: 2022), retorna uma lista com eventos a partir do
+    ano até hoje;
+
     ex: data = 2010 -> retorna evid
     '''
     if data:
         with open(csv_file, 'r') as f:
             lines = f.readlines()
             evids = [line.split(',')[0] for line in lines[1:]]
-            # SPLIT DEPOIS DO USP, E PEGA SÓ O ANO '0000' E SPLIT O XXXXX AS LETRAS
+        # SPLIT DEPOIS DO USP, E PEGA SÓ O ANO '0000' E SPLIT O XXXXX AS LETRAS
             evid = [int(evid.split('usp')[1][:4]) for evid in evids]
             if evid < data:
                 return None
@@ -101,21 +103,29 @@ def csv2list(csv_file: str,
             return [line.split(',')[0] for line in lines[1:]]
 
 
-# Função para ler um .txt e extrair o Netorw, Station e Latitute, Longitude e Depth e salvar  em um dicionário.
+# Função para ler um .txt e extrair o Netorw, Station e Latitute, Longitude
+# e Depth e salvar  em um dicionário.
 def cria_sta_dic(file: str,
                  dic):
     '''
     Recebe:
         file: caminho do arquivo .txt com informações da rede sismológica
-        dic: Dicionário possivelmente vazio ou com prévias informações de network, station, latitude, longitude e depth.
+         dic: Dicionário possivelmente vazio ou com prévias informações de
+             network, station, latitude, longitude e depth.
 
     Retorna:
-        Dicionário com as informações de network, station, latitude, longitude e depth de cada estação.
+        Dicionário com as informações de network, station, latitude,
+        longitude e depth de cada estação.
 
     Exemplo de arquivo .txt:
 
-    #Network|Station|Location|Channel|Latitude|Longitude|Elevation|Depth|Azimuth|Dip|SensorDescription|Scale|ScaleFreq|ScaleUnits|SampleRate|StartTime|EndTime
-    BR|AGBLB||BHE|-9.03868|-37.045358|448.0|0.0|90.0|0.0|STS-2, 120 s, 1500 V/m/s, generation 1 electronics|936717000.0|0.05|M/S|40.0|2010-05-10T00:38:13.615|2012-09-14T00:44:13.24
+    #Network|Station|Location|Channel|Latitude|Longitude|Elevation|Depth|\
+    Azimuth|Dip|SensorDescription|Scale|ScaleFreq|ScaleUnits|SampleRate|\
+    StartTime|EndTime
+
+    BR|AGBLB||BHE|-9.03868|-37.045358|448.0|0.0|90.0|0.0|STS-2, 120 s,\
+    1500 V/m/s, generation 1 electronics|936717000.0|0.05|M/S|40.0|\
+    2010-05-10T00:38:13.615|2012-09-14T00:44:13.24
 
     '''
     if not dic:
@@ -154,8 +164,6 @@ def cria_sta_dic(file: str,
                 'longitude': longitude,
                 'depth': depth
             })
-            # print(f' - net: {network}\n - sta: {station}\n - lat: {latitude}\n - lon: {longitude}\n - depth: {depth}')
-            # print(delimt)
 
     return dic
 
@@ -163,14 +171,18 @@ def cria_sta_dic(file: str,
 def get_inventory_from_xml(file: str,
                            dic):
     '''
-    Lê um arquivo XML e extrai informações da rede sismológica para atualizar ou criar um dicionário.
+    Lê um arquivo XML e extrai informações da rede sismológica para atualizar
+    ou criar um dicionário.
 
     Parâmetros:
-        file: caminho para o arquivo XML com as informações da rede sismológica.
-        dic: dicionário possivelmente vazio ou com informações prévias de network, station, latitude, longitude e depth.
+        file: caminho para o arquivo XML com as informações da rede
+              sismológica.
+        dic: dicionário possivelmente vazio ou com informações prévias de
+             network, station, latitude, longitude e depth.
 
     Retorna:
-        Dicionário atualizado com as informações de network, station, latitude, longitude e depth de cada estação.
+        Dicionário atualizado com as informações de network, station, latitude,
+        longitude e depth de cada estação.
     '''
     if dic is None:
         dic = {}
@@ -188,8 +200,7 @@ def get_inventory_from_xml(file: str,
             station_code = station.get('code')
             latitude = station.find('ns:Latitude', ns).text
             longitude = station.find('ns:Longitude', ns).text
-            elevation = station.find('ns:Elevation', ns).text  # Você pode precisar adaptar se a profundidade estiver em outra tag ou calcular com base na elevação, se aplicável.
-
+            #  elevation = station.find('ns:Elevation', ns).text
             # Gera a chave única para cada estação
             key = f"{network_code}.{station_code}"
             # Verifica se a estação já existe no dicionário
@@ -201,12 +212,13 @@ def get_inventory_from_xml(file: str,
                 'station': station_code,
                 'latitude': float(latitude),
                 'longitude': float(longitude),
-                'depth': float(elevation)  # Assumindo que depth possa ser calculado ou igualado a elevation, ajuste conforme necessário.
+                # 'depth': float(elevation)
             })
     return dic
 
 
-# Função para pegar o a ('net.sta','lat','lon','depth') e retornar um dicionário com as informações
+# Função para pegar o a ('net.sta','lat','lon','depth')
+# e retornar um dicionário com as informações
 def get_sta_xy(net, sta, inventario):
     key = f"{net}.{sta}"
     if key in inventario:
@@ -276,7 +288,7 @@ def get_catalog(client, start_time, end_time):
                                  endtime=end_time,
                                  includearrivals=True)
     except fdsn.header.FDSNNoDataException:
-        print(' ------------------------------ Sem dados ------------------------------ ')
+        print(' ----------------------- Sem dados -------------------------- ')
         print(f"No data for the period {start_time} to {end_time}.")
         return None
 
@@ -297,15 +309,16 @@ def gera_catalogo_datetime(start_time, end_time, network_id, mode):
     while start_time < end_time:
         print(f" -> Data de Início: {start_time.date}")
         print(f" -> Data de Fim:    {end_time.date}")
-        taa = UTCDateTime(start_time.datetime + relativedelta(months=1)) if mode == "m" else end_time
+        taa = UTCDateTime(start_time.datetime + relativedelta(months=1))\
+            if mode == "m" else end_time
         print('')
-        print(' ------------------------------ Acessando Catálogo ------------------------------ ')
+        print(' -------------------- Acessando Catálogo -------------------- ')
         try:
             catalog = client.get_events(starttime=start_time,
                                         endtime=end_time,
                                         includearrivals=True)
         except fdsn.header.FDSNNoDataException:
-            print(' ------------------------------ Sem dados ------------------------------ ')
+            print(' -------------------- Sem dados ------------------------- ')
             print(f"No data for the period {start_time} to {end_time}.")
             return None
 

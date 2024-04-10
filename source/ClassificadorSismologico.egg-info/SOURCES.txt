@@ -8,10 +8,7 @@ source/Core/BaixarFormaOnda.py
 source/Core/Exporter.py
 source/Core/Gerar_predcsv.py
 source/Core/IT_map.py
-source/Core/Inventario.py
-source/Core/ProcessarCatalogoSismo.py
-source/Core/ProcessarID.py
-source/Core/Processar_Dados_Sismicos.py
+source/Core/ProcessarDadosSismologicos.py
 source/Core/TempoViagem.py
 source/Core/__init__.py
 source/Core/make_xml.py
@@ -22,4 +19,6 @@ source/DataAnalysis/__init__.py
 source/DataAnalysis/shapley.py
 source/DataAnalysis/visualization.py
 source/Interface/Farejador.py
+source/Interface/SnufferFarejador.py
 source/Interface/__init__.py
+source/Interface/visualization.py
