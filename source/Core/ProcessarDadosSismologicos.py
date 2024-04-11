@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 # Python 3.11.8
-# ./Classificador_Sismologico/pyscripts/ProcessarID.py
+# ./Classificador_Sismologico/pyscripts/ProcessarDadosSismologicos.py
 
 # ----------------------------  DESCRIPTION  -----------------------------------
 # Script para gerar catálogo de eventos sísmicos
 # Autor: Gabriel Góes Rocha de Lima
-# Versão: 0.1
+# Versão: 0.2
 # Data: 2024-02-27
+# Modificação mais recente: 2024-04-10
 
 # ----------------------------  IMPORTS   -------------------------------------
 from obspy.clients import fdsn
@@ -15,18 +16,18 @@ from obspy.core.event.catalog import Catalog
 import sys
 import os
 from tqdm import tqdm
-from typing import List, Str, Dictionary
+from typing import List, Dict
 
 # ClassificadorSismologico
 from BaixarFormaOnda import iterate_events
-from utils import bkp_time, csv2list, delimt, inventory
+from utils import csv2list, delimt, inventory
 
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 # FUNÇÃO MAIN QUE CONTERÁ AS CHAMADAS DAS FUNÇÕES
 def main(IDs: List,
-         data_Client: Str,
-         data_Client_bkp: Str) -> [Catalog, Dictionary, List]:
+         data_Client: str,
+         data_Client_bkp: str) -> [Catalog, Dict, List]:
     '''
     Função para processar os eventos sísmicos a partir de um catálogo de
     eventos previamente adquirido e disponibilizado no formato de um arquivo csv.
@@ -60,14 +61,12 @@ def main(IDs: List,
         baixar=True)  # FUNÇÃO PRINCIPAL DO SCRIPT
 
     # SAVE MISSING_IDS LIST TO CSV FILE
-    os.mkdir('files/logs/erros/bkp', exist_ok=True)
-    if os.path.exists('files/logs/erros/*_missing_ids.csv'):
-        os.move('files/logs/erros/*_missing_ids.csv',
-                'files/logs/erros/bkp/')
-
-    with open('files/logs/erros/' + bkp_time + 'missing_ids.csv', 'w') as f:
-        for item in missing_ids:
-            f.write("%s\n" % item)
+    os.makedirs('files/logs/missing_ids/bkp', exist_ok=True)
+    # WRITE A CSV FILE WITH THE MISSING IDS
+    with open('files/logs/missing_ids/missing_ids.csv', 'w') as f:
+        f.write('ID\n')
+        for id in missing_ids:
+            f.write(f'{id}\n')
 
     return catalogo, inventory, missing_ids
 
@@ -89,6 +88,6 @@ if __name__ == "__main__":
 
     print(" --------- Iniciando o ProcessarID.py --------- ")
     catalogo, inentory, missin_ids = main(
-        IDs,
+        IDs[:100],
         data_Client,
         data_Client_bkp)

@@ -4,8 +4,9 @@
 # -----------------------------------------------------------------------------
 # ./ClassificadorSismologico/Sismo_Pipeline.sh
 # Autor: Gabriel Góes Rocha de Lima
-# Versão: 0.1
+# Versão: 0.2
 # Data: 2024-03-05
+# Modificado: 2024-04-10
 #
 
 # ----------------------------  DESCRIPTION  -----------------------------------
@@ -36,17 +37,18 @@ EVENTS=$(find files/ -maxdepth 1 -name "events-*.csv")
 ENERGYFIG="$HOME/lucas_bin/energy_fig.py"
 CREATEMAP="$HOME/lucas_bin/make_maps_"$CLIENT_ID".py"
 
-# PYTHON3=${PYTHON3:-"$HOME/.config/geo/bin/python3"}
-# SEISCOMP=${SEISCOMP:-"$HOME/softwares/seiscomp/bin/seiscomp"}
-# PYTHON3=${PYTHON3:-"$HOME/.pyenv/versions/sismologia/bin/python3"}
+SEISCOMP=${SEISCOMP:-"$HOME/softwares/seiscomp/bin/seiscomp"}
 # SEISCOMP=${SEISCOMP:-"/opt/seiscomp/bin/seiscomp"}
+PYTHON3=${PYTHON3:-"$HOME/.pyenv/versions/sismologia/bin/python3"}
 SISMOLOGIA=${SISMOLOGIA:-"$HOME/projetos/ClassificadorSismologico"}
 DELIMT1='########################################################################'
 
 # Define o diretório de logs e cria o arquivo de log
-LOG_DIR="$BASE_DIR/logs"
+LOG_DIR="$BASE_DIR/files/logs"
 mkdir -p $LOG_DIR
-LOG_FILE="$LOG_DIR/$(date +%Y%m%d%H%M%S)_Sismo_Pipeline.log"
+LOG_FILE="$LOG_DIR/Sismo_Pipeline.log"
+LOG_FILE_BKP="$LOG_DIR/.bkp/$(date +%Y%m%d%H%M%S)_Sismo_Pipeline.log"
+rm -f $LOG_FILE
 touch "$LOG_FILE"
 exec 1> >(tee -a "$LOG_FILE") 2>&1
 
@@ -62,7 +64,6 @@ echo ''
 PROCESSAR_SISMOS=${PROCESSAR_SISMOS:-true}
 if [ "$PROCESSAR_SISMOS" = true ]; then
     echo ' -> Executando ProcessarDadosSismologicos.py...'
-    # $SEISCOMP exec $PYTHON3 $SISMOLOGIA/source/Core/ProcessarDadosSismologicos.py $MOHO_CATALOG $CLIENT_ID
     python3 $SISMOLOGIA/source/Core/ProcessarDadosSismologicos.py $MOHO_CATALOG $CLIENT_ID
 fi
 
@@ -102,16 +103,20 @@ if [ "$PROCESS_ENERGY" = true ]; then
 fi
 
 # --------- ETAPA DE GERAR LISTA PARA CLASSIFICAÇÃO ( EVENTO | LABEL ) -----------
-PROCESS_PRED=${PROCESS_PRED:-false}
+PROCESS_PRED=${PROCESS_PRED:-true}
 if [ "$PROCESS_PRED" = true ]; then
     # chega se o arquivo de predições já existe, se existir, move para uma pasta de backup
-    if [ -f "files/pred-*.csv" ]; then
-        mv files/pred.csv files/outros_pred/
-    fi
     echo " ---------------- Iniciando o cria_pred.py ---------------------------- "
-    $PYTHON3 pyscripts/Gerar_predcsv.py
+    $PYTHON3 source/Core/Gerar_predcsv.py
 fi
 
+echo ''
+echo " Criando arquivos de backup..."
+cp $LOG_FILE $LOG_FILE_BKP
+cp files/catalogo/catalogo.csv files/catalogo/.bkp/catalogo.csv.$(date +%Y%m%d%H%M%S)
+cp files/logs/missing_ids/missing_ids.csv files/logs/missing_ids/.bkp/missing_ids.csv.$(date +%Y%m%d%H%M%S)
+cp files/logs/predcsv/pred.csv files/logs/predcsv/.bkp/pred.csv.$(date +%Y%m%d%H%M%S)
+echo " Arquivos de backup criados com sucesso!"
 echo ''
 echo " ---------------------- Fim do Pipeline --------------------------------"
 echo $DELIMT1

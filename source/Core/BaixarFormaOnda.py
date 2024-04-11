@@ -21,6 +21,8 @@ from tqdm import tqdm
 from utils import MSEED_DIR
 from utils import get_sta_xy, delimt, delimt2
 
+from typing import List, Dict
+
 
 # --------------------------------- FUNÇÕES ---------------------------------- #
 # Fixa a semente para garantir a reprodução
@@ -72,18 +74,29 @@ def download_and_save_waveforms_random(data_client, data_client_bkp,
     return st
 
 
-def iterate_events(eventos, data_client, data_client_bkp, inventario, baixar=False):
+def iterate_events(eventos: List,
+                   data_client: str,
+                   data_client_bkp: str,
+                   inventario: Dict,
+                   baixar=False) -> None:
     '''
     Baixa a forma de onda (.mseed) de um evento sísmico se a estação estiver a menos de 400 km do epicentro.
+    Parâmetros:
+    - eventos: Lista de eventos sísmicos    (List)  -> Lista de objetos Event
+    - data_client: Cliente para baixar dados (str)   -> Nome do cliente principal
+    - data_client_bkp: Cliente de backup      (str)   -> Nome do cliente de backup
+    - inventario: Dicionário de inventário    (Dict)  -> Dicionário de inventário de estações
+    - baixar: Baixar dados sismicos           (bool)  -> Se True, baixa os dados sismicos
     '''
     # Agora, tanto print() quanto print(f'') serão exibidos no terminal e escritos em output.txt
     print(' --> Iterando sobre eventos')
     print(f' - Número de eventos: {len(eventos)}')
     print(f' - Client: {data_client.base_url}')
     print(f' - Client Backup: {data_client_bkp.base_url}')
-    print(f' - Itens no Inventário: {len(inventario)}')
+    print(f' - Estações no Inventário: {len(inventario)}')
     input("Press Enter to continue ...\n")
     data_to_save = []  # Lista para coletar os dados que serão salvos no CSV
+    error_to_save = []
     event_count = 0
     for evento in tqdm(eventos):
         event_id = evento.resource_id.id.split("/")[-1]
@@ -91,6 +104,8 @@ def iterate_events(eventos, data_client, data_client_bkp, inventario, baixar=Fal
         print(f'############ Event {event_count}: {event_id} ############\n')
         # Get number of picks in event
         if not evento.picks:
+            error_to_save.append({'ID': event_id,
+                                  'Error': 'Sem picks'})
             print('Sem picks')
             print(delimt)
             continue
@@ -107,6 +122,12 @@ def iterate_events(eventos, data_client, data_client_bkp, inventario, baixar=Fal
             if pick.phase_hint not in ['P', 'Pg', 'Pn']:
                 # print(f" - Pick {pick.phase_hint} != 'P', continue")
                 # print(delimt)
+                error_to_save.append({'ID': event_id,
+                                      'Origin Time': origin_time,
+                                      'Latitude': origem_lat,
+                                      'Longitude': origem_lon,
+                                      'Phase': pick.phase_hint,
+                                      'Error': 'pick.phase_hint not in [P, Pg, Pn]'})
                 continue
 
             pick_count += 1
@@ -117,8 +138,18 @@ def iterate_events(eventos, data_client, data_client_bkp, inventario, baixar=Fal
             loc = pick.waveform_id.location_code
             print(f' - Net: {net}\n - Sta: {sta}')
 
-            sta_lat, sta_lon = get_sta_xy(net, sta, inventario)  # Assume que get_sta_xy retorna (latitude, longitude)
+            sta_lat, sta_lon = get_sta_xy(net, sta, inventario)
             if sta_lat is None or sta_lon is None:
+                error_to_save.append({'ID': event_id,
+                                      'Pick': pick.phase_hint,
+                                      'Network': net,
+                                      'Station': sta,
+                                      'Latitude': sta_lat,
+                                      'Longitude': sta_lon,
+                                      'Channel': cha,
+                                      'Location': loc,
+                                      'Error': 'sta_lat or sta_lon is None'
+                                      })
                 continue
 
             print(f' - X,Y {net}.{sta}: {sta_lat}, {sta_lon}')
@@ -130,6 +161,17 @@ def iterate_events(eventos, data_client, data_client_bkp, inventario, baixar=Fal
             if dist_km > 400:
                 print("Estação a mais de 400 km do epicentro, forma de onda não será baixada.")
                 print(delimt)
+                error_to_save.append({'ID': event_id,
+                                      'Pick': pick.phase_hint,
+                                      'Network': net,
+                                      'Station': sta,
+                                      'Latitude': sta_lat,
+                                      'Longitude': sta_lon,
+                                      'Channel': cha,
+                                      'Location': loc,
+                                      'Distance': dist_km,
+                                      'Error': 'dist_km > 400 km'
+                                      })
                 continue
 
             if baixar:
@@ -154,12 +196,40 @@ def iterate_events(eventos, data_client, data_client_bkp, inventario, baixar=Fal
                     print(f' - Saving File: {dir_name}/{net}_{sta}_{dir_name}.mseed')
 
                 except Exception as e:
+                    error_to_save.append({'ID': event_id,
+                                          'Pick': pick.phase_hint,
+                                          'Network': net,
+                                          'Station': sta,
+                                          'Latitude': sta_lat,
+                                          'Longitude': sta_lon,
+                                          'Channel': cha,
+                                          'Location': loc,
+                                          'Distance': dist_km,
+                                          'Pick Time': pick_time,
+                                          'Start Time': start_time,
+                                          'End Time': end_time,
+                                          'Error': f'Error downloading waveform: {e}'
+                                          })
                     print(f"Error downloading waveform: {e}")
 
                 try:
                     magnitude = evento.preferred_magnitude().mag
                 except Exception as e:
                     print(f" -> Erro ao obter magnitude: {e}")
+                    error_to_save.append({'ID': event_id,
+                                          'Pick': pick.phase_hint,
+                                          'Network': net,
+                                          'Station': sta,
+                                          'Latitude': sta_lat,
+                                          'Longitude': sta_lon,
+                                          'Channel': cha,
+                                          'Location': loc,
+                                          'Distance': dist_km,
+                                          'Pick Time': pick_time,
+                                          'Start Time': start_time,
+                                          'End Time': end_time,
+                                          'Error': f'Error getting magnitude: {e}'
+                                          })
                     magnitude = "None"
 
                 # Aqui, você deve ajustar de acordo com os dados exatos que você quer salvar.
@@ -173,7 +243,17 @@ def iterate_events(eventos, data_client, data_client_bkp, inventario, baixar=Fal
                     'Distance': dist_km,
                     'Folder': dir_name,
                     'Cat': evento.event_type,  # Substitua pela categoria do evento, se aplicável
-                    'Certainty': evento.event_type_certainty  # Substitua pela certeza do evento, se aplicável
+                    'Certainty': evento.event_type_certainty,  # Substitua pela certeza do evento, se aplicável
+                    'Pick': pick.phase_hint,
+                    'Network': net,
+                    'Station': sta,
+                    'Channel': cha,
+                    'Location': loc,
+                    'Pick Time': pick_time,
+                    'Start Time': start_time,
+                    'End Time': end_time,
+                    'Stream Count': stream_count,
+                    'Error': 'None',
                 })
 
                 print(delimt)
@@ -184,14 +264,27 @@ def iterate_events(eventos, data_client, data_client_bkp, inventario, baixar=Fal
         print(delimt2)
 
     # Escrever os dados coletados no arquivo CSV
-    csv_file_path = './files/events-moho-catalog.csv'  # Substitua pelo caminho correto
+    csv_file_path = './files/catalogo/catalogo.csv'  # Substitua pelo caminho correto
     with open(csv_file_path, mode='w', newline='\n', encoding='utf-8') as csv_file:
-        fieldnames = ['ID', 'Hora de Origem (UTC)', 'Longitude', 'Latitude', 'MLv', 'Distance', 'Folder', 'Cat', 'Certainty']
+        fieldnames = ['ID', 'Hora de Origem (UTC)', 'Longitude', 'Latitude', 'MLv', 'Distance', 'Folder', 'Cat', 'Certainty',
+                      'Pick', 'Network', 'Station', 'Channel', 'Location', 'Pick Time', 'Start Time', 'End Time', 'Stream Count', 'Error']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
         for data in data_to_save:
             writer.writerow(data)
 
     print(f'Dados salvos com sucesso em {csv_file_path}')
+
+    # Escrever os erros no arquivo CSV
+    csv_error_path = './files/catalogo/erros.csv'
+    with open(csv_error_path, mode='w', newline='\n', encoding='utf-8') as csv_file:
+        fieldnames = ['ID', 'Error', 'Pick', 'Network', 'Station', 'Latitude', 'Longitude',
+                      'Channel', 'Location', 'Distance', 'Pick Time', 'Start Time', 'End Time']
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        writer.writeheader()
+        for data in error_to_save:
+            writer.writerow(data)
+
+    print(f'Erros salvos com sucesso em {csv_error_path}')
 
     return None

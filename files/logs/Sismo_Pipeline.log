@@ -1,0 +1,39 @@
+
+########################################################################
+ ---------------- Iniciando do Pipeline --------------------------------
+
+ -> Executando ProcessarDadosSismologicos.py...
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 23, in <module>
+    from utils import csv2list, delimt, inventory
+ImportError: cannot import name 'inventory' from 'utils' (/home/ipt/projetos/ClassificadorSismologico/source/Core/utils.py)
+ ---------------- Iniciando o cria_pred.py ---------------------------- 
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/Core/Gerar_predcsv.py", line 10, in <module>
+    df_events = pd.read_csv(caminho_csv, sep=';')  # Lendo com o separador correto
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: './files/events-all.csv'
+
+ Criando arquivos de backup...
+cp: não foi possível obter estado de 'files/catalogo/catalogo.csv': Arquivo ou diretório inexistente
+cp: não foi possível obter estado de 'files/logs/predcsv/pred.csv': Arquivo ou diretório inexistente
+ Arquivos de backup criados com sucesso!
+
+ ---------------------- Fim do Pipeline --------------------------------
+########################################################################
+

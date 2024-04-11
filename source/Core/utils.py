@@ -19,13 +19,13 @@
 # ----------------------------  IMPORTS   -------------------------------------
 from datetime import datetime
 import os
-import xml.etree.ElementTree as ET
 import sys
+import pandas as pd
+import xml.etree.ElementTree as ET
 
 from obspy import UTCDateTime
 from obspy.clients.fdsn import Client as fdsn
 from dateutil.relativedelta import relativedelta
-from obspy import read_inventory
 
 # FUNÇÃO ADAPATADA DE fdsnws.py ( CÓDIGO DE M. BIANCHI )
 from Core import Exporter
@@ -52,10 +52,6 @@ delimt2 = "#####################################################\n"
 
 # Configura string de data para salvar arquivos
 bkp_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-
-# Caminho para diretório de invetário de redes sismológicas
-path_inventario = PROJETO_DIR + '/files/inventario/'
-list_inventarios = os.listdir(path_inventario)
 
 
 # ---------------------------- FUNÇÕES ----------------------------------------
@@ -103,120 +99,6 @@ def csv2list(csv_file: str,
             return [line.split(',')[0] for line in lines[1:]]
 
 
-# Função para ler um .txt e extrair o Netorw, Station e Latitute, Longitude
-# e Depth e salvar  em um dicionário.
-def cria_sta_dic(file: str,
-                 dic):
-    '''
-    Recebe:
-        file: caminho do arquivo .txt com informações da rede sismológica
-         dic: Dicionário possivelmente vazio ou com prévias informações de
-             network, station, latitude, longitude e depth.
-
-    Retorna:
-        Dicionário com as informações de network, station, latitude,
-        longitude e depth de cada estação.
-
-    Exemplo de arquivo .txt:
-
-    #Network|Station|Location|Channel|Latitude|Longitude|Elevation|Depth|\
-    Azimuth|Dip|SensorDescription|Scale|ScaleFreq|ScaleUnits|SampleRate|\
-    StartTime|EndTime
-
-    BR|AGBLB||BHE|-9.03868|-37.045358|448.0|0.0|90.0|0.0|STS-2, 120 s,\
-    1500 V/m/s, generation 1 electronics|936717000.0|0.05|M/S|40.0|\
-    2010-05-10T00:38:13.615|2012-09-14T00:44:13.24
-
-    '''
-    if not dic:
-        dic = {}
-
-    # print(f' - Arquivo: {file}')
-
-    with open(file, 'r') as f:
-        header = f.readline().strip().split('|')
-        header = [h.replace('#', '') for h in header]
-        idx_network = header.index('Network')
-        idx_station = header.index('Station')
-        idx_location = header.index('Location')
-        idx_latitude = header.index('Latitude')
-        idx_longitude = header.index('Longitude')
-        idx_depth = header.index('Depth')
-
-        for line in f:
-            line = line.strip().split('|')
-            network = line[idx_network]
-            station = line[idx_station]
-            location = line[idx_location]
-            latitude = float(line[idx_latitude])
-            longitude = float(line[idx_longitude])
-            depth = float(line[idx_depth])
-
-            key = f"{network}.{station}"
-            if key not in dic:
-                dic[key] = []
-
-            dic[key].append({
-                'network': network,
-                'station': station,
-                'location': location,
-                'latitude': latitude,
-                'longitude': longitude,
-                'depth': depth
-            })
-
-    return dic
-
-
-def get_inventory_from_xml(file: str,
-                           dic):
-    '''
-    Lê um arquivo XML e extrai informações da rede sismológica para atualizar
-    ou criar um dicionário.
-
-    Parâmetros:
-        file: caminho para o arquivo XML com as informações da rede
-              sismológica.
-        dic: dicionário possivelmente vazio ou com informações prévias de
-             network, station, latitude, longitude e depth.
-
-    Retorna:
-        Dicionário atualizado com as informações de network, station, latitude,
-        longitude e depth de cada estação.
-    '''
-    if dic is None:
-        dic = {}
-
-    # Carrega o conteúdo do XML
-    tree = ET.parse(file)
-    root = tree.getroot()
-    # Namespace para buscar as tags corretamente
-    ns = {'ns': 'http://www.fdsn.org/xml/station/1'}
-
-    # Itera sobre cada estação no XML
-    for network in root.findall('ns:Network', ns):
-        network_code = network.get('code')
-        for station in network.findall('ns:Station', ns):
-            station_code = station.get('code')
-            latitude = station.find('ns:Latitude', ns).text
-            longitude = station.find('ns:Longitude', ns).text
-            #  elevation = station.find('ns:Elevation', ns).text
-            # Gera a chave única para cada estação
-            key = f"{network_code}.{station_code}"
-            # Verifica se a estação já existe no dicionário
-            if key not in dic:
-                dic[key] = []
-            # Adiciona ou atualiza a entrada da estação no dicionário
-            dic[key].append({
-                'network': network_code,
-                'station': station_code,
-                'latitude': float(latitude),
-                'longitude': float(longitude),
-                # 'depth': float(elevation)
-            })
-    return dic
-
-
 # Função para pegar o a ('net.sta','lat','lon','depth')
 # e retornar um dicionário com as informações
 def get_sta_xy(net, sta, inventario):
@@ -231,54 +113,23 @@ def get_sta_xy(net, sta, inventario):
         return None, None
 
 
-def constroi_inventario():
-    # CONSTROI O INVENTARIO DE ESTAÇÕES
-    inventario = {}
-    print(' --> Inventário de Estações:')
-    for file in list_inventarios:
-        # CHECK IF THE FILE IS A .TXT
-        if file.endswith('.txt'):
-            txt = file
-            print(f' - Arquivo: {txt}')
-            inventario = cria_sta_dic('./files/inventario/' + txt, inventario)
-        print(f' - {len(inventario)}')
-    inventory = get_inventory_from_xml(
-        'files/inventario/inventario_rsbr.xml',
-        inventario)
-    print(delimt)
+# para cada arquivo em um diretório, se for txt, lê e retorna um dataframe
+def text2dataframe(directory):
+    df_txt = pd.DataFrame()
+    df_xml = pd.DataFrame()
 
-    return inventory, inventario
-
-
-inventory = constroi_inventario()
-
-
-# FUNÇÃO PARA GERAR INVENTÁRIO DE ESTAÇÕES SISMOLÓGICAS
-def gera_inventario_txt(inv):
-    inv = read_inventory("files/inventario.xml")
-    inventario_txt = open("files/inventario.txt", "w")
-    inventario_txt.write("Station,Latitude,Longitude\n")
-    # cria um arquivo de texto com station code, latitude e longitude
-    for network in inv:
-        for station in network:
-            lat = station.latitude
-            lon = station.longitude
-            inventario_txt.write(f"{station.code},{lat},{lon}\n")
-
-
-# Função que chama o exporter.feed(event, origin, magnitude, network_id)
-def write_event_data(event, exporter, network_id):
-    origin = event.preferred_origin()
-    magnitude = event.preferred_magnitude()
-    return exporter.feed(event, origin, magnitude, network_id)
-
-
-def write_catalog(catalog, filename, network_id):
-    with Exporter(where=filename) as exporter:
-        print(f" --> Catalogo com {len(catalog)} eventos.")
-        for event in catalog:
-            if not write_event_data(event, exporter, network_id):
-                print(f"Skipped event {event.resource_id.id}")
+    for filename in os.listdir(directory):
+        if filename.endswith(".txt"):
+            with open(os.path.join(directory, filename), 'r') as f:
+                # concatena os dataframes
+                df_txt = pd.concat([df_txt, pd.read_csv(f, sep='\t')])
+                print(df_txt.shape)
+        elif filename.endswith(".xml"):
+            with open(os.path.join(directory, filename), 'r') as f:
+                # concatena os dataframes
+                df_xml = pd.concat([df_xml, pd.read_csv(f, sep='\t')])
+                print(df_xml.shape)
+    return df_txt, df_xml
 
 
 # FUNÇÃO PARA ADQUIRIR EVENTOS DO CLIENT
@@ -293,7 +144,7 @@ def get_catalog(client, start_time, end_time):
         return None
 
 
-# --------------------------------------------------------------------------- #
+# ---------------------------- FUNÇÕES OBSOLETE -------------------------------
 # Função que retorna o catalogo de enventos sismicos de acordo com o periodo
 def gera_catalogo_datetime(start_time, end_time, network_id, mode):
     if network_id == 'USP':
@@ -325,3 +176,54 @@ def gera_catalogo_datetime(start_time, end_time, network_id, mode):
         # Termina o while com starttime = endtime
         start_time = taa
     return catalog
+
+
+# Função que chama o exporter.feed(event, origin, magnitude, network_id)
+def write_event_data(event, exporter, network_id):
+    origin = event.preferred_origin()
+    magnitude = event.preferred_magnitude()
+    return exporter.feed(event, origin, magnitude, network_id)
+
+
+def write_catalog(catalog, filename, network_id):
+    with Exporter(where=filename) as exporter:
+        print(f" --> Catalogo com {len(catalog)} eventos.")
+        for event in catalog:
+            if not write_event_data(event, exporter, network_id):
+                print(f"Skipped event {event.resource_id.id}")
+
+
+def parse_inventory_txt(file_path):
+    df = pd.read_csv(file_path, sep='|', comment='#')
+    df['key'] = df['Network'] + '.' + df['Station']
+    return df
+
+
+def parse_inventory_xml(file_path):
+    tree = ET.parse(file_path)
+    root = tree.getroot()
+    all_stations = []
+    for network in root.findall('.//{http://www.fdsn.org/xml/station/1}Network'):
+        network_code = network.get('code')
+        for station in network.findall('.//{http://www.fdsn.org/xml/station/1}Station'):
+            station_code = station.get('code')
+            latitude = float(station.find('{http://www.fdsn.org/xml/station/1}Latitude').text)
+            longitude = float(station.find('{http://www.fdsn.org/xml/station/1}Longitude').text)
+            all_stations.append({'Network': network_code, 'Station': station_code, 'Latitude': latitude, 'Longitude': longitude, 'key': f"{network_code}.{station_code}"})
+    return pd.DataFrame(all_stations)
+
+def consolidate_inventory(inventory_files):
+    inventory_df = pd.DataFrame()
+    for file_path in inventory_files:
+        if file_path.endswith('.txt'):
+            inventory_df = pd.concat([inventory_df, parse_inventory_txt(file_path)])
+        elif file_path.endswith('.xml'):
+            inventory_df = pd.concat([inventory_df, parse_inventory_xml(file_path)])
+    return inventory_df.set_index('key')
+
+
+# Example usage:
+inventory_files = ['./files/inventario/inventario_moho_BL.txt',
+                   './files/inventario/inventario_rsbr.xml']
+inventory = consolidate_inventory(inventory_files)
+print(inventory.head())
