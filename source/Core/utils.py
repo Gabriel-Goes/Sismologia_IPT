@@ -24,8 +24,10 @@ import pandas as pd
 import xml.etree.ElementTree as ET
 
 from obspy import UTCDateTime
-from obspy.clients.fdsn import Client as fdsn
 from dateutil.relativedelta import relativedelta
+
+from obspy.clients import fdsn
+from obspy.clients.fdsn.client import Client
 
 # FUNÇÃO ADAPATADA DE fdsnws.py ( CÓDIGO DE M. BIANCHI )
 from Core import Exporter
@@ -36,6 +38,14 @@ from Core import Exporter
 PROJETO_DIR = os.environ['HOME'] + "/projetos/ClassificadorSismologico"
 # Nome da pasta mseed
 MSEED_DIR = PROJETO_DIR + "/files/mseed"
+
+# Clientes para acessar os dados
+try:
+    data_Client = Client('http://seisarc.sismo.iag.usp.br/')
+except Exception as e:
+    print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
+    sys.exit(1)
+data_Client_bkp = Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
 
 # Dicionário de Netowrk ID
 # MOHO IAG = https://www.moho.iag.usp.br/fdsnws/ -> 'USP'
@@ -120,6 +130,7 @@ def get_sta_xy(net, sta, cha, inventario):
     except Exception as e:
         print(f"An error occurred while fetching coordinates for {key}: {str(e)}")
     return None, None
+
 
 # para cada arquivo em um diretório, se for txt, lê e retorna um dataframe
 def text2dataframe(directory):

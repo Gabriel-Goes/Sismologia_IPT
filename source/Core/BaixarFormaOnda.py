@@ -16,25 +16,34 @@ import numpy as np
 import csv
 import os
 from tqdm import tqdm
-# Utilizar o Logging
-# import logging
+# import logging  # Utilizar o Logging
 
 # NOSSAS FUNÇÕES
 from Core.utils import MSEED_DIR
-from Core.utils import get_sta_xy, delimt, delimt2
+from Core.utils import delimt, delimt2
+from Core.utils import data_Client
 
 from typing import List, Dict
 
 
 # --------------------------------- FUNÇÕES ---------------------------------- #
 # Fixa a semente para garantir a reprodução
-def download_and_save_waveforms_random(data_client, data_client_bkp,
-                                       net, sta, loc, chn,
-                                       pick_time, origin_time):
-    np.random.seed(42)
-    random_offset = np.random.randint(5, 21)
-    start_time = pick_time - random_offset
-    end_time = start_time + 60  # Mantém a janela de 60 segundos
+def download_and_save_waveforms_random(
+        data_client, data_client_bkp,
+        net, sta, loc, chn,
+        pick_time, origin_time,
+        random=False):
+    '''
+
+    '''
+    if random:
+        np.random.seed(42)
+        random_offset = np.random.randint(10, 21)
+        start_time = pick_time - random_offset
+        end_time = start_time + 60  # Mantém a janela de 60 segundos
+    else:
+        start_time = pick_time - 10
+        end_time = start_time + 50
 
     try:
         st = data_client.get_waveforms(
@@ -80,7 +89,8 @@ def iterate_events(eventos: List,
                    data_client: str,
                    data_client_bkp: str,
                    inventario: Dict,
-                   baixar=False) -> None:
+                   baixar=False,
+                   renadom=False) -> None:
     '''
     Baixa a forma de onda (.mseed) de um evento sísmico se a estação estiver a menos de 400 km do epicentro.
     Parâmetros:
@@ -100,6 +110,7 @@ def iterate_events(eventos: List,
     data_to_save = []  # Lista para coletar os dados que serão salvos no CSV
     error_to_save = []
     event_count = 0
+    inv = data_Client.get_stations(level='channel')
     for evento in tqdm(eventos):
         event_id = evento.resource_id.id.split("/")[-1]
         event_count += 1
@@ -121,10 +132,14 @@ def iterate_events(eventos: List,
         stream_count = 0
         for pick in evento.picks:
             # Se pick.phase_hint for diferente de P ou Pg, continue
-            if pick.phase_hint not in ['P', 'Pg', 'Pn']:
-                # print(f" - Pick {pick.phase_hint} != 'P', continue")
-                # print(delimt)
+            if pick.phase_hint not in ['P', 'Pg', 'Pn'] or\
+                    pick.waveform_id.channel_code[:1] != 'H':
+
                 error_to_save.append({'ID': event_id,
+                                      'Network': pick.waveform_id.network_code,
+                                      'Station': pick.waveform_id.station_code,
+                                      'Location': pick.waveform_id.location_code,
+                                      'Channel': pick.waveform_id.channel_code,
                                       'Origin Time': origin_time,
                                       'Latitude': origem_lat,
                                       'Longitude': origem_lon,
@@ -138,8 +153,17 @@ def iterate_events(eventos: List,
             sta = pick.waveform_id.station_code
             cha = pick.waveform_id.channel_code
             loc = pick.waveform_id.location_code
-            print(f' - Net: {net}\n - Sta: {sta}')
-            sta_lat, sta_lon = get_sta_xy(net, sta, cha, inventario)
+            print(f' - Net: {net}\n - Sta: {sta}\n - Cha: {cha}\n - Loc: {loc}')
+            cha = cha[:-1] + 'Z'  # Substitui o último caractere por '*'
+            if loc is None:
+                loc = ''
+            seed_id = f'{net}.{sta}.{loc}.{cha}'
+            print(f' - Seed ID: {seed_id} ')
+
+            cha_meta = inv.get_channel_metadata(seed_id)
+
+            sta_lat = cha_meta['latitude']
+            sta_lon = cha_meta['longitude']
             if not sta_lat or not sta_lon:
                 error_to_save.append({'ID': event_id,
                                       'Pick': pick.phase_hint,
@@ -151,7 +175,7 @@ def iterate_events(eventos: List,
                                       'Location': loc,
                                       'Error': 'sta_lat or sta_lon is None'
                                       })
-                print(f' - sta_lat or sta_lon is None')
+                print(' - sta_lat or sta_lon is None')
                 continue
 
             print(f' - {net}.{sta} X,Y : {sta_lat}, {sta_lon}')

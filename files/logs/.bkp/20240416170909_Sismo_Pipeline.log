@@ -1702,8 +1702,3 @@ Traceback (most recent call last):
 Exception: No matching channel metadata found.
 
  Criando arquivos de backup...
- Arquivos de backup criados com sucesso!
-
- ---------------------- Fim do Pipeline --------------------------------
-########################################################################
-
