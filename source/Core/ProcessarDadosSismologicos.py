@@ -19,8 +19,8 @@ from tqdm import tqdm
 from typing import List, Dict
 
 # ClassificadorSismologico
-from BaixarFormaOnda import iterate_events
-from utils import csv2list, delimt, inventory
+from Core.BaixarFormaOnda import iterate_events
+from Core.utils import csv2list, delimt, inventory
 
 
 # ---------------------------- FUNÇÕES ----------------------------------------
@@ -78,7 +78,11 @@ if __name__ == "__main__":
 
     moho_catalog_csv = sys.argv[1]
     IDs = csv2list(moho_catalog_csv, data=None)  # ADICIONE O ANO MAIS ANTIGO
-    data_Client = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
+    try:
+        data_Client = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
+    except Exception as e:
+        print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
+        sys.exit(1)
     data_Client_bkp = fdsn.Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
 
     print(f' --> Client:\n  {data_Client.base_url}')

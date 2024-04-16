@@ -16,10 +16,12 @@ import numpy as np
 import csv
 import os
 from tqdm import tqdm
+# Utilizar o Logging
+# import logging
 
 # NOSSAS FUNÇÕES
-from utils import MSEED_DIR
-from utils import get_sta_xy, delimt, delimt2
+from Core.utils import MSEED_DIR
+from Core.utils import get_sta_xy, delimt, delimt2
 
 from typing import List, Dict
 
@@ -126,7 +128,7 @@ def iterate_events(eventos: List,
                                       'Origin Time': origin_time,
                                       'Latitude': origem_lat,
                                       'Longitude': origem_lon,
-                                      'Phase': pick.phase_hint,
+                                      'Pick': pick.phase_hint,
                                       'Error': 'pick.phase_hint not in [P, Pg, Pn]'})
                 continue
 
@@ -137,9 +139,8 @@ def iterate_events(eventos: List,
             cha = pick.waveform_id.channel_code
             loc = pick.waveform_id.location_code
             print(f' - Net: {net}\n - Sta: {sta}')
-
-            sta_lat, sta_lon = get_sta_xy(net, sta, inventario)
-            if sta_lat is None or sta_lon is None:
+            sta_lat, sta_lon = get_sta_xy(net, sta, cha, inventario)
+            if not sta_lat or not sta_lon:
                 error_to_save.append({'ID': event_id,
                                       'Pick': pick.phase_hint,
                                       'Network': net,
@@ -150,10 +151,10 @@ def iterate_events(eventos: List,
                                       'Location': loc,
                                       'Error': 'sta_lat or sta_lon is None'
                                       })
+                print(f' - sta_lat or sta_lon is None')
                 continue
 
-            print(f' - X,Y {net}.{sta}: {sta_lat}, {sta_lon}')
-
+            print(f' - {net}.{sta} X,Y : {sta_lat}, {sta_lon}')
             dist, az, baz = gps2dist_azimuth(origem_lat, origem_lon, sta_lat, sta_lon)
             dist_km = dist / 1000  # Converte de metros para quilômetros
             print(f' - Distância até o epicentro: {dist_km} km')
@@ -206,6 +207,7 @@ def iterate_events(eventos: List,
                                           'Location': loc,
                                           'Distance': dist_km,
                                           'Pick Time': pick_time,
+                                          'Origin Time': origin_time,
                                           'Start Time': start_time,
                                           'End Time': end_time,
                                           'Error': f'Error downloading waveform: {e}'
@@ -226,6 +228,7 @@ def iterate_events(eventos: List,
                                           'Location': loc,
                                           'Distance': dist_km,
                                           'Pick Time': pick_time,
+                                          'Origin Time': origin_time,
                                           'Start Time': start_time,
                                           'End Time': end_time,
                                           'Error': f'Error getting magnitude: {e}'
@@ -250,6 +253,7 @@ def iterate_events(eventos: List,
                     'Channel': cha,
                     'Location': loc,
                     'Pick Time': pick_time,
+                    'Origin Time': origin_time,
                     'Start Time': start_time,
                     'End Time': end_time,
                     'Stream Count': stream_count,
@@ -267,7 +271,7 @@ def iterate_events(eventos: List,
     csv_file_path = './files/catalogo/catalogo.csv'  # Substitua pelo caminho correto
     with open(csv_file_path, mode='w', newline='\n', encoding='utf-8') as csv_file:
         fieldnames = ['ID', 'Hora de Origem (UTC)', 'Longitude', 'Latitude', 'MLv', 'Distance', 'Folder', 'Cat', 'Certainty',
-                      'Pick', 'Network', 'Station', 'Channel', 'Location', 'Pick Time', 'Start Time', 'End Time', 'Stream Count', 'Error']
+                      'Pick', 'Network', 'Station', 'Channel', 'Location', 'Pick Time', 'Origin Time', 'Start Time', 'End Time', 'Stream Count', 'Error']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
         for data in data_to_save:
@@ -279,7 +283,7 @@ def iterate_events(eventos: List,
     csv_error_path = './files/catalogo/erros.csv'
     with open(csv_error_path, mode='w', newline='\n', encoding='utf-8') as csv_file:
         fieldnames = ['ID', 'Error', 'Pick', 'Network', 'Station', 'Latitude', 'Longitude',
-                      'Channel', 'Location', 'Distance', 'Pick Time', 'Start Time', 'End Time']
+                      'Channel', 'Location', 'Distance', 'Pick Time', 'Origin Time', 'Start Time', 'End Time']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
         for data in error_to_save:

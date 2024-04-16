@@ -28,7 +28,7 @@ DATES=${4:-"$INICIO $FIM"}
 
 # Define um diretório base, todas as funções são relativas a este diretório base,
 BASE_DIR=${BASE_DIR:-"$HOME/projetos/ClassificadorSismologico"}
-MOHO_CATALOG="$BASE_DIR/files/catalogo/catalogo-moho.csv"
+MOHO_CATALOG="$BASE_DIR/files/catalogo/catalogo-moho_bkp.csv"
 cd $BASE_DIR
 mkdir -p files
 mkdir -p figures
@@ -64,7 +64,14 @@ echo ''
 PROCESSAR_SISMOS=${PROCESSAR_SISMOS:-true}
 if [ "$PROCESSAR_SISMOS" = true ]; then
     echo ' -> Executando ProcessarDadosSismologicos.py...'
-    python3 $SISMOLOGIA/source/Core/ProcessarDadosSismologicos.py $MOHO_CATALOG $CLIENT_ID
+    $PYTHON3 $SISMOLOGIA/source/Core/ProcessarDadosSismologicos.py $MOHO_CATALOG $CLIENT_ID
+    echo ''
+    echo " Criando arquivos de backup..."
+    cp $LOG_FILE $LOG_FILE_BKP
+    [[ -f files/catalogo/catalogo.csv ]] && cp files/catalogo/catalogo.csv files/catalogo/.bkp/catalogo.csv.$(date +%Y%m%d%H%M%S)
+    [[ -f files/logs/missing_ids/missing_ids.csv ]] && cp files/logs/missing_ids/missing_ids.csv files/logs/missing_ids/.bkp/missing_ids.csv.$(date +%Y%m%d%H%M%S)
+    echo " Arquivos de backup criados com sucesso!"
+    echo ''
 fi
 
 # ------------------------- ETAPA DE GERAR MAPAS  -----------------------------
@@ -89,6 +96,10 @@ if [ "$PROCESS_MAPS" = true ]; then
             mv $i files/
             mv *png figures
     done
+    echo ''
+    echo " Criando arquivos de backup..."
+    echo " Arquivos de backup criados com sucesso!"
+    echo ''
 fi
 
 # ----------------- ETAPA DE GERAR FIGURAS DE ENERGIA  ------------------------
@@ -100,24 +111,25 @@ if [ "$PROCESS_ENERGY" = true ]; then
     $PYTHON $ENERGYFIG $OUTPUT
     echo "Cleaning up..."
     mv events*.csv files/
+    echo ''
+    echo " Criando arquivos de backup..."
+    echo " Arquivos de backup criados com sucesso!"
+    echo ''
 fi
 
 # --------- ETAPA DE GERAR LISTA PARA CLASSIFICAÇÃO ( EVENTO | LABEL ) -----------
-PROCESS_PRED=${PROCESS_PRED:-true}
+PROCESS_PRED=${PROCESS_PRED:-false}
 if [ "$PROCESS_PRED" = true ]; then
     # chega se o arquivo de predições já existe, se existir, move para uma pasta de backup
     echo " ---------------- Iniciando o cria_pred.py ---------------------------- "
     $PYTHON3 source/Core/Gerar_predcsv.py
+    echo ''
+    echo " Criando arquivos de backup..."
+    cp files/logs/predcsv/pred.csv files/logs/predcsv/.bkp/pred.csv.$(date +%Y%m%d%H%M%S)
+    echo " Arquivos de backup criados com sucesso!"
+    echo ''
 fi
 
-echo ''
-echo " Criando arquivos de backup..."
-cp $LOG_FILE $LOG_FILE_BKP
-cp files/catalogo/catalogo.csv files/catalogo/.bkp/catalogo.csv.$(date +%Y%m%d%H%M%S)
-cp files/logs/missing_ids/missing_ids.csv files/logs/missing_ids/.bkp/missing_ids.csv.$(date +%Y%m%d%H%M%S)
-cp files/logs/predcsv/pred.csv files/logs/predcsv/.bkp/pred.csv.$(date +%Y%m%d%H%M%S)
-echo " Arquivos de backup criados com sucesso!"
-echo ''
 echo " ---------------------- Fim do Pipeline --------------------------------"
 echo $DELIMT1
 echo ''

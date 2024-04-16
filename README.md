@@ -61,8 +61,8 @@ derivados).
 ### Clone do Repositório
 ```bash
 mkdir ~/projetos/  # CRIE ESTE DIRETÓRIO PARA MELHOR ORGANIZAÇÃO
-git clone git@github.com:Gabriel-Goes/sismologia_ipt.git\
-    ~/projetos/ClassificadorSismologico && cd projetos/ClassificadorSismologico
+git clone git@github.com:Gabriel-Goes/Sismologia_IPT.git\
+    ~/projetos/ClassificadorSismologico && cd ~/projetos/ClassificadorSismologico
 git switch desenvolvimento  # Ainda não houve merge com a branch main
 ```
 
@@ -78,6 +78,7 @@ pyenv local sismologia
 # DEVO REDUZIR O NÚMERO DE DEPENDÊÊCIAS PARA O AMBIENTE VIRTUAL.
 # E TALVEZ CRIAR UMA IMAGEM DOCKER PARA ESTE CÓDIGO TAMBÉM.
 pip install -r ./dotfiles/requirements.txt
+pip install -e .
 ```
 
 ## Utilização

@@ -1,0 +1,91 @@
+
+########################################################################
+ ---------------- Iniciando do Pipeline --------------------------------
+
+ -> Executando ProcessarDadosSismologicos.py...
+
+ - Argumento 1: /home/ggrl/projetos/ClassificadorSismologico/files/catalogo/catalogo-moho.csv
+ --> Client:
+  http://seisarc.sismo.iag.usp.br
+ --> Client Backup:
+  http://rsbr.on.br:8081/fdsnws/dataselect/1
+-----------------------------------------------------
+
+
+ --------- Iniciando o ProcessarID.py --------- 
+ ------------------------------ Acessando Catálogo ------------------------------ 
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:00<00:24,  3.97it/s]  4%|▍         | 4/100 [00:00<00:07, 12.05it/s]  7%|▋         | 7/100 [00:00<00:05, 16.20it/s] 10%|█         | 10/100 [00:00<00:05, 17.93it/s] 13%|█▎        | 13/100 [00:00<00:04, 19.17it/s] 16%|█▌        | 16/100 [00:00<00:04, 20.22it/s] 19%|█▉        | 19/100 [00:01<00:03, 20.90it/s] 22%|██▏       | 22/100 [00:01<00:03, 21.12it/s] 25%|██▌       | 25/100 [00:01<00:03, 20.93it/s] 28%|██▊       | 28/100 [00:01<00:03, 21.50it/s] 31%|███       | 31/100 [00:01<00:03, 21.39it/s] 34%|███▍      | 34/100 [00:01<00:03, 19.83it/s] 37%|███▋      | 37/100 [00:01<00:03, 20.77it/s] 40%|████      | 40/100 [00:02<00:02, 21.43it/s] 43%|████▎     | 43/100 [00:02<00:02, 21.69it/s] 46%|████▌     | 46/100 [00:02<00:02, 21.60it/s] 49%|████▉     | 49/100 [00:02<00:02, 21.33it/s] 52%|█████▏    | 52/100 [00:02<00:02, 21.23it/s] 55%|█████▌    | 55/100 [00:02<00:02, 20.85it/s] 58%|█████▊    | 58/100 [00:02<00:01, 21.03it/s] 61%|██████    | 61/100 [00:03<00:01, 20.31it/s] 64%|██████▍   | 64/100 [00:03<00:01, 20.77it/s] 67%|██████▋   | 67/100 [00:03<00:01, 21.26it/s] 70%|███████   | 70/100 [00:03<00:01, 21.44it/s] 73%|███████▎  | 73/100 [00:03<00:01, 20.66it/s] 76%|███████▌  | 76/100 [00:03<00:01, 20.55it/s] 79%|███████▉  | 79/100 [00:03<00:01, 20.56it/s] 82%|████████▏ | 82/100 [00:04<00:00, 20.04it/s] 85%|████████▌ | 85/100 [00:04<00:00, 19.35it/s] 88%|████████▊ | 88/100 [00:04<00:00, 19.88it/s] 91%|█████████ | 91/100 [00:04<00:00, 20.24it/s] 94%|█████████▍| 94/100 [00:04<00:00, 20.54it/s] 97%|█████████▋| 97/100 [00:04<00:00, 19.21it/s] 99%|█████████▉| 99/100 [00:04<00:00, 19.32it/s]100%|██████████| 100/100 [00:05<00:00, 19.85it/s]
+ --> Iterando sobre eventos
+ - Número de eventos: 100
+ - Client: http://seisarc.sismo.iag.usp.br
+ - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
+ - Estações no Inventário: 1480
+Press Enter to continue ...
+  0%|          | 0/100 [00:00<?, ?it/s]  3%|▎         | 3/100 [00:00<00:02, 32.54it/s]
+############ Event 1: usp2014gyqn ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+ - X,Y BL.BB19B: -21.0662, -48.5279
+ - Distância até o epicentro: 0.4739622562125565 km
+ Downloading ...
+ Pick Time -> 2014-04-09T20:49:43.974670Z
+ Origin Time -> 2014-04-09T20:49:40.000000Z
+ Channel -> HHE
+ - Saving File: 20140409T204940/BL_BB19B_20140409T204940.mseed
+ -> Erro ao obter magnitude: 'NoneType' object has no attribute 'mag'
+-----------------------------------------------------
+
+ - Event: usp2014gyqn
+ - Pwave Picks: 1
+ - Streams: 1
+#####################################################
+
+############ Event 2: usp2021ezmw ############
+
+--> Pick 1
+ - Net: GT
+ - Sta: CPUP
+estação GT.CPUP.BHZ não encontrada no inventário
+ - Event: usp2021ezmw
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 3: usp2020hkyw ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: PDRB
+ - X,Y BR.PDRB: -11.612297, -56.729597
+ - Distância até o epicentro: 0.22934459104391727 km
+ Downloading ...
+ Pick Time -> 2020-04-15T14:40:19.978417Z
+ Origin Time -> 2020-04-15T14:40:20.000000Z
+ Channel -> HHZ
+ - Saving File: 20200415T144020/BR_PDRB_20200415T144020.mseed
+-----------------------------------------------------
+
+ - Event: usp2020hkyw
+ - Pwave Picks: 1
+ - Streams: 1
+#####################################################
+
+############ Event 4: usp2022gpbs ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBMO
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 94, in <module>
+    catalogo, inentory, missin_ids = main(
+                                     ^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 56, in main
+    iterate_events(
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/BaixarFormaOnda.py", line 155, in iterate_events
+    print(f' - X,Y {net}.{sta}: {sta_lat[0]}, {sta_lon[0]}')
+                                 ~~~~~~~^^^
+IndexError: index 0 is out of bounds for axis 0 with size 0
+
+ Criando arquivos de backup...

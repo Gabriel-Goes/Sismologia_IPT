@@ -1,4 +1,4 @@
-#Network|Station|Location|Channel|Latitude|Longitude|Elevation|Depth|Azimuth|Dip|SensorDescription|Scale|ScaleFreq|ScaleUnits|SampleRate|StartTime|EndTime
+Network|Station|Location|Channel|Latitude|Longitude|Elevation|Depth|Azimuth|Dip|SensorDescription|Scale|ScaleFreq|ScaleUnits|SampleRate|StartTime|EndTime
 BR|AGBLB||BHE|-9.03868|-37.045358|448.0|0.0|90.0|0.0|STS-2, 120 s, 1500 V/m/s, generation 1 electronics|936717000.0|0.05|M/S|40.0|2010-05-10T00:38:13.615|2012-09-14T00:44:13.24
 BR|AGBLB||BHN|-9.03868|-37.045358|448.0|0.0|0.0|0.0|STS-2, 120 s, 1500 V/m/s, generation 1 electronics|936717000.0|0.05|M/S|40.0|2010-05-10T00:38:13.615|2012-09-14T00:44:13.24
 BR|AGBLB||BHZ|-9.03868|-37.045358|448.0|0.0|0.0|-90.0|STS-2, 120 s, 1500 V/m/s, generation 1 electronics|936717000.0|0.05|M/S|40.0|2010-05-10T00:38:13.615|2012-09-14T00:44:13.24

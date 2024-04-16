@@ -1,3 +1,4 @@
+evid,origin,longitude,latitude,depth,magnitude,magnitudet,region,author,mode,,,,,
 usp2014gyqn,2014-04-09T20:49:40.000Z,-48530,-21070,0.0,-1,,Taiacu/SP,JRoberto,M,,,,,
 usp2021ezmw,2021-03-12T21:02:20.000Z,-56890,-25800,0.0,-1,,Paraguay,jroberto,M,,,,,
 usp2020hkyw,2020-04-15T14:40:20.000Z,-56732,-11612,0.0,0.2,MLv,Novo Horizonte do Norte/MT,jroberto,M,,,,,
@@ -3370,4 +3371,3 @@ usp2024bkjd,2024-01-20T21:31:07.317Z,-71528,-7414,638.1,6.6,Mw(mB),Western Brazi
 usp2015xbem,2015-11-24T22:45:37.150Z,-71127,-10667,597.3,7.0,Mw(mB),Peru-Brazil Border Region,bruno@maverick.local,M,,,,,
 usp2018qobe,2018-08-24T09:04:07.106Z,-70883,-11119,632.0,7.0,mB,Peru-Brazil Border Region,jroberto,M,,,,,
 usp2015xbes,2015-11-24T22:50:50.004Z,-71473,-10159,594.8,7.5,Mw(mB),Peru-Brazil Border Region,bruno@maverick.local,M,,,,,
-evid,origin,longitude,latitude,depth,magnitude,magnitudet,region,author,mode,,,,,

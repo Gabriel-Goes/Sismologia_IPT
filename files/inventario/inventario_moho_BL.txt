@@ -1,4 +1,4 @@
-#Network|Station|Location|Channel|Latitude|Longitude|Elevation|Depth|Azimuth|Dip|SensorDescription|Scale|ScaleFreq|ScaleUnits|SampleRate|StartTime|EndTime
+Network|Station|Location|Channel|Latitude|Longitude|Elevation|Depth|Azimuth|Dip|SensorDescription|Scale|ScaleFreq|ScaleUnits|SampleRate|StartTime|EndTime
 BL|AGVB||BHE|-19.7393|-50.233101|450.0|0.0|90.0|0.0|STS-2|1500000000000.0|1.0|M/S|10.0|1992-11-12T00:00:00|1995-02-12T23:59:59
 BL|AGVB||BHN|-19.7393|-50.233101|450.0|0.0|0.0|0.0|STS-2|1500000000000.0|1.0|M/S|10.0|1992-11-12T00:00:00|1995-02-12T23:59:59
 BL|AGVB||BHZ|-19.7393|-50.233101|450.0|0.0|0.0|-90.0|STS-2|1500000000000.0|1.0|M/S|10.0|1992-11-12T00:00:00|1995-02-12T23:59:59

@@ -99,19 +99,27 @@ def csv2list(csv_file: str,
             return [line.split(',')[0] for line in lines[1:]]
 
 
-# Função para pegar o a ('net.sta','lat','lon','depth')
+# Função para pegar o a (latitude, longitude) de uma estação
 # e retornar um dicionário com as informações
-def get_sta_xy(net, sta, inventario):
+def get_sta_xy(net, sta, cha, inventario):
+    '''
+        Recebe o network, station e channel e retorna a lat e long do sensor
+    '''
     key = f"{net}.{sta}"
-    if key in inventario:
-        # Retorna a latitude e longitude encontradas no dicionário
-        return inventario[key][0]['latitude'], inventario[key][0]['longitude']
-    else:
-        # Retorna None para ambos se a estação não for encontrada
-        print(f"Estação {sta} da rede {net} não encontrada no inventário.")
-        print(delimt)
-        return None, None
-
+    try:
+        # Filter the inventory for the given station and channel
+        entries = inventory[(inventory['Network'] == net) & (inventory['Station'] == sta) & (inventory['Channel'] == cha)]
+        if not entries.empty:
+            # Check if all entries have the same latitude and longitude
+            if entries['Latitude'].nunique() == 1 and entries['Longitude'].nunique() == 1:
+                return entries.iloc[0]['Latitude'], entries.iloc[0]['Longitude']
+            else:
+                print(f"Error: Multiple coordinates for station {key} with channel {cha}.")
+        else:
+            print(f"No data for station {key} with channel {cha}.")
+    except Exception as e:
+        print(f"An error occurred while fetching coordinates for {key}: {str(e)}")
+    return None, None
 
 # para cada arquivo em um diretório, se for txt, lê e retorna um dataframe
 def text2dataframe(directory):
@@ -212,18 +220,17 @@ def parse_inventory_xml(file_path):
             all_stations.append({'Network': network_code, 'Station': station_code, 'Latitude': latitude, 'Longitude': longitude, 'key': f"{network_code}.{station_code}"})
     return pd.DataFrame(all_stations)
 
+
 def consolidate_inventory(inventory_files):
     inventory_df = pd.DataFrame()
     for file_path in inventory_files:
         if file_path.endswith('.txt'):
-            inventory_df = pd.concat([inventory_df, parse_inventory_txt(file_path)])
+            inventory_df = pd.concat([inventory_df, parse_inventory_txt(PROJETO_DIR + f'/files/inventario/{file_path}')])
         elif file_path.endswith('.xml'):
-            inventory_df = pd.concat([inventory_df, parse_inventory_xml(file_path)])
+            inventory_df = pd.concat([inventory_df, parse_inventory_xml(PROJETO_DIR + f'/files/inventario/{file_path}')])
     return inventory_df.set_index('key')
 
 
 # Example usage:
-inventory_files = ['./files/inventario/inventario_moho_BL.txt',
-                   './files/inventario/inventario_rsbr.xml']
-inventory = consolidate_inventory(inventory_files)
-print(inventory.head())
+inventory = consolidate_inventory(os.listdir(PROJETO_DIR + '/files/inventario'))
+# print(inventory.head())

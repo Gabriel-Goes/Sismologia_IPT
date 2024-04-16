@@ -149,5 +149,6 @@ read -p 'Pressione enter para continuar...'
 source $HOME/.bash_profile
 echo 'Ambiente virtual configurado com sucesso!'
 echo 'Navegue até o diretório do projeto e execute:'
-echo '!`pyenv local $VENV_NAME` para ativar o ambiente virtual.'
+echo '!`pyenv local $VENV_NAME` para configurar a versão do ambiente virtual
+deste repositório.'
 # ---------------------------------------------------------------------------- #

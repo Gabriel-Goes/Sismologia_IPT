@@ -1,4 +1,4 @@
-#Network|Station|Location|Channel|Latitude|Longitude|Elevation|Depth|Azimuth|Dip|SensorDescription|Scale|ScaleFreq|ScaleUnits|SampleRate|StartTime|EndTime
+Network|Station|Location|Channel|Latitude|Longitude|Elevation|Depth|Azimuth|Dip|SensorDescription|Scale|ScaleFreq|ScaleUnits|SampleRate|StartTime|EndTime
 ON|ABR01||HHE|-17.96461|-38.69586|38.0|0.0|90.0|0.0|STS-2.5, 120s, 1500 V/m/s-Q330S+, gain 1, 100 sps,|629145000.0|0.05|M/S|100.0|2014-12-13T00:00:00|
 ON|ABR01||HHN|-17.96461|-38.69586|38.0|0.0|0.0|0.0|STS-2.5, 120s, 1500 V/m/s-Q330S+, gain 1, 100 sps,|629145000.0|0.05|M/S|100.0|2014-12-13T00:00:00|
 ON|ABR01||HHZ|-17.96461|-38.69586|38.0|0.0|0.0|-90.0|STS-2.5, 120s, 1500 V/m/s-Q330S+, gain 1, 100 sps,|629145000.0|0.05|M/S|100.0|2014-12-13T00:00:00|
