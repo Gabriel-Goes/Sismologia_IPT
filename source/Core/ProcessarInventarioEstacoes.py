@@ -3,7 +3,7 @@
 # ./Classificador_Sismologico/pyscripts/BaixarFormaOnda.py
 
 
-# ----------------------------  DESCRIPTION  -----------------------------------
+# ----------------------------  DESCRIPTION  ----------------------------------
 # Script criar um inventário de estações a partir de arquivos XML e TXT
 # Autor: Gabriel Góes Rocha de Lima
 # Versão: 0.1.0
