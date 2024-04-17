@@ -30,7 +30,7 @@ from obspy.clients import fdsn
 from obspy.clients.fdsn.client import Client
 
 # FUNÇÃO ADAPATADA DE fdsnws.py ( CÓDIGO DE M. BIANCHI )
-from Core import Exporter
+import Exporter
 
 
 # ---------------------------- PARAMETROS -------------------------------------

@@ -1,0 +1,9 @@
+
+########################################################################
+ ---------------- Iniciando do Pipeline --------------------------------
+
+ -> Executando ProcessarDadosSismologicos.py...
+
+Erro ao conectar com o servidor Seisarc.sismo.iag.usp.br: No FDSN services could be discovered at 'http://seisarc.sismo.iag.usp.br'. This could be due to a temporary service outage or an invalid FDSN service address.
+
+ Criando arquivos de backup...

@@ -19,8 +19,8 @@ from tqdm import tqdm
 from typing import List, Dict
 
 # ClassificadorSismologico
-from Core.BaixarFormaOnda import iterate_events
-from Core.utils import csv2list, delimt, inventory
+from BaixarFormaOnda import iterate_events
+from utils import csv2list, delimt, inventory
 
 
 # ---------------------------- FUNÇÕES ----------------------------------------

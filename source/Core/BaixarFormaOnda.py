@@ -19,9 +19,9 @@ from tqdm import tqdm
 # import logging  # Utilizar o Logging
 
 # NOSSAS FUNÇÕES
-from Core.utils import MSEED_DIR
-from Core.utils import delimt, delimt2
-from Core.utils import data_Client
+from utils import MSEED_DIR
+from utils import delimt, delimt2
+from utils import data_Client
 
 from typing import List, Dict
 
@@ -141,8 +141,8 @@ def iterate_events(eventos: List,
                                       'Location': pick.waveform_id.location_code,
                                       'Channel': pick.waveform_id.channel_code,
                                       'Origin Time': origin_time,
-                                      'Latitude': origem_lat,
-                                      'Longitude': origem_lon,
+                                      'Origem Latitude': origem_lat,
+                                      'Origem Longitude': origem_lon,
                                       'Pick': pick.phase_hint,
                                       'Error': 'pick.phase_hint not in [P, Pg, Pn]'})
                 continue
@@ -154,13 +154,27 @@ def iterate_events(eventos: List,
             cha = pick.waveform_id.channel_code
             loc = pick.waveform_id.location_code
             print(f' - Net: {net}\n - Sta: {sta}\n - Cha: {cha}\n - Loc: {loc}')
-            cha = cha[:-1] + 'Z'  # Substitui o último caractere por '*'
+            cha = cha[:-1] + 'Z'  # Substitui o último caractere por 'Z'
             if loc is None:
                 loc = ''
             seed_id = f'{net}.{sta}.{loc}.{cha}'
             print(f' - Seed ID: {seed_id} ')
-
-            cha_meta = inv.get_channel_metadata(seed_id)
+            try:
+                cha_meta = inv.get_channel_metadata(seed_id)
+            except Exception as e:
+                error_to_save.append({'ID': event_id,
+                                      'Pick': pick.phase_hint,
+                                      'Network': net,
+                                      'Station': sta,
+                                      'Channel': cha,
+                                      'Location': loc,
+                                      'Origin Time': origin_time,
+                                      'Origem Latitude': origem_lat,
+                                      'Origem Longitude': origem_lon,
+                                      'Error': f'Error getting channel metadata: {e}'
+                                      })
+                print(f' - Error getting channel metadata: {e}')
+                continue
 
             sta_lat = cha_meta['latitude']
             sta_lon = cha_meta['longitude']
@@ -169,8 +183,12 @@ def iterate_events(eventos: List,
                                       'Pick': pick.phase_hint,
                                       'Network': net,
                                       'Station': sta,
-                                      'Latitude': sta_lat,
-                                      'Longitude': sta_lon,
+                                      'Pick Latitude': sta_lat,
+                                      'Pick Longitude': sta_lon,
+                                      'Origem Latitude': origem_lat,
+                                      'Origem Longitude': origem_lon,
+                                      'Origin Time': origin_time,
+                                      'Pick Time': pick.time,
                                       'Channel': cha,
                                       'Location': loc,
                                       'Error': 'sta_lat or sta_lon is None'
