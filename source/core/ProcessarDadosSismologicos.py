@@ -20,7 +20,7 @@ from typing import List, Dict
 
 # ClassificadorSismologico
 from BaixarFormaOnda import iterate_events
-from utils import csv2list, delimt, inventory
+from utils import csv2list, delimt
 
 
 # ---------------------------- FUNÇÕES ----------------------------------------
@@ -57,7 +57,7 @@ def main(IDs: List,
         catalogo.events,
         data_Client,
         data_Client_bkp,
-        inventory,
+        random=False,
         baixar=True)  # FUNÇÃO PRINCIPAL DO SCRIPT
 
     # SAVE MISSING_IDS LIST TO CSV FILE
@@ -68,7 +68,7 @@ def main(IDs: List,
         for id in missing_ids:
             f.write(f'{id}\n')
 
-    return catalogo, inventory, missing_ids
+    return catalogo, missing_ids
 
 
 # ---------------------------- MAIN -------------------------------------------
@@ -91,7 +91,7 @@ if __name__ == "__main__":
     print('')
 
     print(" --------- Iniciando o ProcessarID.py --------- ")
-    catalogo, inentory, missin_ids = main(
-        IDs[:100],
+    catalogo, missin_ids = main(
+        IDs[:1000],
         data_Client,
         data_Client_bkp)

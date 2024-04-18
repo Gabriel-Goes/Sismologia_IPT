@@ -81,7 +81,7 @@ if [ "$PROCESS_MAPS" = true ]; then
     # Executa etapa de processamento de mapas
     echo " -------------- Processo de criação de mapas iniciado ------------------"
     # Checa se o arquivo de eventos existe e se é vazio
-    if [ -f "files/events-*.csv" ]; then
+    if [ -f "files/events/events-*.csv" ]; then
         echo " -> Executando make_maps.py..."
         $PYTHON3 $CREATEMAP $EVENTS
         mv $EVENTS files/

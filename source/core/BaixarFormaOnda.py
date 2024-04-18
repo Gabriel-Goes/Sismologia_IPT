@@ -23,18 +23,17 @@ from utils import MSEED_DIR
 from utils import delimt, delimt2
 from utils import data_Client
 
-from typing import List, Dict
+from typing import List
 
 
 # --------------------------------- FUNÇÕES ---------------------------------- #
 # Fixa a semente para garantir a reprodução
-def download_and_save_waveforms_random(
+def download_waveforms(
         data_client, data_client_bkp,
         net, sta, loc, chn,
         pick_time, origin_time,
         random=False):
     '''
-
     '''
     if random:
         np.random.seed(42)
@@ -76,7 +75,7 @@ def download_and_save_waveforms_random(
         print(f"Nenhum dado baixado para a estação {sta}.")
         return
 
-    event_dir = os.path.join(MSEED_DIR, origin_time.strftime("%Y%m%dT%H%M%S"))
+    event_dir = os.path.join(MSEED_DIR, event_name)
     event_path = os.path.join(event_dir,
                               f"{net}_{sta}_{event_name}.mseed")
     os.makedirs(event_dir, exist_ok=True)
@@ -88,9 +87,8 @@ def download_and_save_waveforms_random(
 def iterate_events(eventos: List,
                    data_client: str,
                    data_client_bkp: str,
-                   inventario: Dict,
                    baixar=False,
-                   renadom=False) -> None:
+                   random=False) -> None:
     '''
     Baixa a forma de onda (.mseed) de um evento sísmico se a estação estiver a menos de 400 km do epicentro.
     Parâmetros:
@@ -105,7 +103,6 @@ def iterate_events(eventos: List,
     print(f' - Número de eventos: {len(eventos)}')
     print(f' - Client: {data_client.base_url}')
     print(f' - Client Backup: {data_client_bkp.base_url}')
-    print(f' - Estações no Inventário: {len(inventario)}')
     input("Press Enter to continue ...\n")
     data_to_save = []  # Lista para coletar os dados que serão salvos no CSV
     error_to_save = []
@@ -281,7 +278,7 @@ def iterate_events(eventos: List,
                 # Isso é apenas um exemplo baseado no que você forneceu.
                 data_to_save.append({
                     'ID': event_id,  # Substitua pela identificação correta do evento
-                    'Hora de Origem (UTC)': origin_time,
+                    'Origin Time': origin_time,
                     'Longitude': origem_lon,
                     'Latitude': origem_lat,
                     'MLv': magnitude,  # Substitua pela magnitude do evento, se disponível
@@ -295,7 +292,6 @@ def iterate_events(eventos: List,
                     'Channel': cha,
                     'Location': loc,
                     'Pick Time': pick_time,
-                    'Origin Time': origin_time,
                     'Start Time': start_time,
                     'End Time': end_time,
                     'Stream Count': stream_count,
@@ -312,8 +308,13 @@ def iterate_events(eventos: List,
     # Escrever os dados coletados no arquivo CSV
     csv_file_path = './files/catalogo/catalogo.csv'  # Substitua pelo caminho correto
     with open(csv_file_path, mode='w', newline='\n', encoding='utf-8') as csv_file:
-        fieldnames = ['ID', 'Hora de Origem (UTC)', 'Longitude', 'Latitude', 'MLv', 'Distance', 'Folder', 'Cat', 'Certainty',
-                      'Pick', 'Network', 'Station', 'Channel', 'Location', 'Pick Time', 'Origin Time', 'Start Time', 'End Time', 'Stream Count', 'Error']
+        fieldnames = ['ID', 'Error',
+                      'Pick', 'Network', 'Station', 'Location', 'Channel',
+                      'Latitude', 'Longitude', 'Distance', 'Start Time', 'End Time',
+                      'Pick Time', 'Origin Time',
+                      'Origem Latitude', 'Origem Longitude',
+                      'Cat', 'Stream Count', 'Hora de Origem (UTC)', 'Folder',
+                      'MLv', 'Certainty']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
         for data in data_to_save:
@@ -324,8 +325,13 @@ def iterate_events(eventos: List,
     # Escrever os erros no arquivo CSV
     csv_error_path = './files/catalogo/erros.csv'
     with open(csv_error_path, mode='w', newline='\n', encoding='utf-8') as csv_file:
-        fieldnames = ['ID', 'Error', 'Pick', 'Network', 'Station', 'Latitude', 'Longitude',
-                      'Channel', 'Location', 'Distance', 'Pick Time', 'Origin Time', 'Start Time', 'End Time']
+        fieldnames = ['ID', 'Error',
+                      'Pick', 'Network', 'Station', 'Location', 'Channel',
+                      'Latitude', 'Longitude', 'Distance', 'Start Time', 'End Time',
+                      'Pick Time', 'Origin Time',
+                      'Origem Latitude', 'Origem Longitude',
+                      'Cat', 'Stream Count', 'Hora de Origem (UTC)', 'Folder',
+                      'MLv', 'Certainty']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
         for data in error_to_save:
