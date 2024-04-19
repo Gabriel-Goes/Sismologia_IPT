@@ -17,7 +17,6 @@ from obspy.clients.fdsn import Client
 import argparse
 
 
-# ------------------------------ FUNCTIONS ---------------------------------- #
 # GET TRACES AND DATA
 def get(startime: datetime.datetime,
         endtime: datetime.datetime,
@@ -64,22 +63,22 @@ def get(startime: datetime.datetime,
 
 
 # PREPARE THE TRACE FOR ANALYSIS
-def prepare(trace: Trace,
-            filtro: AttribDict,
-            noisewindow: AttribDict,
-            pwindow: AttribDict,
-            swindow: AttribDict) -> (np.ndarray, np.ndarray, np.ndarray):
+def prepare(
+        trace: Trace,
+        filtro: list,
+        noisewindow: int,
+        pwindow: int,
+        swindow: int) -> (np.ndarray, np.ndarray, np.ndarray):
     '''
     Prepare the trace for the analysis.
-
     :param trace: Trace object
     :param filtro: Filter object
     :param noisewindow: Noise window object
     :param pwindow: P window object
     :param swindow: S window object
-
     :return: Tuple with the noise, P and S windows
     '''
+
     trace = trace.copy()
     # Pre-process
     trace.detrend('linear')
@@ -112,21 +111,35 @@ def ratios(trace,
 
 
 # CREATES A LIST OF FILTER VALUES TO BE USED BY THE FDSN CLIENT
-def filterCombos(start=1, end=35, minw=2, maxw=6):
+def filterCombos(
+        start=1,
+        end=35,
+        minw=2,
+        maxw=6) -> list:
+    '''
+    Recebe dois números inteiros:
+
+    Retorna uma lista:
+    '''
+
     filtros = list()
 
     for j in np.arange(start, end - minw + 1., 1.):
         for i in np.arange(j, end + 1., 1.):
             if (i - j) >= minw and (i - j) <= maxw:
-                filtros.append(AttribDict({
-                    'pa': j,
-                    'pb': i,
-                    'noise': -1,
-                    'p': -1,
-                    's': -1,
-                    'snrp': -1,
-                    'snrs': -1
-                }))
+                filtros.append(
+                    AttribDict(
+                        {
+                            'pa': j,
+                            'pb': i,
+                            'noise': -1,
+                            'p': -1,
+                            's': -1,
+                            'snrp': -1,
+                            'snrs': -1
+                        }
+                    )
+                )
     return filtros
 
 
@@ -270,6 +283,7 @@ def parsewindow(line):
     })
 
 
+# -------------------------------- MAIN ------------------------------------- #
 # Program main body
 if __name__ == '__main__':
     global USER, PASSWD

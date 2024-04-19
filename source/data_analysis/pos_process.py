@@ -3,14 +3,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import seaborn as sns
+import os
+
+from datetime import datetime
 
 from obspy import UTCDateTime
+from obspy.core import AttribDict
+from obspy import read
+
 
 from typing import List
 
+from data_analysis.test_filters import filterCombos
+from data_analysis.test_filters import ratios
+
 
 # ----------------- Functions -----------------
-
 def list_events(pred_csv: str) -> List[str]:
     '''
     Recebe caminho do arquivo predcsv;
@@ -519,6 +527,46 @@ def plot_hist_num_stations_recall(df):
     plt.show()
 
 
+# ------------------------- SIGNAL NOISE RATIO ------------------------------- #
+# Create list of mseeds
+def get_mseed(path: str = '.files/mseed/') -> list:
+    '''
+    Parse through all folders inside path and append each file inside each folder
+    to a list.
+    '''
+    for i in os.listdir(path):
+
+
+    return list
+
+
+# Função para calcular SNR para um único arquivo mseed
+def process_mseed_file(
+        mseed_path: str,
+        filtros: str,
+        noisewindow: int,
+        pwindow: int,
+        swindow: int) -> None:
+    try:
+        # Carrega o arquivo mseed
+        stream = read(mseed_path)
+        # Assume-se que o arquivo possui apenas uma trace ou processa a primeira
+        trace = stream[0]
+
+        # Aplica a função ratios diretamente, já que get é para buscar de um cliente FDSN
+        ratios(
+            trace,
+            filtros,
+            noisewindow,
+            pwindow,
+            swindow
+        )
+        # Apenas para visualização ou conferência, mostramos alguma saída
+        print(f"Processed {mseed_path}")
+    except Exception as e:
+        print(f"Failed to process {mseed_path}: {e}")
+
+
 # -------------------------------- Main -------------------------------------- #
 def main_non_commercial():
     catalogo_moho = pd.read_csv('./files/events-moho-catalog.csv')
@@ -581,6 +629,33 @@ def main_commercial():
     return df_comm_val_merged, df_comm_nearest, catalogo_moho
 
 
+def main_ratio():
+    root_dir = '../files/mseed/'
+    filtros = filterCombos()  # Assume-se que a função retorna uma lista de filtros adequados
+
+    # Define suas janelas (Exemplo fictício, ajuste conforme necessário)
+    noisewindow = AttribDict(
+        {'t': '', 'w': 10})
+    pwindow = AttribDict(
+        {'t': '', 'w': 20})
+    swindow = AttribDict(
+        {'t': '', 'w': 20})
+
+    # Percorre todos os subdiretórios e arquivos
+    i = 0
+    for subdir, dirs, files in os.walk(root_dir):
+        for file in files:
+            if file.endswith('.mseed'):
+                file_path = os.path.join(subdir, file)
+                i += 1
+                process_mseed_file(file_path, filtros, noisewindow, pwindow, swindow)
+        if i > 10:
+            break
+
+    return filtros
+
+
 if __name__ == '__main__':
-    main_non_commercial()
+    main_ratio()
+    # main_non_commercial()
     # main_commercial()
