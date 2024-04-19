@@ -19,7 +19,7 @@ from tqdm import tqdm
 from typing import List, Dict
 
 # ClassificadorSismologico
-from BaixarFormaOnda import iterate_events
+from baixar_mseed import iterate_events
 from utils import csv2list, delimt
 
 
@@ -43,27 +43,32 @@ def main(IDs: List,
 
         except Exception:
             try:
+                missing_ids.append(id + ' Não encontrado no servidor USP.')
                 print(' Catalogo USP não encontrado. Tentando no servidor da RSBR.')
-                temp_cat = data_Client_bkp.get_events(eventid=id, includearrivals=True)
+                temp_cat = data_Client_bkp.get_events(
+                    eventid=id,
+                    includearrivals=True
+                )
                 catalogo.append(temp_cat.events[0])
 
             except Exception:
                 print(' ------------------------------ Sem dados ------------------------------ ')
                 print(f"ID {id} não encontrado.")
-                missing_ids.append(id)
+                missing_ids.append(id + ' Não encontrado no servidor RSBR.')
 
-    # BAIXA A FORMA DE ONDA
+    # FUNÇÃO PRINCIPAL DO SCRIPT DE ONDA
     iterate_events(
         catalogo.events,
         data_Client,
         data_Client_bkp,
         random=False,
-        baixar=True)  # FUNÇÃO PRINCIPAL DO SCRIPT
+        baixar=True
+    )
 
     # SAVE MISSING_IDS LIST TO CSV FILE
-    os.makedirs('files/logs/missing_ids/bkp', exist_ok=True)
+    os.makedirs('files/logs/.bkp', exist_ok=True)
     # WRITE A CSV FILE WITH THE MISSING IDS
-    with open('files/logs/missing_ids/missing_ids.csv', 'w') as f:
+    with open('files/logs/missing_ids.csv', 'w') as f:
         f.write('ID\n')
         for id in missing_ids:
             f.write(f'{id}\n')
@@ -76,8 +81,7 @@ if __name__ == "__main__":
     print('')
     print(f' - Argumento 1: {sys.argv[1]}')
 
-    moho_catalog_csv = sys.argv[1]
-    IDs = csv2list(moho_catalog_csv, data=None)  # ADICIONE O ANO MAIS ANTIGO
+    IDs = csv2list(sys.argv[1], data=None)  # ADICIONE O ANO MAIS ANTIGO
     try:
         data_Client = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
     except Exception as e:
@@ -92,6 +96,6 @@ if __name__ == "__main__":
 
     print(" --------- Iniciando o ProcessarID.py --------- ")
     catalogo, missin_ids = main(
-        IDs[:1000],
+        IDs[:100],
         data_Client,
         data_Client_bkp)

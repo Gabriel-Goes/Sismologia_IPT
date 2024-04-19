@@ -1,98 +1,33 @@
-import os
 import pandas as pd
-from utils import MSEED_DIR
-from datetime import datetime
-
-# Caminho para a pasta mseed_demo/ e para o arquivo events-all.csv
-caminho_csv = './files/events-all.csv'
-
-# Lendo o arquivo events-all.csv
-df_events = pd.read_csv(caminho_csv, sep=';')  # Lendo com o separador correto
-
-# Mapeando categorias para números
-mapeamento_cat = {'Q': 1, 'E': 0, 'I': 0, 'N': 2}
-
-# Criando um dicionário para mapear ID para label_cat
-id_para_label = {row['ID']: mapeamento_cat.get(row['Cat'], 0) for _, row in df_events.iterrows()}
 
 
-# Constroi a lista com os dados da predição
-# time, label_cat
-def constroi_dados_pred_separados():
-    # Inicializando a lista para o novo DataFrame
-    commercial_pred = []
-    notcommercial_pred = []
-    pastas_ignoradas = []
-    # Lendo os nomes das pastas dentro de mseed_demo/
-    for nome_pasta in os.listdir(MSEED_DIR):
-        # Verificando se o nome da pasta tem o comprimento esperado
-        if len(nome_pasta) == 15:
-            # Formatando o nome da pasta para corresponder ao formato no dicionário
-            id_sismo = nome_pasta
-        else:
-            # Se não, usa um valor padrão ou ignora esta pasta
-            print(f'! {nome_pasta} não é um nome de pasta válido')
-            pastas_ignoradas.append(nome_pasta)
-            continue
+def gerar_predcsv():
+    # Criar Lista de Eventos para Predição
+    csv_events = './files/events/events.csv'
+    df_events = pd.read_csv(csv_events, sep=',')
 
-        label_cat = id_para_label.get(id_sismo, 0)  # Usando X como padrão para IDs não encontrados
-        # Verificando se o sismo ocorreu em horário comercial
-        print(id_sismo)
-        id_datetime = datetime.strptime(id_sismo, '%Y%m%dT%H%M%S')
-        if 11 <= id_datetime.hour < 23:
-            commercial_pred.append({'time': nome_pasta, 'label_cat': label_cat})
+    # Se IDs iguais possuem Cat diferentes adicionar em uma lista de erros
+    erros = []
+    for id in df_events['ID'].unique():
+        if len(df_events[df_events['ID'] == id]['Cat'].unique()) > 1:
+            erros.append(id)
 
-        else:
-            notcommercial_pred.append({'time': nome_pasta, 'label_cat': label_cat})
+    # Remover IDs com Cat diferentes
+    df_events_clean = df_events[~df_events['ID'].isin(erros)]
+    df_pred = df_events_clean[['Event', 'Cat']]
 
-    # DataFrame com os nomes das pastas ignoradas
-    df_erros = pd.DataFrame(pastas_ignoradas, columns=['pastas_ignoradas'])
-    # Criando um DataFrame a partir dos dados coletados
-    commercial_df = pd.DataFrame(commercial_pred)
-    notcommercial_df = pd.DataFrame(notcommercial_pred)
-    print(f' -> {len(pastas_ignoradas)} pasta(s) ignorada(s)')
-    print(f' -> {len(commercial_df)} sismo(s) encontrados em  horário comercial')
-    print(f' -> {len(notcommercial_df)} sismo(s) encontrados fora do horário comercial')
+    # Transforma 'earthquake' em 0 e qualquer outra coisa em 0
+    df_pred['Cat'] = df_pred['Cat'].apply(lambda x: 0 if x == 'earthquake' else 1)
 
-    return commercial_df, notcommercial_df, df_erros
+    # rename columns
+    df_pred.columns = ['ID', 'Label']
 
-
-# Constroi a lista com os dados para predição
-# time, label_cat
-def cria_predcsv():
-    df_errors = pd.DataFrame(columns=['pastas_ignoradas'])
-    df_pred = pd.DataFrame(columns=['time', 'label_cat'])
-    # Lê nome das pastas de ./files/mseed/
-    for nome_pasta in os.listdir(MSEED_DIR):
-        # Verifica se o nome da pasta tem o comprimento esperado
-        if len(nome_pasta) == 15:
-            # Lê o catalogo de eventos recêm criado e mapeia os eventos para categorias
-            catalogo = pd.read_csv('./files/catalogo/catalogo.csv', sep=';')
-            # If {'Cat': 'earthquase'} then label_cat = 0 else label_cat = 1
-            label_cat = 0 if 'earthquake' in catalogo.loc[catalogo['ID'] == nome_pasta, 'Cat'].values else 1
-            # Adiciona o nome da pasta e a label_cat ao DataFrame
-            df_pred = df_pred.append({'time': nome_pasta, 'label_cat': label_cat}, ignore_index=True)
-        else:
-            # Se não, ignora a pasta
-            df_errors = df_errors.append({'pastas_ignoradas': nome_pasta}, ignore_index=True)
-            print(f'! {nome_pasta} não é um nome de pasta válido')
-    # Salva o DataFrame em um arquivo CSV
-    df_pred.to_csv('./files/pedcsv/pred.csv', index=False)
-    # Salva os erros de pastas ignoradas em um csv
-    df_errors.to_csv('./files/erros.csv', index=False)
-
-
-# Criar Lista de Eventos para Predição
+    # Salvar o DataFrame em um arquivo CSV
+    df_pred.to_csv('./files/predcsv/pred.csv', index=False)
 
 
 # ------------------------------ MAIN -----------------------------------------
 if __name__ == '__main__':
-    # commercial_df, notcommercial_df, df_erros = constroi_dados_pred_separados()
-    # # Salva os erros de pastas ignoradas em um csv
-    # df_erros.to_csv('./files/erros.csv', index=False)
-    # # Salvando o DataFrame em um arquivo CSV
-    # commercial_df.to_csv('./files/commercial_pred.csv', index=False)
-    # notcommercial_df.to_csv('./files/notcommercial_pred.csv', index=False)
-    cria_predcsv()
+    gerar_predcsv()
     print('Pred.csv criado com sucesso')
     print('Erros.csv criado com sucesso')

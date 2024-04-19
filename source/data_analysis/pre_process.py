@@ -11,19 +11,83 @@
 
 # ----------------------------  IMPORTS   -------------------------------------
 from obspy import read
+from data_analysis.test_filters import ratios
+from data_analysis.test_filters import filterCombos
+import pandas as pd
+from obspy import UTCDateTime
+
 
 # ----------------------------  FUNCTIONS  ------------------------------------
-def sinal_ruido(mseed):
-    """
-    Calcula o ruído como a janela entre 1 e 9 segundos e o sinal como a janela
-    entre 10 e 20 segundos.
-    Função para calcular a relação sinal ruído
-        Recebe:
-            .mseed: arquivo de dados sísmicos.
-        Retorna:
-            Razão Sinal Ruído
-    """
-    st = read(mseed)
-    sinal = st[0].data[1000:2000]
-    ruido = st[0].data[100:900]
-    return sum(sinal)/sum(ruido)
+# ------------------------- SIGNAL NOISE RATIO ------------------------------- #
+# Função para calcular SNR para um único arquivo mseed
+def process_mseed_file(
+        events: str) -> None:
+    '''
+    '''
+    # Carrega o dataframe
+    df = pd.read_csv(events)
+    evento = df[:1]
+    pick_time = UTCDateTime(evento['Pick Time'][0])
+
+
+    # Carrega o arquivo mseed
+    stream = read(evento['Path'][0])
+    # Assume-se que o arquivo possui apenas uma trace ou processa a primeira
+    trace = stream[0]
+    # Define os filtros
+    filtros = filterCombos(1., 35., 2., 12.)
+    noisewindow = pick_time - 9, pick_time - 1
+    pwindow = pick_time + 0.1, pick_time + 4
+    swindow = 1, 1
+
+    print(f"Pick time: {pick_time}")
+    print(f'Noise window: {noisewindow}')
+    print(f'P window: {pwindow}')
+    print(f'S window: {swindow}')
+
+    # Aplica a função ratios diretamente, já que get é para buscar de um cliente FDSN
+    ratios(
+        trace,
+        filtros,
+        noisewindow,
+        pwindow,
+        swindow
+    )
+'''
+
+    try:
+        pick_time = UTCDateTime(evento['Pick Time'][0])
+
+        # Carrega o arquivo mseed
+        stream = read(evento['Path'][0])
+        # Assume-se que o arquivo possui apenas uma trace ou processa a primeira
+        trace = stream[0]
+        # Define os filtros
+        filtros = filterCombos(1., 35., 2., 12.)
+        noisewindow = pick_time - 9, pick_time - 1
+        pwindow = pick_time + 0.1, pick_time + 4
+        swindow = 1, 1
+
+        print(f" -> Processing {evento['Event'][0]}\n")
+        print(f"Pick time: {pick_time}")
+        print(f'Noise window: {noisewindow}')
+        print(f'P window: {pwindow}')
+        print(f'S window: {swindow}')
+
+
+        # Aplica a função ratios diretamente, já que get é para buscar de um cliente FDSN
+        ratios(
+            trace,
+            filtros,
+            noisewindow,
+            pwindow,
+            swindow
+        )
+        # Apenas para visualização ou conferência, mostramos alguma saída
+        print(f"Processed {evento['Event']}")
+
+        return filtros
+
+    except Exception as e:
+        print(f"Failed to process {evento['Event']}: {e}")
+'''

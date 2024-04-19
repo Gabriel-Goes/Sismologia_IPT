@@ -527,45 +527,6 @@ def plot_hist_num_stations_recall(df):
     plt.show()
 
 
-# ------------------------- SIGNAL NOISE RATIO ------------------------------- #
-# Create list of mseeds
-def get_mseed(path: str = '.files/mseed/') -> list:
-    '''
-    Parse through all folders inside path and append each file inside each folder
-    to a list.
-    '''
-    for i in os.listdir(path):
-        pass
-
-    return
-
-
-# Função para calcular SNR para um único arquivo mseed
-def process_mseed_file(
-        mseed_path: str,
-        filtros: str,
-        noisewindow: int,
-        pwindow: int,
-        swindow: int) -> None:
-    try:
-        # Carrega o arquivo mseed
-        stream = read(mseed_path)
-        # Assume-se que o arquivo possui apenas uma trace ou processa a primeira
-        trace = stream[0]
-
-        # Aplica a função ratios diretamente, já que get é para buscar de um cliente FDSN
-        ratios(
-            trace,
-            filtros,
-            noisewindow,
-            pwindow,
-            swindow
-        )
-        # Apenas para visualização ou conferência, mostramos alguma saída
-        print(f"Processed {mseed_path}")
-    except Exception as e:
-        print(f"Failed to process {mseed_path}: {e}")
-
 
 # -------------------------------- Main -------------------------------------- #
 def main_non_commercial():

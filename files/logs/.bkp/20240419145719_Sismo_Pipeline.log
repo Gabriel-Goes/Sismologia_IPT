@@ -1,0 +1,194 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando events_pipeline.py...
+
+ - Argumento 1: files/catalogo/catalogo-moho.csv
+ --> Client:
+  http://seisarc.sismo.iag.usp.br
+ --> Client Backup:
+  http://rsbr.on.br:8081/fdsnws/dataselect/1
+-----------------------------------------------------
+
+
+ --------- Iniciando o ProcessarID.py --------- 
+ ------------------------------ Acessando Catálogo ------------------------------ 
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:00<00:01,  5.42it/s] 40%|████      | 4/10 [00:00<00:00,  7.61it/s] 70%|███████   | 7/10 [00:00<00:00, 12.55it/s] 90%|█████████ | 9/10 [00:01<00:00,  7.30it/s]100%|██████████| 10/10 [00:01<00:00,  8.41it/s]
+ --> Iterando sobre eventos
+ - Número de eventos: 10
+ - Client: http://seisarc.sismo.iag.usp.br
+ - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
+Press Enter to continue ...
+ --> Adrquirindo Inventário de Estações
+  0%|          | 0/10 [00:00<?, ?it/s]/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/core/inventory/network.py:321: UserWarning: Found more than one matching channel metadata. Returning first.
+  warnings.warn(msg)
+100%|██████████| 10/10 [00:00<00:00, 156.07it/s]
+############ Event 1: usp2014gyqn ############
+
+HHE
+True
+HHE
+True
+ - Event: usp2014gyqn
+ - Pwave Picks: 0
+ - Streams: 0
+#####################################################
+
+############ Event 2: usp2021ezmw ############
+
+BHE
+False
+--> Pick 1
+ - Net: GT
+ - Sta: CPUP
+ - Cha: BHZ
+ - Loc: 00
+ - Seed ID: GT.CPUP.00.BHZ 
+ - GT.CPUP X,Y : -26.33064, -57.33087
+ - Distância até o epicentro: 73.49976171504628 km
+ Downloading ...
+ Pick Time -> 2021-03-12T21:02:32.733522Z
+ Origin Time -> 2021-03-12T21:02:20.000000Z
+ Channel -> BHZ
+Error downloading waveform: No data available for request.
+HTTP Status code: 204
+Detailed response of server:
+
+
+ -> Erro ao obter magnitude: 'NoneType' object has no attribute 'mag'
+-----------------------------------------------------
+
+ - Event: usp2021ezmw
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 3: usp2020hkyw ############
+
+HHZ
+True
+HHT
+True
+ - Event: usp2020hkyw
+ - Pwave Picks: 0
+ - Streams: 0
+#####################################################
+
+############ Event 4: usp2022gpbs ############
+
+HHT
+True
+HHZ
+True
+ - Event: usp2022gpbs
+ - Pwave Picks: 0
+ - Streams: 0
+#####################################################
+
+############ Event 5: usp2014oaxt ############
+
+HHR
+True
+HHZ
+True
+ - Event: usp2014oaxt
+ - Pwave Picks: 0
+ - Streams: 0
+#####################################################
+
+############ Event 6: usp2015rxwc ############
+
+HHE
+True
+HHZ
+True
+ - Event: usp2015rxwc
+ - Pwave Picks: 0
+ - Streams: 0
+#####################################################
+
+############ Event 7: usp2018cdft ############
+
+HHE
+True
+HHZ
+True
+ - Event: usp2018cdft
+ - Pwave Picks: 0
+ - Streams: 0
+#####################################################
+
+############ Event 8: usp2019dmvk ############
+
+HHT
+True
+HHZ
+True
+ - Event: usp2019dmvk
+ - Pwave Picks: 0
+ - Streams: 0
+#####################################################
+
+############ Event 9: usp2014kloc ############
+
+HHT
+True
+HHR
+True
+ - Event: usp2014kloc
+ - Pwave Picks: 0
+ - Streams: 0
+#####################################################
+
+############ Event 10: usp2015cjmh ############
+
+HHZ
+True
+HHE
+True
+HHE
+True
+HHZ
+True
+--> Pick 1
+ - Net: IU
+ - Sta: RCBR
+ - Cha: BHZ
+ - Loc: 10
+ - Seed ID: IU.RCBR.10.BHZ 
+ - IU.RCBR X,Y : -5.8274, -35.901402
+ - Distância até o epicentro: 280.14422877724945 km
+ Downloading ...
+ Pick Time -> 2015-02-03T15:31:17.852020Z
+ Origin Time -> 2015-02-03T15:30:35.694424Z
+ Channel -> BHZ
+Error downloading waveform: No data available for request.
+HTTP Status code: 204
+Detailed response of server:
+
+
+-----------------------------------------------------
+
+BHE
+False
+HHN
+True
+HHZ
+True
+ - Event: usp2015cjmh
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+Dados salvos com sucesso em ./files/events/events.csv
+Erros salvos com sucesso em ./files/events/erros.csv
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+

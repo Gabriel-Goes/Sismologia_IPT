@@ -364,9 +364,12 @@ if __name__ == '__main__':
 
     filtros = filterCombos(1., 35., 2., 12.)
     ratios(
-        trace, filtros, noisewindow,
+        trace,
+        filtros,
+        noisewindow,
         pwindow,
-        swindow)
+        swindow
+    )
 
     if args.graph or args.trisurf:
         plot3d(filtros, args.trisurf, makeoutput="{}.{}.{}.{}_{}".format(

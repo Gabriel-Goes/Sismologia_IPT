@@ -72,28 +72,28 @@ echo ''
 # CRIANDO CATÁLOGO DE EVENTOS SISMICOS E GERANDO UMA TABELA DE METADADOS DE EVENTOS
 PROCESS_EVENTS=${PROCESS_EVENTS:-true}
 if [ "$PROCESS_EVENTS" = true ]; then
-    echo ' -> Executando events_pipeline.py...'
-    $PYTHON3 source/core/events_pipeline.py $CATALOG $CLIENT_ID
-    echo ''
     echo " Criando arquivos de backup..."
     [[ -f files/events/events.csv ]] &&
-        cp files/events/events.csv files/events/.bkp/events.csv.$(date +%Y%m%d%H%M%S)
-    [[ -f files/logs/missing_ids/missing_ids.csv ]] &&
-        cp files/logs/missing_ids/missing_ids.csv files/logs/missing_ids/.bkp/missing_ids.csv.$(date +%Y%m%d%H%M%S)
+        mv files/events/events.csv files/events/.bkp/events.csv.$(date +%Y%m%d%H%M%S)
+    [[ -f files/logs/missing_ids.csv ]] &&
+        mv files/logs/missing_ids.csv files/logs/.bkp/missing_ids.csv.$(date +%Y%m%d%H%M%S)
     echo " Arquivos de backup criados com sucesso!"
+    echo ''
+    echo ' -> Executando events_pipeline.py...'
+    $PYTHON3 source/core/events_pipeline.py $CATALOG $CLIENT_ID
     echo ''
 fi
 
 # --------- ETAPA DE GERAR LISTA PARA CLASSIFICAÇÃO ( EVENTO | LABEL ) -----------
 PROCESS_PRED=${PROCESS_PRED:-true}
 if [ "$PROCESS_PRED" = true ]; then
-    # chega se o arquivo de predições já existe, se existir, move para uma pasta de backup
-    echo " ---------------- Iniciando o cria_pred.py ---------------------------- "
-    $PYTHON3 source/core/gerar_predcsv.py
-    echo ''
     echo " Criando arquivos de backup..."
     cp files/logs/predcsv/pred.csv files/logs/predcsv/.bkp/pred.csv.$(date +%Y%m%d%H%M%S)
     echo " Arquivos de backup criados com sucesso!"
+    echo ''
+    # chega se o arquivo de predições já existe, se existir, move para uma pasta de backup
+    echo " ---------------- Iniciando o cria_pred.py ---------------------------- "
+    $PYTHON3 source/core/gerar_predcsv.py
     echo ''
 fi
 
