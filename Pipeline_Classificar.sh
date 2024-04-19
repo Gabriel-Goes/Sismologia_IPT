@@ -16,60 +16,83 @@
 # pela rede sismológica. Com este arquivo, segue-se para o passo de aquisição
 # das formas de onda e criação dos mapas.
 
-# ----------------------------  USAGE  -----------------------------------------
+# -------------------------------  USO -----------------------------------------
 # Para executar este script, basta rodar o comando abaixo:
 # ./Sismo_Pipeline.sh [INICIO] [FIM] [CLIENT_ID]
-# ./Sismo_Pipeline.sh 
+# ./Sismo_Pipeline.sh [CLIENT_ID] [EVENTS]
 
-# Se não escolher nada, estes valores padrão serão usados:
+# -----------------------------  VARIÁVEIS -------------------------------------
+# DEFINE OS PARAMETROS DE CRIAÇÃO DE CATALOGO DE EVENTOS
 INICIO=${1:-"2023-01-01"}
 FIM=${2:-"2023-01-10"}
-DATES=${4:-"$INICIO $FIM"}
+DATES="$INICIO $FIM"  # BASEADO EM DATAS
 
-# Define um diretório base, todas as funções são relativas a este diretório base,
-BASE_DIR=${BASE_DIR:-"$HOME/projetos/ClassificadorSismologico"}
-MOHO_CATALOG="$BASE_DIR/files/catalogo/catalogo-moho_bkp.csv"
+# CATALOGO DE EVENTOS
+CATALOG=${1:-"files/catalogo/catalogo-moho.csv"}  # BASEADO EM LISTA DE IDS
+# CLIENT_ID
+CLIENT_ID=${2:-"moho"}
+
+# ----------------------------- CONSTANTES -------------------------------------
+# DEFINE OS DIRETÓRIOS DE TRABALHO
+BASE_DIR=$HOME/projetos/ClassificadorSismologico/
 cd $BASE_DIR
-mkdir -p files
-mkdir -p figures
 
-EVENTS=$(find files/ -maxdepth 1 -name "events-*.csv")
-ENERGYFIG="$HOME/lucas_bin/energy_fig.py"
-CREATEMAP="$HOME/lucas_bin/make_maps_"$CLIENT_ID".py"
-
-SEISCOMP=${SEISCOMP:-"$HOME/softwares/seiscomp/bin/seiscomp"}
-# SEISCOMP=${SEISCOMP:-"/opt/seiscomp/bin/seiscomp"}
-PYTHON3=${PYTHON3:-"$HOME/.pyenv/versions/sismologia/bin/python3"}
-SISMOLOGIA=${SISMOLOGIA:-"$HOME/projetos/ClassificadorSismologico"}
-DELIMT1='########################################################################'
-
-# Define o diretório de logs e cria o arquivo de log
-LOG_DIR="$BASE_DIR/files/logs"
-mkdir -p $LOG_DIR
+# DEFINE O DIRETÓRIO DE LOGS
+LOG_DIR="files/logs"
 LOG_FILE="$LOG_DIR/Sismo_Pipeline.log"
 LOG_FILE_BKP="$LOG_DIR/.bkp/$(date +%Y%m%d%H%M%S)_Sismo_Pipeline.log"
-rm -f $LOG_FILE
+mkdir -p files
+mkdir -p figures
+mkdir -p $LOG_DIR
+
+# CRIA O ARQUIVO DE LOG
+mv -f $LOG_FILE $LOG_FILE_BKP
 touch "$LOG_FILE"
 exec 1> >(tee -a "$LOG_FILE") 2>&1
 
+# DEFINE EXECUTAVEIS
+ENERGYFIG="$HOME/lucas_bin/energy_fig.py"
+CREATEMAP="$HOME/lucas_bin/make_maps_"$CLIENT_ID".py"
+SEISCOMP=${SEISCOMP:-"$HOME/softwares/seiscomp/bin/seiscomp"}
+PYTHON3=${PYTHON3:-"$HOME/.pyenv/versions/sismologia/bin/python3"}
 
-# ------------------------- INICIO DO PIPELINE  ------------------------------
+# DEFINE DELIMITADORES PARA LOGS
+DELIMT1='########################################################################'
+DELIMT2='========================================================================'
+
+
+# ---------------------------- INICIO DO PIPELINE  ------------------------------
 echo ''
-echo $DELIMT1
-echo " ---------------- Iniciando do Pipeline --------------------------------"
+echo $DELIMT2
+echo "                       Iniciando do Pipeline                         "
+echo $DELIMT2
 echo ''
 
 # ------------------------- ETAPA DE AQUISIÇÃO DE DADOS  ----------------------
-# ---- CRIANDO CATÁLOGO DE EVENTOS SISMICOS ----
-PROCESSAR_SISMOS=${PROCESSAR_SISMOS:-true}
-if [ "$PROCESSAR_SISMOS" = true ]; then
-    echo ' -> Executando ProcessarDadosSismologicos.py...'
-    $PYTHON3 $SISMOLOGIA/source/Core/ProcessarDadosSismologicos.py $MOHO_CATALOG $CLIENT_ID
+# CRIANDO CATÁLOGO DE EVENTOS SISMICOS E GERANDO UMA TABELA DE METADADOS DE EVENTOS
+PROCESS_EVENTS=${PROCESS_EVENTS:-true}
+if [ "$PROCESS_EVENTS" = true ]; then
+    echo ' -> Executando events_pipeline.py...'
+    $PYTHON3 source/core/events_pipeline.py $CATALOG $CLIENT_ID
     echo ''
     echo " Criando arquivos de backup..."
-    cp $LOG_FILE $LOG_FILE_BKP
-    [[ -f files/catalogo/catalogo.csv ]] && cp files/catalogo/catalogo.csv files/catalogo/.bkp/catalogo.csv.$(date +%Y%m%d%H%M%S)
-    [[ -f files/logs/missing_ids/missing_ids.csv ]] && cp files/logs/missing_ids/missing_ids.csv files/logs/missing_ids/.bkp/missing_ids.csv.$(date +%Y%m%d%H%M%S)
+    [[ -f files/events/events.csv ]] &&
+        cp files/events/events.csv files/events/.bkp/events.csv.$(date +%Y%m%d%H%M%S)
+    [[ -f files/logs/missing_ids/missing_ids.csv ]] &&
+        cp files/logs/missing_ids/missing_ids.csv files/logs/missing_ids/.bkp/missing_ids.csv.$(date +%Y%m%d%H%M%S)
+    echo " Arquivos de backup criados com sucesso!"
+    echo ''
+fi
+
+# --------- ETAPA DE GERAR LISTA PARA CLASSIFICAÇÃO ( EVENTO | LABEL ) -----------
+PROCESS_PRED=${PROCESS_PRED:-true}
+if [ "$PROCESS_PRED" = true ]; then
+    # chega se o arquivo de predições já existe, se existir, move para uma pasta de backup
+    echo " ---------------- Iniciando o cria_pred.py ---------------------------- "
+    $PYTHON3 source/core/gerar_predcsv.py
+    echo ''
+    echo " Criando arquivos de backup..."
+    cp files/logs/predcsv/pred.csv files/logs/predcsv/.bkp/pred.csv.$(date +%Y%m%d%H%M%S)
     echo " Arquivos de backup criados com sucesso!"
     echo ''
 fi
@@ -117,19 +140,7 @@ if [ "$PROCESS_ENERGY" = true ]; then
     echo ''
 fi
 
-# --------- ETAPA DE GERAR LISTA PARA CLASSIFICAÇÃO ( EVENTO | LABEL ) -----------
-PROCESS_PRED=${PROCESS_PRED:-false}
-if [ "$PROCESS_PRED" = true ]; then
-    # chega se o arquivo de predições já existe, se existir, move para uma pasta de backup
-    echo " ---------------- Iniciando o cria_pred.py ---------------------------- "
-    $PYTHON3 source/Core/Gerar_predcsv.py
-    echo ''
-    echo " Criando arquivos de backup..."
-    cp files/logs/predcsv/pred.csv files/logs/predcsv/.bkp/pred.csv.$(date +%Y%m%d%H%M%S)
-    echo " Arquivos de backup criados com sucesso!"
-    echo ''
-fi
-
-echo " ---------------------- Fim do Pipeline --------------------------------"
-echo $DELIMT1
+echo $DELIMT2
+echo "                        Fim do Pipeline                                 "
+echo $DELIMT2
 echo ''

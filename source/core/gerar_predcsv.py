@@ -82,6 +82,9 @@ def cria_predcsv():
     df_errors.to_csv('./files/erros.csv', index=False)
 
 
+# Criar Lista de Eventos para Predição
+
+
 # ------------------------------ MAIN -----------------------------------------
 if __name__ == '__main__':
     # commercial_df, notcommercial_df, df_erros = constroi_dados_pred_separados()

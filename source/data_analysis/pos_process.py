@@ -535,9 +535,9 @@ def get_mseed(path: str = '.files/mseed/') -> list:
     to a list.
     '''
     for i in os.listdir(path):
+        pass
 
-
-    return list
+    return
 
 
 # Função para calcular SNR para um único arquivo mseed
