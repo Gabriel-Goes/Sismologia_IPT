@@ -15,7 +15,7 @@ from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtWidgets import QCheckBox
 from PyQt5.QtCore import Qt
 
-from Core.utils import delimt
+from core.utils import delimt
 
 PROJETO_DIR = os.environ['HOME'] + '/projetos/ClassificadorSismologico'
 sys.path.append(PROJETO_DIR + '/source')

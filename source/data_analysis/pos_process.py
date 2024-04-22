@@ -348,24 +348,15 @@ def classify_distance(distance):
 # plot histogram of events distance distribution
 def plot_hist_distance_recall(df):
     fig, ax = plt.subplots(figsize=(9, 6))
-
-    # Organize the plot in ascending order of distance
     categories = ['<50', '[50-100[', '[100-150[', '[150-200[', '[200-250[', '[250-300[', '>=300']
     df['distance_category'] = pd.Categorical(df['distance_category'],
                                              categories=categories,
                                              ordered=True)
-
-    # Calculate the relative frequency for each category
     freq_relative = df['distance_category'].value_counts(normalize=True).sort_index()
-
-    # Calcula o valor máximo para a escala de cor
     max_freq = freq_relative.max() * 100  # converte para porcentagem
-
-    # Cria o ScalarMappable com a escala de cor normalizada
     norm = mcolors.Normalize(vmin=0, vmax=max_freq)
     sm = plt.cm.ScalarMappable(cmap='viridis', norm=norm)
     sm.set_array([])  # Array vazio para o ScalarMappable
-    # Create a colormap
 
     for category in categories:
         cat_df = df[df['distance_category'] == category]
@@ -374,15 +365,12 @@ def plot_hist_distance_recall(df):
         recall = TP / (TP + FN) * 100
         frequency = freq_relative.loc[category] * 100
         color = sm.to_rgba(frequency)
-        # anotate at the top of the bar the recall value
         ax.text(categories.index(category),
                 recall + 0.01, f'{recall:.2f}',
                 ha='center', va='bottom', color='black')
         ax.bar(category, recall, color=color)
-    # Adiciona a colorbar ao plot
     cbar = fig.colorbar(sm, ax=ax)
     cbar.ax.set_ylabel('Frequency (%)')
-    # Horizontal grid lines and x-ticks
     plt.ylim(65, 100)
     plt.xticks(range(len(categories)), categories)
     plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
@@ -527,7 +515,6 @@ def plot_hist_num_stations_recall(df):
     plt.show()
 
 
-
 # -------------------------------- Main -------------------------------------- #
 def main_non_commercial():
     catalogo_moho = pd.read_csv('./files/events-moho-catalog.csv')
@@ -591,29 +578,7 @@ def main_commercial():
 
 
 def main_ratio():
-    root_dir = '../files/mseed/'
-    filtros = filterCombos()  # Assume-se que a função retorna uma lista de filtros adequados
-
-    # Define suas janelas (Exemplo fictício, ajuste conforme necessário)
-    noisewindow = AttribDict(
-        {'t': '', 'w': 10})
-    pwindow = AttribDict(
-        {'t': '', 'w': 20})
-    swindow = AttribDict(
-        {'t': '', 'w': 20})
-
-    # Percorre todos os subdiretórios e arquivos
-    i = 0
-    for subdir, dirs, files in os.walk(root_dir):
-        for file in files:
-            if file.endswith('.mseed'):
-                file_path = os.path.join(subdir, file)
-                i += 1
-                process_mseed_file(file_path, filtros, noisewindow, pwindow, swindow)
-        if i > 10:
-            break
-
-    return filtros
+    return
 
 
 if __name__ == '__main__':

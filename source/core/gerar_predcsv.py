@@ -22,8 +22,15 @@ def gerar_predcsv():
     # rename columns
     df_pred.columns = ['ID', 'Label']
 
+    # Remove os IDs duplicados
+    df_pred = df_pred.drop_duplicates()
+
     # Salvar o DataFrame em um arquivo CSV
     df_pred.to_csv('./files/predcsv/pred.csv', index=False)
+
+    df_erros = pd.DataFrame(erros, columns=['ID'])
+    df_erros.to_csv('./files/predcsv/erros.csv', index=False)
+
 
 
 # ------------------------------ MAIN -----------------------------------------

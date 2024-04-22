@@ -1,22 +1,42 @@
+#
+# !/~/.pyenv/versions/sismologia/bin/python3
+#
 # Autor: Lucas Schirbel
 # Coautor: Marcelo Biachi
 # Modificado por Gabriel Góes Rocha de Lima.
+# Data: 2024-04-22
+#
 
+# ------------------------------ DESCRIPTION -------------------------------- #
+# This files contains a Python script that calculates the signal to noise
+# ratio of a given trace, using different filter combinations.
+#
+# The script receives the network, station, location and channel codes, as well
+# as the noise, P and S windows to be used in the analysis.
 
 # ------------------------------ IMPORTS ------------------------------------ #
 from __future__ import print_function, division
 
 import sys
+import datetime
+import argparse
 
 import numpy as np
 import matplotlib.pyplot as plt
-from obspy.core import UTCDateTime, AttribDict
+import pandas as pd
+
+import obspy
 from obspy import Trace
-import datetime
+from obspy.core import UTCDateTime
+from obspy.core import AttribDict
 from obspy.clients.fdsn import Client
-import argparse
+
+# Import Snuffler application
+from pyrocko import snuffler
+from pyrocko import pile
 
 
+# ------------------------------ FUNCTIONS ---------------------------------- #
 # GET TRACES AND DATA
 def get(startime: datetime.datetime,
         endtime: datetime.datetime,
@@ -171,8 +191,12 @@ def make_cmdline_parser():
                         help="P-window specification Date/Length.")
     parser.add_argument("-ws", dest="ws", default=None,
                         help="S-window specification Date/Length.")
+    # IF THE USER WANTS TO DONWLOAD A MSEED FILE USE -
     parser.add_argument("-S", dest="ns", default=None,
                         help="Network.Station.Location.Channel to make the analysis")
+    # IF THE USER WANTS TO USE A LOCAL FILE USE -L
+    parser.add_argument("-L", dest="lf", default=None,
+                        help="Local file to make the analysis")
     parser.add_argument("-p", "--preview-window",
                         action="store_true", dest="preview", default=False,
                         help="Preview data & windows that will be used.")
@@ -283,6 +307,117 @@ def parsewindow(line):
     })
 
 
+def main(picks: pd.DataFrame,
+         window: int) -> None:
+    '''
+    Program main body
+
+    This function gets a dataframe with all information about the picked event.
+
+    Index(['ID', 'Event', 'Error', 'Pick', 'Network', 'Station', 'Location',
+           'Channel', 'Latitude', 'Longitude', 'Distance', 'Start Time',
+           'End Time', 'Pick Time', 'Origin Time', 'Origem Latitude',
+           'Origem Longitude', 'Cat', 'Stream Count', 'Hora de Origem (UTC)',
+           'MLv', 'Certainty', 'Path', 'Event.1'],
+          dtype='object')
+
+    the program will parse through the dataframe and execute the analysis for
+    each pick.
+    '''
+    # Sort by distance
+    picks.sort_values(by='Distance', inplace=True)
+
+    # Select a random pick the has Distance value higher then 200
+    pick = picks[picks['Distance'] > 200].sample(1).iloc[0]
+
+    # Get the network, station, location and channel codes
+    N = pick['Network']
+    S = pick['Station']
+    L = pick['Location']
+    C = pick['Channel']
+
+    # Get the noise, P and S windows
+    # the format is Date/Lenght
+
+    # Date is the the time of the pick - X seconds
+    # Lenght is the window size in seconds
+
+    # The noise window will be the the Pick Time - 5/4
+    # The P window will be the Pick Time + 5.1/2.5
+    # The S window will be the Pick Time + 20/5
+    nw = str(obspy.UTCDateTime(pick['Pick Time']) - 9) + '/8'
+    pw = str(obspy.UTCDateTime(pick['Pick Time'])) + '/' + str(window)
+    sw = str(obspy.UTCDateTime(pick['Pick Time']) + 20) + '/5'
+
+    # Create the windows
+    noisewindow = parsewindow(nw)
+    pwindow = parsewindow(pw)
+    swindow = parsewindow(sw)
+
+    # Get the trace from dataframe
+    st = obspy.read(pick['Path'])
+    trace = st[0]
+
+    # Get the filter combinations
+    filtros = filterCombos(1., 49., 4., 49.)
+    ratios(
+        trace,
+        filtros,
+        noisewindow,
+        pwindow,
+        swindow
+    )
+
+    # Plot the 3D graph
+    # plot3d(filtros, True, makeoutput="figures/plots/{}.{}.{}.{}_{}".format(
+    #     N, S, L, C, pwindow.t))
+
+    # Plot the 2D graph
+    plot2d(filtros, True, makeoutput="figures/plots/{}.{}.{}.{}_{}".format(
+        N, S, L, C, pwindow.t))
+
+    trace_copy = trace.copy()
+    trace_copy.detrend('linear').filter('bandpass', corners=4,
+                                        freqmin=2.0, freqmax=49.9)
+    t = np.arange(trace_copy.stats.npts) * trace_copy.stats.delta
+
+    a, b = \
+        noisewindow.t - trace_copy.stats.starttime - noisewindow.w / 2, \
+        noisewindow.t - trace_copy.stats.starttime + noisewindow.w / 2
+
+    plt.axvspan(a, b, alpha=0.5, label='Noise Window', color='red')
+
+    a, b = \
+        pwindow.t - trace_copy.stats.starttime - pwindow.w / 2, \
+        pwindow.t - trace_copy.stats.starttime + pwindow.w / 2
+    plt.axvspan(a, b, alpha=0.5, label='P-Window', color='yellow')
+
+    a, b = \
+        swindow.t - trace_copy.stats.starttime - swindow.w / 2, \
+        swindow.t - trace_copy.stats.starttime + swindow.w / 2
+    plt.axvspan(a, b, alpha=0.5, label='S-Window', color='green')
+
+    # Add the pick['Distance'] value as image title
+    plt.suptitle(f"Event {pick['Event']} | {N}.{S}")
+    # Add the pick['Magnitude'] value as image subtitle
+    plt.title(f"Magnitude: {(pick['MLv'])} / Distance: {int(pick['Distance'])} km ")
+
+    plt.plot(t, trace_copy.data, c='k')
+    plt.legend()
+
+    plt.savefig(
+        "figures/previews/{}.{}.{}.{}_{}_preview.png".format(N, S, L, C, pwindow.t)
+    )
+
+    plt.close()
+
+    p = pile.make_pile(pick['Path'])
+
+    snuffler.snuffle(p)
+
+    return picks, pick
+
+
 # -------------------------------- MAIN ------------------------------------- #
 # Program main body
 if __name__ == '__main__':
@@ -306,10 +441,26 @@ if __name__ == '__main__':
     if args.ws is not None:
         swindow = parsewindow(args.ws)
 
-    try:
-        N, S, L, C = str(args.ns).split(".")
-    except ValueError:
-        print("Bad channel specification, use -S to specify a valid one")
+    # IF THE USER WANTS TO DOWNLOAD A MSEED FILE USE -S
+    if args.ns is not None:
+        try:
+            N, S, L, C = str(args.ns).split(".")
+
+            trace = get(
+                noisewindow.t - noisewindow.w - 2,
+                swindow.t + swindow.w + 5,
+                N, S, L, C
+            )
+        except ValueError:
+            print("Bad channel specification, use -S to specify a valid one")
+
+    # IFF THE USERS WANTS TO USE A LOCAL FILE USE -L
+    elif args.lf is not None:
+        try:
+            MSEED_PATH = str(args.lf)
+            trace = obspy.read(MSEED_PATH)
+        except Exception as e:
+            print(' ! Error: ', e)
 
     if pwindow is None or swindow is None or noisewindow is None:
         print("No windows found", file=sys.stderr)
@@ -322,10 +473,6 @@ if __name__ == '__main__':
        not args.justpreview:
         print("Nothing to do!")
         sys.exit(1)
-
-    trace = get(noisewindow.t - noisewindow.w - 2,
-                swindow.t + swindow.w + 5,
-                N, S, L, C)
 
     if args.preview or args.justpreview:
         trace_copy = trace.copy()
