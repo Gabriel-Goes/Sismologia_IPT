@@ -1,57 +1,26 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.colors as mcolors
-import seaborn as sns
 import os
 
-from datetime import datetime
+import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
+import matplotlib.ticker as mtick
+import seaborn as sns
 
+import obspy
 from obspy import UTCDateTime
-from obspy.core import AttribDict
-from obspy import read
+
+from tqdm import tqdm
+
+# from typing import List
+
+from data_analysis.test_filters import parsewindow, filterCombos, prepare
+
+# ----------------------------- DATA VIZ ------------------------------------ #
 
 
-from typing import List
-
-from data_analysis.test_filters import filterCombos
-from data_analysis.test_filters import ratios
-
-
-# ----------------- Functions -----------------
-def list_events(pred_csv: str) -> List[str]:
-    '''
-    Recebe caminho do arquivo predcsv;
-    Retorna uma lista de ID eventos;
-    '''
-    list_events = pd.read_csv(pred_csv)
-    return list_events['time'].tolist()
-
-
-def sep_event_commercial(list_events: List[str]) -> [List[str], List[str]]:
-    '''
-    Recebe uma lista de eventos;
-    Retorna uma lista de eventos em horário comercial e uma de não-comercial
-    '''
-    commercial_events = []
-    non_commercial_events = []
-    for event in list_events:
-        event_date = UTCDateTime(event.split('_')[0])
-        if event_date.hour >= 11 and event_date.hour < 23:
-            commercial_events.append(event)
-        else:
-            non_commercial_events.append(event)
-    return commercial_events, non_commercial_events
-
-
-def remove_commercial_events(df, commercial_events):
-    for event in commercial_events:
-        df = df[df['event'] != event]
-    return df
-
-
+# ------------------------------ Functions ---------------------------------- #
 def get_true_false(validation):
-    # leitura dos arquivos csv files/output/non_commercial/validation_network_level.csv
     df_val = pd.read_csv('files/output/' + validation)
     print(f' - non_comm_net: {df_val.shape}')
 
@@ -61,7 +30,7 @@ def get_true_false(validation):
     return ant_high_certainty, nat_high_certainty
 
 
-# ---------------------------- Plots ----------------------------------------- #
+# ---------------------------- Plots ---------------------------------------- #
 # Correlation Matrix
 def plot_corr_matrix(df):
     cols = ['prob_nat', 'Hour',
@@ -81,7 +50,7 @@ def plot_corr_matrix(df):
     plt.show()
 
 
-# ---------------------------- ScatterPlots ---------------------------------- #
+# --------------------------- ScatterPlots ---------------------------------- #
 def plot_scatter(df, x, y):
     plt.figure(figsize=(10, 6))
     colors = ['b', 'r']
@@ -181,7 +150,7 @@ def plot_violinplot(df, x, y):
     plt.show()
 
 
-# ---------------------------- Histograms ------------------------------------ #
+# ---------------------------- Histograms ----------------------------------- #
 def plot_hist_kde(df, column):
     cols = ['prob_nat', 'Hour',
             'Longitude', 'Latitude',
@@ -196,31 +165,37 @@ def plot_hist_kde(df, column):
 
 # --------------------------------- Hours
 # Plot histogram of events hour distribution
-def plot_hist_hour_distribution(events_list, time):
-    hours = []
-    plt.figure(figsize=(9, 6))
-    for event in events_list:
-        event_date = UTCDateTime(event.split('_')[0])
-        hours.append(event_date.hour)
-    print(f'{set(hours)}')
+def plot_hist_hour_distribution(df):
+    df['hora'] = df['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
+    counts = df['hora'].value_counts(sort=False).reindex(
+        np.arange(24),
+        fill_value=0
+    )
+    density = counts / counts.sum()
+    plt.figure(figsize=(10, 6))
+    colors = ['blue' if (11 <= hour < 22) else 'red' for hour in counts.index]
+    bars = plt.bar(counts.index, density, color=colors, alpha=0.5, width=0.8)
 
-    # bins are per hour from 0 to 23
-    plt.hist(hours, bins=range(0, 25), rwidth=0.8, color='lightskyblue')
-    # Ajustando os ticks do eixo x para que fiquem a 0.5 para a direita de cada número inteiro
-    tick_positions = [x + 0.5 for x in range(24)]
-    plt.xticks(tick_positions, [str(i) for i in range(24)])
+    for bar, label in zip(bars, counts):
+        yval = bar.get_height()
+        plt.text(bar.get_x() + bar.get_width() / 2,
+                 yval + 0.001, int(label), ha='center', va='bottom')
 
-    # Only horizontal grid lines
-    plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
-    plt.gca().xaxis.grid(False)
-    plt.title('Distribuição de Eventos por Hora - 11am ~ ' + time + ' UTC')
-    plt.xlabel('Hour')
-    plt.ylabel('Frequency')
-    plt.tight_layout()
-    plt.savefig('./figures/hist_ev_hour' + time + '.png')
+    plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(xmax=1))
+
+    plt.xticks(range(0, 24))
+    plt.grid(axis='y')
+    plt.title('Distribuição de eventos sísmicos por hora (UTC)')
+    plt.xlabel('Hora (UTC)')
+    plt.ylabel('Frequência')
+    # Legenda: Commercial e Não-Comercial
+    plt.legend(
+        ['Horário Comercial',
+         'Fora do Horário Comercial'],
+        loc='upper right')
+    # save figure
+    plt.savefig('figures/pre_process/plots/histogramas/hist_hora.png')
     plt.show()
-    plt.close()
-    return hours
 
 
 def classify_hour(hour):
@@ -253,7 +228,8 @@ def classify_hour(hour):
 # Plot histogram of events hour distribution by recall
 def plot_hist_hour_distribution_recall(df):
     fig, ax = plt.subplots(figsize=(9, 6))
-    df['Hora de Origem (UTC)'] = df['Hora de Origem (UTC)'].apply(UTCDateTime)
+
+    df['Hora de Origem (UTC)'] = df['Hora de Origem (UTC)'].apply(obspy.UTCDateTime)
     df['Hour'] = df['Hora de Origem (UTC)'].apply(lambda x: x.hour)
     df['Hour by 2'] = df['Hour'].apply(classify_hour)
     hour_category = pd.CategoricalDtype(categories=[
@@ -379,7 +355,7 @@ def plot_hist_distance_recall(df):
     plt.xlabel('Epicentral Distance (km)')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('./figures/hist_ev_distance.png')
+    plt.savefig('figures/hist_ev_distance.png')
     plt.show()
     plt.close()
 
@@ -398,7 +374,7 @@ def plot_hist_magnitude_distribution(df_merged):
     plt.xlabel('Categoria de Magnitude')
     plt.ylabel('Número de Eventos')
     plt.tight_layout()
-    plt.savefig('./figures/dist_ev_cat_mag.png')
+    plt.savefig('figures/dist_ev_cat_mag.png')
     plt.show()
 
 
@@ -453,7 +429,7 @@ def plot_hist_magnitude_distribution_recall(df_merged):
     plt.xlabel('Magnitude')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('./figures/dist_ev_cat_mag_recall.png')
+    plt.savefig('figures/dist_ev_cat_mag_recall.png')
     plt.show()
 
 
@@ -473,7 +449,7 @@ def plot_hist_station_dist(df):
     plt.xlabel('Número de Estações')
     plt.ylabel('Número de Eventos')
     plt.tight_layout()
-    plt.savefig('./figures/dist_ev_num_stations_absoluto.png')
+    plt.savefig('figures/dist_ev_num_stations_absoluto.png')
     plt.show()
 
 
@@ -511,62 +487,143 @@ def plot_hist_num_stations_recall(df):
     plt.xlabel('Número de Estações')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('./figures/dist_ev_num_stations_recall.png')
+    plt.savefig('figures/dist_ev_num_stations_recall.png')
     plt.show()
 
 
+def snr_p(picks: pd.DataFrame,
+          window: int) -> [pd.DataFrame, dict]:
+    '''
+    Program main body
+
+    This function gets a dataframe with all information about the picked event.
+
+    Index(['ID', 'Event', 'Error', 'Pick', 'Network', 'Station', 'Location',
+           'Channel', 'Latitude', 'Longitude', 'Distance', 'Start Time',
+           'End Time', 'Pick Time', 'Origin Time', 'Origem Latitude',
+           'Origem Longitude', 'Cat', 'Stream Count', 'Hora de Origem (UTC)',
+           'MLv', 'Certainty', 'Path', 'Event.1'],
+          dtype='object')
+
+    the program will parse through the dataframe and execute the analysis for
+    each pick.
+    '''
+    for index, pick in tqdm(picks.iterrows()):
+        # Get the network, station, location and channel codes
+        nw = str(obspy.UTCDateTime(pick['Pick Time']) - 9) + '/8'
+        pw = str(obspy.UTCDateTime(pick['Pick Time'])) + '/' + str(window)
+        sw = str(obspy.UTCDateTime(pick['Pick Time']) + 20) + '/5'
+
+        # Create the windows
+        noisewindow = parsewindow(nw)
+        pwindow = parsewindow(pw)
+        swindow = parsewindow(sw)
+
+        # Get the trace from dataframe
+        st = obspy.read(pick['Path'])
+        trace = st[0]
+
+        # Get the filter combinations
+        filtros = filterCombos(1., 49., 4., 49.)
+        dict_filtros = {f'{filtro.pa}_{filtro.pb}': filtro for filtro in filtros}
+        filtro_bom = dict_filtros['2.0_49.0']
+        noise, trace_p, trace_s = prepare(
+            trace,
+            filtro_bom,
+            noisewindow, pwindow, swindow)
+
+        filtro_bom.noise = np.mean(np.abs(noise))
+        filtro_bom.p = np.mean(np.abs(trace_p))
+        filtro_bom.s = np.mean(np.abs(trace_s))
+        filtro_bom.snrp = filtro_bom.p / filtro_bom.noise
+        filtro_bom.snrs = filtro_bom.s / filtro_bom.noise
+
+        picks.at[index, 'SNR_P'] = filtro_bom.snrp
+        picks.at[index, 'Noise'] = filtro_bom.noise
+        picks.at[index, 'p'] = filtro_bom.p
+
+    return picks, dict_filtros
+
+
+# --------------------------- Create files
+def load_data():
+    # Load the validation network level
+    try:
+        events = pd.read_csv('files/events/events.csv')
+    # If file does not exist
+    except Exception as e:
+        print(f'Error: {e}')
+        # Open the most recent file of the 'files/events/.bkp/' directory
+        ev_bkp = sorted(os.listdir('files/events/.bkp/'))[-1]
+        print(f'Loaded the most recent bkp file: {ev_bkp}')
+        # Ask if want to continue
+        if input('Do you want to continue? (y/n)') == 'n':
+            return
+        events = pd.read_csv(
+            'files/events/.bkp/' + ev_bkp)
+
+    events['file_name'] = events['Path'].apply(lambda x: x.split('/')[-1].split('.')[0])
+    df_ncomm_val = pd.read_csv('files/output/no_commercial/validation_station_level.csv')
+    df_comm_val = pd.read_csv('files/output/commercial/validation_station_level.csv')
+
+    df_nc = pd.merge(df_ncomm_val, events, on='file_name', how='left')
+    df_comm = pd.merge(df_comm_val, events, on='file_name', how='left')
+    # DROPT DUPLICATES SERÁ REMOVIDO QUANDO ADQUIRIRMOS APENAS UM TIPO DE ONDA
+    # P COM PRIOIRIDADE NA 'P'
+    df_nc.drop_duplicates(subset=['file_name'], keep='first', inplace=True)
+    df_comm.drop_duplicates(subset=['file_name'], keep='first', inplace=True)
+
+    return df_nc, df_comm, events, df_ncomm_val, df_comm_val
+
+
 # -------------------------------- Main -------------------------------------- #
-def main_non_commercial():
-    catalogo_moho = pd.read_csv('./files/events-moho-catalog.csv')
-    catalogo_moho.rename(columns={'Folder': 'event'}, inplace=True)
-    not_comm = list_events('./files/predcsv/pred_not_commercial.csv')
-    comm_23, ncomm_23 = sep_event_commercial(not_comm)
+def main():
+    # Load the data
+    x = load_data()
+    df_nc = x[0]
 
-    # get the attributes of moho_catalog and append to df_ncomm_val
-    df_ncomm = pd.read_csv('files/output/non_commercial/validation_network_level.csv')
-    # df_ncomm_val_23 = remove_commercial_events(df_ncomm_val, comm_23)
-    df_ncomm_merged = pd.merge(df_ncomm, catalogo_moho,
-                               on='event', how='left')
-    # Get only the nearest station of each event
-    df_ncomm_merged['Num_Estacoes'] = df_ncomm_merged.groupby('ID')['ID'].transform('count')
-    df_ncomm_merged.sort_values(by=['event', 'Distance'], inplace=True)
-    df_ncomm_nearest = df_ncomm_merged.drop_duplicates(subset=['event'],
-                                                       keep='first')
+    # Calculo do SNRp
+    picks, dict_filtros = snr_p(df_nc, 5)
 
+    return picks, dict_filtros
+
+
+def main_nc(df):
     # Histograma de eventos por hora
-    plot_hist_hour_distribution(ncomm_23, '23')
-    df_ncomm_nearest = plot_hist_hour_distribution_recall(df_ncomm_nearest)
+    plot_hist_hour_distribution(df)
+    #df = plot_hist_hour_distribution_recall(df)
+    '''
 
     # Histogram by number of stations
-    plot_hist_station_dist(df_ncomm_nearest)
-    plot_hist_num_stations_recall(df_ncomm_nearest)
+    plot_hist_station_dist(df)
+    plot_hist_num_stations_recall(df)
 
     # Histogram - Frequency of Distances ( nearest station of event)
-    plot_hist_distance_frequency(df_ncomm_nearest)
+    plot_hist_distance_frequency(df)
 
     # Histograma mergeddistancia
-    df_ncomm_nearest.loc[:, 'distance_category'] =\
-        df_ncomm_nearest['Distance'].apply(classify_distance)
+    df.loc[:, 'distance_category'] =\
+        df['Distance'].apply(classify_distance)
 
-    plot_hist_distance_recall(df_ncomm_nearest)
+    plot_hist_distance_recall(df)
 
     # histograma categoria de magnitude por recall
-    df_ncomm_nearest.loc[:, 'magnitude_category'] =\
-        df_ncomm_nearest['MLv'].apply(classify_magnitude)
+    df.loc[:, 'magnitude_category'] =\
+        df['MLv'].apply(classify_magnitude)
 
-    plot_hist_magnitude_distribution_recall(df_ncomm_nearest)
+    plot_hist_magnitude_distribution_recall(df)
+    '''
+    return df
 
-    return comm_23, ncomm_23, df_ncomm_merged, df_ncomm_nearest, catalogo_moho
 
-
-def main_commercial():
-    catalogo_moho = pd.read_csv('./files/events-moho-catalog.csv')
+def main_comm(df):
+    catalogo_moho = pd.read_csv('files/events-moho-catalog.csv')
     catalogo_moho.rename(columns={'Folder': 'event'}, inplace=True)
-    comm = list_events('./files/predcsv/pred_commercial.csv')
+    # comm = list_events('files/predcsv/pred_commercial.csv')
 
     # get the attributes of moho_catalog and append to df_comm_val
     df_comm_val = pd.read_csv('files/output/commercial/validation_network_level.csv')
-    df_comm_val = remove_commercial_events(df_comm_val, comm)
+    # df_comm_val = remove_commercial_events(df_comm_val, comm)
     df_comm_val_merged = pd.concat(df_comm_val, catalogo_moho,
                                    on='event', how='left')
 
@@ -577,11 +634,12 @@ def main_commercial():
     return df_comm_val_merged, df_comm_nearest, catalogo_moho
 
 
-def main_ratio():
-    return
-
-
 if __name__ == '__main__':
-    main_ratio()
-    # main_non_commercial()
-    # main_commercial()
+    # Prepare the data
+    df_nc, df_comm, events, df_ncomm_val, picks, dict_filtros = main()
+
+    # Main non-commercial
+    df_nc = main_nc(df_nc)
+
+    # Main commercial
+    df_comm = main_comm(df_comm)

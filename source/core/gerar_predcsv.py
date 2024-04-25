@@ -32,7 +32,6 @@ def gerar_predcsv():
     df_erros.to_csv('./files/predcsv/erros.csv', index=False)
 
 
-
 # ------------------------------ MAIN -----------------------------------------
 if __name__ == '__main__':
     gerar_predcsv()

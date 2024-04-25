@@ -17,9 +17,6 @@ from PyQt5.QtCore import Qt
 
 from core.utils import delimt
 
-PROJETO_DIR = os.environ['HOME'] + '/projetos/ClassificadorSismologico'
-sys.path.append(PROJETO_DIR + '/source')
-
 
 # -------------------------------- Classe SeletorEventoApp ------------------- #
 class SeletorEventoApp(QMainWindow):
@@ -28,8 +25,7 @@ class SeletorEventoApp(QMainWindow):
         super().__init__()
         self.setWindowTitle('Seletor de Eventos, Redes e Estações')
         self.setGeometry(50, 50, 200, 150)
-        self.files_path = PROJETO_DIR + '/files'
-        self.df = pd.read_csv(self.files_path + "/output/non_commercial/validation_network_level.csv")
+        self.df = pd.read_csv("files/output/no_commercial/validation_network_level.csv")
         self.central_widget = QWidget(self)
         self.setCentralWidget(self.central_widget)
         self.layout = QVBoxLayout(self.central_widget)
@@ -121,7 +117,7 @@ class SeletorEventoApp(QMainWindow):
         self.networkSelector.clear()
         self.stationSelector.clear()
         selected_event = self.eventSelector.currentText()
-        event_folder = os.path.join(self.files_path, 'mseed', selected_event)
+        event_folder = os.path.join('files/mseed', selected_event)
         networks, stations = self.getNetworksAndStationsFromEventFolder(event_folder)
         self.networkSelector.addItems(sorted(networks))
         self.stationSelector.addItems(sorted(stations))
@@ -149,8 +145,7 @@ class SeletorEventoApp(QMainWindow):
         self.eventText.setText(f'Evento: {event}')
         selected_event = self.eventSelector.currentText()
         filtered_df = self.df.loc[self.df['event'] == selected_event, 'pred']
-        self.mseed_file_path = os.path.join(self.files_path,
-                                            'mseed', event,
+        self.mseed_file_path = os.path.join('files/mseed', event,
                                             f'{network}_{station}_{event}.mseed')
         # Aqui chamamos o Snuffler passando o caminho do arquivo mseed
         try:

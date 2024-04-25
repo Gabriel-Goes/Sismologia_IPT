@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
 
 import sys
 import matplotlib.pyplot as plt
@@ -24,40 +22,15 @@ from obspy.signal.trigger import classic_sta_lta
 from obspy.signal.trigger import trigger_onset
 
 
-# In[2]:
-
-
-files_path = '/home/ipt/projetos/Classificador_Sismologico/files/'
-
-
-# # Visualization of a record and the prediction associated
-
-# In[3]:
-
-
-pred_net = pd.read_csv(files_path+"output/non_commercial/validation_network_level.csv")
+pred_net = pd.read_csv("output/non_commercial/validation_network_level.csv")
 stream_c = None
 stream = None
 pred_net
-
-
-# In[4]:
-
 
 pred_sta = pd.read_csv(files_path+"output/non_commercial/validation_station_level.csv")
 stream_c = None
 stream = None
 pred_sta
-
-
-# In[ ]:
-
-
-
-
-
-# In[9]:
-
 
 df = pred_net
 #df = pred_sta
@@ -81,7 +54,7 @@ def get_event_folder(row):
         return row['file_name'].split('_')[-1]  # Extrai EVENTTIME de NET_STA_EVENTTIME
     else:
         return row['event']  # Usa diretamente o EVENTTIME
-        
+
 # Função para ordenar e filtrar eventos com base na probabilidade antropogênica
 def get_filtered_events(label_cat, nature, prob_order):
     filtered_df = df[(df['label_cat'] == label_cat) & (df['nature'] == nature)]
@@ -106,7 +79,7 @@ def get_stations_and_networks(event_folder):
             print("Erro")
     print(list(stations))
     print(list(networks))
-          
+
     return list(networks), list(stations)
 
 # Função para atualizar as estações e redes disponíveis com base no evento selecionado
@@ -140,7 +113,7 @@ def plot_interativo(event, station, network, freqmin, freqmax):
 
         # Criação do plot
         fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(24, 9))  # Ajuste o tamanho conforme necessário
-        
+
         ax1.plot(time, trZ, color='black', linewidth=0.5, label='HH*')
         ax1.set_ylabel('Counts', fontsize=16)
         ax1.set_xlabel('Time [sec]', fontsize=16)
@@ -159,51 +132,51 @@ def plot_interativo(event, station, network, freqmin, freqmax):
             rotulo = "Antropogênico"
             # Se for Antropogênico, mas a probabilidade de ser Antropogênico for menor que 0.5, cor = vermelho
             text_color = 'red' if prob_ant < 0.5 else 'black'
-        
+
         ax1.text(0.05, 0.95, s=f'{network}_{station}_{event}', transform=ax1.transAxes)
         ax1.text(0.05, 0.85, f'Rótulo: {rotulo}', transform=ax1.transAxes, color=text_color)
         ax1.text(0.05, 0.80, f'Prob Antrópico: {prob_ant*100} %', transform=ax1.transAxes, color=text_color)
         ax1.text(0.05, 0.75, f'Frequência mínima: {freqmin}', transform=ax1.transAxes)
         ax1.text(0.05, 0.70, f'Frequência máxima: {freqmax}', transform=ax1.transAxes)
-        
+
         print(event)
         spectrogram = np.load(f'{files_path}spectro/{event}/{network}_{station}_{event}.npy', allow_pickle=True)
         spectro = moveaxis(spectrogram, 0, 2)
-        
+
         freqs = list(range(1, 51))
         time = list(np.arange(0.5, 59.75, 0.25))
         nyquist_f = 50.0
-        
+
         fig = plt.figure(figsize=(29, 12))
         psd = spectro.copy()
-        
+
         # Compute the grid and get the data to plot on
         T, F = np.meshgrid(time, freqs)
         psd_mat = np.array(psd[:, :, 0])
-        
+
         # Define the colormap
         cmap = plt.get_cmap('BuPu')
-        
+
         # Create Axes from a given Figure
         ax2.pcolormesh(T, F, psd_mat.T, vmin=0, vmax=0.5, cmap=cmap, shading='gouraud', label='HH*')
         #ax_cbar = fig.add_axes([0.81, 0.8, 0.01, 0.35])  # colorbar
-        
+
         # Plot the spectrogram
         plot_spectro = ax2.pcolormesh(T, F, psd_mat.T,
                                             vmin=0, vmax=0.5,
                                             cmap=cmap, shading='gouraud', label='HHZ')
-    
+
         # Beautify spectrogram
         ax2.set_xlim((0.0, 60.0))
         ax2.set_ylabel('Frequency [Hz]', fontsize=16)
         ax2.set_xlabel('Time [s]', fontsize=16)
         ax2.tick_params(labelsize = 14)
-        
+
         # Plot text as legend
         ax2.text(x=59, y=47, s=f'{stream_c[0].stats.component}',
                         color='black', fontsize=16)#, weight='bold')
-        
-        get_stations_and_networks(files_path + 'mseed/' + str(event))        
+
+        get_stations_and_networks(files_path + 'mseed/' + str(event))
 
 
         plt.tight_layout()  # Ajusta automaticamente o layout

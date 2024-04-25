@@ -103,7 +103,6 @@ def iterate_events(eventos: List,
     print(f' - Número de eventos: {len(eventos)}')
     print(f' - Client: {data_client.base_url}')
     print(f' - Client Backup: {data_client_bkp.base_url}')
-    input("Press Enter to continue ...\n")
     data_to_save = []  # Lista para coletar os dados que serão salvos no CSV
     error_to_save = []
     event_count = 0
@@ -127,25 +126,16 @@ def iterate_events(eventos: List,
         origem_lon = origem.longitude
         origin_time = origem.time
         dir_name = origin_time.strftime("%Y%m%dT%H%M%S")
+
         pick_count = 0
-        stream_count = 0
+        pick_p = False
         for pick in evento.picks:
-            # Se pick.phase_hint for diferente de P ou Pg, continue
-            if pick.phase_hint not in ['P', 'Pg', 'Pn']:
-
-                error_to_save.append({'ID': event_id,
-                                      'Network': pick.waveform_id.network_code,
-                                      'Station': pick.waveform_id.station_code,
-                                      'Location': pick.waveform_id.location_code,
-                                      'Channel': pick.waveform_id.channel_code,
-                                      'Origin Time': origin_time,
-                                      'Origem Latitude': origem_lat,
-                                      'Origem Longitude': origem_lon,
-                                      'Pick': pick.phase_hint,
-                                      'Error': 'pick.phase_hint not in [P, Pg, Pn]'})
+            if pick.phase_hint == 'P':
+                pick_p = True
+            if pick_p is True:
                 continue
-
-            if pick.waveform_id.channel_code[:1] != 'H':
+            # Se pick.phase_hint for diferente de P ou Pg, continue
+            if pick.phase_hint not in ['P', 'Pg', 'Pn'] or pick.waveform_id.channel_code[:1] != 'H':
                 error_to_save.append({'ID': event_id,
                                       'Network': pick.waveform_id.network_code,
                                       'Station': pick.waveform_id.station_code,
@@ -155,7 +145,7 @@ def iterate_events(eventos: List,
                                       'Origem Latitude': origem_lat,
                                       'Origem Longitude': origem_lon,
                                       'Pick': pick.phase_hint,
-                                      'Error': 'pick.waveform_id.channel_code[:1] != H'})
+                                      'Error': 'Pick diferente de P, Pg ou Pn ou Channel diferente de H'})
                 continue
 
             pick_count += 1
@@ -247,7 +237,6 @@ def iterate_events(eventos: List,
                     os.makedirs(f'./files/mseed/{dir_name}', exist_ok=True)
                     path = f'./files/mseed/{dir_name}/{net}_{sta}_{dir_name}.mseed'
                     st.write(path, format="MSEED")
-                    stream_count += 1
                     print(f' - Saving File: {dir_name}/{net}_{sta}_{dir_name}.mseed')
 
                 except Exception as e:
@@ -267,6 +256,7 @@ def iterate_events(eventos: List,
                                           'Error': f'Error downloading waveform: {e}'
                                           })
                     print(f"Error downloading waveform: {e}")
+                    continue
 
                 try:
                     magnitude = evento.preferred_magnitude().mag
@@ -289,18 +279,18 @@ def iterate_events(eventos: List,
                                           })
                     magnitude = "None"
 
-                # Aqui, você deve ajustar de acordo com os dados exatos que você quer salvar.
-                # Isso é apenas um exemplo baseado no que você forneceu.
                 data_to_save.append({
-                    'ID': event_id,  # Substitua pela identificação correta do evento
+                    'ID': event_id,
                     'Event': dir_name,
                     'Origin Time': origin_time,
-                    'Longitude': origem_lon,
-                    'Latitude': origem_lat,
-                    'MLv': magnitude,  # Substitua pela magnitude do evento, se disponível
+                    'Origem Longitude': origem_lon,
+                    'Origem Latitude': origem_lat,
+                    'Latitude': sta_lat,
+                    'Longitude': sta_lon,
+                    'MLv': magnitude,
                     'Distance': dist_km,
-                    'Cat': evento.event_type,  # Substitua pela categoria do evento, se aplicável
-                    'Certainty': evento.event_type_certainty,  # Substitua pela certeza do evento, se aplicável
+                    'Cat': evento.event_type,
+                    'Certainty': evento.event_type_certainty,
                     'Pick': pick.phase_hint,
                     'Network': net,
                     'Station': sta,
@@ -309,7 +299,6 @@ def iterate_events(eventos: List,
                     'Pick Time': pick_time,
                     'Start Time': start_time,
                     'End Time': end_time,
-                    'Stream Count': stream_count,
                     'Path': path,
                     'Error': 'None',
                 })
@@ -318,20 +307,19 @@ def iterate_events(eventos: List,
         # Print number of Pwave Picks
         print(f' - Event: {event_id}')
         print(f' - Pwave Picks: {pick_count}')
-        print(f' - Streams: {stream_count}')
         print(delimt2)
 
     # Escrever os dados coletados no arquivo CSV
-    csv_file_path = './files/events/events.csv'  # Substitua pelo caminho correto
+    csv_file_path = './files/events/events.csv'
     with open(csv_file_path, mode='w', newline='\n', encoding='utf-8') as csv_file:
         fieldnames = ['ID', 'Event', 'Error',
                       'Pick', 'Network', 'Station', 'Location', 'Channel',
-                      'Latitude', 'Longitude', 'Distance', 'Start Time', 'End Time',
-                      'Pick Time', 'Origin Time',
+                      'Latitude', 'Longitude', 'Distance',
                       'Origem Latitude', 'Origem Longitude',
-                      'Cat', 'Stream Count', 'Hora de Origem (UTC)',
+                      'Pick Time', 'Origin Time', 'Start Time', 'End Time',
+                      'Cat',
                       'MLv', 'Certainty',
-                      'Path', 'Event']
+                      'Path']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
         for data in data_to_save:
@@ -342,13 +330,14 @@ def iterate_events(eventos: List,
     # Escrever os erros no arquivo CSV
     csv_error_path = './files/events/erros.csv'
     with open(csv_error_path, mode='w', newline='\n', encoding='utf-8') as csv_file:
-        fieldnames = ['ID', 'Error',
+        fieldnames = ['ID', 'Event', 'Error',
                       'Pick', 'Network', 'Station', 'Location', 'Channel',
-                      'Latitude', 'Longitude', 'Distance', 'Start Time', 'End Time',
-                      'Pick Time', 'Origin Time',
+                      'Latitude', 'Longitude', 'Distance',
                       'Origem Latitude', 'Origem Longitude',
-                      'Cat', 'Stream Count', 'Hora de Origem (UTC)',
-                      'MLv', 'Certainty']
+                      'Pick Time', 'Origin Time', 'Start Time', 'End Time',
+                      'Cat',
+                      'MLv', 'Certainty',
+                      'Path']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
         for data in error_to_save:

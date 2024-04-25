@@ -150,12 +150,13 @@ docker run -it --rm -v $HOME/projetos:/app discrim:0.1.0
 Dentro do contêiner, podemos testar o algoritmo com nossos dados sismológicos.
 
 ```bash 
-export CS_files=./ClassificadorSismologico/files
+export CS_files=ClassificadorSismologico/files
 python ./discrimination_eq_q/run.py\
     --data_dir $CS_files/mseed \
     --spectro_dir $CS_files/spectro \
-    --output_dir $CS_files/output/non_commercial/ \
-    --csv_dir $CS_files/predcsv/pred_not_commercial.csv \
+    --model_dir discrimination_eq_q/model/model_2021354T1554.h5 \
+    --output_dir $CS_files/output/no_commercial \
+    --csv_dir $CS_files/predcsv/pred_no_commercial.csv \
     --valid
 ```
 

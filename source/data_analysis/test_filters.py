@@ -31,6 +31,8 @@ from obspy.core import UTCDateTime
 from obspy.core import AttribDict
 from obspy.clients.fdsn import Client
 
+from tqdm import tqdm
+
 # Import Snuffler application
 from pyrocko import snuffler
 from pyrocko import pile
@@ -163,23 +165,6 @@ def filterCombos(
     return filtros
 
 
-# WRITES OUTPUT TO FILE
-def write(data):
-    raise Exception("No funciona mais!")
-
-    fout = open("filters.txt", "w")
-    z_p = np.array([data[key].p for key in sorted(data.keys())])
-    norm_p = np.max(z_p)
-    z_s = np.array([data[key].s for key in sorted(data.keys())])
-    norm_s = np.max(z_s)
-    fout.write("# pa pb snr_p snr_s\n")
-    for key in sorted(data.keys()):
-        fout.write("%s %.03f %.03f\n" % (key,
-                                         data[key].p / norm_p,
-                                         data[key].s / norm_s))
-    fout.close()
-
-
 # MAKES THE COMMAND LINE PARSER
 def make_cmdline_parser():
     parser = argparse.ArgumentParser(description='Display event summary',
@@ -232,23 +217,29 @@ def plot2d(filtros, norm=False, makeoutput=None):
     if norm:
         z_s = z_s / np.max(z_s)
 
-    fig = plt.figure(figsize=(10, 5))
+    fig = plt.figure(figsize=(16, 9))
     axp = fig.add_subplot(1, 2, 1)
     axs = fig.add_subplot(1, 2, 2)
-
-    axp.set_xlabel("High Pass (Hz)")
-    axp.set_ylabel("Low Pass (Hz) ")
-    axp.set_title("S/N Ratio for P-wave")
-
-    axs.set_xlabel("High Pass (Hz)")
-    axs.set_ylabel("Low Pass (Hz) ")
-    axs.set_title("S/N Ratio for PwP-wave")
-
     caxp = axp.tricontourf(x, y, z_p)
     caxs = axs.tricontourf(x, y, z_s)
-
     fig.colorbar(caxp, ax=axp)
     fig.colorbar(caxs, ax=axs)
+
+    for ax in [axp, axs]:
+        ax.set_xlabel("High Pass (Hz)")
+        ax.set_ylabel("Low Pass (Hz)")
+        ax.set_xlim(0, 50)
+        ax.set_ylim(0, 50)
+        ax.set_xticks(np.arange(0, 51, 1))
+        ax.set_yticks(np.arange(0, 51, 1))
+        ax.set_xticklabels(['' if i % 5 != 0 else str(i) for i in range(51)])
+        ax.set_yticklabels(['' if i % 5 != 0 else str(i) for i in range(51)])
+        ax.grid(True, which='both', linestyle='--', linewidth=0.5,
+                color='0.5', alpha=0.5, zorder=0)
+        ax.axis('scaled')
+
+    axp.set_title("S/N Ratio for P-wave")
+    axs.set_title("S/N Ratio for S-wave")
 
     plt.tight_layout()
 
@@ -307,23 +298,10 @@ def parsewindow(line):
     })
 
 
-def main(picks: pd.DataFrame,
-         window: int) -> None:
-    '''
-    Program main body
 
-    This function gets a dataframe with all information about the picked event.
 
-    Index(['ID', 'Event', 'Error', 'Pick', 'Network', 'Station', 'Location',
-           'Channel', 'Latitude', 'Longitude', 'Distance', 'Start Time',
-           'End Time', 'Pick Time', 'Origin Time', 'Origem Latitude',
-           'Origem Longitude', 'Cat', 'Stream Count', 'Hora de Origem (UTC)',
-           'MLv', 'Certainty', 'Path', 'Event.1'],
-          dtype='object')
-
-    the program will parse through the dataframe and execute the analysis for
-    each pick.
-    '''
+def main_plot(picks: pd.DataFrame,
+              window: int) -> None:
     # Sort by distance
     picks.sort_values(by='Distance', inplace=True)
 
@@ -373,8 +351,11 @@ def main(picks: pd.DataFrame,
     #     N, S, L, C, pwindow.t))
 
     # Plot the 2D graph
-    plot2d(filtros, True, makeoutput="figures/plots/{}.{}.{}.{}_{}".format(
-        N, S, L, C, pwindow.t))
+    plot2d(
+        filtros,
+        False,
+        makeoutput="figures/pos_process/plots/{}.{}.{}.{}_{}".format(
+            N, S, L, C, pwindow.t))
 
     trace_copy = trace.copy()
     trace_copy.detrend('linear').filter('bandpass', corners=4,
@@ -385,12 +366,16 @@ def main(picks: pd.DataFrame,
         noisewindow.t - trace_copy.stats.starttime - noisewindow.w / 2, \
         noisewindow.t - trace_copy.stats.starttime + noisewindow.w / 2
 
-    plt.axvspan(a, b, alpha=0.5, label='Noise Window', color='red')
+    plt.axvspan(
+        a, b,
+        alpha=0.5, label='Noise Window', color='red')
 
     a, b = \
         pwindow.t - trace_copy.stats.starttime - pwindow.w / 2, \
         pwindow.t - trace_copy.stats.starttime + pwindow.w / 2
-    plt.axvspan(a, b, alpha=0.5, label='P-Window', color='yellow')
+    plt.axvspan(
+        a, b,
+        alpha=0.5, label='P-Window', color='yellow')
 
     a, b = \
         swindow.t - trace_copy.stats.starttime - swindow.w / 2, \
@@ -406,16 +391,13 @@ def main(picks: pd.DataFrame,
     plt.legend()
 
     plt.savefig(
-        "figures/previews/{}.{}.{}.{}_{}_preview.png".format(N, S, L, C, pwindow.t)
+        "figures/pos_process/previews/{}.{}.{}.{}_{}_preview.png".format(N, S, L, C, pwindow.t)
     )
 
     plt.close()
 
-    p = pile.make_pile(pick['Path'])
-
-    snuffler.snuffle(p)
-
-    return picks, pick
+    # p = pile.make_pile(pick['Path'])
+    # snuffler.snuffle(p)
 
 
 # -------------------------------- MAIN ------------------------------------- #
@@ -527,3 +509,21 @@ if __name__ == '__main__':
             N, S, L, C, pwindow.t) if args.makeoutput else None)
 
     sys.exit(0)
+
+
+# ----------------------------- DEPRECATED ---------------------------------- #
+# WRITES OUTPUT TO FILE
+def write(data):
+    raise Exception("No funciona mais!")
+
+    fout = open("filters.txt", "w")
+    z_p = np.array([data[key].p for key in sorted(data.keys())])
+    norm_p = np.max(z_p)
+    z_s = np.array([data[key].s for key in sorted(data.keys())])
+    norm_s = np.max(z_s)
+    fout.write("# pa pb snr_p snr_s\n")
+    for key in sorted(data.keys()):
+        fout.write("%s %.03f %.03f\n" % (key,
+                                         data[key].p / norm_p,
+                                         data[key].s / norm_s))
+    fout.close()
