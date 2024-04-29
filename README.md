@@ -36,11 +36,11 @@ o território brasileiro abrange a zona do -3 UTC à -5 UTC.
 - [x] Adquirir [catálogo](https://github.com/Gabriel-Goes/sismologia_ipt/blob/main/files/catalogo/catalogo-moho.csv) de eventos naturais do IAG-USP;
 - [x] Seperar eventos entre comericias e não-comerciais;
 - [ ] Olhar forma de onde no Snuffler;
-    - Desenvolvimento de [Snuffling](www.pyrocko.com). 
+- [ ] Desenvolvimento de [Snuffling](www.pyrocko.com). 
 - [ ] Plotar no mapa;
-    - Adicionar mapas no plot visualizacao.py.
+- [ ]  Adicionar mapas no plot visualizacao.py.
 - [ ] Localizações de pedreiras já conhecidas;
-    - Utilizar shapefiles da ANM.
+- [ ] Utilizar shapefiles da ANM.
 - [ ] Segunda rodada com todos os eventos sem filtrar por horário.
 - [ ] Olhar se as formas de onda estão nos catálogos do IPT; [SC/RS/PR]
 
@@ -63,7 +63,7 @@ derivados).
 mkdir ~/projetos/  # CRIE ESTE DIRETÓRIO PARA MELHOR ORGANIZAÇÃO
 git clone git@github.com:Gabriel-Goes/Sismologia_IPT.git\
     ~/projetos/ClassificadorSismologico && cd ~/projetos/ClassificadorSismologico
-git switch desenvolvimento  # Ainda não houve merge com a branch main
+git switch dev # Ainda não houve merge com a branch main
 ```
 
 ### Crie e ative o Ambiente Virtual e Instale as Dependências
@@ -99,7 +99,7 @@ do repositório.
 ```bash
 # Execute o script de pipeline
 sudo chmod +x ./Sismo_Pipeline.sh
-./Sismo_Pipeline.sh
+./Pipeline_Classificar.sh
 ```
 
 Este processo criará um dietório ./files/mseed/ com subdiretórios nomeados pelo

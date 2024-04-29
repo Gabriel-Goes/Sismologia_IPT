@@ -2,19 +2,17 @@
 # Python 3.10
 # ./Classificador_Sismologico/source/Core/utils.py
 
-
-# ----------------------------  DESCRIPTION  ----------------------------------
-# FUNÇÕES E VARIÁVEIS UTILITAŔIAS PARA O PROJETO
-# Estas funções estão escritas aqui para melhorar a leitura dos scripts
-# principais, aumentando a fluidez dos códigos deixando explícito apenas o que
-# é realmente importante.
-
 # Autor: Gabriel Góes Rocha de Lima
 # Funções de utilidade para Processar_Dados_Sismicos.py
 # Versão: 0.2.1
 # Data: 2024-02-27
 # Modificação 2024-04-10
 
+# ----------------------------  DESCRIPTION  ----------------------------------
+# FUNÇÕES E VARIÁVEIS UTILITAŔIAS PARA O PROJETO
+# Estas funções estão escritas aqui para melhorar a leitura dos scripts
+# principais, aumentando a fluidez dos códigos deixando explícito apenas o que
+# é realmente importante.
 
 # ----------------------------  IMPORTS   -------------------------------------
 from datetime import datetime

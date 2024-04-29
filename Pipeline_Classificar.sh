@@ -4,6 +4,7 @@
 # -----------------------------------------------------------------------------
 # ./ClassificadorSismologico/Sismo_Pipeline.sh
 # Autor: Gabriel Góes Rocha de Lima
+# Modificado do código de Lucas Schirbel
 # Versão: 0.2
 # Data: 2024-03-05
 # Modificado: 2024-04-10
