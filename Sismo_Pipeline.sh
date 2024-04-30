@@ -121,30 +121,26 @@ fi
 PREDICT=${PREDICT:-true}
 if [ "$PREDICT" = true ]; then
     DIR_PROJETO="$HOME/projetos/ClassificadorSismologico/"
-    NOME_TERM="DOCKER" # Use underscores no lugar de espaços
-    COMMAND='docker run -it --rm -v $HOME/projetos:/app discrim:0.1.0'
-    COMMAND_2='python ./discrimination_eq_q/run.py \
-    --data_dir ClassificadorSismologico/files/mseed \
-    --spectro_dir ClassificadorSismologico/files/spectro \
-    --model discrimination_eq_q/model/model_2021354T1554.h5 \
-    --output_dir ClassificadorSismologico/files/output/no_commercial \
-    --csv_dir ClassificadorSismologico/files/predcsv/pred_no_commercial.csv \
+    NOME_TERM="Preditor" # Use underscores no lugar de espaços
+    COMMAND_1='python cnn/run.py \
+    --data_dir files/mseed \
+    --spectro_dir files/spectro \
+    --output_dir files/output/no_commercial \
+    --csv_dir files/predcsv/pred_no_commercial.csv \
     --valid'
-    COMMAND_3='python ./discrimination_eq_q/run.py \
-    --data_dir ClassificadorSismologico/files/mseed \
-    --spectro_dir ClassificadorSismologico/file/sspectro \
-    --model discrimination_eq_q/model/model_2021354T1554.h5 \
-    --output_dir ClassificadorSismologico/files/output/commercial \
-    --csv_dir ClassificadorSismologico/files/predcsv/pred_commercial.csv \
+    COMMAND_2='python cnn/run.py \
+    --data_dir files/mseed \
+    --spectro_dir file/sspectro \
+    --output_dir files/output/commercial \
+    --csv_dir files/predcsv/pred_commercial.csv \
     --valid'
 
     echo " ----------------- INICIANDO O PREDICT.PY ---------------------------- "
-    i3-msg "workspace 5"
+    i3-msg "workspace 2"
     alacritty -e bash -c "tmux new-session -d -s $NOME_TERM -c $DIR_PROJETO && \
     tmux send-keys -t $NOME_TERM 'cd $DIR_PROJETO' C-m && \
-    tmux send-keys -t $NOME_TERM '$COMMAND' C-m && \
+    tmux send-keys -t $NOME_TERM \"$COMMAND_1\" C-m && \
     tmux send-keys -t $NOME_TERM \"$COMMAND_2\" C-m && \
-    tmux send-keys -t $NOME_TERM \"$COMMAND_3\" C-m && \
     tmux attach-session -t $NOME_TERM"
     echo ''
 fi

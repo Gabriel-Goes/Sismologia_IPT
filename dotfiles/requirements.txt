@@ -3,3 +3,4 @@ obspy
 tqdm
 utm
 ipython
+tensorflow
