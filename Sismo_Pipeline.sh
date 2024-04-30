@@ -119,29 +119,34 @@ fi
 
 # ------------------------- ETAPA DE PREDIÇÃO  ----------------------------------
 PREDICT=${PREDICT:-true}
+COMM=${COMM:-false}
 if [ "$PREDICT" = true ]; then
-    DIR_PROJETO="$HOME/projetos/ClassificadorSismologico/"
-    NOME_TERM="Preditor" # Use underscores no lugar de espaços
-    COMMAND_1='python ../discrimination_eq_q/run.py \
-    --data_dir files/mseed \
-    --spectro_dir files/spectro \
-    --output_dir files/output/no_commercial \
-    --csv_dir files/predcsv/pred_no_commercial.csv \
+    NOME_TERM="DOCKER"
+    COMMAND='docker run -it --rm -v $HOME/projetos:/app discrim:0.1.0'
+    COMMAND_2='python ./discrimination_eq_q/run.py \
+    --data_dir ClassificadorSismologico/files/mseed \
+    --model_file ClassificadorSismologico/files/model/model_2021354T1554.h5 \
+    --spectro_dir ClassificadorSismologico/files/spectro \
+    --output_dir ClassificadorSismologico/files/output/no_commercial \
+    --csv_dir ClassificadorSismologico/files/predcsv/pred_no_commercial.csv \
     --valid'
-    COMMAND_2='python ../discrimination_eq_q/run.py \
-    --data_dir files/mseed \
-    --spectro_dir file/sspectro \
-    --output_dir files/output/commercial \
-    --csv_dir files/predcsv/pred_commercial.csv \
+    COMMAND_3='python ./discrimination_eq_q/run.py \
+    --data_dir ClassificadorSismologico/files/mseed \
+    --model_file ClassificadorSismologico/files/model/model_2021354T1554.h5 \
+    --spectro_dir ClassificadorSismologico/file/sspectro \
+    --output_dir ClassificadorSismologico/files/output/commercial \
+    --csv_dir ClassificadorSismologico/files/predcsv/pred_commercial.csv \
     --valid'
 
     echo " ----------------- INICIANDO O PREDICT.PY ---------------------------- "
     i3-msg "workspace 2"
-    alacritty -e bash -c "tmux new-session -d -s $NOME_TERM -c $DIR_PROJETO && \
-    tmux send-keys -t $NOME_TERM 'cd $DIR_PROJETO' C-m && \
-    tmux send-keys -t $NOME_TERM \"$COMMAND_1\" C-m && \
+    alacritty -e bash -c "tmux new-session -d -s $NOME_TERM && \
+    tmux send-keys -t $NOME_TERM \"$COMMAND\" C-m && \
     tmux send-keys -t $NOME_TERM \"$COMMAND_2\" C-m && \
     tmux attach-session -t $NOME_TERM"
+    if [ "$COMM" = true ]; then
+        tmux send-keys -t "$NOME_TERM \"$COMMAND_3\" C-m"
+    fi
     echo ''
 fi
 
