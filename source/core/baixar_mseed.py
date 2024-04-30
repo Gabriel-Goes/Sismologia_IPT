@@ -130,8 +130,6 @@ def iterate_events(eventos: List,
         pick_count = 0
         pick_p = False
         for pick in evento.picks:
-            if pick.phase_hint == 'P':
-                pick_p = True
             if pick_p is True:
                 continue
             # Se pick.phase_hint for diferente de P ou Pg, continue
@@ -148,6 +146,8 @@ def iterate_events(eventos: List,
                                       'Error': 'Pick diferente de P, Pg ou Pn ou Channel diferente de H'})
                 continue
 
+            if pick.phase_hint == 'P':
+                pick_p = True
             pick_count += 1
             print(f'--> Pick {pick_count}')
             net = pick.waveform_id.network_code

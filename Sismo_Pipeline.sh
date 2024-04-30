@@ -80,7 +80,7 @@ echo ''
 
 # ------------------------- ETAPA DE AQUISIÇÃO DE DADOS  ----------------------
 # CRIANDO CATÁLOGO DE EVENTOS SISMICOS E GERANDO UMA TABELA DE METADADOS DE EVENTOS
-PROCESS_EVENTS=${PROCESS_EVENTS:-true}
+PROCESS_EVENTS=${PROCESS_EVENTS:-false}
 if [ "$PROCESS_EVENTS" = true ]; then
     echo " Criando arquivos de backup..."
     [[ -f files/events/events.csv ]] &&
@@ -123,18 +123,16 @@ if [ "$PREDICT" = true ]; then
     DIR_PROJETO="$HOME/projetos/ClassificadorSismologico/"
     NOME_TERM="DOCKER" # Use underscores no lugar de espaços
     COMMAND='docker run -it --rm -v $HOME/projetos:/app discrim:0.1.0'
-    COMMAND_2='export CS_files=ClassificadorSismologico/files; \
-python ./discrimination_eq_q/run.py \
+    COMMAND_2='python ./discrimination_eq_q/run.py \
     --data_dir ClassificadorSismologico/files/mseed \
     --spectro_dir ClassificadorSismologico/files/spectro \
     --model discrimination_eq_q/model/model_2021354T1554.h5 \
     --output_dir ClassificadorSismologico/files/output/no_commercial \
     --csv_dir ClassificadorSismologico/files/predcsv/pred_no_commercial.csv \
     --valid'
-    COMMAND_3='export CS_files=ClassificadorSismologico/files; \
-python ./discrimination_eq_q/run.py \
+    COMMAND_3='python ./discrimination_eq_q/run.py \
     --data_dir ClassificadorSismologico/files/mseed \
-    --spectro_dir ClassificadorSismologico/files/spectro \
+    --spectro_dir ClassificadorSismologico/file/sspectro \
     --model discrimination_eq_q/model/model_2021354T1554.h5 \
     --output_dir ClassificadorSismologico/files/output/commercial \
     --csv_dir ClassificadorSismologico/files/predcsv/pred_commercial.csv \

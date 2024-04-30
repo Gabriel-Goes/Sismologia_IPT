@@ -4,6 +4,7 @@
 ========================================================================
 
  Criando arquivos de backup...
+cp: não foi possível obter estado de 'files/predcsv/pred.csv': Arquivo ou diretório inexistente
  Arquivos de backup criados com sucesso!
 
  ---------------- INICIANDO CORE/GERAR_PREDCSV.PY ---------------------------- 
@@ -15,11 +16,6 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   df_pred['Cat'] = df_pred['Cat'].apply(lambda x: 0 if x == 'earthquake' else 1)
 Pred.csv criado com sucesso
 Erros.csv criado com sucesso
-
- -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- 
-
- ----------------- INICIANDO O PREDICT.PY ---------------------------- 
-[{"success":true}]
 
 ========================================================================
                         Fim do Pipeline                                 

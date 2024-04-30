@@ -1,0 +1,19 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+cp: não foi possível obter estado de 'files/predcsv/pred.csv': Arquivo ou diretório inexistente
+ Arquivos de backup criados com sucesso!
+
+ ---------------- INICIANDO CORE/GERAR_PREDCSV.PY ---------------------------- 
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/core/gerar_predcsv.py", line 1, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+

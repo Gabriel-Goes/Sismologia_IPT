@@ -16,10 +16,9 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 Pred.csv criado com sucesso
 Erros.csv criado com sucesso
 
+cp: não foi possível obter estado de 'files/predcsv/pred_commercial.csv': Arquivo ou diretório inexistente
+cp: não foi possível obter estado de 'files/predcsv/pred_no_commercial.csv': Arquivo ou diretório inexistente
  -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- 
-
- ----------------- INICIANDO O PREDICT.PY ---------------------------- 
-[{"success":true}]
 
 ========================================================================
                         Fim do Pipeline                                 
