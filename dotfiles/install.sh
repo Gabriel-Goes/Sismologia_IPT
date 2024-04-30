@@ -114,15 +114,15 @@ fi
 # Criando ambiente virtual $VENV_NAME
 echo ''
 echo " -> Verificando se virtualenv com Python$PYTHON_VERSION existe..."
-if ! pyenv virtualenvs | grep -q "$PYTHON_VERSION"; then
-    echo " ! virtualenv com Python$PYTHON_VERSION não existe..."
+if ! pyenv virtualenvs | grep -q "$VENV_NAME"; then
+    echo " ! virtualenv $VENV_NAME não existe..."
     echo ''
-    echo " ------ Criando virtualenv com Python$PYTHON_VERSION... ------"
+    echo " ------ Criando virtualenv $VENV_NAME com Python$PYTHON_VERSION... ------"
     pyenv virtualenv $PYTHON_VERSION $VENV_NAME
     echo ' -------------- Virtualenv criado --------------'
     echo ''
 else
-    echo "Virtualenv com Python$PYTHON_VERSION já existe."
+    echo "Virtualenv $VENV_NAME com Python$PYTHON_VERSION já existe."
     echo '--------------------------'
     echo ''
 fi

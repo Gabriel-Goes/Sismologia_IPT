@@ -1,3 +1,15 @@
+# -*- coding: utf-8 -*-
+# Python 3.11.8
+# ./Classificador_Sismologico/pyscripts/ProcessarDadosSismologicos.py
+
+# ----------------------------  DESCRIPTION  -----------------------------------
+# Script para gerar catálogo de eventos sísmicos
+# Autor: Gabriel Góes Rocha de Lima
+# Versão: 0.2
+# Data: 2024-02-27
+# Modificação mais recente: 2024-04-10
+
+# ----------------------------  IMPORTS   -------------------------------------
 import pandas as pd
 import numpy as np
 import os
