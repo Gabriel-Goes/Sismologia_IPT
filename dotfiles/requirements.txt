@@ -4,3 +4,5 @@ tqdm
 utm
 ipython
 tensorflow
+seaborn
+pyrocko

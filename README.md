@@ -73,12 +73,6 @@ para criar e instalar o python 3.11.
 ```bash
 sudo chmod +x ./dotfiles/install.sh
 source ./dotfiles/install.sh
-pyenv local sismologia
-
-# DEVO REDUZIR O NÚMERO DE DEPENDÊÊCIAS PARA O AMBIENTE VIRTUAL.
-# E TALVEZ CRIAR UMA IMAGEM DOCKER PARA ESTE CÓDIGO TAMBÉM.
-pip install -r ./dotfiles/requirements.txt
-pip install -e .
 ```
 
 ## Utilização
@@ -91,7 +85,7 @@ construída uma pipeline que automatiza o processo de filtragem e armazenamento
 dos dados. Por enquanto, temos apenas uma forma de executar a (pipeline](https://github.com/Gabriel-Goes/sismologia_ipt/blob/main/)
 
 **Atenção:**
-Por padrão, a pipeline irá baixar _**apenas os 100 primeiros eventos**_ do
+Por padrão, a pipeline irá baixar _apenas os 100 primeiros eventos_ do
 catálogo de eventos da MOHO, adquiridos no [site](http://moho.iag.usp.br/) e
 acessíveis no diretório ['./files/catalogo geo/catalogo-moho.csv'](https://github.com/Gabriel-Goes/sismologia_ipt/blob/main/files/catalogo/catalogo-moho.csv)
 do repositório.
@@ -99,7 +93,7 @@ do repositório.
 ```bash
 # Execute o script de pipeline
 sudo chmod +x ./Sismo_Pipeline.sh
-./Pipeline_Classificar.sh
+./Sismo_Pipeline.sh
 ```
 
 Este processo criará um dietório ./files/mseed/ com subdiretórios nomeados pelo
@@ -117,47 +111,18 @@ janelas de tempo maiores, assim como adquirir a chegada da onda 'S'.
 Com os dados sismológicos adquiridos, podemos prosseguir para a classificação
 dos eventos sismológicos utilizando o algoritmo de redes neurais convolucionais.
 
-```bash
-# Clone o repositório em nossa pasta '~/projetos'
-git clone https://gitlab.univ-nantes.fr/E181658E/discrimination_eq_q.git \
-    ~/projetos/discrimination_eq_q
-```
-
 #### Ambiente virtual do 'discrimination_eq_q'
 Como o algoritmo foi escrito em pytho3.7 e utilizamos o python3 mais recente para
 o desenvolvimento do ClassificadorSismologico, é necessário criar um novo ambiente
 virtual com compatibilidade de versão. Para isto, está disponibilizado um dockerfile
 que cria o ambiente virtual contêinerizado e instala as dependências necessárias.
 
-```bash
-# Failed to enable unit: Unit file docker.service does not exist.
-sudo systemctl enable docker
-sudo systemctl start docker
-sudo usermod -aG docker $USER
-```
-
-Para efetivar a adição do grupo, é necessário executar o login novamente.
-No mesmo terminal, você pode executar estes comandos:
-
-```bash
-sudo login $USER
-cd ~/projetos/ClassificadorSismologico
-DOCKER_BUILDKIT=1 docker build -t discrim:0.1.0 ./dotfiles
-docker run -it --rm -v $HOME/projetos:/app discrim:0.1.0
-``` 
 
 ### Testando o Discriminador
 Dentro do contêiner, podemos testar o algoritmo com nossos dados sismológicos.
 
 ```bash 
-export CS_files=ClassificadorSismologico/files
-python ./discrimination_eq_q/run.py\
-    --data_dir $CS_files/mseed \
-    --spectro_dir $CS_files/spectro \
-    --model_dir discrimination_eq_q/model/model_2021354T1554.h5 \
-    --output_dir $CS_files/output/no_commercial \
-    --csv_dir $CS_files/predcsv/pred_no_commercial.csv \
-    --valid
+./Sismo_Pipeline.sh
 ```
 
 ## Referências

@@ -28,14 +28,14 @@ import numpy as np
 def filter_pred_commercial(csv: str) -> pd.DataFrame:
     df = pd.read_csv(csv)
 
-    # Filtrar eventos fora do horário comercial (11 23)
-    df['hora'] = df['ID'].apply(lambda x: UTCDateTime(x).hour)
-    df_commercial = df[(df['hora'] >= 11) & (df['hora'] <= 23)]
-    df_no_commercial = df[(df['hora'] < 11) | (df['hora'] > 23)]
+    # Filtrar eventos fora do horário comercial (11 22)
+    df['Hora'] = df['ID'].apply(lambda x: UTCDateTime(x).hour)
+    df_commercial = df[(df['Hora'] >= 11) & (df['Hora'] < 22)]
+    df_no_commercial = df[(df['Hora'] < 11) | (df['Hora'] >= 22)]
 
     # Salvar csv
-    df_commercial = df_commercial.drop(columns=['hora'])
-    df_no_commercial = df_no_commercial.drop(columns=['hora'])
+    df_commercial = df_commercial.drop(columns=['Hora'])
+    df_no_commercial = df_no_commercial.drop(columns=['Hora'])
     df_commercial.to_csv('files/predcsv/pred_commercial.csv',
                          index=False)
     df_no_commercial.to_csv('files/predcsv/pred_no_commercial.csv',
@@ -50,7 +50,7 @@ def hist_hora() -> pd.DataFrame:
     csv = 'files/predcsv/pred.csv'
     df, df_commercial, df_no_commercial = filter_pred_commercial(csv)
 
-    counts = df['hora'].value_counts(sort=False).reindex(
+    counts = df['Hora'].value_counts(sort=False).reindex(
         np.arange(24),
         fill_value=0
     )
@@ -72,16 +72,12 @@ def hist_hora() -> pd.DataFrame:
     plt.xlabel('Hora (UTC)')
     plt.ylabel('Frequência')
     # Legenda: Commercial e Não-Comercial
-    plt.legend(
-        ['Horário Comercial',
-         'Fora do Horário Comercial'],
-        loc='upper right')
+    plt.legend(['Horário Comercial', 'Fora do Horário Comercial'],
+               loc='upper right')
     # save figure
     plt.savefig('figures/pre_process/plots/histogramas/hist_hora.png')
     plt.show()
     # Salvar csv
-    df_commercial = df_commercial.drop(columns=['hora'])
-    df_no_commercial = df_no_commercial.drop(columns=['hora'])
     df_commercial.to_csv('files/predcsv/pred_commercial.csv',
                          index=False)
     df_no_commercial.to_csv('files/predcsv/pred_no_commercial.csv',
@@ -92,7 +88,9 @@ def hist_hora() -> pd.DataFrame:
 # ----------------------------  MAIN  -----------------------------------------
 def main():
     df, df_comm, df_nc = filter_pred_commercial('files/predcsv/pred.csv')
+    hist_hora()
 
+    return df, df_comm, df_nc
 
 if __name__ == '__main__':
-    main()
+    df, df_comm, df_nc = main()

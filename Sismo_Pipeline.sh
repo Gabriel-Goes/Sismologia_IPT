@@ -34,13 +34,16 @@
 # mesma rede e criará um arquivo events.csv
 
 # -----------------------------  VARIÁVEIS -------------------------------------
-# DEFINE OS PARAMETROS DE CRIAÇÃO DE CATALOGO DE EVENTOS
-INICIO=${1:-"2023-01-01"}
-FIM=${2:-"2023-01-10"}
-DATES="$INICIO $FIM"  # BASEADO EM DATAS
 
-# CATALOGO DE EVENTOS
+DATES="$INICIO $FIM"  # BASEADO EM DATAS
 CATALOG=${1:-"files/catalogo/catalogo-moho.csv"}  # BASEADO EM LISTA DE IDS
+EVENTS=${EVENTS:-false}
+PRED=${PRED:-true}
+PREPROCESS=${PREPROCESS:-true}
+PREDICT=${PREDICT:-true}
+GRAPHICS=${GRAPHICS:-true}
+MAPS=${MAPS:-false}
+ENERGY=${ENERGY:-false}
 
 # ----------------------------- CONSTANTES -------------------------------------
 # DEFINE OS DIRETÓRIOS DE TRABALHO
@@ -70,7 +73,6 @@ PYTHON3=${PYTHON3:-"$HOME/.pyenv/versions/sismologia/bin/python3"}
 DELIMT1='########################################################################'
 DELIMT2='========================================================================'
 
-
 # ---------------------------- INICIO DO PIPELINE  ------------------------------
 echo ''
 echo $DELIMT2
@@ -80,8 +82,7 @@ echo ''
 
 # ------------------------- ETAPA DE AQUISIÇÃO DE DADOS  ----------------------
 # CRIANDO CATÁLOGO DE EVENTOS SISMICOS E GERANDO UMA TABELA DE METADADOS DE EVENTOS
-PROCESS_EVENTS=${PROCESS_EVENTS:-false}
-if [ "$PROCESS_EVENTS" = true ]; then
+if [ "$EVENTS" = true ]; then
     echo " Criando arquivos de backup..."
     [[ -f files/events/events.csv ]] &&
         mv files/events/events.csv files/events/.bkp/events.csv.$(date +%Y%m%d%H%M%S)
@@ -95,8 +96,7 @@ if [ "$PROCESS_EVENTS" = true ]; then
 fi
 
 # --------- ETAPA DE GERAR LISTA PARA CLASSIFICAÇÃO ( EVENTO | LABEL ) -----------
-PROCESS_PRED=${PROCESS_PRED:-true}
-if [ "$PROCESS_PRED" = true ]; then
+if [ "$PRED" = true ]; then
     echo " Criando arquivos de backup..."
     cp files/predcsv/pred.csv files/predcsv/.bkp/pred.csv.$(date +%Y%m%d%H%M%S)
     echo " Arquivos de backup criados com sucesso!"
@@ -106,7 +106,6 @@ if [ "$PROCESS_PRED" = true ]; then
     $PYTHON3 source/core/gerar_predcsv.py
     echo ''
     # CHECA SE DEVE SER PREPROCESSADO
-    PREPROCESS=${PREPROCESS:-true}
     if [ "$PREPROCESS" = true ]; then
         cp files/predcsv/pred_commercial.csv files/predcsv/.bkp/pred_commercial.csv.$(date +%Y%m%d%H%M%S)
         cp files/predcsv/pred_no_commercial.csv files/predcsv/.bkp/pred_no_commercial.csv.$(date +%Y%m%d%H%M%S)
@@ -118,42 +117,35 @@ fi
 
 
 # ------------------------- ETAPA DE PREDIÇÃO  ----------------------------------
-PREDICT=${PREDICT:-true}
-COMM=${COMM:-false}
 if [ "$PREDICT" = true ]; then
     NOME_TERM="DOCKER"
     COMMAND='docker run -it --rm -v $HOME/projetos:/app discrim:0.1.0'
-    COMMAND_2='python ./discrimination_eq_q/run.py \
+    COMMAND_2='python ClassificadorSismologico/source/discrimination_eq_q/run.py \
     --data_dir ClassificadorSismologico/files/mseed \
-    --model_file ClassificadorSismologico/files/model/model_2021354T1554.h5 \
+    --model_dir ClassificadorSismologico/files/model/model_2021354T1554.h5 \
     --spectro_dir ClassificadorSismologico/files/spectro \
     --output_dir ClassificadorSismologico/files/output/no_commercial \
     --csv_dir ClassificadorSismologico/files/predcsv/pred_no_commercial.csv \
     --valid'
-    COMMAND_3='python ./discrimination_eq_q/run.py \
+    COMMAND_3='python ClassificadorSismologico/source/discrimination_eq_q/run.py \
     --data_dir ClassificadorSismologico/files/mseed \
-    --model_file ClassificadorSismologico/files/model/model_2021354T1554.h5 \
-    --spectro_dir ClassificadorSismologico/file/sspectro \
+    --model_dir ClassificadorSismologico/files/model/model_2021354T1554.h5 \
+    --spectro_dir ClassificadorSismologico/files/spectro \
     --output_dir ClassificadorSismologico/files/output/commercial \
     --csv_dir ClassificadorSismologico/files/predcsv/pred_commercial.csv \
     --valid'
-
     echo " ----------------- INICIANDO O PREDICT.PY ---------------------------- "
     i3-msg "workspace 2"
     alacritty -e bash -c "tmux new-session -d -s $NOME_TERM && \
     tmux send-keys -t $NOME_TERM \"$COMMAND\" C-m && \
     tmux send-keys -t $NOME_TERM \"$COMMAND_2\" C-m && \
     tmux attach-session -t $NOME_TERM"
-    if [ "$COMM" = true ]; then
-        tmux send-keys -t "$NOME_TERM \"$COMMAND_3\" C-m"
-    fi
     echo ''
 fi
 
 # ------------------------- ETAPA DE GERAR MAPAS  -----------------------------
 # Condicionalmente executa partes do script
-PROCESS_MAPS=${PROCESS_MAPS:-false}
-if [ "$PROCESS_MAPS" = true ]; then
+if [ "$MAPS" = true ]; then
     # Executa etapa de processamento de mapas
     echo " -------------- Processo de criação de mapas iniciado ------------------"
     # Checa se o arquivo de eventos existe e se é vazio
@@ -179,8 +171,7 @@ if [ "$PROCESS_MAPS" = true ]; then
 fi
 
 # ----------------- ETAPA DE GERAR FIGURAS DE ENERGIA  ------------------------
-PROCESS_ENERGY=${PROCESS_ENERGY:-false}
-if [ "$PROCESS_ENERGY" = true ]; then
+if [ "$ENERGY" = true ]; then
     # Executa etapa de processamento de energia
     echo " ----------------- Iniciando o energy_fig.py ---------------------------- "
     echo "Creating energy plots..."

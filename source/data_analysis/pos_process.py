@@ -45,7 +45,7 @@ def get_true_false(validation):
 # ---------------------------- Plots ---------------------------------------- #
 # Correlation Matrix
 def plot_corr_matrix(df):
-    cols = ['prob_nat', 'Hour',
+    cols = ['prob_nat', 'Hora',
             'Longitude', 'Latitude',
             'MLv', 'Distance', 'Num_Estacoes']
     df = df[cols]
@@ -80,7 +80,7 @@ def plot_scatter(df, x, y):
 
 
 def plot_facetgrid(df, x, y, hue):
-    df = df[['pred', 'prob_nat', 'Hour',
+    df = df[['pred', 'prob_nat', 'Hora',
              'Longitude', 'Latitude', 'MLv', 'Distance', 'Num_Estacoes']]
     g = sns.FacetGrid(df, hue=hue, height=5)
     g = g.map(plt.scatter, x, y, edgecolor="w").add_legend()
@@ -89,7 +89,7 @@ def plot_facetgrid(df, x, y, hue):
 
 
 def plot_pairplot(df):
-    df = df[['pred', 'prob_nat', 'Hour',
+    df = df[['pred', 'prob_nat', 'Hora',
              'MLv', 'Distance', 'Num_Estacoes']]
     sns.pairplot(df, hue='pred')
     plt.savefig('./figures/pairplot.png')
@@ -97,7 +97,7 @@ def plot_pairplot(df):
 
 
 def plot_jointplot(df, x, y):
-    df = df[['pred', 'prob_nat', 'Hour',
+    df = df[['pred', 'prob_nat', 'Hora',
              'Longitude', 'Latitude', 'distance_category',
              'MLv', 'Distance', 'Num_Estacoes']]
     sns.jointplot(x=x, y=y, data=df, kind='scatter', hue='pred')
@@ -111,7 +111,7 @@ def plot_jointplot(df, x, y):
 
 
 def plot_lmplot(df, x, y):
-    df = df[['pred', 'prob_nat', 'Hour',
+    df = df[['pred', 'prob_nat', 'Hora',
              'Longitude', 'Latitude', 'MLv', 'Distance', 'Num_Estacoes']]
     sns.lmplot(x=x, y=y, data=df, hue='pred')
     plt.savefig('./figures/lmplot.png')
@@ -119,7 +119,7 @@ def plot_lmplot(df, x, y):
 
 
 def plot_regplot(df, x, y):
-    df = df[['pred', 'prob_nat', 'Hour',
+    df = df[['pred', 'prob_nat', 'Hora',
              'Longitude', 'Latitude', 'MLv', 'Distance', 'Num_Estacoes']]
     sns.regplot(x=x, y=y, data=df,)
     plt.savefig('./figures/regplot.png')
@@ -127,7 +127,7 @@ def plot_regplot(df, x, y):
 
 
 def plot_swarmplot(df, x, y, natural=True):
-    df = df[['pred', 'prob_nat', 'Hour',
+    df = df[['pred', 'prob_nat', 'Hora',
              'Longitude', 'Latitude', 'MLv', 'Distance', 'Num_Estacoes']]
     if not natural:
         df = df[df['pred'] == 1]
@@ -139,7 +139,7 @@ def plot_swarmplot(df, x, y, natural=True):
 
 
 def plot_stripplot(df, x, y):
-    df = df[['pred', 'prob_nat', 'Hour',
+    df = df[['pred', 'prob_nat', 'Hora',
              'Longitude', 'Latitude', 'MLv', 'Distance', 'Num_Estacoes']]
     sns.stripplot(x=x, y=y, data=df, size=2.5, hue='pred')
     plt.savefig('./figures/stripplot.png')
@@ -147,7 +147,7 @@ def plot_stripplot(df, x, y):
 
 
 def plot_boxplot(df, x, y):
-    df = df[['pred', 'prob_nat', 'Hour',
+    df = df[['pred', 'prob_nat', 'Hora',
              'Longitude', 'Latitude', 'MLv', 'Distance', 'Num_Estacoes']]
     sns.boxplot(x=x, y=y, data=df, hue='pred')
     plt.savefig('./figures/boxplot.png')
@@ -155,7 +155,7 @@ def plot_boxplot(df, x, y):
 
 
 def plot_violinplot(df, x, y):
-    df = df[['pred', 'prob_nat', 'Hour',
+    df = df[['pred', 'prob_nat', 'Hora',
              'Longitude', 'Latitude', 'MLv', 'Distance', 'Num_Estacoes']]
     sns.violinplot(x=x, y=y, data=df, hue='pred')
     plt.savefig('./figures/violinplot.png')
@@ -164,7 +164,7 @@ def plot_violinplot(df, x, y):
 
 # ---------------------------- Histograms ----------------------------------- #
 def plot_hist_kde(df, column):
-    cols = ['prob_nat', 'Hour',
+    cols = ['prob_nat', 'Hora',
             'Longitude', 'Latitude',
             'MLv', 'Distance', 'Num_Estacoes']
     df = df[cols]
@@ -178,8 +178,8 @@ def plot_hist_kde(df, column):
 # --------------------------------- Hours
 # Plot histogram of events hour distribution
 def plot_hist_hour_distribution(df):
-    df['hora'] = df['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
-    counts = df['hora'].value_counts(sort=False).reindex(
+    df['Hora'] = df['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
+    counts = df['Hora'].value_counts(sort=False).reindex(
         np.arange(24),
         fill_value=0
     )
@@ -206,89 +206,79 @@ def plot_hist_hour_distribution(df):
          'Fora do Horário Comercial'],
         loc='upper right')
     # save figure
-    plt.savefig('figures/pre_process/plots/histogramas/hist_hora.png')
+    plt.savefig('figures/pos_process/plots/histogramas/hist_hora.png')
     plt.show()
 
 
-def classify_hour(hour):
-    if 0 <= hour < 2:
-        return '[0-2['
-    elif 2 <= hour < 4:
-        return '[2-4['
-    elif 4 <= hour < 6:
-        return '[4-6['
-    elif 6 <= hour < 8:
-        return '[6-8['
-    elif 8 <= hour < 10:
-        return '[8-10['
-    elif 10 <= hour < 12:
-        return '[10-12['
-    elif 12 <= hour < 14:
-        return '[12-14['
-    elif 14 <= hour < 16:
-        return '[14-16['
-    elif 16 <= hour < 18:
-        return '[16-18['
-    elif 18 <= hour < 20:
-        return '[18-20['
-    elif 20 <= hour < 22:
-        return '[20-22['
-    else:
-        return '[22-24['
-
-
-# Plot histogram of events hour distribution by recall
 def plot_hist_hour_distribution_recall(df):
-    fig, ax = plt.subplots(figsize=(9, 6))
-
-    df['Hora de Origem (UTC)'] = df['Hora de Origem (UTC)'].apply(obspy.UTCDateTime)
-    df['Hour'] = df['Hora de Origem (UTC)'].apply(lambda x: x.hour)
-    df['Hour by 2'] = df['Hour'].apply(classify_hour)
-    hour_category = pd.CategoricalDtype(categories=[
-                                        0, 1, 2, 3, 4, 5, 6, 7, 8,
-                                        9, 10, 22, 23],
-                                        ordered=True)
-    df['Hour'] = pd.Categorical(df['Hour'], dtype=hour_category)
-    freq_relative = df['Hour'].value_counts(normalize=True).sort_index()
+    # Converte 'Hora' em categorias cíclicas para melhor agrupamento e visualização
+    df['Hora'] = pd.to_numeric(df['Hora'])
+    df['Cat Hora'] = pd.cut(
+        df['Hora'], bins=range(0, 25, 2), right=False, labels=range(0, 24, 2)
+    )
+    # Calcula a frequência relativa de cada categoria
+    freq_relative = df['Cat Hora'].value_counts(normalize=True).sort_index()
     max_freq = freq_relative.max() * 100
-    norm = mcolors.Normalize(vmin=0, vmax=max_freq)
-    sm = plt.cm.ScalarMappable(cmap='viridis', norm=norm)
-    sm.set_array([])  # Empty array for the ScalarMappable
-    for hour in df['Hour'].cat.categories:
-        hour_df = df[df['Hour'] == hour]
+    min_freq = freq_relative.min() * 100
+
+    # Configura a coloração baseada na frequência
+    norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
+    cmap = plt.cm.viridis
+    sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+    sm.set_array([])
+
+    # Prepara o gráfico
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    # Itera sobre cada categoria para plotar
+    for hour in freq_relative.index:
+        hour_df = df[df['Cat Hora'] == hour]
         TP = hour_df[(hour_df['pred'] == 0) & (hour_df['label_cat'] == 0)].shape[0]
         FN = hour_df[(hour_df['pred'] == 1) & (hour_df['label_cat'] == 0)].shape[0]
         if TP + FN == 0:
-            print('')
-            print(f'hour: {hour} TP: {TP} FN: {FN}')
-            print('')
-            print(hour_df)
-            print('')
-            continue
-        recall = TP / (TP + FN) * 100
+            recall = 0  # Evita divisão por zero
+        else:
+            recall = TP / (TP + FN) * 100
         frequency = freq_relative.loc[hour] * 100
-        color = sm.to_rgba(frequency)
-        ax.text(hour_df['Hour'].cat.categories.get_loc(hour),
-                recall + 0.01, f'{recall:.2f}',
-                ha='center', va='bottom', color='black')
-        ax.bar(hour, recall, color=color)
+        color = cmap(norm(frequency))
+        ax.bar(
+            hour + 1,
+            recall,
+            color=color,
+            edgecolor='black',
+            width=2,
+            align='center'
+        )
+        # Adiciona rótulos acima das barras
+        ax.text(
+            hour + 1,
+            recall + 0.5,
+            f'{recall:.2f}%',
+            ha='center',
+            va='bottom',
+            color='black'
+        )
+    # Adiciona colorbar
     cbar = fig.colorbar(sm, ax=ax)
     cbar.ax.set_ylabel('Frequency (%)')
-    plt.xticks(range(len(df['Hour'].cat.categories)), df['Hour'].cat.categories)
-    plt.xticks(range(0, 24, 1))
-    plt.ylim(70, 100)
-    plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
-    plt.gca().xaxis.grid(False)
-    plt.title('Distribuição de Eventos por Hora')
-    plt.xlabel('Hora')
+    cbar.set_ticks([min_freq, max_freq])
+    cbar.set_ticklabels([f'{min_freq:.2f}%', f'{max_freq:.2f}%'])
+
+    # Configurações finais do plot
+    plt.xticks(range(0, 24, 2), labels=[f'{h:02d}:00' for h in range(0, 24, 2)])
+    plt.ylim(60, 100)
+    plt.grid(True, linestyle='--', linewidth=0.5, color='gray', axis='y')
+    plt.title('Distribuição de Recall por Hora dos Eventos')
+    plt.xlabel('Hora do Dia')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('./figures/hist_ev_hour_recall.png')
+
+    # Opção para salvar ou mostrar o gráfico
+    # plt.savefig('./figures/hist_ev_hour_recall.png')
     plt.show()
     plt.close()
 
     return df
-
 
 # --------------------------------- Distances
 def plot_hist_distance_frequency(df):
@@ -449,12 +439,17 @@ def plot_hist_magnitude_distribution_recall(df_merged):
 def plot_hist_station_dist(df):
     plt.figure(figsize=(10, 6))
     # Histograma com frequências absolutas
-    df['Num_Estacoes'].value_counts().sort_index().plot(kind='bar', color='lightskyblue')
+    df['Num_Estacoes'].value_counts().sort_index().plot(
+        kind='bar',
+        color='lightskyblue'
+    )
     # Anotate the top of the bar the frequency value
     for i, v in enumerate(df['Num_Estacoes'].value_counts().sort_index()):
         plt.text(i, v, str(v), ha='center', va='bottom', color='black')
-    # Ajustando os ticks do eixo x para que fiquem a 0.5 para a direita de cada número inteiro
-    plt.xticks(range(len(df['Num_Estacoes'].unique())), df['Num_Estacoes'].unique())
+    plt.xticks(
+        range(len(df['Num_Estacoes'].unique())),
+        df['Num_Estacoes'].unique()
+    )
     # Adicionando gridlines horizontais
     plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
     plt.title('Distribuição de Eventos por Número de Estações')
@@ -507,7 +502,6 @@ def snr_p(picks: pd.DataFrame,
           window: int) -> [pd.DataFrame, dict]:
     '''
     Program main body
-
     This function gets a dataframe with all information about the picked event.
 
     Index(['ID', 'Event', 'Error', 'Pick', 'Network', 'Station', 'Location',
@@ -588,26 +582,11 @@ def load_data():
     return df_nc, df_comm, events, df_ncomm_val, df_comm_val
 
 
-# -------------------------------- Main -------------------------------------- #
-def main():
-    # Load the data
-    x = load_data()
-    df_nc = x[0]
-
-    # Calculo do SNRp
-    picks, dict_filtros = snr_p(df_nc, 5)
-
-    return picks, dict_filtros
-
-
-def main_nc(df):
-    # Histograma de eventos por hora
+def non_commercial(df):
     plot_hist_hour_distribution(df)
-    #df = plot_hist_hour_distribution_recall(df)
-    '''
-
-    # Histogram by number of stations
+    plot_hist_hour_distribution_recall(df)
     plot_hist_station_dist(df)
+    '''
     plot_hist_num_stations_recall(df)
 
     # Histogram - Frequency of Distances ( nearest station of event)
@@ -625,33 +604,19 @@ def main_nc(df):
 
     plot_hist_magnitude_distribution_recall(df)
     '''
-    return df
+
+    return
 
 
-def main_comm(df):
-    catalogo_moho = pd.read_csv('files/events-moho-catalog.csv')
-    catalogo_moho.rename(columns={'Folder': 'event'}, inplace=True)
-    # comm = list_events('files/predcsv/pred_commercial.csv')
+# -------------------------------- Main -------------------------------------- #
+def main():
+    x = load_data()
+    df_nc = x[0]
+    picks, dict_filtros = snr_p(df_nc, 5)
+    non_commercial(df_nc)
 
-    # get the attributes of moho_catalog and append to df_comm_val
-    df_comm_val = pd.read_csv('files/output/commercial/validation_network_level.csv')
-    # df_comm_val = remove_commercial_events(df_comm_val, comm)
-    df_comm_val_merged = pd.concat(df_comm_val, catalogo_moho,
-                                   on='event', how='left')
-
-    df_comm_val_merged.sort_values(by=['ID', 'Distance'], inplace=True)
-    df_comm_nearest = df_comm_val_merged.drop_duplicates(subset=['ID'],
-                                                         keep='first')
-
-    return df_comm_val_merged, df_comm_nearest, catalogo_moho
+    return x, picks, dict_filtros, df_nc
 
 
 if __name__ == '__main__':
-    # Prepare the data
-    df_nc, df_comm, events, df_ncomm_val, picks, dict_filtros = main()
-
-    # Main non-commercial
-    df_nc = main_nc(df_nc)
-
-    # Main commercial
-    df_comm = main_comm(df_comm)
+    main()

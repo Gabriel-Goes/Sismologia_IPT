@@ -151,4 +151,18 @@ echo 'Ambiente virtual configurado com sucesso!'
 echo 'Navegue até o diretório do projeto e execute:'
 echo '!`pyenv local $VENV_NAME` para configurar a versão do ambiente virtual
 deste repositório.'
+
+pyenv local sismologia
+pip install -r ./dotfiles/requirements.txt
+pip install -e .
+
+# INICIANDO DOCKER  
+echo ' ---------- Iniciando Docker ------------ '
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo usermod -aG docker $USER
+
+sudo login $USER
+cd ~/projetos/ClassificadorSismologico
+DOCKER_BUILDKIT=1 docker build -t discrim:0.1.0 ./dotfiles
 # ---------------------------------------------------------------------------- #
