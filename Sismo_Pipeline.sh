@@ -37,11 +37,12 @@
 
 DATES="$INICIO $FIM"  # BASEADO EM DATAS
 CATALOG=${1:-"files/catalogo/catalogo-moho.csv"}  # BASEADO EM LISTA DE IDS
-EVENTS=${EVENTS:-false}
+EVENTS=${EVENTS:-true}
 PRED=${PRED:-true}
 PREPROCESS=${PREPROCESS:-true}
 PREDICT=${PREDICT:-true}
-GRAPHICS=${GRAPHICS:-true}
+POSTPROCESS=${POSTPROCESS:-true}
+GRAPHICS=${GRAPHICS:-false}
 MAPS=${MAPS:-false}
 ENERGY=${ENERGY:-false}
 
@@ -139,6 +140,7 @@ if [ "$PREDICT" = true ]; then
     alacritty -e bash -c "tmux new-session -d -s $NOME_TERM && \
     tmux send-keys -t $NOME_TERM \"$COMMAND\" C-m && \
     tmux send-keys -t $NOME_TERM \"$COMMAND_2\" C-m && \
+    tmux send-keys -t $NOME_TERM \"$COMMAND_3\" C-m && \
     tmux attach-session -t $NOME_TERM"
     echo ''
 fi

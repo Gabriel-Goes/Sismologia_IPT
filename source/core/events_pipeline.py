@@ -19,18 +19,18 @@ from tqdm import tqdm
 from typing import List, Dict
 
 # ClassificadorSismologico
-from baixar_mseed import iterate_events
+from baixar_mseed import iterar_eventos
 from utils import csv2list, delimt
 
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 # FUNÇÃO MAIN QUE CONTERÁ AS CHAMADAS DAS FUNÇÕES
-def main(IDs: List,
+def popular_catalogo(IDs: List,
          data_Client: str,
          data_Client_bkp: str) -> [Catalog, Dict, List]:
     '''
-    Função para processar os eventos sísmicos a partir de um catálogo de
-    eventos previamente adquirido e disponibilizado no formato de um arquivo csv.
+    Função para processar os eventos sísmicos a partir de uma lista de eventos
+    previamente adquirido e disponibilizado no formato de um arquivo csv.
     '''
     # GERAR O CATÁLOGO DE EVENTOS
     print(' ------------------------------ Acessando Catálogo ------------------------------ ')
@@ -57,7 +57,7 @@ def main(IDs: List,
                 missing_ids.append(id + ' Não encontrado no servidor RSBR.')
 
     # FUNÇÃO PRINCIPAL DO SCRIPT DE ONDA
-    iterate_events(
+    iterar_eventos(
         catalogo.events,
         data_Client,
         data_Client_bkp,
@@ -75,9 +75,7 @@ def main(IDs: List,
 
     return catalogo, missing_ids
 
-
-# ---------------------------- MAIN -------------------------------------------
-if __name__ == "__main__":
+def main():
     print('')
     print(f' - Argumento 1: {sys.argv[1]}')
 
@@ -95,7 +93,13 @@ if __name__ == "__main__":
     print('')
 
     print(" --------- Iniciando o ProcessarID.py --------- ")
-    catalogo, missin_ids = main(
-        IDs[:],
+    catalogo, missin_ids = popular_catalogo(
+        IDs[:50],
         data_Client,
         data_Client_bkp)
+
+    return catalogo, missin_ids
+
+# ---------------------------- MAIN -------------------------------------------
+if __name__ == "__main__":
+    catalogo, missing_ids = main()
