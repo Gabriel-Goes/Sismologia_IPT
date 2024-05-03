@@ -37,11 +37,10 @@
 
 DATES="$INICIO $FIM"  # BASEADO EM DATAS
 CATALOG=${1:-"files/catalogo/catalogo-moho.csv"}  # BASEADO EM LISTA DE IDS
-EVENTS=${EVENTS:-false}
+EVENTS=${EVENTS:-true}
 PRED=${PRED:-true}
 PREPROCESS=${PREPROCESS:-true}
 PREDICT=${PREDICT:-true}
-GRAPHICS=${GRAPHICS:-true}
 MAPS=${MAPS:-false}
 ENERGY=${ENERGY:-false}
 

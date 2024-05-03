@@ -126,14 +126,10 @@ def iterate_events(eventos: List,
         origem_lon = origem.longitude
         origin_time = origem.time
         dir_name = origin_time.strftime("%Y%m%dT%H%M%S")
-
         pick_count = 0
-        pick_p = False
         for pick in evento.picks:
-            if pick_p is True:
-                continue
             # Se pick.phase_hint for diferente de P ou Pg, continue
-            if pick.phase_hint not in ['P', 'Pg', 'Pn'] or pick.waveform_id.channel_code[:1] != 'H':
+            if pick.phase_hint not in ['P'] or pick.waveform_id.channel_code[:1] != 'H':
                 error_to_save.append({'ID': event_id,
                                       'Network': pick.waveform_id.network_code,
                                       'Station': pick.waveform_id.station_code,
@@ -146,8 +142,6 @@ def iterate_events(eventos: List,
                                       'Error': 'Pick diferente de P, Pg ou Pn ou Channel diferente de H'})
                 continue
 
-            if pick.phase_hint == 'P':
-                pick_p = True
             pick_count += 1
             print(f'--> Pick {pick_count}')
             net = pick.waveform_id.network_code
@@ -219,11 +213,8 @@ def iterate_events(eventos: List,
                 continue
 
             if baixar:
-                # Baixa a forma de onda para a estação e intervalo de tempo específicos
-                np.random.seed(42)  # Fixa a semente para garantir a reprodução
-                random_time = np.random.randint(5, 21)  # Deslocamento aleatório entre 5 e 20 segundos
                 pick_time = pick.time
-                start_time = pick_time - random_time
+                start_time = pick_time - 10
                 end_time = start_time + 60  # Mantém a janela de 60 segundos
 
                 print(' Downloading ...')
