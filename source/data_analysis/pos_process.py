@@ -58,7 +58,7 @@ def plot_corr_matrix(df):
     plt.colorbar()
     plt.title('Correlation Matrix')
     plt.tight_layout()
-    plt.savefig('./figures/corr_matrix.png')
+    plt.savefig('files/figures/corr_matrix.png')
     plt.show()
 
 
@@ -75,7 +75,7 @@ def plot_scatter(df, x, y):
     plt.xlabel(x)
     plt.ylabel(y)
     plt.tight_layout()
-    plt.savefig('./figures/scatter_plot.png')
+    plt.savefig('files/figures/scatter_plot.png')
     plt.show()
 
 
@@ -84,7 +84,7 @@ def plot_facetgrid(df, x, y, hue):
              'Longitude', 'Latitude', 'MLv', 'Distance', 'Num_Estacoes']]
     g = sns.FacetGrid(df, hue=hue, height=5)
     g = g.map(plt.scatter, x, y, edgecolor="w").add_legend()
-    plt.savefig('./figures/facetgrid_scatter.png')
+    plt.savefig('files/figures/facetgrid_scatter.png')
     plt.show()
 
 
@@ -92,7 +92,7 @@ def plot_pairplot(df):
     df = df[['pred', 'prob_nat', 'Hora',
              'MLv', 'Distance', 'Num_Estacoes']]
     sns.pairplot(df, hue='pred')
-    plt.savefig('./figures/pairplot.png')
+    plt.savefig('files/figures/pairplot.png')
     plt.show()
 
 
@@ -106,7 +106,7 @@ def plot_jointplot(df, x, y):
     plt.xticks(range(int(df[x].min()), int(df[x].max()) + 1))
     plt.yticks(range(int(df[y].min()), int(df[y].max()) + 1))
     plt.grid(True, linestyle='--', linewidth=0.5, color='gray')
-    plt.savefig('./figures/jointplot.png')
+    plt.savefig('files/figures/jointplot.png')
     plt.show()
 
 
@@ -114,7 +114,7 @@ def plot_lmplot(df, x, y):
     df = df[['pred', 'prob_nat', 'Hora',
              'Longitude', 'Latitude', 'MLv', 'Distance', 'Num_Estacoes']]
     sns.lmplot(x=x, y=y, data=df, hue='pred')
-    plt.savefig('./figures/lmplot.png')
+    plt.savefig('files/figures/lmplot.png')
     plt.show()
 
 
@@ -122,7 +122,7 @@ def plot_regplot(df, x, y):
     df = df[['pred', 'prob_nat', 'Hora',
              'Longitude', 'Latitude', 'MLv', 'Distance', 'Num_Estacoes']]
     sns.regplot(x=x, y=y, data=df,)
-    plt.savefig('./figures/regplot.png')
+    plt.savefig('files/figures/regplot.png')
     plt.show()
 
 
@@ -134,7 +134,7 @@ def plot_swarmplot(df, x, y, natural=True):
         sns.swarmplot(x=x, y=y, data=df, size=2.5, color='red')
     else:
         sns.swarmplot(x=x, y=y, data=df, size=2.5, hue='pred')
-    plt.savefig('./figures/swarmplot.png')
+    plt.savefig('files/figures/swarmplot.png')
     plt.show()
 
 
@@ -142,7 +142,7 @@ def plot_stripplot(df, x, y):
     df = df[['pred', 'prob_nat', 'Hora',
              'Longitude', 'Latitude', 'MLv', 'Distance', 'Num_Estacoes']]
     sns.stripplot(x=x, y=y, data=df, size=2.5, hue='pred')
-    plt.savefig('./figures/stripplot.png')
+    plt.savefig('files/figures/stripplot.png')
     plt.show()
 
 
@@ -150,7 +150,7 @@ def plot_boxplot(df, x, y):
     df = df[['pred', 'prob_nat', 'Hora',
              'Longitude', 'Latitude', 'MLv', 'Distance', 'Num_Estacoes']]
     sns.boxplot(x=x, y=y, data=df, hue='pred')
-    plt.savefig('./figures/boxplot.png')
+    plt.savefig('files/figures/boxplot.png')
     plt.show()
 
 
@@ -158,7 +158,7 @@ def plot_violinplot(df, x, y):
     df = df[['pred', 'prob_nat', 'Hora',
              'Longitude', 'Latitude', 'MLv', 'Distance', 'Num_Estacoes']]
     sns.violinplot(x=x, y=y, data=df, hue='pred')
-    plt.savefig('./figures/violinplot.png')
+    plt.savefig('files/figures/violinplot.png')
     plt.show()
 
 
@@ -171,7 +171,7 @@ def plot_hist_kde(df, column):
     sns.histplot(df[column], kde=True, color='lightskyblue')
     plt.title(f'Distribuição de {column}')
     plt.tight_layout()
-    plt.savefig(f'./figures/hist_kde_{column}.png')
+    plt.savefig(f'files/figures/hist_kde_{column}.png')
     plt.show()
 
 
@@ -206,7 +206,7 @@ def plot_hist_hour_distribution(df):
          'Fora do Horário Comercial'],
         loc='upper right')
     # save figure
-    plt.savefig('figures/pos_process/plots/histogramas/hist_hora.png')
+    plt.savefig('files/figures/pos_process/plots/histogramas/hist_hora.png')
     plt.show()
 
 
@@ -274,7 +274,7 @@ def plot_hist_hour_distribution_recall(df):
     plt.tight_layout()
 
     # Opção para salvar ou mostrar o gráfico
-    # plt.savefig('./figures/hist_ev_hour_recall.png')
+    # plt.savefig('files/figures/hist_ev_hour_recall.png')
     plt.show()
     plt.close()
 
@@ -301,7 +301,7 @@ def plot_hist_distance_frequency(df):
     plt.title('Distribuição de Eventos por Distância Epicentral')
     plt.xlabel('Distância Epicentral (km)')
     plt.ylabel('Frequência Relativa')
-    plt.savefig('./figures/dist_ev_distance_rel_freq.png')
+    plt.savefig('files/figures/dist_ev_distance_rel_freq.png')
     plt.show()
 
 
@@ -357,7 +357,7 @@ def plot_hist_distance_recall(df):
     plt.xlabel('Epicentral Distance (km)')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('figures/hist_ev_distance.png')
+    plt.savefig('files/figures/hist_ev_distance.png')
     plt.show()
     plt.close()
 
@@ -376,7 +376,7 @@ def plot_hist_magnitude_distribution(df_merged):
     plt.xlabel('Categoria de Magnitude')
     plt.ylabel('Número de Eventos')
     plt.tight_layout()
-    plt.savefig('figures/dist_ev_cat_mag.png')
+    plt.savefig('files/figures/dist_ev_cat_mag.png')
     plt.show()
 
 
@@ -431,7 +431,7 @@ def plot_hist_magnitude_distribution_recall(df_merged):
     plt.xlabel('Magnitude')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('figures/dist_ev_cat_mag_recall.png')
+    plt.savefig('files/figures/dist_ev_cat_mag_recall.png')
     plt.show()
 
 
@@ -456,7 +456,7 @@ def plot_hist_station_dist(df):
     plt.xlabel('Número de Estações')
     plt.ylabel('Número de Eventos')
     plt.tight_layout()
-    plt.savefig('figures/dist_ev_num_stations_absoluto.png')
+    plt.savefig('files/figures/dist_ev_num_stations_absoluto.png')
     plt.show()
 
 
@@ -494,7 +494,7 @@ def plot_hist_num_stations_recall(df):
     plt.xlabel('Número de Estações')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('figures/dist_ev_num_stations_recall.png')
+    plt.savefig('files/figures/dist_ev_num_stations_recall.png')
     plt.show()
 
 
@@ -565,19 +565,18 @@ def load_data():
         # Ask if want to continue
         if input('Do you want to continue? (y/n)') == 'n':
             return
-        events = pd.read_csv(
-            'files/events/.bkp/' + ev_bkp)
+        events = pd.read_csv('files/events/.bkp/' + ev_bkp)
 
-    events['file_name'] = events['Path'].apply(lambda x: x.split('/')[-1].split('.')[0])
+    events['file_name'] = events['Path'].apply(
+        lambda x: x.split('/')[-1].split('.')[0]
+    )
     df_ncomm_val = pd.read_csv('files/output/no_commercial/validation_station_level.csv')
     df_comm_val = pd.read_csv('files/output/commercial/validation_station_level.csv')
 
     df_nc = pd.merge(df_ncomm_val, events, on='file_name', how='left')
     df_comm = pd.merge(df_comm_val, events, on='file_name', how='left')
-    # DROPT DUPLICATES SERÁ REMOVIDO QUANDO ADQUIRIRMOS APENAS UM TIPO DE ONDA
-    # P COM PRIOIRIDADE NA 'P'
-    df_nc.drop_duplicates(subset=['file_name'], keep='first', inplace=True)
-    df_comm.drop_duplicates(subset=['file_name'], keep='first', inplace=True)
+
+    df_nc.set_index(['Event', 'Station'], inplace=True)
 
     return df_nc, df_comm, events, df_ncomm_val, df_comm_val
 
@@ -586,7 +585,6 @@ def non_commercial(df):
     plot_hist_hour_distribution(df)
     plot_hist_hour_distribution_recall(df)
     plot_hist_station_dist(df)
-    '''
     plot_hist_num_stations_recall(df)
 
     # Histogram - Frequency of Distances ( nearest station of event)
@@ -603,7 +601,6 @@ def non_commercial(df):
         df['MLv'].apply(classify_magnitude)
 
     plot_hist_magnitude_distribution_recall(df)
-    '''
 
     return
 
@@ -613,6 +610,8 @@ def main():
     x = load_data()
     df_nc = x[0]
     picks, dict_filtros = snr_p(df_nc, 5)
+
+
     non_commercial(df_nc)
 
     return x, picks, dict_filtros, df_nc

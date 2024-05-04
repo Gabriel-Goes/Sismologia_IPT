@@ -37,12 +37,14 @@
 
 DATES="$INICIO $FIM"  # BASEADO EM DATAS
 CATALOG=${1:-"files/catalogo/catalogo-moho.csv"}  # BASEADO EM LISTA DE IDS
-EVENTS=${EVENTS:-true}
-PRED=${PRED:-true}
-PREPROCESS=${PREPROCESS:-true}
-PREDICT=${PREDICT:-true}
-MAPS=${MAPS:-false}
+EVENTS=${EVENTS:-false}
+PRED=${PRED:-false}
+PREPROCESS=${PREPROCESS:-false}
+PREDICT=${PREDICT:-false}
+POSPROCESS=${POSPROCESS:-true}
+MAPS=${MAPS:-true}
 ENERGY=${ENERGY:-false}
+REPORT=${REPORT:-true}
 
 # ----------------------------- CONSTANTES -------------------------------------
 # DEFINE OS DIRETÓRIOS DE TRABALHO
@@ -114,31 +116,32 @@ if [ "$PRED" = true ]; then
     fi
 fi
 
-
 # ------------------------- ETAPA DE PREDIÇÃO  ----------------------------------
 if [ "$PREDICT" = true ]; then
     NOME_TERM="DOCKER"
     COMMAND='docker run -it --rm -v $HOME/projetos:/app discrim:0.1.0'
     COMMAND_2='python ClassificadorSismologico/source/discrimination_eq_q/run.py \
-    --data_dir ClassificadorSismologico/files/mseed \
-    --model_dir ClassificadorSismologico/files/model/model_2021354T1554.h5 \
-    --spectro_dir ClassificadorSismologico/files/spectro \
-    --output_dir ClassificadorSismologico/files/output/no_commercial \
-    --csv_dir ClassificadorSismologico/files/predcsv/pred_no_commercial.csv \
+    --output_dir no_commercial \
+    --csv_dir pred_no_commercial.csv \
     --valid'
     COMMAND_3='python ClassificadorSismologico/source/discrimination_eq_q/run.py \
-    --data_dir ClassificadorSismologico/files/mseed \
-    --model_dir ClassificadorSismologico/files/model/model_2021354T1554.h5 \
-    --spectro_dir ClassificadorSismologico/files/spectro \
-    --output_dir ClassificadorSismologico/files/output/commercial \
-    --csv_dir ClassificadorSismologico/files/predcsv/pred_commercial.csv \
+    --output_dir commercial \
+    --csv_dir pred_commercial.csv \
     --valid'
     echo " ----------------- INICIANDO O PREDICT.PY ---------------------------- "
     i3-msg "workspace 2"
     alacritty -e bash -c "tmux new-session -d -s $NOME_TERM && \
     tmux send-keys -t $NOME_TERM \"$COMMAND\" C-m && \
     tmux send-keys -t $NOME_TERM \"$COMMAND_2\" C-m && \
+    tmux send-keys -t $NOME_TERM \"$COMMAND_3\" C-m && \
     tmux attach-session -t $NOME_TERM"
+    echo ''
+fi
+
+# --------- ETAPA DE GERAR GRAFICOS E ANÁLISES -----------
+if [ "$POSPROCESS" = true ]; then
+    echo " ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- "
+    $PYTHON3 source/data_analysis/pos_process.py
     echo ''
 fi
 
@@ -181,6 +184,12 @@ if [ "$ENERGY" = true ]; then
     echo " Criando arquivos de backup..."
     echo " Arquivos de backup criados com sucesso!"
     echo ''
+fi
+
+# ----------------- ETAPA DE GERAR RELATORIOS ------------------------
+if [ "$REPORT" = true ]; then
+    echo " ----------------- Iniciando o pdflatex .tex ---------------------------- "
+    pdflatex -output-directory=docs/report/ report.tex
 fi
 
 echo $DELIMT2
