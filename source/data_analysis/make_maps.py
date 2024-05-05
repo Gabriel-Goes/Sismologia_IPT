@@ -14,28 +14,26 @@ import pygmt
 import pandas as pd
 
 # ----------------------------  FUNCTIONS  -------------------------------------
-def plot_map(data, output_file):
-    """
-    Função para plotar um mapa com os dados de predição
-    """
+def plot_map(data, filename):
+    region = [
+        data['Longitude'].min() - 1, data['Longitude'].max() + 1,
+        data['Latitude'].min() - 1, data['Latitude'].max() + 1
+    ]
     fig = pygmt.Figure()
-    fig.basemap(region=[-180, 180, -90, 90], projection="W15c", frame=True)
-    # Add Brazil coastlines
-    fig.coast(
-        shorelines=True,
-        land="black",
-        water="skyblue",
-        borders=1,
-        resolution="f",
+    pygmt.makecpt(
+        cmap="polar", series=[data.prob_nat.min(), data.prob_nat.max()]
     )
-
+    fig.basemap(region=region, projection='M15c', frame=True)
+    fig.coast(land="lightbrown", water="skyblue")
     fig.plot(
-        x=data["Longitude"],
-        y=data["Latitude"],
-        style="c0.2c",
+        x=data['Longitude'],
+        y=data['Latitude'],
+        fill=data.prob_nat,
+        style='c0.3c',
+        cmap=True,
+
     )
-    fig.colorbar(frame=["x+lLongitude", "y+lLatitude"])
-    fig.savefig(output_file)
+    fig.show()
 
 
 # ----------------------------  MAIN  -------------------------------------
@@ -48,3 +46,4 @@ def main():
 
 if __name__ == "__main__":
     data = main()
+

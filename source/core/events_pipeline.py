@@ -96,6 +96,6 @@ if __name__ == "__main__":
 
     print(" --------- Iniciando o ProcessarID.py --------- ")
     catalogo, missin_ids = main(
-        IDs[:1000],
+        IDs[:],
         data_Client,
         data_Client_bkp)

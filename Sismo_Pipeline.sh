@@ -43,7 +43,6 @@ PREPROCESS=${PREPROCESS:-true}
 PREDICT=${PREDICT:-true}
 POSPROCESS=${POSPROCESS:-true}
 MAPS=${MAPS:-true}
-ENERGY=${ENERGY:-false}
 REPORT=${REPORT:-false}
 
 # ----------------------------- CONSTANTES -------------------------------------
@@ -98,7 +97,7 @@ if [ "$PRED" = true ]; then
     echo ''
     # checa se o arquivo de predições já existe, se existir, move para uma pasta de backup
     echo " ---------------- INICIANDO CORE/GERAR_PREDCSV.PY ---------------------------- "
-    $PYTHON3 source/core/gerar_predcsv.py
+    python source/core/gerar_predcsv.py
     echo ''
     # CHECA SE DEVE SER PREPROCESSADO
     if [ "$PREPROCESS" = true ]; then
@@ -124,11 +123,12 @@ if [ "$PREDICT" = true ]; then
     --valid'
     echo " ----------------- INICIANDO O PREDICT.PY ---------------------------- "
     i3-msg "workspace 2"
-    alacritty -e bash -c "tmux new-session -d -s $NOME_TERM && \
-    tmux send-keys -t $NOME_TERM \"$COMMAND\" C-m && \
-    tmux send-keys -t $NOME_TERM \"$COMMAND_2\" C-m && \
-    tmux send-keys -t $NOME_TERM \"$COMMAND_3\" C-m && \
-    tmux attach-session -t $NOME_TERM"
+    alacritty -e bash -c "tmux new-session -d -s $NOME_TERM; \
+    tmux send-keys -t $NOME_TERM \"$COMMAND; wait\" C-m; \
+    tmux send-keys -t $NOME_TERM \"$COMMAND_2; wait\" C-m; \
+    tmux send-keys -t $NOME_TERM \"$COMMAND_3; wait; exit\" C-m; \
+    tmux send-keys -t $NOME_TERM \"exit\" C-m; \
+    tmux attach -t $NOME_TERM"
     echo ''
 fi
 

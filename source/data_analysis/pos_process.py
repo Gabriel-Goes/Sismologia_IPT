@@ -25,22 +25,101 @@ from data_analysis.test_filters import parsewindow, filterCombos, prepare
 
 # ----------------------------- DATA VIZ ------------------------------------ #
 # ------------------------------ Functions ---------------------------------- #
+def plot_box_dist(df):
+    fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+    sns.histplot(df[df['nature'] == 'Natural']['prob_nat'], bins=20, kde=True, ax=axes[0], color='blue')
+    axes[0].set_title('Distribuição de prob_nat para Eventos Naturais')
+    sns.histplot(df[df['nature'] == 'Anthropogenic']['prob_nat'], bins=20, kde=True, ax=axes[1], color='red')
+    axes[1].set_title('Distribuição de prob_nat para Eventos Antrópicos')
+    sns.boxplot(x='nature', y='Distance', data=df, ax=axes[2])
+    axes[2].set_title('Boxplot da Distância por Natureza do Evento')
+    plt.savefig('files/figures/pos_process/plots/boxplots/boxplot_dist.png')
+    plt.show()
+
+
+def plot_box_by_network(df):
+    df = df.reset_index()
+    stations = df['Network'].unique()
+    freq_rel = df['Network'].value_counts(normalize=True)
+    norm = plt.Normalize(freq_rel.min(), freq_rel.max())
+    cmap = sns.cubehelix_palette(start=.75, rot=-.25, as_cmap=True)
+    station_colors = {station: cmap(norm(freq_rel[station])) for station in stations}
+    plt.figure(figsize=(27, 9))
+    ax = plt.gca()
+    sns.boxplot(
+        x='Network', y='prob_nat',
+        data=df, palette=station_colors, showfliers=False
+    )
+    sns.stripplot(
+        x='Network', y='prob_nat',
+        data=df, color='black', size=1, jitter=True, alpha=0.5
+    )
+    plt.title('Boxplot da Probabilidade Natural por Rede')
+    plt.xlabel('Rede')
+    plt.ylabel('Probabilidade Natural')
+    plt.xticks(rotation=45)
+    sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+    sm.set_array([])
+    cbar = plt.colorbar(sm, ax=ax, orientation='vertical')
+    cbar.set_label('Frequência Relativa')
+    plt.savefig('files/figures/pos_process/plots/boxplots/boxplot_rede.png')
+
+    plt.show()
+
+
+def plot_box_by_station(df):
+    df = df.reset_index()
+    cmap = sns.cubehelix_palette(
+        dark=.25, light=.75, start=.5, rot=-.75, as_cmap=True)
+    networks = df['Network'].unique()
+
+    for network in networks:
+        network_data = df[df['Network'] == network]
+        freq_rel = network_data['Station'].value_counts(normalize=True)
+        norm = plt.Normalize(freq_rel.min(), freq_rel.max())
+        station_colors = {
+            station: cmap(
+                norm(freq_rel[station])
+            ) for station in network_data['Station'].unique()
+        }
+        plt.figure(figsize=(10, 6))
+        ax = sns.boxplot(
+            x='Station', y='prob_nat',
+            data=network_data, palette=station_colors, showfliers=False
+        )
+        ax = sns.stripplot(
+                x='Station', y='prob_nat',
+                data=network_data, color='red', jitter=True, size=1.5, alpha=0.5
+            )
+        ax.set_title(f'Boxplot da Probabilidade Natural por Estação para a Rede {network}')
+        ax.set_xlabel('Estação')
+        ax.set_ylabel('Probabilidade Natural')
+        plt.xticks(rotation=45)
+        sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+        sm.set_array([])
+        cbar = plt.colorbar(sm, orientation='vertical', ax=ax)
+        cbar.set_label('Frequência Relativa de Eventos')
+
+        plt.savefig(f'files/figures/pos_process/plots/boxplots/boxplot_{network}.png')
+        plt.show()
+
+
 # Correlation Matrix
 def plot_corr_matrix(df):
     cols = ['prob_nat', 'Hora',
-            'Longitude', 'Latitude',
-            'MLv', 'Distance', 'Num_Estacoes']
+            'Longitude', 'Latitude', 'Origem Latitude', 'Origem Longitude',
+            'MLv', 'Distance', 'SNR_P']
     df = df[cols]
     plt.figure(figsize=(10, 6))
     corr = df.corr()
-    plt.matshow(corr, cmap='magma', fignum=1,
-                animated=True, interpolation='nearest')
-    plt.xticks(range(len(corr.columns)), corr.columns, rotation=90)
-    plt.yticks(range(len(corr.columns)), corr.columns)
-    plt.colorbar()
+    mask = np.triu(np.ones_like(corr, dtype=bool))
+    sns.heatmap(
+        corr, mask=mask, cmap='RdBu', annot=True, fmt='.2f', square=True,
+        center=0, linewidths=0.5, linecolor='black'
+    )
     plt.title('Correlation Matrix')
     plt.tight_layout()
-    plt.savefig('files/figures/corr_matrix.png')
+    plt.savefig('files/figures/pos_process/plots/corr_matrix.png')
     plt.show()
 
 
@@ -57,7 +136,7 @@ def plot_scatter(df, x, y):
     plt.xlabel(x)
     plt.ylabel(y)
     plt.tight_layout()
-    plt.savefig('files/figures/scatter_plot.png')
+    plt.savefig('files/figures/pos_process/plots/scatter_plot.png')
     plt.show()
 
 
@@ -65,7 +144,7 @@ def plot_pairplot(df):
     df = df[['pred', 'prob_nat', 'Hora',
              'MLv', 'Distance', 'Num_Estacoes']]
     sns.pairplot(df, hue='pred')
-    plt.savefig('files/figures/pairplot.png')
+    plt.savefig('files/figures/pos_process/plots/pairplot.png')
     plt.show()
 
 
@@ -77,11 +156,77 @@ def plot_swarmplot(df, x, y, natural=True):
         sns.swarmplot(x=x, y=y, data=df, size=2.5, color='red')
     else:
         sns.swarmplot(x=x, y=y, data=df, size=2.5, hue='pred')
-    plt.savefig('files/figures/swarmplot.png')
+    plt.savefig('files/figures/pos_process/plots/swarmplot.png')
     plt.show()
 
 
 # ---------------------------- Histograms ----------------------------------- #
+# --------------------------------- Probabilities
+def class_prob(prob):
+    if prob < 0.2:
+        return '<0.2'
+    elif 0.2 <= prob < 0.4:
+        return '[0.2-0.4['
+    elif 0.4 <= prob < 0.6:
+        return '[0.4-0.6['
+    elif 0.6 <= prob < 0.8:
+        return '[0.6-0.8['
+    elif 0.8 <= prob < 0.9:
+        return '[0.8-0.9['
+    else:
+        return '>=0.9'
+
+
+def plot_hist_prob_distribution(df):
+    plt.figure(figsize=(10, 6))
+    df['prob_nat'].plot(kind='hist', bins=20, color='lightskyblue')
+    plt.title('Distribuição de Probabilidades Naturais')
+    plt.xlabel('Probabilidade Natural')
+    plt.ylabel('Frequência')
+    plt.tight_layout()
+    plt.savefig('files/figures/pos_process/plots/dist_prob_nat.png')
+    plt.show()
+
+
+def plot_hist_prob_recall(df):
+    fig, ax = plt.subplots(figsize=(10, 6))
+    cat = ['<0.2', '[0.2-0.4[', '[0.4-0.6[', '[0.6-0.8[', '[0.8-0.9[', '>=0.9']
+    df['prob_nat_cat'] = pd.Categorical(
+        df['prob_nat_cat'], categories=cat, ordered=True
+    )
+    f_rel = df['prob_nat_cat'].value_counts(normalize=True).sort_index()
+    max_freq = f_rel.max() * 100
+    min_freq = f_rel.min() * 100
+    norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
+    sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
+    sm.set_array([])
+    rc_min = 0
+
+    for c in f_rel.index:
+        df_c = df[df['prob_nat_cat'] == c]
+        TP = df_c[(df_c['pred'] == 0) & (df_c['label_cat'] == 0)].shape[0]
+        FN = df_c[(df_c['pred'] == 1) & (df_c['label_cat'] == 0)].shape[0]
+        rc = TP / (TP + FN) * 100
+        freq = f_rel.loc[c] * 100
+        color = sm.to_rgba(freq)
+        ax.bar(c, rc, color=color, edgecolor='black', width=0.5)
+        ax.text(c, rc + 0.01, f'{rc:.2f}%', ha='center', va='bottom')
+        rc_min = rc if rc < rc_min else rc_min
+
+    cbar = fig.colorbar(sm, ax=ax)
+    cbar.ax.set_ylabel('Frequency (%)')
+    cbar.set_ticks([min_freq, max_freq])
+    plt.ylim(rc_min - 5, 100)
+    plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
+    plt.xlabel('Probabilidade Natural')
+    plt.ylabel('Recall (%)')
+    plt.tight_layout()
+    plt.savefig('files/figures/pos_process/plots/dist_prob_nat_recall.png')
+    plt.show()
+
+    return df
+
+
 # --------------------------------- Hours
 # Plot histogram of events hour distribution
 def plot_hist_hour_distribution(df):
@@ -108,7 +253,7 @@ def plot_hist_hour_distribution(df):
     # Legenda: Commercial e Não-Comercial
     plt.legend(['Não-Comercial'], loc='upper right')
     # save figure
-    plt.savefig('files/figures/pos_process/plots/histogramas/hist_hora.png')
+    plt.savefig('files/figures/pos_process/plots/pos_process/plots/histogramas/hist_hora.png')
     plt.show()
 
 
@@ -153,13 +298,31 @@ def plot_hist_hour_recall(df):
     plt.xlabel('Hora do Dia')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('files/figures/hist_ev_hour_recall.png')
+    plt.savefig('files/figures/pos_process/plots/hist_ev_hour_recall.png')
     plt.show()
     plt.close()
 
     return df
 
 # --------------------------------- Distances
+# Classify distance categories
+def class_dist(dist):
+    if dist < 50:
+        return '<50'
+    elif 50 <= dist < 100:
+        return '[50-100['
+    elif 100 <= dist < 150:
+        return '[100-150['
+    elif 150 <= dist < 200:
+        return '[150-200['
+    elif 200 <= dist < 250:
+        return '[200-250['
+    elif 250 <= dist < 300:
+        return '[250-300['
+    else:
+        return '>=300'
+
+
 def plot_hist_distance_distribution(df):
     n, bins, patches = plt.hist(
         df['Distance'],
@@ -182,26 +345,8 @@ def plot_hist_distance_distribution(df):
     plt.title('Distribuição de Eventos por Distância Epicentral')
     plt.xlabel('Distância Epicentral (km)')
     plt.ylabel('Frequência Relativa')
-    plt.savefig('files/figures/dist_ev_distance_rel_freq.png')
+    plt.savefig('files/figures/pos_process/plots/dist_ev_distance_rel_freq.png')
     plt.show()
-
-
-# Classify distance categories
-def class_dist(dist):
-    if dist < 50:
-        return '<50'
-    elif 50 <= dist < 100:
-        return '[50-100['
-    elif 100 <= dist < 150:
-        return '[100-150['
-    elif 150 <= dist < 200:
-        return '[150-200['
-    elif 200 <= dist < 250:
-        return '[200-250['
-    elif 250 <= dist < 300:
-        return '[250-300['
-    else:
-        return '>=300'
 
 
 # plot histogram of events distance distribution
@@ -246,12 +391,23 @@ def plot_hist_distance_recall(df):
     plt.xlabel('Epicentral Distance (km)')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('files/figures/hist_ev_distance.png')
+    plt.savefig('files/figures/pos_process/plots/hist_ev_distance.png')
     plt.show()
     plt.close()
 
 
 # --------------------------   Magnitudes
+def class_mag(mag):
+    if mag < 1:
+        return '<1'
+    elif 1 <= mag < 2:
+        return '[1-2['
+    elif 2 <= mag < 3:
+        return '[2-3['
+    else:
+        return '>=3'
+
+
 def plot_hist_magnitude_distribution(df):
     plt.figure(figsize=(10, 6))
     df['Magnitude_cat'] = pd.Categorical(
@@ -266,19 +422,8 @@ def plot_hist_magnitude_distribution(df):
     plt.xlabel('Categoria de Magnitude')
     plt.ylabel('Número de Eventos')
     plt.tight_layout()
-    plt.savefig('files/figures/dist_ev_cat_mag.png')
+    plt.savefig('files/figures/pos_process/plots/dist_ev_cat_mag.png')
     plt.show()
-
-
-def class_mag(mag):
-    if mag < 1:
-        return '<1'
-    elif 1 <= mag < 2:
-        return '[1-2['
-    elif 2 <= mag < 3:
-        return '[2-3['
-    else:
-        return '>=3'
 
 
 def plot_hist_magnitude_recall(df):
@@ -315,7 +460,7 @@ def plot_hist_magnitude_recall(df):
     plt.xlabel('Magnitude')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('files/figures/dist_ev_cat_mag_recall.png')
+    plt.savefig('files/figures/pos_process/plots/dist_ev_cat_mag_recall.png')
     plt.show()
 
     return df
@@ -344,7 +489,7 @@ def plot_hist_station_distribution(df):
     plt.xlabel('Número de Estações')
     plt.ylabel('Número de Eventos')
     plt.tight_layout()
-    plt.savefig('files/figures/dist_ev_num_stations_absoluto.png')
+    plt.savefig('files/figures/pos_process/plots/dist_ev_num_stations_absoluto.png')
     plt.show()
 
 def plot_hist_stations_recall(df):
@@ -389,7 +534,7 @@ def plot_hist_stations_recall(df):
     plt.xticks(rc_data.index, labels=[str(int(x)) for x in rc_data.index])
     plt.ylim(60, 100)
     plt.tight_layout()
-    plt.savefig('files/figures/dist_ev_num_stations_recall.png')
+    plt.savefig('files/figures/pos_process/plots/dist_ev_num_stations_recall.png')
     plt.show()
 
     return df
@@ -408,8 +553,8 @@ def snr_p(picks: pd.DataFrame,
         trace = st[0]
 
         filtros = filterCombos(1., 49., 4., 49.)
-        dict_filtros = {f'{f.pa}_{f.pb}': f for f in filtros}
-        filtro_bom = dict_filtros['2.0_49.0']
+        dict_filt = {f'{f.pa}_{f.pb}': f for f in filtros}
+        filtro_bom = dict_filt['2.0_49.0']
         noise, trace_p, trace_s = prepare(
             trace,
             filtro_bom,
@@ -424,7 +569,7 @@ def snr_p(picks: pd.DataFrame,
         picks.loc[index, 'Noise'] = filtro_bom.noise
         picks.loc[index, 'p'] = filtro_bom.p
 
-    return picks, dict_filtros
+    return picks, dict_filt
 
 # --------------------------- SNR Histograms
 def class_snrp(snr):
@@ -447,7 +592,7 @@ def plot_hist_snrs_distribution(df):
     plt.xlabel('SNR_P')
     plt.ylabel('Frequência')
     plt.tight_layout()
-    plt.savefig('files/figures/dist_snrs.png')
+    plt.savefig('files/figures/pos_process/plots/dist_snrs.png')
     plt.show()
 
 
@@ -485,7 +630,7 @@ def plot_hist_snrs_recall(df):
     plt.xlabel('SNR_P')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('files/figures/dist_snrs_recall.png')
+    plt.savefig('files/figures/pos_process/plots/dist_snrs_recall.png')
     plt.show()
 
     return df
@@ -521,6 +666,7 @@ def load_data():
     picks, dict_filt = snr_p(df_nc, 5)
 
     df_nc.loc[:, 'SNR_P_cat'] = df_nc['SNR_P'].apply(class_snrp)
+    df_nc.loc[:, 'prob_nat_cat'] = df_nc['prob_nat'].apply(class_prob)
     df_nc.loc[:, 'Distance_cat'] = df_nc['Distance'].apply(class_dist)
     df_nc.loc[:, 'Magnitude_cat'] = df_nc['MLv'].apply(class_mag)
 
@@ -542,6 +688,13 @@ def non_commercial(df):
 
     # plot_hist_snrs_distribution(df)
     plot_hist_snrs_recall(df)
+
+    # plot_hist_prob_distribution(df)
+    plot_hist_prob_recall(df)
+
+    plot_box_dist(df)
+    plot_box_by_network(df)
+    plot_box_by_station(df)
 
     return
 
