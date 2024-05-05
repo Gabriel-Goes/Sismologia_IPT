@@ -37,13 +37,13 @@
 
 DATES="$INICIO $FIM"  # BASEADO EM DATAS
 CATALOG=${1:-"files/catalogo/catalogo-moho.csv"}  # BASEADO EM LISTA DE IDS
-EVENTS=${EVENTS:-true}
-PRED=${PRED:-true}
-PREPROCESS=${PREPROCESS:-true}
-PREDICT=${PREDICT:-true}
-POSPROCESS=${POSPROCESS:-true}
+EVENTS=${EVENTS:-false}
+PRED=${PRED:-false}
+PREPROCESS=${PREPROCESS:-false}
+PREDICT=${PREDICT:-false}
+POSPROCESS=${POSPROCESS:-false}
 MAPS=${MAPS:-true}
-REPORT=${REPORT:-false}
+REPORT=${REPORT:-true}
 
 # ----------------------------- CONSTANTES -------------------------------------
 # DEFINE OS DIRETÓRIOS DE TRABALHO
@@ -147,7 +147,6 @@ if [ "$MAPS" = true ]; then
     if [ -f "files/output/no_commercial/df_nc_pos.csv" ]; then
         echo " -> Executando make_maps.py..."
         python source/data_analysis/make_maps.py
-    else
     fi
     echo ''
 fi
@@ -169,8 +168,11 @@ fi
 # ----------------- ETAPA DE GERAR RELATORIOS ------------------------
 if [ "$REPORT" = true ]; then
     echo " ----------------- Iniciando o pdflatex .tex ---------------------------- "
-    pushd files/relatorios/sismologia-ipt-latex
-    pdflatex -output-directory=final_relatorios/ relatorio_preditivo.tex
+    python source/sismologia-ipt-latex/tex/relatorio_preditivo/python/figures.py
+    python source/sismologia-ipt-latex/tex/relatorio_preditivo/python/mapa.py
+    pushd source/sismologia-ipt-latex
+    pdflatex -output-directory=$HOME/projetos/ClassificadorSismologico/files/relatorios/ relatorio_preditivo.tex 
+    popd
 fi
 
 echo $DELIMT2

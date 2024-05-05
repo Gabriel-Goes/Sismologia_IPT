@@ -24,7 +24,7 @@ def plot_map(data, filename):
         cmap="polar", series=[data.prob_nat.min(), data.prob_nat.max()]
     )
     fig.basemap(region=region, projection='M15c', frame=True)
-    fig.coast(land="lightbrown", water="skyblue")
+    fig.coast(land="lightgray", water="skyblue")
     fig.plot(
         x=data['Longitude'],
         y=data['Latitude'],
@@ -34,6 +34,8 @@ def plot_map(data, filename):
 
     )
     fig.show()
+    f='files/figures/maps/mapa.png'
+    fig.savefig(f)
 
 
 # ----------------------------  MAIN  -------------------------------------
