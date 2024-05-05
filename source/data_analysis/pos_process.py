@@ -10,15 +10,21 @@
 # Modificação mais recente: 2024-04-10
 
 # ----------------------------  IMPORTS   -------------------------------------
+import os
 import pandas as pd
 import numpy as np
-import os
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import matplotlib.ticker as mtick
+from matplotlib.cm import ScalarMappable
 import seaborn as sns
+
 import obspy
 from obspy import UTCDateTime
+
+from shapely.geometry import Point
+import geopandas as gpd
+
 from tqdm import tqdm
 from data_analysis.test_filters import parsewindow, filterCombos, prepare
 
@@ -61,7 +67,9 @@ def plot_box_by_network(df):
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
     sm.set_array([])
     cbar = plt.colorbar(sm, ax=ax, orientation='vertical')
-    cbar.set_label('Frequência Relativa')
+    cbar.set_label(f'Frequência Relativa - Total de Eventos: {df.shape[0]}')
+    cbar.set_ticks([freq_rel.min(), freq_rel.max()])
+    cbar.set_ticklabels([f'{freq_rel.min():.2f}', f'{freq_rel.max():.2f}'])
     plt.savefig('files/figures/pos_process/plots/boxplots/boxplot_rede.png')
 
     plt.show()
@@ -98,7 +106,10 @@ def plot_box_by_station(df):
         sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
         sm.set_array([])
         cbar = plt.colorbar(sm, orientation='vertical', ax=ax)
-        cbar.set_label('Frequência Relativa de Eventos')
+        cbar.set_label(f'Frequência Relativa (Total: {network_data.shape[0]})')
+        ticks = np.linspace(0, 1, num=5)
+        cbar.set_ticks(ticks)
+        cbar.set_ticklabels([f'{norm(t) * 100:.0f}%' for t in ticks])
 
         plt.savefig(f'files/figures/pos_process/plots/boxplots/boxplot_{network}.png')
         plt.show()
@@ -636,6 +647,88 @@ def plot_hist_snrs_recall(df):
     return df
 
 
+# --------------------------- Region
+def class_region(df):
+    regions = gpd.read_file('files/figures/maps/macrorregioesBrasil.json')
+    regions = regions.to_crs(epsg=4326)
+
+    coord_pick = gpd.GeoDataFrame(
+        df,
+        geometry=[Point(x, y) for x, y in zip(df['Longitude'], df['Latitude'])],
+        crs='EPSG:4326'
+    )
+    coord_origem = gpd.GeoDataFrame(
+        df,
+        geometry=[Point(x, y) for x, y in zip(df['Origem Longitude'], df['Origem Latitude'])],
+        crs='EPSG:4326'
+    )
+
+    region_pick = gpd.sjoin(coord_pick, regions, how='left', op='within')
+    region_origem = gpd.sjoin(coord_origem, regions, how='left', op='within')
+
+    df['Região Pick'] = region_pick['nome'].values
+    df['Região Origem'] = region_origem['nome'].values
+
+    return df
+
+
+def plot_region_correlation(df):
+    df = df.reset_index()
+    df = class_region(df)
+    df = df[df['Região Pick'].notna() & df['Região Origem'].notna()]
+
+    # Calculando a frequência relativa
+    freq_pick = df['Região Pick'].value_counts(normalize=True)
+    freq_orig = df['Região Origem'].value_counts(normalize=True)
+
+    # Definindo a ordem explicitamente
+    order_pick = freq_pick.index.tolist()
+    order_orig = freq_orig.index.tolist()
+
+    # Criando um mapa de cores baseado na frequência
+    cmap = plt.get_cmap('viridis')
+    norm_pick = mcolors.Normalize(vmin=freq_pick.min(), vmax=freq_pick.max())
+    norm_orig = mcolors.Normalize(vmin=freq_orig.min(), vmax=freq_orig.max())
+
+    # Cores para cada região baseada na frequência relativa
+    pick_colors = {region: cmap(norm_pick(freq)) for region, freq in freq_pick.items()}
+    orig_colors = {region: cmap(norm_orig(freq)) for region, freq in freq_orig.items()}
+
+    fig, axes = plt.subplots(1, 2, figsize=(18, 6))
+
+    # Boxplot para Região Pick
+    sns.boxplot(
+        x='Região Pick', y='prob_nat', data=df,
+        ax=axes[0], palette=pick_colors, showfliers=False, order=order_pick
+    )
+    sns.stripplot(
+        x='Região Pick', y='prob_nat', data=df,
+        ax=axes[0], color='black', size=1, jitter=True, alpha=0.5, order=order_pick
+    )
+
+    # Boxplot para Região Origem
+    sns.boxplot(
+        x='Região Origem', y='prob_nat', data=df,
+        ax=axes[1], palette=orig_colors, showfliers=False, order=order_orig
+    )
+    sns.stripplot(
+        x='Região Origem', y='prob_nat', data=df,
+        ax=axes[1], color='black', size=1, jitter=True, alpha=0.5, order=order_orig
+    )
+
+    # Configurações dos títulos
+    axes[0].set_title('Correlação entre Região do Pick e prob_nat')
+    axes[1].set_title('Correlação entre Região de Origem e prob_nat')
+
+    # Adicionando colorbar para a frequência relativa
+    sm = ScalarMappable(cmap=cmap, norm=norm_pick)
+    sm.set_array([])
+    cbar = plt.colorbar(sm, ax=axes, orientation='vertical')
+    cbar.set_label('Frequência Relativa')
+
+    plt.savefig('files/figures/pos_process/plots/region_corr.png')
+    plt.show()
+
 # --------------------------- Create files
 def load_data():
     # Load the validation network level
@@ -661,14 +754,22 @@ def load_data():
     df_c = pd.merge(df_c_val, evs, on='file_name', how='left')
 
     df_nc.set_index(['Event', 'Station'], inplace=True)
-    df_nc.dropna(subset=['Origin Time'], inplace=True)
-    df_nc['Hora'] = df_nc['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
-    picks, dict_filt = snr_p(df_nc, 5)
+    df_nc.dropna(subset=['Origin Time'], inplace=True)  # Devido o código de Hourcade ler todos os MSEEDS da pasta, é necessário filtrar os eventos que estão na pasta mas não estão no evs
 
-    df_nc.loc[:, 'SNR_P_cat'] = df_nc['SNR_P'].apply(class_snrp)
+    df_nc['Hora'] = df_nc['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
+    df_nc['Coord Origem'] = df_nc[['Origem Latitude', 'Origem Longitude']].apply(
+        lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1
+    )
+    df_nc['Coord Pick'] = df_nc[['Latitude', 'Longitude']].apply(
+        lambda x: [x['Latitude'], x['Longitude']], axis=1
+    )
     df_nc.loc[:, 'prob_nat_cat'] = df_nc['prob_nat'].apply(class_prob)
     df_nc.loc[:, 'Distance_cat'] = df_nc['Distance'].apply(class_dist)
     df_nc.loc[:, 'Magnitude_cat'] = df_nc['MLv'].apply(class_mag)
+    picks, dict_filt = snr_p(df_nc, 5)
+    df_nc.loc[:, 'SNR_P_cat'] = df_nc['SNR_P'].apply(class_snrp)
+
+    df_nc = class_region(df_nc)
 
     return df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt
 
@@ -696,6 +797,8 @@ def non_commercial(df):
     plot_box_by_network(df)
     plot_box_by_station(df)
 
+    plot_region_correlation(df)
+
     return
 
 
@@ -711,5 +814,5 @@ def main():
 
 if __name__ == '__main__':
     df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt = main()
-    df_nc.to_csv('files/output/no_commercial/df_nc_pos.csv')
-    df_c.to_csv('files/output/commercial/df_c_pos.csv')
+    df_nc.to_csv('files/output/no_commercial/df_nc_pos.csv', index=False)
+    df_c.to_csv('files/output/commercial/df_c_pos.csv', index=False)

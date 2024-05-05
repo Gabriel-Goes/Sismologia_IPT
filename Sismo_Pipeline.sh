@@ -147,21 +147,8 @@ if [ "$MAPS" = true ]; then
     if [ -f "files/output/no_commercial/df_nc_pos.csv" ]; then
         echo " -> Executando make_maps.py..."
         python source/data_analysis/make_maps.py
-        mv $EVENTS files/
-        mv *png figures
     else
-        echo "events.csv está vazio"
     fi
-    for i in $EVENTS
-        do
-            echo $i
-            $PYTHON3 $CREATEMAP $i
-            mv $i files/
-            mv *png figures
-    done
-    echo ''
-    echo " Criando arquivos de backup..."
-    echo " Arquivos de backup criados com sucesso!"
     echo ''
 fi
 
@@ -182,7 +169,8 @@ fi
 # ----------------- ETAPA DE GERAR RELATORIOS ------------------------
 if [ "$REPORT" = true ]; then
     echo " ----------------- Iniciando o pdflatex .tex ---------------------------- "
-    pdflatex -output-directory=docs/report/ report.tex
+    pushd files/relatorios/sismologia-ipt-latex
+    pdflatex -output-directory=final_relatorios/ relatorio_preditivo.tex
 fi
 
 echo $DELIMT2
