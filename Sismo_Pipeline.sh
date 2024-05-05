@@ -37,14 +37,14 @@
 
 DATES="$INICIO $FIM"  # BASEADO EM DATAS
 CATALOG=${1:-"files/catalogo/catalogo-moho.csv"}  # BASEADO EM LISTA DE IDS
-EVENTS=${EVENTS:-false}
-PRED=${PRED:-false}
-PREPROCESS=${PREPROCESS:-false}
-PREDICT=${PREDICT:-false}
+EVENTS=${EVENTS:-true}
+PRED=${PRED:-true}
+PREPROCESS=${PREPROCESS:-true}
+PREDICT=${PREDICT:-true}
 POSPROCESS=${POSPROCESS:-true}
 MAPS=${MAPS:-true}
 ENERGY=${ENERGY:-false}
-REPORT=${REPORT:-true}
+REPORT=${REPORT:-false}
 
 # ----------------------------- CONSTANTES -------------------------------------
 # DEFINE OS DIRETÓRIOS DE TRABALHO
@@ -63,12 +63,6 @@ mkdir -p $LOG_DIR
 mv -f $LOG_FILE $LOG_FILE_BKP
 touch "$LOG_FILE"
 exec 1> >(tee -a "$LOG_FILE") 2>&1
-
-# DEFINE EXECUTAVEIS
-ENERGYFIG="$HOME/lucas_bin/energy_fig.py"
-CREATEMAP="$HOME/lucas_bin/make_maps_"$CLIENT_ID".py"
-SEISCOMP=${SEISCOMP:-"$HOME/softwares/seiscomp/bin/seiscomp"}
-PYTHON3=${PYTHON3:-"$HOME/.pyenv/versions/sismologia/bin/python3"}
 
 # DEFINE DELIMITADORES PARA LOGS
 DELIMT1='########################################################################'
@@ -92,7 +86,7 @@ if [ "$EVENTS" = true ]; then
     echo " Arquivos de backup criados com sucesso!"
     echo ''
     echo ' -> Executando events_pipeline.py...'
-    $PYTHON3 source/core/events_pipeline.py $CATALOG
+    python source/core/events_pipeline.py $CATALOG
     echo ''
 fi
 
@@ -111,7 +105,7 @@ if [ "$PRED" = true ]; then
         cp files/predcsv/pred_commercial.csv files/predcsv/.bkp/pred_commercial.csv.$(date +%Y%m%d%H%M%S)
         cp files/predcsv/pred_no_commercial.csv files/predcsv/.bkp/pred_no_commercial.csv.$(date +%Y%m%d%H%M%S)
         echo " -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- "
-        $PYTHON3 source/data_analysis/pre_process.py
+        python source/data_analysis/pre_process.py
         echo ''
     fi
 fi
@@ -141,23 +135,22 @@ fi
 # --------- ETAPA DE GERAR GRAFICOS E ANÁLISES -----------
 if [ "$POSPROCESS" = true ]; then
     echo " ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- "
-    $PYTHON3 source/data_analysis/pos_process.py
+    python source/data_analysis/pos_process.py
     echo ''
 fi
 
 # ------------------------- ETAPA DE GERAR MAPAS  -----------------------------
 # Condicionalmente executa partes do script
 if [ "$MAPS" = true ]; then
-    # Executa etapa de processamento de mapas
     echo " -------------- Processo de criação de mapas iniciado ------------------"
     # Checa se o arquivo de eventos existe e se é vazio
-    if [ -f "files/events/events-*.csv" ]; then
+    if [ -f "files/output/no_commercial/df_nc_pos.csv" ]; then
         echo " -> Executando make_maps.py..."
-        $PYTHON3 $CREATEMAP $EVENTS
+        python source/data_analysis/make_maps.py
         mv $EVENTS files/
         mv *png figures
     else
-        echo "events.csv est\u00e1 vazio"
+        echo "events.csv está vazio"
     fi
     for i in $EVENTS
         do

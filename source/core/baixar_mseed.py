@@ -89,15 +89,6 @@ def iterate_events(eventos: List,
                    data_client_bkp: str,
                    baixar=False,
                    random=False) -> None:
-    '''
-    Baixa a forma de onda (.mseed) de um evento sísmico se a estação estiver a menos de 400 km do epicentro.
-    Parâmetros:
-    - eventos: Lista de eventos sísmicos    (List)  -> Lista de objetos Event
-    - data_client: Cliente para baixar dados (str)   -> Nome do cliente principal
-    - data_client_bkp: Cliente de backup      (str)   -> Nome do cliente de backup
-    - inventario: Dicionário de inventário    (Dict)  -> Dicionário de inventário de estações
-    - baixar: Baixar dados sismicos           (bool)  -> Se True, baixa os dados sismicos
-    '''
     # Agora, tanto print() quanto print(f'') serão exibidos no terminal e escritos em output.txt
     print(' --> Iterando sobre eventos')
     print(f' - Número de eventos: {len(eventos)}')
@@ -131,6 +122,7 @@ def iterate_events(eventos: List,
             # Se pick.phase_hint for diferente de P ou Pg, continue
             if pick.phase_hint not in ['P'] or pick.waveform_id.channel_code[:1] != 'H':
                 error_to_save.append({'ID': event_id,
+                                      'Event': dir_name,
                                       'Network': pick.waveform_id.network_code,
                                       'Station': pick.waveform_id.station_code,
                                       'Location': pick.waveform_id.location_code,
@@ -158,6 +150,7 @@ def iterate_events(eventos: List,
                 cha_meta = inv.get_channel_metadata(seed_id)
             except Exception as e:
                 error_to_save.append({'ID': event_id,
+                                      'Event': dir_name,
                                       'Pick': pick.phase_hint,
                                       'Network': net,
                                       'Station': sta,
@@ -175,6 +168,7 @@ def iterate_events(eventos: List,
             sta_lon = cha_meta['longitude']
             if not sta_lat or not sta_lon:
                 error_to_save.append({'ID': event_id,
+                                      'Event': dir_name,
                                       'Pick': pick.phase_hint,
                                       'Network': net,
                                       'Station': sta,
@@ -200,6 +194,7 @@ def iterate_events(eventos: List,
                 print("Estação a mais de 400 km do epicentro, forma de onda não será baixada.")
                 print(delimt)
                 error_to_save.append({'ID': event_id,
+                                      'Event': dir_name,
                                       'Pick': pick.phase_hint,
                                       'Network': net,
                                       'Station': sta,
@@ -232,6 +227,7 @@ def iterate_events(eventos: List,
 
                 except Exception as e:
                     error_to_save.append({'ID': event_id,
+                                          'Event': dir_name,
                                           'Pick': pick.phase_hint,
                                           'Network': net,
                                           'Station': sta,
@@ -254,6 +250,7 @@ def iterate_events(eventos: List,
                 except Exception as e:
                     print(f" -> Erro ao obter magnitude: {e}")
                     error_to_save.append({'ID': event_id,
+                                          'Event': dir_name,
                                           'Pick': pick.phase_hint,
                                           'Network': net,
                                           'Station': sta,
@@ -321,14 +318,15 @@ def iterate_events(eventos: List,
     # Escrever os erros no arquivo CSV
     csv_error_path = './files/events/erros.csv'
     with open(csv_error_path, mode='w', newline='\n', encoding='utf-8') as csv_file:
-        fieldnames = ['ID', 'Event', 'Error',
+        fieldnames = ['ID', 'Event',
                       'Pick', 'Network', 'Station', 'Location', 'Channel',
                       'Latitude', 'Longitude', 'Distance',
                       'Origem Latitude', 'Origem Longitude',
                       'Pick Time', 'Origin Time', 'Start Time', 'End Time',
                       'Cat',
                       'MLv', 'Certainty',
-                      'Path']
+                      'Path',
+                      'Error']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
         for data in error_to_save:
