@@ -39,7 +39,7 @@ def plot_box_dist(df):
     axes[1].set_title('Distribuição de prob_nat para Eventos Antrópicos')
     sns.boxplot(x='nature', y='Distance', data=df, ax=axes[2])
     axes[2].set_title('Boxplot da Distância por Natureza do Evento')
-    plt.savefig('files/figures/pos_process/plots/boxplots/boxplot_dist.png')
+    plt.savefig('files/figures/pos_process/boxplots/boxplot_dist.png')
     plt.show()
 
 
@@ -70,7 +70,7 @@ def plot_box_by_network(df):
     cbar.set_label(f'Frequência Relativa - Total de Eventos: {df.shape[0]}')
     cbar.set_ticks([freq_rel.min(), freq_rel.max()])
     cbar.set_ticklabels([f'{freq_rel.min():.2f}', f'{freq_rel.max():.2f}'])
-    plt.savefig('files/figures/pos_process/plots/boxplots/boxplot_rede.png')
+    plt.savefig('files/figures/pos_process/boxplots/boxplot_rede.png')
 
     plt.show()
 
@@ -111,7 +111,7 @@ def plot_box_by_station(df):
         cbar.set_ticks(ticks)
         cbar.set_ticklabels([f'{norm(t) * 100:.0f}%' for t in ticks])
 
-        plt.savefig(f'files/figures/pos_process/plots/boxplots/boxplot_{network}.png')
+        plt.savefig(f'files/figures/pos_process/boxplots/boxplot_{network}.png')
         plt.show()
 
 
@@ -130,7 +130,7 @@ def plot_corr_matrix(df):
     )
     plt.title('Correlation Matrix')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/plots/corr_matrix.png')
+    plt.savefig('files/figures/pos_process/corr_matrix.png')
     plt.show()
 
 
@@ -147,7 +147,7 @@ def plot_scatter(df, x, y):
     plt.xlabel(x)
     plt.ylabel(y)
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/plots/scatter_plot.png')
+    plt.savefig('files/figures/pos_process/scatter_plot.png')
     plt.show()
 
 
@@ -155,7 +155,7 @@ def plot_pairplot(df):
     df = df[['pred', 'prob_nat', 'Hora',
              'MLv', 'Distance', 'Num_Estacoes']]
     sns.pairplot(df, hue='pred')
-    plt.savefig('files/figures/pos_process/plots/pairplot.png')
+    plt.savefig('files/figures/pos_process/pairplot.png')
     plt.show()
 
 
@@ -167,7 +167,7 @@ def plot_swarmplot(df, x, y, natural=True):
         sns.swarmplot(x=x, y=y, data=df, size=2.5, color='red')
     else:
         sns.swarmplot(x=x, y=y, data=df, size=2.5, hue='pred')
-    plt.savefig('files/figures/pos_process/plots/swarmplot.png')
+    plt.savefig('files/figures/pos_process/swarmplot.png')
     plt.show()
 
 
@@ -195,7 +195,7 @@ def plot_hist_prob_distribution(df):
     plt.xlabel('Probabilidade Natural')
     plt.ylabel('Frequência')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/plots/dist_prob_nat.png')
+    plt.savefig('files/figures/pos_process/dist_prob_nat.png')
     plt.show()
 
 
@@ -232,7 +232,7 @@ def plot_hist_prob_recall(df):
     plt.xlabel('Probabilidade Natural')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/plots/dist_prob_nat_recall.png')
+    plt.savefig('files/figures/pos_process/dist_prob_nat_recall.png')
     plt.show()
 
     return df
@@ -264,7 +264,7 @@ def plot_hist_hour_distribution(df):
     # Legenda: Commercial e Não-Comercial
     plt.legend(['Não-Comercial'], loc='upper right')
     # save figure
-    plt.savefig('files/figures/pos_process/plots/pos_process/plots/histogramas/hist_hora.png')
+    plt.savefig('files/figures/pos_process/pos_process/plots/histogramas/hist_hora.png')
     plt.show()
 
 
@@ -309,7 +309,7 @@ def plot_hist_hour_recall(df):
     plt.xlabel('Hora do Dia')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/plots/hist_ev_hour_recall.png')
+    plt.savefig('files/figures/pos_process/hist_ev_hour_recall.png')
     plt.show()
     plt.close()
 
@@ -357,7 +357,7 @@ def plot_hist_distance_distribution(df):
     plt.title('Distribuição de Eventos por Distância Epicentral')
     plt.xlabel('Distância Epicentral (km)')
     plt.ylabel('Frequência Relativa')
-    plt.savefig('files/figures/pos_process/plots/dist_ev_distance_rel_freq.png')
+    plt.savefig('files/figures/pos_process/dist_ev_distance_rel_freq.png')
     plt.show()
 
 
@@ -403,7 +403,7 @@ def plot_hist_distance_recall(df):
     plt.xlabel('Epicentral Distance (km)')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/plots/hist_ev_distance.png')
+    plt.savefig('files/figures/pos_process/hist_ev_distance.png')
     plt.show()
     plt.close()
 
@@ -434,7 +434,7 @@ def plot_hist_magnitude_distribution(df):
     plt.xlabel('Categoria de Magnitude')
     plt.ylabel('Número de Eventos')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/plots/dist_ev_cat_mag.png')
+    plt.savefig('files/figures/pos_process/dist_ev_cat_mag.png')
     plt.show()
 
 
@@ -472,7 +472,7 @@ def plot_hist_magnitude_recall(df):
     plt.xlabel('Magnitude')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/plots/dist_ev_cat_mag_recall.png')
+    plt.savefig('files/figures/pos_process/dist_ev_cat_mag_recall.png')
     plt.show()
 
     return df
@@ -501,7 +501,7 @@ def plot_hist_station_distribution(df):
     plt.xlabel('Número de Estações')
     plt.ylabel('Número de Eventos')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/plots/dist_ev_num_stations_absoluto.png')
+    plt.savefig('files/figures/pos_process/dist_ev_num_stations_absoluto.png')
     plt.show()
 
 
@@ -547,7 +547,7 @@ def plot_hist_stations_recall(df):
     plt.xticks(rc_data.index, labels=[str(int(x)) for x in rc_data.index])
     plt.ylim(60, 100)
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/plots/dist_ev_num_stations_recall.png')
+    plt.savefig('files/figures/pos_process/dist_ev_num_stations_recall.png')
     plt.show()
 
     return df
@@ -607,7 +607,7 @@ def plot_hist_snrs_distribution(df):
     plt.xlabel('SNR_P')
     plt.ylabel('Frequência')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/plots/dist_snrs.png')
+    plt.savefig('files/figures/pos_process/dist_snrs.png')
     plt.show()
 
 
@@ -645,7 +645,7 @@ def plot_hist_snrs_recall(df):
     plt.xlabel('SNR_P')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/plots/dist_snrs_recall.png')
+    plt.savefig('files/figures/pos_process/dist_snrs_recall.png')
     plt.show()
 
     return df
@@ -729,7 +729,7 @@ def plot_region_correlation(df):
         f'{freq_pick.min() * 100:.0f}%',
         f'{freq_pick.max() * 100:.0f}%'
     ])
-    plt.savefig('files/figures/pos_process/plots/region_corr.png')
+    plt.savefig('files/figures/pos_process/region_corr.png')
     plt.show()
 
 

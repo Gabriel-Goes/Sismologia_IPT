@@ -96,7 +96,7 @@ def hist_hora(
     plt.ylabel('Frequência')
     plt.legend(
         ['Horário Comercial', 'Fora do Horário Comercial'], loc='upper right')
-    plt.savefig('files/figures/pre_process/plots/histogramas/hist_hora.png')
+    plt.savefig('files/figures/pre_process/histogramas/hist_hora.png')
     # plt.show()
     df_com.to_csv('files/predcsv/pred_commercial.csv', index=False)
     df_nc.to_csv('files/predcsv/pred_no_commercial.csv', index=False)

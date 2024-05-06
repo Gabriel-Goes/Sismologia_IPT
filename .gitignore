@@ -4,9 +4,3 @@
 *.png
 *.jpeg
 *.mseed
-filles/spectro/
-files/mseed/
-files/log/
-.bkp/
-
-__pycache__/
