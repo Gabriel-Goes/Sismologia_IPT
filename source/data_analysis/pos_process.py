@@ -39,7 +39,7 @@ def plot_box_dist(df):
     axes[1].set_title('Distribuição de prob_nat para Eventos Antrópicos')
     sns.boxplot(x='nature', y='Distance', data=df, ax=axes[2])
     axes[2].set_title('Boxplot da Distância por Natureza do Evento')
-    plt.savefig('files/figures/pos_process/boxplots/boxplot_dist.png')
+    plt.savefig('files/figures/pos_process/boxplot_dist.png')
     plt.show()
 
 
@@ -70,7 +70,7 @@ def plot_box_by_network(df):
     cbar.set_label(f'Frequência Relativa - Total de Eventos: {df.shape[0]}')
     cbar.set_ticks([freq_rel.min(), freq_rel.max()])
     cbar.set_ticklabels([f'{freq_rel.min():.2f}', f'{freq_rel.max():.2f}'])
-    plt.savefig('files/figures/pos_process/boxplots/boxplot_rede.png')
+    plt.savefig('files/figures/pos_process/boxplot_rede.png')
 
     plt.show()
 
@@ -111,7 +111,7 @@ def plot_box_by_station(df):
         cbar.set_ticks(ticks)
         cbar.set_ticklabels([f'{norm(t) * 100:.0f}%' for t in ticks])
 
-        plt.savefig(f'files/figures/pos_process/boxplots/boxplot_{network}.png')
+        plt.savefig(f'files/figures/pos_process/boxplot_{network}.png')
         plt.show()
 
 
@@ -588,12 +588,36 @@ def snr_p(picks: pd.DataFrame,
 
 # --------------------------- SNR Histograms
 def class_snrp(snr):
-    if 0 <= snr < 3:
-        return '[0-3['
-    elif 3 <= snr < 9:
-        return '[3-9['
-    elif 9 <= snr < 15:
-        return '[9-15['
+    if snr < 1:
+        return '<1'
+    elif 1 <= snr < 2:
+        return '[1-2['
+    elif 2 <= snr < 3:
+        return '[2-3['
+    elif 3 <= snr < 4:
+        return '[3-4['
+    elif 4 <= snr < 5:
+        return '[4-5['
+    elif 5 <= snr < 6:
+        return '[5-6['
+    elif 6 <= snr < 7:
+        return '[6-7['
+    elif 7 <= snr < 8:
+        return '[7-8['
+    elif 8 <= snr < 9:
+        return '[8-9['
+    elif 9 <= snr < 10:
+        return '[9-10['
+    elif 10 <= snr < 11:
+        return '[10-11['
+    elif 11 <= snr < 12:
+        return '[11-12['
+    elif 12 <= snr < 13:
+        return '[12-13['
+    elif 13 <= snr < 14:
+        return '[13-14['
+    elif 14 <= snr < 15:
+        return '[14-15['
     else:
         return '>= 15'
 
@@ -614,7 +638,24 @@ def plot_hist_snrs_distribution(df):
 def plot_hist_snrs_recall(df):
     fig, ax = plt.subplots(figsize=(10, 6))
     # Categoriers of SNR_P
-    cat = ['[0-3[', '[3-9[', '[9-15[', '>= 15']
+    cat = [
+        '< 1',
+        '[1-2[',
+        '[2-3[',
+        '[3-4[',
+        '[4-5[',
+        '[5-6[',
+        '[6-7[',
+        '[7-8[',
+        '[8-9[',
+        '[9-10[',
+        '[10-11[',
+        '[11-12[',
+        '[12-13[',
+        '[13-14[',
+        '[14-15[',
+        '>= 15'
+    ]
     df['SNR_P_cat'] = pd.Categorical(
         df['SNR_P_cat'], categories=cat, ordered=True
     )
@@ -625,7 +666,6 @@ def plot_hist_snrs_recall(df):
     sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
     sm.set_array([])
     rc_min = 90
-
     for c in f_rel.index:
         df_c = df[df['SNR_P_cat'] == c]
         TP = df_c[(df_c['pred'] == 0) & (df_c['label_cat'] == 0)].shape[0]
@@ -649,6 +689,26 @@ def plot_hist_snrs_recall(df):
     plt.show()
 
     return df
+
+
+# Calculate the mean SNR_P for each Event
+def mean_snrp(df):
+    snr_p = df.groupby('Event')['SNR_P'].mean()
+    snr_p = snr_p.rename('Mean SNR_P')
+    df = pd.merge(df, snr_p, on='Event', how='left')
+    return df
+
+
+# Plot histogram of the mean SNR_P for each Event
+def plot_mean_snrp(df):
+    plt.figure(figsize=(10, 6))
+    df['Mean SNR_P'].plot(kind='hist', bins=5, color='lightskyblue')
+    plt.title('Distribuição da Média de SNR_P por Evento')
+    plt.xlabel('Média de SNR_P')
+    plt.ylabel('Frequência')
+    plt.tight_layout()
+    plt.savefig('files/figures/pos_process/dist_mean_snrs.png')
+    plt.show()
 
 
 # --------------------------- Region

@@ -37,12 +37,12 @@
 
 DATES="$INICIO $FIM"  # BASEADO EM DATAS
 CATALOG=${1:-"files/catalogo/catalogo-moho.csv"}  # BASEADO EM LISTA DE IDS
-EVENTS=${EVENTS:-true}
-PREPROCESS=${PREPROCESS:-true}
-PREDICT=${PREDICT:-true}
+EVENTS=${EVENTS:-false}
+PREPROCESS=${PREPROCESS:-false}
+PREDICT=${PREDICT:-false}
 POSPROCESS=${POSPROCESS:-true}
-MAPS=${MAPS:-true}
-REPORT=${REPORT:-true}
+MAPS=${MAPS:-false}
+REPORT=${REPORT:-false}
 
 # ----------------------------- CONSTANTES -------------------------------------
 # DEFINE OS DIRETÓRIOS DE TRABALHO

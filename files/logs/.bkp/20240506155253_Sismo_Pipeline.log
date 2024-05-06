@@ -1,0 +1,474 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando events_pipeline.py...
+
+ - Argumento 1: files/catalogo/catalogo-moho.csv
+ --> Client:
+  http://seisarc.sismo.iag.usp.br
+ --> Client Backup:
+  http://rsbr.on.br:8081/fdsnws/dataselect/1
+-----------------------------------------------------
+
+
+ --------- Iniciando o ProcessarID.py --------- 
+ ------------------------------ Acessando Catálogo ------------------------------ 
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:00<00:01,  5.40it/s] 30%|███       | 3/10 [00:00<00:00, 11.27it/s] 60%|██████    | 6/10 [00:00<00:00, 16.67it/s] 90%|█████████ | 9/10 [00:00<00:00, 19.27it/s]100%|██████████| 10/10 [00:00<00:00, 16.18it/s]
+ --> Iterando sobre eventos
+ - Número de eventos: 10
+ - Client: http://seisarc.sismo.iag.usp.br
+ - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
+ --> Adrquirindo Inventário de Estações
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:00<00:02,  3.98it/s]/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/core/inventory/network.py:321: UserWarning: Found more than one matching channel metadata. Returning first.
+  warnings.warn(msg)
+ 30%|███       | 3/10 [00:00<00:00,  7.31it/s] 40%|████      | 4/10 [00:00<00:00,  6.30it/s] 50%|█████     | 5/10 [00:00<00:00,  5.36it/s] 60%|██████    | 6/10 [00:01<00:00,  5.66it/s] 70%|███████   | 7/10 [00:01<00:00,  5.01it/s] 80%|████████  | 8/10 [00:01<00:00,  4.40it/s] 90%|█████████ | 9/10 [00:01<00:00,  4.42it/s]100%|██████████| 10/10 [00:02<00:00,  3.20it/s]100%|██████████| 10/10 [00:02<00:00,  4.32it/s]
+############ Event 1: usp2014gyqn ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+ - Cha: HHE
+ - Loc: None
+ - Seed ID: BL.BB19B..HHZ 
+ - BL.BB19B X,Y : -21.0662, -48.5279
+ - Distância até o epicentro: 0.4739622562125565 km
+ Downloading ...
+ Pick Time -> 2014-04-09T20:49:43.974670Z
+ Origin Time -> 2014-04-09T20:49:40.000000Z
+ Channel -> HHZ
+ - Saving File: 20140409T204940/BL_BB19B_20140409T204940.mseed
+ -> Erro ao obter magnitude: 'NoneType' object has no attribute 'mag'
+-----------------------------------------------------
+
+ - Event: usp2014gyqn
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 2: usp2021ezmw ############
+
+ - Event: usp2021ezmw
+ - Pwave Picks: 0
+#####################################################
+
+############ Event 3: usp2020hkyw ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: PDRB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.PDRB..HHZ 
+ - BR.PDRB X,Y : -11.612297, -56.729597
+ - Distância até o epicentro: 0.22934459104391727 km
+ Downloading ...
+ Pick Time -> 2020-04-15T14:40:19.978417Z
+ Origin Time -> 2020-04-15T14:40:20.000000Z
+ Channel -> HHZ
+ - Saving File: 20200415T144020/BR_PDRB_20200415T144020.mseed
+-----------------------------------------------------
+
+ - Event: usp2020hkyw
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 4: usp2022gpbs ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBMO
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBMO..HHZ 
+ - NB.NBMO X,Y : -3.310348, -40.042927
+ - Distância até o epicentro: 0.6296512501624295 km
+ Downloading ...
+ Pick Time -> 2022-04-04T15:07:54.334523Z
+ Origin Time -> 2022-04-04T15:07:42.000000Z
+ Channel -> HHZ
+ - Saving File: 20220404T150742/NB_NBMO_20220404T150742.mseed
+-----------------------------------------------------
+
+ - Event: usp2022gpbs
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 5: usp2014oaxt ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: NPGB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.NPGB..HHZ 
+ - BR.NPGB X,Y : -7.0454, -55.3579
+ - Distância até o epicentro: 0.7840549447308719 km
+ Downloading ...
+ Pick Time -> 2014-07-19T17:41:08.185058Z
+ Origin Time -> 2014-07-19T17:30:30.000000Z
+ Channel -> HHZ
+ - Saving File: 20140719T173030/BR_NPGB_20140719T173030.mseed
+-----------------------------------------------------
+
+ - Event: usp2014oaxt
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 6: usp2015rxwc ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBAN
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBAN..HHZ 
+ - NB.NBAN X,Y : -9.668656, -36.274726
+ - Distância até o epicentro: 33.505971131504076 km
+ Downloading ...
+ Pick Time -> 2016-09-12T23:24:35.547698Z
+ Origin Time -> 2015-09-12T23:24:35.000000Z
+ Channel -> HHZ
+ - Saving File: 20150912T232435/NB_NBAN_20150912T232435.mseed
+-----------------------------------------------------
+
+ - Event: usp2015rxwc
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 7: usp2018cdft ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BX.LDASE..HHZ 
+ - BX.LDASE X,Y : -23.3932, -51.1177
+ - Distância até o epicentro: 9.158357033931011 km
+ Downloading ...
+ Pick Time -> 2018-01-31T05:22:35.881485Z
+ Origin Time -> 2018-01-31T05:22:34.000000Z
+ Channel -> HHZ
+ - Saving File: 20180131T052234/BX_LDASE_20180131T052234.mseed
+-----------------------------------------------------
+
+ - Event: usp2018cdft
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 8: usp2019dmvk ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BX.LDASE..HHZ 
+ - BX.LDASE X,Y : -23.3932, -51.1177
+ - Distância até o epicentro: 11.366728946851751 km
+ Downloading ...
+ Pick Time -> 2019-02-19T17:08:54.749695Z
+ Origin Time -> 2019-02-19T17:08:54.000000Z
+ Channel -> HHZ
+ - Saving File: 20190219T170854/BX_LDASE_20190219T170854.mseed
+-----------------------------------------------------
+
+ - Event: usp2019dmvk
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 9: usp2014kloc ############
+
+--> Pick 1
+ - Net: ON
+ - Sta: CAM01
+ - Cha: HHR
+ - Loc: None
+ - Seed ID: ON.CAM01..HHZ 
+ - ON.CAM01 X,Y : -21.825656, -41.657401
+ - Distância até o epicentro: 2.4514531673196425 km
+ Downloading ...
+ Pick Time -> 2014-05-29T14:58:33.841855Z
+ Origin Time -> 2014-05-29T14:58:30.000000Z
+ Channel -> HHZ
+ - Saving File: 20140529T145830/ON_CAM01_20140529T145830.mseed
+-----------------------------------------------------
+
+ - Event: usp2014kloc
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 10: usp2015cjmh ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBRF
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBRF..HHZ 
+ - NB.NBRF X,Y : -8.679466, -35.127172
+ - Distância até o epicentro: 101.62578000652093 km
+ Downloading ...
+ Pick Time -> 2015-02-03T15:30:53.728118Z
+ Origin Time -> 2015-02-03T15:30:35.694424Z
+ Channel -> HHZ
+ - Saving File: 20150203T153035/NB_NBRF_20150203T153035.mseed
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBPA
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBPA..HHZ 
+ - NB.NBPA X,Y : -5.75028, -37.112047
+ - Distância até o epicentro: 313.89829803256146 km
+ Downloading ...
+ Pick Time -> 2015-02-03T15:31:21.921630Z
+ Origin Time -> 2015-02-03T15:30:35.694424Z
+ Channel -> HHZ
+ - Saving File: 20150203T153035/NB_NBPA_20150203T153035.mseed
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: NB
+ - Sta: NBLI
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBLI..HHZ 
+ - NB.NBLI X,Y : -7.364556, -36.949743
+ - Distância até o epicentro: 152.4593972818572 km
+ Downloading ...
+ Pick Time -> 2015-02-03T15:31:00.986785Z
+ Origin Time -> 2015-02-03T15:30:35.694424Z
+ Channel -> HHZ
+ - Saving File: 20150203T153035/NB_NBLI_20150203T153035.mseed
+-----------------------------------------------------
+
+ - Event: usp2015cjmh
+ - Pwave Picks: 3
+#####################################################
+
+Dados salvos com sucesso em ./files/events/events.csv
+Erros salvos com sucesso em ./files/events/erros.csv
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- 
+/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pre_process.py:41: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_pred['Cat'] = df_pred['Cat'].apply(lambda x: 0 if x == 'earthquake' else 1)
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pre_process.py", line 114, in <module>
+    df, df_com, df_nc = main()
+                        ^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pre_process.py", line 110, in main
+    df, df_com, df_nc = hist_hora(df, df_com, df_nc)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pre_process.py", line 99, in hist_hora
+    plt.savefig('files/figures/pre_process/histogramas/hist_hora.png')
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/pyplot.py", line 1119, in savefig
+    res = fig.savefig(*args, **kwargs)  # type: ignore[func-returns-value]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/figure.py", line 3390, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backends/backend_qtagg.py", line 75, in print_figure
+    super().print_figure(*args, **kwargs)
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backend_bases.py", line 2187, in print_figure
+    result = print_method(
+             ^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backend_bases.py", line 2043, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py", line 497, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py", line 446, in _print_pil
+    mpl.image.imsave(
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/image.py", line 1656, in imsave
+    image.save(fname, **pil_kwargs)
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/PIL/Image.py", line 2435, in save
+    fp = builtins.open(filename, "w+b")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] Arquivo ou diretório inexistente: 'files/figures/pre_process/histogramas/hist_hora.png'
+
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+[{"success":true}]
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 820, in <module>
+    df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt = main()
+                                                              ^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 811, in main
+    df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt = load_data()
+                                                              ^^^^^^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 773, in load_data
+    picks, dict_filt = snr_p(df_nc, 5)
+                       ^^^^^^^^^^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 586, in snr_p
+    return picks, dict_filt
+                  ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'dict_filt' where it is not associated with a value
+
+ -------------- Processo de criação de mapas iniciado ------------------
+ -> Executando make_maps.py...
+Error returned from GMT API: GMT_MEMORY_ERROR (25)
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/make_maps.py", line 13, in <module>
+    import pygmt
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pygmt/__init__.py", line 29, in <module>
+    with clib.Session() as lib:
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pygmt/clib/session.py", line 217, in __enter__
+    self.create("pygmt-session")
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pygmt/clib/session.py", line 401, in create
+    raise GMTCLibError(
+pygmt.exceptions.GMTCLibError: Failed to create a GMT API session:
+
+
+ ----------------- Iniciando o pdflatex .tex ---------------------------- 
+/home/ipt/.pyenv/versions/sismologia/bin/python: can't open file '/home/ipt/projetos/ClassificadorSismologico/source/sismologia-ipt-latex/tex/relatorio_preditivo/python/figures.py': [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/sismologia-ipt-latex/tex/relatorio_preditivo/python/mapa.py", line 23, in <module>
+    generate_map_latex("./relatorio/tex/mapa.tex")
+  File "/home/ipt/projetos/ClassificadorSismologico/source/sismologia-ipt-latex/tex/relatorio_preditivo/python/mapa.py", line 18, in generate_map_latex
+    with open(output_filename, "w") as output_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: './relatorio/tex/mapa.tex'
+~/projetos/ClassificadorSismologico/source/sismologia-ipt-latex ~/projetos/ClassificadorSismologico
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./relatorio_preditivo.tex
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-01-16> (./sismo_iptex.cls
+Document Class: sismo_iptex 2024/04/23 Classe Sismologia IPT
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/zref/zref-abspage.sty
+(/usr/share/texlive/texmf-dist/tex/latex/zref/zref-base.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-0.mdf))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/mathabx/mathabx.sty
+(/usr/share/texlive/texmf-dist/tex/generic/mathabx/mathabx.dcl))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/helvet.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fancyhdr.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/indentfirst.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/lastpage/lastpage.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def))
+(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/changepage/changepage.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tocloft/tocloft.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/sectsty/sectsty.sty
+
+LaTeX Warning: Command \underbar  has changed.
+               Check if current package is valid.
+
+
+LaTeX Warning: Command \underline  has changed.
+               Check if current package is valid.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/translations/translations.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/was/upgreek.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty
+
+! LaTeX Error: Command \captionof already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 ...nd\captionof[1]{\def\@captype{#1}\caption}
+                                                  
+? 

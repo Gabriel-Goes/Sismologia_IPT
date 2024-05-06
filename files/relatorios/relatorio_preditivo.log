@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.9.18)  6 MAY 2024 15:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.9.18)  6 MAY 2024 16:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1016,4 +1016,781 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package xcolor Info: Driver file: pdftex.def on input line 227.
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
-Package: colort
+Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
+\everycr=\toks36
+\minrowclearance=\skip183
+\rownum=\count334
+)
+LaTeX Info: Redefining \color on input line 711.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
+Package xcolor Info: Model `RGB' extended on input line 1369.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+\TX@col@width=\dimen256
+\TX@old@table=\dimen257
+\TX@old@col=\dimen258
+\TX@target=\dimen259
+\TX@delta=\dimen260
+\TX@cols=\count335
+\TX@ftn=\toks37
+)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip184
+\enit@outerparindent=\dimen261
+\enit@toks=\toks38
+\enit@inbox=\box74
+\enit@count@id=\count336
+\enitdp@description=\count337
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count338
+\Gm@cntv=\count339
+\c@Gm@tempcnt=\count340
+\Gm@bindingoffset=\dimen262
+\Gm@wd@mp=\dimen263
+\Gm@odd@mp=\dimen264
+\Gm@even@mp=\dimen265
+\Gm@layoutwidth=\dimen266
+\Gm@layoutheight=\dimen267
+\Gm@layouthoffset=\dimen268
+\Gm@layoutvoffset=\dimen269
+\Gm@dimlist=\toks39
+)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty
+Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
+
+
+! LaTeX Error: Command \captionof already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 ...nd\captionof[1]{\def\@captype{#1}\caption}
+                                                  
+? 
+) (/usr/share/texlive/texmf-dist/tex/latex/xargs/xargs.sty
+Package: xargs 2008/03/22 v1.1  extended macro definitions  (mpg)
+
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks40
+\XKV@tempa@toks=\toks41
+)
+\XKV@depth=\count341
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+\xargs@max=\count342
+\xargs@toksa=\toks42
+\xargs@toksb=\toks43
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
+\LTleft=\skip185
+\LTright=\skip186
+\LTpre=\skip187
+\LTpost=\skip188
+\LTchunksize=\count343
+\LTcapwidth=\dimen270
+\LT@head=\box75
+\LT@firsthead=\box76
+\LT@foot=\box77
+\LT@lastfoot=\box78
+\LT@gbox=\box79
+\LT@cols=\count344
+\LT@rows=\count345
+\c@LT@tables=\count346
+\c@LT@chunks=\count347
+\LT@p@ftn=\toks44
+)
+(/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen271
+\c@nlinenum=\count348
+\TeXr@lab=\toks45
+)
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2022/10/17 v1.3a Adjusting TeX boxes (trim, clip, ...)
+
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
+
+(/usr/share/texlive/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
+\collectedbox=\box80
+)
+\tc@llx=\dimen272
+\tc@lly=\dimen273
+\tc@urx=\dimen274
+\tc@ury=\dimen275
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
+File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen276
+\adjbox@Height=\dimen277
+\adjbox@Depth=\dimen278
+\adjbox@Totalheight=\dimen279
+\adjbox@pwidth=\dimen280
+\adjbox@pheight=\dimen281
+\adjbox@pdepth=\dimen282
+\adjbox@ptotalheight=\dimen283
+
+(/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
+\c@checkoddpage=\count349
+LaTeX Info: Redefining \checkoddpage on input line 45.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box81
+\sift@deathcycles=\count350
+\@vwid@loff=\dimen284
+\@vwid@roff=\dimen285
+))
+(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PD
+F (HO)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/pdfx.sty
+Package: pdfx 2019/02/27 v1.6.3 PDF/X and PDF/A support (CVR/HTH/RRM/PS)
+\pdfx@minorversion=\count351
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifpdf.sty
+Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty
+Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/everyshi/everyshi.sty
+Package: everyshi 2020/11/18 v4.00 EveryShipout Package
+)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+){/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/l8u-penc.def
+File: l8u-penc.def 2017/06/23 v0.8 Custom LaTeX file, for UTF8 encoded letters 
+and symbols
+LaTeX Info: Composite with undeclared \b in encoding L8U on input line 278.
+)
+\pdfxsafeforxmp@toks=\toks46
+\pdfx@tmptoks=\toks47
+
+
+Package hyperref Warning: Option `pdftex' has already been used,
+(hyperref)                setting the option has no effect on input line 1461.
+
+
+Package hyperref Warning: Option `pdfa' has already been used,
+(hyperref)                setting the option has no effect on input line 1461.
+
+Package hyperref Info: Option `unicode' set `true' on input line 1463.
+(/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+Package hyperref Info: Option `psdextra' set `true' on input line 1465.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc-greekbasic.def
+File: puenc-greekbasic.def 2022-11-13 v7.00u Hyperref: PDF Unicode definition (
+greek block) (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/psdextra.def
+File: psdextra.def 2022-11-13 v7.00u Hyperref: Additions to PDF string support
+)
+(/usr/share/texlive/texmf-dist/tex/generic/colorprofiles/colorprofiles.sty
+Package: colorprofiles 2018/11/01 v1.0.1 color profiles for PDF/X and PDF/A sup
+port
+
+(/usr/share/texlive/texmf-dist/tex/generic/colorprofiles/colorprofiles.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/stringenc/se-pdfdoc.def
+File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/AdobeColorProfiles.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def
+File: 8bit.def 2008/03/30 v1.1d Input encoding file
+)
+** pdfx: No file relatorio_preditivo.xmpdata . Metadata will be incomplete!
+<<sRGB.icc>> (/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def
+File: 8bit.def 2008/03/30 v1.1d Input encoding file
+)
+Package hyperref Info: Option `unicode' set `true' on input line 2411.
+Package hyperref Info: Option `unicode' set `true' on input line 2412.
+
+(/usr/share/texlive/texmf-dist/tex/generic/pdftex/glyphtounicode.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/glyphtounicode-cmr.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/glyphtounicode-ntx.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/xmpincl/xmpincl.sty
+Package: xmpincl 2021/09/22 v2.4 Include XMP data in pdflatex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def
+File: 8bit.def 2008/03/30 v1.1d Input encoding file
+)
+Using XMP template file: pdfa.xmp
+\xmpinclWrite=\write3
+\xmpinclRead=\read2
+\openout3 = `pdfa.xmpi'.
+
+<<pdfa.xmpi>>)
+\my@repeat@count=\count352
+) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2022/12/26 3.84 The Babel package
+\babel@savecnt=\count353
+\U@D=\dimen286
+\l@unhyphenated=\language87
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read3
+\bbl@dirlevel=\count354
+Package babel Info: Main language set with 'main='. Except if you have
+(babel)             problems, prefer the default mechanism for setting
+(babel)             the main language. Reported on input line 4316.
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
+(babel)             (\language54). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
+(babel)             (\language54). Reported on input line 108.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-portuges/brazil.ldf
+Language: portuges 2021/07/09 v1.2t Portuguese support from the babel system
+Package babel Info: Hyphen rules for 'brazil' set to \l@portuguese
+(babel)             (\language58). Reported on input line 111.
+Package babel Info: Making " an active character on input line 143.
+))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/locale/en/babel-english.tex
+Package babel Info: Importing font and identification data for english
+(babel)             from babel-en.ini. Reported on input line 11.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/mathastext/mathastext.sty
+Package: mathastext 2022/11/04 v1.3y Use the text font in math mode (JFB)
+\mst@exists@muskip=\muskip18
+\mst@forall@muskip=\muskip19
+\mst@prime@muskip=\muskip20
+\mst@do@nonletters=\toks48
+\mst@do@easynonletters=\toks49
+\mst@do@az=\toks50
+\mst@do@AZ=\toks51
+\symmtoperatorfont=\mathgroup12
+\symmtletterfont=\mathgroup13
+
+** ! and ?
+** punctuation: , . : ; and \colon
+LaTeX Info: Redefining \rightarrowfill on input line 847.
+LaTeX Info: Redefining \leftarrowfill on input line 852.
+** + and =
+** adding = ; and + to \nfss@catcodes
+** parentheses ( ) [ ] and slash /
+** alldelims: < > \backslash \setminus | \vert \mid \{ and \}
+LaTeX Font Info:    Redeclaring math delimiter \backslash on input line 989.
+LaTeX Font Info:    Redeclaring math symbol \setminus on input line 1001.
+LaTeX Info: Redefining \models on input line 1010.
+** \# \mathdollar \% \& 
+** \imath and \jmath 
+LaTeX Font Info:    Overwriting math alphabet `\mathnormalbold' in version `nor
+mal'
+(Font)                  T1/phv/b/it --> T1/phv/b/it on input line 2370.
+LaTeX Font Info:    Overwriting math alphabet `\mathnormalbold' in version `bol
+d'
+(Font)                  T1/phv/b/it --> T1/phv/b/it on input line 2370.
+LaTeX Font Info:    Overwriting symbol font `mtletterfont' in version `normal'
+(Font)                  T1/phv/m/it --> T1/phv/m/it on input line 2370.
+LaTeX Font Info:    Overwriting symbol font `mtletterfont' in version `bold'
+(Font)                  T1/phv/m/it --> T1/phv/b/it on input line 2370.
+LaTeX Font Info:    Overwriting symbol font `mtoperatorfont' in version `normal
+'
+(Font)                  T1/phv/m/n --> T1/phv/m/n on input line 2370.
+LaTeX Font Info:    Overwriting symbol font `mtoperatorfont' in version `bold'
+(Font)                  T1/phv/m/n --> T1/phv/b/n on input line 2370.
+LaTeX Font Info:    Overwriting math alphabet `\Mathbf' in version `normal'
+(Font)                  T1/phv/b/n --> T1/phv/b/n on input line 2370.
+LaTeX Font Info:    Overwriting math alphabet `\Mathbf' in version `bold'
+(Font)                  T1/phv/b/n --> T1/phv/b/n on input line 2370.
+LaTeX Font Info:    Overwriting math alphabet `\Mathit' in version `normal'
+(Font)                  T1/phv/m/it --> T1/phv/m/it on input line 2370.
+LaTeX Font Info:    Overwriting math alphabet `\Mathit' in version `bold'
+(Font)                  T1/phv/m/it --> T1/phv/b/it on input line 2370.
+LaTeX Font Info:    Overwriting math alphabet `\Mathsf' in version `normal'
+(Font)                  T1/phv/m/n --> T1/phv/m/n on input line 2370.
+LaTeX Font Info:    Overwriting math alphabet `\Mathsf' in version `bold'
+(Font)                  T1/phv/m/n --> T1/phv/b/n on input line 2370.
+LaTeX Font Info:    Overwriting math alphabet `\Mathtt' in version `normal'
+(Font)                  T1/cmtt/m/n --> T1/cmtt/m/n on input line 2370.
+LaTeX Font Info:    Overwriting math alphabet `\Mathtt' in version `bold'
+(Font)                  T1/cmtt/m/n --> T1/cmtt/b/n on input line 2370.
+** Latin letters in the `normal' (resp. `bold') math versions are now
+** set up to use the fonts T1/phv/m(b)/it
+** Other characters (digits, ...) and \log-like names will be
+** typeset with the n shape.
+** \hbar
+** minus as endash
+** \Huge and \HUGE have been (re)-defined.
+** mathastext has declared larger sizes for subscripts.
+** To keep LaTeX defaults, use option `defaultmathsizes'.
+) (/usr/share/texlive/texmf-dist/tex/latex/abntex2/abntex2cite.sty
+Package: abntex2cite 2018/11/24 v-1.9.7 abnTeX2
+
+(/usr/share/texlive/texmf-dist/tex/latex/abntex2/abntex2abrev.sty)
+\minimumbiblabelwidth=\skip189
+\ABCIauxlen=\skip190
+\c@ABCIaux=\count355
+\c@ABCImax=\count356
+
+(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+\biblabelsep=\skip191
+LaTeX Info: Redefining \newblock on input line 591.
+LaTeX Info: Redefining \cite on input line 618.
+\ABCItoken=\toks52
+)
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 25
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
+)
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 11.39996pt on input line 25.
+
+(/home/ipt/projetos/ClassificadorSismologico/files/relatorios//relatorio_predit
+ivo.aux)
+\openout1 = `relatorio_preditivo.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/mathx/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count357
+\scratchdimen=\dimen287
+\scratchbox=\box82
+\nofMPsegments=\count358
+\nofMParguments=\count359
+\everyMPshowfont=\toks53
+\MPscratchCnt=\count360
+\MPscratchDim=\dimen288
+\MPnumerator=\count361
+\makeMPintoPDFobject=\count362
+\everyMPtoPDFconversion=\toks54
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package hyperref Info: Link coloring OFF on input line 25.
+
+(/home/ipt/projetos/ClassificadorSismologico/files/relatorios//relatorio_predit
+ivo.out)
+(/home/ipt/projetos/ClassificadorSismologico/files/relatorios//relatorio_predit
+ivo.out)
+\@outlinefile=\write4
+\openout4 = `relatorio_preditivo.out'.
+
+LaTeX Info: Command `\dddot' is already robust on input line 25.
+LaTeX Info: Command `\ddddot' is already robust on input line 25.
+Package lastpage Info: Please have a look at the pageslts package at
+(lastpage)             https://www.ctan.org/pkg/pageslts
+(lastpage)             ! on input line 25.
+ (/usr/share/texlive/texmf-dist/tex/latex/ragged2e/ragged2e.sty
+Package: ragged2e 2022/11/13 v3.2 ragged2e Package
+\CenteringLeftskip=\skip192
+\RaggedLeftLeftskip=\skip193
+\RaggedRightLeftskip=\skip194
+\CenteringRightskip=\skip195
+\RaggedLeftRightskip=\skip196
+\RaggedRightRightskip=\skip197
+\CenteringParfillskip=\skip198
+\RaggedLeftParfillskip=\skip199
+\RaggedRightParfillskip=\skip256
+\JustifyingParfillskip=\skip257
+\CenteringParindent=\skip258
+\RaggedLeftParindent=\skip259
+\RaggedRightParindent=\skip260
+\JustifyingParindent=\skip261
+)
+Package caption Info: longtable package v3.15 (or newer) detected on input line
+ 25.
+
+(/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictio
+nary-brazil.trsl
+File: translations-basic-dictionary-brazil.trsl (brazil translation file `trans
+lations-basic-dictionary')
+)
+Package translations Info: loading dictionary `translations-basic-dictionary' f
+or `brazil'. on input line 25.
+
+(/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictio
+nary-english.trsl
+File: translations-basic-dictionary-english.trsl (english translation file `tra
+nslations-basic-dictionary')
+)
+Package translations Info: loading dictionary `translations-basic-dictionary' f
+or `english'. on input line 25.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(89.62709pt, 418.25368pt, 89.6271pt)
+* v-part:(T,H,B)=(101.40665pt, 591.5302pt, 152.11pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=483.69684pt
+* \textheight=654.41338pt
+* \oddsidemargin=-9.95845pt
+* \evensidemargin=17.3571pt
+* \topmargin=14.22636pt
+* \headheight=79.66771pt
+* \headsep=14.22636pt
+* \topskip=12.0pt
+* \footskip=71.13188pt
+* \marginparwidth=0.0pt
+* \marginparsep=0.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=-72.26997pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package mathastext Info: current meaning of amsmath \resetMathstrut@ saved on i
+nput line 25.
+(./tex/relatorio_preditivo/tex/capa.tex
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 11.39996pt on input line 12.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 13.67995pt on input line 12.
+
+
+LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 12.
+
+
+
+! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
+ng draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 \capa
+          
+? 
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
+2.
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
+)
+
+LaTeX Warning: File `tex/figuras_tex/footImageCalibr.png' not found on input li
+ne 12.
+
+
+! Package pdftex.def Error: File `tex/figuras_tex/footImageCalibr.png' not foun
+d: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 \capa
+          
+? 
+
+Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
+ Make it at least 72.26999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[1
+
+]
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 16.41594pt on input line 16.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 16.41594pt on input line 16.
+
+
+LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 17.
+
+
+
+! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
+ng draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 \tableofcontents
+                     
+? 
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 9.49997pt on input line 17.
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
+7.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
+File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
+)
+LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
+(Font)              scaled to size 9.49997pt on input line 17.
+
+
+LaTeX Warning: File `tex/figuras_tex/footImageCalibr.png' not found on input li
+ne 17.
+
+
+! Package pdftex.def Error: File `tex/figuras_tex/footImageCalibr.png' not foun
+d: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 \tableofcontents
+                     
+? 
+
+Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
+ Make it at least 72.26999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[1
+
+]
+(/home/ipt/projetos/ClassificadorSismologico/files/relatorios//relatorio_predit
+ivo.toc
+LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 2.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 2
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.59998pt on input line 2.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 2.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 11.39996pt on input line 2.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 2.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 9.49997pt on input line 2.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 2.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 7.59998pt on input line 2.
+)
+\tf@toc=\write5
+\openout5 = `relatorio_preditivo.toc'.
+
+
+
+LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 20.
+
+
+
+! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
+ng draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.20 \renewcommand
+                  {\thepage}{\arabic{page}}
+? 
+
+LaTeX Warning: File `tex/figuras_tex/footImageCalibr.png' not found on input li
+ne 20.
+
+
+! Package pdftex.def Error: File `tex/figuras_tex/footImageCalibr.png' not foun
+d: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.20 \renewcommand
+                  {\thepage}{\arabic{page}}
+? 
+
+Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
+ Make it at least 72.26999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[2]) (./tex/relatorio_preditivo/tex/corpo.tex
+
+! LaTeX Error: File `preditivo_relatorio/tex/introducao.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+(/usr/share/texlive/texmf-dist/tex/latex/tools/.tex File ignored)
+
+! LaTeX Error: File `preditivo_relatorio/tex/atividades_resultados.tex' not fou
+nd.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+(/usr/share/texlive/texmf-dist/tex/latex/tools/.tex File ignored)
+
+! LaTeX Error: File `preditivo_relatorio/tex/consideracoes_finais.tex' not foun
+d.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+(/usr/share/texlive/texmf-dist/tex/latex/tools/.tex File ignored))
+No file relatorio_preditivo.bbl.
+
+AED: lastpage setting LastPage
+
+LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 39.
+
+
+
+! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
+ng draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.39 \end{document}
+                   
+? 
+
+LaTeX Warning: File `tex/figuras_tex/footImageCalibr.png' not found on input li
+ne 39.
+
+
+! Package pdftex.def Error: File `tex/figuras_tex/footImageCalibr.png' not foun
+d: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.39 \end{document}
+                   
+? 
+
+Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
+ Make it at least 72.26999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.39 \end{document}
+                    [1
+
+]
+(/home/ipt/projetos/ClassificadorSismologico/files/relatorios//relatorio_predit
+ivo.aux)
+Package rerunfilecheck Info: File `relatorio_preditivo.out' has not changed.
+(rerunfilecheck)             Checksum: C52BBF5DD7DD96CBF3CB1B340FB1E485;70.
+ ) 
+Here is how much of TeX's memory you used:
+ 28136 strings out of 476091
+ 520866 string characters out of 5794081
+ 1856330 words of memory out of 5000000
+ 47968 multiletter control sequences out of 15000+600000
+ 543833 words of font info for 81 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 99i,15n,104p,1613b,2702s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/
+fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf/fonts/type1/public/c
+m-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uh
+vb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on /home/ipt/projetos/ClassificadorSismologico/files/relatorios/
+/relatorio_preditivo.pdf (4 pages, 71317 bytes).
+PDF statistics:
+ 53 PDF objects out of 1000 (max. 8388607)
+ 7 named destinations out of 1000 (max. 500000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+

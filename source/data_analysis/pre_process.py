@@ -107,8 +107,10 @@ def hist_hora(
 def main():
     gerar_predcsv()
     df, df_com, df_nc = filter_pred_com('files/predcsv/pred.csv')
-    df, df_com, df_nc = hist_hora(df, df_com, df_nc)
+    df_com, df_nc = hist_hora(df, df_com, df_nc)
+
+    return df, df_com, df_nc
 
 
 if __name__ == '__main__':
-    df, df_com, df_nc = main()
+    main()
