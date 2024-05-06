@@ -37,8 +37,7 @@
 
 DATES="$INICIO $FIM"  # BASEADO EM DATAS
 CATALOG=${1:-"files/catalogo/catalogo-moho.csv"}  # BASEADO EM LISTA DE IDS
-EVENTS=${EVENTS:-true}
-PRED=${PRED:-true}
+EVENTS=${EVENTS:-false}
 PREPROCESS=${PREPROCESS:-true}
 PREDICT=${PREDICT:-true}
 POSPROCESS=${POSPROCESS:-true}
@@ -90,23 +89,16 @@ if [ "$EVENTS" = true ]; then
 fi
 
 # --------- ETAPA DE GERAR LISTA PARA CLASSIFICAÇÃO ( EVENTO | LABEL ) -----------
-if [ "$PRED" = true ]; then
+if [ "$PREPROCESS" = true ]; then
     echo " Criando arquivos de backup..."
     cp files/predcsv/pred.csv files/predcsv/.bkp/pred.csv.$(date +%Y%m%d%H%M%S)
+    cp files/predcsv/pred_commercial.csv files/predcsv/.bkp/pred_commercial.csv.$(date +%Y%m%d%H%M%S)
+    cp files/predcsv/pred_no_commercial.csv files/predcsv/.bkp/pred_no_commercial.csv.$(date +%Y%m%d%H%M%S)
     echo " Arquivos de backup criados com sucesso!"
     echo ''
-    # checa se o arquivo de predições já existe, se existir, move para uma pasta de backup
-    echo " ---------------- INICIANDO CORE/GERAR_PREDCSV.PY ---------------------------- "
-    python source/core/gerar_predcsv.py
+    echo " -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- "
+    python source/data_analysis/pre_process.py
     echo ''
-    # CHECA SE DEVE SER PREPROCESSADO
-    if [ "$PREPROCESS" = true ]; then
-        cp files/predcsv/pred_commercial.csv files/predcsv/.bkp/pred_commercial.csv.$(date +%Y%m%d%H%M%S)
-        cp files/predcsv/pred_no_commercial.csv files/predcsv/.bkp/pred_no_commercial.csv.$(date +%Y%m%d%H%M%S)
-        echo " -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- "
-        python source/data_analysis/pre_process.py
-        echo ''
-    fi
 fi
 
 # ------------------------- ETAPA DE PREDIÇÃO  ----------------------------------
@@ -122,12 +114,11 @@ if [ "$PREDICT" = true ]; then
     --csv_dir pred_commercial.csv \
     --valid'
     echo " ----------------- INICIANDO O PREDICT.PY ---------------------------- "
-    i3-msg "workspace 2"
+    i3-msg 'workspace 9'
     alacritty -e bash -c "tmux new-session -d -s $NOME_TERM; \
-    tmux send-keys -t $NOME_TERM \"$COMMAND; wait\" C-m; \
-    tmux send-keys -t $NOME_TERM \"$COMMAND_2; wait\" C-m; \
-    tmux send-keys -t $NOME_TERM \"$COMMAND_3; wait; exit\" C-m; \
-    tmux send-keys -t $NOME_TERM \"exit\" C-m; \
+    tmux send-keys -t $NOME_TERM \"$COMMAND\" C-m; \
+    tmux send-keys -t $NOME_TERM \"$COMMAND_2\" C-m; \
+    tmux send-keys -t $NOME_TERM \"$COMMAND_3\" C-m; \
     tmux attach -t $NOME_TERM"
     echo ''
 fi
@@ -148,20 +139,6 @@ if [ "$MAPS" = true ]; then
         echo " -> Executando make_maps.py..."
         python source/data_analysis/make_maps.py
     fi
-    echo ''
-fi
-
-# ----------------- ETAPA DE GERAR FIGURAS DE ENERGIA  ------------------------
-if [ "$ENERGY" = true ]; then
-    # Executa etapa de processamento de energia
-    echo " ----------------- Iniciando o energy_fig.py ---------------------------- "
-    echo "Creating energy plots..."
-    $PYTHON $ENERGYFIG $OUTPUT
-    echo "Cleaning up..."
-    mv events*.csv files/
-    echo ''
-    echo " Criando arquivos de backup..."
-    echo " Arquivos de backup criados com sucesso!"
     echo ''
 fi
 

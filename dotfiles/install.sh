@@ -156,6 +156,11 @@ pyenv local sismologia
 pip install -r ./dotfiles/requirements.txt
 pip install -e .
 
+# INICIANDO SUBMODULES
+echo ' ---------- Iniciando Submodules ------------ '
+git submodule update --init --recursive
+
+
 # INICIANDO DOCKER  
 echo ' ---------- Iniciando Docker ------------ '
 sudo systemctl enable docker

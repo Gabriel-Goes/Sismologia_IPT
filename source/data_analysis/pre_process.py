@@ -20,18 +20,47 @@ import numpy as np
 
 ###############################################################################
 
+
 # ----------------------------  FUNCTIONS  ------------------------------------
+def gerar_predcsv():
+    # Criar Lista de Eventos para Predição
+    csv_events = './files/events/events.csv'
+    df_events = pd.read_csv(csv_events, sep=',')
+
+    # Se IDs iguais possuem Cat diferentes adicionar em uma lista de erros
+    erros = []
+    for id in df_events['ID'].unique():
+        if len(df_events[df_events['ID'] == id]['Cat'].unique()) > 1:
+            erros.append(id)
+
+    # Remover IDs com Cat diferentes
+    df_events_clean = df_events[~df_events['ID'].isin(erros)]
+    df_pred = df_events_clean[['Event', 'Cat']]
+
+    # Transforma 'earthquake' em 0 e qualquer outra coisa em 0
+    df_pred['Cat'] = df_pred['Cat'].apply(lambda x: 0 if x == 'earthquake' else 1)
+
+    # rename columns
+    df_pred.columns = ['ID', 'Label']
+
+    # Remove os IDs duplicados
+    df_pred = df_pred.drop_duplicates()
+
+    # Salvar o DataFrame em um arquivo CSV
+    df_pred.to_csv('./files/predcsv/pred.csv', index=False)
+
+    df_erros = pd.DataFrame(erros, columns=['ID'])
+    df_erros.to_csv('./files/predcsv/erros.csv', index=False)
 
 
-# ---------------------------- HORÁRIO COMERCIAL ---------------------------- #
 # Função para filtrar eventos fora do horário comercial
 def filter_pred_com(csv: str) -> pd.DataFrame:
     df = pd.read_csv(csv)
     df['Hora'] = df['ID'].apply(lambda x: UTCDateTime(x).hour)
-    df_com= df[(df['Hora'] >= 11) & (df['Hora'] < 22)]
-    df_nc= df[(df['Hora'] < 11) | (df['Hora'] >= 22)]
-    df_com= df_com.drop(columns=['Hora'])
-    df_nc= df_nc.drop(columns=['Hora'])
+    df_com = df[(df['Hora'] >= 11) & (df['Hora'] < 22)]
+    df_nc = df[(df['Hora'] < 11) | (df['Hora'] >= 22)]
+    df_com = df_com.drop(columns=['Hora'])
+    df_nc = df_nc.drop(columns=['Hora'])
     df_com.to_csv('files/predcsv/pred_commercial.csv', index=False)
     df_nc.to_csv('files/predcsv/pred_no_commercial.csv', index=False)
 
@@ -39,12 +68,13 @@ def filter_pred_com(csv: str) -> pd.DataFrame:
 
 
 # ----------------------------  PLOT  -----------------------------------------
-def hist_hora() -> pd.DataFrame:
-    csv = 'files/predcsv/pred.csv'
-    df, df_com, df_nc = filter_pred_com(csv)
+def hist_hora(
+        df: pd.DataFrame,
+        df_com: pd.DataFrame,
+        df_nc: pd.DataFrame) -> [pd.DataFrame]:
     counts = df['Hora'].value_counts(
-        sort=False).reindex(np.arange(24), fill_value=0
-    )
+        sort=False
+    ).reindex(np.arange(24), fill_value=0)
     density = counts / counts.sum()
     plt.figure(figsize=(10, 6))
     colors = ['blue' if (11 <= hour < 22) else 'red' for hour in counts.index]
@@ -75,8 +105,10 @@ def hist_hora() -> pd.DataFrame:
 
 # ----------------------------  MAIN  -----------------------------------------
 def main():
-    hist_hora()
+    gerar_predcsv()
+    df, df_com, df_nc = filter_pred_com('files/predcsv/pred.csv')
+    df, df_com, df_nc = hist_hora(df, df_com, df_nc)
 
 
 if __name__ == '__main__':
-    main()
+    df, df_com, df_nc = main()

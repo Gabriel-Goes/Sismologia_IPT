@@ -96,9 +96,9 @@ def plot_box_by_station(df):
             data=network_data, palette=station_colors, showfliers=False
         )
         ax = sns.stripplot(
-                x='Station', y='prob_nat',
-                data=network_data, color='red', jitter=True, size=1.5, alpha=0.5
-            )
+            x='Station', y='prob_nat',
+            data=network_data, color='red', jitter=True, size=1.5, alpha=0.5
+        )
         ax.set_title(f'Boxplot da Probabilidade Natural por Estação para a Rede {network}')
         ax.set_xlabel('Estação')
         ax.set_ylabel('Probabilidade Natural')
@@ -315,6 +315,7 @@ def plot_hist_hour_recall(df):
 
     return df
 
+
 # --------------------------------- Distances
 # Classify distance categories
 def class_dist(dist):
@@ -503,6 +504,7 @@ def plot_hist_station_distribution(df):
     plt.savefig('files/figures/pos_process/plots/dist_ev_num_stations_absoluto.png')
     plt.show()
 
+
 def plot_hist_stations_recall(df):
     fig, ax = plt.subplots(figsize=(10, 6))
     sta_count = df.reset_index().groupby('Event').size()
@@ -550,6 +552,7 @@ def plot_hist_stations_recall(df):
 
     return df
 
+
 def snr_p(picks: pd.DataFrame,
           window: int) -> [pd.DataFrame, dict]:
     picks.sort_index(inplace=True)
@@ -581,6 +584,7 @@ def snr_p(picks: pd.DataFrame,
         picks.loc[index, 'p'] = filtro_bom.p
 
     return picks, dict_filt
+
 
 # --------------------------- SNR Histograms
 def class_snrp(snr):
@@ -727,6 +731,7 @@ def plot_region_correlation(df):
     ])
     plt.savefig('files/figures/pos_process/plots/region_corr.png')
     plt.show()
+
 
 # --------------------------- Create files
 def load_data():
