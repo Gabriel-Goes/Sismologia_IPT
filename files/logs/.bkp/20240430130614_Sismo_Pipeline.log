@@ -1,0 +1,36 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ ---------------- INICIANDO CORE/GERAR_PREDCSV.PY ---------------------------- 
+/home/ggrl/projetos/ClassificadorSismologico/source/core/gerar_predcsv.py:20: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_pred['Cat'] = df_pred['Cat'].apply(lambda x: 0 if x == 'earthquake' else 1)
+Pred.csv criado com sucesso
+Erros.csv criado com sucesso
+
+ -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- 
+
+ ----------------- INICIANDO O CNN/RUN.PY ---------------------------- 
+2024-04-30 13:04:56.705645: I external/local_tsl/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2024-04-30 13:04:56.709212: I external/local_tsl/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2024-04-30 13:04:56.753550: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-04-30 13:04:57.570302: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/cnn/run.py", line 9, in <module>
+    from data_process import spectro_extract
+  File "/home/ggrl/projetos/ClassificadorSismologico/cnn/data_process.py", line 11, in <module>
+    import scipy.signal.widnows as win
+ModuleNotFoundError: No module named 'scipy.signal.widnows'
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+

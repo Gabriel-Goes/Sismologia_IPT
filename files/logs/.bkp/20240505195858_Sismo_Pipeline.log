@@ -1,0 +1,177 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ -------------- Processo de criação de mapas iniciado ------------------
+ -> Executando make_maps.py...
+/usr/bin/gmt: /home/ggrl/softwares/otb/lib/libcurl.so.4: no version information available (required by /usr/lib/libgmt.so.6)
+
+ ----------------- Iniciando o pdflatex .tex ---------------------------- 
+/home/ggrl/.pyenv/versions/sismologia/bin/python: can't open file '/home/ggrl/projetos/ClassificadorSismologico/source/sismologia-ipt-latex/relatorio_preditivo/python/figures.py': [Errno 2] No such file or directory
+/home/ggrl/.pyenv/versions/sismologia/bin/python: can't open file '/home/ggrl/projetos/ClassificadorSismologico/source/sismologia-ipt-latex/relatorio_preditivo/python/maps.py': [Errno 2] No such file or directory
+./Sismo_Pipeline.sh: linha 173: pushd: files/relatorios/sismologia-ipt-latex: Arquivo ou diretório inexistente
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 

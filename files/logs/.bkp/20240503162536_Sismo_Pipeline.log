@@ -1,0 +1,100 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando events_pipeline.py...
+
+ - Argumento 1: files/catalogo/catalogo-moho.csv
+ --> Client:
+  http://seisarc.sismo.iag.usp.br
+ --> Client Backup:
+  http://rsbr.on.br:8081/fdsnws/dataselect/1
+-----------------------------------------------------
+
+
+ --------- Iniciando o ProcessarID.py --------- 
+ ------------------------------ Acessando Catálogo ------------------------------ 
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:00<00:02,  4.13it/s] 40%|████      | 4/10 [00:00<00:00, 12.13it/s] 70%|███████   | 7/10 [00:00<00:00, 15.94it/s]100%|██████████| 10/10 [00:00<00:00, 17.56it/s]100%|██████████| 10/10 [00:00<00:00, 15.08it/s]
+ --> Iterando sobre eventos
+ - Número de eventos: 10
+ - Client: http://seisarc.sismo.iag.usp.br
+ - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
+ --> Adrquirindo Inventário de Estações
+  0%|          | 0/10 [00:00<?, ?it/s]  0%|          | 0/10 [00:00<?, ?it/s]
+############ Event 1: usp2014gyqn ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+ - Cha: HHE
+ - Loc: None
+ - Seed ID: BL.BB19B..HHZ 
+ - BL.BB19B X,Y : -21.0662, -48.5279
+ - Distância até o epicentro: 0.4739622562125565 km
+ Downloading ...
+ Pick Time -> 2014-04-09T20:49:43.974670Z
+ Origin Time -> 2014-04-09T20:49:40.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação BB19B
+   - canal: HHZ
+ -> Erro ao obter magnitude: 'NoneType' object has no attribute 'mag'
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/core/baixar_mseed.py", line 232, in iterar_eventos
+    magnitude = evento.preferred_magnitude().mag
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'mag'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/core/events_pipeline.py", line 105, in <module>
+    catalogo, missing_ids = main()
+                            ^^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/core/events_pipeline.py", line 96, in main
+    catalogo, missin_ids = popular_catalogo(
+                           ^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/core/events_pipeline.py", line 60, in popular_catalogo
+    iterar_eventos(
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/core/baixar_mseed.py", line 252, in iterar_eventos
+    'Event': dir_name,
+             ^^^^^^^^
+NameError: name 'dir_name' is not defined
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ ---------------- INICIANDO CORE/GERAR_PREDCSV.PY ---------------------------- 
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/core/gerar_predcsv.py", line 37, in <module>
+    gerar_predcsv()
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/core/gerar_predcsv.py", line 7, in gerar_predcsv
+    df_events = pd.read_csv(csv_events, sep=',')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: './files/events/events.csv'
+
+ -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- 
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+

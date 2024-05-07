@@ -1,0 +1,46 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ ---------------- INICIANDO CORE/GERAR_PREDCSV.PY ---------------------------- 
+/home/ggrl/projetos/ClassificadorSismologico/source/core/gerar_predcsv.py:20: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_pred['Cat'] = df_pred['Cat'].apply(lambda x: 0 if x == 'earthquake' else 1)
+Pred.csv criado com sucesso
+Erros.csv criado com sucesso
+
+ -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- 
+
+ ----------------- INICIANDO O CNN/RUN.PY ---------------------------- 
+2024-04-30 13:06:52.164212: I external/local_tsl/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2024-04-30 13:06:52.167292: I external/local_tsl/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2024-04-30 13:06:52.210739: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-04-30 13:06:53.040560: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Number of events: 432
+*****************
+EVENT 1 / 432
+Number of streams: 1
+Stream 1 / 1Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/cnn/run.py", line 74, in <module>
+    main(args)
+  File "/home/ggrl/projetos/ClassificadorSismologico/cnn/run.py", line 58, in main
+    spectro_extract(
+  File "/home/ggrl/projetos/ClassificadorSismologico/cnn/data_process.py", line 154, in spectro_extract
+    fft, _ = get_fft(tr, WINDOW_LENGTH, OVERLAP, nb_pts)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/cnn/data_process.py", line 56, in get_fft
+    result = mlab.stride_windows(trace.data, nb_pts, nb_overlap, axis=0)
+             ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'matplotlib.mlab' has no attribute 'stride_windows'
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+

@@ -1,0 +1,84 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ ---------------- INICIANDO CORE/GERAR_PREDCSV.PY ---------------------------- 
+/home/ggrl/projetos/ClassificadorSismologico/source/core/gerar_predcsv.py:20: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_pred['Cat'] = df_pred['Cat'].apply(lambda x: 0 if x == 'earthquake' else 1)
+Pred.csv criado com sucesso
+Erros.csv criado com sucesso
+
+ -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- 
+
+ ----------------- INICIANDO O CNN/RUN.PY ---------------------------- 
+2024-04-30 12:57:00.763930: I external/local_tsl/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2024-04-30 12:57:00.767020: I external/local_tsl/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2024-04-30 12:57:00.809894: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-04-30 12:57:01.637477: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Number of events: 432
+*****************
+EVENT 1 / 432
+Number of streams: 1
+Stream 1 / 1Traceback (most recent call last):
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/pkg_resources/__init__.py", line 2479, in resolve
+    return functools.reduce(getattr, self.attrs, module)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scipy.signal' has no attribute 'hann'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/cnn/run.py", line 74, in <module>
+    main(args)
+  File "/home/ggrl/projetos/ClassificadorSismologico/cnn/run.py", line 58, in main
+    spectro_extract(
+  File "/home/ggrl/projetos/ClassificadorSismologico/cnn/data_process.py", line 120, in spectro_extract
+    st.taper(0.05)
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/core/stream.py", line 2557, in taper
+    tr.taper(*args, **kwargs)
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/core/util/decorator.py", line 243, in skip_if_no_data
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/core/trace.py", line 282, in _add_processing_info
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/core/trace.py", line 2148, in taper
+    func = _get_function_from_entry_point('taper', type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/core/util/base.py", line 331, in _get_function_from_entry_point
+    func = buffered_load_entry_point(entry_point.dist.key,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/core/util/misc.py", line 599, in buffered_load_entry_point
+    _ENTRY_POINT_CACHE[hash_str] = load_entry_point(dist, group, name)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/pkg_resources/__init__.py", line 486, in load_entry_point
+    return get_distribution(dist).load_entry_point(group, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/pkg_resources/__init__.py", line 2867, in load_entry_point
+    return ep.load()
+           ^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/pkg_resources/__init__.py", line 2471, in load
+    return self.resolve()
+           ^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/pkg_resources/__init__.py", line 2481, in resolve
+    raise ImportError(str(exc)) from exc
+ImportError: module 'scipy.signal' has no attribute 'hann'
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+

@@ -1,0 +1,1263 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando events_pipeline.py...
+
+ - Argumento 1: files/catalogo/catalogo-moho.csv
+ --> Client:
+  http://seisarc.sismo.iag.usp.br
+ --> Client Backup:
+  http://rsbr.on.br:8081/fdsnws/dataselect/1
+-----------------------------------------------------
+
+
+ --------- Iniciando o ProcessarID.py --------- 
+ ------------------------------ Acessando Catálogo ------------------------------ 
+  0%|          | 0/50 [00:00<?, ?it/s]  2%|▏         | 1/50 [00:00<00:11,  4.43it/s]  8%|▊         | 4/50 [00:00<00:03, 12.99it/s] 12%|█▏        | 6/50 [00:00<00:02, 14.68it/s] 18%|█▊        | 9/50 [00:00<00:02, 16.67it/s] 22%|██▏       | 11/50 [00:00<00:02, 17.13it/s] 26%|██▌       | 13/50 [00:00<00:02, 16.88it/s] 30%|███       | 15/50 [00:01<00:02, 15.28it/s] 36%|███▌      | 18/50 [00:01<00:01, 17.39it/s] 42%|████▏     | 21/50 [00:01<00:01, 19.02it/s] 48%|████▊     | 24/50 [00:01<00:01, 18.45it/s] 52%|█████▏    | 26/50 [00:01<00:01, 18.43it/s] 58%|█████▊    | 29/50 [00:01<00:01, 19.36it/s] 62%|██████▏   | 31/50 [00:01<00:00, 19.46it/s] 68%|██████▊   | 34/50 [00:01<00:00, 19.45it/s] 72%|███████▏  | 36/50 [00:02<00:00, 18.85it/s] 78%|███████▊  | 39/50 [00:02<00:00, 19.51it/s] 84%|████████▍ | 42/50 [00:02<00:00, 20.02it/s] 90%|█████████ | 45/50 [00:02<00:00, 18.91it/s] 94%|█████████▍| 47/50 [00:02<00:00, 18.06it/s] 98%|█████████▊| 49/50 [00:02<00:00, 18.27it/s]100%|██████████| 50/50 [00:02<00:00, 17.78it/s]
+ --> Iterando sobre eventos
+ - Número de eventos: 50
+ - Client: http://seisarc.sismo.iag.usp.br
+ - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
+ --> Adrquirindo Inventário de Estações
+  0%|          | 0/50 [00:00<?, ?it/s]/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/core/inventory/network.py:321: UserWarning: Found more than one matching channel metadata. Returning first.
+  warnings.warn(msg)
+  8%|▊         | 4/50 [00:00<00:01, 37.74it/s] 16%|█▌        | 8/50 [00:00<00:01, 25.27it/s] 22%|██▏       | 11/50 [00:00<00:01, 24.59it/s]############ Event 1: usp2014gyqn ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+ - Cha: HHE
+ - Loc: None
+ - Seed ID: BL.BB19B..HHZ 
+ - BL.BB19B X,Y : -21.0662, -48.5279
+ - Distância até o epicentro: 0.4739622562125565 km
+ Downloading ...
+ Pick Time -> 2014-04-09T20:49:43.974670Z
+ Origin Time -> 2014-04-09T20:49:40.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação BB19B
+   - canal: HHZ
+ -> Erro ao obter magnitude: 'NoneType' object has no attribute 'mag'
+-----------------------------------------------------
+
+ - Event: usp2014gyqn
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 2: usp2021ezmw ############
+
+ - Event: usp2021ezmw
+ - Pwave Picks: 0
+#####################################################
+
+############ Event 3: usp2020hkyw ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: PDRB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.PDRB..HHZ 
+ - BR.PDRB X,Y : -11.612297, -56.729597
+ - Distância até o epicentro: 0.22934459104391727 km
+ Downloading ...
+ Pick Time -> 2020-04-15T14:40:19.978417Z
+ Origin Time -> 2020-04-15T14:40:20.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação PDRB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2020hkyw
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 4: usp2022gpbs ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBMO
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBMO..HHZ 
+ - NB.NBMO X,Y : -3.310348, -40.042927
+ - Distância até o epicentro: 0.6296512501624295 km
+ Downloading ...
+ Pick Time -> 2022-04-04T15:07:54.334523Z
+ Origin Time -> 2022-04-04T15:07:42.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação NBMO
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2022gpbs
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 5: usp2014oaxt ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: NPGB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.NPGB..HHZ 
+ - BR.NPGB X,Y : -7.0454, -55.3579
+ - Distância até o epicentro: 0.7840549447308719 km
+ Downloading ...
+ Pick Time -> 2014-07-19T17:41:08.185058Z
+ Origin Time -> 2014-07-19T17:30:30.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação NPGB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2014oaxt
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 6: usp2015rxwc ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBAN
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBAN..HHZ 
+ - NB.NBAN X,Y : -9.668656, -36.274726
+ - Distância até o epicentro: 33.505971131504076 km
+ Downloading ...
+ Pick Time -> 2016-09-12T23:24:35.547698Z
+ Origin Time -> 2015-09-12T23:24:35.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação NBAN
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2015rxwc
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 7: usp2018cdft ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BX.LDASE..HHZ 
+ - BX.LDASE X,Y : -23.3932, -51.1177
+ - Distância até o epicentro: 9.158357033931011 km
+ Downloading ...
+ Pick Time -> 2018-01-31T05:22:35.881485Z
+ Origin Time -> 2018-01-31T05:22:34.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação LDASE
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2018cdft
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 8: usp2019dmvk ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BX.LDASE..HHZ 
+ - BX.LDASE X,Y : -23.3932, -51.1177
+ - Distância até o epicentro: 11.366728946851751 km
+ Downloading ...
+ Pick Time -> 2019-02-19T17:08:54.749695Z
+ Origin Time -> 2019-02-19T17:08:54.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação LDASE
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2019dmvk
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 9: usp2014kloc ############
+
+--> Pick 1
+ - Net: ON
+ - Sta: CAM01
+ - Cha: HHR
+ - Loc: None
+ - Seed ID: ON.CAM01..HHZ 
+ - ON.CAM01 X,Y : -21.825656, -41.657401
+ - Distância até o epicentro: 2.4514531673196425 km
+ Downloading ...
+ Pick Time -> 2014-05-29T14:58:33.841855Z
+ Origin Time -> 2014-05-29T14:58:30.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação CAM01
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2014kloc
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 10: usp2015cjmh ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBRF
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBRF..HHZ 
+ - NB.NBRF X,Y : -8.679466, -35.127172
+ - Distância até o epicentro: 101.62578000652093 km
+ Downloading ...
+ Pick Time -> 2015-02-03T15:30:53.728118Z
+ Origin Time -> 2015-02-03T15:30:35.694424Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação NBRF
+   - canal: HHZ
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBPA
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBPA..HHZ 
+ - NB.NBPA X,Y : -5.75028, -37.112047
+ - Distância até o epicentro: 313.89829803256146 km
+ Downloading ...
+ Pick Time -> 2015-02-03T15:31:21.921630Z
+ Origin Time -> 2015-02-03T15:30:35.694424Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação NBPA
+   - canal: HHZ
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: NB
+ - Sta: NBLI
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBLI..HHZ 
+ - NB.NBLI X,Y : -7.364556, -36.949743
+ - Distância até o epicentro: 152.4593972818572 km
+ Downloading ...
+ Pick Time -> 2015-02-03T15:31:00.986785Z
+ Origin Time -> 2015-02-03T15:30:35.694424Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação NBLI
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2015cjmh
+ - Pwave Picks: 3
+#####################################################
+
+############ Event 11: usp2015phgr ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.BB19B..HHZ 
+ - BL.BB19B X,Y : -21.0662, -48.5279
+ - Distância até o epicentro: 3.5565475080912963 km
+ Downloading ...
+ Pick Time -> 2015-08-06T10:21:29.002197Z
+ Origin Time -> 2015-08-06T10:21:28.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação BB19B
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2015phgr
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 12: usp2016fwub ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: AQDB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.AQDB..HHZ 
+ - BL.AQDB X,Y : -20.47579, -55.69971
+ - Distância até o epicentro: 0.4812422953630468 km
+ Downloading ...
+ Pick Time -> 2016-03-24T14:48:22.856567Z
+ Origin Time -> 2016-03-24T14:48:15.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação AQDB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2016fwub
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 13: usp2017espk ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: TQJ2B
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BX.TQJ2B..HHZ 
+ - BX.TQJ2B X,Y : -21.37467, -48.57693
+ - Distância até o epicentro: 9.629596145112966 km
+ Downloading ...
+ Pick Time -> 2017-03-09T02:22:58.329134Z
+ Origin Time -> 2017-03-09T02:22:56.463907Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação TQJ2B
+   - canal: HHZ
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BX
+ - Sta: TQJ4A
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BX.TQJ4A..HHZ 
+ - Error getting channel metadata: No matching channel metadata found.
+ - Event: usp2017espk
+ - Pwave Picks: 2
+#####################################################
+
+############ Event 14: usp2018bojv ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BX.LDASE..HHZ 
+ - BX.LDASE X,Y : -23.3932, -51.1177
+ 28%|██▊       | 14/50 [00:00<00:01, 24.10it/s] 36%|███▌      | 18/50 [00:00<00:01, 27.21it/s] 48%|████▊     | 24/50 [00:00<00:01, 25.74it/s] 56%|█████▌    | 28/50 [00:01<00:00, 28.55it/s] - Distância até o epicentro: 8.80516012808984 km
+ Downloading ...
+ Pick Time -> 2018-01-23T02:23:51.869610Z
+ Origin Time -> 2018-01-23T02:23:50.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação LDASE
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2018bojv
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 15: usp2019ianq ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: CNLB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.CNLB..HHZ 
+ - BL.CNLB X,Y : -29.3148, -50.8533
+ - Distância até o epicentro: 1.9676333072635817 km
+ Downloading ...
+ Pick Time -> 2019-04-25T03:10:05.497833Z
+ Origin Time -> 2019-04-25T03:10:02.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação CNLB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2019ianq
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 16: usp2019nstm ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: PDRB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.PDRB..HHZ 
+ - BR.PDRB X,Y : -11.612297, -56.729597
+ - Distância até o epicentro: 0.3595007308300882 km
+ Downloading ...
+ Pick Time -> 2019-07-15T06:15:50.998268Z
+ Origin Time -> 2019-07-15T06:15:50.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação PDRB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2019nstm
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 17: usp2014jybg ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BSCB
+ - Cha: HHR
+ - Loc: None
+ - Seed ID: BL.BSCB..HHZ 
+ - BL.BSCB X,Y : -20.9984, -44.7635
+ - Distância até o epicentro: 12.750955793603062 km
+ Downloading ...
+ Pick Time -> 2014-05-22T05:42:56.644843Z
+ Origin Time -> 2014-05-22T05:42:56.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação BSCB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2014jybg
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 18: usp2014lafu ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: SALV
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.SALV..HHZ 
+ - BR.SALV X,Y : -15.90118, -55.69356
+ - Distância até o epicentro: 14.372433624726874 km
+ Downloading ...
+ Pick Time -> 2014-06-06T15:48:46.902175Z
+ Origin Time -> 2014-06-06T15:48:44.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação SALV
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2014lafu
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 19: usp2019dkga ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: SNDB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.SNDB..HHZ 
+ - BR.SNDB X,Y : -11.9742, -51.2943
+ - Distância até o epicentro: 0.9812131853356774 km
+ Downloading ...
+ Pick Time -> 2019-02-18T07:00:46.785263Z
+ Origin Time -> 2019-02-18T07:00:46.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação SNDB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2019dkga
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 20: usp2020qlqm ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: CNLB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.CNLB..HHZ 
+ - BL.CNLB X,Y : -29.3148, -50.8533
+ - Distância até o epicentro: 7.642367578254987 km
+ Downloading ...
+ Pick Time -> 2020-08-22T01:23:45.278243Z
+ Origin Time -> 2020-08-22T01:23:44.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação CNLB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2020qlqm
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 21: usp2022havu ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.BB19B..HHZ 
+ - BL.BB19B X,Y : -21.0662, -48.5279
+ - Distância até o epicentro: 20.861243343234815 km
+ Downloading ...
+ Pick Time -> 2022-04-11T01:45:59.064460Z
+ Origin Time -> 2022-04-11T01:45:55.332847Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação BB19B
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2022havu
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 22: usp2022jzyj ############
+
+ - Event: usp2022jzyj
+ - Pwave Picks: 0
+#####################################################
+
+############ Event 23: usp2023fcfe ############
+
+ - Event: usp2023fcfe
+ - Pwave Picks: 0
+#####################################################
+
+############ Event 24: usp2016bhtr ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BX.LDASE..HHZ 
+ - BX.LDASE X,Y : -23.3932, -51.1177
+ - Distância até o epicentro: 8.12081034713908 km
+ Downloading ...
+ Pick Time -> 2016-01-19T11:26:10.804312Z
+ Origin Time -> 2016-01-19T11:26:09.439999Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação LDASE
+   - canal: HHZ
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BX
+ - Sta: LDAE
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BX.LDAE..HHZ 
+ - BX.LDAE X,Y : -23.3276, -51.0892
+ - Distância até o epicentro: 8.174218137230547 km
+ Downloading ...
+ Pick Time -> 2016-01-19T11:26:10.794769Z
+ Origin Time -> 2016-01-19T11:26:09.439999Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação LDAE
+   - canal: HHZ
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: BX
+ - Sta: LDAW
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BX.LDAW..HHZ 
+ - BX.LDAW X,Y : -23.327631, -51.17155
+ - Distância até o epicentro: 1.065811629973004 km
+ Downloading ...
+ Pick Time -> 2016-01-19T11:26:09.639221Z
+ Origin Time -> 2016-01-19T11:26:09.439999Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação LDAW
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2016bhtr
+ - Pwave Picks: 3
+#####################################################
+
+############ Event 25: usp2017qdbb ############
+
+--> Pick 1
+ - Net: ON
+ - Sta: VAS01
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: ON.VAS01..HHZ 
+ - ON.VAS01 X,Y : -22.280081, -43.442624
+ - Distância até o epicentro: 197.34594796579015 km
+ Downloading ...
+ Pick Time -> 2017-08-18T08:31:54.825360Z
+ Origin Time -> 2017-08-18T08:31:22.994525Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação VAS01
+   - canal: HHZ
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BL
+ - Sta: BSCB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.BSCB..HHZ 
+ - BL.BSCB X,Y : -20.9984, -44.7635
+ - Distância até o epicentro: 27.449718852149076 km
+ Downloading ...
+ Pick Time -> 2017-08-18T08:31:27.540986Z
+ Origin Time -> 2017-08-18T08:31:22.994525Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação BSCB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2017qdbb
+ - Pwave Picks: 2
+#####################################################
+
+############ Event 26: usp2019ulpl ############
+
+ - Event: usp2019ulpl
+ - Pwave Picks: 0
+#####################################################
+
+############ Event 27: usp2019unma ############
+
+ - Event: usp2019unma
+ - Pwave Picks: 0
+#####################################################
+
+############ Event 28: usp2021reil ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: ITAB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.ITAB..HHZ 
+ - BL.ITAB X,Y : -27.2349, -52.1313
+ - Distância até o epicentro: 0.5430984767643211 km
+ Downloading ...
+ Pick Time -> 2021-09-02T06:54:55.107508Z
+ Origin Time -> 2021-09-02T06:54:55.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação ITAB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2021reil
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 29: usp2014klix ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BSCB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.BSCB..HHZ 
+ - BL.BSCB X,Y : -20.9984, -44.7635
+ - Distância até o epicentro: 12.685817125324002 km
+ Downloading ...
+ Pick Time -> 2014-05-29T12:20:54.972869Z
+ Origin Time -> 2014-05-29T12:20:54.000000Z
+ Channel -> HHZ
+ 64%|██████▍   | 32/50 [00:01<00:00, 27.50it/s] 70%|███████   | 35/50 [00:01<00:00, 26.31it/s] 78%|███████▊  | 39/50 [00:01<00:00, 28.54it/s] - Forma de onda baixada para:
+   - estação BSCB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2014klix
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 30: usp2014pgna ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: CNLB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.CNLB..HHZ 
+ - BL.CNLB X,Y : -29.3148, -50.8533
+ - Distância até o epicentro: 17.165355775823514 km
+ Downloading ...
+ Pick Time -> 2014-08-06T00:26:24.261474Z
+ Origin Time -> 2014-08-06T00:26:23.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação CNLB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2014pgna
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 31: usp2016asmh ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+ - Cha: HHR
+ - Loc: None
+ - Seed ID: BX.LDASE..HHZ 
+ - BX.LDASE X,Y : -23.3932, -51.1177
+ - Distância até o epicentro: 13.846044252451641 km
+ Downloading ...
+ Pick Time -> 2016-01-11T02:39:37.179900Z
+ Origin Time -> 2016-01-11T02:39:34.799999Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação LDASE
+   - canal: HHZ
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BX
+ - Sta: LDAE
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BX.LDAE..HHZ 
+ - BX.LDAE X,Y : -23.3276, -51.0892
+ - Distância até o epicentro: 9.870130518261218 km
+ Downloading ...
+ Pick Time -> 2016-01-11T02:39:36.369354Z
+ Origin Time -> 2016-01-11T02:39:34.799999Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação LDAE
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2016asmh
+ - Pwave Picks: 2
+#####################################################
+
+############ Event 32: usp2017gagp ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: ARAG
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.ARAG..HHZ 
+ - BR.ARAG X,Y : -15.706, -51.812
+ - Distância até o epicentro: 0.5460885214791668 km
+ Downloading ...
+ Pick Time -> 2017-03-27T12:33:18.616333Z
+ Origin Time -> 2017-03-27T12:33:15.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação ARAG
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2017gagp
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 33: usp2018pubu ############
+
+--> Pick 1
+ - Net: ON
+ - Sta: MAN01
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: ON.MAN01..HHZ 
+ - ON.MAN01 X,Y : -22.86516, -43.964094
+ - Distância até o epicentro: 3.3327551114185283 km
+ Downloading ...
+ Pick Time -> 2018-08-13T10:39:10.941040Z
+ Origin Time -> 2018-08-13T10:39:11.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação MAN01
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2018pubu
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 34: usp2018purz ############
+
+--> Pick 1
+ - Net: ON
+ - Sta: VAS01
+ - Cha: HHT
+ - Loc: None
+ - Seed ID: ON.VAS01..HHZ 
+ - ON.VAS01 X,Y : -22.280081, -43.442624
+ - Distância até o epicentro: 90.20004123210062 km
+ Downloading ...
+ Pick Time -> 2018-08-13T18:51:10.501556Z
+ Origin Time -> 2018-08-13T18:50:54.897879Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação VAS01
+   - canal: HHZ
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: ON
+ - Sta: CAM01
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: ON.CAM01..HHZ 
+ - ON.CAM01 X,Y : -21.825656, -41.657401
+ - Distância até o epicentro: 271.89432622783943 km
+ Downloading ...
+ Pick Time -> 2018-08-13T18:50:53.356276Z
+ Origin Time -> 2018-08-13T18:50:54.897879Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação CAM01
+   - canal: HHZ
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: ON
+ - Sta: MAN01
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: ON.MAN01..HHZ 
+ - ON.MAN01 X,Y : -22.86516, -43.964094
+ - Distância até o epicentro: 8.386908422397308 km
+ Downloading ...
+ Pick Time -> 2018-08-13T18:50:56.453156Z
+ Origin Time -> 2018-08-13T18:50:54.897879Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação MAN01
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2018purz
+ - Pwave Picks: 3
+#####################################################
+
+############ Event 35: usp2019wlmi ############
+
+ - Event: usp2019wlmi
+ - Pwave Picks: 0
+#####################################################
+
+############ Event 36: usp2021laza ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBPN
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBPN..HHZ 
+ - NB.NBPN X,Y : -10.847009, -40.198957
+ - Distância até o epicentro: 51.25580416391323 km
+ Downloading ...
+ Pick Time -> 2021-06-07T01:32:19.818612Z
+ Origin Time -> 2021-06-07T01:32:11.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação NBPN
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2021laza
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 37: usp2023iafm ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.BB19B..HHZ 
+ - BL.BB19B X,Y : -21.0662, -48.5279
+ - Distância até o epicentro: 23.106418856416855 km
+ Downloading ...
+ Pick Time -> 2023-04-24T23:03:41.996941Z
+ Origin Time -> 2023-04-24T23:03:38.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação BB19B
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2023iafm
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 38: usp2023ivdo ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+ - Cha: HHR
+ - Loc: None
+ - Seed ID: BL.BB19B..HHZ 
+ - BL.BB19B X,Y : -21.0662, -48.5279
+ - Distância até o epicentro: 23.106418856416855 km
+ Downloading ...
+ Pick Time -> 2023-05-06T09:57:02.831599Z
+ Origin Time -> 2023-05-06T09:56:59.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação BB19B
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2023ivdo
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 39: usp2014kdlg ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BSCB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.BSCB..HHZ 
+ - BL.BSCB X,Y : -20.9984, -44.7635
+ - Distância até o epicentro: 13.048666345297907 km
+ Downloading ...
+ Pick Time -> 2014-05-25T04:26:36.689376Z
+ Origin Time -> 2014-05-25T04:26:36.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação BSCB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2014kdlg
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 40: usp2014pdar ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: CNLB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.CNLB..HHZ 
+ - BL.CNLB X,Y : -29.3148, -50.8533
+ - Distância até o epicentro: 17.359741723187987 km
+ Downloading ...
+ Pick Time -> 2014-08-04T02:46:00.972826Z
+ Origin Time -> 2014-08-04T02:45:59.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação CNLB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2014pdar
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 41: usp2015dhro ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: ETMB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.ETMB..HHZ 
+ - BR.ETMB X,Y : -9.81684, -66.21368
+ - Distância até o epicentro: 76.81607712989452 km
+ Downloading ...
+ Pick Time -> 2015-02-16T21:25:14.444272Z
+ Origin Time -> 2015-02-16T21:25:01.201290Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação ETMB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2015dhro
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 42: usp2015oucr ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.BB19B..HHZ 
+ - BL.BB19B X,Y : -21.0662, -48.5279
+ - Distância até o epicentro: 2.827417038406277 km
+ Downloading ...
+ Pick Time -> 2015-07-30T05:34:42.139160Z
+ Origin Time -> 2015-07-30T05:34:41.000000Z
+ Channel -> HHZ
+ 86%|████████▌ | 43/50 [00:01<00:00, 29.87it/s] 94%|█████████▍| 47/50 [00:01<00:00, 27.06it/s]100%|██████████| 50/50 [00:01<00:00, 28.02it/s]
+ - Forma de onda baixada para:
+   - estação BB19B
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2015oucr
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 43: usp2015pgki ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.BB19B..HHZ 
+ - BL.BB19B X,Y : -21.0662, -48.5279
+ - Distância até o epicentro: 2.827417038406277 km
+ Downloading ...
+ Pick Time -> 2015-08-05T23:04:39.516281Z
+ Origin Time -> 2015-08-05T23:04:39.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação BB19B
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2015pgki
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 44: usp2018blwx ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+ - Cha: HHN
+ - Loc: None
+ - Seed ID: BX.LDASE..HHZ 
+ - BX.LDASE X,Y : -23.3932, -51.1177
+ - Distância até o epicentro: 8.7493576732006 km
+ Downloading ...
+ Pick Time -> 2018-01-21T17:36:26.216953Z
+ Origin Time -> 2018-01-21T17:36:24.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação LDASE
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2018blwx
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 45: usp2018kric ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: PDRB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.PDRB..HHZ 
+ - BR.PDRB X,Y : -11.612297, -56.729597
+ - Distância até o epicentro: 0.7488490839993024 km
+ Downloading ...
+ Pick Time -> 2018-06-01T18:46:28.160957Z
+ Origin Time -> 2018-06-01T18:45:28.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação PDRB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2018kric
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 46: usp2018ujoj ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBCA
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBCA..HHZ 
+ - NB.NBCA X,Y : -8.225687, -36.013016
+ - Distância até o epicentro: 75.41517490802653 km
+ Downloading ...
+ Pick Time -> 2018-10-17T20:11:58.972600Z
+ Origin Time -> 2018-10-17T20:11:45.979450Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação NBCA
+   - canal: HHZ
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBAN
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBAN..HHZ 
+ - NB.NBAN X,Y : -9.668656, -36.274726
+ - Distância até o epicentro: 90.04971921888213 km
+ Downloading ...
+ Pick Time -> 2018-10-17T20:12:01.577820Z
+ Origin Time -> 2018-10-17T20:11:45.979450Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação NBAN
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2018ujoj
+ - Pwave Picks: 2
+#####################################################
+
+############ Event 47: usp2020fufu ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: TQJ3B
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BX.TQJ3B..HHZ 
+ - BX.TQJ3B X,Y : -21.37382, -48.5607
+ - Distância até o epicentro: 35.2354559812568 km
+ Downloading ...
+ Pick Time -> 2020-03-23T05:20:00.887930Z
+ Origin Time -> 2020-03-23T05:19:58.595349Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação TQJ3B
+   - canal: HHZ
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BL
+ - Sta: BB19B
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.BB19B..HHZ 
+ - BL.BB19B X,Y : -21.0662, -48.5279
+ - Distância até o epicentro: 12.37577394274339 km
+ Downloading ...
+ Pick Time -> 2020-03-23T05:20:00.950374Z
+ Origin Time -> 2020-03-23T05:19:58.595349Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação BB19B
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2020fufu
+ - Pwave Picks: 2
+#####################################################
+
+############ Event 48: usp2020rkpd ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: CNLB
+ - Cha: HH1
+ - Loc: None
+ - Seed ID: BL.CNLB..HHZ 
+ - BL.CNLB X,Y : -29.3148, -50.8533
+ - Distância até o epicentro: 7.642367578254987 km
+ Downloading ...
+ Pick Time -> 2020-09-04T17:07:18.352481Z
+ Origin Time -> 2020-09-04T17:07:20.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação CNLB
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2020rkpd
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 49: usp2021bsjh ############
+
+ - Event: usp2021bsjh
+ - Pwave Picks: 0
+#####################################################
+
+############ Event 50: usp2023hjuw ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.BB19B..HHZ 
+ - BL.BB19B X,Y : -21.0662, -48.5279
+ - Distância até o epicentro: 13.977959282756292 km
+ Downloading ...
+ Pick Time -> 2023-04-15T23:31:02.210541Z
+ Origin Time -> 2023-04-15T23:31:00.000000Z
+ Channel -> HHZ
+ - Forma de onda baixada para:
+   - estação BB19B
+   - canal: HHZ
+-----------------------------------------------------
+
+ - Event: usp2023hjuw
+ - Pwave Picks: 1
+#####################################################
+
+Dados salvos com sucesso em ./files/events/events.csv
+Erros salvos com sucesso em ./files/events/erros.csv
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ ---------------- INICIANDO CORE/GERAR_PREDCSV.PY ---------------------------- 
+/home/ggrl/projetos/ClassificadorSismologico/source/core/gerar_predcsv.py:20: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_pred['Cat'] = df_pred['Cat'].apply(lambda x: 0 if x == 'earthquake' else 1)
+Pred.csv criado com sucesso
+Erros.csv criado com sucesso
+
+ -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- 
+
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+[{"success":true}]
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
