@@ -235,8 +235,6 @@ def plot_hist_prob_recall(df):
     plt.savefig('files/figures/pos_process/dist_prob_nat_recall.png')
     plt.show()
 
-    return df
-
 
 # --------------------------------- Hours
 # Plot histogram of events hour distribution
@@ -312,8 +310,6 @@ def plot_hist_hour_recall(df):
     plt.savefig('files/figures/pos_process/hist_ev_hour_recall.png')
     plt.show()
     plt.close()
-
-    return df
 
 
 # --------------------------------- Distances
@@ -475,8 +471,6 @@ def plot_hist_magnitude_recall(df):
     plt.savefig('files/figures/pos_process/dist_ev_cat_mag_recall.png')
     plt.show()
 
-    return df
-
 
 # -------------------------- Number of Stations
 def plot_hist_station_distribution(df):
@@ -550,9 +544,8 @@ def plot_hist_stations_recall(df):
     plt.savefig('files/figures/pos_process/dist_ev_num_stations_recall.png')
     plt.show()
 
-    return df
 
-
+# --------------------------- SNR Histograms
 def snr_p(picks: pd.DataFrame,
           window: int) -> [pd.DataFrame, dict]:
     picks.sort_index(inplace=True)
@@ -586,7 +579,26 @@ def snr_p(picks: pd.DataFrame,
     return picks, dict_filt
 
 
-# --------------------------- SNR Histograms
+def plot_hist_snrs_distribution(df):
+    plt.figure(figsize=(10, 6))
+    # Remove the first and last values to avoid outliers
+    df = df[(df['SNR_P'] > 0) & (df['SNR_P'] < 15)]
+    df['SNR_P'].plot(kind='box', color='lightskyblue')
+    plt.title('Distribuição de SNR_P')
+    plt.xlabel('SNR_P')
+    plt.ylabel('Frequência')
+    plt.tight_layout()
+    plt.savefig('files/figures/pos_process/dist_snrs.png')
+    plt.show()
+
+
+# Calculate the mean SNR_P for each Event
+def mean_snrp(df):
+    df = df.reset_index()
+    df = df.groupby(['Event', 'pred']).agg({'SNR_P': 'mean'})
+    df['Mean SNR_P_cat'] = df['SNR_P'].apply(class_snrp)
+    return df
+
 def class_snrp(snr):
     if snr < 1:
         return '<1'
@@ -622,87 +634,12 @@ def class_snrp(snr):
         return '>= 15'
 
 
-def plot_hist_snrs_distribution(df):
-    plt.figure(figsize=(10, 6))
-    # Remove the first and last values to avoid outliers
-    df = df[(df['SNR_P'] > 0) & (df['SNR_P'] < 15)]
-    df['SNR_P'].plot(kind='box', color='lightskyblue')
-    plt.title('Distribuição de SNR_P')
-    plt.xlabel('SNR_P')
-    plt.ylabel('Frequência')
-    plt.tight_layout()
-    plt.savefig('files/figures/pos_process/dist_snrs.png')
-    plt.show()
-
-
-def plot_hist_snrs_recall(df):
-    fig, ax = plt.subplots(figsize=(10, 6))
-    # Categoriers of SNR_P
-    cat = [
-        '< 1',
-        '[1-2[',
-        '[2-3[',
-        '[3-4[',
-        '[4-5[',
-        '[5-6[',
-        '[6-7[',
-        '[7-8[',
-        '[8-9[',
-        '[9-10[',
-        '[10-11[',
-        '[11-12[',
-        '[12-13[',
-        '[13-14[',
-        '[14-15[',
-        '>= 15'
-    ]
-    df['SNR_P_cat'] = pd.Categorical(
-        df['SNR_P_cat'], categories=cat, ordered=True
-    )
-    f_rel = df['SNR_P_cat'].value_counts(normalize=True).sort_index()
-    max_freq = f_rel.max() * 100
-    min_freq = f_rel.min() * 100
-    norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
-    sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
-    sm.set_array([])
-    rc_min = 90
-    for c in f_rel.index:
-        df_c = df[df['SNR_P_cat'] == c]
-        TP = df_c[(df_c['pred'] == 0) & (df_c['label_cat'] == 0)].shape[0]
-        FN = df_c[(df_c['pred'] == 1) & (df_c['label_cat'] == 0)].shape[0]
-        rc = 100 * TP / (TP + FN) if TP + FN != 0 else 0
-        freq = f_rel.loc[c] * 100
-        color = sm.to_rgba(freq)
-        ax.bar(c, rc, color=color, edgecolor='black', width=0.5)
-        ax.text(c, rc + 0.01, f'{rc:.2f}%', ha='center', va='bottom')
-        rc_min = rc if rc < rc_min else rc_min
-
-    cbar = fig.colorbar(sm, ax=ax)
-    cbar.ax.set_ylabel('Frequency (%)')
-    cbar.set_ticks([min_freq, max_freq])
-    plt.ylim(rc_min - 5, 100)
-    plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
-    plt.xlabel('SNR_P')
-    plt.ylabel('Recall (%)')
-    plt.tight_layout()
-    plt.savefig('files/figures/pos_process/dist_snrs_recall.png')
-    plt.show()
-
-    return df
-
-
-# Calculate the mean SNR_P for each Event
-def mean_snrp(df):
-    snr_p = df.groupby('Event')['SNR_P'].mean()
-    snr_p = snr_p.rename('Mean SNR_P')
-    df = pd.merge(df, snr_p, on='Event', how='left')
-    return df
-
-
 # Plot histogram of the mean SNR_P for each Event
-def plot_mean_snrp(df):
+def plot_mean_snrp_event(df):
     plt.figure(figsize=(10, 6))
-    df['Mean SNR_P'].plot(kind='hist', bins=5, color='lightskyblue')
+    df = mean_snrp(df)
+    df.loc[df['Mean SNR_P'] > 50, 'Mean SNR_P'] = 99
+    df['Mean SNR_P'].plot(kind='hist', bins=25, color='lightskyblue')
     plt.title('Distribuição da Média de SNR_P por Evento')
     plt.xlabel('Média de SNR_P')
     plt.ylabel('Frequência')
@@ -711,11 +648,102 @@ def plot_mean_snrp(df):
     plt.show()
 
 
+def plot_hist_snrs_recall_pick(df):
+    fig, ax = plt.subplots(figsize=(10, 6))
+    # Categoriers of SNR_P
+    cat = [
+        '< 1', '[1-2[', '[2-3[', '[3-4[', '[4-5[', '[5-6[', '[6-7[', '[7-8[',
+        '[8-9[', '[9-10[', '[10-11[', '[11-12[', '[12-13[', '[13-14[',
+        '[14-15[', '>= 15'
+    ]
+    df['SNR_P_cat'] = pd.Categorical(
+        df['SNR_P_cat'], categories=cat, ordered=True
+    )
+    f_rel = df['SNR_P_cat'].value_counts(normalize=True).sort_index()
+    f_abs = df['SNR_P_cat'].value_counts().sort_index()
+    max_freq = f_rel.max() * 100
+    min_freq = f_rel.min() * 100
+    norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
+    sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
+    sm.set_array([])
+    rc_min = 90
+    for c, b in zip(f_rel.index, f_abs.index):
+        f_a = f_abs.loc[b]
+        freq = f_rel.loc[c] * 100
+        color = sm.to_rgba(freq)
+        if f_a > 0:
+            df_c = df[df['SNR_P_cat'] == c]
+            TP = df_c[(df_c['pred'] == 0) & (df_c['label_cat'] == 0)].shape[0]
+            FN = df_c[(df_c['pred'] == 1) & (df_c['label_cat'] == 0)].shape[0]
+            rc = 100 * TP / (TP + FN) if TP + FN != 0 else 0
+            ax.bar(c, rc, color=color, edgecolor='black', width=0.5)
+            ax.text(c, rc + 0.01, f'{rc:.2f}%', ha='center', va='bottom')
+            ax.text(b, rc + 1.5, f'{f_a}', ha='center', va='bottom')
+            rc_min = rc if rc < rc_min else rc_min
+
+    cbar = fig.colorbar(sm, ax=ax)
+    plt.title('Recall por SNR_P Pick')
+    cbar.ax.set_ylabel('Frequency (%)')
+    cbar.set_ticks([min_freq, max_freq])
+    plt.ylim(rc_min - 5, 110)
+    plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
+    plt.xlabel('SNR_P')
+    plt.ylabel('Recall (%)')
+    plt.tight_layout()
+    plt.savefig('files/figures/pos_process/dist_snrs_recall.png')
+    plt.show()
+
+
+def plot_mean_srnp_recall_event(df):
+    df = mean_snrp(df)
+    fig, ax = plt.subplots(figsize=(10, 6))
+    cat = [
+        '< 1', '[1-2[', '[2-3[', '[3-4[', '[4-5[', '[5-6[', '[6-7[', '[7-8[',
+        '[8-9[', '[9-10[', '[10-11[', '[11-12[', '[12-13[', '[13-14[',
+        '[14-15[', '>= 15'
+    ]
+    df['Mean SNR_P_cat'] = pd.Categorical(
+        df['Mean SNR_P_cat'], categories=cat, ordered=True
+    )
+    f_rel = df['Mean SNR_P_cat'].value_counts(normalize=True).sort_index()
+    f_abs = df['Mean SNR_P_cat'].value_counts().sort_index()
+    max_freq = f_rel.max() * 100
+    min_freq = f_rel.min() * 100
+    norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
+    sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
+    sm.set_array([])
+    rc_min = 90
+    for c, b in zip(f_rel.index, f_abs.index):
+        f_a = f_abs.loc[b]
+        freq = f_rel.loc[c] * 100
+        color = sm.to_rgba(freq)
+        if f_a > 0:
+            df_c = df[df['Mean SNR_P_cat'] == c]
+            TP = df_c[(df_c['pred'] == 0) & (df_c['label_cat'] == 0)].shape[0]
+            FN = df_c[(df_c['pred'] == 1) & (df_c['label_cat'] == 0)].shape[0]
+            rc = 100 * TP / (TP + FN) if TP + FN != 0 else 0
+            ax.bar(c, rc, color=color, edgecolor='black', width=0.5)
+            ax.text(c, rc + 0.01, f'{rc:.2f}%', ha='center', va='bottom')
+            ax.text(b, rc + 1.5, f'{f_a}', ha='center', va='bottom')
+            rc_min = rc if rc < rc_min else rc_min
+
+    cbar = fig.colorbar(sm, ax=ax)
+    plt.title('Recall por Média de SNR_P por Evento')
+    cbar.ax.set_ylabel('Frequency (%)')
+    cbar.set_ticks([min_freq, max_freq])
+    plt.ylim(rc_min - 5, 110)
+    plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
+    plt.xlabel('Média de SNR_P')
+    plt.ylabel('Recall (%)')
+    plt.tight_layout()
+    plt.savefig('files/figures/pos_process/dist_mean_snrs_recall.png')
+    plt.show()
+
+
 # --------------------------- Region
 def class_region(df):
     regions = gpd.read_file('files/figures/maps/macrorregioesBrasil.json')
     regions = regions.to_crs(epsg=4326)
-
     coord_pick = gpd.GeoDataFrame(
         df,
         geometry=[Point(x, y) for x, y in zip(df['Longitude'], df['Latitude'])],
@@ -726,14 +754,10 @@ def class_region(df):
         geometry=[Point(x, y) for x, y in zip(df['Origem Longitude'], df['Origem Latitude'])],
         crs='EPSG:4326'
     )
-
     region_pick = gpd.sjoin(coord_pick, regions, how='left', op='within')
     region_origem = gpd.sjoin(coord_origem, regions, how='left', op='within')
-
     df['Região Pick'] = region_pick['nome'].values
     df['Região Origem'] = region_origem['nome'].values
-
-    return df
 
 
 def plot_region_correlation(df):
@@ -816,9 +840,10 @@ def load_data():
     df_c_val = pd.read_csv('files/output/commercial/validation_station_level.csv')
     df_nc = pd.merge(df_nc_val, evs, on='file_name', how='left')
     df_c = pd.merge(df_c_val, evs, on='file_name', how='left')
-
     df_nc.set_index(['Event', 'Station'], inplace=True)
     df_nc.dropna(subset=['Origin Time'], inplace=True)  # Devido o código de Hourcade ler todos os MSEEDS da pasta, é necessário filtrar os eventos que estão na pasta mas não estão no evs
+    picks, dict_filt = snr_p(df_nc, 5)
+    df_nc = mean_snrp(df_nc)
 
     df_nc['Hora'] = df_nc['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
     df_nc['Coord Origem'] = df_nc[['Origem Latitude', 'Origem Longitude']].apply(
@@ -830,38 +855,39 @@ def load_data():
     df_nc.loc[:, 'prob_nat_cat'] = df_nc['prob_nat'].apply(class_prob)
     df_nc.loc[:, 'Distance_cat'] = df_nc['Distance'].apply(class_dist)
     df_nc.loc[:, 'Magnitude_cat'] = df_nc['MLv'].apply(class_mag)
-    picks, dict_filt = snr_p(df_nc, 5)
     df_nc.loc[:, 'SNR_P_cat'] = df_nc['SNR_P'].apply(class_snrp)
+    df_nc.loc[:, 'Mean SNR_P_cat'] = df_nc['Mean SNR_P'].apply(class_snrp)
 
-    df_nc = class_region(df_nc)
+    # df_nc = class_region(df_nc)
+
+    # df_nc.to_csv('files/output/no_commercial/df_nc_pos.csv', index=True)
+    # df_c.to_csv('files/output/commercial/df_c_pos.csv', index=True)
 
     return df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt
 
 
 def non_commercial(df):
     # plot_hist_hour_distribution(df)
-    plot_hist_hour_recall(df)
-
+    # plot_hist_hour_recall(df)
+    # ----------------------------------
     # plot_hist_station_distribution(df)
-    plot_hist_stations_recall(df)
-
+    # plot_hist_stations_recall(df)
+    # ----------------------------------
     # plot_hist_distance_distribution(df)
-    plot_hist_distance_recall(df)
-
+    # plot_hist_distance_recall(df)
+    # ----------------------------------
     # plot_hist_magnitude_distribution(df)
-    plot_hist_magnitude_recall(df)
-
+    # plot_hist_magnitude_recall(df)
+    # ----------------------------------
     # plot_hist_snrs_distribution(df)
-    plot_hist_snrs_recall(df)
-
-    # plot_hist_prob_distribution(df)
-    plot_hist_prob_recall(df)
-
-    plot_box_dist(df)
-    plot_box_by_network(df)
-    plot_box_by_station(df)
-
-    plot_region_correlation(df)
+    # plot_hist_snrs_recall(df)
+    # ----------------------------------
+    # plot_box_dist(df)
+    # plot_box_by_network(df)
+    # plot_box_by_station(df)
+    # plot_region_correlation(df)
+    # ----------------------------------
+    plot_hist_snrs_recall_pick(df)
 
     return
 
@@ -878,5 +904,3 @@ def main():
 
 if __name__ == '__main__':
     df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt = main()
-    df_nc.to_csv('files/output/no_commercial/df_nc_pos.csv', index=False)
-    df_c.to_csv('files/output/commercial/df_c_pos.csv', index=False)

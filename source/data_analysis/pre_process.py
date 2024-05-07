@@ -22,6 +22,18 @@ import numpy as np
 
 
 # ----------------------------  FUNCTIONS  ------------------------------------
+def order_catalog():
+    catalog = pd.read_csv('files/catalogo/catalogo-moho.csv')
+    # order catalog by columns 'origin' '2014-04-09T20:49:40.000Z'
+    catalog['origin'] = pd.to_datetime(catalog['origin'])
+    catalog = catalog.sort_values(by='origin', ascending=False)
+    # remove origin before 2000
+    catalog = catalog[catalog['origin'] > '2010-01-01']
+    catalog.to_csv('files/catalogo/catalogo_treated.csv', index=False)
+
+    return catalog
+
+
 def gerar_predcsv():
     # Criar Lista de Eventos para Predição
     csv_events = './files/events/events.csv'
