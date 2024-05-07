@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.5.3)  6 MAY 2024 00:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.5.3)  6 MAY 2024 07:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1296,14 +1296,10 @@ Type  H <return>  for immediate help.
                                                   
 l.4246     \ExecuteOptions{\bbl@opt@main}
                                          
-? ^^[
-Type <return> to proceed, S to scroll future error messages,
-R to run without stopping, Q to run quietly,
-I to insert something, E to edit your file,
-1 or ... or 9 to ignore the next 1 to 9 tokens of input,
-H for help, X to quit.
-? 
-) (/usr/share/texmf-dist/tex/generic/babel/locale/en/babel-english.tex
+? q
+OK, entering \batchmode...
+)
+(/usr/share/texmf-dist/tex/generic/babel/locale/en/babel-english.tex
 Package babel Info: Importing font and identification data for english
 (babel)             from babel-en.ini. Reported on input line 11.
 )
@@ -1389,8 +1385,7 @@ Package: abntex2cite 2018/11/24 v-1.9.7 abnTeX2
 \ABCIauxlen=\skip190
 \c@ABCIaux=\count362
 \c@ABCImax=\count363
-
-(/usr/share/texmf-dist/tex/latex/relsize/relsize.sty
+ (/usr/share/texmf-dist/tex/latex/relsize/relsize.sty
 Package: relsize 2013/03/29 ver 4.1
 )
 \biblabelsep=\skip191
@@ -1400,8 +1395,7 @@ LaTeX Info: Redefining \cite on input line 618.
 )
 LaTeX Font Info:    Trying to load font information for T1+phv on input line 25
 .
-
-(/usr/share/texmf-dist/tex/latex/psnfss/t1phv.fd
+ (/usr/share/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
@@ -1429,7 +1423,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
- (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count364
 \scratchdimen=\dimen289
@@ -1442,7 +1437,8 @@ LaTeX Font Info:    ... okay on input line 25.
 \MPnumerator=\count368
 \makeMPintoPDFobject=\count369
 \everyMPtoPDFconversion=\toks55
-) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+)
+(/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
@@ -1480,7 +1476,6 @@ nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
 or `english'. on input line 25.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1515,7 +1510,7 @@ or `english'. on input line 25.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(./tex/relatorio_preditivo/tex/capa.tex
+ (./tex/relatorio_preditivo/tex/capa.tex
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 11.39996pt on input line 12.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
@@ -1567,20 +1562,17 @@ LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
-
-(/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
+ (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+lasy on input line 2.
 
-
-(/usr/share/texmf-dist/tex/latex/base/ulasy.fd
+ (/usr/share/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 2
 .
-
-(/usr/share/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
+ (/usr/share/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 7.59998pt on input line 2.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
@@ -1608,9 +1600,8 @@ File: tex/figuras_tex/footImageCalibr.png Graphic file (type png)
 Package pdftex.def Info: tex/figuras_tex/footImageCalibr.png  used on input lin
 e 20.
 (pdftex.def)             Requested size: 361.6776pt x 48.28938pt.
- [2])
-(./tex/relatorio_preditivo/tex/corpo.tex
-(./tex/relatorio_preditivo/tex/introducao.tex
+ [2]) (./tex/relatorio_preditivo/tex/corpo.tex (./tex/relatorio_preditivo/tex/i
+ntroducao.tex
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
 (Font)              scaled to size 11.39996pt on input line 2.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
@@ -1672,8 +1663,7 @@ File: tex/figuras_tex/footImageCalibr.png Graphic file (type png)
 Package pdftex.def Info: tex/figuras_tex/footImageCalibr.png  used on input lin
 e 44.
 (pdftex.def)             Requested size: 361.6776pt x 48.28938pt.
- [3]
-(./tex/relatorio_preditivo/tex/figures.tex
+ [3] (./tex/relatorio_preditivo/tex/figures.tex
 </home/ggrl/projetos/ClassificadorSismologico/files/figures/pos_process/plots/d
 ist_ev_num_stations_recall.png, id=97, 722.7pt x 433.62pt>
 File: /home/ggrl/projetos/ClassificadorSismologico/files/figures/pos_process/pl
@@ -1780,10 +1770,9 @@ File: tex/figuras_tex/footImageCalibr.png Graphic file (type png)
 Package pdftex.def Info: tex/figuras_tex/footImageCalibr.png  used on input lin
 e 56.
 (pdftex.def)             Requested size: 361.6776pt x 48.28938pt.
-
-[7 </home/ggrl/projetos/ClassificadorSismologico/files/figures/pos_process/plot
-s/dist_snrs_recall.png> </home/ggrl/projetos/ClassificadorSismologico/files/fig
-ures/pos_process/plots/hist_ev_hour_recall.png>]
+ [7 </home/ggrl/projetos/ClassificadorSismologico/files/figures/pos_process/plo
+ts/dist_snrs_recall.png> </home/ggrl/projetos/ClassificadorSismologico/files/fi
+gures/pos_process/plots/hist_ev_hour_recall.png>]
 </home/ggrl/projetos/ClassificadorSismologico/files/figures/pos_process/plots/b
 oxplots/boxplot_XV.png, id=139, 722.7pt x 433.62pt>
 File: /home/ggrl/projetos/ClassificadorSismologico/files/figures/pos_process/pl
@@ -1992,10 +1981,10 @@ File: tex/figuras_tex/footImageCalibr.png Graphic file (type png)
 Package pdftex.def Info: tex/figuras_tex/footImageCalibr.png  used on input lin
 e 57.
 (pdftex.def)             Requested size: 361.6776pt x 48.28938pt.
-[14 </home/ggrl/projetos/ClassificadorSismologico/files/figures/pos_process/plo
-ts/boxplots/boxplot_GT.png> </home/ggrl/projetos/ClassificadorSismologico/files
-/figures/pos_process/plots/boxplots/boxplot_dist.png>])
-(./tex/relatorio_preditivo/tex/consideracoes_finais.tex
+ [14 </home/ggrl/projetos/ClassificadorSismologico/files/figures/pos_process/pl
+ots/boxplots/boxplot_GT.png> </home/ggrl/projetos/ClassificadorSismologico/file
+s/figures/pos_process/plots/boxplots/boxplot_dist.png>]) (./tex/relatorio_predi
+tivo/tex/consideracoes_finais.tex
 Overfull \hbox (5.58174pt too wide) in paragraph at lines 8--9
 []\T1/phv/m/n/12 Na área de in-fluên-cia do em-preendi-mento foram reg-istra-do
 s sessenta e sete (67) desmontes
@@ -2010,7 +1999,7 @@ File: tex/figuras_tex/footImageCalibr.png Graphic file (type png)
 Package pdftex.def Info: tex/figuras_tex/footImageCalibr.png  used on input lin
 e 16.
 (pdftex.def)             Requested size: 361.6776pt x 48.28938pt.
-[15])
+ [15])
 File: tex/figuras_tex/headImage.pdf Graphic file (type pdf)
 <use tex/figuras_tex/headImage.pdf>
 Package pdftex.def Info: tex/figuras_tex/headImage.pdf  used on input line 14.
@@ -2031,9 +2020,10 @@ File: tex/figuras_tex/footImageCalibr.png Graphic file (type png)
 Package pdftex.def Info: tex/figuras_tex/footImageCalibr.png  used on input lin
 e 39.
 (pdftex.def)             Requested size: 361.6776pt x 48.28938pt.
-[17
+ [17
 
-] 
+]
+
 enddocument/afterlastpage: lastpage setting LastPage.
 
 (/home/ggrl/projetos/ClassificadorSismologico/files/relatorios//relatorio_predi
@@ -2057,7 +2047,7 @@ Here is how much of TeX's memory you used:
 dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-dist/fonts/type1/urw
 /helvetic/uhvro8a.pfb>
 Output written on /home/ggrl/projetos/ClassificadorSismologico/files/relatorios
-//relatorio_preditivo.pdf (20 pages, 1077536 bytes).
+//relatorio_preditivo.pdf (20 pages, 1095264 bytes).
 PDF statistics:
  260 PDF objects out of 1000 (max. 8388607)
  53 named destinations out of 1000 (max. 500000)

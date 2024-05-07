@@ -48,7 +48,7 @@ def plot_box_by_network(df):
     stations = df['Network'].unique()
     freq_rel = df['Network'].value_counts(normalize=True)
     norm = plt.Normalize(freq_rel.min(), freq_rel.max())
-    cmap = sns.cubehelix_palette(start=.75, rot=-.25, as_cmap=True)
+    cmap = sns.color_palette('magma', as_cmap=True)
     station_colors = {station: cmap(norm(freq_rel[station])) for station in stations}
     plt.figure(figsize=(27, 9))
     ax = plt.gca()
@@ -60,16 +60,17 @@ def plot_box_by_network(df):
         x='Network', y='prob_nat',
         data=df, color='black', size=1, jitter=True, alpha=0.5
     )
-    plt.title('Boxplot da Probabilidade Natural por Rede')
+    plt.title(f'Boxplot da Probabilidade Natural por Rede  - Total de Eventos: {df.shape[0]}')
     plt.xlabel('Rede')
     plt.ylabel('Probabilidade Natural')
     plt.xticks(rotation=45)
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
     sm.set_array([])
     cbar = plt.colorbar(sm, ax=ax, orientation='vertical')
-    cbar.set_label(f'Frequência Relativa - Total de Eventos: {df.shape[0]}')
-    cbar.set_ticks([freq_rel.min(), freq_rel.max()])
-    cbar.set_ticklabels([f'{freq_rel.min():.2f}', f'{freq_rel.max():.2f}'])
+    cbar.set_label(f'Frequência Relativa (%)')
+    ticks = np.linspace(freq_rel.min(), freq_rel.max(), 5)
+    cbar.set_ticks(ticks)
+    cbar.set_ticklabels([f'{t * 100:.2f}' for t in ticks])
     plt.savefig('files/figures/pos_process/plots/boxplots/boxplot_rede.png')
 
     plt.show()
@@ -77,8 +78,7 @@ def plot_box_by_network(df):
 
 def plot_box_by_station(df):
     df = df.reset_index()
-    cmap = sns.cubehelix_palette(
-        dark=.25, light=.75, start=.5, rot=-.75, as_cmap=True)
+    cmap = sns.color_palette('magma', as_cmap=True)
     networks = df['Network'].unique()
 
     for network in networks:
@@ -99,18 +99,17 @@ def plot_box_by_station(df):
                 x='Station', y='prob_nat',
                 data=network_data, color='red', jitter=True, size=1.5, alpha=0.5
             )
-        ax.set_title(f'Boxplot da Probabilidade Natural por Estação para a Rede {network}')
+        ax.set_title(f'Boxplot da Probabilidade Natural por Estação para a Rede {network} - Total de Eventos: {network_data.shape[0]}')
         ax.set_xlabel('Estação')
         ax.set_ylabel('Probabilidade Natural')
         plt.xticks(rotation=45)
         sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
         sm.set_array([])
         cbar = plt.colorbar(sm, orientation='vertical', ax=ax)
-        cbar.set_label(f'Frequência Relativa (Total: {network_data.shape[0]})')
-        ticks = np.linspace(0, 1, num=5)
+        cbar.set_label(f'Frequência Relativa (%)')
+        ticks = np.linspace(freq_rel.min(), freq_rel.max(), 5)
         cbar.set_ticks(ticks)
-        cbar.set_ticklabels([f'{norm(t) * 100:.0f}%' for t in ticks])
-
+        cbar.set_ticklabels([f'{t * 100:.2f}' for t in ticks])
         plt.savefig(f'files/figures/pos_process/plots/boxplots/boxplot_{network}.png')
         plt.show()
 
