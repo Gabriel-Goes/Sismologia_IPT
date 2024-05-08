@@ -2,7 +2,7 @@
 # Python 3.11.8
 # ./Classificador_Sismologico/pyscripts/ProcessarDadosSismologicos.py
 
-# ----------------------------  DESCRIPTION  -----------------------------------
+# ----------------------------  DESCRIPTION  ----------------------------------
 # Script para gerar catálogo de eventos sísmicos
 # Autor: Gabriel Góes Rocha de Lima
 # Versão: 0.2
@@ -10,7 +10,6 @@
 # Modificação mais recente: 2024-04-10
 
 # ----------------------------  IMPORTS   -------------------------------------
-import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -20,7 +19,6 @@ from matplotlib.cm import ScalarMappable
 import seaborn as sns
 
 import obspy
-from obspy import UTCDateTime
 
 from shapely.geometry import Point
 import geopandas as gpd
@@ -33,9 +31,15 @@ from data_analysis.test_filters import parsewindow, filterCombos, prepare
 # ------------------------------ Functions ---------------------------------- #
 def plot_box_dist(df):
     fig, axes = plt.subplots(1, 3, figsize=(18, 5))
-    sns.histplot(df[df['nature'] == 'Natural']['prob_nat'], bins=20, kde=True, ax=axes[0], color='blue')
+    sns.histplot(
+        df[df['nature'] == 'Natural']['prob_nat'],
+        bins=20, kde=True, ax=axes[0], color='blue'
+    )
     axes[0].set_title('Distribuição de prob_nat para Eventos Naturais')
-    sns.histplot(df[df['nature'] == 'Anthropogenic']['prob_nat'], bins=20, kde=True, ax=axes[1], color='red')
+    sns.histplot(
+        df[df['nature'] == 'Anthropogenic']['prob_nat'],
+        bins=20, kde=True, ax=axes[1], color='red'
+    )
     axes[1].set_title('Distribuição de prob_nat para Eventos Antrópicos')
     sns.boxplot(x='nature', y='Distance', data=df, ax=axes[2])
     axes[2].set_title('Boxplot da Distância por Natureza do Evento')
@@ -48,8 +52,12 @@ def plot_box_by_network(df):
     stations = df['Network'].unique()
     freq_rel = df['Network'].value_counts(normalize=True)
     norm = plt.Normalize(freq_rel.min(), freq_rel.max())
-    cmap = sns.cubehelix_palette(start=.75, rot=-.25, as_cmap=True)
-    station_colors = {station: cmap(norm(freq_rel[station])) for station in stations}
+    cmap = sns.cubehelix_palette(
+        dark=.25, light=.75, start=.5, rot=-.75, as_cmap=True
+    )
+    station_colors = {
+        station: cmap(norm(freq_rel[station])) for station in stations
+    }
     plt.figure(figsize=(27, 9))
     ax = plt.gca()
     sns.boxplot(
@@ -99,7 +107,9 @@ def plot_box_by_station(df):
             x='Station', y='prob_nat',
             data=network_data, color='red', jitter=True, size=1.5, alpha=0.5
         )
-        ax.set_title(f'Boxplot da Probabilidade Natural por Estação para a Rede {network}')
+        ax.set_title(
+            f'Probabilidade Natural por Estação para a Rede {network}'
+        )
         ax.set_xlabel('Estação')
         ax.set_ylabel('Probabilidade Natural')
         plt.xticks(rotation=45)
@@ -262,7 +272,9 @@ def plot_hist_hour_distribution(df):
     # Legenda: Commercial e Não-Comercial
     plt.legend(['Não-Comercial'], loc='upper right')
     # save figure
-    plt.savefig('files/figures/pos_process/pos_process/plots/histogramas/hist_hora.png')
+    plt.savefig(
+        'files/figures/pos_process/pos_process/plots/histogramas/hist_hora.png'
+    )
     plt.show()
 
 
@@ -579,29 +591,53 @@ def snr_p(picks: pd.DataFrame,
     return picks, dict_filt
 
 
-def plot_hist_snrs_distribution(df):
-    plt.figure(figsize=(10, 6))
-    # Remove the first and last values to avoid outliers
-    df = df[(df['SNR_P'] > 0) & (df['SNR_P'] < 15)]
-    df['SNR_P'].plot(kind='box', color='lightskyblue')
-    plt.title('Distribuição de SNR_P')
-    plt.xlabel('SNR_P')
-    plt.ylabel('Frequência')
-    plt.tight_layout()
-    plt.savefig('files/figures/pos_process/dist_snrs.png')
-    plt.show()
-
-
-# Calculate the mean SNR_P for each Event
-def mean_snrp(df):
-    df = df.reset_index()
-    df = df.groupby(['Event', 'pred']).agg({'SNR_P': 'mean'})
-    df['Mean SNR_P_cat'] = df['SNR_P'].apply(class_snrp)
+# CALCULATE MEAN SNR_P FOR EVENT
+def mean_snr_event(df):
+    df['Mean SNR_P'] = df.index.get_level_values('Event').map(
+        df.reset_index().groupby('Event')['SNR_P'].mean()
+    )
+    df['Mean SNR_P_cat'] = pd.Categorical(
+        df['Mean SNR_P'].apply(class_snrp),
+        categories=[
+            '< 1', '[1-2[', '[2-3[', '[3-4[', '[4-5[', '[5-6[', '[6-7[',
+            '[7-8[', '[8-9[', '[9-10[', '[10-11[', '[11-12[', '[12-13[',
+            '[13-14[', '[14-15[', '>= 15'
+        ],
+        ordered=True
+    )
     return df
+
+
+def mean_mag_event(df):
+    df['Mean Mag'] = df.index.get_level_values('Event').map(
+        df.reset_index().groupby('Event')['MLv'].mean()
+    )
+    df['Mean Mag_cat'] = pd.Categorical(
+        df['Mean Mag'].apply(class_mag),
+        categories=['<1', '[1-2[', '[2-3[', '>=3'],
+        ordered=True
+    )
+    return df
+
+
+def mean_dist_event(df):
+    df['Mean Distance'] = df.index.get_level_values('Event').map(
+        df.reset_index().groupby('Event')['Distance'].mean()
+    )
+    df['Mean Distance_cat'] = pd.Categorical(
+        df['Mean Distance'].apply(class_dist),
+        categories=[
+            '<50', '[50-100[', '[100-150[', '[150-200[', '[200-250[',
+            '[250-300[', '>=300'
+        ],
+        ordered=True
+    )
+    return df
+
 
 def class_snrp(snr):
     if snr < 1:
-        return '<1'
+        return '< 1'
     elif 1 <= snr < 2:
         return '[1-2['
     elif 2 <= snr < 3:
@@ -634,23 +670,22 @@ def class_snrp(snr):
         return '>= 15'
 
 
-# Plot histogram of the mean SNR_P for each Event
-def plot_mean_snrp_event(df):
+# HISTOGRAM SNR FOR PICK
+def plot_hist_snrs_distribution(df):
     plt.figure(figsize=(10, 6))
-    df = mean_snrp(df)
-    df.loc[df['Mean SNR_P'] > 50, 'Mean SNR_P'] = 99
-    df['Mean SNR_P'].plot(kind='hist', bins=25, color='lightskyblue')
-    plt.title('Distribuição da Média de SNR_P por Evento')
-    plt.xlabel('Média de SNR_P')
+    # Remove the first and last values to avoid outliers
+    df = df[(df['SNR_P'] > 0) & (df['SNR_P'] < 15)]
+    df['SNR_P'].plot(kind='box', color='lightskyblue')
+    plt.title('Distribuição de SNR_P')
+    plt.xlabel('SNR_P')
     plt.ylabel('Frequência')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/dist_mean_snrs.png')
+    plt.savefig('files/figures/pos_process/dist_snrs.png')
     plt.show()
 
 
-def plot_hist_snrs_recall_pick(df):
+def plot_hist_snr_recall_pick(df):
     fig, ax = plt.subplots(figsize=(10, 6))
-    # Categoriers of SNR_P
     cat = [
         '< 1', '[1-2[', '[2-3[', '[3-4[', '[4-5[', '[5-6[', '[6-7[', '[7-8[',
         '[8-9[', '[9-10[', '[10-11[', '[11-12[', '[12-13[', '[13-14[',
@@ -667,11 +702,13 @@ def plot_hist_snrs_recall_pick(df):
     sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
     sm.set_array([])
     rc_min = 90
+    total = 0
     for c, b in zip(f_rel.index, f_abs.index):
         f_a = f_abs.loc[b]
         freq = f_rel.loc[c] * 100
         color = sm.to_rgba(freq)
         if f_a > 0:
+            total += f_a
             df_c = df[df['SNR_P_cat'] == c]
             TP = df_c[(df_c['pred'] == 0) & (df_c['label_cat'] == 0)].shape[0]
             FN = df_c[(df_c['pred'] == 1) & (df_c['label_cat'] == 0)].shape[0]
@@ -680,9 +717,13 @@ def plot_hist_snrs_recall_pick(df):
             ax.text(c, rc + 0.01, f'{rc:.2f}%', ha='center', va='bottom')
             ax.text(b, rc + 1.5, f'{f_a}', ha='center', va='bottom')
             rc_min = rc if rc < rc_min else rc_min
+        else:
+            ax.bar(c, 0, color=sm.to_rgba(0), edgecolor='black', width=0.5)
+            ax.text(c, 0 + 0.01, '0.00%', ha='center', va='bottom')
+            ax.text(b, 0 + 1.5, '0', ha='center', va='bottom')
 
     cbar = fig.colorbar(sm, ax=ax)
-    plt.title('Recall por SNR_P Pick')
+    plt.title(f'Recall por SNR_P Pick - Total de Eventos: {total}')
     cbar.ax.set_ylabel('Frequency (%)')
     cbar.set_ticks([min_freq, max_freq])
     plt.ylim(rc_min - 5, 110)
@@ -694,44 +735,66 @@ def plot_hist_snrs_recall_pick(df):
     plt.show()
 
 
-def plot_mean_srnp_recall_event(df):
-    df = mean_snrp(df)
+# HISTOGRAM  MEAN SNR FOR EVENT
+def plot_mean_snr_recall_event(df):
+    df_ = df.groupby(level='Event').first()
     fig, ax = plt.subplots(figsize=(10, 6))
-    cat = [
-        '< 1', '[1-2[', '[2-3[', '[3-4[', '[4-5[', '[5-6[', '[6-7[', '[7-8[',
-        '[8-9[', '[9-10[', '[10-11[', '[11-12[', '[12-13[', '[13-14[',
-        '[14-15[', '>= 15'
-    ]
-    df['Mean SNR_P_cat'] = pd.Categorical(
-        df['Mean SNR_P_cat'], categories=cat, ordered=True
-    )
-    f_rel = df['Mean SNR_P_cat'].value_counts(normalize=True).sort_index()
-    f_abs = df['Mean SNR_P_cat'].value_counts().sort_index()
+    f_rel = df_['Mean SNR_P_cat'].value_counts(normalize=True).sort_index()
+    f_abs = df_['Mean SNR_P_cat'].value_counts().sort_index()
     max_freq = f_rel.max() * 100
     min_freq = f_rel.min() * 100
     norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
     sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
     sm.set_array([])
     rc_min = 90
-    for c, b in zip(f_rel.index, f_abs.index):
-        f_a = f_abs.loc[b]
-        freq = f_rel.loc[c] * 100
+    total = 0
+    for r, a in zip(f_rel.index, f_abs.index):
+        f_a = f_abs.loc[a]
+        freq = f_rel.loc[r] * 100
+        mean_dist = df_[df_['Mean SNR_P_cat'] == r]['Mean Distance'].mean()
+        mean_mag = df_[df_['Mean SNR_P_cat'] == r]['Mean Mag'].mean()
+        nb_sta = df[df['Mean SNR_P_cat'] == r].shape[0]/f_a
         color = sm.to_rgba(freq)
         if f_a > 0:
-            df_c = df[df['Mean SNR_P_cat'] == c]
+            total += f_a
+            df_c = df_[df_['Mean SNR_P_cat'] == r]
             TP = df_c[(df_c['pred'] == 0) & (df_c['label_cat'] == 0)].shape[0]
             FN = df_c[(df_c['pred'] == 1) & (df_c['label_cat'] == 0)].shape[0]
             rc = 100 * TP / (TP + FN) if TP + FN != 0 else 0
-            ax.bar(c, rc, color=color, edgecolor='black', width=0.5)
-            ax.text(c, rc + 0.01, f'{rc:.2f}%', ha='center', va='bottom')
-            ax.text(b, rc + 1.5, f'{f_a}', ha='center', va='bottom')
+            # Reduce font size of ax.text
+            ax.bar(r, rc, color=color, edgecolor='black', width=0.5)
+            ax.text(
+                r, rc + 0.01, f'{rc:.2f}%',
+                ha='center', va='bottom', fontsize=8, fontweight='bold'
+            )
+            ax.text(
+                a, rc + 1.5,
+                f'#Freq.: {f_a}', ha='center', va='bottom',
+                fontsize=8
+            )
+            ax.text(
+                a, rc + 2.5,
+                f'#Est.: {nb_sta:.1f}', ha='center', va='bottom', fontsize=8
+            )
+            ax.text(
+                a, rc + 3.5,
+                f'Dist.: {mean_dist:.0f}km', ha='center', va='bottom', fontsize=8
+            )
+            ax.text(
+                a, rc + 4.5,
+                f'Mag.: {mean_mag:.1f}', ha='center', va='bottom', fontsize=8
+            )
             rc_min = rc if rc < rc_min else rc_min
+        else:
+            ax.bar(r, 0, color=sm.to_rgba(0), edgecolor='black', width=0.5)
+            ax.text(r, 0 + 0.01, '0.00%', ha='center', va='bottom')
+            ax.text(a, 0 + 1.5, '0', ha='center', va='bottom')
 
     cbar = fig.colorbar(sm, ax=ax)
-    plt.title('Recall por Média de SNR_P por Evento')
+    plt.title(f'Recall por Média de SNR_P por Evento - Total {df.shape[0]}')
     cbar.ax.set_ylabel('Frequency (%)')
     cbar.set_ticks([min_freq, max_freq])
-    plt.ylim(rc_min - 5, 110)
+    plt.ylim(rc_min - 5, 105)
     plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
     plt.xlabel('Média de SNR_P')
     plt.ylabel('Recall (%)')
@@ -744,74 +807,57 @@ def plot_mean_srnp_recall_event(df):
 def class_region(df):
     regions = gpd.read_file('files/figures/maps/macrorregioesBrasil.json')
     regions = regions.to_crs(epsg=4326)
-    coord_pick = gpd.GeoDataFrame(
-        df,
-        geometry=[Point(x, y) for x, y in zip(df['Longitude'], df['Latitude'])],
-        crs='EPSG:4326'
-    )
     coord_origem = gpd.GeoDataFrame(
         df,
-        geometry=[Point(x, y) for x, y in zip(df['Origem Longitude'], df['Origem Latitude'])],
+        geometry=[Point(x, y) for x, y in zip(
+            df['Origem Longitude'], df['Origem Latitude']
+        )],
         crs='EPSG:4326'
     )
-    region_pick = gpd.sjoin(coord_pick, regions, how='left', op='within')
     region_origem = gpd.sjoin(coord_origem, regions, how='left', op='within')
-    df['Região Pick'] = region_pick['nome'].values
     df['Região Origem'] = region_origem['nome'].values
+
+    return df
 
 
 def plot_region_correlation(df):
     df = df.reset_index()
     df = class_region(df)
-    df = df[df['Região Pick'].notna() & df['Região Origem'].notna()]
-    freq_pick = df['Região Pick'].value_counts(normalize=True)
+    df = df[df['Região Origem'].notna()]
     freq_orig = df['Região Origem'].value_counts(normalize=True)
-    order_pick = freq_pick.index.tolist()
     order_orig = freq_orig.index.tolist()
     cmap = plt.get_cmap('magma')
-    norm_pick = mcolors.Normalize(vmin=freq_pick.min(), vmax=freq_pick.max())
     norm_orig = mcolors.Normalize(vmin=freq_orig.min(), vmax=freq_orig.max())
-    pick_colors = {
-        region: cmap(norm_pick(freq)) for region, freq in freq_pick.items()
-    }
     orig_colors = {
         region: cmap(norm_orig(freq)) for region, freq in freq_orig.items()
     }
-    fig, axes = plt.subplots(1, 2, figsize=(18, 6))
+    plt.figure(figsize=(18, 6))
     plt.suptitle('Correlação entre Coordenada e Probabilidade de ser Natural')
     sns.boxplot(
-        x='Região Pick', y='prob_nat', data=df,
-        ax=axes[0], palette=pick_colors, showfliers=False, order=order_pick
-    )
-    sns.stripplot(
-        x='Região Pick', y='prob_nat', data=df, ax=axes[0], color='black',
-        size=1, jitter=True, alpha=0.5, order=order_pick
-    )
-    sns.boxplot(
         x='Região Origem', y='prob_nat', data=df,
-        ax=axes[1], palette=orig_colors, showfliers=False, order=order_orig
+        palette=orig_colors, showfliers=False, order=order_orig,
+        medianprops={'color': 'yellow'}, whiskerprops={'color': 'black'},
+        meanline=True, showmeans=True, meanprops={'color': 'yellow'}
     )
     sns.stripplot(
-        x='Região Origem', y='prob_nat', data=df, ax=axes[1], color='black',
-        size=1, jitter=True, alpha=0.5, order=order_orig
+        x='Região Origem', y='prob_nat', data=df, color='red',
+        size=1.5, jitter=True, alpha=0.5, order=order_orig
     )
-    axes[0].set_title(
-        'Coordenada do Pick'
-    )
-    axes[1].set_title(
+    plt.title(
         'Coordenada de Origem'
     )
-    sm = ScalarMappable(cmap=cmap, norm=norm_pick)
+    sm = ScalarMappable(cmap=cmap, norm=norm_orig)
     sm.set_array([])
-    cbar = plt.colorbar(sm, ax=axes, orientation='vertical')
+    cax = plt.axes([0.92, 0.1, 0.02, 0.8])
+    cbar = plt.colorbar(sm, orientation='vertical', cax=cax)
     cbar.set_label('Frequência Relativa')
     cbar.set_ticks([
-        freq_pick.min(),
-        freq_pick.max()
+        freq_orig.min(),
+        freq_orig.max()
     ])
     cbar.set_ticklabels([
-        f'{freq_pick.min() * 100:.0f}%',
-        f'{freq_pick.max() * 100:.0f}%'
+        f'{freq_orig.min() * 100:.0f}%',
+        f'{freq_orig.max() * 100:.0f}%'
     ])
     plt.savefig('files/figures/pos_process/region_corr.png')
     plt.show()
@@ -819,51 +865,35 @@ def plot_region_correlation(df):
 
 # --------------------------- Create files
 def load_data():
-    # Load the validation network level
-    try:
-        evs = pd.read_csv('files/events/events.csv')
-    # If file does not exist
-    except Exception as e:
-        print(f'Error: {e}')
-        # Open the most recent file of the 'files/events/.bkp/' directory
-        ev_bkp = sorted(os.listdir('files/events/.bkp/'))[-1]
-        print(f'Loaded the most recent bkp file: {ev_bkp}')
-        # Ask if want to continue
-        if input('Do you want to continue? (y/n)') == 'n':
-            return
-        evs = pd.read_csv('files/events/.bkp/' + ev_bkp)
-
+    evs = pd.read_csv('files/events/events.csv')
     evs['file_name'] = evs['Path'].apply(
         lambda x: x.split('/')[-1].split('.')[0]
     )
-    df_nc_val = pd.read_csv('files/output/no_commercial/validation_station_level.csv')
-    df_c_val = pd.read_csv('files/output/commercial/validation_station_level.csv')
+    df_nc_val = pd.read_csv(
+        'files/output/no_commercial/validation_station_level.csv'
+    )
     df_nc = pd.merge(df_nc_val, evs, on='file_name', how='left')
-    df_c = pd.merge(df_c_val, evs, on='file_name', how='left')
     df_nc.set_index(['Event', 'Station'], inplace=True)
-    df_nc.dropna(subset=['Origin Time'], inplace=True)  # Devido o código de Hourcade ler todos os MSEEDS da pasta, é necessário filtrar os eventos que estão na pasta mas não estão no evs
     picks, dict_filt = snr_p(df_nc, 5)
-    df_nc = mean_snrp(df_nc)
+    df_nc = class_region(df_nc)
+    df_nc = mean_snr_event(df_nc)
+    df_nc = mean_mag_event(df_nc)
+    df_nc = mean_dist_event(df_nc)
 
-    df_nc['Hora'] = df_nc['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
-    df_nc['Coord Origem'] = df_nc[['Origem Latitude', 'Origem Longitude']].apply(
-        lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1
-    )
-    df_nc['Coord Pick'] = df_nc[['Latitude', 'Longitude']].apply(
-        lambda x: [x['Latitude'], x['Longitude']], axis=1
-    )
-    df_nc.loc[:, 'prob_nat_cat'] = df_nc['prob_nat'].apply(class_prob)
-    df_nc.loc[:, 'Distance_cat'] = df_nc['Distance'].apply(class_dist)
+    # df_nc.loc[:, 'prob_nat_cat'] = df_nc['prob_nat'].apply(class_prob)
+    # df_nc.loc[:, 'Distance_cat'] = df_nc['Distance'].apply(class_dist)
     df_nc.loc[:, 'Magnitude_cat'] = df_nc['MLv'].apply(class_mag)
     df_nc.loc[:, 'SNR_P_cat'] = df_nc['SNR_P'].apply(class_snrp)
     df_nc.loc[:, 'Mean SNR_P_cat'] = df_nc['Mean SNR_P'].apply(class_snrp)
 
-    # df_nc = class_region(df_nc)
+    # df_nc['Hora'] = df_nc['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
+    df_nc['Coord Origem'] = df_nc[
+        ['Origem Latitude', 'Origem Longitude']
+    ].apply(lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1)
 
     # df_nc.to_csv('files/output/no_commercial/df_nc_pos.csv', index=True)
-    # df_c.to_csv('files/output/commercial/df_c_pos.csv', index=True)
 
-    return df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt
+    return df_nc, evs
 
 
 def non_commercial(df):
@@ -880,27 +910,26 @@ def non_commercial(df):
     # plot_hist_magnitude_recall(df)
     # ----------------------------------
     # plot_hist_snrs_distribution(df)
-    # plot_hist_snrs_recall(df)
+    # plot_hist_snr_recall_pick(df)
+    plot_mean_snr_recall_event(df)
     # ----------------------------------
     # plot_box_dist(df)
     # plot_box_by_network(df)
     # plot_box_by_station(df)
     # plot_region_correlation(df)
-    # ----------------------------------
-    plot_hist_snrs_recall_pick(df)
 
     return
 
 
-# -------------------------------- Main -------------------------------------- #
+# -------------------------------- Main ------------------------------------- #
 def main():
-    df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt = load_data()
+    df, evs = load_data()
 
-    non_commercial(df_nc)
+    non_commercial(df)
     # commercial(df_c)
 
-    return df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt
+    return df, evs
 
 
 if __name__ == '__main__':
-    df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt = main()
+    df, evs = main()

@@ -40,12 +40,13 @@ from pyrocko import pile
 
 # ------------------------------ FUNCTIONS ---------------------------------- #
 # GET TRACES AND DATA
-def get(startime: datetime.datetime,
-        endtime: datetime.datetime,
-        network: str,
-        station: str,
-        location: str,
-        channel: str) -> Trace:
+def get(
+    startime: datetime.datetime,
+    endtime: datetime.datetime,
+    network: str,
+    station: str,
+    location: str,
+    channel: str) -> Trace:
     '''
     Get a trace from a given network, station, location and channel
     between the given startime and endtime.
@@ -513,6 +514,7 @@ if __name__ == '__main__':
 
 # ----------------------------- DEPRECATED ---------------------------------- #
 # WRITES OUTPUT TO FILE
+
 def write(data):
     raise Exception("No funciona mais!")
 

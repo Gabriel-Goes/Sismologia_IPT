@@ -37,7 +37,7 @@ def download_waveforms(
     '''
     if random:
         np.random.seed(42)
-        random_offset = np.random.randint(10, 21)
+        random_offset = np.random.randint(5, 21)
         start_time = pick_time - random_offset
         end_time = start_time + 60  # Mantém a janela de 60 segundos
     else:
