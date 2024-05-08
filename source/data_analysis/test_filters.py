@@ -147,7 +147,7 @@ def filterCombos(
 
     filtros = list()
 
-    for j in np.arange(start, end - minw + 1., 1.):
+    for j in tqdm(np.arange(start, end - minw + 1., 1.)):
         for i in np.arange(j, end + 1., 1.):
             if (i - j) >= minw and (i - j) <= maxw:
                 filtros.append(

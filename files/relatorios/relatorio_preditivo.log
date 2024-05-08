@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.9.18)  7 MAY 2024 16:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.9.18)  8 MAY 2024 18:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1669,8 +1669,111 @@ Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: tex)
 
 Enter file name: 
-! Interruption.
+(/usr/share/texlive/texmf-dist/tex/latex/tools/.tex File ignored)
+
+! LaTeX Error: File `preditivo_relatorio/tex/atividades_resultados.tex' not fou
+nd.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+(/usr/share/texlive/texmf-dist/tex/latex/tools/.tex File ignored)
+
+! LaTeX Error: File `preditivo_relatorio/tex/consideracoes_finais.tex' not foun
+d.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+(/usr/share/texlive/texmf-dist/tex/latex/tools/.tex File ignored))
+No file relatorio_preditivo.bbl.
+
+AED: lastpage setting LastPage
+
+LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 39.
+
+
+
+! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
+ng draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.39 \end{document}
+                   
+? 
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 9.49997pt on input line 39.
+
+LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 39.
+
+
+LaTeX Warning: File `tex/figuras_tex/footImageCalibr.png' not found on input li
+ne 39.
+
+
+! Package pdftex.def Error: File `tex/figuras_tex/footImageCalibr.png' not foun
+d: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.39 \end{document}
+                   
+? 
+
+Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
+ Make it at least 72.26999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
 <to be read again> 
-                   }
-l.5 \input{preditivo_relatorio/tex/introducao.tex}
-   
+                   \relax 
+l.39 \end{document}
+                    [1
+
+]
+(/home/ipt/projetos/ClassificadorSismologico/files/relatorios//relatorio_predit
+ivo.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `relatorio_preditivo.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `relatorio_preditivo.out':
+(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
+(rerunfilecheck)             After:  C52BBF5DD7DD96CBF3CB1B340FB1E485;70.
+ ) 
+Here is how much of TeX's memory you used:
+ 27939 strings out of 476091
+ 518217 string characters out of 5794081
+ 1856330 words of memory out of 5000000
+ 47803 multiletter control sequences out of 15000+600000
+ 531314 words of font info for 48 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 99i,15n,104p,1613b,2702s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/
+fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf/fonts/type1/public/c
+m-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uh
+vb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on /home/ipt/projetos/ClassificadorSismologico/files/relatorios/
+/relatorio_preditivo.pdf (4 pages, 70693 bytes).
+PDF statistics:
+ 47 PDF objects out of 1000 (max. 8388607)
+ 7 named destinations out of 1000 (max. 500000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -19,12 +19,13 @@ from matplotlib.cm import ScalarMappable
 import seaborn as sns
 
 import obspy
+from obspy.core import AttribDict
 
 from shapely.geometry import Point
 import geopandas as gpd
 
 from tqdm import tqdm
-from data_analysis.test_filters import parsewindow, filterCombos, prepare
+from data_analysis.test_filters import parsewindow, prepare
 
 
 # ----------------------------- DATA VIZ ------------------------------------ #
@@ -558,10 +559,14 @@ def plot_hist_stations_recall(df):
 
 
 # --------------------------- SNR Histograms
-def snr_p(picks: pd.DataFrame,
-          window: int) -> [pd.DataFrame, dict]:
-    picks.sort_index(inplace=True)
-    for index, pick in tqdm(picks.iterrows()):
+def snr(events: pd.DataFrame,
+        window: int) -> [pd.DataFrame, dict]:
+    events.sort_index(inplace=True)
+    filtro = AttribDict({
+        'pa': 2.0, 'pb': 49.0,
+        'noise': '', 'p': '', 's': '', 'snrp': '', 'snrs': ''
+    })
+    for index, pick in tqdm(events.iterrows()):
         nw = str(obspy.UTCDateTime(pick['Pick Time']) - 9) + '/8'
         pw = str(obspy.UTCDateTime(pick['Pick Time'])) + '/' + str(window)
         sw = str(obspy.UTCDateTime(pick['Pick Time']) + 20) + '/5'
@@ -569,26 +574,22 @@ def snr_p(picks: pd.DataFrame,
         pwindow = parsewindow(pw)
         swindow = parsewindow(sw)
         st = obspy.read(pick['Path'])
-        trace = st[0]
-
-        filtros = filterCombos(1., 49., 4., 49.)
-        dict_filt = {f'{f.pa}_{f.pb}': f for f in filtros}
-        filtro_bom = dict_filt['2.0_49.0']
         noise, trace_p, trace_s = prepare(
-            trace,
-            filtro_bom,
-            noisewindow, pwindow, swindow)
+            st[0],
+            filtro,
+            noisewindow, pwindow, swindow
+        )
+        filtro.noise = np.mean(np.abs(noise))
+        filtro.p = np.mean(np.abs(trace_p))
+        filtro.s = np.mean(np.abs(trace_s))
+        filtro.snrp = filtro.p / filtro.noise
+        filtro.snrs = filtro.s / filtro.noise
+        events.loc[index, 'SNR_P'] = filtro.snrp
+        events.loc[index, 'SNR_S'] = filtro.snrs
+        events.loc[index, 'Noise'] = filtro.noise
+        events.loc[index, 'p'] = filtro.p
 
-        filtro_bom.noise = np.mean(np.abs(noise))
-        filtro_bom.p = np.mean(np.abs(trace_p))
-        filtro_bom.s = np.mean(np.abs(trace_s))
-        filtro_bom.snrp = filtro_bom.p / filtro_bom.noise
-        filtro_bom.snrs = filtro_bom.s / filtro_bom.noise
-        picks.loc[index, 'SNR_P'] = filtro_bom.snrp
-        picks.loc[index, 'Noise'] = filtro_bom.noise
-        picks.loc[index, 'p'] = filtro_bom.p
-
-    return picks, dict_filt
+    return events
 
 
 # CALCULATE MEAN SNR_P FOR EVENT
