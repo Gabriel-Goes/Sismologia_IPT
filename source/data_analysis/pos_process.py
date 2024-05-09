@@ -20,6 +20,7 @@ import seaborn as sns
 
 import obspy
 from obspy.core import AttribDict
+from obspy import UTCDateTime
 
 from shapely.geometry import Point
 import geopandas as gpd
@@ -272,9 +273,8 @@ def plot_hist_hour_distribution(df):
     plt.ylabel('Frequência')
     # Legenda: Commercial e Não-Comercial
     plt.legend(['Não-Comercial'], loc='upper right')
-    # save figure
     plt.savefig(
-        'files/figures/pos_process/pos_process/plots/histogramas/hist_hora.png'
+        'files/figures/pos_process/hist_hora.png'
     )
     plt.show()
 
@@ -567,7 +567,7 @@ def snr(events: pd.DataFrame,
         'noise': '', 'p': '', 's': '', 'snrp': '', 'snrs': ''
     })
     for index, pick in tqdm(events.iterrows()):
-        nw = str(obspy.UTCDateTime(pick['Pick Time']) - 9) + '/8'
+        nw = str(obspy.UTCDateTime(pick['Pick Time']) - 4.9) + '/4'
         pw = str(obspy.UTCDateTime(pick['Pick Time'])) + '/' + str(window)
         sw = str(obspy.UTCDateTime(pick['Pick Time']) + 20) + '/5'
         noisewindow = parsewindow(nw)
@@ -875,49 +875,49 @@ def load_data():
     )
     df_nc = pd.merge(df_nc_val, evs, on='file_name', how='left')
     df_nc.set_index(['Event', 'Station'], inplace=True)
-    picks, dict_filt = snr_p(df_nc, 5)
+    df_nc = snr(df_nc, 3)
     df_nc = class_region(df_nc)
     df_nc = mean_snr_event(df_nc)
     df_nc = mean_mag_event(df_nc)
     df_nc = mean_dist_event(df_nc)
 
-    # df_nc.loc[:, 'prob_nat_cat'] = df_nc['prob_nat'].apply(class_prob)
-    # df_nc.loc[:, 'Distance_cat'] = df_nc['Distance'].apply(class_dist)
+    df_nc.loc[:, 'prob_nat_cat'] = df_nc['prob_nat'].apply(class_prob)
+    df_nc.loc[:, 'Distance_cat'] = df_nc['Distance'].apply(class_dist)
     df_nc.loc[:, 'Magnitude_cat'] = df_nc['MLv'].apply(class_mag)
     df_nc.loc[:, 'SNR_P_cat'] = df_nc['SNR_P'].apply(class_snrp)
     df_nc.loc[:, 'Mean SNR_P_cat'] = df_nc['Mean SNR_P'].apply(class_snrp)
 
-    # df_nc['Hora'] = df_nc['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
+    df_nc['Hora'] = df_nc['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
     df_nc['Coord Origem'] = df_nc[
         ['Origem Latitude', 'Origem Longitude']
     ].apply(lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1)
 
-    # df_nc.to_csv('files/output/no_commercial/df_nc_pos.csv', index=True)
+    df_nc.to_csv('files/output/no_commercial/df_nc_pos.csv', index=True)
 
     return df_nc, evs
 
 
 def non_commercial(df):
     # plot_hist_hour_distribution(df)
-    # plot_hist_hour_recall(df)
+    plot_hist_hour_recall(df)
     # ----------------------------------
     # plot_hist_station_distribution(df)
-    # plot_hist_stations_recall(df)
+    plot_hist_stations_recall(df)
     # ----------------------------------
     # plot_hist_distance_distribution(df)
-    # plot_hist_distance_recall(df)
+    plot_hist_distance_recall(df)
     # ----------------------------------
     # plot_hist_magnitude_distribution(df)
-    # plot_hist_magnitude_recall(df)
+    plot_hist_magnitude_recall(df)
     # ----------------------------------
     # plot_hist_snrs_distribution(df)
-    # plot_hist_snr_recall_pick(df)
+    plot_hist_snr_recall_pick(df)
     plot_mean_snr_recall_event(df)
     # ----------------------------------
     # plot_box_dist(df)
     # plot_box_by_network(df)
     # plot_box_by_station(df)
-    # plot_region_correlation(df)
+    plot_region_correlation(df)
 
     return
 

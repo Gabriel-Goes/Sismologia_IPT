@@ -4,18 +4,51 @@
 ========================================================================
 
  ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
-0it [00:00, ?it/s]1it [00:00,  5.47it/s]7it [00:00, 28.03it/s]13it [00:00, 38.27it/s]19it [00:00, 43.28it/s]24it [00:00, 41.86it/s]30it [00:00, 45.03it/s]36it [00:00, 47.07it/s]41it [00:01, 42.60it/s]46it [00:01, 38.82it/s]51it [00:01, 39.81it/s]57it [00:01, 43.04it/s]63it [00:01, 45.05it/s]69it [00:01, 46.85it/s]74it [00:01, 39.04it/s]80it [00:01, 40.97it/s]85it [00:02, 42.12it/s]90it [00:02, 41.96it/s]96it [00:02, 44.99it/s]102it [00:02, 47.03it/s]108it [00:02, 49.38it/s]114it [00:02, 47.71it/s]119it [00:02, 42.25it/s]124it [00:02, 43.26it/s]129it [00:03, 40.19it/s]134it [00:03, 39.91it/s]139it [00:03, 41.38it/s]144it [00:03, 38.68it/s]150it [00:03, 43.12it/s]156it [00:03, 46.59it/s]162it [00:03, 46.96it/s]167it [00:03, 44.95it/s]172it [00:04, 38.93it/s]177it [00:04, 35.35it/s]181it [00:04, 36.12it/s]185it [00:04, 36.33it/s]189it [00:04, 33.47it/s]194it [00:04, 36.31it/s]198it [00:04, 31.50it/s]203it [00:05, 35.39it/s]208it [00:05, 38.35it/s]213it [00:05, 41.27it/s]219it [00:05, 44.13it/s]225it [00:05, 47.56it/s]230it [00:05, 47.03it/s]235it [00:05, 47.14it/s]240it [00:05, 46.90it/s]245it [00:05, 46.86it/s]250it [00:06, 43.88it/s]255it [00:06, 43.09it/s]260it [00:06, 41.80it/s]265it [00:06, 43.19it/s]271it [00:06, 45.18it/s]277it [00:06, 47.96it/s]282it [00:06, 43.08it/s]287it [00:06, 40.43it/s]292it [00:07, 38.39it/s]297it [00:07, 40.89it/s]302it [00:07, 41.28it/s]307it [00:07, 42.15it/s]312it [00:07, 42.35it/s]318it [00:07, 38.31it/s]324it [00:07, 41.73it/s]329it [00:07, 43.51it/s]335it [00:08, 45.62it/s]341it [00:08, 46.33it/s]347it [00:08, 47.58it/s]353it [00:08, 48.94it/s]358it [00:08, 47.46it/s]364it [00:08, 48.66it/s]369it [00:08, 48.01it/s]374it [00:08, 44.60it/s]379it [00:08, 45.54it/s]385it [00:09, 47.20it/s]390it [00:09, 47.20it/s]395it [00:09, 46.78it/s]400it [00:09, 45.35it/s]405it [00:09, 46.31it/s]411it [00:09, 47.86it/s]417it [00:09, 48.98it/s]423it [00:09, 48.43it/s]428it [00:09, 47.99it/s]433it [00:10, 46.41it/s]438it [00:10, 45.19it/s]443it [00:10, 36.26it/s]449it [00:10, 40.20it/s]454it [00:10, 42.53it/s]459it [00:10, 44.16it/s]464it [00:10, 42.94it/s]470it [00:10, 45.62it/s]476it [00:11, 47.32it/s]481it [00:11, 47.57it/s]487it [00:11, 49.11it/s]493it [00:11, 51.04it/s]499it [00:11, 52.49it/s]505it [00:11, 51.66it/s]511it [00:11, 53.02it/s]517it [00:11, 53.67it/s]523it [00:11, 52.95it/s]529it [00:12, 48.58it/s]535it [00:12, 50.56it/s]541it [00:12, 52.15it/s]547it [00:12, 53.08it/s]553it [00:12, 52.57it/s]559it [00:12, 53.58it/s]565it [00:12, 44.89it/s]570it [00:12, 43.32it/s]576it [00:13, 45.59it/s]582it [00:13, 47.20it/s]587it [00:13, 46.83it/s]593it [00:13, 49.45it/s]599it [00:13, 49.14it/s]605it [00:13, 50.10it/s]611it [00:13, 50.65it/s]617it [00:13, 50.94it/s]623it [00:14, 52.34it/s]629it [00:14, 53.09it/s]635it [00:14, 53.87it/s]641it [00:14, 54.22it/s]647it [00:14, 45.78it/s]653it [00:14, 47.36it/s]659it [00:14, 49.47it/s]665it [00:14, 51.29it/s]671it [00:14, 52.61it/s]677it [00:15, 52.74it/s]683it [00:15, 52.58it/s]689it [00:15, 44.17it/s]694it [00:15, 38.82it/s]699it [00:15, 38.55it/s]704it [00:15, 38.07it/s]710it [00:15, 41.03it/s]715it [00:16, 43.11it/s]720it [00:16, 44.65it/s]726it [00:16, 47.53it/s]732it [00:16, 49.99it/s]738it [00:16, 51.66it/s]744it [00:16, 50.58it/s]750it [00:16, 45.37it/s]755it [00:16, 42.10it/s]760it [00:17, 36.28it/s]765it [00:17, 37.09it/s]769it [00:17, 37.67it/s]774it [00:17, 40.20it/s]780it [00:17, 44.22it/s]786it [00:17, 46.60it/s]792it [00:17, 47.85it/s]797it [00:17, 47.38it/s]803it [00:17, 48.56it/s]808it [00:18, 41.66it/s]814it [00:18, 45.10it/s]820it [00:18, 48.02it/s]826it [00:18, 50.16it/s]832it [00:18, 51.75it/s]838it [00:18, 52.57it/s]844it [00:18, 41.81it/s]849it [00:19, 41.58it/s]855it [00:19, 45.25it/s]861it [00:19, 47.13it/s]867it [00:19, 48.52it/s]873it [00:19, 50.74it/s]879it [00:19, 52.25it/s]885it [00:19, 52.96it/s]891it [00:19, 51.01it/s]897it [00:19, 43.86it/s]902it [00:20, 42.44it/s]908it [00:20, 45.36it/s]914it [00:20, 47.81it/s]919it [00:20, 43.36it/s]925it [00:20, 45.95it/s]930it [00:20, 40.42it/s]935it [00:20, 38.16it/s]940it [00:21, 39.19it/s]945it [00:21, 41.49it/s]950it [00:21, 33.74it/s]954it [00:21, 30.31it/s]958it [00:21, 32.03it/s]962it [00:21, 31.37it/s]966it [00:21, 30.86it/s]971it [00:21, 34.43it/s]975it [00:22, 35.67it/s]979it [00:22, 35.06it/s]983it [00:22, 36.07it/s]987it [00:22, 34.16it/s]991it [00:22, 34.62it/s]995it [00:22, 34.19it/s]1000it [00:22, 37.24it/s]1004it [00:22, 37.50it/s]1008it [00:23, 36.61it/s]1012it [00:23, 32.57it/s]1016it [00:23, 28.44it/s]1020it [00:23, 31.09it/s]1025it [00:23, 35.76it/s]1030it [00:23, 38.26it/s]1035it [00:23, 38.01it/s]1039it [00:23, 37.87it/s]1044it [00:24, 37.48it/s]1050it [00:24, 34.62it/s]1055it [00:24, 37.86it/s]1059it [00:24, 37.26it/s]1064it [00:24, 40.04it/s]1069it [00:24, 40.64it/s]1074it [00:24, 40.70it/s]1079it [00:24, 41.30it/s]1084it [00:25, 40.92it/s]1089it [00:25, 39.08it/s]1094it [00:25, 39.95it/s]1099it [00:25, 41.28it/s]1104it [00:25, 42.69it/s]1109it [00:25, 42.88it/s]1114it [00:25, 43.69it/s]1119it [00:25, 36.57it/s]1123it [00:26, 34.04it/s]1128it [00:26, 37.06it/s]1132it [00:26, 35.76it/s]/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/numpy/core/fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+0it [00:00, ?it/s]1it [00:00,  5.56it/s]21it [00:00, 90.39it/s]38it [00:00, 119.84it/s]52it [00:00, 126.74it/s]69it [00:00, 139.81it/s]84it [00:00, 135.16it/s]101it [00:00, 145.55it/s]120it [00:00, 157.16it/s]139it [00:01, 166.70it/s]158it [00:01, 172.14it/s]178it [00:01, 177.66it/s]198it [00:01, 180.82it/s]218it [00:01, 183.48it/s]238it [00:01, 184.87it/s]258it [00:01, 185.77it/s]278it [00:01, 186.43it/s]298it [00:01, 186.85it/s]318it [00:01, 187.11it/s]338it [00:02, 187.39it/s]358it [00:02, 187.49it/s]378it [00:02, 187.65it/s]398it [00:02, 187.51it/s]418it [00:02, 187.47it/s]438it [00:02, 187.45it/s]458it [00:02, 186.97it/s]478it [00:02, 186.57it/s]498it [00:02, 186.94it/s]518it [00:03, 186.46it/s]537it [00:03, 187.03it/s]557it [00:03, 188.33it/s]576it [00:03, 187.31it/s]595it [00:03, 186.31it/s]614it [00:03, 186.49it/s]633it [00:03, 184.66it/s]653it [00:03, 186.82it/s]672it [00:03, 186.20it/s]691it [00:03, 185.71it/s]710it [00:04, 185.45it/s]729it [00:04, 185.81it/s]748it [00:04, 185.51it/s]768it [00:04, 186.21it/s]788it [00:04, 186.06it/s]808it [00:04, 186.49it/s]828it [00:04, 186.33it/s]848it [00:04, 186.65it/s]868it [00:04, 186.33it/s]888it [00:05, 186.05it/s]908it [00:05, 188.67it/s]928it [00:05, 190.45it/s]948it [00:05, 188.89it/s]967it [00:05, 188.08it/s]986it [00:05, 186.80it/s]1005it [00:05, 185.95it/s]1024it [00:05, 186.21it/s]1043it [00:05, 185.84it/s]1062it [00:05, 186.57it/s]1081it [00:06, 186.60it/s]1100it [00:06, 183.81it/s]1119it [00:06, 183.99it/s]/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/numpy/core/fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
   return _methods._mean(a, axis=axis, dtype=dtype,
 /home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
   ret = ret.dtype.type(ret / rcount)
-1138it [00:26, 39.19it/s]1143it [00:26, 41.36it/s]1148it [00:26, 39.58it/s]1153it [00:26, 41.47it/s]1159it [00:26, 45.44it/s]1165it [00:27, 47.07it/s]1171it [00:27, 49.66it/s]1177it [00:27, 43.04it/s]1183it [00:27, 46.27it/s]1189it [00:27, 48.69it/s]1195it [00:27, 50.66it/s]1201it [00:27, 50.73it/s]1207it [00:27, 50.92it/s]1213it [00:27, 49.60it/s]1219it [00:28, 50.77it/s]1225it [00:28, 48.08it/s]1230it [00:28, 40.66it/s]1236it [00:28, 43.15it/s]1242it [00:28, 46.05it/s]1248it [00:28, 48.24it/s]1254it [00:28, 48.65it/s]1259it [00:29, 45.54it/s]1265it [00:29, 47.78it/s]1270it [00:29, 46.22it/s]1275it [00:29, 44.99it/s]1280it [00:29, 45.73it/s]1286it [00:29, 48.06it/s]1291it [00:29, 48.20it/s]1296it [00:29, 37.13it/s]1301it [00:29, 40.09it/s]1306it [00:30, 39.78it/s]1311it [00:30, 41.92it/s]1316it [00:30, 41.99it/s]1321it [00:30, 41.33it/s]1327it [00:30, 45.24it/s]1333it [00:30, 48.04it/s]1339it [00:30, 49.67it/s]1345it [00:30, 50.83it/s]1351it [00:31, 50.35it/s]1357it [00:31, 51.77it/s]1363it [00:31, 50.83it/s]1369it [00:31, 51.46it/s]1375it [00:31, 51.09it/s]1381it [00:31, 51.67it/s]1387it [00:31, 51.69it/s]1393it [00:31, 53.04it/s]1399it [00:31, 53.69it/s]1405it [00:32, 52.93it/s]1411it [00:32, 46.45it/s]1416it [00:32, 41.06it/s]1422it [00:32, 44.80it/s]1427it [00:32, 44.11it/s]1432it [00:32, 44.72it/s]1438it [00:32, 46.57it/s]1443it [00:32, 47.40it/s]1449it [00:33, 49.45it/s]1454it [00:33, 48.54it/s]1460it [00:33, 50.21it/s]1466it [00:33, 51.71it/s]1472it [00:33, 51.94it/s]1478it [00:33, 53.12it/s]1484it [00:33, 51.89it/s]1490it [00:33, 47.77it/s]1495it [00:34, 39.06it/s]1500it [00:34, 38.79it/s]1505it [00:34, 39.67it/s]1511it [00:34, 43.90it/s]1517it [00:34, 47.22it/s]1523it [00:34, 49.22it/s]1529it [00:34, 44.50it/s]1534it [00:34, 42.64it/s]1539it [00:35, 37.20it/s]1544it [00:35, 39.76it/s]1550it [00:35, 43.12it/s]1555it [00:35, 44.70it/s]1560it [00:35, 45.93it/s]1565it [00:35, 46.40it/s]1571it [00:35, 48.05it/s]1576it [00:35, 47.52it/s]1582it [00:35, 49.72it/s]1588it [00:36, 51.60it/s]1594it [00:36, 50.78it/s]1600it [00:36, 50.03it/s]1606it [00:36, 49.99it/s]1612it [00:36, 51.61it/s]1618it [00:36, 52.13it/s]1624it [00:36, 53.36it/s]1630it [00:36, 52.21it/s]1636it [00:36, 52.19it/s]1642it [00:37, 51.31it/s]1648it [00:37, 50.44it/s]1654it [00:37, 51.98it/s]1660it [00:37, 44.65it/s]1666it [00:37, 46.40it/s]1671it [00:37, 40.82it/s]1677it [00:37, 41.27it/s]1682it [00:38, 37.77it/s]1688it [00:38, 42.02it/s]1694it [00:38, 44.46it/s]1700it [00:38, 45.78it/s]1705it [00:38, 42.01it/s]1710it [00:38, 39.27it/s]1716it [00:38, 42.36it/s]1721it [00:39, 37.07it/s]1726it [00:39, 39.50it/s]1731it [00:39, 37.84it/s]1736it [00:39, 40.72it/s]1741it [00:39, 39.22it/s]1746it [00:39, 40.39it/s]1751it [00:39, 41.99it/s]1756it [00:39, 41.87it/s]1761it [00:40, 40.40it/s]1767it [00:40, 42.78it/s]1773it [00:40, 45.14it/s]1779it [00:40, 46.94it/s]1784it [00:40, 40.46it/s]1790it [00:40, 44.42it/s]1796it [00:40, 47.48it/s]1802it [00:40, 49.59it/s]1808it [00:40, 51.21it/s]1814it [00:41, 52.53it/s]1820it [00:41, 49.77it/s]1826it [00:41, 42.77it/s]1832it [00:41, 45.87it/s]1837it [00:41, 45.85it/s]1843it [00:41, 48.48it/s]1849it [00:41, 48.69it/s]1855it [00:41, 50.15it/s]1861it [00:42, 46.04it/s]1866it [00:42, 37.49it/s]1871it [00:42, 37.32it/s]1877it [00:42, 41.81it/s]1883it [00:42, 45.24it/s]1889it [00:42, 47.90it/s]1895it [00:42, 49.69it/s]1901it [00:43, 48.90it/s]1906it [00:43, 42.11it/s]1911it [00:43, 43.27it/s]1916it [00:43, 42.56it/s]1921it [00:43, 38.04it/s]1927it [00:43, 42.08it/s]1933it [00:43, 45.68it/s]1938it [00:43, 46.52it/s]1944it [00:44, 48.56it/s]1950it [00:44, 50.28it/s]1956it [00:44, 51.80it/s]1962it [00:44, 51.26it/s]1968it [00:44, 47.80it/s]1973it [00:44, 46.03it/s]1978it [00:44, 45.64it/s]1983it [00:44, 45.95it/s]1988it [00:44, 45.73it/s]1994it [00:45, 48.51it/s]2000it [00:45, 50.52it/s]2006it [00:45, 49.93it/s]2012it [00:45, 51.60it/s]2018it [00:45, 52.63it/s]2024it [00:45, 52.43it/s]2030it [00:45, 44.96it/s]2035it [00:45, 45.90it/s]2040it [00:45, 46.66it/s]2046it [00:46, 48.76it/s]2051it [00:46, 49.01it/s]2057it [00:46, 50.27it/s]2063it [00:46, 51.85it/s]2069it [00:46, 53.21it/s]2075it [00:46, 54.17it/s]2081it [00:46, 54.62it/s]2087it [00:46, 50.55it/s]2093it [00:47, 50.50it/s]2099it [00:47, 51.39it/s]2105it [00:47, 52.35it/s]2111it [00:47, 53.43it/s]2117it [00:47, 43.63it/s]2123it [00:47, 45.73it/s]2129it [00:47, 47.80it/s]2135it [00:47, 50.09it/s]2141it [00:47, 51.89it/s]2147it [00:48, 53.23it/s]2153it [00:48, 42.34it/s]2159it [00:48, 45.23it/s]2165it [00:48, 46.52it/s]2171it [00:48, 47.97it/s]2177it [00:48, 50.23it/s]2183it [00:48, 51.40it/s]2189it [00:49, 42.76it/s]2195it [00:49, 45.89it/s]2200it [00:49, 45.89it/s]2205it [00:49, 46.42it/s]2210it [00:49, 45.25it/s]2216it [00:49, 48.20it/s]2222it [00:49, 49.99it/s]2228it [00:49, 44.69it/s]2234it [00:49, 47.09it/s]2239it [00:50, 43.04it/s]2245it [00:50, 46.03it/s]2251it [00:50, 47.61it/s]2257it [00:50, 48.82it/s]2263it [00:50, 50.99it/s]2269it [00:50, 50.54it/s]2275it [00:50, 40.94it/s]2281it [00:51, 43.81it/s]2287it [00:51, 46.74it/s]2293it [00:51, 48.61it/s]2299it [00:51, 49.71it/s]2305it [00:51, 41.06it/s]2310it [00:51, 34.99it/s]2315it [00:51, 37.12it/s]2320it [00:51, 39.75it/s]2325it [00:52, 37.66it/s]2331it [00:52, 41.16it/s]2336it [00:52, 40.84it/s]2342it [00:52, 43.70it/s]2348it [00:52, 45.83it/s]2354it [00:52, 47.37it/s]2359it [00:52, 45.34it/s]2364it [00:52, 42.07it/s]2369it [00:53, 36.62it/s]2375it [00:53, 41.20it/s]2380it [00:53, 42.30it/s]2386it [00:53, 46.01it/s]2392it [00:53, 40.67it/s]2397it [00:53, 37.87it/s]2401it [00:53, 33.97it/s]2406it [00:54, 36.69it/s]2411it [00:54, 37.94it/s]2416it [00:54, 39.72it/s]2422it [00:54, 41.26it/s]2427it [00:54, 41.48it/s]2433it [00:54, 45.11it/s]2439it [00:54, 46.59it/s]2444it [00:54, 47.18it/s]2449it [00:55, 43.42it/s]2455it [00:55, 44.12it/s]2460it [00:55, 40.18it/s]2465it [00:55, 40.63it/s]2471it [00:55, 43.59it/s]2476it [00:55, 41.19it/s]2481it [00:55, 34.68it/s]2487it [00:56, 39.67it/s]2493it [00:56, 43.62it/s]2499it [00:56, 45.87it/s]2504it [00:56, 44.69it/s]2509it [00:56, 42.26it/s]2514it [00:56, 37.99it/s]2520it [00:56, 42.28it/s]2526it [00:56, 45.18it/s]2531it [00:57, 41.68it/s]2536it [00:57, 41.92it/s]2541it [00:57, 40.66it/s]2547it [00:57, 43.60it/s]2552it [00:57, 40.39it/s]2557it [00:57, 42.33it/s]2563it [00:57, 45.91it/s]2569it [00:57, 46.41it/s]2575it [00:58, 46.82it/s]2580it [00:58, 43.57it/s]2585it [00:58, 43.17it/s]2590it [00:58, 43.16it/s]2595it [00:58, 41.73it/s]2600it [00:58, 43.26it/s]2605it [00:58, 44.09it/s]2611it [00:58, 46.72it/s]2617it [00:58, 49.40it/s]2623it [00:59, 51.31it/s]2629it [00:59, 52.66it/s]2635it [00:59, 53.19it/s]2641it [00:59, 45.13it/s]2647it [00:59, 46.96it/s]2653it [00:59, 48.02it/s]2659it [00:59, 49.59it/s]2665it [00:59, 48.75it/s]2670it [01:00, 47.91it/s]2675it [01:00, 43.00it/s]2680it [01:00, 44.69it/s]2685it [01:00, 45.33it/s]2690it [01:00, 45.81it/s]2696it [01:00, 47.88it/s]2702it [01:00, 48.80it/s]2707it [01:00, 48.57it/s]2712it [01:00, 48.37it/s]2717it [01:01, 47.98it/s]2722it [01:01, 47.24it/s]2727it [01:01, 44.54it/s]2732it [01:01, 43.32it/s]2738it [01:01, 47.00it/s]2744it [01:01, 49.68it/s]2750it [01:01, 51.58it/s]2756it [01:01, 52.83it/s]2762it [01:02, 44.44it/s]2767it [01:02, 38.01it/s]2772it [01:02, 36.59it/s]2776it [01:02, 36.55it/s]2782it [01:02, 41.10it/s]2788it [01:02, 44.24it/s]2793it [01:02, 44.79it/s]2799it [01:02, 48.10it/s]2804it [01:03, 44.85it/s]2809it [01:03, 45.06it/s]2814it [01:03, 43.82it/s]2820it [01:03, 45.68it/s]2826it [01:03, 48.16it/s]2831it [01:03, 47.14it/s]2836it [01:03, 45.68it/s]2841it [01:03, 39.98it/s]2847it [01:04, 43.17it/s]2853it [01:04, 45.90it/s]2859it [01:04, 47.68it/s]2865it [01:04, 49.77it/s]2871it [01:04, 43.98it/s]2876it [01:04, 37.82it/s]2881it [01:04, 32.69it/s]2886it [01:05, 36.03it/s]2892it [01:05, 40.75it/s]2898it [01:05, 44.61it/s]2903it [01:05, 45.95it/s]2909it [01:05, 48.01it/s]2915it [01:05, 48.99it/s]2921it [01:05, 50.00it/s]2927it [01:05, 51.92it/s]2933it [01:05, 50.57it/s]2939it [01:06, 49.71it/s]2945it [01:06, 50.35it/s]2951it [01:06, 50.60it/s]2957it [01:06, 51.90it/s]2963it [01:06, 47.14it/s]2968it [01:06, 43.61it/s]2974it [01:06, 46.33it/s]2979it [01:06, 45.52it/s]2985it [01:06, 47.17it/s]2991it [01:07, 47.23it/s]2996it [01:07, 39.29it/s]3001it [01:07, 40.95it/s]3006it [01:07, 35.50it/s]3010it [01:07, 33.36it/s]3014it [01:07, 31.63it/s]3019it [01:08, 34.66it/s]3025it [01:08, 40.10it/s]3031it [01:08, 43.71it/s]3036it [01:08, 37.79it/s]3041it [01:08, 35.06it/s]3046it [01:08, 38.16it/s]3051it [01:08, 40.52it/s]3057it [01:08, 41.80it/s]3062it [01:09, 40.01it/s]3067it [01:09, 37.71it/s]3071it [01:09, 35.75it/s]3075it [01:09, 35.94it/s]3080it [01:09, 38.06it/s]3086it [01:09, 42.21it/s]3091it [01:09, 43.30it/s]3097it [01:09, 46.12it/s]3103it [01:10, 47.85it/s]3109it [01:10, 50.02it/s]3115it [01:10, 51.65it/s]3121it [01:10, 49.20it/s]3126it [01:10, 40.74it/s]3131it [01:10, 41.24it/s]3136it [01:10, 35.91it/s]3140it [01:10, 35.60it/s]3145it [01:11, 38.76it/s]3151it [01:11, 42.03it/s]3157it [01:11, 44.94it/s]3163it [01:11, 47.94it/s]3169it [01:11, 50.11it/s]3175it [01:11, 51.08it/s]3181it [01:11, 52.30it/s]3187it [01:11, 50.43it/s]3193it [01:12, 47.71it/s]3198it [01:12, 44.35it/s]3203it [01:12, 44.22it/s]3209it [01:12, 47.09it/s]3215it [01:12, 49.54it/s]3221it [01:12, 51.34it/s]3227it [01:12, 48.27it/s]3233it [01:12, 50.22it/s]3239it [01:12, 50.50it/s]3245it [01:13, 52.11it/s]3251it [01:13, 44.83it/s]3256it [01:13, 44.08it/s]3261it [01:13, 45.56it/s]3267it [01:13, 45.47it/s]3272it [01:13, 46.34it/s]3278it [01:13, 48.80it/s]3284it [01:13, 50.78it/s]3290it [01:14, 49.99it/s]3296it [01:14, 49.49it/s]3302it [01:14, 50.02it/s]3308it [01:14, 51.55it/s]3314it [01:14, 49.22it/s]3319it [01:14, 43.89it/s]3324it [01:14, 40.87it/s]3329it [01:14, 40.67it/s]3335it [01:15, 44.71it/s]3341it [01:15, 47.63it/s]3347it [01:15, 48.72it/s]3353it [01:15, 49.22it/s]3358it [01:15, 43.84it/s]3363it [01:15, 44.06it/s]3368it [01:15, 39.08it/s]3373it [01:15, 37.55it/s]3378it [01:16, 38.70it/s]3382it [01:16, 34.27it/s]3386it [01:16, 31.97it/s]3390it [01:16, 31.93it/s]3395it [01:16, 34.91it/s]3401it [01:16, 40.25it/s]3407it [01:16, 44.12it/s]3413it [01:16, 46.70it/s]3419it [01:17, 49.33it/s]3425it [01:17, 50.92it/s]3431it [01:17, 51.13it/s]3437it [01:17, 51.00it/s]/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:585: RuntimeWarning: divide by zero encountered in scalar divide
-  filtro_bom.snrp = filtro_bom.p / filtro_bom.noise
-/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:586: RuntimeWarning: divide by zero encountered in scalar divide
-  filtro_bom.snrs = filtro_bom.s / filtro_bom.noise
-3443it [01:17, 52.06it/s]3449it [01:17, 53.29it/s]3455it [01:17, 48.39it/s]3460it [01:17, 46.21it/s]3466it [01:17, 48.81it/s]3471it [01:18, 48.09it/s]3477it [01:18, 50.25it/s]3483it [01:18, 51.43it/s]3489it [01:18, 43.80it/s]3494it [01:18, 38.66it/s]3500it [01:18, 41.64it/s]3506it [01:18, 43.91it/s]3511it [01:19, 39.79it/s]3517it [01:19, 42.71it/s]3522it [01:19, 40.64it/s]3528it [01:19, 43.56it/s]3534it [01:19, 45.32it/s]3539it [01:19, 44.09it/s]3544it [01:19, 42.55it/s]3549it [01:19, 43.74it/s]3555it [01:20, 46.41it/s]3561it [01:20, 48.85it/s]3567it [01:20, 47.23it/s]3572it [01:20, 46.70it/s]3577it [01:20, 45.99it/s]3582it [01:20, 46.79it/s]3587it [01:20, 47.13it/s]3592it [01:20, 47.81it/s]3598it [01:20, 49.94it/s]3604it [01:21, 47.53it/s]3609it [01:21, 46.42it/s]3614it [01:21, 38.53it/s]3619it [01:21, 38.76it/s]3624it [01:21, 39.03it/s]3629it [01:21, 34.98it/s]3633it [01:21, 44.38it/s]
-/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:926: FutureWarning: The `op` parameter is deprecated and will be removed in a future release. Please use the `predicate` parameter instead.
+1138it [00:06, 184.23it/s]1158it [00:06, 185.20it/s]1178it [00:06, 185.27it/s]1198it [00:06, 185.92it/s]1218it [00:06, 185.31it/s]1238it [00:06, 185.91it/s]1258it [00:07, 186.41it/s]1278it [00:07, 187.27it/s]1298it [00:07, 186.77it/s]1318it [00:07, 186.92it/s]1338it [00:07, 187.06it/s]1358it [00:07, 187.05it/s]1378it [00:07, 187.18it/s]1398it [00:07, 187.19it/s]1418it [00:07, 187.24it/s]1438it [00:07, 187.20it/s]1458it [00:08, 187.30it/s]1477it [00:08, 188.07it/s]1496it [00:08, 188.17it/s]1515it [00:08, 187.13it/s]1534it [00:08, 187.20it/s]1553it [00:08, 187.34it/s]1572it [00:08, 187.18it/s]1591it [00:08, 186.42it/s]1610it [00:08, 186.49it/s]1629it [00:08, 185.79it/s]1648it [00:09, 185.91it/s]1668it [00:09, 185.74it/s]1687it [00:09, 174.15it/s]1705it [00:09, 160.23it/s]1725it [00:09, 169.12it/s]1744it [00:09, 173.55it/s]1763it [00:09, 177.08it/s]1782it [00:09, 179.38it/s]1801it [00:09, 181.61it/s]1820it [00:10, 183.13it/s]1839it [00:10, 183.70it/s]1858it [00:10, 184.70it/s]1877it [00:10, 185.52it/s]1896it [00:10, 185.13it/s]1915it [00:10, 186.51it/s]1934it [00:10, 187.18it/s]1953it [00:10, 187.07it/s]1972it [00:10, 186.64it/s]1991it [00:10, 186.74it/s]2010it [00:11, 186.58it/s]2029it [00:11, 185.56it/s]2048it [00:11, 184.75it/s]2067it [00:11, 185.63it/s]2086it [00:11, 185.45it/s]2105it [00:11, 186.22it/s]2125it [00:11, 186.17it/s]2145it [00:11, 186.19it/s]2165it [00:11, 186.23it/s]2185it [00:12, 186.14it/s]2205it [00:12, 186.27it/s]2225it [00:12, 186.36it/s]2245it [00:12, 186.50it/s]2265it [00:12, 186.45it/s]2284it [00:12, 187.38it/s]2303it [00:12, 187.24it/s]2322it [00:12, 186.69it/s]2341it [00:12, 186.15it/s]2360it [00:12, 187.27it/s]2379it [00:13, 186.68it/s]2398it [00:13, 185.60it/s]2417it [00:13, 185.57it/s]2436it [00:13, 185.55it/s]2456it [00:13, 186.10it/s]2476it [00:13, 185.91it/s]2496it [00:13, 185.83it/s]2515it [00:13, 180.44it/s]2534it [00:13, 176.85it/s]2553it [00:14, 177.40it/s]2571it [00:14, 176.88it/s]2590it [00:14, 180.59it/s]2609it [00:14, 180.42it/s]2628it [00:14, 180.58it/s]2647it [00:14, 179.05it/s]2665it [00:14, 178.93it/s]2683it [00:14, 178.77it/s]2701it [00:14, 178.84it/s]2719it [00:14, 178.99it/s]2737it [00:15, 179.02it/s]2755it [00:15, 179.00it/s]2773it [00:15, 177.97it/s]2791it [00:15, 178.45it/s]2810it [00:15, 178.97it/s]2829it [00:15, 178.98it/s]2848it [00:15, 179.25it/s]2867it [00:15, 179.12it/s]2886it [00:15, 178.47it/s]2905it [00:15, 181.18it/s]2924it [00:16, 181.09it/s]2943it [00:16, 180.93it/s]2962it [00:16, 180.33it/s]2981it [00:16, 180.67it/s]3000it [00:16, 179.65it/s]3018it [00:16, 178.00it/s]3036it [00:16, 178.51it/s]3054it [00:16, 178.69it/s]3073it [00:16, 179.48it/s]3092it [00:17, 180.01it/s]3111it [00:17, 178.96it/s]3129it [00:17, 179.01it/s]3147it [00:17, 179.27it/s]3165it [00:17, 179.39it/s]3183it [00:17, 179.06it/s]3202it [00:17, 179.10it/s]3221it [00:17, 178.41it/s]3240it [00:17, 179.16it/s]3259it [00:17, 182.07it/s]3278it [00:18, 181.43it/s]3297it [00:18, 181.16it/s]3316it [00:18, 180.78it/s]3335it [00:18, 179.77it/s]3353it [00:18, 176.63it/s]3371it [00:18, 177.47it/s]3389it [00:18, 176.94it/s]3407it [00:18, 177.28it/s]3425it [00:18, 177.58it/s]/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:586: RuntimeWarning: divide by zero encountered in scalar divide
+  filtro.snrp = filtro.p / filtro.noise
+/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:587: RuntimeWarning: divide by zero encountered in scalar divide
+  filtro.snrs = filtro.s / filtro.noise
+3443it [00:19, 176.98it/s]3461it [00:19, 176.57it/s]3479it [00:19, 177.42it/s]3498it [00:19, 178.12it/s]3517it [00:19, 178.84it/s]3536it [00:19, 181.59it/s]3555it [00:19, 181.18it/s]3574it [00:19, 179.29it/s]3592it [00:19, 179.28it/s]3610it [00:19, 178.62it/s]3628it [00:20, 178.52it/s]3632it [00:20, 181.07it/s]
+/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:928: FutureWarning: The `op` parameter is deprecated and will be removed in a future release. Please use the `predicate` parameter instead.
   df, evs = load_data()
 Fontconfig error: "/home/ipt/.config/fontconfig/fonts.conf", line 2: XML or text declaration not at start of entity
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 937, in <module>
+    df, evs = main()
+              ^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 930, in main
+    non_commercial(df)
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 902, in non_commercial
+    plot_hist_hour_distribution(df)
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 277, in plot_hist_hour_distribution
+    plt.savefig(
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/pyplot.py", line 1119, in savefig
+    res = fig.savefig(*args, **kwargs)  # type: ignore[func-returns-value]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/figure.py", line 3390, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backends/backend_qtagg.py", line 75, in print_figure
+    super().print_figure(*args, **kwargs)
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backend_bases.py", line 2187, in print_figure
+    result = print_method(
+             ^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backend_bases.py", line 2043, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py", line 497, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py", line 446, in _print_pil
+    mpl.image.imsave(
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/image.py", line 1656, in imsave
+    image.save(fname, **pil_kwargs)
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/PIL/Image.py", line 2435, in save
+    fp = builtins.open(filename, "w+b")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] Arquivo ou diretório inexistente: 'files/figures/pos_process/pos_process/plots/histogramas/hist_hora.png'
 
  -------------- Processo de criação de mapas iniciado ------------------
  -> Executando make_maps.py...
@@ -169,293 +202,13 @@ Type  H <return>  for immediate help.
                                                   
 l.30 ...nd\captionof[1]{\def\@captype{#1}\caption}
                                                   
-? ) (/usr/share/texlive/texmf-dist/tex/latex/xargs/xargs.sty
-(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex))))
-(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjustbox.sty
-(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjcalc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/trimclip.sty
-(/usr/share/texlive/texmf-dist/tex/latex/collectbox/collectbox.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/tc-pdftex.def))
-(/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/pdfx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifpdf.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/everyshi/everyshi.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty){/var/lib/texmf/f
-onts/map/pdftex/updmap/pdftex.map}
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/l8u-penc.def)
-
-Package hyperref Warning: Option `pdftex' has already been used,
-(hyperref)                setting the option has no effect on input line 1461.
-
-
-Package hyperref Warning: Option `pdfa' has already been used,
-(hyperref)                setting the option has no effect on input line 1461.
-
-(/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc-greekbasic.def)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/psdextra.def)
-(/usr/share/texlive/texmf-dist/tex/generic/colorprofiles/colorprofiles.sty
-(/usr/share/texlive/texmf-dist/tex/generic/colorprofiles/colorprofiles.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/stringenc/se-pdfdoc.def)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/AdobeColorProfiles.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
-** pdfx: No file relatorio_preditivo.xmpdata . Metadata will be incomplete!
-<<sRGB.icc>> (/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
-(/usr/share/texlive/texmf-dist/tex/generic/pdftex/glyphtounicode.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/glyphtounicode-cmr.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/glyphtounicode-ntx.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/xmpincl/xmpincl.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
-Using XMP template file: pdfa.xmp
-<<pdfa.xmpi>>)) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
-(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf)
-(/usr/share/texlive/texmf-dist/tex/generic/babel-portuges/brazil.ldf))
-(/usr/share/texlive/texmf-dist/tex/generic/babel/locale/en/babel-english.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/mathastext/mathastext.sty
-** ! and ?
-** punctuation: , . : ; and \colon
-** + and =
-** adding = ; and + to \nfss@catcodes
-** parentheses ( ) [ ] and slash /
-** alldelims: < > \backslash \setminus | \vert \mid \{ and \}
-** \# \mathdollar \% \& 
-** \imath and \jmath 
-** Latin letters in the `normal' (resp. `bold') math versions are now
-** set up to use the fonts T1/phv/m(b)/it
-** Other characters (digits, ...) and \log-like names will be
-** typeset with the n shape.
-** \hbar
-** minus as endash
-** \Huge and \HUGE have been (re)-defined.
-** mathastext has declared larger sizes for subscripts.
-** To keep LaTeX defaults, use option `defaultmathsizes'.
-) (/usr/share/texlive/texmf-dist/tex/latex/abntex2/abntex2cite.sty
-(/usr/share/texlive/texmf-dist/tex/latex/abntex2/abntex2abrev.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)
-(/home/ipt/projetos/ClassificadorSismologico/files/relatorios//relatorio_predit
-ivo.aux) (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
-(/home/ipt/projetos/ClassificadorSismologico/files/relatorios//relatorio_predit
-ivo.out)
-(/home/ipt/projetos/ClassificadorSismologico/files/relatorios//relatorio_predit
-ivo.out) (/usr/share/texlive/texmf-dist/tex/latex/ragged2e/ragged2e.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictio
-nary-brazil.trsl)
-(/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictio
-nary-english.trsl)
-*geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
-(./tex/relatorio_preditivo/tex/capa.tex
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 12.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.12 \capa
-          
-? (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd)
-
-LaTeX Warning: File `tex/figuras_tex/footImageCalibr.png' not found on input li
-ne 12.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImageCalibr.png' not foun
-d: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.12 \capa
-          
 ? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[1]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 17.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
+! Emergency stop.
  ...                                              
                                                   
-l.17 \tableofcontents
-                     
-? (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd)
-
-LaTeX Warning: File `tex/figuras_tex/footImageCalibr.png' not found on input li
-ne 17.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImageCalibr.png' not foun
-d: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
+l.30 ...nd\captionof[1]{\def\@captype{#1}\caption}
                                                   
-l.17 \tableofcontents
-                     
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[1]
-(/home/ipt/projetos/ClassificadorSismologico/files/relatorios//relatorio_predit
-ivo.toc)
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 20.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.20 \renewcommand
-                  {\thepage}{\arabic{page}}
-? 
-LaTeX Warning: File `tex/figuras_tex/footImageCalibr.png' not found on input li
-ne 20.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImageCalibr.png' not foun
-d: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.20 \renewcommand
-                  {\thepage}{\arabic{page}}
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[2]) (./tex/relatorio_preditivo/tex/corpo.tex
-
-! LaTeX Error: File `preditivo_relatorio/tex/introducao.tex' not found.
-
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: tex)
-
-Enter file name: (/usr/share/texlive/texmf-dist/tex/latex/tools/.tex File ignored)
-
-! LaTeX Error: File `preditivo_relatorio/tex/atividades_resultados.tex' not fou
-nd.
-
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: tex)
-
-Enter file name: (/usr/share/texlive/texmf-dist/tex/latex/tools/.tex File ignored)
-
-! LaTeX Error: File `preditivo_relatorio/tex/consideracoes_finais.tex' not foun
-d.
-
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: tex)
-
-Enter file name: (/usr/share/texlive/texmf-dist/tex/latex/tools/.tex File ignored))
-No file relatorio_preditivo.bbl.
-
-AED: lastpage setting LastPage
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 39.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.39 \end{document}
-                   
-? 
-LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 39.
-
-
-LaTeX Warning: File `tex/figuras_tex/footImageCalibr.png' not found on input li
-ne 39.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImageCalibr.png' not foun
-d: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.39 \end{document}
-                   
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.39 \end{document}
-                    [1]
-(/home/ipt/projetos/ClassificadorSismologico/files/relatorios//relatorio_predit
-ivo.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `relatorio_preditivo.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
- ){/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/
-fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf/fonts/type1/public/c
-m-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uh
-vb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on /home/ipt/projetos/ClassificadorSismologico/files/relatorios/
-/relatorio_preditivo.pdf (4 pages, 70693 bytes).
+!  ==> Fatal error occurred, no output PDF file produced!
 Transcript written on /home/ipt/projetos/ClassificadorSismologico/files/relator
 ios//relatorio_preditivo.log.
 ~/projetos/ClassificadorSismologico
