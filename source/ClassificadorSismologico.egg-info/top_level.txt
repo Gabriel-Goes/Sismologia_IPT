@@ -1,3 +1,4 @@
 core
 data_analysis
+discrimination_eq_q
 interface

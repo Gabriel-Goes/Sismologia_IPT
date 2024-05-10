@@ -105,14 +105,14 @@ fi
 if [ "$PREDICT" = true ]; then
     NOME_TERM="DOCKER"
     COMMAND='docker run -it --rm -v $HOME/projetos:/app discrim:0.1.0'
-    COMMAND_2='python ClassificadorSismologico/source/discrimination_eq_q/run.py \
-    --output_dir no_commercial \
-    --csv_dir pred_no_commercial.csv \
-    --valid'
-    COMMAND_3='python ClassificadorSismologico/source/discrimination_eq_q/run.py \
-    --output_dir commercial \
-    --csv_dir pred_commercial.csv \
-    --valid'
+    COMMAND_2='python ClassificadorSismologico/source/cnn/run.py \
+               --output_dir no_commercial \
+               --predcsv pred_no_commercial.csv \
+               --valid'
+    COMMAND_3='python ClassificadorSismologico/source/cnn/run.py \
+               --output_dir commercial \
+               --predcsv pred_commercial.csv \
+               --valid'
     echo " ----------------- INICIANDO O PREDICT.PY ---------------------------- "
     i3-msg 'workspace 9'
     alacritty -e bash -c "tmux new-session -d -s $NOME_TERM; \

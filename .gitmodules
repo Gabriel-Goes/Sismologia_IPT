@@ -1,5 +1,5 @@
-[submodule "source/discrimination_eq_q"]
-	path = source/discrimination_eq_q
+[submodule "source/cnn"]
+	path = source/cnn
 	url = git@github.com:Gabriel-Goes/discrimination_eq_q.git
 [submodule "source/sismologia-ipt-latex"]
 	path = source/sismologia-ipt-latex
