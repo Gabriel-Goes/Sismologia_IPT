@@ -639,35 +639,12 @@ def mean_dist_event(df):
 def class_snrp(snr):
     if snr < 1:
         return '< 1'
-    elif 1 <= snr < 2:
-        return '[1-2['
-    elif 2 <= snr < 3:
-        return '[2-3['
-    elif 3 <= snr < 4:
-        return '[3-4['
-    elif 4 <= snr < 5:
-        return '[4-5['
-    elif 5 <= snr < 6:
-        return '[5-6['
-    elif 6 <= snr < 7:
-        return '[6-7['
-    elif 7 <= snr < 8:
-        return '[7-8['
-    elif 8 <= snr < 9:
-        return '[8-9['
-    elif 9 <= snr < 10:
-        return '[9-10['
-    elif 10 <= snr < 11:
-        return '[10-11['
-    elif 11 <= snr < 12:
-        return '[11-12['
-    elif 12 <= snr < 13:
-        return '[12-13['
-    elif 13 <= snr < 14:
-        return '[13-14['
-    elif 14 <= snr < 15:
-        return '[14-15['
     else:
+        snr_c = 1
+        while snr_c < 15:
+            if snr_c <= snr < snr_c + 1:
+                return f'[{snr_c}-{snr_c + 1}[ '
+            snr_c += 1
         return '>= 15'
 
 
@@ -774,12 +751,12 @@ def plot_mean_snr_recall_event(df):
                 fontsize=8
             )
             ax.text(
-                a, rc + 2.5,
-                f'#Est.: {nb_sta:.1f}', ha='center', va='bottom', fontsize=8
+                a, rc + 2.5, f'#Est.: {nb_sta:.1f}',
+                ha='center', va='bottom', fontsize=8
             )
             ax.text(
-                a, rc + 3.5,
-                f'Dist.: {mean_dist:.0f}km', ha='center', va='bottom', fontsize=8
+                a, rc + 3.5, f'Dist.: {mean_dist:.0f}km',
+                ha='center', va='bottom', fontsize=8
             )
             ax.text(
                 a, rc + 4.5,
