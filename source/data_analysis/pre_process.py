@@ -2,7 +2,7 @@
 # Python 3.11.8
 # ./Classificador_Sismologico/pyscripts/pre_process.py
 
-# ----------------------------  DESCRIPTION  -----------------------------------
+# ---------------------------  DESCRIPTION  -----------------------------------
 # Script para tratar dados anterior a classificação.
 # Autor: Gabriel Góes Rocha de Lima
 # Versão: 0.2
@@ -12,81 +12,87 @@
 # ----------------------------  IMPORTS   -------------------------------------
 import pandas as pd
 from obspy.core import UTCDateTime
+import shapely.geometry
+import geopandas as gpd
 
-# Plots
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import numpy as np
-
 ###############################################################################
 
 
 # ----------------------------  FUNCTIONS  ------------------------------------
-def order_catalog():
-    catalog = pd.read_csv('files/catalogo/catalogo-moho.csv')
-    # order catalog by columns 'origin' '2014-04-09T20:49:40.000Z'
-    catalog['origin'] = pd.to_datetime(catalog['origin'])
-    catalog = catalog.sort_values(by='origin', ascending=False)
-    # remove origin before 2000
-    catalog = catalog[catalog['origin'] > '2010-01-01']
-    catalog.to_csv('files/catalogo/catalogo_treated.csv', index=False)
+def brasil_catalogo(catalog: pd.DataFrame) -> pd.DataFrame:
+    catalog['geometry'] = catalog.apply(
+        lambda x: shapely.geometry.Point(x['Longitude'], x['Latitude']), axis=1
+    )
+    catalog = gpd.GeoDataFrame(catalog, geometry='geometry')
+    brasil = gpd.read_file('files/figures/maps/macrorregioesBrasil.json')
+    brasil.to_crs(epsg=4326, inplace=True)
+    catalog.crs = brasil.crs
+    c_brasil = gpd.sjoin(
+        catalog, brasil, how='inner', predicate='within'
+    )
+    c_brasil = c_brasil[
+        ['EventID', 'Time', 'Depth/km', 'Author', 'Contributor', 'MagType',
+         'Magnitude', 'MagAuthor', 'EventLocationName', 'EventType',
+         'sigla', 'geometry']
+    ]
+    return c_brasil
+
+
+def order_catalog(catalog: pd.DataFrame) -> pd.DataFrame:
+    catalog['Time'] = pd.to_datetime(catalog['Time'])
+    catalog = catalog.sort_values(by='Time', ascending=False)
+    catalog = catalog[catalog['Time'] > '2000-01-01']
 
     return catalog
 
 
-def gerar_predcsv():
-    # Criar Lista de Eventos para Predição
-    csv_events = './files/events/events.csv'
-    df_events = pd.read_csv(csv_events, sep=',')
-
-    # Se IDs iguais possuem Cat diferentes adicionar em uma lista de erros
-    erros = []
-    for id in df_events['ID'].unique():
-        if len(df_events[df_events['ID'] == id]['Cat'].unique()) > 1:
-            erros.append(id)
-
-    # Remover IDs com Cat diferentes
-    df_events_clean = df_events[~df_events['ID'].isin(erros)]
-    df_pred = df_events_clean[['Event', 'Cat']]
-
-    # Transforma 'earthquake' em 0 e qualquer outra coisa em 0
-    df_pred['Cat'] = df_pred['Cat'].apply(lambda x: 0 if x == 'earthquake' else 1)
-
-    # rename columns
-    df_pred.columns = ['ID', 'Label']
-
-    # Remove os IDs duplicados
-    df_pred = df_pred.drop_duplicates()
-
-    # Salvar o DataFrame em um arquivo CSV
-    df_pred.to_csv('./files/predcsv/pred.csv', index=False)
-
-    df_erros = pd.DataFrame(erros, columns=['ID'])
-    df_erros.to_csv('./files/predcsv/erros.csv', index=False)
+def gerar_predcsv(events: pd.DataFrame) -> [pd.DataFrame]:
+    events_eq = events[events['Cat'] == 'earthquake']
+    pred_eq = events_eq[['Event', 'Cat']]
+    pred = events[['Event', 'Cat']]
+    pred_eq['Cat'] = pred_eq['Cat'].apply(
+        lambda x: 0 if x == 'earthquake' else 1
+    )
+    pred['Cat'] = events['Cat'].apply(
+        lambda x: 0 if x == 'earthquake' else 1
+    )
+    pred_eq.to_csv('files/predcsv/pred_earthquake.csv', index=False)
+    pred.to_csv('files/predcsv/pred.csv', index=False)
 
 
-# Função para filtrar eventos fora do horário comercial
-def filter_pred_com(csv: str) -> pd.DataFrame:
-    df = pd.read_csv(csv)
-    df['Hora'] = df['ID'].apply(lambda x: UTCDateTime(x).hour)
-    df_com = df[(df['Hora'] >= 11) & (df['Hora'] < 22)]
-    df_nc = df[(df['Hora'] < 11) | (df['Hora'] >= 22)]
-    df_com = df_com.drop(columns=['Hora'])
-    df_nc = df_nc.drop(columns=['Hora'])
-    df_com.to_csv('files/predcsv/pred_commercial.csv', index=False)
-    df_nc.to_csv('files/predcsv/pred_no_commercial.csv', index=False)
+def filter_pred_com(pred: pd.DataFrame) -> pd.DataFrame:
+    pred['Hora'] = pred['Event'].apply(lambda x: UTCDateTime(x).hour)
+    pred_com = pred[(pred['Hora'] >= 11) & (pred['Hora'] < 22)]
+    pred_nc = pred[(pred['Hora'] < 11) | (pred['Hora'] >= 22)]
+    pred_com = pred_com.drop(columns=['Hora'])
+    pred_nc = pred_nc.drop(columns=['Hora'])
+    pred_com.to_csv('files/predcsv/pred_commercial.csv', index=False)
+    pred_nc.to_csv('files/predcsv/pred_no_commercial.csv', index=False)
 
-    return df, df_com, df_nc
+    return pred, pred_com, pred_nc
 
 
 # ----------------------------  PLOT  -----------------------------------------
-def hist_hora(
-        df: pd.DataFrame,
-        df_com: pd.DataFrame,
-        df_nc: pd.DataFrame) -> [pd.DataFrame]:
-    counts = df['Hora'].value_counts(
-        sort=False
-    ).reindex(np.arange(24), fill_value=0)
+def catalog_dist(catalog, att: str = 'sigla'):
+    ax = catalog.plot(
+        column=att, categorical=True,  markersize=1, figsize=(10, 10)
+    )
+    ax.set_title('Distribuição de eventos sísmicos no Brasil')
+    ax.set_xlabel('Longitude')
+    ax.set_ylabel('Latitude')
+    plt.show()
+
+    return
+
+
+def pred_hora_dist(
+        pred: pd.DataFrame) -> None:
+    counts = pred['Hora'].value_counts(sort=False).reindex(
+        np.arange(24), fill_value=0
+    )
     density = counts / counts.sum()
     plt.figure(figsize=(10, 6))
     colors = ['blue' if (11 <= hour < 22) else 'red' for hour in counts.index]
@@ -109,20 +115,50 @@ def hist_hora(
     plt.legend(
         ['Horário Comercial', 'Fora do Horário Comercial'], loc='upper right')
     plt.savefig('files/figures/pre_process/histogramas/hist_hora.png')
-    # plt.show()
-    df_com.to_csv('files/predcsv/pred_commercial.csv', index=False)
-    df_nc.to_csv('files/predcsv/pred_no_commercial.csv', index=False)
-    return df_com, df_nc
+    plt.show()
+
+
+def pre_process_catalog(csv: str) -> None:
+    catalog = pd.read_csv(f'files/catalogo/{csv}.csv', sep='|')
+    catalog = brasil_catalogo(catalog)
+    catalog = order_catalog(catalog)
+    catalog.reset_index(drop=True, inplace=True)
+    catalog.to_csv(f'files/catalogo/{csv}_treated.csv', index=False)
+
+    catalog_dist(catalog, 'Author')
+
+    return catalog
 
 
 # ----------------------------  MAIN  -----------------------------------------
-def main():
-    gerar_predcsv()
-    df, df_com, df_nc = filter_pred_com('files/predcsv/pred.csv')
-    df_com, df_nc = hist_hora(df, df_com, df_nc)
 
-    return df, df_com, df_nc
+def check_ev_id():
+    old_c = pd.read_csv('files/catalogo/Catalog.csv', sep=';')
+    c = pd.read_csv('files/catalogo/catalogo-moho-south-america.csv', sep='|')
+    oldids = old_c['EventID'].to_list()
+    ids = c['EventID'].to_list()
+    for i in oldids:
+        if i not in ids:
+            print(i)
 
 
-if __name__ == '__main__':
-    main()
+def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
+    catalog.drop_duplicates(subset='EventID', inplace=True)
+    catalog = gpd.GeoDataFrame(
+        catalog,
+        geometry=gpd.points_from_xy(catalog.Longitude, catalog.Latitude)
+    )
+    catalog.crs = 'EPSG:4326'
+    brasil = gpd.read_file('files/figures/maps/macrorregioesBrasil.json')
+    brasil.to_crs(epsg=4326, inplace=True)
+    brasil = brasil.geometry.unary_union
+    catalog['color'] = 'blue'
+    catalog.loc[~catalog.geometry.within(brasil), 'color'] = 'red'
+    fig, ax = plt.subplots()
+    catalog.plot(ax=ax, color=catalog['color'], markersize=10)
+    gpd.GeoSeries([brasil]).boundary.plot(ax=ax, color='black')
+    plt.title('Seismic Events: Red if outside Brazil, Blue if inside')
+    plt.xlabel('Longitude')
+    plt.ylabel('Latitude')
+    plt.grid(True)
+    plt.show()

@@ -13,8 +13,9 @@
 import pygmt
 import pandas as pd
 
-# ----------------------------  FUNCTIONS  -------------------------------------
-def plot_map(data, filename):
+
+# ---------------------------  FUNCTIONS  -------------------------------------
+def plot_pred_map(data, filename):
     region = [
         data['Longitude'].min() - 1, data['Longitude'].max() + 1,
         data['Latitude'].min() - 1, data['Latitude'].max() + 1
@@ -34,18 +35,16 @@ def plot_map(data, filename):
 
     )
     fig.show()
-    f='files/figures/maps/mapa.png'
-    fig.savefig(f)
+    fig.savefig(f'files/figures/maps/{filename}')
 
 
-# ----------------------------  MAIN  -------------------------------------
+# -------------------------------  MAIN  --------------------------------------
 def main():
     data = pd.read_csv("files/output/no_commercial/df_nc_pos.csv")
-    plot_map(data, "mapa.png")
+    plot_pred_map(data, "mapa.png")
 
     return data
 
 
 if __name__ == "__main__":
     data = main()
-

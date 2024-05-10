@@ -54,7 +54,6 @@ LOG_DIR="files/logs"
 LOG_FILE="$LOG_DIR/Sismo_Pipeline.log"
 LOG_FILE_BKP="$LOG_DIR/.bkp/$(date +%Y%m%d%H%M%S)_Sismo_Pipeline.log"
 mkdir -p files
-mkdir -p figures
 mkdir -p $LOG_DIR
 
 # CRIA O ARQUIVO DE LOG
