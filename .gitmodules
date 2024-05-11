@@ -1,3 +1,6 @@
 [submodule "fonte/sismologia-ipt-latex"]
 	path = fonte/sismologia-ipt-latex
 	url = git@github.com:Gabriel-Goes/simologia-ipt-latex.git
+[submodule "fonte/rnc"]
+	path = fonte/rnc
+	url = git@github.com:Gabriel-Goes/discrimination_eq_q.git
