@@ -8,6 +8,10 @@
 # Versão: 0.2
 # Data: 2024-02-27
 # Modificação mais recente: 2024-04-10
+# Descrição: Este script será chamado antes da aquisição dos dados e apóes a
+# aquisição dos dados. Ele será responsável por tratar os dados do catálogo.csv
+# e dos eventos.csv. O catalogo.csv será tratado criando um catalogo_treated.csv
+# que será iterado pela eventos_fluxo.py
 
 # ----------------------------  IMPORTS   -------------------------------------
 import pandas as pd
@@ -162,3 +166,7 @@ def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
     plt.ylabel('Latitude')
     plt.grid(True)
     plt.show()
+
+
+# ----------------------------  MAIN  -----------------------------------------
+

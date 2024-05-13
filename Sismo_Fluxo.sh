@@ -35,7 +35,6 @@
 
 # -----------------------------  VARIÁVEIS -------------------------------------
 
-DATES="$INICIO $FIM"  # BASEADO EM DATAS
 CATALOG=${1:-"files/catalogo/catalogo_treated.csv"}  # BASEADO EM LISTA DE IDS
 EVENTS=${EVENTS:-false}
 PREPROCESS=${PREPROCESS:-false}
