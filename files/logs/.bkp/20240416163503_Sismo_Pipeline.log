@@ -1,126 +1,0 @@
-
-########################################################################
- ---------------- Iniciando do Pipeline --------------------------------
-
- -> Executando ProcessarDadosSismologicos.py...
-
- - Argumento 1: /home/ipt/projetos/ClassificadorSismologico/files/catalogo/catalogo-moho_bkp.csv
- --> Client:
-  http://seisarc.sismo.iag.usp.br
- --> Client Backup:
-  http://rsbr.on.br:8081/fdsnws/dataselect/1
------------------------------------------------------
-
-
- --------- Iniciando o ProcessarID.py --------- 
- ------------------------------ Acessando Catálogo ------------------------------ 
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:00<00:19,  5.18it/s]  4%|▍         | 4/100 [00:00<00:06, 15.61it/s]  7%|▋         | 7/100 [00:00<00:04, 19.55it/s] 11%|█         | 11/100 [00:00<00:03, 23.87it/s] 15%|█▌        | 15/100 [00:00<00:03, 26.48it/s] 18%|█▊        | 18/100 [00:00<00:02, 27.37it/s] 22%|██▏       | 22/100 [00:00<00:02, 27.50it/s] 25%|██▌       | 25/100 [00:01<00:02, 27.88it/s] 28%|██▊       | 28/100 [00:01<00:02, 26.67it/s] 31%|███       | 31/100 [00:01<00:02, 26.86it/s] 34%|███▍      | 34/100 [00:01<00:02, 25.25it/s] 37%|███▋      | 37/100 [00:01<00:02, 25.67it/s] 40%|████      | 40/100 [00:01<00:02, 24.84it/s] 43%|████▎     | 43/100 [00:01<00:02, 26.14it/s] 46%|████▌     | 46/100 [00:01<00:02, 25.16it/s] 49%|████▉     | 49/100 [00:01<00:01, 25.78it/s] 52%|█████▏    | 52/100 [00:02<00:01, 24.10it/s] 55%|█████▌    | 55/100 [00:02<00:01, 24.72it/s] 58%|█████▊    | 58/100 [00:02<00:01, 24.25it/s] 61%|██████    | 61/100 [00:02<00:01, 24.10it/s] 64%|██████▍   | 64/100 [00:02<00:01, 24.33it/s] 67%|██████▋   | 67/100 [00:02<00:01, 23.55it/s] 70%|███████   | 70/100 [00:02<00:01, 22.72it/s] 73%|███████▎  | 73/100 [00:02<00:01, 24.11it/s] 76%|███████▌  | 76/100 [00:03<00:01, 23.54it/s] 79%|███████▉  | 79/100 [00:03<00:00, 23.71it/s] 82%|████████▏ | 82/100 [00:03<00:00, 25.12it/s] 85%|████████▌ | 85/100 [00:03<00:00, 26.14it/s] 88%|████████▊ | 88/100 [00:03<00:00, 26.20it/s] 91%|█████████ | 91/100 [00:03<00:00, 26.53it/s] 94%|█████████▍| 94/100 [00:03<00:00, 23.04it/s] 97%|█████████▋| 97/100 [00:03<00:00, 23.19it/s]100%|██████████| 100/100 [00:04<00:00, 21.69it/s]100%|██████████| 100/100 [00:04<00:00, 24.14it/s]
- --> Iterando sobre eventos
- - Número de eventos: 100
- - Client: http://seisarc.sismo.iag.usp.br
- - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
- - Estações no Inventário: 1480
-Press Enter to continue ...
-  0%|          | 0/100 [00:00<?, ?it/s]/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/core/inventory/network.py:321: UserWarning: Found more than one matching channel metadata. Returning first.
-  warnings.warn(msg)
-  1%|          | 1/100 [00:00<01:22,  1.19it/s]  2%|▏         | 2/100 [00:01<01:13,  1.33it/s]  3%|▎         | 3/100 [00:02<01:16,  1.27it/s]  4%|▍         | 4/100 [00:03<01:12,  1.32it/s]  4%|▍         | 4/100 [00:03<01:13,  1.30it/s]
-############ Event 1: usp2020hkyw ############
-
---> Pick 1
- - Net: BR
- - Sta: PDRB
-BR.PDRB..HHZ
- - BR.PDRB X,Y : -11.612297, -56.729597
- - Distância até o epicentro: 0.22934459104391727 km
- Downloading ...
- Pick Time -> 2020-04-15T14:40:19.978417Z
- Origin Time -> 2020-04-15T14:40:20.000000Z
- Channel -> HHZ
- - Saving File: 20200415T144020/BR_PDRB_20200415T144020.mseed
------------------------------------------------------
-
- - Event: usp2020hkyw
- - Pwave Picks: 1
- - Streams: 1
-#####################################################
-
-############ Event 2: usp2022gpbs ############
-
---> Pick 1
- - Net: NB
- - Sta: NBMO
-NB.NBMO..HHZ
- - NB.NBMO X,Y : -3.310348, -40.042927
- - Distância até o epicentro: 0.6296512501624295 km
- Downloading ...
- Pick Time -> 2022-04-04T15:07:54.334523Z
- Origin Time -> 2022-04-04T15:07:42.000000Z
- Channel -> HHZ
- - Saving File: 20220404T150742/NB_NBMO_20220404T150742.mseed
------------------------------------------------------
-
- - Event: usp2022gpbs
- - Pwave Picks: 1
- - Streams: 1
-#####################################################
-
-############ Event 3: usp2014oaxt ############
-
---> Pick 1
- - Net: BR
- - Sta: NPGB
-BR.NPGB..HHZ
- - BR.NPGB X,Y : -7.0454, -55.3579
- - Distância até o epicentro: 0.7840549447308719 km
- Downloading ...
- Pick Time -> 2014-07-19T17:41:08.185058Z
- Origin Time -> 2014-07-19T17:30:30.000000Z
- Channel -> HHZ
- - Saving File: 20140719T173030/BR_NPGB_20140719T173030.mseed
------------------------------------------------------
-
- - Event: usp2014oaxt
- - Pwave Picks: 1
- - Streams: 1
-#####################################################
-
-############ Event 4: usp2015rxwc ############
-
---> Pick 1
- - Net: NB
- - Sta: NBAN
-NB.NBAN..HHZ
- - NB.NBAN X,Y : -9.668656, -36.274726
- - Distância até o epicentro: 33.505971131504076 km
- Downloading ...
- Pick Time -> 2016-09-12T23:24:35.547698Z
- Origin Time -> 2015-09-12T23:24:35.000000Z
- Channel -> HHZ
- - Saving File: 20150912T232435/NB_NBAN_20150912T232435.mseed
------------------------------------------------------
-
- - Event: usp2015rxwc
- - Pwave Picks: 1
- - Streams: 1
-#####################################################
-
-############ Event 5: usp2014kloc ############
-
---> Pick 1
- - Net: ON
- - Sta: CAM01
-ON.CAM01..HHR
-Traceback (most recent call last):
-  File "/home/ipt/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 94, in <module>
-    catalogo, inentory, missin_ids = main(
-                                     ^^^^^
-  File "/home/ipt/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 56, in main
-    iterate_events(
-  File "/home/ipt/projetos/ClassificadorSismologico/source/Core/BaixarFormaOnda.py", line 157, in iterate_events
-    cha_meta = inv.get_channel_metadata(seed_id)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/core/inventory/inventory.py", line 485, in get_channel_metadata
-    raise Exception(msg)
-Exception: No matching channel metadata found.
-
- Criando arquivos de backup...

@@ -1,6 +1,0 @@
-[submodule "source/discrimination_eq_q"]
-	path = source/discrimination_eq_q
-	url = https://gitlab.univ-nantes.fr/E181658E/discrimination_eq_q.git
-[submodule "files/relatorios/ipt-latex"]
-    path = files/relatorios/ipt-latex
-    url = https://github.com/Gabriel-Goes/ipt-latex.git

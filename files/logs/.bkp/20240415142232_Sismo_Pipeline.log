@@ -1,62 +1,0 @@
-
-########################################################################
- ---------------- Iniciando do Pipeline --------------------------------
-
- -> Executando ProcessarDadosSismologicos.py...
-
- - Argumento 1: /home/ggrl/projetos/ClassificadorSismologico/files/catalogo/catalogo-moho.csv
- --> Client:
-  http://seisarc.sismo.iag.usp.br
- --> Client Backup:
-  http://rsbr.on.br:8081/fdsnws/dataselect/1
------------------------------------------------------
-
-
- --------- Iniciando o ProcessarID.py --------- 
- ------------------------------ Acessando Catálogo ------------------------------ 
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:00<00:24,  4.00it/s]  4%|▍         | 4/100 [00:00<00:08, 11.94it/s]  6%|▌         | 6/100 [00:00<00:06, 14.34it/s]  9%|▉         | 9/100 [00:00<00:05, 17.55it/s] 11%|█         | 11/100 [00:00<00:04, 18.18it/s] 14%|█▍        | 14/100 [00:00<00:04, 18.93it/s] 17%|█▋        | 17/100 [00:00<00:04, 20.32it/s] 20%|██        | 20/100 [00:01<00:03, 21.34it/s] 23%|██▎       | 23/100 [00:01<00:03, 21.25it/s] 26%|██▌       | 26/100 [00:01<00:04, 18.04it/s] 29%|██▉       | 29/100 [00:01<00:03, 19.31it/s] 32%|███▏      | 32/100 [00:01<00:03, 20.19it/s] 35%|███▌      | 35/100 [00:01<00:03, 20.87it/s] 38%|███▊      | 38/100 [00:02<00:03, 18.69it/s] 41%|████      | 41/100 [00:02<00:03, 19.34it/s] 44%|████▍     | 44/100 [00:02<00:02, 20.47it/s] 47%|████▋     | 47/100 [00:02<00:02, 20.66it/s] 50%|█████     | 50/100 [00:02<00:02, 21.41it/s] 53%|█████▎    | 53/100 [00:02<00:02, 21.06it/s] 56%|█████▌    | 56/100 [00:02<00:02, 20.76it/s] 59%|█████▉    | 59/100 [00:03<00:01, 20.89it/s] 62%|██████▏   | 62/100 [00:03<00:01, 20.45it/s] 65%|██████▌   | 65/100 [00:03<00:01, 21.06it/s] 68%|██████▊   | 68/100 [00:03<00:01, 21.21it/s] 71%|███████   | 71/100 [00:03<00:01, 21.28it/s] 74%|███████▍  | 74/100 [00:03<00:01, 20.67it/s] 77%|███████▋  | 77/100 [00:03<00:01, 20.78it/s] 80%|████████  | 80/100 [00:04<00:00, 20.44it/s] 83%|████████▎ | 83/100 [00:04<00:00, 19.83it/s] 85%|████████▌ | 85/100 [00:04<00:00, 19.61it/s] 88%|████████▊ | 88/100 [00:04<00:00, 19.48it/s] 91%|█████████ | 91/100 [00:04<00:00, 19.83it/s] 94%|█████████▍| 94/100 [00:04<00:00, 19.62it/s] 96%|█████████▌| 96/100 [00:04<00:00, 19.51it/s] 98%|█████████▊| 98/100 [00:05<00:00, 19.35it/s]100%|██████████| 100/100 [00:05<00:00, 18.17it/s]100%|██████████| 100/100 [00:05<00:00, 19.45it/s]
- --> Iterando sobre eventos
- - Número de eventos: 100
- - Client: http://seisarc.sismo.iag.usp.br
- - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
- - Estações no Inventário: 1480
-Press Enter to continue ...
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:00<01:16,  1.29it/s]  1%|          | 1/100 [00:00<01:16,  1.29it/s]
-############ Event 1: usp2014gyqn ############
-
---> Pick 1
- - Net: BL
- - Sta: BB19B
- - X,Y BL.BB19B: -21.0662, -48.5279
- - Distância até o epicentro: 0.4739622562125565 km
- Downloading ...
- Pick Time -> 2014-04-09T20:49:43.974670Z
- Origin Time -> 2014-04-09T20:49:40.000000Z
- Channel -> HHE
- - Saving File: 20140409T204940/BL_BB19B_20140409T204940.mseed
- -> Erro ao obter magnitude: 'NoneType' object has no attribute 'mag'
------------------------------------------------------
-
- - Event: usp2014gyqn
- - Pwave Picks: 1
- - Streams: 1
-#####################################################
-
-############ Event 2: usp2021ezmw ############
-
---> Pick 1
- - Net: GT
- - Sta: CPUP
-estação GT.CPUP.BHZ não encontrada no inventário
-Traceback (most recent call last):
-  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 94, in <module>
-    catalogo, inentory, missin_ids = main(
-                                     ^^^^^
-  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 56, in main
-    iterate_events(
-  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/BaixarFormaOnda.py", line 141, in iterate_events
-    sta_lat, sta_lon = get_sta_xy(net, sta, cha, inventario)
-    ^^^^^^^^^^^^^^^^
-TypeError: cannot unpack non-iterable NoneType object
-
- Criando arquivos de backup...

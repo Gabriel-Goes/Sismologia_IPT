@@ -1,83 +1,0 @@
-
-########################################################################
- ---------------- Iniciando do Pipeline --------------------------------
-
- -> Executando ProcessarDadosSismologicos.py...
-
- - Argumento 1: /home/ggrl/projetos/ClassificadorSismologico/files/catalogo/catalogo-moho.csv
- --> Client:
-  http://seisarc.sismo.iag.usp.br
- --> Client Backup:
-  http://rsbr.on.br:8081/fdsnws/dataselect/1
------------------------------------------------------
-
-
- --------- Iniciando o ProcessarID.py --------- 
- ------------------------------ Acessando Catálogo ------------------------------ 
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:00<00:24,  4.11it/s]  4%|▍         | 4/100 [00:00<00:07, 12.63it/s]  7%|▋         | 7/100 [00:00<00:05, 16.24it/s] 10%|█         | 10/100 [00:00<00:04, 18.11it/s] 13%|█▎        | 13/100 [00:00<00:04, 19.60it/s] 16%|█▌        | 16/100 [00:00<00:04, 20.43it/s] 19%|█▉        | 19/100 [00:01<00:03, 21.09it/s] 22%|██▏       | 22/100 [00:01<00:03, 21.50it/s] 25%|██▌       | 25/100 [00:01<00:03, 20.82it/s] 28%|██▊       | 28/100 [00:01<00:03, 21.30it/s] 31%|███       | 31/100 [00:01<00:03, 21.03it/s] 34%|███▍      | 34/100 [00:01<00:03, 21.25it/s] 37%|███▋      | 37/100 [00:01<00:02, 21.10it/s] 40%|████      | 40/100 [00:02<00:02, 21.52it/s] 43%|████▎     | 43/100 [00:02<00:02, 21.84it/s] 46%|████▌     | 46/100 [00:02<00:02, 21.66it/s] 49%|████▉     | 49/100 [00:02<00:02, 19.91it/s] 52%|█████▏    | 52/100 [00:02<00:02, 20.56it/s] 55%|█████▌    | 55/100 [00:02<00:02, 20.18it/s] 58%|█████▊    | 58/100 [00:02<00:02, 20.13it/s] 61%|██████    | 61/100 [00:03<00:01, 20.43it/s] 64%|██████▍   | 64/100 [00:03<00:01, 21.03it/s] 67%|██████▋   | 67/100 [00:03<00:01, 20.61it/s] 70%|███████   | 70/100 [00:03<00:01, 21.28it/s] 73%|███████▎  | 73/100 [00:03<00:01, 20.22it/s] 76%|███████▌  | 76/100 [00:03<00:01, 20.51it/s] 79%|███████▉  | 79/100 [00:03<00:01, 19.21it/s] 82%|████████▏ | 82/100 [00:04<00:00, 19.51it/s] 84%|████████▍ | 84/100 [00:04<00:00, 19.61it/s] 86%|████████▌ | 86/100 [00:04<00:00, 19.01it/s] 89%|████████▉ | 89/100 [00:04<00:00, 19.69it/s] 92%|█████████▏| 92/100 [00:04<00:00, 20.61it/s] 95%|█████████▌| 95/100 [00:04<00:00, 19.86it/s] 97%|█████████▋| 97/100 [00:04<00:00, 19.73it/s] 99%|█████████▉| 99/100 [00:04<00:00, 19.64it/s]100%|██████████| 100/100 [00:05<00:00, 19.78it/s]
- --> Iterando sobre eventos
- - Número de eventos: 100
- - Client: http://seisarc.sismo.iag.usp.br
- - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
- - Estações no Inventário: 1480
-Press Enter to continue ...
-  0%|          | 0/100 [00:00<?, ?it/s]  2%|▏         | 2/100 [00:00<00:04, 21.91it/s]
-############ Event 1: usp2014gyqn ############
-
---> Pick 1
- - Net: BL
- - Sta: BB19B
- - X,Y BL.BB19B: [-21.0662], [-48.5279]
- - Distância até o epicentro: 0.4739622562125565 km
- Downloading ...
- Pick Time -> 2014-04-09T20:49:43.974670Z
- Origin Time -> 2014-04-09T20:49:40.000000Z
- Channel -> HHE
- - Saving File: 20140409T204940/BL_BB19B_20140409T204940.mseed
- -> Erro ao obter magnitude: 'NoneType' object has no attribute 'mag'
------------------------------------------------------
-
- - Event: usp2014gyqn
- - Pwave Picks: 1
- - Streams: 1
-#####################################################
-
-############ Event 2: usp2021ezmw ############
-
---> Pick 1
- - Net: GT
- - Sta: CPUP
-estação GT.CPUP.BHZ não encontrada no inventário
- - Event: usp2021ezmw
- - Pwave Picks: 1
- - Streams: 0
-#####################################################
-
-############ Event 3: usp2020hkyw ############
-
---> Pick 1
- - Net: BR
- - Sta: PDRB
- - X,Y BR.PDRB: [-11.612297 -11.612297], [-56.729597 -56.729597]
-Traceback (most recent call last):
-  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 94, in <module>
-    catalogo, inentory, missin_ids = main(
-                                     ^^^^^
-  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 56, in main
-    iterate_events(
-  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/BaixarFormaOnda.py", line 157, in iterate_events
-    dist, az, baz = gps2dist_azimuth(origem_lat, origem_lon, sta_lat, sta_lon)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/geodetics/base.py", line 280, in gps2dist_azimuth
-    raise e
-  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/geodetics/base.py", line 267, in gps2dist_azimuth
-    values = calc_vincenty_inverse(lat1, lon1, lat2, lon2, a, f)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/geodetics/base.py", line 126, in calc_vincenty_inverse
-    _check_latitude(lat2, 'lat2')
-  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/geodetics/base.py", line 51, in _check_latitude
-    if latitude > 90 or latitude < -90:
-       ^^^^^^^^^^^^^
-ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
-
- Criando arquivos de backup...

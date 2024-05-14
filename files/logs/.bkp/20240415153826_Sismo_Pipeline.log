@@ -1,63 +1,0 @@
-
-########################################################################
- ---------------- Iniciando do Pipeline --------------------------------
-
- -> Executando ProcessarDadosSismologicos.py...
-
- - Argumento 1: /home/ggrl/projetos/ClassificadorSismologico/files/catalogo/catalogo-moho_bkp.csv
- --> Client:
-  http://seisarc.sismo.iag.usp.br
- --> Client Backup:
-  http://rsbr.on.br:8081/fdsnws/dataselect/1
------------------------------------------------------
-
-
- --------- Iniciando o ProcessarID.py --------- 
- ------------------------------ Acessando Catálogo ------------------------------ 
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:00<00:24,  4.03it/s]  3%|▎         | 3/100 [00:00<00:10,  9.56it/s]  6%|▌         | 6/100 [00:00<00:06, 13.88it/s]  9%|▉         | 9/100 [00:00<00:05, 16.34it/s] 12%|█▏        | 12/100 [00:00<00:04, 17.85it/s] 15%|█▌        | 15/100 [00:00<00:04, 19.15it/s] 18%|█▊        | 18/100 [00:01<00:04, 19.63it/s] 21%|██        | 21/100 [00:01<00:03, 20.27it/s] 24%|██▍       | 24/100 [00:01<00:03, 20.54it/s] 27%|██▋       | 27/100 [00:01<00:03, 20.04it/s] 30%|███       | 30/100 [00:01<00:03, 20.14it/s] 33%|███▎      | 33/100 [00:01<00:03, 19.69it/s] 35%|███▌      | 35/100 [00:01<00:03, 19.38it/s] 37%|███▋      | 37/100 [00:02<00:03, 19.03it/s] 39%|███▉      | 39/100 [00:02<00:03, 18.65it/s] 41%|████      | 41/100 [00:02<00:03, 18.28it/s] 44%|████▍     | 44/100 [00:02<00:02, 18.74it/s] 46%|████▌     | 46/100 [00:02<00:02, 18.39it/s] 49%|████▉     | 49/100 [00:02<00:02, 19.06it/s] 52%|█████▏    | 52/100 [00:02<00:02, 19.47it/s] 54%|█████▍    | 54/100 [00:02<00:02, 19.08it/s] 57%|█████▋    | 57/100 [00:03<00:02, 19.56it/s] 59%|█████▉    | 59/100 [00:03<00:02, 18.67it/s] 61%|██████    | 61/100 [00:03<00:02, 18.17it/s] 63%|██████▎   | 63/100 [00:03<00:01, 18.58it/s] 65%|██████▌   | 65/100 [00:03<00:01, 18.09it/s] 67%|██████▋   | 67/100 [00:03<00:01, 17.80it/s] 70%|███████   | 70/100 [00:03<00:01, 18.12it/s] 72%|███████▏  | 72/100 [00:03<00:01, 18.40it/s] 75%|███████▌  | 75/100 [00:04<00:01, 18.75it/s] 77%|███████▋  | 77/100 [00:04<00:01, 18.58it/s] 79%|███████▉  | 79/100 [00:04<00:01, 18.76it/s] 82%|████████▏ | 82/100 [00:04<00:00, 18.54it/s] 85%|████████▌ | 85/100 [00:04<00:00, 19.63it/s] 88%|████████▊ | 88/100 [00:04<00:00, 19.64it/s] 90%|█████████ | 90/100 [00:04<00:00, 18.92it/s] 93%|█████████▎| 93/100 [00:05<00:00, 18.81it/s] 96%|█████████▌| 96/100 [00:05<00:00, 18.24it/s] 98%|█████████▊| 98/100 [00:05<00:00, 18.01it/s]100%|██████████| 100/100 [00:05<00:00, 18.36it/s]100%|██████████| 100/100 [00:05<00:00, 18.40it/s]
- --> Iterando sobre eventos
- - Número de eventos: 100
- - Client: http://seisarc.sismo.iag.usp.br
- - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
- - Estações no Inventário: 1480
-Press Enter to continue ...
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:00<00:05, 17.74it/s]
-############ Event 1: usp2020hkyw ############
-
---> Pick 1
- - Net: BR
- - Sta: PDRB
- - BR.PDRB X,Y : -11.612297, -56.729597
- - Distância até o epicentro: 0.22934459104391727 km
- Downloading ...
- Pick Time -> 2020-04-15T14:40:19.978417Z
- Origin Time -> 2020-04-15T14:40:20.000000Z
- Channel -> HHZ
- - Saving File: 20200415T144020/BR_PDRB_20200415T144020.mseed
------------------------------------------------------
-
- - Event: usp2020hkyw
- - Pwave Picks: 1
- - Streams: 1
-#####################################################
-
-############ Event 2: usp2022gpbs ############
-
---> Pick 1
- - Net: NB
- - Sta: NBMO
-Traceback (most recent call last):
-  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 94, in <module>
-    catalogo, inentory, missin_ids = main(
-                                     ^^^^^
-  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 56, in main
-    iterate_events(
-  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/BaixarFormaOnda.py", line 140, in iterate_events
-    sta_lat, sta_lon = get_sta_xy(net, sta, cha, inventario)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/utils.py", line 128, in get_sta_xy
-    return lat[0], lon[0]
-           ~~~^^^
-IndexError: index 0 is out of bounds for axis 0 with size 0
-
- Criando arquivos de backup...
