@@ -3,24 +3,287 @@
                        Iniciando do Pipeline                         
 ========================================================================
 
- Criando arquivos de backup...
- Arquivos de backup criados com sucesso!
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+0it [00:00, ?it/s]1it [00:00,  4.57it/s]6it [00:00, 22.17it/s]11it [00:00, 31.04it/s]16it [00:00, 36.07it/s]21it [00:00, 39.60it/s]26it [00:00, 41.89it/s]31it [00:00, 43.74it/s]36it [00:00, 44.08it/s]41it [00:01, 44.23it/s]47it [00:01, 46.28it/s]52it [00:01, 46.13it/s]57it [00:01, 39.39it/s]62it [00:01, 41.78it/s]68it [00:01, 44.45it/s]73it [00:01, 43.23it/s]78it [00:01, 44.12it/s]83it [00:02, 45.28it/s]88it [00:02, 45.68it/s]93it [00:02, 45.62it/s]98it [00:02, 44.76it/s]103it [00:02, 44.25it/s]108it [00:02, 44.48it/s]113it [00:02, 45.63it/s]118it [00:02, 46.34it/s]123it [00:02, 46.98it/s]128it [00:03, 46.55it/s]133it [00:03, 42.24it/s]138it [00:03, 37.36it/s]142it [00:03, 31.56it/s]147it [00:03, 34.94it/s]152it [00:03, 37.36it/s]156it [00:03, 37.89it/s]161it [00:03, 39.57it/s]166it [00:04, 36.33it/s]170it [00:04, 34.33it/s]174it [00:04, 35.11it/s]179it [00:04, 38.57it/s]184it [00:04, 39.87it/s]189it [00:04, 33.81it/s]194it [00:04, 36.53it/s]199it [00:04, 39.23it/s]204it [00:05, 41.51it/s]209it [00:05, 42.28it/s]214it [00:05, 42.12it/s]219it [00:05, 43.60it/s]224it [00:05, 43.48it/s]229it [00:05, 44.00it/s]234it [00:05, 44.58it/s]239it [00:05, 44.72it/s]244it [00:05, 45.31it/s]249it [00:06, 45.39it/s]254it [00:06, 45.26it/s]259it [00:06, 43.30it/s]264it [00:06, 44.25it/s]269it [00:06, 44.61it/s]274it [00:06, 44.76it/s]279it [00:06, 42.29it/s]284it [00:06, 42.12it/s]289it [00:07, 42.81it/s]294it [00:07, 42.75it/s]299it [00:07, 43.16it/s]304it [00:07, 40.45it/s]309it [00:07, 41.30it/s]314it [00:07, 42.52it/s]319it [00:07, 33.52it/s]324it [00:07, 36.54it/s]329it [00:08, 39.19it/s]334it [00:08, 39.61it/s]339it [00:08, 41.34it/s]344it [00:08, 41.93it/s]349it [00:08, 42.92it/s]354it [00:08, 39.54it/s]359it [00:08, 38.02it/s]364it [00:08, 39.61it/s]369it [00:09, 39.93it/s]374it [00:09, 41.40it/s]379it [00:09, 42.48it/s]384it [00:09, 43.70it/s]389it [00:09, 45.10it/s]394it [00:09, 46.25it/s]399it [00:09, 44.33it/s]404it [00:09, 39.01it/s]409it [00:09, 41.26it/s]414it [00:10, 42.03it/s]419it [00:10, 43.74it/s]425it [00:10, 46.24it/s]430it [00:10, 46.49it/s]435it [00:10, 45.89it/s]440it [00:10, 45.52it/s]445it [00:10, 35.27it/s]449it [00:10, 33.63it/s]454it [00:11, 37.04it/s]459it [00:11, 38.86it/s]464it [00:11, 41.28it/s]469it [00:11, 42.54it/s]474it [00:11, 44.55it/s]479it [00:11, 45.19it/s]484it [00:11, 45.91it/s]489it [00:11, 46.60it/s]494it [00:11, 47.22it/s]499it [00:12, 47.11it/s]504it [00:12, 46.35it/s]509it [00:12, 46.49it/s]514it [00:12, 43.62it/s]519it [00:12, 44.68it/s]524it [00:12, 45.60it/s]529it [00:12, 45.03it/s]534it [00:12, 45.20it/s]539it [00:12, 44.61it/s]544it [00:13, 44.52it/s]549it [00:13, 44.03it/s]554it [00:13, 44.28it/s]559it [00:13, 42.89it/s]564it [00:13, 43.21it/s]569it [00:13, 43.21it/s]574it [00:13, 34.41it/s]579it [00:13, 36.94it/s]584it [00:14, 39.15it/s]589it [00:14, 40.82it/s]594it [00:14, 42.25it/s]599it [00:14, 41.83it/s]604it [00:14, 42.50it/s]609it [00:14, 43.30it/s]614it [00:14, 42.87it/s]619it [00:14, 43.16it/s]624it [00:14, 44.10it/s]630it [00:15, 46.13it/s]635it [00:15, 44.49it/s]640it [00:15, 39.66it/s]645it [00:15, 40.05it/s]650it [00:15, 40.53it/s]655it [00:15, 41.72it/s]660it [00:15, 42.91it/s]665it [00:15, 42.48it/s]670it [00:16, 43.69it/s]675it [00:16, 43.26it/s]680it [00:16, 43.37it/s]685it [00:16, 43.93it/s]690it [00:16, 44.83it/s]695it [00:16, 45.10it/s]700it [00:16, 36.55it/s]704it [00:16, 34.86it/s]709it [00:17, 36.99it/s]714it [00:17, 39.61it/s]719it [00:17, 40.53it/s]724it [00:17, 41.97it/s]729it [00:17, 38.87it/s]734it [00:17, 40.89it/s]739it [00:17, 42.47it/s]744it [00:17, 42.70it/s]749it [00:18, 43.58it/s]754it [00:18, 44.42it/s]759it [00:18, 45.53it/s]764it [00:18, 46.32it/s]769it [00:18, 46.98it/s]774it [00:18, 46.99it/s]779it [00:18, 47.26it/s]784it [00:18, 39.68it/s]789it [00:18, 37.93it/s]794it [00:19, 39.62it/s]799it [00:19, 41.49it/s]804it [00:19, 43.45it/s]809it [00:19, 44.35it/s]814it [00:19, 44.22it/s]819it [00:19, 44.56it/s]824it [00:19, 44.53it/s]829it [00:19, 37.00it/s]834it [00:20, 39.53it/s]839it [00:20, 41.58it/s]844it [00:20, 39.46it/s]849it [00:20, 41.27it/s]854it [00:20, 42.74it/s]859it [00:20, 43.28it/s]864it [00:20, 44.57it/s]869it [00:20, 45.84it/s]874it [00:20, 46.79it/s]879it [00:20, 47.47it/s]884it [00:21, 47.57it/s]889it [00:21, 40.25it/s]894it [00:21, 36.78it/s]899it [00:21, 39.67it/s]904it [00:21, 39.44it/s]909it [00:21, 37.72it/s]913it [00:21, 36.64it/s]917it [00:22, 30.70it/s]921it [00:22, 30.75it/s]925it [00:22, 32.89it/s]929it [00:22, 34.04it/s]934it [00:22, 37.06it/s]939it [00:22, 38.70it/s]944it [00:22, 39.71it/s]949it [00:22, 40.76it/s]954it [00:23, 41.41it/s]959it [00:23, 32.94it/s]964it [00:23, 35.42it/s]969it [00:23, 38.17it/s]975it [00:23, 41.54it/s]980it [00:23, 41.61it/s]985it [00:23, 42.39it/s]990it [00:23, 39.69it/s]995it [00:24, 37.23it/s]1000it [00:24, 39.18it/s]1005it [00:24, 41.81it/s]1010it [00:24, 41.56it/s]1015it [00:24, 43.23it/s]1020it [00:24, 43.56it/s]1025it [00:24, 43.32it/s]1030it [00:24, 39.70it/s]1035it [00:25, 39.28it/s]1040it [00:25, 41.01it/s]1045it [00:25, 41.71it/s]1050it [00:25, 41.97it/s]1055it [00:25, 41.73it/s]1060it [00:25, 42.58it/s]1065it [00:25, 42.94it/s]1070it [00:25, 41.77it/s]1075it [00:26, 40.86it/s]1080it [00:26, 42.41it/s]1085it [00:26, 36.13it/s]1090it [00:26, 38.48it/s]1095it [00:26, 40.02it/s]1100it [00:26, 41.11it/s]1105it [00:26, 42.16it/s]1110it [00:26, 42.47it/s]1115it [00:26, 43.49it/s]1120it [00:27, 44.27it/s]1125it [00:27, 44.79it/s]1130it [00:27, 45.35it/s]/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/numpy/core/fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+1135it [00:27, 44.16it/s]1140it [00:27, 44.62it/s]1145it [00:27, 43.84it/s]1150it [00:27, 44.55it/s]1155it [00:27, 43.96it/s]1160it [00:28, 43.92it/s]1165it [00:28, 44.77it/s]1170it [00:28, 45.41it/s]1175it [00:28, 45.99it/s]1180it [00:28, 41.11it/s]1185it [00:28, 42.08it/s]1190it [00:28, 43.59it/s]1195it [00:28, 45.09it/s]1200it [00:28, 46.22it/s]1205it [00:28, 46.90it/s]1210it [00:29, 45.70it/s]1215it [00:29, 33.25it/s]1219it [00:29, 30.80it/s]1223it [00:29, 30.73it/s]1227it [00:29, 32.42it/s]1231it [00:29, 30.75it/s]1236it [00:30, 33.91it/s]1241it [00:30, 36.26it/s]1245it [00:30, 34.93it/s]1249it [00:30, 35.76it/s]1254it [00:30, 38.58it/s]1259it [00:30, 39.52it/s]1264it [00:30, 41.35it/s]1269it [00:30, 37.18it/s]1273it [00:30, 36.37it/s]1277it [00:31, 35.95it/s]1282it [00:31, 37.56it/s]1286it [00:31, 34.74it/s]1290it [00:31, 32.13it/s]1294it [00:31, 33.04it/s]1299it [00:31, 36.73it/s]1304it [00:31, 38.64it/s]1309it [00:31, 40.34it/s]1314it [00:32, 38.59it/s]1318it [00:32, 37.41it/s]1322it [00:32, 37.16it/s]1326it [00:32, 35.08it/s]1330it [00:32, 34.62it/s]1334it [00:32, 31.95it/s]1338it [00:32, 30.83it/s]1342it [00:33, 25.64it/s]1346it [00:33, 27.63it/s]1351it [00:33, 31.81it/s]1356it [00:33, 35.95it/s]1360it [00:33, 34.64it/s]1364it [00:33, 33.30it/s]1369it [00:33, 37.01it/s]1374it [00:33, 40.23it/s]1379it [00:33, 42.53it/s]1385it [00:34, 45.28it/s]1391it [00:34, 46.57it/s]1396it [00:34, 46.52it/s]1401it [00:34, 46.32it/s]1406it [00:34, 46.42it/s]1411it [00:34, 46.76it/s]1416it [00:34, 47.10it/s]1421it [00:34, 46.92it/s]1426it [00:34, 46.15it/s]1431it [00:35, 45.79it/s]1436it [00:35, 43.55it/s]1441it [00:35, 43.59it/s]1446it [00:35, 41.62it/s]1451it [00:35, 42.32it/s]1456it [00:35, 42.87it/s]1461it [00:35, 42.93it/s]1466it [00:35, 44.37it/s]1471it [00:36, 37.22it/s]1476it [00:36, 39.21it/s]1481it [00:36, 41.79it/s]1487it [00:36, 44.28it/s]1492it [00:36, 44.89it/s]1497it [00:36, 45.64it/s]1502it [00:36, 45.98it/s]1507it [00:36, 46.00it/s]1512it [00:36, 45.49it/s]1517it [00:37, 45.94it/s]1522it [00:37, 45.36it/s]1527it [00:37, 45.29it/s]1532it [00:37, 45.57it/s]1537it [00:37, 45.89it/s]1542it [00:37, 46.39it/s]1547it [00:37, 46.67it/s]1552it [00:37, 46.74it/s]1557it [00:37, 46.38it/s]1562it [00:38, 44.16it/s]1567it [00:38, 41.50it/s]1572it [00:38, 41.17it/s]1577it [00:38, 42.90it/s]1582it [00:38, 43.93it/s]1587it [00:38, 44.99it/s]1592it [00:38, 46.09it/s]1597it [00:38, 37.28it/s]1602it [00:39, 34.88it/s]1607it [00:39, 37.33it/s]1611it [00:39, 37.13it/s]1616it [00:39, 38.51it/s]1621it [00:39, 40.29it/s]1626it [00:39, 42.55it/s]1631it [00:39, 43.77it/s]1636it [00:39, 44.36it/s]1641it [00:39, 44.44it/s]1646it [00:40, 43.30it/s]1651it [00:40, 40.15it/s]1656it [00:40, 41.49it/s]1661it [00:40, 40.90it/s]1666it [00:40, 42.84it/s]1671it [00:40, 43.77it/s]1676it [00:40, 44.39it/s]1681it [00:40, 43.95it/s]1686it [00:41, 43.40it/s]1691it [00:41, 44.43it/s]1696it [00:41, 43.14it/s]1701it [00:41, 43.18it/s]1706it [00:41, 42.93it/s]1711it [00:41, 43.76it/s]1716it [00:41, 45.09it/s]1721it [00:41, 45.83it/s]1726it [00:42, 38.59it/s]1731it [00:42, 40.46it/s]1736it [00:42, 42.57it/s]1741it [00:42, 44.14it/s]1746it [00:42, 45.28it/s]1751it [00:42, 46.11it/s]1756it [00:42, 46.38it/s]1761it [00:42, 46.39it/s]1766it [00:42, 46.97it/s]1771it [00:42, 47.28it/s]1776it [00:43, 47.03it/s]1781it [00:43, 47.40it/s]1786it [00:43, 47.06it/s]1791it [00:43, 46.52it/s]1796it [00:43, 46.28it/s]1801it [00:43, 44.21it/s]1806it [00:43, 45.50it/s]1811it [00:43, 44.27it/s]1816it [00:43, 42.61it/s]1821it [00:44, 43.87it/s]1826it [00:44, 45.18it/s]1831it [00:44, 45.25it/s]1836it [00:44, 45.20it/s]1841it [00:44, 41.33it/s]1846it [00:44, 42.87it/s]1851it [00:44, 35.57it/s]1856it [00:44, 38.48it/s]1861it [00:45, 40.86it/s]1866it [00:45, 42.49it/s]1871it [00:45, 43.69it/s]1876it [00:45, 44.63it/s]1881it [00:45, 45.52it/s]1886it [00:45, 45.86it/s]1891it [00:45, 46.55it/s]1896it [00:45, 46.52it/s]1901it [00:45, 46.99it/s]1906it [00:46, 46.40it/s]1911it [00:46, 45.81it/s]1916it [00:46, 45.50it/s]1921it [00:46, 45.57it/s]1926it [00:46, 45.58it/s]1931it [00:46, 45.84it/s]1936it [00:46, 46.52it/s]1941it [00:46, 45.41it/s]1946it [00:46, 44.96it/s]1951it [00:47, 44.77it/s]1956it [00:47, 44.03it/s]1961it [00:47, 43.44it/s]1966it [00:47, 44.40it/s]1971it [00:47, 44.58it/s]1976it [00:47, 44.86it/s]1981it [00:47, 37.01it/s]1986it [00:47, 39.22it/s]1991it [00:47, 40.84it/s]1996it [00:48, 41.94it/s]2001it [00:48, 43.52it/s]2006it [00:48, 38.53it/s]2011it [00:48, 40.68it/s]2016it [00:48, 41.81it/s]2021it [00:48, 39.98it/s]2026it [00:48, 41.64it/s]2031it [00:48, 43.58it/s]2036it [00:49, 44.46it/s]2041it [00:49, 45.27it/s]2046it [00:49, 45.78it/s]2051it [00:49, 46.23it/s]2056it [00:49, 46.33it/s]2061it [00:49, 46.75it/s]2066it [00:49, 46.77it/s]2071it [00:49, 45.69it/s]2076it [00:49, 45.74it/s]2081it [00:50, 46.04it/s]2086it [00:50, 45.92it/s]2091it [00:50, 45.36it/s]2096it [00:50, 44.98it/s]2101it [00:50, 45.32it/s]2106it [00:50, 45.76it/s]2111it [00:50, 38.34it/s]2116it [00:50, 40.26it/s]2121it [00:50, 41.67it/s]2126it [00:51, 43.24it/s]2131it [00:51, 44.58it/s]2136it [00:51, 45.02it/s]2141it [00:51, 44.45it/s]2146it [00:51, 43.89it/s]2151it [00:51, 43.60it/s]2156it [00:51, 43.79it/s]2161it [00:51, 44.99it/s]2166it [00:51, 45.04it/s]2171it [00:52, 41.17it/s]2176it [00:52, 42.71it/s]2181it [00:52, 43.93it/s]2186it [00:52, 44.27it/s]2191it [00:52, 44.35it/s]2196it [00:52, 45.48it/s]2201it [00:52, 45.33it/s]2206it [00:52, 46.17it/s]2211it [00:52, 45.93it/s]2216it [00:53, 39.69it/s]2221it [00:53, 37.82it/s]2225it [00:53, 36.35it/s]2229it [00:53, 36.08it/s]2234it [00:53, 38.75it/s]2238it [00:53, 33.24it/s]2242it [00:53, 33.41it/s]2246it [00:54, 33.41it/s]2251it [00:54, 36.38it/s]2256it [00:54, 38.27it/s]2261it [00:54, 40.28it/s]2266it [00:54, 41.05it/s]2271it [00:54, 42.07it/s]2276it [00:54, 43.06it/s]2281it [00:54, 43.09it/s]2286it [00:54, 42.36it/s]2291it [00:55, 43.68it/s]2296it [00:55, 43.79it/s]2301it [00:55, 44.05it/s]2306it [00:55, 44.71it/s]2311it [00:55, 45.35it/s]2316it [00:55, 43.78it/s]2321it [00:55, 43.54it/s]2326it [00:55, 42.95it/s]2331it [00:55, 43.04it/s]2336it [00:56, 43.78it/s]2341it [00:56, 43.69it/s]2346it [00:56, 44.63it/s]2351it [00:56, 45.39it/s]2356it [00:56, 45.87it/s]2361it [00:56, 45.19it/s]2366it [00:56, 37.83it/s]2371it [00:56, 40.35it/s]2376it [00:57, 42.46it/s]2381it [00:57, 43.36it/s]2386it [00:57, 44.24it/s]2391it [00:57, 44.88it/s]2396it [00:57, 44.50it/s]2401it [00:57, 44.39it/s]2406it [00:57, 45.32it/s]2411it [00:57, 45.42it/s]2416it [00:57, 45.56it/s]2421it [00:57, 45.72it/s]2426it [00:58, 45.12it/s]2431it [00:58, 44.58it/s]2436it [00:58, 45.09it/s]2441it [00:58, 45.55it/s]2446it [00:58, 46.12it/s]2451it [00:58, 45.62it/s]2456it [00:58, 45.46it/s]2461it [00:58, 45.09it/s]2466it [00:58, 44.86it/s]2471it [00:59, 45.29it/s]2476it [00:59, 41.53it/s]2481it [00:59, 40.46it/s]2486it [00:59, 33.40it/s]2491it [00:59, 31.13it/s]2496it [00:59, 33.91it/s]2500it [01:00, 33.04it/s]2505it [01:00, 35.88it/s]2510it [01:00, 37.71it/s]2515it [01:00, 39.79it/s]2520it [01:00, 39.28it/s]2525it [01:00, 40.46it/s]2530it [01:00, 41.64it/s]2535it [01:00, 38.04it/s]2540it [01:00, 39.01it/s]2544it [01:01, 39.00it/s]2548it [01:01, 38.24it/s]2553it [01:01, 40.37it/s]2558it [01:01, 41.46it/s]2563it [01:01, 42.59it/s]2568it [01:01, 43.02it/s]2573it [01:01, 43.30it/s]2578it [01:01, 44.74it/s]2583it [01:01, 44.73it/s]2588it [01:02, 45.64it/s]2593it [01:02, 45.42it/s]2598it [01:02, 44.91it/s]2603it [01:02, 43.86it/s]2608it [01:02, 44.72it/s]2613it [01:02, 45.46it/s]2618it [01:02, 46.17it/s]2623it [01:02, 33.51it/s]2628it [01:03, 35.78it/s]2633it [01:03, 38.12it/s]2638it [01:03, 40.14it/s]2643it [01:03, 40.77it/s]2648it [01:03, 38.97it/s]2653it [01:03, 36.14it/s]2657it [01:03, 33.99it/s]2661it [01:04, 31.99it/s]2666it [01:04, 35.06it/s]2671it [01:04, 36.87it/s]2675it [01:04, 37.07it/s]2680it [01:04, 39.24it/s]2684it [01:04, 39.23it/s]2689it [01:04, 41.02it/s]2694it [01:04, 41.10it/s]2699it [01:04, 41.39it/s]2704it [01:05, 43.20it/s]2709it [01:05, 43.76it/s]2714it [01:05, 43.93it/s]2719it [01:05, 45.09it/s]2724it [01:05, 45.45it/s]2729it [01:05, 45.44it/s]2734it [01:05, 44.69it/s]2739it [01:05, 44.37it/s]2744it [01:05, 43.75it/s]2749it [01:06, 37.05it/s]2754it [01:06, 39.08it/s]2759it [01:06, 40.17it/s]2764it [01:06, 42.46it/s]2769it [01:06, 42.97it/s]2774it [01:06, 43.38it/s]2779it [01:06, 43.91it/s]2784it [01:06, 44.36it/s]2789it [01:07, 45.03it/s]2794it [01:07, 45.59it/s]2799it [01:07, 45.82it/s]2804it [01:07, 46.52it/s]2809it [01:07, 46.58it/s]2814it [01:07, 46.61it/s]2819it [01:07, 46.60it/s]2824it [01:07, 46.85it/s]2829it [01:07, 46.87it/s]2834it [01:07, 46.76it/s]2839it [01:08, 46.30it/s]2844it [01:08, 45.11it/s]2849it [01:08, 45.13it/s]2854it [01:08, 45.82it/s]2859it [01:08, 46.40it/s]2864it [01:08, 46.48it/s]2869it [01:08, 45.41it/s]2874it [01:08, 44.78it/s]2879it [01:09, 35.85it/s]2884it [01:09, 37.91it/s]2889it [01:09, 39.22it/s]2894it [01:09, 41.15it/s]2899it [01:09, 42.59it/s]2904it [01:09, 43.60it/s]2909it [01:09, 42.84it/s]2914it [01:09, 43.51it/s]2919it [01:09, 43.46it/s]2924it [01:10, 42.54it/s]2929it [01:10, 43.84it/s]2934it [01:10, 44.75it/s]2939it [01:10, 45.99it/s]2944it [01:10, 46.60it/s]2949it [01:10, 46.43it/s]2954it [01:10, 45.68it/s]2959it [01:10, 45.26it/s]2964it [01:10, 45.50it/s]2969it [01:11, 45.84it/s]2974it [01:11, 45.56it/s]2979it [01:11, 43.27it/s]2984it [01:11, 44.12it/s]2989it [01:11, 44.98it/s]2994it [01:11, 45.67it/s]2999it [01:11, 45.89it/s]3004it [01:11, 35.85it/s]3009it [01:12, 38.93it/s]3014it [01:12, 41.25it/s]3019it [01:12, 43.06it/s]3024it [01:12, 41.69it/s]3029it [01:12, 41.04it/s]3034it [01:12, 40.60it/s]3039it [01:12, 40.51it/s]3044it [01:12, 40.73it/s]3049it [01:12, 42.45it/s]3054it [01:13, 38.15it/s]3059it [01:13, 40.90it/s]3064it [01:13, 42.94it/s]3069it [01:13, 43.36it/s]3074it [01:13, 39.29it/s]3079it [01:13, 41.77it/s]3084it [01:13, 43.53it/s]3089it [01:13, 42.55it/s]3094it [01:14, 42.84it/s]3099it [01:14, 44.48it/s]3104it [01:14, 45.22it/s]3109it [01:14, 43.15it/s]3114it [01:14, 39.00it/s]3119it [01:14, 37.81it/s]3123it [01:14, 37.78it/s]3127it [01:14, 37.16it/s]3131it [01:15, 31.31it/s]3136it [01:15, 35.45it/s]3141it [01:15, 38.49it/s]3146it [01:15, 41.00it/s]3151it [01:15, 42.73it/s]3156it [01:15, 44.47it/s]3161it [01:15, 44.89it/s]3166it [01:15, 45.85it/s]3171it [01:15, 41.26it/s]3176it [01:16, 38.67it/s]3181it [01:16, 39.24it/s]3186it [01:16, 39.88it/s]3191it [01:16, 41.49it/s]3196it [01:16, 42.56it/s]3201it [01:16, 43.71it/s]3206it [01:16, 43.31it/s]3211it [01:16, 43.28it/s]3216it [01:17, 41.10it/s]3221it [01:17, 40.95it/s]3227it [01:17, 43.85it/s]3233it [01:17, 45.84it/s]3238it [01:17, 46.74it/s]3244it [01:17, 47.74it/s]3249it [01:17, 48.07it/s]3254it [01:17, 47.44it/s]3259it [01:18, 39.78it/s]3264it [01:18, 41.85it/s]3269it [01:18, 43.51it/s]3274it [01:18, 44.70it/s]3280it [01:18, 46.31it/s]3285it [01:18, 46.54it/s]3290it [01:18, 46.39it/s]3295it [01:18, 45.75it/s]3300it [01:18, 44.13it/s]3305it [01:19, 44.49it/s]3310it [01:19, 44.25it/s]3315it [01:19, 42.26it/s]3320it [01:19, 43.00it/s]3325it [01:19, 43.52it/s]3330it [01:19, 43.95it/s]3335it [01:19, 44.64it/s]3340it [01:19, 44.76it/s]3345it [01:19, 39.63it/s]3350it [01:20, 39.07it/s]3354it [01:20, 39.23it/s]3359it [01:20, 40.32it/s]3364it [01:20, 41.03it/s]3369it [01:20, 41.94it/s]3375it [01:20, 44.58it/s]3380it [01:20, 45.16it/s]3385it [01:20, 44.64it/s]3390it [01:21, 37.93it/s]3395it [01:21, 40.72it/s]3400it [01:21, 42.21it/s]3405it [01:21, 43.08it/s]3410it [01:21, 42.95it/s]3415it [01:21, 43.37it/s]3420it [01:21, 43.51it/s]3425it [01:21, 43.79it/s]3430it [01:21, 42.55it/s]3435it [01:22, 43.17it/s]/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:576: RuntimeWarning: divide by zero encountered in scalar divide
+  filtro_bom.snrp = filtro_bom.p / filtro_bom.noise
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:577: RuntimeWarning: divide by zero encountered in scalar divide
+  filtro_bom.snrs = filtro_bom.s / filtro_bom.noise
+3440it [01:22, 42.74it/s]3445it [01:22, 43.80it/s]3450it [01:22, 43.65it/s]3455it [01:22, 42.56it/s]3460it [01:22, 37.63it/s]3464it [01:22, 38.19it/s]3469it [01:22, 39.45it/s]3474it [01:23, 36.39it/s]3478it [01:23, 36.40it/s]3483it [01:23, 38.61it/s]3488it [01:23, 39.28it/s]3493it [01:23, 40.16it/s]3498it [01:23, 40.49it/s]3503it [01:23, 41.63it/s]3508it [01:23, 41.05it/s]3513it [01:24, 40.08it/s]3518it [01:24, 35.51it/s]3522it [01:24, 35.18it/s]3526it [01:24, 33.77it/s]3531it [01:24, 36.58it/s]3535it [01:24, 36.20it/s]3540it [01:24, 37.96it/s]3544it [01:24, 38.37it/s]3549it [01:25, 40.26it/s]3554it [01:25, 41.71it/s]3559it [01:25, 43.27it/s]3564it [01:25, 44.23it/s]3569it [01:25, 44.89it/s]3574it [01:25, 45.48it/s]3579it [01:25, 45.86it/s]3584it [01:25, 45.62it/s]3589it [01:25, 45.46it/s]3594it [01:26, 43.81it/s]3599it [01:26, 37.93it/s]3604it [01:26, 39.62it/s]3609it [01:26, 40.93it/s]3614it [01:26, 43.01it/s]3619it [01:26, 43.52it/s]3624it [01:26, 44.01it/s]3629it [01:26, 36.70it/s]3633it [01:27, 41.74it/s]
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:805: FutureWarning: The `op` parameter is deprecated and will be removed in a future release. Please use the `predicate` parameter instead.
+  df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt = load_data()
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:805: FutureWarning: The `op` parameter is deprecated and will be removed in a future release. Please use the `predicate` parameter instead.
+  df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt = load_data()
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:310: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:509: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  rc_data = df.groupby('Num_Estacoes').apply(
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:55: FutureWarning: 
 
- ---------------- INICIANDO CORE/GERAR_PREDCSV.PY ---------------------------- 
-/home/ggrl/projetos/ClassificadorSismologico/source/core/gerar_predcsv.py:20: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
 
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df_pred['Cat'] = df_pred['Cat'].apply(lambda x: 0 if x == 'earthquake' else 1)
-Pred.csv criado com sucesso
-Erros.csv criado com sucesso
+  sns.boxplot(
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:94: FutureWarning: 
 
- -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- 
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
 
- ----------------- INICIANDO O PREDICT.PY ---------------------------- 
-[{"success":true}]
+  ax = sns.boxplot(
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:94: FutureWarning: 
 
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.boxplot(
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:94: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.boxplot(
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:94: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.boxplot(
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:94: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.boxplot(
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:94: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.boxplot(
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:94: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.boxplot(
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:94: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.boxplot(
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:94: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.boxplot(
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:94: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.boxplot(
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:94: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.boxplot(
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:798: FutureWarning: The `op` parameter is deprecated and will be removed in a future release. Please use the `predicate` parameter instead.
+  plot_region_correlation(df)
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:798: FutureWarning: The `op` parameter is deprecated and will be removed in a future release. Please use the `predicate` parameter instead.
+  plot_region_correlation(df)
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:693: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.boxplot(
+/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:701: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.boxplot(
+
+ -------------- Processo de criação de mapas iniciado ------------------
+ -> Executando make_maps.py...
+/usr/bin/gmt: /home/ggrl/softwares/otb/lib/libcurl.so.4: no version information available (required by /usr/lib/libgmt.so.6)
+
+ ----------------- Iniciando o pdflatex .tex ---------------------------- 
+/home/ggrl/projetos/ClassificadorSismologico/files/figures/pos_process/plots/boxplots/boxplot_dist.png
+LaTeX file 'figures.tex' has been created successfully.
+ -> Mapa 'source/sismologia-ipt-latex/tex/relatorio_preditivo/tex/mapa.tex' gerado com sucesso!
+~/projetos/ClassificadorSismologico/source/sismologia-ipt-latex ~/projetos/ClassificadorSismologico
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./relatorio_preditivo.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+(./sismo_iptex.cls
+Document Class: sismo_iptex 2024/04/23 Classe Sismologia IPT
+(/usr/share/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+(/usr/share/texmf-dist/tex/latex/base/size12.clo))
+(/usr/share/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty))
+(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)))
+(/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/share/texmf-dist/tex/latex/zref/zref-abspage.sty
+(/usr/share/texmf-dist/tex/latex/zref/zref-base.sty
+(/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty)
+(/usr/share/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texmf-dist/tex/generic/iftex/iftex.sty))
+(/usr/share/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/usr/share/texmf-dist/tex/latex/auxhook/auxhook.sty)))
+(/usr/share/texmf-dist/tex/latex/needspace/needspace.sty)
+(/usr/share/texmf-dist/tex/latex/graphics/color.sty
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def)
+(/usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texmf-dist/tex/latex/mdframed/md-frame-0.mdf))
+(/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/share/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+(/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/share/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
+(/usr/share/texmf-dist/tex/latex/base/inputenc.sty)
+(/usr/share/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/share/texmf-dist/tex/latex/mathtools/mathtools.sty
+(/usr/share/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/share/texmf-dist/tex/latex/mathtools/mhsetup.sty)
+(/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty)))
+(/usr/share/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
+(/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty)
+(/usr/share/texmf-dist/tex/latex/base/latexsym.sty)
+(/usr/share/texmf-dist/tex/generic/mathabx/mathabx.sty
+(/usr/share/texmf-dist/tex/generic/mathabx/mathabx.dcl))
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/share/texmf-dist/tex/latex/psnfss/helvet.sty)
+(/usr/share/texmf-dist/tex/latex/base/fancyhdr.sty)
+(/usr/share/texmf-dist/tex/latex/tools/indentfirst.sty)
+(/usr/share/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texmf-dist/tex/latex/multirow/multirow.sty)
+(/usr/share/texmf-dist/tex/latex/graphics/lscape.sty)
+(/usr/share/texmf-dist/tex/latex/lastpage/lastpage.sty
+(/usr/share/texmf-dist/tex/latex/lastpage/lastpage2e.sty
+(/usr/share/texmf-dist/tex/latex/lastpage/lastpagemodern.sty) 
+)) (/usr/share/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texmf-dist/tex/latex/caption/caption3.sty))
+(/usr/share/texmf-dist/tex/latex/subfig/subfig.sty)
+(/usr/share/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+(/usr/share/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/share/texmf-dist/tex/latex/eso-pic/eso-pic.sty)
+(/usr/share/texmf-dist/tex/latex/pdfpages/pppdftex.def))
+(/usr/share/texmf-dist/tex/latex/setspace/setspace.sty)
+(/usr/share/texmf-dist/tex/latex/changepage/changepage.sty)
+(/usr/share/texmf-dist/tex/latex/tocloft/tocloft.sty)
+(/usr/share/texmf-dist/tex/latex/lipsum/lipsum.sty
+(/usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty)
+(/usr/share/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))
+(/usr/share/texmf-dist/tex/latex/sectsty/sectsty.sty
+
+LaTeX Warning: Command \underbar  has changed.
+               Check if current package is valid.
+
+
+LaTeX Warning: Command \underline  has changed.
+               Check if current package is valid.
+
+) (/usr/share/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/share/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty)
+(/usr/share/texmf-dist/tex/latex/siunitx/siunitx.sty
+(/usr/share/texmf-dist/tex/latex/translations/translations.sty)
+(/usr/share/texmf-dist/tex/latex/tools/array.sty))
+(/usr/share/texmf-dist/tex/latex/was/upgreek.sty)
+(/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texmf-dist/tex/latex/colortbl/colortbl.sty)
+(/usr/share/texmf-dist/tex/latex/tools/tabularx.sty)
+(/usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(/usr/share/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texmf-dist/tex/latex/xargs/xargs.sty
+(/usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texmf-dist/tex/generic/xkeyval/xkvutils.tex))))
+(/usr/share/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/share/texmf-dist/tex/latex/makecell/makecell.sty)
+(/usr/share/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+(/usr/share/texmf-dist/tex/latex/adjustbox/adjcalc.sty)
+(/usr/share/texmf-dist/tex/latex/adjustbox/trimclip.sty
+(/usr/share/texmf-dist/tex/latex/collectbox/collectbox.sty)
+(/usr/share/texmf-dist/tex/latex/adjustbox/tc-pdftex.def))
+(/usr/share/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty)
+(/usr/share/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(/usr/share/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+(/usr/share/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty))
+(/usr/share/texmf-dist/tex/latex/pdfx/pdfx.sty
+(/usr/share/texmf-dist/tex/generic/iftex/ifpdf.sty)
+(/usr/share/texmf-dist/tex/generic/iftex/ifxetex.sty)
+(/usr/share/texmf-dist/tex/latex/everyshi/everyshi.sty)
+(/usr/share/texmf-dist/tex/generic/iftex/ifluatex.sty){/var/lib/texmf/fonts/map
+/pdftex/updmap/pdftex.map} (/usr/share/texmf-dist/tex/latex/pdfx/l8u-penc.def)
+
+Package hyperref Warning: Option `pdftex' has already been used,
+(hyperref)                setting the option has no effect on input line 1461.
+
+
+Package hyperref Warning: Option `pdfa' has already been used,
+(hyperref)                setting the option has no effect on input line 1461.
+
+(/usr/share/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/share/texmf-dist/tex/latex/hyperref/psdextra.def)
+(/usr/share/texmf-dist/tex/generic/colorprofiles/colorprofiles.sty
+(/usr/share/texmf-dist/tex/generic/colorprofiles/colorprofiles.tex))
+(/usr/share/texmf-dist/tex/generic/stringenc/se-pdfdoc.def)
+(/usr/share/texmf-dist/tex/latex/pdfx/AdobeColorProfiles.tex)
+(/usr/share/texmf-dist/tex/latex/pdfx/8bit.def)
+** pdfx: No file relatorio_preditivo.xmpdata . Metadata will be incomplete!
+<<sRGB.icc>> (/usr/share/texmf-dist/tex/latex/pdfx/8bit.def)
+(/usr/share/texmf-dist/tex/generic/pdftex/glyphtounicode.tex)
+(/usr/share/texmf-dist/tex/latex/pdfx/glyphtounicode-cmr.tex)
+(/usr/share/texmf-dist/tex/latex/pdfx/glyphtounicode-ntx.tex)
+(/usr/share/texmf-dist/tex/latex/xmpincl/xmpincl.sty)
+(/usr/share/texmf-dist/tex/latex/pdfx/8bit.def)
+Using XMP template file: pdfa.xmp
+<<pdfa.xmpi>>)) (/usr/share/texmf-dist/tex/generic/babel/babel.sty
+(/usr/share/texmf-dist/tex/generic/babel/txtbabel.def)
+(/usr/share/texmf-dist/tex/generic/babel-english/english.ldf)
+(/usr/share/texmf-dist/tex/generic/babel/errbabel.def)
+
+! Package babel Error: Unknown option 'brazil'. Either you misspelled it
+(babel)                or the language definition file brazil.ldf
+(babel)                was not found.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4246     \ExecuteOptions{\bbl@opt@main}
+                                         
+? OK, entering \batchmode~/projetos/ClassificadorSismologico
 ========================================================================
                         Fim do Pipeline                                 
 ========================================================================

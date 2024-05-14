@@ -64,12 +64,6 @@ mv -f $LOG_FILE $LOG_FILE_BKP
 touch "$LOG_FILE"
 exec 1> >(tee -a "$LOG_FILE") 2>&1
 
-# DEFINE EXECUTAVEIS
-ENERGYFIG="$HOME/lucas_bin/energy_fig.py"
-CREATEMAP="$HOME/lucas_bin/make_maps_"$CLIENT_ID".py"
-SEISCOMP=${SEISCOMP:-"$HOME/softwares/seiscomp/bin/seiscomp"}
-PYTHON3=${PYTHON3:-"$HOME/.pyenv/versions/sismologia/bin/python3"}
-
 # DEFINE DELIMITADORES PARA LOGS
 DELIMT1='########################################################################'
 DELIMT2='========================================================================'
@@ -92,7 +86,7 @@ if [ "$EVENTS" = true ]; then
     echo " Arquivos de backup criados com sucesso!"
     echo ''
     echo ' -> Executando events_pipeline.py...'
-    $PYTHON3 source/core/events_pipeline.py $CATALOG
+    python source/core/events_pipeline.py $CATALOG
     echo ''
 fi
 
@@ -104,36 +98,29 @@ if [ "$PRED" = true ]; then
     echo ''
     # checa se o arquivo de predições já existe, se existir, move para uma pasta de backup
     echo " ---------------- INICIANDO CORE/GERAR_PREDCSV.PY ---------------------------- "
-    $PYTHON3 source/core/gerar_predcsv.py
+    python source/core/gerar_predcsv.py
     echo ''
     # CHECA SE DEVE SER PREPROCESSADO
     if [ "$PREPROCESS" = true ]; then
         cp files/predcsv/pred_commercial.csv files/predcsv/.bkp/pred_commercial.csv.$(date +%Y%m%d%H%M%S)
         cp files/predcsv/pred_no_commercial.csv files/predcsv/.bkp/pred_no_commercial.csv.$(date +%Y%m%d%H%M%S)
         echo " -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- "
-        $PYTHON3 source/data_analysis/pre_process.py
+        python source/data_analysis/pre_process.py
         echo ''
     fi
 fi
-
 
 # ------------------------- ETAPA DE PREDIÇÃO  ----------------------------------
 if [ "$PREDICT" = true ]; then
     NOME_TERM="DOCKER"
     COMMAND='docker run -it --rm -v $HOME/projetos:/app discrim:0.1.0'
     COMMAND_2='python ClassificadorSismologico/source/discrimination_eq_q/run.py \
-    --data_dir ClassificadorSismologico/files/mseed \
-    --model_dir ClassificadorSismologico/files/model/model_2021354T1554.h5 \
-    --spectro_dir ClassificadorSismologico/files/spectro \
-    --output_dir ClassificadorSismologico/files/output/no_commercial \
-    --csv_dir ClassificadorSismologico/files/predcsv/pred_no_commercial.csv \
+    --output_dir no_commercial \
+    --csv_dir pred_no_commercial.csv \
     --valid'
     COMMAND_3='python ClassificadorSismologico/source/discrimination_eq_q/run.py \
-    --data_dir ClassificadorSismologico/files/mseed \
-    --model_dir ClassificadorSismologico/files/model/model_2021354T1554.h5 \
-    --spectro_dir ClassificadorSismologico/files/spectro \
-    --output_dir ClassificadorSismologico/files/output/commercial \
-    --csv_dir ClassificadorSismologico/files/predcsv/pred_commercial.csv \
+    --output_dir commercial \
+    --csv_dir pred_commercial.csv \
     --valid'
     echo " ----------------- INICIANDO O PREDICT.PY ---------------------------- "
     i3-msg "workspace 2"
@@ -148,27 +135,12 @@ fi
 # ------------------------- ETAPA DE GERAR MAPAS  -----------------------------
 # Condicionalmente executa partes do script
 if [ "$MAPS" = true ]; then
-    # Executa etapa de processamento de mapas
     echo " -------------- Processo de criação de mapas iniciado ------------------"
     # Checa se o arquivo de eventos existe e se é vazio
-    if [ -f "files/events/events-*.csv" ]; then
+    if [ -f "files/output/no_commercial/df_nc_pos.csv" ]; then
         echo " -> Executando make_maps.py..."
-        $PYTHON3 $CREATEMAP $EVENTS
-        mv $EVENTS files/
-        mv *png figures
-    else
-        echo "events.csv est\u00e1 vazio"
+        python source/data_analysis/make_maps.py
     fi
-    for i in $EVENTS
-        do
-            echo $i
-            $PYTHON3 $CREATEMAP $i
-            mv $i files/
-            mv *png figures
-    done
-    echo ''
-    echo " Criando arquivos de backup..."
-    echo " Arquivos de backup criados com sucesso!"
     echo ''
 fi
 
@@ -184,6 +156,16 @@ if [ "$ENERGY" = true ]; then
     echo " Criando arquivos de backup..."
     echo " Arquivos de backup criados com sucesso!"
     echo ''
+fi
+
+# ----------------- ETAPA DE GERAR RELATORIOS ------------------------
+if [ "$REPORT" = true ]; then
+    echo " ----------------- Iniciando o pdflatex .tex ---------------------------- "
+    python source/sismologia-ipt-latex/tex/relatorio_preditivo/python/figures.py
+    python source/sismologia-ipt-latex/tex/relatorio_preditivo/python/mapa.py
+    pushd source/sismologia-ipt-latex
+    pdflatex -output-directory=$HOME/projetos/ClassificadorSismologico/files/relatorios/ relatorio_preditivo.tex 
+    popd
 fi
 
 echo $DELIMT2
