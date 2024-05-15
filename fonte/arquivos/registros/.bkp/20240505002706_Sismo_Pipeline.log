@@ -1,0 +1,51 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+Traceback (most recent call last):
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'SNR_P'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 631, in <module>
+    df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt = main()
+                                                              ^^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 622, in main
+    df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt = load_data()
+                                                              ^^^^^^^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 591, in load_data
+    df_nc.loc[:, 'SNR_P_cat'] = df_nc['SNR_P'].apply(class_snrp)
+                                ~~~~~^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'SNR_P'
+
+ -------------- Processo de criação de mapas iniciado ------------------
+ -> Executando make_maps.py...
+/usr/bin/gmt: /home/ggrl/softwares/otb/lib/libcurl.so.4: no version information available (required by /usr/lib/libgmt.so.6)
+mv: não foi possível obter estado de 'false': Arquivo ou diretório inexistente
+mv: não foi possível obter estado de '*png': Arquivo ou diretório inexistente
+false
+mv: não foi possível obter estado de 'false': Arquivo ou diretório inexistente
+mv: não foi possível obter estado de '*png': Arquivo ou diretório inexistente
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+

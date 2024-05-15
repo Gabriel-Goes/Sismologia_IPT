@@ -4,3 +4,7 @@
 *.png
 *.jpeg
 *.mseed
+
+__pycache__/
+fonte/ClassificadorSismologico.egg-info
+

@@ -1,0 +1,24 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+[{"success":true}]
+
+ -------------- Processo de criação de mapas iniciado ------------------
+ -> Executando make_maps.py...
+/usr/bin/gmt: /home/ggrl/softwares/otb/lib/libcurl.so.4: no version information available (required by /usr/lib/libgmt.so.6)
+mv: não foi possível obter estado de 'false': Arquivo ou diretório inexistente
+mv: não foi possível obter estado de '*png': Arquivo ou diretório inexistente
+false
+mv: não foi possível obter estado de 'false': Arquivo ou diretório inexistente
+mv: não foi possível obter estado de '*png': Arquivo ou diretório inexistente
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+

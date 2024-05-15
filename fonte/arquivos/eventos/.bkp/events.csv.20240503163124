@@ -1,0 +1,2 @@
+ID,Event,Error,Pick,Network,Station,Location,Channel,Latitude,Longitude,Distance,Origem Latitude,Origem Longitude,Pick Time,Origin Time,Cat,MLv,Certainty,Path
+usp2014gyqn,2014-04-09T20:49:40,None,P,BL,BB19B,,HHZ,-21.0662,-48.5279,0.4739622562125565,-21.07,-48.53,2014-04-09T20:49:43.974670Z,2014-04-09T20:49:40.000000Z,earthquake,None,known,/home/ggrl/projetos/ClassificadorSismologico/files/mseed/20140409T204940/BL_BB19B_20140409T204940.mseed

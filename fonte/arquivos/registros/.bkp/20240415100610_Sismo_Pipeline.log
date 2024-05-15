@@ -1,0 +1,16 @@
+
+########################################################################
+ ---------------- Iniciando do Pipeline --------------------------------
+
+ -> Executando ProcessarDadosSismologicos.py...
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 13, in <module>
+    from obspy.clients import fdsn
+ModuleNotFoundError: No module named 'obspy'
+ ---------------- Iniciando o cria_pred.py ---------------------------- 
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/Gerar_predcsv.py", line 2, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+
+ Criando arquivos de backup...

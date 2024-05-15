@@ -1,7 +1,0 @@
-
-========================================================================
-                       Iniciando do Pipeline                         
-========================================================================
-
-./Sismo_Pipeline.sh: linha 151: erro de sintaxe próximo ao token inesperado `fi'
-./Sismo_Pipeline.sh: linha 151: `    fi'

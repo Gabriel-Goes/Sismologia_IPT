@@ -1,0 +1,104 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ ---------------- INICIANDO CORE/GERAR_PREDCSV.PY ---------------------------- 
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/core/gerar_predcsv.py", line 37, in <module>
+    gerar_predcsv()
+  File "/home/ipt/projetos/ClassificadorSismologico/source/core/gerar_predcsv.py", line 7, in gerar_predcsv
+    df_events = pd.read_csv(csv_events, sep=',')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: './files/events/events.csv'
+
+ -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- 
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pre_process.py", line 82, in <module>
+    main()
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pre_process.py", line 78, in main
+    hist_hora()
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pre_process.py", line 69, in hist_hora
+    plt.savefig('files/figures/pre_process/plots/histogramas/hist_hora.png')
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/pyplot.py", line 1119, in savefig
+    res = fig.savefig(*args, **kwargs)  # type: ignore[func-returns-value]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/figure.py", line 3390, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backends/backend_qtagg.py", line 75, in print_figure
+    super().print_figure(*args, **kwargs)
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backend_bases.py", line 2187, in print_figure
+    result = print_method(
+             ^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backend_bases.py", line 2043, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py", line 497, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py", line 446, in _print_pil
+    mpl.image.imsave(
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/image.py", line 1656, in imsave
+    image.save(fname, **pil_kwargs)
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/PIL/Image.py", line 2435, in save
+    fp = builtins.open(filename, "w+b")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] Arquivo ou diretório inexistente: 'files/figures/pre_process/plots/histogramas/hist_hora.png'
+
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+[{"success":true}]
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+Error: [Errno 2] No such file or directory: 'files/events/events.csv'
+Loaded the most recent bkp file: events.csv.20240506131738
+Do you want to continue? (y/n)Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 740, in load_data
+    evs = pd.read_csv('files/events/events.csv')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'files/events/events.csv'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 820, in <module>
+    df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt = main()
+                                                              ^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 811, in main
+    df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt = load_data()
+                                                              ^^^^^^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 748, in load_data
+    if input('Do you want to continue? (y/n)') == 'n':
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+EOFError: EOF when reading a line

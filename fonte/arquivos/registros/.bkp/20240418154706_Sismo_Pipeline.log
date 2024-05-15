@@ -1,0 +1,8 @@
+
+########################################################################
+ ---------------- Iniciando do Pipeline --------------------------------
+
+ -> Executando ProcessarDadosSismologicos.py...
+/home/ipt/.pyenv/versions/sismologia/bin/python3: can't open file '/home/ipt/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py': [Errno 2] No such file or directory
+
+ Criando arquivos de backup...

@@ -1,0 +1,178 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando events_pipeline.py...
+
+ - Argumento 1: files/catalogo/catalogo-moho.csv
+ --> Client:
+  http://seisarc.sismo.iag.usp.br
+ --> Client Backup:
+  http://rsbr.on.br:8081/fdsnws/dataselect/1
+-----------------------------------------------------
+
+
+ --------- Iniciando o ProcessarID.py --------- 
+ ------------------------------ Acessando Catálogo ------------------------------ 
+  0%|          | 0/5 [00:00<?, ?it/s] 20%|██        | 1/5 [00:00<00:00,  4.14it/s] 80%|████████  | 4/5 [00:00<00:00, 12.19it/s]100%|██████████| 5/5 [00:00<00:00, 11.88it/s]
+ --> Iterando sobre eventos
+ - Número de eventos: 5
+ - Client: http://seisarc.sismo.iag.usp.br
+ - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
+ --> Adrquirindo Inventário de Estações
+  0%|          | 0/5 [00:00<?, ?it/s]/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/core/inventory/network.py:321: UserWarning: Found more than one matching channel metadata. Returning first.
+  warnings.warn(msg)
+ 80%|████████  | 4/5 [00:00<00:00, 31.29it/s]100%|██████████| 5/5 [00:00<00:00, 30.28it/s]
+############ Event 1: usp2014gyqn ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+ - Cha: HHE
+ - Loc: None
+ - Seed ID: BL.BB19B..HHZ 
+ - BL.BB19B X,Y : -21.0662, -48.5279
+ - Distância até o epicentro: 0.4739622562125565 km
+ Downloading ...
+ Pick Time -> 2014-04-09T20:49:43.974670Z
+ Origin Time -> 2014-04-09T20:49:40.000000Z
+ Channel -> HHZ
+ - Saving File: 20140409T204940/BL_BB19B_20140409T204940.mseed
+ -> Erro ao obter magnitude: 'NoneType' object has no attribute 'mag'
+-----------------------------------------------------
+
+ - Event: usp2014gyqn
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 2: usp2021ezmw ############
+
+ - Event: usp2021ezmw
+ - Pwave Picks: 0
+#####################################################
+
+############ Event 3: usp2020hkyw ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: PDRB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.PDRB..HHZ 
+ - BR.PDRB X,Y : -11.612297, -56.729597
+ - Distância até o epicentro: 0.22934459104391727 km
+ Downloading ...
+ Pick Time -> 2020-04-15T14:40:19.978417Z
+ Origin Time -> 2020-04-15T14:40:20.000000Z
+ Channel -> HHZ
+ - Saving File: 20200415T144020/BR_PDRB_20200415T144020.mseed
+-----------------------------------------------------
+
+ - Event: usp2020hkyw
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 4: usp2022gpbs ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBMO
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBMO..HHZ 
+ - NB.NBMO X,Y : -3.310348, -40.042927
+ - Distância até o epicentro: 0.6296512501624295 km
+ Downloading ...
+ Pick Time -> 2022-04-04T15:07:54.334523Z
+ Origin Time -> 2022-04-04T15:07:42.000000Z
+ Channel -> HHZ
+ - Saving File: 20220404T150742/NB_NBMO_20220404T150742.mseed
+-----------------------------------------------------
+
+ - Event: usp2022gpbs
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 5: usp2014oaxt ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: NPGB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.NPGB..HHZ 
+ - BR.NPGB X,Y : -7.0454, -55.3579
+ - Distância até o epicentro: 0.7840549447308719 km
+ Downloading ...
+ Pick Time -> 2014-07-19T17:41:08.185058Z
+ Origin Time -> 2014-07-19T17:30:30.000000Z
+ Channel -> HHZ
+ - Saving File: 20140719T173030/BR_NPGB_20140719T173030.mseed
+-----------------------------------------------------
+
+ - Event: usp2014oaxt
+ - Pwave Picks: 1
+#####################################################
+
+Dados salvos com sucesso em ./files/events/events.csv
+Erros salvos com sucesso em ./files/events/erros.csv
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ ---------------- INICIANDO CORE/GERAR_PREDCSV.PY ---------------------------- 
+/home/ggrl/projetos/ClassificadorSismologico/source/core/gerar_predcsv.py:20: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_pred['Cat'] = df_pred['Cat'].apply(lambda x: 0 if x == 'earthquake' else 1)
+Pred.csv criado com sucesso
+Erros.csv criado com sucesso
+
+ -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- 
+
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+./Sismo_Pipeline.sh: linha 129: exit": comando não encontrado
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 694, in <module>
+    df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt = main()
+                                                              ^^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 685, in main
+    df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt = load_data()
+                                                              ^^^^^^^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 651, in load_data
+    picks, dict_filt = snr_p(df_nc, 5)
+                       ^^^^^^^^^^^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 557, in snr_p
+    return picks, dict_filt
+                  ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'dict_filt' where it is not associated with a value
+
+ -------------- Processo de criação de mapas iniciado ------------------
+ -> Executando make_maps.py...
+/usr/bin/gmt: /home/ggrl/softwares/otb/lib/libcurl.so.4: no version information available (required by /usr/lib/libgmt.so.6)
+mv: não foi possível obter estado de 'true': Arquivo ou diretório inexistente
+mv: não foi possível obter estado de '*png': Arquivo ou diretório inexistente
+true
+mv: não foi possível obter estado de 'true': Arquivo ou diretório inexistente
+mv: não foi possível obter estado de '*png': Arquivo ou diretório inexistente
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ ----------------- Iniciando o pdflatex .tex ---------------------------- 
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+! I can't find file `report.tex'.
+<*> report.tex
+              
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 

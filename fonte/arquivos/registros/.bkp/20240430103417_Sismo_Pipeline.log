@@ -1,0 +1,18 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando events_pipeline.py...
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/core/events_pipeline.py", line 13, in <module>
+    from obspy.clients import fdsn
+ModuleNotFoundError: No module named 'obspy'
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+

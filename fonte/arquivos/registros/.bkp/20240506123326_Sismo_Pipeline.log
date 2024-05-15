@@ -1,0 +1,101 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando events_pipeline.py...
+
+ - Argumento 1: files/catalogo/catalogo-moho.csv
+ --> Client:
+  http://seisarc.sismo.iag.usp.br
+ --> Client Backup:
+  http://rsbr.on.br:8081/fdsnws/dataselect/1
+-----------------------------------------------------
+
+
+ --------- Iniciando o ProcessarID.py --------- 
+ ------------------------------ Acessando Catálogo ------------------------------ 
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:00<00:01,  5.53it/s] 50%|█████     | 5/10 [00:00<00:00, 18.51it/s] 80%|████████  | 8/10 [00:00<00:00, 22.45it/s]100%|██████████| 10/10 [00:00<00:00, 19.78it/s]
+ --> Iterando sobre eventos
+ - Número de eventos: 10
+ - Client: http://seisarc.sismo.iag.usp.br
+ - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
+ --> Adrquirindo Inventário de Estações
+  0%|          | 0/10 [00:00<?, ?it/s]  0%|          | 0/10 [00:00<?, ?it/s]
+############ Event 1: usp2014gyqn ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+ - Cha: HHE
+ - Loc: None
+ - Seed ID: BL.BB19B..HHZ 
+ - BL.BB19B X,Y : -21.0662, -48.5279
+ - Distância até o epicentro: 0.4739622562125565 km
+ Downloading ...
+ Pick Time -> 2014-04-09T20:49:43.974670Z
+ Origin Time -> 2014-04-09T20:49:40.000000Z
+ Channel -> HHZ
+ ! Erro ao baixar canal HHZ da estação ['BB19B']!
+   ERROR:  Bad request. If you think your request was valid please contact the developers.
+HTTP Status code: 400
+Detailed response of server:
+
+
+ ! Erro ao baixar canal HHZ da estação ['BB19B']: Bad request. If you think your request was valid please contact the developers.
+HTTP Status code: 400
+Detailed response of server:
+
+
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/core/baixar_mseed.py", line 229, in iterar_eventos
+    self.download_waveforms(
+  File "/home/ipt/projetos/ClassificadorSismologico/source/core/baixar_mseed.py", line 85, in download_waveforms
+    print(f" - Nomeando diretório com origin_time: {self.ev_name}")
+                                                    ^^^^^^^^^^^^
+AttributeError: 'Iterar_e_Baixar' object has no attribute 'ev_name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/core/events_pipeline.py", line 99, in <module>
+    catalogo, missin_ids = main(
+                           ^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/source/core/events_pipeline.py", line 67, in main
+    it.iterar_eventos()
+  File "/home/ipt/projetos/ClassificadorSismologico/source/core/baixar_mseed.py", line 239, in iterar_eventos
+    'Event': self.dir_name,
+             ^^^^^^^^^^^^^
+AttributeError: 'Iterar_e_Baixar' object has no attribute 'dir_name'
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ ---------------- INICIANDO CORE/GERAR_PREDCSV.PY ---------------------------- 
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/core/gerar_predcsv.py", line 37, in <module>
+    gerar_predcsv()
+  File "/home/ipt/projetos/ClassificadorSismologico/source/core/gerar_predcsv.py", line 7, in gerar_predcsv
+    df_events = pd.read_csv(csv_events, sep=',')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: './files/events/events.csv'
+
+ -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- 

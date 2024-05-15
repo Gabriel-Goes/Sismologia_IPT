@@ -1,0 +1,185 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+0it [00:00, ?it/s]1it [00:00,  5.19it/s]7it [00:00, 26.19it/s]11it [00:00, 28.41it/s]15it [00:00, 27.76it/s]18it [00:00, 28.32it/s]22it [00:00, 30.30it/s]26it [00:00, 32.16it/s]31it [00:01, 36.63it/s]35it [00:01, 35.68it/s]39it [00:01, 33.46it/s]43it [00:01, 30.82it/s]47it [00:01, 30.96it/s]51it [00:01, 29.36it/s]55it [00:01, 29.55it/s]58it [00:01, 28.79it/s]62it [00:02, 28.71it/s]66it [00:02, 30.45it/s]70it [00:02, 29.80it/s]74it [00:02, 27.57it/s]80it [00:02, 34.24it/s]84it [00:02, 34.99it/s]88it [00:02, 35.53it/s]92it [00:02, 35.01it/s]97it [00:03, 37.34it/s]103it [00:03, 40.47it/s]108it [00:03, 35.81it/s]112it [00:03, 31.78it/s]116it [00:03, 29.92it/s]120it [00:03, 28.71it/s]124it [00:03, 30.22it/s]129it [00:04, 33.52it/s]133it [00:04, 32.86it/s]137it [00:04, 32.21it/s]141it [00:04, 33.05it/s]146it [00:04, 36.08it/s]152it [00:04, 41.10it/s]158it [00:04, 44.31it/s]163it [00:04, 39.83it/s]168it [00:05, 37.60it/s]173it [00:05, 40.09it/s]178it [00:05, 42.38it/s]183it [00:05, 43.81it/s]188it [00:05, 44.74it/s]193it [00:05, 38.64it/s]198it [00:05, 32.79it/s]202it [00:06, 34.06it/s]206it [00:06, 32.43it/s]210it [00:06, 33.70it/s]214it [00:06, 34.85it/s]218it [00:06, 33.76it/s]224it [00:06, 39.44it/s]230it [00:06, 41.65it/s]235it [00:06, 37.03it/s]239it [00:07, 32.52it/s]243it [00:07, 32.07it/s]247it [00:07, 33.38it/s]251it [00:07, 32.85it/s]255it [00:07, 29.66it/s]260it [00:07, 34.29it/s]265it [00:07, 37.89it/s]270it [00:07, 38.59it/s]274it [00:08, 36.73it/s]278it [00:08, 34.93it/s]282it [00:08, 35.56it/s]286it [00:08, 35.01it/s]290it [00:08, 30.99it/s]295it [00:08, 34.65it/s]301it [00:08, 39.75it/s]307it [00:08, 43.56it/s]312it [00:09, 43.16it/s]317it [00:09, 38.89it/s]322it [00:09, 35.36it/s]328it [00:09, 39.90it/s]334it [00:09, 42.58it/s]339it [00:09, 38.76it/s]344it [00:09, 37.04it/s]350it [00:10, 41.18it/s]356it [00:10, 44.36it/s]362it [00:10, 46.80it/s]367it [00:10, 45.37it/s]372it [00:10, 41.38it/s]378it [00:10, 44.59it/s]383it [00:10, 42.14it/s]388it [00:10, 37.65it/s]392it [00:11, 33.99it/s]396it [00:11, 34.69it/s]402it [00:11, 39.27it/s]407it [00:11, 41.54it/s]412it [00:11, 34.99it/s]416it [00:11, 34.30it/s]420it [00:11, 35.27it/s]424it [00:11, 33.44it/s]428it [00:12, 31.77it/s]432it [00:12, 31.03it/s]436it [00:12, 29.72it/s]440it [00:12, 27.27it/s]446it [00:12, 33.62it/s]452it [00:12, 38.85it/s]457it [00:12, 37.63it/s]461it [00:13, 36.47it/s]465it [00:13, 34.55it/s]470it [00:13, 38.01it/s]475it [00:13, 40.62it/s]480it [00:13, 34.61it/s]484it [00:13, 35.21it/s]490it [00:13, 39.86it/s]496it [00:13, 43.46it/s]501it [00:14, 39.73it/s]506it [00:14, 35.57it/s]510it [00:14, 33.08it/s]514it [00:14, 31.35it/s]518it [00:14, 31.57it/s]524it [00:14, 37.41it/s]528it [00:14, 37.25it/s]532it [00:15, 34.23it/s]536it [00:15, 34.04it/s]540it [00:15, 34.98it/s]545it [00:15, 37.41it/s]551it [00:15, 42.04it/s]556it [00:15, 37.53it/s]560it [00:15, 36.23it/s]564it [00:15, 32.74it/s]568it [00:16, 34.11it/s]572it [00:16, 32.79it/s]576it [00:16, 33.44it/s]580it [00:16, 31.56it/s]584it [00:16, 30.14it/s]588it [00:16, 29.01it/s]593it [00:16, 32.62it/s]598it [00:16, 36.16it/s]603it [00:17, 38.32it/s]608it [00:17, 40.46it/s]613it [00:17, 41.37it/s]618it [00:17, 42.47it/s]623it [00:17, 43.39it/s]628it [00:17, 40.11it/s]633it [00:17, 41.89it/s]638it [00:17, 43.01it/s]643it [00:18, 34.31it/s]647it [00:18, 32.37it/s]652it [00:18, 35.89it/s]657it [00:18, 38.92it/s]662it [00:18, 41.76it/s]667it [00:18, 42.12it/s]672it [00:18, 38.67it/s]677it [00:18, 38.42it/s]681it [00:19, 37.66it/s]685it [00:19, 31.80it/s]689it [00:19, 30.81it/s]693it [00:19, 30.75it/s]697it [00:19, 30.95it/s]701it [00:19, 30.91it/s]705it [00:19, 31.59it/s]709it [00:20, 30.68it/s]713it [00:20, 31.62it/s]717it [00:20, 31.57it/s]721it [00:20, 33.64it/s]727it [00:20, 39.18it/s]731it [00:20, 37.38it/s]736it [00:20, 39.18it/s]742it [00:20, 42.74it/s]747it [00:20, 40.99it/s]752it [00:21, 40.27it/s]757it [00:21, 42.73it/s]762it [00:21, 43.52it/s]768it [00:21, 46.09it/s]774it [00:21, 47.36it/s]780it [00:21, 48.45it/s]785it [00:21, 48.74it/s]791it [00:21, 49.35it/s]797it [00:21, 50.47it/s]803it [00:22, 50.75it/s]809it [00:22, 43.50it/s]815it [00:22, 46.14it/s]820it [00:22, 46.44it/s]826it [00:22, 47.97it/s]832it [00:22, 49.53it/s]838it [00:22, 47.58it/s]844it [00:22, 48.63it/s]849it [00:23, 46.64it/s]854it [00:23, 43.51it/s]860it [00:23, 46.37it/s]866it [00:23, 48.28it/s]872it [00:23, 49.62it/s]878it [00:23, 47.76it/s]883it [00:23, 42.91it/s]888it [00:23, 44.02it/s]894it [00:24, 46.06it/s]900it [00:24, 47.91it/s]906it [00:24, 49.38it/s]911it [00:24, 47.30it/s]916it [00:24, 44.48it/s]921it [00:24, 45.53it/s]927it [00:24, 47.44it/s]932it [00:24, 40.67it/s]937it [00:25, 42.15it/s]942it [00:25, 43.24it/s]948it [00:25, 45.28it/s]953it [00:25, 45.93it/s]959it [00:25, 47.71it/s]964it [00:25, 46.71it/s]969it [00:25, 47.51it/s]975it [00:25, 46.17it/s]980it [00:25, 46.69it/s]985it [00:26, 42.95it/s]991it [00:26, 45.27it/s]997it [00:26, 47.30it/s]1002it [00:26, 45.71it/s]1008it [00:26, 47.40it/s]1013it [00:26, 45.60it/s]1018it [00:26, 46.50it/s]1024it [00:26, 48.72it/s]1030it [00:27, 50.31it/s]1036it [00:27, 51.27it/s]1042it [00:27, 43.52it/s]1047it [00:27, 39.28it/s]1052it [00:27, 36.15it/s]1058it [00:27, 40.52it/s]1064it [00:27, 43.98it/s]1070it [00:27, 46.70it/s]1075it [00:28, 43.58it/s]1081it [00:28, 46.02it/s]1086it [00:28, 46.53it/s]1091it [00:28, 41.42it/s]1096it [00:28, 40.03it/s]1102it [00:28, 43.41it/s]1107it [00:28, 44.84it/s]1113it [00:28, 46.48it/s]1119it [00:29, 46.62it/s]1124it [00:29, 45.79it/s]1129it [00:29, 45.58it/s]/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/numpy/core/fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+1134it [00:29, 41.82it/s]1140it [00:29, 44.67it/s]1146it [00:29, 46.67it/s]1151it [00:29, 43.67it/s]1156it [00:29, 42.82it/s]1161it [00:30, 43.58it/s]1167it [00:30, 45.89it/s]1172it [00:30, 38.96it/s]1177it [00:30, 38.02it/s]1183it [00:30, 41.61it/s]1189it [00:30, 44.42it/s]1195it [00:30, 46.43it/s]1201it [00:30, 47.91it/s]1206it [00:31, 47.47it/s]1211it [00:31, 40.00it/s]1216it [00:31, 40.64it/s]1222it [00:31, 44.27it/s]1228it [00:31, 47.19it/s]1233it [00:31, 46.68it/s]1238it [00:31, 43.54it/s]1244it [00:31, 45.90it/s]1249it [00:32, 41.10it/s]1255it [00:32, 44.59it/s]1261it [00:32, 46.83it/s]1266it [00:32, 44.71it/s]1271it [00:32, 41.60it/s]1277it [00:32, 42.29it/s]1282it [00:32, 41.49it/s]1288it [00:32, 44.30it/s]1294it [00:33, 40.00it/s]1300it [00:33, 43.30it/s]1306it [00:33, 45.48it/s]1312it [00:33, 46.78it/s]1317it [00:33, 46.21it/s]1323it [00:33, 47.74it/s]1328it [00:33, 48.32it/s]1334it [00:33, 49.35it/s]1339it [00:34, 47.79it/s]1344it [00:34, 44.51it/s]1350it [00:34, 46.11it/s]1356it [00:34, 48.27it/s]1361it [00:34, 44.66it/s]1367it [00:34, 46.83it/s]1373it [00:34, 48.58it/s]1378it [00:34, 48.57it/s]1384it [00:34, 49.96it/s]1390it [00:35, 42.25it/s]1395it [00:35, 36.39it/s]1399it [00:35, 35.96it/s]1405it [00:35, 39.67it/s]1410it [00:35, 41.42it/s]1415it [00:35, 42.99it/s]1420it [00:35, 37.41it/s]1425it [00:36, 40.31it/s]1430it [00:36, 42.59it/s]1435it [00:36, 40.31it/s]1440it [00:36, 38.31it/s]1444it [00:36, 36.54it/s]1449it [00:36, 38.03it/s]1454it [00:36, 39.73it/s]1459it [00:36, 41.23it/s]1464it [00:37, 42.87it/s]1469it [00:37, 43.58it/s]1474it [00:37, 44.59it/s]1479it [00:37, 45.38it/s]1484it [00:37, 45.91it/s]1489it [00:37, 38.76it/s]1494it [00:37, 37.81it/s]1500it [00:37, 41.45it/s]1506it [00:38, 44.17it/s]1512it [00:38, 46.58it/s]1518it [00:38, 48.51it/s]1524it [00:38, 49.67it/s]1530it [00:38, 50.46it/s]1536it [00:38, 50.72it/s]1542it [00:38, 43.06it/s]1547it [00:38, 41.41it/s]1553it [00:39, 44.32it/s]1559it [00:39, 46.47it/s]1564it [00:39, 46.84it/s]1569it [00:39, 47.60it/s]1575it [00:39, 49.03it/s]1581it [00:39, 50.01it/s]1587it [00:39, 50.23it/s]1593it [00:39, 50.98it/s]1599it [00:39, 49.40it/s]1604it [00:40, 47.45it/s]1609it [00:40, 45.24it/s]1614it [00:40, 41.58it/s]1619it [00:40, 39.86it/s]1625it [00:40, 43.37it/s]1631it [00:40, 45.08it/s]1637it [00:40, 46.91it/s]1642it [00:40, 43.17it/s]1648it [00:41, 45.86it/s]1654it [00:41, 47.64it/s]1660it [00:41, 41.52it/s]1666it [00:41, 44.53it/s]1672it [00:41, 46.48it/s]1678it [00:41, 48.36it/s]1684it [00:41, 49.54it/s]1690it [00:41, 49.50it/s]1696it [00:42, 49.23it/s]1702it [00:42, 50.10it/s]1708it [00:42, 51.04it/s]1714it [00:42, 49.84it/s]1720it [00:42, 44.87it/s]1725it [00:42, 41.57it/s]1730it [00:42, 43.46it/s]1735it [00:42, 44.89it/s]1740it [00:43, 45.77it/s]1745it [00:43, 46.60it/s]1750it [00:43, 47.18it/s]1755it [00:43, 47.52it/s]1760it [00:43, 47.76it/s]1765it [00:43, 46.73it/s]1770it [00:43, 45.10it/s]1775it [00:43, 44.39it/s]1780it [00:43, 45.26it/s]1785it [00:44, 38.23it/s]1790it [00:44, 41.12it/s]1795it [00:44, 41.59it/s]1800it [00:44, 43.15it/s]1806it [00:44, 45.24it/s]1811it [00:44, 46.44it/s]1816it [00:44, 47.13it/s]1821it [00:44, 44.89it/s]1827it [00:44, 47.00it/s]1832it [00:45, 46.32it/s]1837it [00:45, 42.42it/s]1843it [00:45, 44.69it/s]1848it [00:45, 44.65it/s]1853it [00:45, 44.37it/s]1858it [00:45, 43.71it/s]1863it [00:45, 44.57it/s]1868it [00:45, 45.82it/s]1873it [00:46, 46.88it/s]1878it [00:46, 36.48it/s]1883it [00:46, 31.46it/s]1887it [00:46, 32.76it/s]1891it [00:46, 34.41it/s]1896it [00:46, 36.69it/s]1900it [00:46, 34.85it/s]1904it [00:47, 29.09it/s]1909it [00:47, 32.74it/s]1914it [00:47, 35.28it/s]1919it [00:47, 38.21it/s]1924it [00:47, 40.55it/s]1929it [00:47, 38.92it/s]1934it [00:47, 35.32it/s]1938it [00:47, 33.46it/s]1942it [00:48, 32.46it/s]1946it [00:48, 31.39it/s]1950it [00:48, 33.16it/s]1954it [00:48, 32.56it/s]1959it [00:48, 36.89it/s]1965it [00:48, 41.06it/s]1970it [00:48, 43.22it/s]1976it [00:48, 46.02it/s]1981it [00:49, 45.44it/s]1987it [00:49, 46.83it/s]1993it [00:49, 47.79it/s]1998it [00:49, 47.00it/s]2003it [00:49, 47.36it/s]2008it [00:49, 47.39it/s]2014it [00:49, 48.56it/s]2019it [00:49, 48.59it/s]2025it [00:49, 50.04it/s]2031it [00:50, 42.23it/s]2036it [00:50, 43.10it/s]2041it [00:50, 39.08it/s]2046it [00:50, 33.93it/s]2050it [00:50, 33.53it/s]2054it [00:50, 33.50it/s]2058it [00:50, 34.99it/s]2064it [00:51, 40.28it/s]2070it [00:51, 43.96it/s]2076it [00:51, 47.06it/s]2082it [00:51, 48.79it/s]2087it [00:51, 48.34it/s]2092it [00:51, 47.99it/s]2097it [00:51, 46.52it/s]2102it [00:51, 41.86it/s]2107it [00:52, 34.55it/s]2112it [00:52, 36.94it/s]2117it [00:52, 39.36it/s]2123it [00:52, 42.08it/s]2129it [00:52, 44.57it/s]2134it [00:52, 40.81it/s]2139it [00:52, 37.91it/s]2144it [00:52, 37.61it/s]2148it [00:53, 30.78it/s]2153it [00:53, 34.57it/s]2158it [00:53, 37.82it/s]2163it [00:53, 40.35it/s]2168it [00:53, 42.78it/s]2173it [00:53, 39.31it/s]2179it [00:53, 42.92it/s]2184it [00:53, 44.53it/s]2190it [00:54, 47.00it/s]2196it [00:54, 48.35it/s]2201it [00:54, 47.64it/s]2207it [00:54, 48.82it/s]2213it [00:54, 49.40it/s]2218it [00:54, 47.03it/s]2224it [00:54, 48.96it/s]2230it [00:54, 50.92it/s]2236it [00:54, 51.12it/s]2242it [00:55, 48.62it/s]2247it [00:55, 48.98it/s]2252it [00:55, 48.49it/s]2257it [00:55, 48.72it/s]2263it [00:55, 50.56it/s]2269it [00:55, 51.31it/s]2275it [00:55, 43.28it/s]2281it [00:55, 45.20it/s]2286it [00:56, 44.98it/s]2291it [00:56, 45.65it/s]2296it [00:56, 44.42it/s]2301it [00:56, 44.60it/s]2307it [00:56, 46.36it/s]2313it [00:56, 48.17it/s]2318it [00:56, 47.92it/s]2323it [00:56, 46.04it/s]2328it [00:56, 46.32it/s]2333it [00:57, 46.24it/s]2339it [00:57, 47.66it/s]2344it [00:57, 47.92it/s]2349it [00:57, 46.85it/s]2354it [00:57, 46.36it/s]2359it [00:57, 47.27it/s]2364it [00:57, 41.36it/s]2369it [00:57, 40.03it/s]2374it [00:58, 35.31it/s]2378it [00:58, 33.03it/s]2383it [00:58, 35.96it/s]2388it [00:58, 36.95it/s]2392it [00:58, 30.82it/s]2396it [00:58, 32.25it/s]2400it [00:58, 31.12it/s]2404it [00:59, 30.09it/s]2408it [00:59, 30.94it/s]2414it [00:59, 36.87it/s]2419it [00:59, 38.44it/s]2423it [00:59, 34.31it/s]2427it [00:59, 34.65it/s]2433it [00:59, 40.08it/s]2439it [00:59, 43.41it/s]2445it [00:59, 45.73it/s]2450it [01:00, 44.71it/s]2456it [01:00, 45.75it/s]2461it [01:00, 45.62it/s]2466it [01:00, 42.19it/s]2471it [01:00, 41.86it/s]2476it [01:00, 35.88it/s]2480it [01:00, 29.93it/s]2484it [01:01, 29.27it/s]2488it [01:01, 27.85it/s]2491it [01:01, 27.08it/s]2494it [01:01, 25.39it/s]2498it [01:01, 25.50it/s]2501it [01:01, 22.98it/s]2505it [01:02, 25.16it/s]2509it [01:02, 27.39it/s]2513it [01:02, 30.17it/s]2517it [01:02, 28.06it/s]2523it [01:02, 34.23it/s]2528it [01:02, 36.63it/s]2533it [01:02, 38.40it/s]2538it [01:02, 38.66it/s]2542it [01:03, 33.53it/s]2546it [01:03, 33.06it/s]2550it [01:03, 33.83it/s]2554it [01:03, 31.89it/s]2559it [01:03, 35.62it/s]2564it [01:03, 37.89it/s]2568it [01:03, 33.12it/s]2572it [01:03, 32.67it/s]2576it [01:04, 33.44it/s]2580it [01:04, 33.87it/s]2584it [01:04, 34.49it/s]2588it [01:04, 34.96it/s]2594it [01:04, 40.06it/s]2599it [01:04, 42.29it/s]2604it [01:04, 44.32it/s]2609it [01:04, 43.79it/s]2615it [01:04, 46.26it/s]2621it [01:05, 48.10it/s]2626it [01:05, 44.89it/s]2631it [01:05, 40.45it/s]2636it [01:05, 36.16it/s]2642it [01:05, 40.85it/s]2648it [01:05, 44.49it/s]2653it [01:05, 45.41it/s]2658it [01:05, 42.21it/s]2664it [01:06, 44.47it/s]2670it [01:06, 46.33it/s]2676it [01:06, 47.46it/s]2682it [01:06, 48.34it/s]2687it [01:06, 48.41it/s]2692it [01:06, 48.25it/s]2697it [01:06, 47.96it/s]2702it [01:06, 47.89it/s]2707it [01:06, 48.15it/s]2712it [01:07, 47.44it/s]2717it [01:07, 47.73it/s]2722it [01:07, 47.92it/s]2727it [01:07, 46.04it/s]2732it [01:07, 43.94it/s]2737it [01:07, 41.05it/s]2743it [01:07, 44.92it/s]2749it [01:07, 47.57it/s]2754it [01:08, 46.68it/s]2759it [01:08, 39.96it/s]2765it [01:08, 43.20it/s]2771it [01:08, 45.16it/s]2776it [01:08, 45.24it/s]2781it [01:08, 44.87it/s]2786it [01:08, 45.39it/s]2791it [01:08, 46.56it/s]2797it [01:08, 47.57it/s]2802it [01:09, 47.09it/s]2808it [01:09, 48.68it/s]2814it [01:09, 49.58it/s]2819it [01:09, 48.85it/s]2825it [01:09, 50.15it/s]2831it [01:09, 40.63it/s]2837it [01:09, 43.23it/s]2842it [01:09, 44.69it/s]2847it [01:10, 45.93it/s]2852it [01:10, 46.75it/s]2857it [01:10, 47.35it/s]2862it [01:10, 48.00it/s]2868it [01:10, 48.69it/s]2873it [01:10, 47.74it/s]2879it [01:10, 48.64it/s]2884it [01:10, 41.32it/s]2890it [01:10, 43.66it/s]2896it [01:11, 45.69it/s]2902it [01:11, 47.77it/s]2908it [01:11, 49.29it/s]2913it [01:11, 49.43it/s]2919it [01:11, 49.81it/s]2925it [01:11, 41.62it/s]2931it [01:11, 44.97it/s]2937it [01:11, 47.45it/s]2942it [01:12, 48.10it/s]2947it [01:12, 47.05it/s]2952it [01:12, 41.17it/s]2957it [01:12, 38.61it/s]2963it [01:12, 42.37it/s]2969it [01:12, 45.50it/s]2975it [01:12, 47.90it/s]2981it [01:12, 49.90it/s]2987it [01:13, 51.14it/s]2993it [01:13, 52.28it/s]2999it [01:13, 53.11it/s]3005it [01:13, 44.69it/s]3010it [01:13, 45.77it/s]3016it [01:13, 47.95it/s]3022it [01:13, 48.56it/s]3028it [01:13, 49.27it/s]3034it [01:14, 50.16it/s]3040it [01:14, 46.77it/s]3046it [01:14, 49.17it/s]3052it [01:14, 50.29it/s]3058it [01:14, 50.26it/s]3064it [01:14, 49.75it/s]3070it [01:14, 49.45it/s]3075it [01:14, 49.05it/s]3080it [01:14, 49.23it/s]3085it [01:15, 48.38it/s]3090it [01:15, 48.20it/s]3095it [01:15, 46.43it/s]3100it [01:15, 39.82it/s]3105it [01:15, 36.41it/s]3110it [01:15, 38.68it/s]3116it [01:15, 42.99it/s]3122it [01:15, 45.37it/s]3127it [01:16, 39.04it/s]3133it [01:16, 42.71it/s]3139it [01:16, 45.96it/s]3145it [01:16, 48.59it/s]3151it [01:16, 50.57it/s]3157it [01:16, 48.27it/s]3163it [01:16, 49.75it/s]3169it [01:16, 48.52it/s]3174it [01:17, 48.83it/s]3180it [01:17, 48.77it/s]3186it [01:17, 49.64it/s]3191it [01:17, 48.39it/s]3196it [01:17, 48.29it/s]3202it [01:17, 49.06it/s]3208it [01:17, 49.45it/s]3213it [01:17, 49.29it/s]3218it [01:17, 45.50it/s]3223it [01:18, 40.79it/s]3228it [01:18, 35.92it/s]3232it [01:18, 34.34it/s]3236it [01:18, 32.40it/s]3240it [01:18, 30.57it/s]3244it [01:18, 32.60it/s]3248it [01:19, 29.63it/s]3254it [01:19, 35.71it/s]3260it [01:19, 40.83it/s]3266it [01:19, 43.45it/s]3271it [01:19, 44.12it/s]3276it [01:19, 44.50it/s]3282it [01:19, 45.28it/s]3288it [01:19, 48.08it/s]3294it [01:19, 49.41it/s]3299it [01:20, 46.08it/s]3304it [01:20, 45.49it/s]3310it [01:20, 48.15it/s]3316it [01:20, 50.09it/s]3322it [01:20, 45.00it/s]3327it [01:20, 44.93it/s]3332it [01:20, 44.84it/s]3338it [01:20, 47.53it/s]3343it [01:20, 47.92it/s]3348it [01:21, 47.41it/s]3353it [01:21, 45.69it/s]3358it [01:21, 45.14it/s]3363it [01:21, 46.15it/s]3368it [01:21, 39.78it/s]3373it [01:21, 37.71it/s]3377it [01:21, 37.99it/s]3382it [01:21, 39.50it/s]3387it [01:22, 36.74it/s]3392it [01:22, 39.72it/s]3397it [01:22, 41.95it/s]3403it [01:22, 45.72it/s]3408it [01:22, 39.02it/s]3413it [01:22, 40.54it/s]3418it [01:22, 34.81it/s]3422it [01:23, 33.93it/s]3426it [01:23, 34.51it/s]3431it [01:23, 37.34it/s]3437it [01:23, 42.08it/s]/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:585: RuntimeWarning: divide by zero encountered in scalar divide
+  filtro_bom.snrp = filtro_bom.p / filtro_bom.noise
+/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:586: RuntimeWarning: divide by zero encountered in scalar divide
+  filtro_bom.snrs = filtro_bom.s / filtro_bom.noise
+3442it [01:23, 43.83it/s]3447it [01:23, 45.02it/s]3452it [01:23, 46.38it/s]3458it [01:23, 47.98it/s]3463it [01:23, 44.22it/s]3468it [01:24, 37.13it/s]3474it [01:24, 40.88it/s]3480it [01:24, 43.79it/s]3486it [01:24, 46.50it/s]3491it [01:24, 40.40it/s]3496it [01:24, 42.61it/s]3501it [01:24, 44.46it/s]3507it [01:24, 46.87it/s]3512it [01:25, 47.67it/s]3518it [01:25, 49.40it/s]3524it [01:25, 50.52it/s]3530it [01:25, 51.34it/s]3536it [01:25, 50.93it/s]3542it [01:25, 49.67it/s]3547it [01:25, 49.75it/s]3553it [01:25, 51.03it/s]3559it [01:25, 51.69it/s]3565it [01:26, 52.33it/s]3571it [01:26, 51.52it/s]3577it [01:26, 51.33it/s]3583it [01:26, 51.27it/s]3589it [01:26, 50.47it/s]3595it [01:26, 44.76it/s]3600it [01:26, 44.03it/s]3606it [01:26, 45.92it/s]3612it [01:27, 40.99it/s]3617it [01:27, 41.22it/s]3622it [01:27, 37.43it/s]3626it [01:27, 35.50it/s]3632it [01:27, 38.54it/s]3633it [01:27, 41.43it/s]
+/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:926: FutureWarning: The `op` parameter is deprecated and will be removed in a future release. Please use the `predicate` parameter instead.
+  df, evs = load_data()
+Fontconfig error: "/home/ipt/.config/fontconfig/fonts.conf", line 2: XML or text declaration not at start of entity
+
+ -------------- Processo de criação de mapas iniciado ------------------
+ -> Executando make_maps.py...
+Error returned from GMT API: GMT_MEMORY_ERROR (25)
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/make_maps.py", line 13, in <module>
+    import pygmt
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pygmt/__init__.py", line 29, in <module>
+    with clib.Session() as lib:
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pygmt/clib/session.py", line 217, in __enter__
+    self.create("pygmt-session")
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pygmt/clib/session.py", line 401, in create
+    raise GMTCLibError(
+pygmt.exceptions.GMTCLibError: Failed to create a GMT API session:
+
+
+ ----------------- Iniciando o pdflatex .tex ---------------------------- 
+/home/ipt/.pyenv/versions/sismologia/bin/python: can't open file '/home/ipt/projetos/ClassificadorSismologico/source/sismologia-ipt-latex/tex/relatorio_preditivo/python/figures.py': [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/sismologia-ipt-latex/tex/relatorio_preditivo/python/mapa.py", line 23, in <module>
+    generate_map_latex("./relatorio/tex/mapa.tex")
+  File "/home/ipt/projetos/ClassificadorSismologico/source/sismologia-ipt-latex/tex/relatorio_preditivo/python/mapa.py", line 18, in generate_map_latex
+    with open(output_filename, "w") as output_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: './relatorio/tex/mapa.tex'
+~/projetos/ClassificadorSismologico/source/sismologia-ipt-latex ~/projetos/ClassificadorSismologico
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./relatorio_preditivo.tex
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-01-16> (./sismo_iptex.cls
+Document Class: sismo_iptex 2024/04/23 Classe Sismologia IPT
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/zref/zref-abspage.sty
+(/usr/share/texlive/texmf-dist/tex/latex/zref/zref-base.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-0.mdf))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/mathabx/mathabx.sty
+(/usr/share/texlive/texmf-dist/tex/generic/mathabx/mathabx.dcl))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/helvet.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fancyhdr.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/indentfirst.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/lastpage/lastpage.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def))
+(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/changepage/changepage.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tocloft/tocloft.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/sectsty/sectsty.sty
+
+LaTeX Warning: Command \underbar  has changed.
+               Check if current package is valid.
+
+
+LaTeX Warning: Command \underline  has changed.
+               Check if current package is valid.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/translations/translations.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/was/upgreek.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty
+
+! LaTeX Error: Command \captionof already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 ...nd\captionof[1]{\def\@captype{#1}\caption}
+                                                  
+? 
+! Emergency stop.
+ ...                                              
+                                                  
+l.30 ...nd\captionof[1]{\def\@captype{#1}\caption}
+                                                  
+!  ==> Fatal error occurred, no output PDF file produced!
+Transcript written on /home/ipt/projetos/ClassificadorSismologico/files/relator
+ios//relatorio_preditivo.log.
+~/projetos/ClassificadorSismologico
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
