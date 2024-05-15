@@ -13,7 +13,7 @@
 
 # ----------------------------  DESCRIPTION  -----------------------------------
 # Este código recebe uma lista de IDs eventos ou uma data de início e fim e com
-# estas informações cria um arquivo events.csv com os eventos sísmicos que 
+# estas informações cria um arquivo eventos.csv com os eventos sísmicos que 
 # ocorreram no intervalo de tempo especificado ou presentes na lista passada e
 # foram capturados pela rede sismológica. Com este arquivo, segue-se para o
 # passo de aquisição das formas de onda e classificação.
@@ -28,20 +28,21 @@
 #
 #
 # Caso utilize datas para a execução, o script irá adquirir os eventos sísmicos
-# da rede do IAG e do RSBR e criará um arquivo events_$INICIO_$FIM.csv
+# da rede do IAG e do RSBR e criará um arquivo eventos_$INICIO_$FIM.csv
 #
 # Caso utilize uma lista de IDs, o script irá adquirir os eventos sísmicos desta
-# mesma rede e criará um arquivo events.csv
+# mesma rede e criará um arquivo eventos.csv
 
 # -----------------------------  VARIÁVEIS -------------------------------------
 
-CATALOG=${1:-"files/catalogo/catalogo_treated.csv"}  # BASEADO EM LISTA DE IDS
+CATALOG=${1:-"arquivos/catalogo/Catalog.csv"}
+TREATCATALOG=${TREATCATALOG:-true}
 EVENTS=${EVENTS:-false}
-PREPROCESS=${PREPROCESS:-false}
+TREATEVENTS=${TREATEVENTS:-false}
 PREDICT=${PREDICT:-false}
-POSPROCESS=${POSPROCESS:-true}
-MAPS=${MAPS:-true}
-REPORT=${REPORT:-true}
+POSPROCESS=${POSPROCESS:-false}
+MAPS=${MAPS:-false}
+REPORT=${REPORT:-false}
 
 # ----------------------------- CONSTANTES -------------------------------------
 # DEFINE OS DIRETÓRIOS DE TRABALHO
@@ -49,10 +50,10 @@ BASE_DIR=$HOME/projetos/ClassificadorSismologico/
 cd $BASE_DIR
 
 # DEFINE O DIRETÓRIO DE LOGS
-LOG_DIR="files/logs"
+LOG_DIR="arquivos/registros"
 LOG_FILE="$LOG_DIR/Sismo_Pipeline.log"
 LOG_FILE_BKP="$LOG_DIR/.bkp/$(date +%Y%m%d%H%M%S)_Sismo_Pipeline.log"
-mkdir -p files
+mkdir -p arquivos
 mkdir -p $LOG_DIR
 
 # CRIA O ARQUIVO DE LOG
@@ -72,30 +73,36 @@ echo $DELIMT2
 echo ''
 
 # ------------------------- ETAPA DE AQUISIÇÃO DE DADOS  ----------------------
-# CRIANDO CATÁLOGO DE EVENTOS SISMICOS E GERANDO UMA TABELA DE METADADOS DE EVENTOS
 if [ "$EVENTS" = true ]; then
+    if [ "$TREATCATALOG" = true ]; then
+        echo ''
+        echo " -------------- INICIANDO O TRATAMENTO -------------------- "
+        echo " Tratando $CATALOG..."
+        python fonte/analise_dados/pre_processa.py $CATALOG
+        echo ''
+    fi
     echo " Criando arquivos de backup..."
-    [[ -f files/events/events.csv ]] &&
-        mv files/events/events.csv files/events/.bkp/events.csv.$(date +%Y%m%d%H%M%S)
-    [[ -f files/logs/missing_ids.csv ]] &&
-        mv files/logs/missing_ids.csv files/logs/.bkp/missing_ids.csv.$(date +%Y%m%d%H%M%S)
+    [[ -f /eventos/eventos.csv ]] &&
+        mv arquivos/eventos/eventos.csv arquivos/eventos/.bkp/eventos.csv.$(date +%Y%m%d%H%M%S)
+    [[ -f arquivos/registros/missing_ids.csv ]] &&
+        mv arquivos/registros/missing_ids.csv arquivos/registros/.bkp/missing_ids.csv.$(date +%Y%m%d%H%M%S)
     echo " Arquivos de backup criados com sucesso!"
     echo ''
-    echo ' -> Executando events_pipeline.py...'
-    python source/core/events_pipeline.py $CATALOG
+    echo ' -> Executando fluxo_eventos.py...'
+    python fonte/nucleo/fluxo_eventos.py $CATALOG
     echo ''
 fi
 
 # --------- ETAPA DE GERAR LISTA PARA CLASSIFICAÇÃO ( EVENTO | LABEL ) -----------
-if [ "$PREPROCESS" = true ]; then
+if [ "$TREATEVENTS" = true ]; then
     echo " Criando arquivos de backup..."
-    cp files/predcsv/pred.csv files/predcsv/.bkp/pred.csv.$(date +%Y%m%d%H%M%S)
-    cp files/predcsv/pred_commercial.csv files/predcsv/.bkp/pred_commercial.csv.$(date +%Y%m%d%H%M%S)
-    cp files/predcsv/pred_no_commercial.csv files/predcsv/.bkp/pred_no_commercial.csv.$(date +%Y%m%d%H%M%S)
+    cp arquivos/predcsv/pred.csv arquivos/predcsv/.bkp/pred.csv.$(date +%Y%m%d%H%M%S)
+    cp arquivos/predcsv/pred_commercial.csv arquivos/predcsv/.bkp/pred_commercial.csv.$(date +%Y%m%d%H%M%S)
+    cp arquivos/predcsv/pred_no_commercial.csv arquivos/predcsv/.bkp/pred_no_commercial.csv.$(date +%Y%m%d%H%M%S)
     echo " Arquivos de backup criados com sucesso!"
     echo ''
     echo " -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- "
-    python source/data_analysis/pre_process.py
+    python fonte/analise_dados/pre_processa.py
     echo ''
 fi
 
@@ -103,11 +110,11 @@ fi
 if [ "$PREDICT" = true ]; then
     NOME_TERM="DOCKER"
     COMMAND='docker run -it --rm -v $HOME/projetos:/app discrim:0.1.0'
-    COMMAND_2='python ClassificadorSismologico/source/cnn/run.py \
+    COMMAND_2='python ClassificadorSismologico/fonte/cnn/run.py \
                --output_dir no_commercial \
                --predcsv pred_no_commercial.csv \
                --valid'
-    COMMAND_3='python ClassificadorSismologico/source/cnn/run.py \
+    COMMAND_3='python ClassificadorSismologico/fonte/cnn/run.py \
                --output_dir commercial \
                --predcsv pred_commercial.csv \
                --valid'
@@ -124,7 +131,7 @@ fi
 # --------- ETAPA DE GERAR GRAFICOS E ANÁLISES -----------
 if [ "$POSPROCESS" = true ]; then
     echo " ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- "
-    python source/data_analysis/pos_process.py
+    python fonte/data_analysis/pos_process.py
     echo ''
 fi
 
@@ -133,9 +140,9 @@ fi
 if [ "$MAPS" = true ]; then
     echo " -------------- Processo de criação de mapas iniciado ------------------"
     # Checa se o arquivo de eventos existe e se é vazio
-    if [ -f "files/output/no_commercial/df_nc_pos.csv" ]; then
+    if [ -f "arquivos/output/no_commercial/df_nc_pos.csv" ]; then
         echo " -> Executando make_maps.py..."
-        python source/data_analysis/make_maps.py
+        python fonte/data_analysis/make_maps.py
     fi
     echo ''
 fi
@@ -143,10 +150,10 @@ fi
 # ----------------- ETAPA DE GERAR RELATORIOS ------------------------
 if [ "$REPORT" = true ]; then
     echo " ----------------- Iniciando o pdflatex .tex ---------------------------- "
-    python source/sismologia-ipt-latex/tex/relatorio_preditivo/python/figures.py
-    python source/sismologia-ipt-latex/tex/relatorio_preditivo/python/mapa.py
-    pushd source/sismologia-ipt-latex
-    pdflatex -output-directory=$HOME/projetos/ClassificadorSismologico/files/relatorios/ relatorio_preditivo.tex 
+    python fonte/sismologia-ipt-latex/tex/relatorio_preditivo/python/figures.py
+    python fonte/sismologia-ipt-latex/tex/relatorio_preditivo/python/mapa.py
+    pushd fonte/sismologia-ipt-latex
+    pdflatex -output-directory=$HOME/projetos/ClassificadorSismologico/arquivos/relatorios/ relatorio_preditivo.tex 
     popd
 fi
 

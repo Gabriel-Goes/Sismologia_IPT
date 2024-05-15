@@ -10,8 +10,8 @@
 # Modificação mais recente: 2024-04-10
 # Descrição: Este script será chamado antes da aquisição dos dados e apóes a
 # aquisição dos dados. Ele será responsável por tratar os dados do catálogo.csv
-# e dos eventos.csv. O catalogo.csv será tratado criando um catalogo_treated.csv
-# que será iterado pela eventos_fluxo.py
+# e dos eventos.csv. O catalogo.csv será tratado criando um
+# catalogo_treated.csv que será iterado pela eventos_fluxo.py
 
 # ----------------------------  IMPORTS   -------------------------------------
 import pandas as pd
@@ -22,7 +22,22 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import numpy as np
+
+import argparse
 ###############################################################################
+# ----------------------------  ARGUMENTS  ------------------------------------
+parser = argparse.ArgumentParser(description='Pre processamento dos dados')
+parser.add_argument(
+    # Pode ser --eventos ou -e
+    '--eventos', '-e', type=str, help='Nome do arquivo csv dos eventos'
+)
+parser.add_argument(
+    '--catalogo', '-c', type=str, help='Nome do arquivo csv do catalogo'
+)
+parser.add_argument(
+    '--plot', '-p', action='store_true', help='Plotar distribuição do catalogo'
+)
+args = parser.parse_args()
 
 
 # ----------------------------  FUNCTIONS  ------------------------------------
@@ -31,18 +46,26 @@ def brasil_catalogo(catalog: pd.DataFrame) -> pd.DataFrame:
         lambda x: shapely.geometry.Point(x['Longitude'], x['Latitude']), axis=1
     )
     catalog = gpd.GeoDataFrame(catalog, geometry='geometry')
-    brasil = gpd.read_file('files/figures/maps/macrorregioesBrasil.json')
+    brasil = gpd.read_file('arquivos/figuras/mapas/macrorregioesBrasil.json')
+    brasil = brasil[['nome', 'geometry']]
+    brasil['geometry_buffer'] = brasil.buffer(0.5)
+    brasil.geometry = brasil['geometry_buffer']
     brasil.to_crs(epsg=4326, inplace=True)
     catalog.crs = brasil.crs
-    c_brasil = gpd.sjoin(
+    catalogo_br = gpd.sjoin(
         catalog, brasil, how='inner', predicate='within'
     )
-    c_brasil = c_brasil[
+    catalogo_br = catalogo_br[
         ['EventID', 'Time', 'Depth/km', 'Author', 'Contributor', 'MagType',
          'Magnitude', 'MagAuthor', 'EventLocationName', 'EventType',
          'sigla', 'geometry']
     ]
-    return c_brasil
+    return catalogo_br
+
+
+def profundidade_catalogo(catalog: pd.DataFrame) -> pd.DataFrame:
+    catalog = catalog[catalog['depth'] < 100]
+    return catalog
 
 
 def order_catalog(catalog: pd.DataFrame) -> pd.DataFrame:
@@ -63,8 +86,8 @@ def gerar_predcsv(events: pd.DataFrame) -> [pd.DataFrame]:
     pred['Cat'] = events['Cat'].apply(
         lambda x: 0 if x == 'earthquake' else 1
     )
-    pred_eq.to_csv('files/predcsv/pred_earthquake.csv', index=False)
-    pred.to_csv('files/predcsv/pred.csv', index=False)
+    pred_eq.to_csv('arquivos/predcsv/pred_earthquake.csv', index=False)
+    pred.to_csv('arquivos/predcsv/pred.csv', index=False)
 
 
 def filter_pred_com(pred: pd.DataFrame) -> pd.DataFrame:
@@ -73,26 +96,27 @@ def filter_pred_com(pred: pd.DataFrame) -> pd.DataFrame:
     pred_nc = pred[(pred['Hora'] < 11) | (pred['Hora'] >= 22)]
     pred_com = pred_com.drop(columns=['Hora'])
     pred_nc = pred_nc.drop(columns=['Hora'])
-    pred_com.to_csv('files/predcsv/pred_commercial.csv', index=False)
-    pred_nc.to_csv('files/predcsv/pred_no_commercial.csv', index=False)
+    pred_com.to_csv('arquivos/predcsv/pred_commercial.csv', index=False)
+    pred_nc.to_csv('arquivos/predcsv/pred_no_commercial.csv', index=False)
 
     return pred, pred_com, pred_nc
 
 
-# ----------------------------  PLOT  -----------------------------------------
-def catalog_dist(catalog, att: str = 'sigla'):
-    ax = catalog.plot(
-        column=att, categorical=True,  markersize=1, figsize=(10, 10)
+def check_ev_id():
+    old_c = pd.read_csv('arquivos/catalogo/Catalog.csv', sep=';')
+    c = pd.read_csv(
+        'arquivos/catalogo/catalogo-moho-south-america.csv',
+        sep='|'
     )
-    ax.set_title('Distribuição de eventos sísmicos no Brasil')
-    ax.set_xlabel('Longitude')
-    ax.set_ylabel('Latitude')
-    plt.show()
+    oldids = old_c['EventID'].to_list()
+    ids = c['EventID'].to_list()
+    for i in oldids:
+        if i not in ids:
+            print(i)
 
-    return
 
-
-def pred_hora_dist(
+# ----------------------------  PLOT  -----------------------------------------
+def plot_distrib_hora(
         pred: pd.DataFrame) -> None:
     counts = pred['Hora'].value_counts(sort=False).reindex(
         np.arange(24), fill_value=0
@@ -118,32 +142,8 @@ def pred_hora_dist(
     plt.ylabel('Frequência')
     plt.legend(
         ['Horário Comercial', 'Fora do Horário Comercial'], loc='upper right')
-    plt.savefig('files/figures/pre_process/histogramas/hist_hora.png')
+    plt.savefig('arquivos/figures/pre_process/histogramas/hist_hora.png')
     plt.show()
-
-
-def pre_process_catalog(csv: str) -> None:
-    catalog = pd.read_csv(f'files/catalogo/{csv}.csv', sep='|')
-    catalog = brasil_catalogo(catalog)
-    catalog = order_catalog(catalog)
-    catalog.reset_index(drop=True, inplace=True)
-    catalog.to_csv(f'files/catalogo/{csv}_treated.csv', index=False)
-
-    catalog_dist(catalog, 'Author')
-
-    return catalog
-
-
-# ----------------------------  MAIN  -----------------------------------------
-
-def check_ev_id():
-    old_c = pd.read_csv('files/catalogo/Catalog.csv', sep=';')
-    c = pd.read_csv('files/catalogo/catalogo-moho-south-america.csv', sep='|')
-    oldids = old_c['EventID'].to_list()
-    ids = c['EventID'].to_list()
-    for i in oldids:
-        if i not in ids:
-            print(i)
 
 
 def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
@@ -153,7 +153,7 @@ def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
         geometry=gpd.points_from_xy(catalog.Longitude, catalog.Latitude)
     )
     catalog.crs = 'EPSG:4326'
-    brasil = gpd.read_file('files/figures/maps/macrorregioesBrasil.json')
+    brasil = gpd.read_file('arquivos/figuras/mapas/macrorregioesBrasil.json')
     brasil.to_crs(epsg=4326, inplace=True)
     brasil = brasil.geometry.unary_union
     catalog['color'] = 'blue'
@@ -168,5 +168,47 @@ def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
     plt.show()
 
 
-# ----------------------------  MAIN  -----------------------------------------
+def plot_prof_as_red(catalog: pd.DataFrame) -> None:
+    catalog.drop_duplicates(subset='EventID', inplace=True)
+    catalog = gpd.GeoDataFrame(
+        catalog,
+        geometry=gpd.points_from_xy(catalog.Longitude, catalog.Latitude)
+    )
+    catalog.crs = 'EPSG:4326'
+    brasil = gpd.read_file('arquivos/figuras/mapas/macrorregioesBrasil.json')
+    brasil.to_crs(epsg=4326, inplace=True)
+    brasil = brasil.geometry.unary_union
+    catalog['color'] = 'blue'
+    catalog.loc[catalog['depth'] > 200, 'color'] = 'red'
+    fig, ax = plt.subplots()
+    catalog.plot(ax=ax, color=catalog['color'], markersize=10)
+    gpd.GeoSeries([brasil]).boundary.plot(ax=ax, color='black')
+    plt.title('Seismic Events: Red if outside Brazil, Blue if inside')
+    plt.xlabel('Longitude')
+    plt.ylabel('Latitude')
+    plt.grid(True)
+    plt.show()
 
+
+# ----------------------------  MAIN  -----------------------------------------
+def main(args=args):
+    if args.catalogo:
+        catalog = pd.read_csv(f'arquivos/catalogo/{args.catalogo}', sep=',')
+        # catalog = brasil_catalogo(catalog)
+        catalog = profundidade_catalogo(catalog)
+        catalog = order_catalog(catalog)
+        catalog.to_csv(
+            f'arquivos/catalogo/{args.catalogo}_treated.csv', index=False
+        )
+    elif args.eventos:
+        events = pd.read_csv(f'arquivos/eventos/{args.eventos}', sep=',')
+        gerar_predcsv(events)
+        pred, pred_com, pred_nc = filter_pred_com(events)
+    else:
+        print('Nenhum arquivo catalogo foi passado')
+
+    return catalog
+
+
+if __name__ == '__main__':
+    main()

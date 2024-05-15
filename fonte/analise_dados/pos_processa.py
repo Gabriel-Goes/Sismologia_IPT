@@ -26,7 +26,7 @@ from shapely.geometry import Point
 import geopandas as gpd
 
 from tqdm import tqdm
-from data_analysis.test_filters import parsewindow, prepare
+from analise_dados.testa_filtros import parsewindow, prepare
 
 
 # ----------------------------- DATA VIZ ------------------------------------ #
@@ -45,7 +45,7 @@ def plot_box_dist(df):
     axes[1].set_title('Distribuição de prob_nat para Eventos Antrópicos')
     sns.boxplot(x='nature', y='Distance', data=df, ax=axes[2])
     axes[2].set_title('Boxplot da Distância por Natureza do Evento')
-    plt.savefig('files/figures/pos_process/boxplot_dist.png')
+    plt.savefig('arquivos/figuras/pos_processo/boxplot_dist.png')
     plt.show()
 
 
@@ -80,7 +80,7 @@ def plot_box_by_network(df):
     cbar.set_label(f'Frequência Relativa - Total de Eventos: {df.shape[0]}')
     cbar.set_ticks([freq_rel.min(), freq_rel.max()])
     cbar.set_ticklabels([f'{freq_rel.min():.2f}', f'{freq_rel.max():.2f}'])
-    plt.savefig('files/figures/pos_process/boxplot_rede.png')
+    plt.savefig('arquivos/figuras/pos_processo/boxplot_rede.png')
 
     plt.show()
 
@@ -123,7 +123,7 @@ def plot_box_by_station(df):
         cbar.set_ticks(ticks)
         cbar.set_ticklabels([f'{norm(t) * 100:.0f}%' for t in ticks])
 
-        plt.savefig(f'files/figures/pos_process/boxplot_{network}.png')
+        plt.savefig(f'arquivos/figuras/pos_processo/boxplot_{network}.png')
         plt.show()
 
 
@@ -142,7 +142,7 @@ def plot_corr_matrix(df):
     )
     plt.title('Correlation Matrix')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/corr_matrix.png')
+    plt.savefig('arquivos/figuras/pos_processo/corr_matrix.png')
     plt.show()
 
 
@@ -159,7 +159,7 @@ def plot_scatter(df, x, y):
     plt.xlabel(x)
     plt.ylabel(y)
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/scatter_plot.png')
+    plt.savefig('arquivos/figuras/pos_processo/scatter_plot.png')
     plt.show()
 
 
@@ -167,7 +167,7 @@ def plot_pairplot(df):
     df = df[['pred', 'prob_nat', 'Hora',
              'MLv', 'Distance', 'Num_Estacoes']]
     sns.pairplot(df, hue='pred')
-    plt.savefig('files/figures/pos_process/pairplot.png')
+    plt.savefig('arquivos/figuras/pos_processo/pairplot.png')
     plt.show()
 
 
@@ -179,7 +179,7 @@ def plot_swarmplot(df, x, y, natural=True):
         sns.swarmplot(x=x, y=y, data=df, size=2.5, color='red')
     else:
         sns.swarmplot(x=x, y=y, data=df, size=2.5, hue='pred')
-    plt.savefig('files/figures/pos_process/swarmplot.png')
+    plt.savefig('arquivos/figuras/pos_processo/swarmplot.png')
     plt.show()
 
 
@@ -207,7 +207,7 @@ def plot_hist_prob_distribution(df):
     plt.xlabel('Probabilidade Natural')
     plt.ylabel('Frequência')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/dist_prob_nat.png')
+    plt.savefig('arquivos/figuras/pos_processo/dist_prob_nat.png')
     plt.show()
 
 
@@ -244,12 +244,12 @@ def plot_hist_prob_recall(df):
     plt.xlabel('Probabilidade Natural')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/dist_prob_nat_recall.png')
+    plt.savefig('arquivos/figuras/pos_processo/dist_prob_nat_recall.png')
     plt.show()
 
 
 # --------------------------------- Hours
-# Plot histogram of events hour distribution
+# Plot histogram of eventos hour distribution
 def plot_hist_hour_distribution(df):
     counts = df['Hora'].value_counts(sort=False).reindex(
         np.arange(24),
@@ -274,7 +274,7 @@ def plot_hist_hour_distribution(df):
     # Legenda: Commercial e Não-Comercial
     plt.legend(['Não-Comercial'], loc='upper right')
     plt.savefig(
-        'files/figures/pos_process/hist_hora.png'
+        'arquivos/figuras/pos_processo/hist_hora.png'
     )
     plt.show()
 
@@ -320,7 +320,7 @@ def plot_hist_hour_recall(df):
     plt.xlabel('Hora do Dia')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/hist_ev_hour_recall.png')
+    plt.savefig('arquivos/figuras/pos_processo/hist_ev_hour_recall.png')
     plt.show()
     plt.close()
 
@@ -366,11 +366,11 @@ def plot_hist_distance_distribution(df):
     plt.title('Distribuição de Eventos por Distância Epicentral')
     plt.xlabel('Distância Epicentral (km)')
     plt.ylabel('Frequência Relativa')
-    plt.savefig('files/figures/pos_process/dist_ev_distance_rel_freq.png')
+    plt.savefig('arquivos/figuras/pos_processo/dist_ev_distance_rel_freq.png')
     plt.show()
 
 
-# plot histogram of events distance distribution
+# plot histogram of eventos distance distribution
 def plot_hist_distance_recall(df):
     cat = [
         '<50',
@@ -412,7 +412,7 @@ def plot_hist_distance_recall(df):
     plt.xlabel('Epicentral Distance (km)')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/hist_ev_distance.png')
+    plt.savefig('arquivos/figuras/pos_processo/hist_ev_distance.png')
     plt.show()
     plt.close()
 
@@ -443,7 +443,7 @@ def plot_hist_magnitude_distribution(df):
     plt.xlabel('Categoria de Magnitude')
     plt.ylabel('Número de Eventos')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/dist_ev_cat_mag.png')
+    plt.savefig('arquivos/figuras/pos_processo/dist_ev_cat_mag.png')
     plt.show()
 
 
@@ -481,7 +481,7 @@ def plot_hist_magnitude_recall(df):
     plt.xlabel('Magnitude')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/dist_ev_cat_mag_recall.png')
+    plt.savefig('arquivos/figuras/pos_processo/dist_ev_cat_mag_recall.png')
     plt.show()
 
 
@@ -508,7 +508,7 @@ def plot_hist_station_distribution(df):
     plt.xlabel('Número de Estações')
     plt.ylabel('Número de Eventos')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/dist_ev_num_stations_absoluto.png')
+    plt.savefig('arquivos/figuras/pos_processo/dist_ev_num_stations_absoluto.png')
     plt.show()
 
 
@@ -554,19 +554,19 @@ def plot_hist_stations_recall(df):
     plt.xticks(rc_data.index, labels=[str(int(x)) for x in rc_data.index])
     plt.ylim(60, 100)
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/dist_ev_num_stations_recall.png')
+    plt.savefig('arquivos/figuras/pos_processo/dist_ev_num_stations_recall.png')
     plt.show()
 
 
 # --------------------------- SNR Histograms
-def snr(events: pd.DataFrame,
+def snr(eventos: pd.DataFrame,
         window: int) -> [pd.DataFrame, dict]:
-    events.sort_index(inplace=True)
+    eventos.sort_index(inplace=True)
     filtro = AttribDict({
         'pa': 2.0, 'pb': 49.0,
         'noise': '', 'p': '', 's': '', 'snrp': '', 'snrs': ''
     })
-    for index, pick in tqdm(events.iterrows()):
+    for index, pick in tqdm(eventos.iterrows()):
         nw = str(obspy.UTCDateTime(pick['Pick Time']) - 4.9) + '/4'
         pw = str(obspy.UTCDateTime(pick['Pick Time'])) + '/' + str(window)
         sw = str(obspy.UTCDateTime(pick['Pick Time']) + 20) + '/5'
@@ -584,15 +584,14 @@ def snr(events: pd.DataFrame,
         filtro.s = np.mean(np.abs(trace_s))
         filtro.snrp = filtro.p / filtro.noise
         filtro.snrs = filtro.s / filtro.noise
-        events.loc[index, 'SNR_P'] = filtro.snrp
-        events.loc[index, 'SNR_S'] = filtro.snrs
-        events.loc[index, 'Noise'] = filtro.noise
-        events.loc[index, 'p'] = filtro.p
+        eventos.loc[index, 'SNR_P'] = filtro.snrp
+        eventos.loc[index, 'SNR_S'] = filtro.snrs
+        eventos.loc[index, 'Noise'] = filtro.noise
+        eventos.loc[index, 'p'] = filtro.p
 
-    return events
+    return eventos
 
 
-# CALCULATE MEAN SNR_P FOR EVENT
 def mean_snr_event(df):
     df['Mean SNR_P'] = df.index.get_level_values('Event').map(
         df.reset_index().groupby('Event')['SNR_P'].mean()
@@ -651,14 +650,13 @@ def class_snrp(snr):
 # HISTOGRAM SNR FOR PICK
 def plot_hist_snrs_distribution(df):
     plt.figure(figsize=(10, 6))
-    # Remove the first and last values to avoid outliers
     df = df[(df['SNR_P'] > 0) & (df['SNR_P'] < 15)]
     df['SNR_P'].plot(kind='box', color='lightskyblue')
     plt.title('Distribuição de SNR_P')
     plt.xlabel('SNR_P')
     plt.ylabel('Frequência')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/dist_snrs.png')
+    plt.savefig('arquivos/figuras/pos_processo/dist_snrs.png')
     plt.show()
 
 
@@ -701,7 +699,7 @@ def plot_hist_snr_recall_pick(df):
             ax.text(b, 0 + 1.5, '0', ha='center', va='bottom')
 
     cbar = fig.colorbar(sm, ax=ax)
-    plt.title(f'Recall por SNR_P Pick - Total de Eventos: {total}')
+    plt.title(f'Recall por SNR_P Pick - Total de Picks: {total}')
     cbar.ax.set_ylabel('Frequency (%)')
     cbar.set_ticks([min_freq, max_freq])
     plt.ylim(rc_min - 5, 110)
@@ -709,7 +707,7 @@ def plot_hist_snr_recall_pick(df):
     plt.xlabel('SNR_P')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/dist_snrs_recall.png')
+    plt.savefig('arquivos/figuras/pos_processo/dist_snrs_recall.png')
     plt.show()
 
 
@@ -777,13 +775,13 @@ def plot_mean_snr_recall_event(df):
     plt.xlabel('Média de SNR_P')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('files/figures/pos_process/dist_mean_snrs_recall.png')
+    plt.savefig('arquivos/figuras/pos_processo/dist_mean_snrs_recall.png')
     plt.show()
 
 
 # --------------------------- Region
 def class_region(df):
-    regions = gpd.read_file('files/figures/maps/macrorregioesBrasil.json')
+    regions = gpd.read_file('arquivos/figuras/mapas/macrorregioesBrasil.json')
     regions = regions.to_crs(epsg=4326)
     coord_origem = gpd.GeoDataFrame(
         df,
@@ -837,18 +835,18 @@ def plot_region_correlation(df):
         f'{freq_orig.min() * 100:.0f}%',
         f'{freq_orig.max() * 100:.0f}%'
     ])
-    plt.savefig('files/figures/pos_process/region_corr.png')
+    plt.savefig('arquivos/figuras/pos_processo/region_corr.png')
     plt.show()
 
 
-# --------------------------- Create files
+# --------------------------- Create arquivos
 def load_data():
-    evs = pd.read_csv('files/events/events.csv')
+    evs = pd.read_csv('arquivos/eventos/eventos.csv')
     evs['file_name'] = evs['Path'].apply(
         lambda x: x.split('/')[-1].split('.')[0]
     )
     df_nc_val = pd.read_csv(
-        'files/output/no_commercial/validation_station_level.csv'
+        'arquivos/resultados/ncomercial/validation_station_level.csv'
     )
     df_nc = pd.merge(df_nc_val, evs, on='file_name', how='left')
     df_nc.set_index(['Event', 'Station'], inplace=True)
@@ -869,7 +867,7 @@ def load_data():
         ['Origem Latitude', 'Origem Longitude']
     ].apply(lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1)
 
-    df_nc.to_csv('files/output/no_commercial/df_nc_pos.csv', index=True)
+    df_nc.to_csv('arquivos/resultados/ncomercial/df_nc_pos.csv', index=True)
 
     return df_nc, evs
 

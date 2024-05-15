@@ -1,4 +1,3 @@
-core
-data_analysis
-discrimination_eq_q
+analise_dados
 interface
+nucleo
