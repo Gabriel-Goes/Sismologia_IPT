@@ -1,0 +1,11 @@
+
+########################################################################
+ ---------------- Iniciando do Pipeline --------------------------------
+
+ -> Executando ProcessarDadosSismologicos.py...
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 23, in <module>
+    from utils import csv2list, delimt, inventory
+ImportError: cannot import name 'inventory' from 'utils' (/home/ipt/projetos/ClassificadorSismologico/source/Core/utils.py)
+
+ Criando arquivos de backup...

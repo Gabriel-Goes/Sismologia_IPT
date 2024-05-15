@@ -1,0 +1,20 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ -> Executando events_pipeline.py...
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/core/events_pipeline.py", line 22, in <module>
+    from baixar_mseed import iterate_events
+  File "/home/ipt/projetos/ClassificadorSismologico/source/core/baixar_mseed.py", line 22, in <module>
+    from utils import MSEED_DIR
+ModuleNotFoundError: No module named 'utils'
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
