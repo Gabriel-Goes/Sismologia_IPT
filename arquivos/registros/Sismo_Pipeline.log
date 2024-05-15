@@ -3,78 +3,19 @@
                        Iniciando do Pipeline                         
 ========================================================================
 
- ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
-0it [00:00, ?it/s]1it [00:00,  5.56it/s]21it [00:00, 90.39it/s]38it [00:00, 119.84it/s]52it [00:00, 126.74it/s]69it [00:00, 139.81it/s]84it [00:00, 135.16it/s]101it [00:00, 145.55it/s]120it [00:00, 157.16it/s]139it [00:01, 166.70it/s]158it [00:01, 172.14it/s]178it [00:01, 177.66it/s]198it [00:01, 180.82it/s]218it [00:01, 183.48it/s]238it [00:01, 184.87it/s]258it [00:01, 185.77it/s]278it [00:01, 186.43it/s]298it [00:01, 186.85it/s]318it [00:01, 187.11it/s]338it [00:02, 187.39it/s]358it [00:02, 187.49it/s]378it [00:02, 187.65it/s]398it [00:02, 187.51it/s]418it [00:02, 187.47it/s]438it [00:02, 187.45it/s]458it [00:02, 186.97it/s]478it [00:02, 186.57it/s]498it [00:02, 186.94it/s]518it [00:03, 186.46it/s]537it [00:03, 187.03it/s]557it [00:03, 188.33it/s]576it [00:03, 187.31it/s]595it [00:03, 186.31it/s]614it [00:03, 186.49it/s]633it [00:03, 184.66it/s]653it [00:03, 186.82it/s]672it [00:03, 186.20it/s]691it [00:03, 185.71it/s]710it [00:04, 185.45it/s]729it [00:04, 185.81it/s]748it [00:04, 185.51it/s]768it [00:04, 186.21it/s]788it [00:04, 186.06it/s]808it [00:04, 186.49it/s]828it [00:04, 186.33it/s]848it [00:04, 186.65it/s]868it [00:04, 186.33it/s]888it [00:05, 186.05it/s]908it [00:05, 188.67it/s]928it [00:05, 190.45it/s]948it [00:05, 188.89it/s]967it [00:05, 188.08it/s]986it [00:05, 186.80it/s]1005it [00:05, 185.95it/s]1024it [00:05, 186.21it/s]1043it [00:05, 185.84it/s]1062it [00:05, 186.57it/s]1081it [00:06, 186.60it/s]1100it [00:06, 183.81it/s]1119it [00:06, 183.99it/s]/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/numpy/core/fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
-  return _methods._mean(a, axis=axis, dtype=dtype,
-/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
-  ret = ret.dtype.type(ret / rcount)
-1138it [00:06, 184.23it/s]1158it [00:06, 185.20it/s]1178it [00:06, 185.27it/s]1198it [00:06, 185.92it/s]1218it [00:06, 185.31it/s]1238it [00:06, 185.91it/s]1258it [00:07, 186.41it/s]1278it [00:07, 187.27it/s]1298it [00:07, 186.77it/s]1318it [00:07, 186.92it/s]1338it [00:07, 187.06it/s]1358it [00:07, 187.05it/s]1378it [00:07, 187.18it/s]1398it [00:07, 187.19it/s]1418it [00:07, 187.24it/s]1438it [00:07, 187.20it/s]1458it [00:08, 187.30it/s]1477it [00:08, 188.07it/s]1496it [00:08, 188.17it/s]1515it [00:08, 187.13it/s]1534it [00:08, 187.20it/s]1553it [00:08, 187.34it/s]1572it [00:08, 187.18it/s]1591it [00:08, 186.42it/s]1610it [00:08, 186.49it/s]1629it [00:08, 185.79it/s]1648it [00:09, 185.91it/s]1668it [00:09, 185.74it/s]1687it [00:09, 174.15it/s]1705it [00:09, 160.23it/s]1725it [00:09, 169.12it/s]1744it [00:09, 173.55it/s]1763it [00:09, 177.08it/s]1782it [00:09, 179.38it/s]1801it [00:09, 181.61it/s]1820it [00:10, 183.13it/s]1839it [00:10, 183.70it/s]1858it [00:10, 184.70it/s]1877it [00:10, 185.52it/s]1896it [00:10, 185.13it/s]1915it [00:10, 186.51it/s]1934it [00:10, 187.18it/s]1953it [00:10, 187.07it/s]1972it [00:10, 186.64it/s]1991it [00:10, 186.74it/s]2010it [00:11, 186.58it/s]2029it [00:11, 185.56it/s]2048it [00:11, 184.75it/s]2067it [00:11, 185.63it/s]2086it [00:11, 185.45it/s]2105it [00:11, 186.22it/s]2125it [00:11, 186.17it/s]2145it [00:11, 186.19it/s]2165it [00:11, 186.23it/s]2185it [00:12, 186.14it/s]2205it [00:12, 186.27it/s]2225it [00:12, 186.36it/s]2245it [00:12, 186.50it/s]2265it [00:12, 186.45it/s]2284it [00:12, 187.38it/s]2303it [00:12, 187.24it/s]2322it [00:12, 186.69it/s]2341it [00:12, 186.15it/s]2360it [00:12, 187.27it/s]2379it [00:13, 186.68it/s]2398it [00:13, 185.60it/s]2417it [00:13, 185.57it/s]2436it [00:13, 185.55it/s]2456it [00:13, 186.10it/s]2476it [00:13, 185.91it/s]2496it [00:13, 185.83it/s]2515it [00:13, 180.44it/s]2534it [00:13, 176.85it/s]2553it [00:14, 177.40it/s]2571it [00:14, 176.88it/s]2590it [00:14, 180.59it/s]2609it [00:14, 180.42it/s]2628it [00:14, 180.58it/s]2647it [00:14, 179.05it/s]2665it [00:14, 178.93it/s]2683it [00:14, 178.77it/s]2701it [00:14, 178.84it/s]2719it [00:14, 178.99it/s]2737it [00:15, 179.02it/s]2755it [00:15, 179.00it/s]2773it [00:15, 177.97it/s]2791it [00:15, 178.45it/s]2810it [00:15, 178.97it/s]2829it [00:15, 178.98it/s]2848it [00:15, 179.25it/s]2867it [00:15, 179.12it/s]2886it [00:15, 178.47it/s]2905it [00:15, 181.18it/s]2924it [00:16, 181.09it/s]2943it [00:16, 180.93it/s]2962it [00:16, 180.33it/s]2981it [00:16, 180.67it/s]3000it [00:16, 179.65it/s]3018it [00:16, 178.00it/s]3036it [00:16, 178.51it/s]3054it [00:16, 178.69it/s]3073it [00:16, 179.48it/s]3092it [00:17, 180.01it/s]3111it [00:17, 178.96it/s]3129it [00:17, 179.01it/s]3147it [00:17, 179.27it/s]3165it [00:17, 179.39it/s]3183it [00:17, 179.06it/s]3202it [00:17, 179.10it/s]3221it [00:17, 178.41it/s]3240it [00:17, 179.16it/s]3259it [00:17, 182.07it/s]3278it [00:18, 181.43it/s]3297it [00:18, 181.16it/s]3316it [00:18, 180.78it/s]3335it [00:18, 179.77it/s]3353it [00:18, 176.63it/s]3371it [00:18, 177.47it/s]3389it [00:18, 176.94it/s]3407it [00:18, 177.28it/s]3425it [00:18, 177.58it/s]/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:586: RuntimeWarning: divide by zero encountered in scalar divide
-  filtro.snrp = filtro.p / filtro.noise
-/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:587: RuntimeWarning: divide by zero encountered in scalar divide
-  filtro.snrs = filtro.s / filtro.noise
-3443it [00:19, 176.98it/s]3461it [00:19, 176.57it/s]3479it [00:19, 177.42it/s]3498it [00:19, 178.12it/s]3517it [00:19, 178.84it/s]3536it [00:19, 181.59it/s]3555it [00:19, 181.18it/s]3574it [00:19, 179.29it/s]3592it [00:19, 179.28it/s]3610it [00:19, 178.62it/s]3628it [00:20, 178.52it/s]3632it [00:20, 181.07it/s]
-/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py:928: FutureWarning: The `op` parameter is deprecated and will be removed in a future release. Please use the `predicate` parameter instead.
-  df, evs = load_data()
-Fontconfig error: "/home/ipt/.config/fontconfig/fonts.conf", line 2: XML or text declaration not at start of entity
-Traceback (most recent call last):
-  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 937, in <module>
-    df, evs = main()
-              ^^^^^^
-  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 930, in main
-    non_commercial(df)
-  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 902, in non_commercial
-    plot_hist_hour_distribution(df)
-  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/pos_process.py", line 277, in plot_hist_hour_distribution
-    plt.savefig(
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/pyplot.py", line 1119, in savefig
-    res = fig.savefig(*args, **kwargs)  # type: ignore[func-returns-value]
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/figure.py", line 3390, in savefig
-    self.canvas.print_figure(fname, **kwargs)
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backends/backend_qtagg.py", line 75, in print_figure
-    super().print_figure(*args, **kwargs)
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backend_bases.py", line 2187, in print_figure
-    result = print_method(
-             ^^^^^^^^^^^^^
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backend_bases.py", line 2043, in <lambda>
-    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
-                                                                 ^^^^^
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py", line 497, in print_png
-    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py", line 446, in _print_pil
-    mpl.image.imsave(
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/image.py", line 1656, in imsave
-    image.save(fname, **pil_kwargs)
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/PIL/Image.py", line 2435, in save
-    fp = builtins.open(filename, "w+b")
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] Arquivo ou diretório inexistente: 'files/figures/pos_process/pos_process/plots/histogramas/hist_hora.png'
-
  -------------- Processo de criação de mapas iniciado ------------------
- -> Executando make_maps.py...
-Error returned from GMT API: GMT_MEMORY_ERROR (25)
-Traceback (most recent call last):
-  File "/home/ipt/projetos/ClassificadorSismologico/source/data_analysis/make_maps.py", line 13, in <module>
-    import pygmt
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pygmt/__init__.py", line 29, in <module>
-    with clib.Session() as lib:
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pygmt/clib/session.py", line 217, in __enter__
-    self.create("pygmt-session")
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pygmt/clib/session.py", line 401, in create
-    raise GMTCLibError(
-pygmt.exceptions.GMTCLibError: Failed to create a GMT API session:
-
 
  ----------------- Iniciando o pdflatex .tex ---------------------------- 
-/home/ipt/.pyenv/versions/sismologia/bin/python: can't open file '/home/ipt/projetos/ClassificadorSismologico/source/sismologia-ipt-latex/tex/relatorio_preditivo/python/figures.py': [Errno 2] No such file or directory
+/home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_processo
+LaTeX file '/home/ipt/projetos/ClassificadorSismologico/fonte/sismologia-ipt-latex/tex/relatorio_preditivo/tex/figures.tex' has been created successfully.
 Traceback (most recent call last):
-  File "/home/ipt/projetos/ClassificadorSismologico/source/sismologia-ipt-latex/tex/relatorio_preditivo/python/mapa.py", line 23, in <module>
-    generate_map_latex("./relatorio/tex/mapa.tex")
-  File "/home/ipt/projetos/ClassificadorSismologico/source/sismologia-ipt-latex/tex/relatorio_preditivo/python/mapa.py", line 18, in generate_map_latex
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/sismologia-ipt-latex/tex/relatorio_preditivo/python/mapa.py", line 29, in <module>
+    generate_map_latex(
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/sismologia-ipt-latex/tex/relatorio_preditivo/python/mapa.py", line 23, in generate_map_latex
     with open(output_filename, "w") as output_file:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: './relatorio/tex/mapa.tex'
-~/projetos/ClassificadorSismologico/source/sismologia-ipt-latex ~/projetos/ClassificadorSismologico
+FileNotFoundError: [Errno 2] No such file or directory: '/home/ipt/projetos/ClassificadorSismologico/fonte/sismologia-ipt-latex/tex/relatorio_preditivo/python/fonte/sismologia-ipt-latex/tex/relatorio_preditivo/tex/mapa.tex'
+~/projetos/ClassificadorSismologico/fonte/sismologia-ipt-latex ~/projetos/ClassificadorSismologico
 This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
@@ -202,15 +143,369 @@ Type  H <return>  for immediate help.
                                                   
 l.30 ...nd\captionof[1]{\def\@captype{#1}\caption}
                                                   
-? 
-! Emergency stop.
- ...                                              
-                                                  
-l.30 ...nd\captionof[1]{\def\@captype{#1}\caption}
-                                                  
-!  ==> Fatal error occurred, no output PDF file produced!
-Transcript written on /home/ipt/projetos/ClassificadorSismologico/files/relator
-ios//relatorio_preditivo.log.
+? ) (/usr/share/texlive/texmf-dist/tex/latex/xargs/xargs.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex))))
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/trimclip.sty
+(/usr/share/texlive/texmf-dist/tex/latex/collectbox/collectbox.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/tc-pdftex.def))
+(/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/pdfx.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifpdf.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/everyshi/everyshi.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty){/var/lib/texmf/f
+onts/map/pdftex/updmap/pdftex.map}
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/l8u-penc.def)
+
+Package hyperref Warning: Option `pdftex' has already been used,
+(hyperref)                setting the option has no effect on input line 1461.
+
+
+Package hyperref Warning: Option `pdfa' has already been used,
+(hyperref)                setting the option has no effect on input line 1461.
+
+(/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc-greekbasic.def)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/psdextra.def)
+(/usr/share/texlive/texmf-dist/tex/generic/colorprofiles/colorprofiles.sty
+(/usr/share/texlive/texmf-dist/tex/generic/colorprofiles/colorprofiles.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/stringenc/se-pdfdoc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/AdobeColorProfiles.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
+** pdfx: No file relatorio_preditivo.xmpdata . Metadata will be incomplete!
+<<sRGB.icc>> (/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftex/glyphtounicode.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/glyphtounicode-cmr.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/glyphtounicode-ntx.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/xmpincl/xmpincl.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
+Using XMP template file: pdfa.xmp
+<<pdfa.xmpi>>)) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-portuges/brazil.ldf))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/locale/en/babel-english.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/mathastext/mathastext.sty
+** ! and ?
+** punctuation: , . : ; and \colon
+** + and =
+** adding = ; and + to \nfss@catcodes
+** parentheses ( ) [ ] and slash /
+** alldelims: < > \backslash \setminus | \vert \mid \{ and \}
+** \# \mathdollar \% \& 
+** \imath and \jmath 
+** Latin letters in the `normal' (resp. `bold') math versions are now
+** set up to use the fonts T1/phv/m(b)/it
+** Other characters (digits, ...) and \log-like names will be
+** typeset with the n shape.
+** \hbar
+** minus as endash
+** \Huge and \HUGE have been (re)-defined.
+** mathastext has declared larger sizes for subscripts.
+** To keep LaTeX defaults, use option `defaultmathsizes'.
+) (/usr/share/texlive/texmf-dist/tex/latex/abntex2/abntex2cite.sty
+(/usr/share/texlive/texmf-dist/tex/latex/abntex2/abntex2abrev.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)
+(/home/ipt/projetos/ClassificadorSismologico/arquivos/relatorios//relatorio_pre
+ditivo.aux) (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(/home/ipt/projetos/ClassificadorSismologico/arquivos/relatorios//relatorio_pre
+ditivo.out)
+(/home/ipt/projetos/ClassificadorSismologico/arquivos/relatorios//relatorio_pre
+ditivo.out) (/usr/share/texlive/texmf-dist/tex/latex/ragged2e/ragged2e.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictio
+nary-brazil.trsl)
+(/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictio
+nary-english.trsl)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(./tex/relatorio_preditivo/tex/capa.tex [1 <./tex/figuras_tex/headImage.pdf> <.
+/tex/figuras_tex/footer_IPT.png>]
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd) [1]
+(/home/ipt/projetos/ClassificadorSismologico/arquivos/relatorios//relatorio_pre
+ditivo.toc (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)) [2])
+(./tex/relatorio_preditivo/tex/corpo.tex
+(./tex/relatorio_preditivo/tex/introducao.tex)
+(./tex/relatorio_preditivo/tex/atividades_resultados.tex
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.10 
+      [1] [2]
+
+! LaTeX Error: File `tex/relatorio_preditivo/tex/mapa.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: (/usr/share/texlive/texmf-dist/tex/latex/tools/.tex File ignored) [3]
+(./tex/relatorio_preditivo/tex/figures.tex [4
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.16 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+o/hist_ev_hour_recall.png>] [5
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.24 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+o/dist_mean_snrs_recall.png>] [6
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.32 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+o/dist_snrs.png>] [7
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.40 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+o/boxplot_IM.png>] [8
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.48 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+o/dist_ev_distance_rel_freq.png>] [9
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.56 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+o/boxplot_BX.png>] [10
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.64 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+o/boxplot_BL.png>] [11
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.72 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+o/hist_mean_snrs_recall.png>] [12
+pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.80 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+o/dist_prob_nat_recall.png>] [13
+pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.96 
+     
+pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.96 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+o/dist_ev_cat_mag.png> </home/ipt/projetos/ClassificadorSismologico/arquivos/fi
+guras/pos_processo/boxplot_rede.png>] [14
+pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.104 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/dist_snrs_recall.png>] [15
+pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.112 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/boxplot_XV.png>] [16
+pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.120 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/dist_mean_snrs_prob_nat.png>] [17
+pdfTeX warning (ext4): destination with the same identifier (name{figure.15}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.128 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/hist_ev_distance.png>] [18
+pdfTeX warning (ext4): destination with the same identifier (name{figure.16}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.136 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/boxplot_VL.png>] [19
+pdfTeX warning (ext4): destination with the same identifier (name{figure.17}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.144 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/dist_mean_snrs.png>] [20
+pdfTeX warning (ext4): destination with the same identifier (name{figure.18}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.152 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/hist_mean_snrs.png>] [21
+pdfTeX warning (ext4): destination with the same identifier (name{figure.19}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.168 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.20}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.168 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/dist_ev_num_stations_absoluto.png> </home/ipt/projetos/ClassificadorSismolog
+ico/arquivos/figuras/pos_processo/mean_snrs_3_prob_nat.png>] [22
+pdfTeX warning (ext4): destination with the same identifier (name{figure.21}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.176 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/dist_ev_cat_mag_recall.png>] [23
+pdfTeX warning (ext4): destination with the same identifier (name{figure.22}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.192 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.23}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.192 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/dist_ev_num_stations_recall.png> </home/ipt/projetos/ClassificadorSismologic
+o/arquivos/figuras/pos_processo/boxplot_dist.png>] [24
+pdfTeX warning (ext4): destination with the same identifier (name{figure.24}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.208 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.25}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.208 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/hist_snrs_recall.png> </home/ipt/projetos/ClassificadorSismologico/arquivos/
+figuras/pos_processo/region_corr.png>] [25
+pdfTeX warning (ext4): destination with the same identifier (name{figure.26}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.216 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/boxplot_XC.png>] [26
+pdfTeX warning (ext4): destination with the same identifier (name{figure.27}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.224 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/boxplot_ON.png>] [27
+pdfTeX warning (ext4): destination with the same identifier (name{figure.28}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.240 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.29}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.240 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/boxplot_Y4.png> </home/ipt/projetos/ClassificadorSismologico/arquivos/figura
+s/pos_processo/mean_snrs_1_prob_nat.png>] [28
+pdfTeX warning (ext4): destination with the same identifier (name{figure.30}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.248 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/boxplot_BR.png>] [29
+pdfTeX warning (ext4): destination with the same identifier (name{figure.31}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.256 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/boxplot_NB.png>] [30
+pdfTeX warning (ext4): destination with the same identifier (name{figure.32}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.264 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+so/hist_hora.png>])) (./tex/relatorio_preditivo/tex/consideracoes_finais.tex
+[31
+pdfTeX warning (ext4): destination with the same identifier (name{figure.33}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.7     \item E
+               m síntese, o funcionamento da Estação SP7 pôde ser consid...
+ </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_processo/box
+plot_GT.png>] [32]) [33])
+No file relatorio_preditivo.bbl.
+
+AED: lastpage setting LastPage
+[34]
+(/home/ipt/projetos/ClassificadorSismologico/arquivos/relatorios//relatorio_pre
+ditivo.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ){/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/urw/helvetic/uhvro8a.pfb>
+Output written on /home/ipt/projetos/ClassificadorSismologico/arquivos/relatori
+os//relatorio_preditivo.pdf (37 pages, 1533720 bytes).
+Transcript written on /home/ipt/projetos/ClassificadorSismologico/arquivos/rela
+torios//relatorio_preditivo.log.
 ~/projetos/ClassificadorSismologico
 ========================================================================
                         Fim do Pipeline                                 

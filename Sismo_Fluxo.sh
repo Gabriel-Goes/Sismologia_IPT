@@ -36,13 +36,13 @@
 # -----------------------------  VARIÁVEIS -------------------------------------
 
 CATALOG=${1:-"arquivos/catalogo/Catalog.csv"}
-TREATCATALOG=${TREATCATALOG:-true}
+TREATCATALOG=${TREATCATALOG:-fasel}
 EVENTS=${EVENTS:-false}
 TREATEVENTS=${TREATEVENTS:-false}
 PREDICT=${PREDICT:-false}
 POSPROCESS=${POSPROCESS:-false}
-MAPS=${MAPS:-false}
-REPORT=${REPORT:-false}
+MAPS=${MAPS:-true}
+REPORT=${REPORT:-true}
 
 # ----------------------------- CONSTANTES -------------------------------------
 # DEFINE OS DIRETÓRIOS DE TRABALHO
@@ -131,7 +131,7 @@ fi
 # --------- ETAPA DE GERAR GRAFICOS E ANÁLISES -----------
 if [ "$POSPROCESS" = true ]; then
     echo " ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- "
-    python fonte/data_analysis/pos_process.py
+    python fonte/analise_dados/pos_processa.py
     echo ''
 fi
 
@@ -142,7 +142,7 @@ if [ "$MAPS" = true ]; then
     # Checa se o arquivo de eventos existe e se é vazio
     if [ -f "arquivos/output/no_commercial/df_nc_pos.csv" ]; then
         echo " -> Executando make_maps.py..."
-        python fonte/data_analysis/make_maps.py
+        python fonte/analise_dados/gera_mapas.py
     fi
     echo ''
 fi
