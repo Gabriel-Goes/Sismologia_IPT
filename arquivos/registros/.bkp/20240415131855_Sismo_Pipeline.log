@@ -1,0 +1,1725 @@
+
+########################################################################
+ ---------------- Iniciando do Pipeline --------------------------------
+
+ -> Executando ProcessarDadosSismologicos.py...
+
+ - Argumento 1: /home/ggrl/projetos/ClassificadorSismologico/files/catalogo/catalogo-moho.csv
+ --> Client:
+  http://seisarc.sismo.iag.usp.br
+ --> Client Backup:
+  http://rsbr.on.br:8081/fdsnws/dataselect/1
+-----------------------------------------------------
+
+
+ --------- Iniciando o ProcessarID.py --------- 
+ ------------------------------ Acessando Catálogo ------------------------------ 
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:00<00:25,  3.94it/s]  4%|▍         | 4/100 [00:00<00:07, 12.20it/s]  7%|▋         | 7/100 [00:00<00:05, 16.13it/s] 10%|█         | 10/100 [00:00<00:05, 17.05it/s] 12%|█▏        | 12/100 [00:00<00:05, 16.96it/s] 14%|█▍        | 14/100 [00:00<00:04, 17.66it/s] 17%|█▋        | 17/100 [00:01<00:04, 18.99it/s] 19%|█▉        | 19/100 [00:01<00:04, 18.87it/s] 22%|██▏       | 22/100 [00:01<00:03, 19.90it/s] 25%|██▌       | 25/100 [00:01<00:03, 19.74it/s] 27%|██▋       | 27/100 [00:01<00:03, 19.32it/s] 29%|██▉       | 29/100 [00:01<00:03, 19.38it/s] 31%|███       | 31/100 [00:01<00:03, 19.37it/s] 34%|███▍      | 34/100 [00:01<00:03, 19.66it/s] 37%|███▋      | 37/100 [00:02<00:03, 20.18it/s] 40%|████      | 40/100 [00:02<00:03, 19.99it/s] 42%|████▏     | 42/100 [00:02<00:02, 19.99it/s] 45%|████▌     | 45/100 [00:02<00:02, 20.21it/s] 48%|████▊     | 48/100 [00:02<00:02, 19.42it/s] 51%|█████     | 51/100 [00:02<00:02, 20.15it/s] 54%|█████▍    | 54/100 [00:02<00:02, 19.95it/s] 57%|█████▋    | 57/100 [00:03<00:02, 19.31it/s] 60%|██████    | 60/100 [00:03<00:02, 19.44it/s] 62%|██████▏   | 62/100 [00:03<00:02, 18.96it/s] 65%|██████▌   | 65/100 [00:03<00:01, 19.27it/s] 67%|██████▋   | 67/100 [00:03<00:01, 18.71it/s] 70%|███████   | 70/100 [00:03<00:01, 19.55it/s] 72%|███████▏  | 72/100 [00:03<00:01, 19.17it/s] 75%|███████▌  | 75/100 [00:03<00:01, 19.99it/s] 77%|███████▋  | 77/100 [00:04<00:01, 19.61it/s] 79%|███████▉  | 79/100 [00:04<00:01, 19.26it/s] 81%|████████  | 81/100 [00:04<00:00, 19.30it/s] 83%|████████▎ | 83/100 [00:04<00:00, 18.28it/s] 85%|████████▌ | 85/100 [00:04<00:00, 17.53it/s] 87%|████████▋ | 87/100 [00:04<00:00, 18.16it/s] 89%|████████▉ | 89/100 [00:04<00:00, 16.95it/s] 92%|█████████▏| 92/100 [00:04<00:00, 18.85it/s] 94%|█████████▍| 94/100 [00:05<00:00, 19.00it/s] 96%|█████████▌| 96/100 [00:05<00:00, 18.92it/s] 98%|█████████▊| 98/100 [00:05<00:00, 18.46it/s]100%|██████████| 100/100 [00:05<00:00, 18.56it/s]100%|██████████| 100/100 [00:05<00:00, 18.67it/s]
+ --> Iterando sobre eventos
+ - Número de eventos: 100
+ - Client: http://seisarc.sismo.iag.usp.br
+ - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
+ - Estações no Inventário: 1230
+Press Enter to continue ...
+  0%|          | 0/100 [00:00<?, ?it/s]############ Event 1: usp2014gyqn ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014gyqn
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 2: usp2021ezmw ############
+
+--> Pick 1
+ - Net: GT
+ - Sta: CPUP
+Estação CPUP da rede GT não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2021ezmw
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 3: usp2020hkyw ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: PDRB
+Estação PDRB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2020hkyw
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 4: usp2022gpbs ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBMO
+Estação NBMO da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2022gpbs
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 5: usp2014oaxt ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: NPGB
+Estação NPGB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014oaxt
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 6: usp2015rxwc ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBAN
+Estação NBAN da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2015rxwc
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 7: usp2018cdft ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+Estação LDASE da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2018cdft
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 8: usp2019dmvk ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+Estação LDASE da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2019dmvk
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 9: usp2014kloc ############
+
+--> Pick 1
+ - Net: ON
+ - Sta: CAM01
+Estação CAM01 da rede ON não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014kloc
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 10: usp2015cjmh ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBRF
+Estação NBRF da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBPA
+Estação NBPA da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: IU
+ - Sta: RCBR
+Estação RCBR da rede IU não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 4
+ - Net: NB
+ - Sta: NBLI
+Estação NBLI da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2015cjmh
+ - Pwave Picks: 4
+ - Streams: 0
+#####################################################
+
+############ Event 11: usp2015phgr ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2015phgr
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 12: usp2016fwub ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: AQDB
+Estação AQDB da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2016fwub
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 13: usp2017espk ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: TQJ2B
+Estação TQJ2B da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BX
+ - Sta: TQJ4A
+Estação TQJ4A da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2017espk
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 14: usp2018bojv ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+Estação LDASE da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2018bojv
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 15: usp2019ianq ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: CNLB
+Estação CNLB da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2019ianq
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 16: usp2019nstm ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: PDRB
+Estação PDRB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2019nstm
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 17: usp2014jybg ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BSCB
+Estação BSCB da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014jybg
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 18: usp2014lafu ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: SALV
+Estação SALV da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014lafu
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 19: usp2019dkga ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: SNDB
+Estação SNDB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2019dkga
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 20: usp2020qlqm ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: CNLB
+Estação CNLB da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2020qlqm
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 21: usp2022havu ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2022havu
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 22: usp2022jzyj ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2022jzyj
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 23: usp2023fcfe ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2023fcfe
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 24: usp2016bhtr ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+Estação LDASE da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BX
+ - Sta: LDAE
+Estação LDAE da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: BX
+ - Sta: LDAW
+Estação LDAW da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2016bhtr
+ - Pwave Picks: 3
+ - Streams: 0
+#####################################################
+
+############ Event 25: usp2017qdbb ############
+
+--> Pick 1
+ - Net: ON
+ - Sta: VAS01
+Estação VAS01 da rede ON não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BL
+ - Sta: BSCB
+Estação BSCB da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2017qdbb
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 26: usp2019ulpl ############
+
+--> Pick 1
+ - Net: IU
+ - Sta: RCBR
+Estação RCBR da rede IU não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2019ulpl
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 27: usp2019unma ############
+
+--> Pick 1
+ - Net: IU
+ - Sta: RCBR
+Estação RCBR da rede IU não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2019unma
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 28: usp2021reil ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: ITAB
+Estação ITAB da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2021reil
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 29: usp2014klix ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BSCB
+Estação BSCB da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014klix
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 30: usp2014pgna ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: CNLB
+Estação CNLB da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014pgna
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 31: usp2016asmh ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+Estação LDASE da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BX
+ - Sta: LDAE
+Estação LDAE da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2016asmh
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 32: usp2017gagp ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: ARAG
+Estação ARAG da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2017gagp
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 33: usp2018pubu ############
+
+--> Pick 1
+ - Net: ON
+ - Sta: MAN01
+Estação MAN01 da rede ON não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2018pubu
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 34: usp2018purz ############
+
+--> Pick 1
+ - Net: ON
+ - Sta: VAS01
+Estação VAS01 da rede ON não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: ON
+ - Sta: CAM01
+Estação CAM01 da rede ON não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: ON
+ - Sta: MAN01
+Estação MAN01 da rede ON não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2018purz
+ - Pwave Picks: 3
+ - Streams: 0
+#####################################################
+
+############ Event 35: usp2019wlmi ############
+
+--> Pick 1
+ - Net: IU
+ - Sta: RCBR
+Estação RCBR da rede IU não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2019wlmi
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 36: usp2021laza ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBPN
+Estação NBPN da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2021laza
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 37: usp2023iafm ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2023iafm
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 38: usp2023ivdo ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2023ivdo
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 39: usp2014kdlg ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BSCB
+Estação BSCB da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014kdlg
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 40: usp2014pdar ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: CNLB
+Estação CNLB da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014pdar
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 41: usp2015dhro ############
+
+--> Pick 1
+ - Net: IU
+ - Sta: SAML
+Estação SAML da rede IU não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BR
+ - Sta: ETMB
+Estação ETMB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2015dhro
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 42: usp2015oucr ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2015oucr
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 43: usp2015pgki ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2015pgki
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 44: usp2018blwx ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+Estação LDASE da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2018blwx
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 45: usp2018kric ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: PDRB
+Estação PDRB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2018kric
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 46: usp2018ujoj ############
+
+--> Pick 1
+ - Net: IU
+ - Sta: RCBR
+Estação RCBR da rede IU não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBCA
+Estação NBCA da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: NB
+ - Sta: NBAN
+Estação NBAN da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2018ujoj
+ - Pwave Picks: 3
+ - Streams: 0
+#####################################################
+
+############ Event 47: usp2020fufu ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: TQJ3B
+Estação TQJ3B da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BX
+ - Sta: TQJ8A
+Estação TQJ8A da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2020fufu
+ - Pwave Picks: 3
+ - Streams: 0
+#####################################################
+
+############ Event 48: usp2020rkpd ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: CNLB
+Estação CNLB da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2020rkpd
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 49: usp2021bsjh ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBPN
+Estação NBPN da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2021bsjh
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 50: usp2023hjuw ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2023hjuw
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 51: usp2023oxvx ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2023oxvx
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 52: usp2013apqf ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: MCI6
+Estação MCI6 da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BL
+ - Sta: MCI7
+Estação MCI7 da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: BL
+ - Sta: MCI8
+Estação MCI8 da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 4
+ - Net: BL
+ - Sta: MCI9
+Estação MCI9 da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2013apqf
+ - Pwave Picks: 4
+ - Streams: 0
+#####################################################
+
+############ Event 53: usp2014lsvk ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: JANB
+Estação JANB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BR
+ - Sta: MC01
+Estação MC01 da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014lsvk
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 54: usp2015pjdm ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: JANB
+Estação JANB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BR
+ - Sta: MC01
+Estação MC01 da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2015pjdm
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 55: usp2016sobl ############
+
+--> Pick 1
+ - Net: IU
+ - Sta: RCBR
+Estação RCBR da rede IU não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBAN
+Estação NBAN da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: NB
+ - Sta: NBRF
+Estação NBRF da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2016sobl
+ - Pwave Picks: 3
+ - Streams: 0
+#####################################################
+
+############ Event 56: usp2017esor ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: TQJ4A
+Estação TQJ4A da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BX
+ - Sta: TQJ2B
+Estação TQJ2B da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2017esor
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 57: usp2018nkbf ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBPB
+Estação NBPB da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2018nkbf
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 58: usp2019axor ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: PDRB
+Estação PDRB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2019axor
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 59: usp2019vjbz ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: PDRB
+Estação PDRB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2019vjbz
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 60: usp2020eqvp ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: TQJ8A
+Estação TQJ8A da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BX
+ - Sta: TQJ3B
+Estação TQJ3B da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2020eqvp
+ - Pwave Picks: 3
+ - Streams: 0
+#####################################################
+
+############ Event 61: usp2020fuko ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: TQJ3B
+Estação TQJ3B da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BX
+ - Sta: TQJ8A
+Estação TQJ8A da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2020fuko
+ - Pwave Picks: 3
+ - Streams: 0
+#####################################################
+
+############ Event 62: usp2020khfd ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBPS
+Estação NBPS da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBMO
+Estação NBMO da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2020khfd
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 63: usp2022ejxy ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBPN
+Estação NBPN da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2022ejxy
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 64: usp2022ggif ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2022ggif
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 65: usp2022infq ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2022infq
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 66: usp2022jzyq ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2022jzyq
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 67: usp2022nlvl ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBLA
+Estação NBLA da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBPN
+Estação NBPN da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2022nlvl
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 68: usp2023hidl ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: FRTB
+Estação FRTB da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2023hidl
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 69: usp2023irrq ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2023irrq
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 70: usp2014fmhx ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014fmhx
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 71: usp2014jlhk ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: JANB
+Estação JANB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BR
+ - Sta: MC01
+Estação MC01 da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014jlhk
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 72: usp2014jybk ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BSCB
+Estação BSCB da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014jybk
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 73: usp2014lhws ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: JANB
+Estação JANB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BR
+ - Sta: MC01
+Estação MC01 da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014lhws
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 74: usp2014ntur ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: JANB
+Estação JANB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BR
+ - Sta: MC01
+Estação MC01 da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014ntur
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 75: usp2014nxab ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: MC01
+Estação MC01 da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014nxab
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 76: usp2014oszv ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: JANB
+Estação JANB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BR
+ - Sta: MC01
+Estação MC01 da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014oszv
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 77: usp2014plgw ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: JANB
+Estação JANB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BR
+ - Sta: MC01
+Estação MC01 da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014plgw
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 78: usp2014qfit ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: JANB
+Estação JANB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BR
+ - Sta: MC01
+Estação MC01 da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014qfit
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 79: usp2014qyai ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: JANB
+Estação JANB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BR
+ - Sta: MC01
+Estação MC01 da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014qyai
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 80: usp2014trgy ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: JANB
+Estação JANB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BR
+ - Sta: MC01
+Estação MC01 da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014trgy
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 81: usp2014trij ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: JANB
+Estação JANB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BR
+ - Sta: MC01
+Estação MC01 da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2014trij
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 82: usp2015fgsx ############
+
+--> Pick 1
+ - Net: IU
+ - Sta: RCBR
+Estação RCBR da rede IU não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBLI
+Estação NBLI da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: NB
+ - Sta: NBRF
+Estação NBRF da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2015fgsx
+ - Pwave Picks: 3
+ - Streams: 0
+#####################################################
+
+############ Event 83: usp2015rufk ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBPS
+Estação NBPS da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBCL
+Estação NBCL da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: NB
+ - Sta: NBMO
+Estação NBMO da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 4
+ - Net: NB
+ - Sta: NBPB
+Estação NBPB da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2015rufk
+ - Pwave Picks: 4
+ - Streams: 0
+#####################################################
+
+############ Event 84: usp2015uhrz ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBPB
+Estação NBPB da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBMO
+Estação NBMO da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: NB
+ - Sta: NBPS
+Estação NBPS da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2015uhrz
+ - Pwave Picks: 3
+ - Streams: 0
+#####################################################
+
+############ Event 85: usp2016bhsg ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+100%|██████████| 100/100 [00:00<00:00, 1589.49it/s]
+Estação LDASE da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BX
+ - Sta: LDAE
+Estação LDAE da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: BX
+ - Sta: LDAW
+Estação LDAW da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2016bhsg
+ - Pwave Picks: 3
+ - Streams: 0
+#####################################################
+
+############ Event 86: usp2016fooj ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBIT
+Estação NBIT da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBLA
+Estação NBLA da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: ON
+ - Sta: GDU01
+Estação GDU01 da rede ON não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2016fooj
+ - Pwave Picks: 3
+ - Streams: 0
+#####################################################
+
+############ Event 87: usp2016frpw ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2016frpw
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 88: usp2016rzoj ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBAN
+Estação NBAN da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBLA
+Estação NBLA da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2016rzoj
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 89: usp2017emit ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BX
+ - Sta: TQJ2B
+Estação TQJ2B da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: BX
+ - Sta: TQJ4A
+Estação TQJ4A da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2017emit
+ - Pwave Picks: 3
+ - Streams: 0
+#####################################################
+
+############ Event 90: usp2017qebm ############
+
+--> Pick 1
+ - Net: ON
+ - Sta: MAN01
+Estação MAN01 da rede ON não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2017qebm
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 91: usp2018hhub ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBCL
+Estação NBCL da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBPB
+Estação NBPB da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2018hhub
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 92: usp2019qbcf ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: PDRB
+Estação PDRB da rede BR não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2019qbcf
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 93: usp2019scqm ############
+
+--> Pick 1
+ - Net: IU
+ - Sta: RCBR
+Estação RCBR da rede IU não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2019scqm
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+############ Event 94: usp2020bhmv ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBPA
+Estação NBPA da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBPV
+Estação NBPV da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: IU
+ - Sta: RCBR
+Estação RCBR da rede IU não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2020bhmv
+ - Pwave Picks: 3
+ - Streams: 0
+#####################################################
+
+############ Event 95: usp2020etpn ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: TQJ3B
+Estação TQJ3B da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: BX
+ - Sta: TQJ8A
+Estação TQJ8A da rede BX não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: BL
+ - Sta: BB19B
+Estação BB19B da rede BL não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2020etpn
+ - Pwave Picks: 3
+ - Streams: 0
+#####################################################
+
+############ Event 96: usp2020ieip ############
+
+--> Pick 1
+ - Net: IU
+ - Sta: RCBR
+Estação RCBR da rede IU não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBMO
+Estação NBMO da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: NB
+ - Sta: NBPA
+Estação NBPA da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2020ieip
+ - Pwave Picks: 3
+ - Streams: 0
+#####################################################
+
+############ Event 97: usp2020mrkj ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBPS
+Estação NBPS da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBMO
+Estação NBMO da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2020mrkj
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 98: usp2020vllf ############
+
+--> Pick 1
+ - Net: IU
+ - Sta: RCBR
+Estação RCBR da rede IU não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: NB
+ - Sta: NBPV
+Estação NBPV da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2020vllf
+ - Pwave Picks: 2
+ - Streams: 0
+#####################################################
+
+############ Event 99: usp2021hqxn ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBPA
+Estação NBPA da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 2
+ - Net: IU
+ - Sta: RCBR
+Estação RCBR da rede IU não encontrada no inventário.
+-----------------------------------------------------
+
+--> Pick 3
+ - Net: NB
+ - Sta: NBPV
+Estação NBPV da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2021hqxn
+ - Pwave Picks: 3
+ - Streams: 0
+#####################################################
+
+############ Event 100: usp2021lglv ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBPN
+Estação NBPN da rede NB não encontrada no inventário.
+-----------------------------------------------------
+
+ - Event: usp2021lglv
+ - Pwave Picks: 1
+ - Streams: 0
+#####################################################
+
+Dados salvos com sucesso em ./files/catalogo/catalogo.csv
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 94, in <module>
+    catalogo, inentory, missin_ids = main(
+                                     ^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 56, in main
+    iterate_events(
+  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/BaixarFormaOnda.py", line 286, in iterate_events
+    writer.writerow(data)
+  File "/home/ggrl/.pyenv/versions/3.11.9/lib/python3.11/csv.py", line 154, in writerow
+    return self.writer.writerow(self._dict_to_list(rowdict))
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/3.11.9/lib/python3.11/csv.py", line 149, in _dict_to_list
+    raise ValueError("dict contains fields not in fieldnames: "
+ValueError: dict contains fields not in fieldnames: 'Phase', 'Origin Time'
+
+ Criando arquivos de backup...

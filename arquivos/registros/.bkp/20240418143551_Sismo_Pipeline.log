@@ -1,0 +1,33 @@
+
+########################################################################
+ ---------------- Iniciando do Pipeline --------------------------------
+
+ -> Executando ProcessarDadosSismologicos.py...
+
+ - Argumento 1: /home/ipt/projetos/ClassificadorSismologico/files/catalogo/catalogo-moho_bkp.csv
+ --> Client:
+  http://seisarc.sismo.iag.usp.br
+ --> Client Backup:
+  http://rsbr.on.br:8081/fdsnws/dataselect/1
+-----------------------------------------------------
+
+
+ --------- Iniciando o ProcessarID.py --------- 
+ ------------------------------ Acessando Catálogo ------------------------------ 
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:00<00:20,  4.92it/s]  4%|▍         | 4/100 [00:00<00:06, 14.04it/s]  7%|▋         | 7/100 [00:00<00:05, 18.51it/s] 10%|█         | 10/100 [00:00<00:04, 20.79it/s] 13%|█▎        | 13/100 [00:00<00:03, 22.52it/s] 16%|█▌        | 16/100 [00:00<00:03, 23.22it/s] 19%|█▉        | 19/100 [00:00<00:03, 24.46it/s] 22%|██▏       | 22/100 [00:01<00:03, 24.86it/s] 25%|██▌       | 25/100 [00:01<00:02, 25.86it/s] 28%|██▊       | 28/100 [00:01<00:02, 26.40it/s] 31%|███       | 31/100 [00:01<00:02, 26.24it/s] 34%|███▍      | 34/100 [00:01<00:02, 25.78it/s] 37%|███▋      | 37/100 [00:01<00:02, 25.85it/s] 40%|████      | 40/100 [00:01<00:02, 24.75it/s] 44%|████▍     | 44/100 [00:01<00:02, 25.64it/s] 47%|████▋     | 47/100 [00:01<00:02, 25.57it/s] 50%|█████     | 50/100 [00:02<00:01, 25.76it/s] 53%|█████▎    | 53/100 [00:02<00:01, 26.54it/s] 57%|█████▋    | 57/100 [00:02<00:01, 27.82it/s] 60%|██████    | 60/100 [00:02<00:01, 27.38it/s] 63%|██████▎   | 63/100 [00:02<00:01, 26.27it/s] 66%|██████▌   | 66/100 [00:02<00:01, 24.71it/s] 69%|██████▉   | 69/100 [00:02<00:01, 24.92it/s] 72%|███████▏  | 72/100 [00:02<00:01, 24.40it/s] 75%|███████▌  | 75/100 [00:03<00:01, 24.95it/s] 78%|███████▊  | 78/100 [00:03<00:00, 25.12it/s] 81%|████████  | 81/100 [00:03<00:00, 24.81it/s] 84%|████████▍ | 84/100 [00:03<00:00, 25.57it/s] 87%|████████▋ | 87/100 [00:03<00:00, 25.84it/s] 90%|█████████ | 90/100 [00:03<00:00, 25.92it/s] 93%|█████████▎| 93/100 [00:03<00:00, 24.91it/s] 96%|█████████▌| 96/100 [00:03<00:00, 25.71it/s] 99%|█████████▉| 99/100 [00:04<00:00, 24.43it/s]100%|██████████| 100/100 [00:04<00:00, 24.50it/s]
+ --> Iterando sobre eventos
+ - Número de eventos: 100
+ - Client: http://seisarc.sismo.iag.usp.br
+ - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 94, in <module>
+    catalogo, missin_ids = main(
+                           ^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 56, in main
+    iterate_events(
+  File "/home/ipt/projetos/ClassificadorSismologico/source/Core/BaixarFormaOnda.py", line 106, in iterate_events
+    print(f' - Estações no Inventário: {len(inventario)}')
+                                            ^^^^^^^^^^
+NameError: name 'inventario' is not defined
+
+ Criando arquivos de backup...

@@ -1,0 +1,460 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando events_pipeline.py...
+
+ - Argumento 1: files/catalogo/catalogo-moho.csv
+ --> Client:
+  http://seisarc.sismo.iag.usp.br
+ --> Client Backup:
+  http://rsbr.on.br:8081/fdsnws/dataselect/1
+-----------------------------------------------------
+
+
+ --------- Iniciando o ProcessarID.py --------- 
+ ------------------------------ Acessando Catálogo ------------------------------ 
+  0%|          | 0/20 [00:00<?, ?it/s]  5%|▌         | 1/20 [00:00<00:03,  5.26it/s] 20%|██        | 4/20 [00:00<00:01, 14.72it/s] 35%|███▌      | 7/20 [00:00<00:00, 20.25it/s] 50%|█████     | 10/20 [00:00<00:00, 21.31it/s] 65%|██████▌   | 13/20 [00:00<00:00, 22.94it/s] 80%|████████  | 16/20 [00:00<00:00, 24.24it/s] 95%|█████████▌| 19/20 [00:00<00:00, 25.39it/s]100%|██████████| 20/20 [00:00<00:00, 21.99it/s]
+ --> Iterando sobre eventos
+ - Número de eventos: 20
+ - Client: http://seisarc.sismo.iag.usp.br
+ - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
+Press Enter to continue ...
+ --> Adrquirindo Inventário de Estações
+  0%|          | 0/20 [00:00<?, ?it/s]/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/core/inventory/network.py:321: UserWarning: Found more than one matching channel metadata. Returning first.
+  warnings.warn(msg)
+ 20%|██        | 4/20 [00:00<00:00, 36.00it/s] 40%|████      | 8/20 [00:00<00:00, 17.61it/s] 60%|██████    | 12/20 [00:00<00:00, 23.20it/s] 75%|███████▌  | 15/20 [00:00<00:00, 21.29it/s]############ Event 1: usp2014gyqn ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+ - Cha: HHE
+ - Loc: None
+ - Seed ID: BL.BB19B..HHZ 
+ - BL.BB19B X,Y : -21.0662, -48.5279
+ - Distância até o epicentro: 0.4739622562125565 km
+ Downloading ...
+ Pick Time -> 2014-04-09T20:49:43.974670Z
+ Origin Time -> 2014-04-09T20:49:40.000000Z
+ Channel -> HHZ
+ - Saving File: 20140409T204940/BL_BB19B_20140409T204940.mseed
+ -> Erro ao obter magnitude: 'NoneType' object has no attribute 'mag'
+-----------------------------------------------------
+
+ - Event: usp2014gyqn
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 2: usp2021ezmw ############
+
+ - Event: usp2021ezmw
+ - Pwave Picks: 0
+#####################################################
+
+############ Event 3: usp2020hkyw ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: PDRB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.PDRB..HHZ 
+ - BR.PDRB X,Y : -11.612297, -56.729597
+ - Distância até o epicentro: 0.22934459104391727 km
+ Downloading ...
+ Pick Time -> 2020-04-15T14:40:19.978417Z
+ Origin Time -> 2020-04-15T14:40:20.000000Z
+ Channel -> HHZ
+ - Saving File: 20200415T144020/BR_PDRB_20200415T144020.mseed
+-----------------------------------------------------
+
+ - Event: usp2020hkyw
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 4: usp2022gpbs ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBMO
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBMO..HHZ 
+ - NB.NBMO X,Y : -3.310348, -40.042927
+ - Distância até o epicentro: 0.6296512501624295 km
+ Downloading ...
+ Pick Time -> 2022-04-04T15:07:54.334523Z
+ Origin Time -> 2022-04-04T15:07:42.000000Z
+ Channel -> HHZ
+ - Saving File: 20220404T150742/NB_NBMO_20220404T150742.mseed
+-----------------------------------------------------
+
+ - Event: usp2022gpbs
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 5: usp2014oaxt ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: NPGB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.NPGB..HHZ 
+ - BR.NPGB X,Y : -7.0454, -55.3579
+ - Distância até o epicentro: 0.7840549447308719 km
+ Downloading ...
+ Pick Time -> 2014-07-19T17:41:08.185058Z
+ Origin Time -> 2014-07-19T17:30:30.000000Z
+ Channel -> HHZ
+ - Saving File: 20140719T173030/BR_NPGB_20140719T173030.mseed
+-----------------------------------------------------
+
+ - Event: usp2014oaxt
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 6: usp2015rxwc ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBAN
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBAN..HHZ 
+ - NB.NBAN X,Y : -9.668656, -36.274726
+ - Distância até o epicentro: 33.505971131504076 km
+ Downloading ...
+ Pick Time -> 2016-09-12T23:24:35.547698Z
+ Origin Time -> 2015-09-12T23:24:35.000000Z
+ Channel -> HHZ
+ - Saving File: 20150912T232435/NB_NBAN_20150912T232435.mseed
+-----------------------------------------------------
+
+ - Event: usp2015rxwc
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 7: usp2018cdft ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BX.LDASE..HHZ 
+ - BX.LDASE X,Y : -23.3932, -51.1177
+ - Distância até o epicentro: 9.158357033931011 km
+ Downloading ...
+ Pick Time -> 2018-01-31T05:22:35.881485Z
+ Origin Time -> 2018-01-31T05:22:34.000000Z
+ Channel -> HHZ
+ - Saving File: 20180131T052234/BX_LDASE_20180131T052234.mseed
+-----------------------------------------------------
+
+ - Event: usp2018cdft
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 8: usp2019dmvk ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BX.LDASE..HHZ 
+ - BX.LDASE X,Y : -23.3932, -51.1177
+ - Distância até o epicentro: 11.366728946851751 km
+ Downloading ...
+ Pick Time -> 2019-02-19T17:08:54.749695Z
+ Origin Time -> 2019-02-19T17:08:54.000000Z
+ Channel -> HHZ
+ - Saving File: 20190219T170854/BX_LDASE_20190219T170854.mseed
+-----------------------------------------------------
+
+ - Event: usp2019dmvk
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 9: usp2014kloc ############
+
+--> Pick 1
+ - Net: ON
+ - Sta: CAM01
+ - Cha: HHR
+ - Loc: None
+ - Seed ID: ON.CAM01..HHZ 
+ - ON.CAM01 X,Y : -21.825656, -41.657401
+ - Distância até o epicentro: 2.4514531673196425 km
+ Downloading ...
+ Pick Time -> 2014-05-29T14:58:33.841855Z
+ Origin Time -> 2014-05-29T14:58:30.000000Z
+ Channel -> HHZ
+ - Saving File: 20140529T145830/ON_CAM01_20140529T145830.mseed
+-----------------------------------------------------
+
+ - Event: usp2014kloc
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 10: usp2015cjmh ############
+
+--> Pick 1
+ - Net: NB
+ - Sta: NBRF
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: NB.NBRF..HHZ 
+ - NB.NBRF X,Y : -8.679466, -35.127172
+ - Distância até o epicentro: 101.62578000652093 km
+ Downloading ...
+ Pick Time -> 2015-02-03T15:30:53.728118Z
+ Origin Time -> 2015-02-03T15:30:35.694424Z
+ Channel -> HHZ
+ - Saving File: 20150203T153035/NB_NBRF_20150203T153035.mseed
+-----------------------------------------------------
+
+ - Event: usp2015cjmh
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 11: usp2015phgr ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BB19B
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.BB19B..HHZ 
+ - BL.BB19B X,Y : -21.0662, -48.5279
+ - Distância até o epicentro: 3.5565475080912963 km
+ Downloading ...
+ Pick Time -> 2015-08-06T10:21:29.002197Z
+ Origin Time -> 2015-08-06T10:21:28.000000Z
+ Channel -> HHZ
+ - Saving File: 20150806T102128/BL_BB19B_20150806T102128.mseed
+-----------------------------------------------------
+
+ - Event: usp2015phgr
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 12: usp2016fwub ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: AQDB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.AQDB..HHZ 
+ - BL.AQDB X,Y : -20.47579, -55.69971
+ - Distância até o epicentro: 0.4812422953630468 km
+ Downloading ...
+ Pick Time -> 2016-03-24T14:48:22.856567Z
+ Origin Time -> 2016-03-24T14:48:15.000000Z
+ Channel -> HHZ
+ - Saving File: 20160324T144815/BL_AQDB_20160324T144815.mseed
+-----------------------------------------------------
+
+ - Event: usp2016fwub
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 13: usp2017espk ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: TQJ2B
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BX.TQJ2B..HHZ 
+ - BX.TQJ2B X,Y : -21.37467, -48.57693
+ - Distância até o epicentro: 9.629596145112966 km
+ Downloading ...
+ Pick Time -> 2017-03-09T02:22:58.329134Z
+ Origin Time -> 2017-03-09T02:22:56.463907Z
+ Channel -> HHZ
+ - Saving File: 20170309T022256/BX_TQJ2B_20170309T022256.mseed
+-----------------------------------------------------
+
+ - Event: usp2017espk
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 14: usp2018bojv ############
+
+--> Pick 1
+ - Net: BX
+ - Sta: LDASE
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BX.LDASE..HHZ 
+ - BX.LDASE X,Y : -23.3932, -51.1177
+ - Distância até o epicentro: 8.80516012808984 km
+ Downloading ...
+ Pick Time -> 2018-01-23T02:23:51.869610Z
+ Origin Time -> 2018-01-23T02:23:50.000000Z
+ Channel -> HHZ
+ - Saving File: 20180123T022350/BX_LDASE_20180123T022350.mseed
+-----------------------------------------------------
+
+ - Event: usp2018bojv
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 15: usp2019ianq ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: CNLB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.CNLB..HHZ 
+ - BL.CNLB X,Y : -29.3148, -50.8533
+ - Distância até o epicentro: 1.9676333072635817 km
+ Downloading ...
+ Pick Time -> 2019-04-25T03:10:05.497833Z
+ Origin Time -> 2019-04-25T03:10:02.000000Z
+ Channel -> HHZ
+ - Saving File: 20190425T031002/BL_CNLB_20190425T031002.mseed
+-----------------------------------------------------
+
+ - Event: usp2019ianq
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 16: usp2019nstm ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: PDRB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.PDRB..HHZ 
+ 90%|█████████ | 18/20 [00:00<00:00, 21.89it/s]100%|██████████| 20/20 [00:00<00:00, 22.93it/s]
+ - BR.PDRB X,Y : -11.612297, -56.729597
+ - Distância até o epicentro: 0.3595007308300882 km
+ Downloading ...
+ Pick Time -> 2019-07-15T06:15:50.998268Z
+ Origin Time -> 2019-07-15T06:15:50.000000Z
+ Channel -> HHZ
+ - Saving File: 20190715T061550/BR_PDRB_20190715T061550.mseed
+-----------------------------------------------------
+
+ - Event: usp2019nstm
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 17: usp2014jybg ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: BSCB
+ - Cha: HHR
+ - Loc: None
+ - Seed ID: BL.BSCB..HHZ 
+ - BL.BSCB X,Y : -20.9984, -44.7635
+ - Distância até o epicentro: 12.750955793603062 km
+ Downloading ...
+ Pick Time -> 2014-05-22T05:42:56.644843Z
+ Origin Time -> 2014-05-22T05:42:56.000000Z
+ Channel -> HHZ
+ - Saving File: 20140522T054256/BL_BSCB_20140522T054256.mseed
+-----------------------------------------------------
+
+ - Event: usp2014jybg
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 18: usp2014lafu ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: SALV
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.SALV..HHZ 
+ - BR.SALV X,Y : -15.90118, -55.69356
+ - Distância até o epicentro: 14.372433624726874 km
+ Downloading ...
+ Pick Time -> 2014-06-06T15:48:46.902175Z
+ Origin Time -> 2014-06-06T15:48:44.000000Z
+ Channel -> HHZ
+ - Saving File: 20140606T154844/BR_SALV_20140606T154844.mseed
+-----------------------------------------------------
+
+ - Event: usp2014lafu
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 19: usp2019dkga ############
+
+--> Pick 1
+ - Net: BR
+ - Sta: SNDB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BR.SNDB..HHZ 
+ - BR.SNDB X,Y : -11.9742, -51.2943
+ - Distância até o epicentro: 0.9812131853356774 km
+ Downloading ...
+ Pick Time -> 2019-02-18T07:00:46.785263Z
+ Origin Time -> 2019-02-18T07:00:46.000000Z
+ Channel -> HHZ
+ - Saving File: 20190218T070046/BR_SNDB_20190218T070046.mseed
+-----------------------------------------------------
+
+ - Event: usp2019dkga
+ - Pwave Picks: 1
+#####################################################
+
+############ Event 20: usp2020qlqm ############
+
+--> Pick 1
+ - Net: BL
+ - Sta: CNLB
+ - Cha: HHZ
+ - Loc: None
+ - Seed ID: BL.CNLB..HHZ 
+ - BL.CNLB X,Y : -29.3148, -50.8533
+ - Distância até o epicentro: 7.642367578254987 km
+ Downloading ...
+ Pick Time -> 2020-08-22T01:23:45.278243Z
+ Origin Time -> 2020-08-22T01:23:44.000000Z
+ Channel -> HHZ
+ - Saving File: 20200822T012344/BL_CNLB_20200822T012344.mseed
+-----------------------------------------------------
+
+ - Event: usp2020qlqm
+ - Pwave Picks: 1
+#####################################################
+
+Dados salvos com sucesso em ./files/events/events.csv
+Erros salvos com sucesso em ./files/events/erros.csv
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ ---------------- INICIANDO CORE/GERAR_PREDCSV.PY ---------------------------- 
+/home/ipt/projetos/ClassificadorSismologico/source/core/gerar_predcsv.py:20: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_pred['Cat'] = df_pred['Cat'].apply(lambda x: 0 if x == 'earthquake' else 1)
+Pred.csv criado com sucesso
+Erros.csv criado com sucesso
+
+./Sismo_Pipeline.sh: linha 131: Testando o comando 2: comando não encontrado
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+[{"success":true}]
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
