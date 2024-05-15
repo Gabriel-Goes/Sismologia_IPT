@@ -26,7 +26,7 @@ from shapely.geometry import Point
 import geopandas as gpd
 
 from tqdm import tqdm
-from data_analysis.test_filters import parsewindow, filterCombos, prepare
+from analise_dados.testar_filtros import parsewindow, filterCombos, prepare
 
 
 # ----------------------------- DATA VIZ ------------------------------------ #
@@ -802,7 +802,7 @@ def non_commercial(df):
 
 # -------------------------------- Main -------------------------------------- #
 def main():
-    df_nc, df_c, evs, df_nc_val, df_c_val, picks, dict_filt = load_data()
+    df, ev = load_data()
 
     non_commercial(df_nc)
     # commercial(df_c)
