@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 # Python 3.11.8
-# ./Classificador_Sismologico/pyscripts/ProcessarDadosSismologicos.py
+# ./Classificador_Sismologico/fonte/analise_dados/pos_processa.py
 
 # ----------------------------  DESCRIPTION  ----------------------------------
 # Script para gerar catálogo de eventos sísmicos
 # Autor: Gabriel Góes Rocha de Lima
-# Versão: 0.2
+# Versão: 0.4
 # Data: 2024-02-27
 # Modificação mais recente: 2024-04-10
 
@@ -27,10 +27,12 @@ import geopandas as gpd
 
 from tqdm import tqdm
 from analise_dados.testa_filtros import parsewindow, prepare
+from nucleo.utils import CAT_MAG, CAT_DIS, CAT_SNR
+
+plt.dpi = 300
 
 
-# ----------------------------- DATA VIZ ------------------------------------ #
-# ------------------------------ Functions ---------------------------------- #
+# --------------------------- FUNCTIONS ---------------------------------- #
 def plot_box_dist(df):
     fig, axes = plt.subplots(1, 3, figsize=(18, 5))
     sns.histplot(
@@ -146,7 +148,7 @@ def plot_corr_matrix(df):
     plt.show()
 
 
-# --------------------------- ScatterPlots ---------------------------------- #
+# --------------------------- SCATTERPLOTS ---------------------------------- #
 def plot_scatter(df, x, y):
     plt.figure(figsize=(10, 6))
     colors = ['b', 'r']
@@ -183,8 +185,8 @@ def plot_swarmplot(df, x, y, natural=True):
     plt.show()
 
 
-# ---------------------------- Histograms ----------------------------------- #
-# --------------------------------- Probabilities
+# --------------------------- HISTOGRAMS ------------------------------------ #
+# --------------------------- PROBABILITIES
 def class_prob(prob):
     if prob < 0.2:
         return '<0.2'
@@ -248,8 +250,7 @@ def plot_hist_prob_recall(df):
     plt.show()
 
 
-# --------------------------------- Hours
-# Plot histogram of eventos hour distribution
+# --------------------------- HOURS
 def plot_hist_hour_distribution(df):
     counts = df['Hora'].value_counts(sort=False).reindex(
         np.arange(24),
@@ -325,8 +326,7 @@ def plot_hist_hour_recall(df):
     plt.close()
 
 
-# --------------------------------- Distances
-# Classify distance categories
+# --------------------------- DISTANCES
 def class_dist(dist):
     if dist < 50:
         return '<50'
@@ -370,19 +370,9 @@ def plot_hist_distance_distribution(df):
     plt.show()
 
 
-# plot histogram of eventos distance distribution
 def plot_hist_distance_recall(df):
-    cat = [
-        '<50',
-        '[50-100[',
-        '[100-150[',
-        '[150-200[',
-        '[200-250[',
-        '[250-300[',
-        '>=300'
-    ]
     df['Distance_cat'] = pd.Categorical(
-        df['Distance_cat'], categories=cat, ordered=True
+        df['Distance_cat'], categories=CAT_DIS, ordered=True
     )
     f_rel = df['Distance_cat'].value_counts(normalize=True).sort_index()
     max_freq = f_rel.max() * 100
@@ -417,7 +407,7 @@ def plot_hist_distance_recall(df):
     plt.close()
 
 
-# --------------------------   Magnitudes
+# --------------------------- MAGNITUDES
 def class_mag(mag):
     if mag < 1:
         return '<1'
@@ -433,7 +423,6 @@ def plot_hist_magnitude_distribution(df):
     plt.figure(figsize=(10, 6))
     df['Magnitude_cat'] = pd.Categorical(
         df['Magnitude_cat'],
-        categories=['<1', '[1-2[', '[2-3[', '>=3'],
         ordered=True
     )
     df['Magnitude_cat'].value_counts().sort_index().plot(
@@ -449,9 +438,8 @@ def plot_hist_magnitude_distribution(df):
 
 def plot_hist_magnitude_recall(df):
     fig, axis = plt.subplots(figsize=(10, 6))
-    cat = ['<1', '[1-2[', '[2-3[', '>=3']
     df['Magnitude_cat'] = pd.Categorical(
-        df['Magnitude_cat'], categories=cat, ordered=True
+        df['Magnitude_cat'], categories=CAT_MAG, ordered=True
     )
     f_rel = df['Magnitude_cat'].value_counts(normalize=True).sort_index()
     max_freq = f_rel.max() * 100
@@ -485,7 +473,7 @@ def plot_hist_magnitude_recall(df):
     plt.show()
 
 
-# -------------------------- Number of Stations
+# --------------------------- NUMBER OF STATIONS
 def plot_hist_station_distribution(df):
     plt.figure(figsize=(10, 6))
 
@@ -508,7 +496,9 @@ def plot_hist_station_distribution(df):
     plt.xlabel('Número de Estações')
     plt.ylabel('Número de Eventos')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_processo/dist_ev_num_stations_absoluto.png')
+    plt.savefig(
+        'arquivos/figuras/pos_processo/dist_ev_num_stations_absoluto.png'
+    )
     plt.show()
 
 
@@ -554,11 +544,13 @@ def plot_hist_stations_recall(df):
     plt.xticks(rc_data.index, labels=[str(int(x)) for x in rc_data.index])
     plt.ylim(60, 100)
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_processo/dist_ev_num_stations_recall.png')
+    plt.savefig(
+        'arquivos/figuras/pos_processo/dist_ev_num_stations_recall.png'
+    )
     plt.show()
 
 
-# --------------------------- SNR Histograms
+# --------------------------- SNR HISTOGRAMS
 def snr(eventos: pd.DataFrame,
         window: int) -> [pd.DataFrame, dict]:
     eventos.sort_index(inplace=True)
@@ -598,11 +590,7 @@ def mean_snr_event(df):
     )
     df['Mean SNR_P_cat'] = pd.Categorical(
         df['Mean SNR_P'].apply(class_snrp),
-        categories=[
-            '< 1', '[1-2[', '[2-3[', '[3-4[', '[4-5[', '[5-6[', '[6-7[',
-            '[7-8[', '[8-9[', '[9-10[', '[10-11[', '[11-12[', '[12-13[',
-            '[13-14[', '[14-15[', '>= 15'
-        ],
+        categories=CAT_SNR,
         ordered=True
     )
     return df
@@ -614,7 +602,7 @@ def mean_mag_event(df):
     )
     df['Mean Mag_cat'] = pd.Categorical(
         df['Mean Mag'].apply(class_mag),
-        categories=['<1', '[1-2[', '[2-3[', '>=3'],
+        categories=CAT_MAG,
         ordered=True
     )
     return df
@@ -626,10 +614,7 @@ def mean_dist_event(df):
     )
     df['Mean Distance_cat'] = pd.Categorical(
         df['Mean Distance'].apply(class_dist),
-        categories=[
-            '<50', '[50-100[', '[100-150[', '[150-200[', '[200-250[',
-            '[250-300[', '>=300'
-        ],
+        categories=CAT_DIS,
         ordered=True
     )
     return df
@@ -642,12 +627,11 @@ def class_snrp(snr):
         snr_c = 1
         while snr_c < 15:
             if snr_c <= snr < snr_c + 1:
-                return f'[{snr_c}-{snr_c + 1}[ '
+                return f'[{snr_c}-{snr_c + 1}['
             snr_c += 1
         return '>= 15'
 
 
-# HISTOGRAM SNR FOR PICK
 def plot_hist_snrs_distribution(df):
     plt.figure(figsize=(10, 6))
     df = df[(df['SNR_P'] > 0) & (df['SNR_P'] < 15)]
@@ -662,13 +646,8 @@ def plot_hist_snrs_distribution(df):
 
 def plot_hist_snr_recall_pick(df):
     fig, ax = plt.subplots(figsize=(10, 6))
-    cat = [
-        '< 1', '[1-2[', '[2-3[', '[3-4[', '[4-5[', '[5-6[', '[6-7[', '[7-8[',
-        '[8-9[', '[9-10[', '[10-11[', '[11-12[', '[12-13[', '[13-14[',
-        '[14-15[', '>= 15'
-    ]
     df['SNR_P_cat'] = pd.Categorical(
-        df['SNR_P_cat'], categories=cat, ordered=True
+        df['SNR_P_cat'], categories=CAT_SNR, ordered=True
     )
     f_rel = df['SNR_P_cat'].value_counts(normalize=True).sort_index()
     f_abs = df['SNR_P_cat'].value_counts().sort_index()
@@ -711,10 +690,12 @@ def plot_hist_snr_recall_pick(df):
     plt.show()
 
 
-# HISTOGRAM  MEAN SNR FOR EVENT
 def plot_mean_snr_recall_event(df):
+    df['Mean SNR_P_cat'] = pd.Categorical(
+        df['Mean SNR_P_cat'], categories=CAT_SNR, ordered=True
+    )
     df_ = df.groupby(level='Event').first()
-    fig, ax = plt.subplots(figsize=(10, 6))
+    df_.sort_values('Mean SNR_P', inplace=True)
     f_rel = df_['Mean SNR_P_cat'].value_counts(normalize=True).sort_index()
     f_abs = df_['Mean SNR_P_cat'].value_counts().sort_index()
     max_freq = f_rel.max() * 100
@@ -724,6 +705,7 @@ def plot_mean_snr_recall_event(df):
     sm.set_array([])
     rc_min = 90
     total = 0
+    fig, ax = plt.subplots(figsize=(10, 6))
     for r, a in zip(f_rel.index, f_abs.index):
         f_a = f_abs.loc[a]
         freq = f_rel.loc[r] * 100
@@ -767,7 +749,7 @@ def plot_mean_snr_recall_event(df):
             ax.text(a, 0 + 1.5, '0', ha='center', va='bottom')
 
     cbar = fig.colorbar(sm, ax=ax)
-    plt.title(f'Recall por Média de SNR_P por Evento - Total {df.shape[0]}')
+    plt.title(f'Recall por Média de SNR_P por Evento - Total {df_.shape[0]}')
     cbar.ax.set_ylabel('Frequency (%)')
     cbar.set_ticks([min_freq, max_freq])
     plt.ylim(rc_min - 5, 105)
@@ -779,7 +761,82 @@ def plot_mean_snr_recall_event(df):
     plt.show()
 
 
-# --------------------------- Region
+# --------------------------- PROBABILIDADES
+def plot_mean_snr_prob_nat(df, n=1):
+    df['Mean SNR_P_cat'] = pd.Categorical(
+        df['Mean SNR_P_cat'], categories=CAT_SNR, ordered=True
+    )
+    df_ = df.groupby(level='Event').first()
+    df_.sort_values('Mean SNR_P', inplace=True)
+    f_rel = df_['Mean SNR_P_cat'].value_counts(normalize=True).sort_index()
+    f_abs = df_['Mean SNR_P_cat'].value_counts().sort_index()
+    max_freq = f_rel.max() * 100
+    min_freq = f_rel.min() * 100
+    norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
+    sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
+    sm.set_array([])
+    prob_min = 90
+    total = 0
+    fig, ax = plt.subplots(figsize=(21, 9))
+    for r, a in zip(f_rel.index, f_abs.index):
+        f_a = f_abs.loc[a]
+        freq = f_rel.loc[r] * 100
+        mean_dist = df_[df_['Mean SNR_P_cat'] == r]['Mean Distance'].mean()
+        mean_mag = df_[df_['Mean SNR_P_cat'] == r]['Mean Mag'].mean()
+        nb_sta = df[df['Mean SNR_P_cat'] == r].shape[0]/f_a
+        color = sm.to_rgba(freq)
+        if f_a > 0:
+            total += f_a
+            df_c = df_[df_['Mean SNR_P_cat'] == r]
+            prob = (df_c['prob_nat'].mean() * 100)
+            ax.bar(r, prob, color=color, edgecolor='black', width=0.5)
+            ax.text(
+                r, prob + 0.01, f'{prob:.2f}%',
+                ha='center', va='bottom', fontsize=8, fontweight='bold'
+            )
+            ax.text(
+                a, prob + 1.5,
+                f'#Freq.: {f_a}', ha='center', va='bottom',
+                fontsize=8
+            )
+            ax.text(
+                a, prob + 2.5, f'#Est.: {nb_sta:.1f}',
+                ha='center', va='bottom', fontsize=8
+            )
+            ax.text(
+                a, prob + 3.5, f'Dist.: {mean_dist:.0f}km',
+                ha='center', va='bottom', fontsize=8
+            )
+            ax.text(
+                a, prob + 4.5,
+                f'Mag.: {mean_mag:.1f}', ha='center', va='bottom', fontsize=8
+            )
+            prob_min = prob if prob < prob_min else prob_min
+        else:
+            ax.bar(r, 0, color=sm.to_rgba(0), edgecolor='black', width=0.5)
+            ax.text(r, 0 + 0.01, '0.00%', ha='center', va='bottom')
+            ax.text(a, 0 + 1.5, '0', ha='center', va='bottom')
+
+    cbar = fig.colorbar(sm, ax=ax)
+    plt.title(
+        f'Probabilidade por Média de SNR_P ({n}) por Evento -\
+        Total {df_.shape[0]}'
+    )
+    cbar.ax.set_ylabel('Frequency (%)')
+    cbar.set_ticks([min_freq, max_freq])
+    plt.ylim(prob_min - 5, 100)
+    plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
+    plt.xlabel('Média de SNR_P')
+    plt.ylabel('Probabilidade Natural(%)')
+    plt.tight_layout()
+    plt.savefig(
+        f'arquivos/figuras/pos_processo/mean_snrs_{n}_prob_nat.png'
+    )
+    # Set dpi
+    plt.show()
+
+
+# --------------------------- REGION
 def class_region(df):
     regions = gpd.read_file('arquivos/figuras/mapas/macrorregioesBrasil.json')
     regions = regions.to_crs(epsg=4326)
@@ -839,72 +896,76 @@ def plot_region_correlation(df):
     plt.show()
 
 
-# --------------------------- Create arquivos
-def load_data():
+# --------------------------- CREATE ARQUIVOS
+def carregar_dado(tipo='ncomercial', n=1):
     evs = pd.read_csv('arquivos/eventos/eventos.csv')
     evs['file_name'] = evs['Path'].apply(
         lambda x: x.split('/')[-1].split('.')[0]
     )
-    df_nc_val = pd.read_csv(
-        'arquivos/resultados/ncomercial/validation_station_level.csv'
+    df_val = pd.read_csv(
+        f'arquivos/resultados/{tipo}/validation_station_level.csv'
     )
-    df_nc = pd.merge(df_nc_val, evs, on='file_name', how='left')
-    df_nc.set_index(['Event', 'Station'], inplace=True)
-    df_nc = snr(df_nc, 3)
-    df_nc = class_region(df_nc)
-    df_nc = mean_snr_event(df_nc)
-    df_nc = mean_mag_event(df_nc)
-    df_nc = mean_dist_event(df_nc)
+    df = pd.merge(df_val, evs, on='file_name', how='left')
+    catalogo = pd.read_csv(
+        'arquivos/catalogo/catalogo-moho-south-america_treated.csv'
+    )
+    c_depth = catalogo[catalogo['Depth/km'] > 100]
+    df = df[~df['EventID'].isin(c_depth['EventID'])]
+    df = df[df['MLv'] <= 4]
+    df.set_index(['Event', 'Station'], inplace=True)
+    df = snr(df, 3)
+    df = df[df['SNR_P'] > n]
+    df = class_region(df)
+    df = mean_snr_event(df)
+    df = mean_mag_event(df)
+    df = mean_dist_event(df)
+    df.loc[:, 'prob_nat_cat'] = df['prob_nat'].apply(class_prob)
+    df.loc[:, 'Distance_cat'] = df['Distance'].apply(class_dist)
+    df.loc[:, 'Magnitude_cat'] = df['MLv'].apply(class_mag)
+    df.loc[:, 'SNR_P_cat'] = df['SNR_P'].apply(class_snrp)
+    df.loc[:, 'Mean SNR_P_cat'] = df['Mean SNR_P'].apply(class_snrp)
 
-    df_nc.loc[:, 'prob_nat_cat'] = df_nc['prob_nat'].apply(class_prob)
-    df_nc.loc[:, 'Distance_cat'] = df_nc['Distance'].apply(class_dist)
-    df_nc.loc[:, 'Magnitude_cat'] = df_nc['MLv'].apply(class_mag)
-    df_nc.loc[:, 'SNR_P_cat'] = df_nc['SNR_P'].apply(class_snrp)
-    df_nc.loc[:, 'Mean SNR_P_cat'] = df_nc['Mean SNR_P'].apply(class_snrp)
-
-    df_nc['Hora'] = df_nc['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
-    df_nc['Coord Origem'] = df_nc[
+    df['Hora'] = df['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
+    df['Coord Origem'] = df[
         ['Origem Latitude', 'Origem Longitude']
     ].apply(lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1)
+    df.to_csv('arquivos/resultados/ncomercial/df_nc_pos.csv', index=True)
 
-    df_nc.to_csv('arquivos/resultados/ncomercial/df_nc_pos.csv', index=True)
-
-    return df_nc, evs
+    return df
 
 
-def non_commercial(df):
+def ncomercial(df):
     # plot_hist_hour_distribution(df)
-    plot_hist_hour_recall(df)
+    # plot_hist_hour_recall(df)
     # ----------------------------------
     # plot_hist_station_distribution(df)
-    plot_hist_stations_recall(df)
+    # plot_hist_stations_recall(df)
     # ----------------------------------
     # plot_hist_distance_distribution(df)
-    plot_hist_distance_recall(df)
+    # plot_hist_distance_recall(df)
     # ----------------------------------
     # plot_hist_magnitude_distribution(df)
-    plot_hist_magnitude_recall(df)
+    # plot_hist_magnitude_recall(df)
     # ----------------------------------
     # plot_hist_snrs_distribution(df)
-    plot_hist_snr_recall_pick(df)
-    plot_mean_snr_recall_event(df)
+    # plot_hist_snr_recall_pick(df)
+    # plot_mean_snr_recall_event(df)
     # ----------------------------------
     # plot_box_dist(df)
     # plot_box_by_network(df)
     # plot_box_by_station(df)
-    plot_region_correlation(df)
+    # plot_region_correlation(df)
 
     return
 
 
-# -------------------------------- Main ------------------------------------- #
+# -------------------------------- MAIN ------------------------------------- #
 def main():
-    df, evs = load_data()
+    df = carregar_dado()
+    # ncomercial(df)
+    # comercial(df_c)
 
-    non_commercial(df)
-    # commercial(df_c)
-
-    return df, evs
+    return df
 
 
 if __name__ == '__main__':
