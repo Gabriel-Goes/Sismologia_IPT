@@ -14,7 +14,7 @@ from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtWidgets import QCheckBox
 from PyQt5.QtCore import Qt
 
-from nucleo.utils import delimt
+from nucleo.utils import DELIMT
 
 
 # ------------------------------- Classe SeletorEventoApp ------------------- #
@@ -98,7 +98,7 @@ class SeletorEventoApp(QMainWindow):
         )
         self.eventos_dec = self.eventos_cre[::-1]
         print(' ---------------- Eventos ordenados ---------------- ')
-        print(delimt)
+        print(DELIMT)
         return self.eventos_cre, self.eventos_dec, self.numb_eventos
 
     def updateEventSelector(self, state):
@@ -146,7 +146,7 @@ class SeletorEventoApp(QMainWindow):
             f'{network}_{station}_{event}.mseed'
         )
         try:
-            subprocess.Popen(['snuffler', self.mseed_file_path])
+            subprocess.Popen(['snuffler', self.mseed_file_path], )
             print(f"Snuffler iniciado com {self.mseed_file_path}")
         except Exception as e:
             print(f"Erro ao iniciar o Snuffler: {e}")

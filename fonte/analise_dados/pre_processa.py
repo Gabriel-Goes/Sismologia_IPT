@@ -25,6 +25,8 @@ import matplotlib.ticker as mtick
 import numpy as np
 
 import argparse
+
+
 ###############################################################################
 # ----------------------------  ARGUMENTS  ------------------------------------
 parser = argparse.ArgumentParser(description='Pre processamento dos dados')
@@ -171,7 +173,6 @@ def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
     plt.show()
 
 
-
 def plot_prof_as_red(catalog: pd.DataFrame) -> None:
     catalog.drop_duplicates(subset='EventID', inplace=True)
     catalog = gpd.GeoDataFrame(
@@ -264,7 +265,7 @@ def main(args=args):
         catalog = order_catalog(catalog, args.ascending)
         catalog = brasil_catalogo(catalog)
         catalog.to_csv(
-            f'arquivos/catalogo/{args.catalogo.split('.')[0]}_treated.csv',
+            f"arquivos/catalogo/{args.catalogo.split('.')[0]}_treated.csv",
             index=False
         )
         if args.plot:
