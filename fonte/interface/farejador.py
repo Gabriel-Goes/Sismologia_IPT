@@ -39,6 +39,7 @@ class SeletorEventoApp(QMainWindow):
         self.eventos_cre = ev[0]
         self.eventos_dec = ev[1]
         self.numb_eventos = ev[2]
+        self.distance = ev
         self.initUI()
         print(' ---------------- SeletorEventoApp Iniciado ---------------- ')
 

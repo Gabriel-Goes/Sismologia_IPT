@@ -35,10 +35,10 @@
 # -----------------------------  VARIÁVEIS -------------------------------------
 
 CATALOG=${1:-"catalogo-moho.csv"}
-EVENTS=${EVENTS:-true}
-TREATCATALOG=${TREATCATALOG:-true}
+EVENTS=${EVENTS:-false}
+TREATCATALOG=${TREATCATALOG:-false}
 TREATEVENTS=${TREATEVENTS:-false}
-PREDICT=${PREDICT:-false}
+PREDICT=${PREDICT:-true}
 POSPROCESS=${POSPROCESS:-false}
 MAPS=${MAPS:-false}
 REPORT=${REPORT:-false}
@@ -115,20 +115,19 @@ fi
 if [ "$PREDICT" = true ]; then
     NOME_TERM="DOCKER"
     COMMAND='docker run -it --rm -v $HOME/projetos:/app discrim:0.1.0'
-    COMMAND_2='python ClassificadorSismologico/fonte/cnn/run.py \
+    COMMAND_2='python ClassificadorSismologico/fonte/rnc/run.py \
                --output_dir no_commercial \
-               --predcsv pred_no_commercial.csv \
+               --events pred_no_commercial.csv \
                --valid'
-    COMMAND_3='python ClassificadorSismologico/fonte/cnn/run.py \
+    COMMAND_3='python ClassificadorSismologico/fonte/rnc/run.py \
                --output_dir commercial \
-               --predcsv pred_commercial.csv \
+               --events pred_commercial.csv \
                --valid'
     echo " ----------------- INICIANDO O PREDICT.PY ---------------------------- "
     i3-msg 'workspace 9'
     alacritty -e bash -c "tmux new-session -d -s $NOME_TERM; \
     tmux send-keys -t $NOME_TERM \"$COMMAND\" C-m; \
     tmux send-keys -t $NOME_TERM \"$COMMAND_2\" C-m; \
-    tmux send-keys -t $NOME_TERM \"$COMMAND_3\" C-m; \
     tmux attach -t $NOME_TERM"
     echo ''
 fi
