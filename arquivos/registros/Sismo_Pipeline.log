@@ -3,511 +3,26 @@
                        Iniciando do Pipeline                         
 ========================================================================
 
- -------------- Processo de criação de mapas iniciado ------------------
-
- ----------------- Iniciando o pdflatex .tex ---------------------------- 
-/home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_processo
-LaTeX file '/home/ipt/projetos/ClassificadorSismologico/fonte/sismologia-ipt-latex/tex/relatorio_preditivo/tex/figures.tex' has been created successfully.
-Traceback (most recent call last):
-  File "/home/ipt/projetos/ClassificadorSismologico/fonte/sismologia-ipt-latex/tex/relatorio_preditivo/python/mapa.py", line 29, in <module>
-    generate_map_latex(
-  File "/home/ipt/projetos/ClassificadorSismologico/fonte/sismologia-ipt-latex/tex/relatorio_preditivo/python/mapa.py", line 23, in generate_map_latex
-    with open(output_filename, "w") as output_file:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: '/home/ipt/projetos/ClassificadorSismologico/fonte/sismologia-ipt-latex/tex/relatorio_preditivo/python/fonte/sismologia-ipt-latex/tex/relatorio_preditivo/tex/mapa.tex'
-~/projetos/ClassificadorSismologico/fonte/sismologia-ipt-latex ~/projetos/ClassificadorSismologico
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex)
- restricted \write18 enabled.
-entering extended mode
-(./relatorio_preditivo.tex
-LaTeX2e <2022-11-01> patch level 1
-L3 programming layer <2023-01-16> (./sismo_iptex.cls
-Document Class: sismo_iptex 2024/04/23 Classe Sismologia IPT
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)))
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/zref/zref-abspage.sty
-(/usr/share/texlive/texmf-dist/tex/latex/zref/zref-base.sty
-(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty))
-(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-0.mdf))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
-(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
-(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
-(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
-(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty)))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/mathabx/mathabx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/mathabx/mathabx.dcl))
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/helvet.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/fancyhdr.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/indentfirst.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/lastpage/lastpage.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def))
-(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/changepage/changepage.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tocloft/tocloft.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))
-(/usr/share/texlive/texmf-dist/tex/latex/sectsty/sectsty.sty
-
-LaTeX Warning: Command \underbar  has changed.
-               Check if current package is valid.
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
 
 
-LaTeX Warning: Command \underline  has changed.
-               Check if current package is valid.
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando Catalog.csv...
 
-) (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/translations/translations.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/was/upgreek.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty
+ -> Executando fluxo_eventos.py...
 
-! LaTeX Error: Command \captionof already defined.
-               Or name \end... illegal, see p.192 of the manual.
+ - Catálogo: Catalog.csv_treated.csv
+ --> Client:
+  http://seisarc.sismo.iag.usp.br
+ --> Client Backup:
+  http://rsbr.on.br:8081/fdsnws/dataselect/1
+-----------------------------------------------------
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.30 ...nd\captionof[1]{\def\@captype{#1}\caption}
-                                                  
-? ) (/usr/share/texlive/texmf-dist/tex/latex/xargs/xargs.sty
-(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex))))
-(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjustbox.sty
-(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjcalc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/trimclip.sty
-(/usr/share/texlive/texmf-dist/tex/latex/collectbox/collectbox.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/tc-pdftex.def))
-(/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/pdfx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifpdf.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/everyshi/everyshi.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty){/var/lib/texmf/f
-onts/map/pdftex/updmap/pdftex.map}
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/l8u-penc.def)
+ --------- INICIANDO FLUXO DE EVENTOS  --------- 
 
-Package hyperref Warning: Option `pdftex' has already been used,
-(hyperref)                setting the option has no effect on input line 1461.
-
-
-Package hyperref Warning: Option `pdfa' has already been used,
-(hyperref)                setting the option has no effect on input line 1461.
-
-(/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc-greekbasic.def)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/psdextra.def)
-(/usr/share/texlive/texmf-dist/tex/generic/colorprofiles/colorprofiles.sty
-(/usr/share/texlive/texmf-dist/tex/generic/colorprofiles/colorprofiles.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/stringenc/se-pdfdoc.def)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/AdobeColorProfiles.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
-** pdfx: No file relatorio_preditivo.xmpdata . Metadata will be incomplete!
-<<sRGB.icc>> (/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
-(/usr/share/texlive/texmf-dist/tex/generic/pdftex/glyphtounicode.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/glyphtounicode-cmr.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/glyphtounicode-ntx.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/xmpincl/xmpincl.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
-Using XMP template file: pdfa.xmp
-<<pdfa.xmpi>>)) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
-(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf)
-(/usr/share/texlive/texmf-dist/tex/generic/babel-portuges/brazil.ldf))
-(/usr/share/texlive/texmf-dist/tex/generic/babel/locale/en/babel-english.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/mathastext/mathastext.sty
-** ! and ?
-** punctuation: , . : ; and \colon
-** + and =
-** adding = ; and + to \nfss@catcodes
-** parentheses ( ) [ ] and slash /
-** alldelims: < > \backslash \setminus | \vert \mid \{ and \}
-** \# \mathdollar \% \& 
-** \imath and \jmath 
-** Latin letters in the `normal' (resp. `bold') math versions are now
-** set up to use the fonts T1/phv/m(b)/it
-** Other characters (digits, ...) and \log-like names will be
-** typeset with the n shape.
-** \hbar
-** minus as endash
-** \Huge and \HUGE have been (re)-defined.
-** mathastext has declared larger sizes for subscripts.
-** To keep LaTeX defaults, use option `defaultmathsizes'.
-) (/usr/share/texlive/texmf-dist/tex/latex/abntex2/abntex2cite.sty
-(/usr/share/texlive/texmf-dist/tex/latex/abntex2/abntex2abrev.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/relatorios//relatorio_pre
-ditivo.aux) (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/relatorios//relatorio_pre
-ditivo.out)
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/relatorios//relatorio_pre
-ditivo.out) (/usr/share/texlive/texmf-dist/tex/latex/ragged2e/ragged2e.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictio
-nary-brazil.trsl)
-(/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictio
-nary-english.trsl)
-*geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
-(./tex/relatorio_preditivo/tex/capa.tex [1 <./tex/figuras_tex/headImage.pdf> <.
-/tex/figuras_tex/footer_IPT.png>]
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd) [1]
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/relatorios//relatorio_pre
-ditivo.toc (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)) [2])
-(./tex/relatorio_preditivo/tex/corpo.tex
-(./tex/relatorio_preditivo/tex/introducao.tex)
-(./tex/relatorio_preditivo/tex/atividades_resultados.tex
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.10 
-      [1] [2]
-
-! LaTeX Error: File `tex/relatorio_preditivo/tex/mapa.tex' not found.
-
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: tex)
-
-Enter file name: (/usr/share/texlive/texmf-dist/tex/latex/tools/.tex File ignored) [3]
-(./tex/relatorio_preditivo/tex/figures.tex [4
-pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.16 
-      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-o/hist_ev_hour_recall.png>] [5
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.24 
-      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-o/dist_mean_snrs_recall.png>] [6
-pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.32 
-      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-o/dist_snrs.png>] [7
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.40 
-      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-o/boxplot_IM.png>] [8
-pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.48 
-      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-o/dist_ev_distance_rel_freq.png>] [9
-pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.56 
-      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-o/boxplot_BX.png>] [10
-pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.64 
-      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-o/boxplot_BL.png>] [11
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.72 
-      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-o/hist_mean_snrs_recall.png>] [12
-pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.80 
-      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-o/dist_prob_nat_recall.png>] [13
-pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.96 
-     
-pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.96 
-      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-o/dist_ev_cat_mag.png> </home/ipt/projetos/ClassificadorSismologico/arquivos/fi
-guras/pos_processo/boxplot_rede.png>] [14
-pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.104 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/dist_snrs_recall.png>] [15
-pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.112 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/boxplot_XV.png>] [16
-pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.120 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/dist_mean_snrs_prob_nat.png>] [17
-pdfTeX warning (ext4): destination with the same identifier (name{figure.15}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.128 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/hist_ev_distance.png>] [18
-pdfTeX warning (ext4): destination with the same identifier (name{figure.16}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.136 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/boxplot_VL.png>] [19
-pdfTeX warning (ext4): destination with the same identifier (name{figure.17}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.144 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/dist_mean_snrs.png>] [20
-pdfTeX warning (ext4): destination with the same identifier (name{figure.18}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.152 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/hist_mean_snrs.png>] [21
-pdfTeX warning (ext4): destination with the same identifier (name{figure.19}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.168 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.20}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.168 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/dist_ev_num_stations_absoluto.png> </home/ipt/projetos/ClassificadorSismolog
-ico/arquivos/figuras/pos_processo/mean_snrs_3_prob_nat.png>] [22
-pdfTeX warning (ext4): destination with the same identifier (name{figure.21}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.176 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/dist_ev_cat_mag_recall.png>] [23
-pdfTeX warning (ext4): destination with the same identifier (name{figure.22}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.192 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.23}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.192 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/dist_ev_num_stations_recall.png> </home/ipt/projetos/ClassificadorSismologic
-o/arquivos/figuras/pos_processo/boxplot_dist.png>] [24
-pdfTeX warning (ext4): destination with the same identifier (name{figure.24}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.208 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.25}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.208 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/hist_snrs_recall.png> </home/ipt/projetos/ClassificadorSismologico/arquivos/
-figuras/pos_processo/region_corr.png>] [25
-pdfTeX warning (ext4): destination with the same identifier (name{figure.26}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.216 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/boxplot_XC.png>] [26
-pdfTeX warning (ext4): destination with the same identifier (name{figure.27}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.224 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/boxplot_ON.png>] [27
-pdfTeX warning (ext4): destination with the same identifier (name{figure.28}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.240 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.29}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.240 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/boxplot_Y4.png> </home/ipt/projetos/ClassificadorSismologico/arquivos/figura
-s/pos_processo/mean_snrs_1_prob_nat.png>] [28
-pdfTeX warning (ext4): destination with the same identifier (name{figure.30}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.248 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/boxplot_BR.png>] [29
-pdfTeX warning (ext4): destination with the same identifier (name{figure.31}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.256 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/boxplot_NB.png>] [30
-pdfTeX warning (ext4): destination with the same identifier (name{figure.32}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.264 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-so/hist_hora.png>])) (./tex/relatorio_preditivo/tex/consideracoes_finais.tex
-[31
-pdfTeX warning (ext4): destination with the same identifier (name{figure.33}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.7     \item E
-               m síntese, o funcionamento da Estação SP7 pôde ser consid...
- </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_processo/box
-plot_GT.png>] [32]) [33])
-No file relatorio_preditivo.bbl.
-
-AED: lastpage setting LastPage
-[34]
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/relatorios//relatorio_pre
-ditivo.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ){/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/urw/helvetic/uhvro8a.pfb>
-Output written on /home/ipt/projetos/ClassificadorSismologico/arquivos/relatori
-os//relatorio_preditivo.pdf (37 pages, 1533720 bytes).
-Transcript written on /home/ipt/projetos/ClassificadorSismologico/arquivos/rela
-torios//relatorio_preditivo.log.
-~/projetos/ClassificadorSismologico
-========================================================================
-                        Fim do Pipeline                                 
-========================================================================
-
+ ------------------------------ ACESSANDO CATÁLOGO ------------------------------ 
+ - Primeiro ID: bsb19030210000000
+ - ID mediano: usp2017aldx
+ - Último ID: usp2024irzo
+  0%|          | 0/3305 [00:00<?, ?it/s]  0%|          | 1/3305 [00:00<06:07,  8.98it/s]  0%|          | 4/3305 [00:00<03:19, 16.52it/s]  0%|          | 6/3305 [00:00<03:05, 17.82it/s]  0%|          | 8/3305 [00:00<03:31, 15.56it/s]  0%|          | 10/3305 [00:00<03:24, 16.10it/s]  0%|          | 13/3305 [00:00<02:57, 18.50it/s]  0%|          | 16/3305 [00:00<02:40, 20.53it/s]  1%|          | 19/3305 [00:01<02:32, 21.60it/s]  1%|          | 22/3305 [00:01<02:28, 22.09it/s]  1%|          | 25/3305 [00:01<02:22, 23.04it/s]  1%|          | 28/3305 [00:01<02:21, 23.22it/s]  1%|          | 31/3305 [00:01<02:17, 23.88it/s]  1%|          | 34/3305 [00:01<02:10, 25.00it/s]  1%|          | 37/3305 [00:01<02:08, 25.38it/s]  1%|          | 40/3305 [00:01<02:12, 24.66it/s]  1%|▏         | 43/3305 [00:01<02:08, 25.32it/s]  1%|▏         | 46/3305 [00:02<02:13, 24.45it/s]  1%|▏         | 49/3305 [00:02<02:12, 24.66it/s]  2%|▏         | 52/3305 [00:02<02:10, 24.89it/s]  2%|▏         | 55/3305 [00:02<02:05, 25.88it/s]  2%|▏         | 58/3305 [00:02<02:14, 24.18it/s]  2%|▏         | 61/3305 [00:02<02:12, 24.45it/s]  2%|▏         | 64/3305 [00:02<02:11, 24.58it/s]  2%|▏         | 67/3305 [00:02<02:08, 25.17it/s]  2%|▏         | 70/3305 [00:03<02:08, 25.16it/s]  2%|▏         | 73/3305 [00:03<02:09, 25.03it/s]  2%|▏         | 76/3305 [00:03<02:07, 25.42it/s]  2%|▏         | 79/3305 [00:03<02:06, 25.47it/s]  2%|▏         | 82/3305 [00:03<02:07, 25.31it/s]  3%|▎         | 85/3305 [00:03<02:04, 25.79it/s]  3%|▎         | 88/3305 [00:03<02:10, 24.71it/s]  3%|▎         | 91/3305 [00:03<02:06, 25.46it/s]  3%|▎         | 94/3305 [00:03<02:07, 25.14it/s]  3%|▎         | 97/3305 [00:04<02:05, 25.50it/s]  3%|▎         | 100/3305 [00:04<02:03, 26.02it/s]  3%|▎         | 103/3305 [00:04<02:06, 25.38it/s]  3%|▎         | 106/3305 [00:04<02:09, 24.78it/s]  3%|▎         | 109/3305 [00:04<02:12, 24.19it/s]  3%|▎         | 112/3305 [00:04<02:12, 24.08it/s]  3%|▎         | 115/3305 [00:04<02:17, 23.16it/s]  4%|▎         | 118/3305 [00:04<02:15, 23.55it/s]  4%|▎         | 121/3305 [00:05<02:11, 24.17it/s]  4%|▍         | 124/3305 [00:05<02:08, 24.78it/s]  4%|▍         | 127/3305 [00:05<02:04, 25.57it/s]  4%|▍         | 130/3305 [00:05<02:04, 25.59it/s]  4%|▍         | 133/3305 [00:05<02:05, 25.34it/s]  4%|▍         | 136/3305 [00:05<02:05, 25.26it/s]  4%|▍         | 139/3305 [00:05<02:06, 24.96it/s]  4%|▍         | 142/3305 [00:05<02:04, 25.35it/s]  4%|▍         | 145/3305 [00:06<02:08, 24.61it/s]  4%|▍         | 148/3305 [00:06<02:08, 24.52it/s]  5%|▍         | 151/3305 [00:06<02:08, 24.60it/s]  5%|▍         | 154/3305 [00:06<02:04, 25.22it/s]  5%|▍         | 157/3305 [00:06<02:17, 22.85it/s]  5%|▍         | 160/3305 [00:06<02:15, 23.22it/s]  5%|▍         | 163/3305 [00:06<02:11, 23.91it/s]  5%|▌         | 166/3305 [00:06<02:10, 24.14it/s]  5%|▌         | 169/3305 [00:07<02:10, 24.02it/s]  5%|▌         | 172/3305 [00:07<02:05, 24.93it/s]  5%|▌         | 175/3305 [00:07<02:01, 25.66it/s]  5%|▌         | 178/3305 [00:07<01:57, 26.61it/s]  5%|▌         | 181/3305 [00:07<01:58, 26.32it/s]  6%|▌         | 184/3305 [00:07<02:01, 25.63it/s]  6%|▌         | 187/3305 [00:07<02:04, 24.96it/s]  6%|▌         | 190/3305 [00:07<02:04, 24.97it/s]  6%|▌         | 193/3305 [00:07<02:04, 24.99it/s]  6%|▌         | 196/3305 [00:08<02:04, 24.97it/s]  6%|▌         | 199/3305 [00:08<02:05, 24.74it/s]  6%|▌         | 202/3305 [00:08<02:01, 25.48it/s]  6%|▌         | 205/3305 [00:08<02:00, 25.67it/s]  6%|▋         | 208/3305 [00:08<02:07, 24.36it/s]  6%|▋         | 211/3305 [00:08<02:11, 23.58it/s]  6%|▋         | 214/3305 [00:08<02:10, 23.76it/s]  7%|▋         | 217/3305 [00:08<02:03, 24.96it/s]  7%|▋         | 220/3305 [00:09<02:02, 25.21it/s]  7%|▋         | 223/3305 [00:09<02:03, 25.06it/s]  7%|▋         | 226/3305 [00:09<02:02, 25.15it/s]  7%|▋         | 229/3305 [00:09<01:59, 25.77it/s]  7%|▋         | 232/3305 [00:09<01:55, 26.57it/s]  7%|▋         | 235/3305 [00:09<01:53, 26.94it/s]  7%|▋         | 238/3305 [00:09<01:54, 26.82it/s]  7%|▋         | 241/3305 [00:09<01:53, 26.88it/s]  7%|▋         | 244/3305 [00:09<01:58, 25.91it/s]  7%|▋         | 247/3305 [00:10<02:00, 25.46it/s]  8%|▊         | 250/3305 [00:10<02:00, 25.39it/s]  8%|▊         | 253/3305 [00:10<01:58, 25.68it/s]  8%|▊         | 256/3305 [00:10<01:58, 25.81it/s]  8%|▊         | 259/3305 [00:10<02:02, 24.87it/s]  8%|▊         | 262/3305 [00:10<02:02, 24.83it/s]  8%|▊         | 265/3305 [00:10<02:05, 24.15it/s]  8%|▊         | 268/3305 [00:10<02:01, 25.07it/s]  8%|▊         | 271/3305 [00:11<02:00, 25.18it/s]  8%|▊         | 274/3305 [00:11<02:00, 25.22it/s]  8%|▊         | 277/3305 [00:11<02:02, 24.64it/s]  8%|▊         | 280/3305 [00:11<01:59, 25.34it/s]  9%|▊         | 283/3305 [00:11<01:58, 25.47it/s]  9%|▊         | 286/3305 [00:11<01:58, 25.55it/s]  9%|▊         | 289/3305 [00:11<01:59, 25.20it/s]  9%|▉         | 292/3305 [00:11<01:57, 25.63it/s]  9%|▉         | 295/3305 [00:12<01:59, 25.28it/s]  9%|▉         | 298/3305 [00:12<01:58, 25.42it/s]  9%|▉         | 301/3305 [00:12<02:02, 24.49it/s]  9%|▉         | 304/3305 [00:12<02:02, 24.58it/s]  9%|▉         | 307/3305 [00:12<02:01, 24.64it/s]  9%|▉         | 310/3305 [00:12<02:13, 22.43it/s]  9%|▉         | 313/3305 [00:12<02:13, 22.42it/s] 10%|▉         | 316/3305 [00:12<02:06, 23.62it/s] 10%|▉         | 319/3305 [00:13<02:02, 24.31it/s] 10%|▉         | 322/3305 [00:13<01:57, 25.31it/s] 10%|▉         | 325/3305 [00:13<01:56, 25.50it/s] 10%|▉         | 328/3305 [00:13<01:55, 25.77it/s] 10%|█         | 331/3305 [00:13<01:53, 26.13it/s] 10%|█         | 334/3305 [00:13<01:55, 25.72it/s] 10%|█         | 337/3305 [00:13<01:59, 24.79it/s] 10%|█         | 340/3305 [00:13<01:57, 25.21it/s] 10%|█         | 343/3305 [00:13<01:57, 25.12it/s] 10%|█         | 346/3305 [00:14<01:55, 25.63it/s] 11%|█         | 349/3305 [00:14<01:56, 25.28it/s] 11%|█         | 352/3305 [00:14<01:55, 25.49it/s] 11%|█         | 355/3305 [00:14<01:55, 25.50it/s] 11%|█         | 358/3305 [00:14<02:03, 23.91it/s] 11%|█         | 361/3305 [00:14<02:00, 24.41it/s] 11%|█         | 364/3305 [00:14<01:59, 24.69it/s] 11%|█         | 367/3305 [00:14<01:54, 25.76it/s] 11%|█         | 370/3305 [00:15<01:54, 25.59it/s] 11%|█▏        | 373/3305 [00:15<01:54, 25.64it/s] 11%|█▏        | 376/3305 [00:15<01:52, 26.09it/s] 11%|█▏        | 379/3305 [00:15<01:53, 25.83it/s] 12%|█▏        | 382/3305 [00:15<01:52, 25.88it/s] 12%|█▏        | 385/3305 [00:15<01:50, 26.46it/s] 12%|█▏        | 388/3305 [00:15<01:48, 26.97it/s] 12%|█▏        | 391/3305 [00:15<01:50, 26.26it/s] 12%|█▏        | 394/3305 [00:15<01:49, 26.70it/s] 12%|█▏        | 397/3305 [00:16<01:50, 26.35it/s] 12%|█▏        | 400/3305 [00:16<01:51, 26.08it/s] 12%|█▏        | 403/3305 [00:16<01:52, 25.83it/s] 12%|█▏        | 406/3305 [00:16<01:53, 25.62it/s] 12%|█▏        | 409/3305 [00:16<02:07, 22.63it/s] 12%|█▏        | 412/3305 [00:16<02:02, 23.64it/s] 13%|█▎        | 415/3305 [00:16<02:00, 24.05it/s] 13%|█▎        | 418/3305 [00:16<02:00, 23.98it/s] 13%|█▎        | 421/3305 [00:17<01:55, 25.02it/s] 13%|█▎        | 424/3305 [00:17<01:56, 24.78it/s] 13%|█▎        | 427/3305 [00:17<01:54, 25.12it/s] 13%|█▎        | 430/3305 [00:17<01:55, 24.88it/s] 13%|█▎        | 433/3305 [00:17<01:53, 25.40it/s] 13%|█▎        | 436/3305 [00:17<01:55, 24.78it/s] 13%|█▎        | 439/3305 [00:17<02:01, 23.55it/s] 13%|█▎        | 442/3305 [00:17<01:58, 24.26it/s] 13%|█▎        | 445/3305 [00:18<01:54, 24.91it/s] 14%|█▎        | 448/3305 [00:18<01:55, 24.83it/s] 14%|█▎        | 451/3305 [00:18<01:54, 24.94it/s] 14%|█▎        | 454/3305 [00:18<01:53, 25.09it/s] 14%|█▍        | 457/3305 [00:18<01:50, 25.74it/s] 14%|█▍        | 460/3305 [00:18<01:53, 25.14it/s] 14%|█▍        | 463/3305 [00:18<01:52, 25.27it/s] 14%|█▍        | 466/3305 [00:18<01:57, 24.10it/s] 14%|█▍        | 469/3305 [00:18<01:52, 25.10it/s] 14%|█▍        | 472/3305 [00:19<02:06, 22.40it/s] 14%|█▍        | 475/3305 [00:19<02:03, 22.89it/s] 14%|█▍        | 478/3305 [00:19<01:57, 24.14it/s] 15%|█▍        | 481/3305 [00:19<02:17, 20.47it/s] 15%|█▍        | 484/3305 [00:19<02:10, 21.59it/s] 15%|█▍        | 487/3305 [00:19<02:07, 22.10it/s] 15%|█▍        | 490/3305 [00:19<02:02, 22.93it/s] 15%|█▍        | 493/3305 [00:20<02:00, 23.27it/s] 15%|█▌        | 496/3305 [00:20<01:55, 24.23it/s] 15%|█▌        | 499/3305 [00:20<01:58, 23.64it/s] 15%|█▌        | 502/3305 [00:20<01:54, 24.45it/s] 15%|█▌        | 505/3305 [00:20<02:04, 22.44it/s] 15%|█▌        | 508/3305 [00:20<01:59, 23.46it/s] 15%|█▌        | 511/3305 [00:20<01:57, 23.86it/s] 16%|█▌        | 514/3305 [00:20<01:58, 23.54it/s] 16%|█▌        | 517/3305 [00:21<01:59, 23.34it/s] 16%|█▌        | 520/3305 [00:21<01:54, 24.42it/s] 16%|█▌        | 523/3305 [00:21<01:51, 24.84it/s] 16%|█▌        | 526/3305 [00:21<01:50, 25.16it/s] 16%|█▌        | 529/3305 [00:21<01:50, 25.15it/s] 16%|█▌        | 532/3305 [00:21<01:48, 25.45it/s] 16%|█▌        | 535/3305 [00:21<01:47, 25.70it/s] 16%|█▋        | 538/3305 [00:21<01:55, 23.86it/s] 16%|█▋        | 541/3305 [00:22<01:53, 24.42it/s] 16%|█▋        | 544/3305 [00:22<01:52, 24.53it/s] 17%|█▋        | 547/3305 [00:22<01:50, 24.92it/s] 17%|█▋        | 550/3305 [00:22<01:52, 24.59it/s] 17%|█▋        | 553/3305 [00:22<01:49, 25.10it/s] 17%|█▋        | 556/3305 [00:22<02:02, 22.39it/s] 17%|█▋        | 559/3305 [00:22<02:01, 22.60it/s] 17%|█▋        | 562/3305 [00:22<01:58, 23.17it/s] 17%|█▋        | 565/3305 [00:23<01:54, 24.02it/s] 17%|█▋        | 568/3305 [00:23<02:04, 21.98it/s] 17%|█▋        | 571/3305 [00:23<01:57, 23.20it/s] 17%|█▋        | 574/3305 [00:23<01:55, 23.63it/s] 17%|█▋        | 577/3305 [00:23<01:52, 24.33it/s] 18%|█▊        | 580/3305 [00:23<01:52, 24.26it/s] 18%|█▊        | 583/3305 [00:23<01:52, 24.27it/s] 18%|█▊        | 586/3305 [00:23<01:49, 24.76it/s] 18%|█▊        | 589/3305 [00:24<01:54, 23.65it/s] 18%|█▊        | 592/3305 [00:24<01:48, 24.93it/s] 18%|█▊        | 595/3305 [00:24<01:48, 24.90it/s] 18%|█▊        | 598/3305 [00:24<01:49, 24.75it/s] 18%|█▊        | 601/3305 [00:24<02:00, 22.43it/s] 18%|█▊        | 604/3305 [00:24<01:58, 22.83it/s] 18%|█▊        | 607/3305 [00:24<01:54, 23.55it/s] 18%|█▊        | 610/3305 [00:24<01:59, 22.57it/s] 19%|█▊        | 613/3305 [00:25<01:53, 23.73it/s] 19%|█▊        | 616/3305 [00:25<01:52, 23.80it/s] 19%|█▊        | 619/3305 [00:25<01:49, 24.48it/s] 19%|█▉        | 622/3305 [00:25<01:48, 24.79it/s] 19%|█▉        | 625/3305 [00:25<01:46, 25.12it/s] 19%|█▉        | 628/3305 [00:25<01:47, 24.85it/s] 19%|█▉        | 631/3305 [00:25<01:45, 25.27it/s] 19%|█▉        | 634/3305 [00:25<01:55, 23.11it/s] 19%|█▉        | 637/3305 [00:26<01:50, 24.21it/s] 19%|█▉        | 640/3305 [00:26<01:47, 24.71it/s] 19%|█▉        | 643/3305 [00:26<01:49, 24.26it/s] 20%|█▉        | 646/3305 [00:26<01:48, 24.53it/s] 20%|█▉        | 649/3305 [00:26<01:57, 22.55it/s] 20%|█▉        | 652/3305 [00:26<01:53, 23.47it/s] 20%|█▉        | 655/3305 [00:26<01:55, 23.04it/s] 20%|█▉        | 658/3305 [00:26<01:52, 23.48it/s] 20%|██        | 661/3305 [00:27<01:49, 24.19it/s] 20%|██        | 664/3305 [00:27<01:44, 25.30it/s] 20%|██        | 667/3305 [00:27<01:46, 24.80it/s] 20%|██        | 670/3305 [00:27<01:45, 24.87it/s] 20%|██        | 673/3305 [00:27<01:48, 24.29it/s] 20%|██        | 676/3305 [00:27<01:52, 23.41it/s] 21%|██        | 679/3305 [00:27<01:49, 24.06it/s] 21%|██        | 682/3305 [00:27<01:49, 24.05it/s] 21%|██        | 685/3305 [00:28<01:46, 24.51it/s] 21%|██        | 688/3305 [00:28<01:46, 24.58it/s] 21%|██        | 691/3305 [00:28<01:44, 25.04it/s] 21%|██        | 694/3305 [00:28<01:43, 25.20it/s] 21%|██        | 697/3305 [00:28<02:01, 21.52it/s] 21%|██        | 700/3305 [00:28<01:59, 21.81it/s] 21%|██▏       | 703/3305 [00:28<01:56, 22.31it/s] 21%|██▏       | 706/3305 [00:28<01:52, 23.07it/s] 21%|██▏       | 709/3305 [00:29<01:50, 23.57it/s] 22%|██▏       | 712/3305 [00:29<01:50, 23.46it/s] 22%|██▏       | 715/3305 [00:29<01:50, 23.54it/s] 22%|██▏       | 718/3305 [00:29<01:48, 23.93it/s] 22%|██▏       | 721/3305 [00:29<01:44, 24.75it/s] 22%|██▏       | 724/3305 [00:29<01:52, 22.98it/s] 22%|██▏       | 727/3305 [00:29<01:49, 23.52it/s] 22%|██▏       | 730/3305 [00:29<01:49, 23.54it/s] 22%|██▏       | 733/3305 [00:30<01:44, 24.50it/s] 22%|██▏       | 736/3305 [00:30<01:44, 24.53it/s] 22%|██▏       | 739/3305 [00:30<01:41, 25.26it/s] 22%|██▏       | 742/3305 [00:30<01:37, 26.25it/s] 23%|██▎       | 745/3305 [00:30<01:36, 26.41it/s] 23%|██▎       | 748/3305 [00:30<01:49, 23.36it/s] 23%|██▎       | 751/3305 [00:30<01:46, 23.99it/s] 23%|██▎       | 754/3305 [00:30<01:42, 24.77it/s] 23%|██▎       | 757/3305 [00:31<01:45, 24.26it/s] 23%|██▎       | 760/3305 [00:31<01:47, 23.64it/s] 23%|██▎       | 763/3305 [00:31<01:43, 24.63it/s] 23%|██▎       | 766/3305 [00:31<01:41, 24.91it/s] 23%|██▎       | 769/3305 [00:31<01:41, 25.08it/s] 23%|██▎       | 772/3305 [00:31<01:38, 25.65it/s] 23%|██▎       | 775/3305 [00:31<01:43, 24.49it/s] 24%|██▎       | 778/3305 [00:31<01:41, 25.00it/s] 24%|██▎       | 781/3305 [00:32<01:38, 25.56it/s] 24%|██▎       | 784/3305 [00:32<01:41, 24.82it/s] 24%|██▍       | 787/3305 [00:32<01:45, 23.92it/s] 24%|██▍       | 790/3305 [00:32<01:40, 25.10it/s] 24%|██▍       | 793/3305 [00:32<01:38, 25.60it/s] 24%|██▍       | 796/3305 [00:32<01:47, 23.37it/s] 24%|██▍       | 799/3305 [00:32<01:43, 24.11it/s] 24%|██▍       | 802/3305 [00:32<01:51, 22.49it/s] 24%|██▍       | 805/3305 [00:33<01:46, 23.54it/s] 24%|██▍       | 808/3305 [00:33<01:43, 24.23it/s] 25%|██▍       | 811/3305 [00:33<01:39, 25.08it/s] 25%|██▍       | 814/3305 [00:33<01:39, 24.95it/s] 25%|██▍       | 817/3305 [00:33<01:36, 25.75it/s] 25%|██▍       | 820/3305 [00:33<01:34, 26.21it/s] 25%|██▍       | 823/3305 [00:33<01:34, 26.33it/s] 25%|██▍       | 826/3305 [00:33<01:33, 26.44it/s] 25%|██▌       | 829/3305 [00:33<01:33, 26.36it/s] 25%|██▌       | 832/3305 [00:34<01:39, 24.75it/s] 25%|██▌       | 835/3305 [00:34<01:39, 24.81it/s] 25%|██▌       | 838/3305 [00:34<01:37, 25.26it/s] 25%|██▌       | 841/3305 [00:34<01:35, 25.75it/s] 26%|██▌       | 844/3305 [00:34<01:56, 21.14it/s] 26%|██▌       | 847/3305 [00:34<01:49, 22.43it/s] 26%|██▌       | 850/3305 [00:34<02:00, 20.38it/s] 26%|██▌       | 853/3305 [00:35<01:51, 22.06it/s] 26%|██▌       | 856/3305 [00:35<01:48, 22.59it/s] 26%|██▌       | 859/3305 [00:35<01:43, 23.61it/s] 26%|██▌       | 862/3305 [00:35<01:48, 22.58it/s] 26%|██▌       | 865/3305 [00:35<01:43, 23.51it/s] 26%|██▋       | 868/3305 [00:35<01:41, 24.08it/s] 26%|██▋       | 871/3305 [00:35<01:42, 23.82it/s] 26%|██▋       | 874/3305 [00:35<02:02, 19.82it/s] 27%|██▋       | 877/3305 [00:36<02:58, 13.61it/s] 27%|██▋       | 879/3305 [00:36<03:15, 12.41it/s] 27%|██▋       | 881/3305 [00:36<03:15, 12.40it/s] 27%|██▋       | 883/3305 [00:36<03:16, 12.31it/s] 27%|██▋       | 885/3305 [00:37<03:01, 13.30it/s] 27%|██▋       | 887/3305 [00:37<02:45, 14.61it/s] 27%|██▋       | 889/3305 [00:37<02:53, 13.92it/s] 27%|██▋       | 891/3305 [00:37<03:22, 11.95it/s] 27%|██▋       | 893/3305 [00:37<03:27, 11.64it/s] 27%|██▋       | 895/3305 [00:37<03:09, 12.73it/s] 27%|██▋       | 897/3305 [00:37<03:02, 13.17it/s] 27%|██▋       | 899/3305 [00:38<02:56, 13.63it/s] 27%|██▋       | 901/3305 [00:38<02:51, 14.05it/s] 27%|██▋       | 903/3305 [00:38<02:52, 13.95it/s] 27%|██▋       | 905/3305 [00:38<02:38, 15.17it/s] 27%|██▋       | 907/3305 [00:38<02:45, 14.48it/s] 28%|██▊       | 910/3305 [00:38<02:21, 16.93it/s] 28%|██▊       | 912/3305 [00:38<02:35, 15.40it/s] 28%|██▊       | 914/3305 [00:39<02:36, 15.24it/s] 28%|██▊       | 916/3305 [00:39<02:27, 16.22it/s] 28%|██▊       | 918/3305 [00:39<02:20, 17.05it/s] 28%|██▊       | 921/3305 [00:39<02:23, 16.61it/s] 28%|██▊       | 924/3305 [00:39<02:22, 16.74it/s] 28%|██▊       | 926/3305 [00:39<02:42, 14.67it/s] 28%|██▊       | 928/3305 [00:39<02:36, 15.20it/s] 28%|██▊       | 930/3305 [00:40<02:28, 16.01it/s] 28%|██▊       | 932/3305 [00:40<02:33, 15.48it/s] 28%|██▊       | 934/3305 [00:40<02:38, 14.95it/s] 28%|██▊       | 936/3305 [00:40<02:38, 14.92it/s] 28%|██▊       | 938/3305 [00:40<02:36, 15.12it/s] 28%|██▊       | 940/3305 [00:40<02:28, 15.98it/s] 29%|██▊       | 942/3305 [00:40<03:01, 13.01it/s] 29%|██▊       | 944/3305 [00:41<02:54, 13.57it/s] 29%|██▊       | 946/3305 [00:41<02:52, 13.67it/s] 29%|██▊       | 948/3305 [00:41<02:43, 14.41it/s] 29%|██▊       | 950/3305 [00:41<02:31, 15.51it/s] 29%|██▉       | 952/3305 [00:41<02:30, 15.60it/s] 29%|██▉       | 954/3305 [00:41<02:40, 14.67it/s] 29%|██▉       | 956/3305 [00:41<02:37, 14.89it/s] 29%|██▉       | 958/3305 [00:41<02:51, 13.69it/s] 29%|██▉       | 960/3305 [00:42<02:46, 14.06it/s] 29%|██▉       | 962/3305 [00:42<02:39, 14.69it/s] 29%|██▉       | 964/3305 [00:42<03:20, 11.66it/s] 29%|██▉       | 966/3305 [00:42<03:19, 11.71it/s] 29%|██▉       | 968/3305 [00:42<03:32, 10.97it/s] 29%|██▉       | 970/3305 [00:43<03:20, 11.63it/s] 29%|██▉       | 972/3305 [00:43<03:18, 11.78it/s] 29%|██▉       | 974/3305 [00:43<03:35, 10.81it/s] 30%|██▉       | 976/3305 [00:43<03:31, 10.99it/s] 30%|██▉       | 978/3305 [00:43<03:23, 11.44it/s] 30%|██▉       | 980/3305 [00:43<03:00, 12.89it/s] 30%|██▉       | 982/3305 [00:43<02:54, 13.33it/s] 30%|██▉       | 984/3305 [00:44<02:40, 14.47it/s] 30%|██▉       | 986/3305 [00:44<02:28, 15.67it/s] 30%|██▉       | 988/3305 [00:44<02:22, 16.22it/s] 30%|██▉       | 990/3305 [00:44<02:25, 15.92it/s] 30%|███       | 992/3305 [00:44<02:47, 13.84it/s] 30%|███       | 994/3305 [00:44<03:03, 12.59it/s] 30%|███       | 996/3305 [00:45<03:07, 12.33it/s] 30%|███       | 998/3305 [00:45<02:57, 13.00it/s] 30%|███       | 1000/3305 [00:45<02:52, 13.34it/s] 30%|███       | 1002/3305 [00:45<03:40, 10.44it/s] 30%|███       | 1004/3305 [00:45<03:44, 10.23it/s] 30%|███       | 1006/3305 [00:46<04:10,  9.19it/s] 30%|███       | 1007/3305 [00:46<04:48,  7.96it/s] 31%|███       | 1009/3305 [00:46<04:03,  9.42it/s] 31%|███       | 1011/3305 [00:46<03:52,  9.88it/s] 31%|███       | 1013/3305 [00:46<03:40, 10.38it/s] 31%|███       | 1015/3305 [00:46<03:36, 10.56it/s] 31%|███       | 1017/3305 [00:47<03:27, 11.00it/s] 31%|███       | 1019/3305 [00:47<03:40, 10.35it/s] 31%|███       | 1021/3305 [00:47<03:25, 11.09it/s] 31%|███       | 1023/3305 [00:47<03:31, 10.78it/s] 31%|███       | 1025/3305 [00:47<03:20, 11.35it/s] 31%|███       | 1027/3305 [00:47<03:24, 11.14it/s] 31%|███       | 1029/3305 [00:48<03:12, 11.80it/s] 31%|███       | 1031/3305 [00:48<03:06, 12.19it/s] 31%|███▏      | 1033/3305 [00:48<03:18, 11.43it/s] 31%|███▏      | 1035/3305 [00:48<03:12, 11.81it/s] 31%|███▏      | 1037/3305 [00:48<03:13, 11.72it/s] 31%|███▏      | 1039/3305 [00:49<03:49,  9.89it/s] 31%|███▏      | 1041/3305 [00:49<06:35,  5.73it/s] 32%|███▏      | 1042/3305 [00:49<06:22,  5.92it/s] 32%|███▏      | 1043/3305 [00:50<06:01,  6.25it/s] 32%|███▏      | 1044/3305 [00:50<05:46,  6.53it/s] 32%|███▏      | 1046/3305 [00:50<04:57,  7.59it/s] 32%|███▏      | 1047/3305 [00:50<04:42,  8.00it/s] 32%|███▏      | 1049/3305 [00:50<04:10,  9.02it/s] 32%|███▏      | 1051/3305 [00:50<03:31, 10.68it/s] 32%|███▏      | 1053/3305 [00:50<03:07, 12.03it/s] 32%|███▏      | 1055/3305 [00:51<02:53, 13.00it/s] 32%|███▏      | 1057/3305 [00:51<02:52, 13.02it/s] 32%|███▏      | 1059/3305 [00:51<02:45, 13.55it/s] 32%|███▏      | 1062/3305 [00:51<02:31, 14.83it/s] 32%|███▏      | 1064/3305 [00:51<02:25, 15.37it/s] 32%|███▏      | 1066/3305 [00:51<02:20, 15.89it/s] 32%|███▏      | 1068/3305 [00:51<02:37, 14.24it/s] 32%|███▏      | 1070/3305 [00:52<02:26, 15.28it/s] 32%|███▏      | 1072/3305 [00:52<02:34, 14.43it/s] 32%|███▏      | 1074/3305 [00:52<02:56, 12.62it/s] 33%|███▎      | 1076/3305 [00:52<03:20, 11.12it/s] 33%|███▎      | 1078/3305 [00:52<03:12, 11.58it/s] 33%|███▎      | 1080/3305 [00:52<03:16, 11.32it/s] 33%|███▎      | 1082/3305 [00:53<03:24, 10.88it/s] 33%|███▎      | 1084/3305 [00:53<03:03, 12.13it/s] 33%|███▎      | 1086/3305 [00:53<02:51, 12.94it/s] 33%|███▎      | 1088/3305 [00:53<03:02, 12.16it/s] 33%|███▎      | 1090/3305 [00:53<03:01, 12.20it/s] 33%|███▎      | 1092/3305 [00:53<02:45, 13.40it/s] 33%|███▎      | 1094/3305 [00:53<02:36, 14.11it/s] 33%|███▎      | 1096/3305 [00:54<02:36, 14.13it/s] 33%|███▎      | 1098/3305 [00:54<02:52, 12.81it/s] 33%|███▎      | 1100/3305 [00:54<04:01,  9.12it/s] 33%|███▎      | 1102/3305 [00:54<03:37, 10.12it/s] 33%|███▎      | 1104/3305 [00:55<03:55,  9.35it/s] 33%|███▎      | 1106/3305 [00:55<03:35, 10.21it/s] 34%|███▎      | 1108/3305 [00:55<03:38, 10.06it/s] 34%|███▎      | 1110/3305 [00:55<03:31, 10.35it/s] 34%|███▎      | 1112/3305 [00:55<03:31, 10.36it/s] 34%|███▎      | 1114/3305 [00:56<03:30, 10.39it/s] 34%|███▍      | 1116/3305 [00:56<04:19,  8.45it/s] 34%|███▍      | 1117/3305 [00:56<04:17,  8.50it/s] 34%|███▍      | 1118/3305 [00:56<04:21,  8.35it/s] 34%|███▍      | 1120/3305 [00:56<03:44,  9.74it/s] 34%|███▍      | 1123/3305 [00:56<03:07, 11.65it/s] 34%|███▍      | 1125/3305 [00:57<03:27, 10.51it/s] 34%|███▍      | 1127/3305 [00:57<03:19, 10.92it/s] 34%|███▍      | 1129/3305 [00:57<03:43,  9.75it/s] 34%|███▍      | 1131/3305 [00:57<03:38,  9.97it/s] 34%|███▍      | 1133/3305 [00:57<03:08, 11.53it/s] 34%|███▍      | 1135/3305 [00:58<03:38,  9.92it/s] 34%|███▍      | 1137/3305 [00:58<03:37,  9.98it/s] 34%|███▍      | 1140/3305 [00:58<02:55, 12.36it/s] 35%|███▍      | 1142/3305 [00:58<03:02, 11.85it/s] 35%|███▍      | 1144/3305 [00:58<02:49, 12.75it/s] 35%|███▍      | 1146/3305 [00:58<02:39, 13.58it/s] 35%|███▍      | 1148/3305 [00:59<02:35, 13.88it/s] 35%|███▍      | 1150/3305 [00:59<02:29, 14.38it/s] 35%|███▍      | 1152/3305 [00:59<02:40, 13.39it/s] 35%|███▍      | 1154/3305 [00:59<02:29, 14.35it/s] 35%|███▍      | 1156/3305 [00:59<02:57, 12.10it/s] 35%|███▌      | 1158/3305 [01:00<03:54,  9.17it/s] 35%|███▌      | 1160/3305 [01:00<03:27, 10.35it/s] 35%|███▌      | 1162/3305 [01:00<04:04,  8.78it/s] 35%|███▌      | 1164/3305 [01:00<03:45,  9.50it/s] 35%|███▌      | 1166/3305 [01:00<03:39,  9.73it/s] 35%|███▌      | 1168/3305 [01:01<03:33, 10.02it/s] 35%|███▌      | 1170/3305 [01:01<03:33,  9.99it/s] 35%|███▌      | 1172/3305 [01:01<04:15,  8.35it/s] 36%|███▌      | 1174/3305 [01:01<03:38,  9.76it/s] 36%|███▌      | 1176/3305 [01:01<03:27, 10.27it/s] 36%|███▌      | 1178/3305 [01:02<03:25, 10.33it/s] 36%|███▌      | 1180/3305 [01:02<03:25, 10.35it/s] 36%|███▌      | 1182/3305 [01:02<03:16, 10.83it/s] 36%|███▌      | 1184/3305 [01:02<03:06, 11.39it/s] 36%|███▌      | 1186/3305 [01:02<02:55, 12.09it/s] 36%|███▌      | 1188/3305 [01:02<02:52, 12.30it/s] 36%|███▌      | 1190/3305 [01:03<03:05, 11.38it/s] 36%|███▌      | 1192/3305 [01:03<03:12, 10.95it/s] 36%|███▌      | 1194/3305 [01:03<03:26, 10.21it/s] 36%|███▌      | 1196/3305 [01:03<03:29, 10.06it/s] 36%|███▌      | 1198/3305 [01:03<03:22, 10.38it/s] 36%|███▋      | 1200/3305 [01:04<03:19, 10.56it/s] 36%|███▋      | 1202/3305 [01:04<03:12, 10.93it/s] 36%|███▋      | 1204/3305 [01:04<03:16, 10.72it/s] 36%|███▋      | 1206/3305 [01:04<03:13, 10.84it/s] 37%|███▋      | 1208/3305 [01:04<02:51, 12.19it/s] 37%|███▋      | 1210/3305 [01:04<03:15, 10.73it/s] 37%|███▋      | 1212/3305 [01:05<05:22,  6.49it/s] 37%|███▋      | 1214/3305 [01:05<04:28,  7.78it/s] 37%|███▋      | 1216/3305 [01:05<04:20,  8.02it/s] 37%|███▋      | 1218/3305 [01:06<04:21,  7.98it/s] 37%|███▋      | 1220/3305 [01:06<03:49,  9.08it/s] 37%|███▋      | 1222/3305 [01:06<03:54,  8.88it/s] 37%|███▋      | 1223/3305 [01:06<04:17,  8.07it/s] 37%|███▋      | 1224/3305 [01:06<04:19,  8.03it/s] 37%|███▋      | 1226/3305 [01:07<04:15,  8.15it/s] 37%|███▋      | 1228/3305 [01:07<03:32,  9.78it/s] 37%|███▋      | 1230/3305 [01:07<03:41,  9.35it/s] 37%|███▋      | 1232/3305 [01:07<04:03,  8.50it/s] 37%|███▋      | 1234/3305 [01:07<03:41,  9.36it/s] 37%|███▋      | 1236/3305 [01:08<03:31,  9.77it/s] 37%|███▋      | 1238/3305 [01:08<03:41,  9.35it/s] 38%|███▊      | 1240/3305 [01:08<03:24, 10.12it/s] 38%|███▊      | 1242/3305 [01:08<03:15, 10.54it/s] 38%|███▊      | 1244/3305 [01:08<03:02, 11.27it/s] 38%|███▊      | 1246/3305 [01:09<04:18,  7.96it/s] 38%|███▊      | 1247/3305 [01:09<04:38,  7.39it/s] 38%|███▊      | 1248/3305 [01:09<04:41,  7.31it/s] 38%|███▊      | 1249/3305 [01:09<04:37,  7.41it/s] 38%|███▊      | 1251/3305 [01:09<04:06,  8.34it/s] 38%|███▊      | 1252/3305 [01:10<05:02,  6.80it/s] 38%|███▊      | 1253/3305 [01:10<04:56,  6.93it/s] 38%|███▊      | 1254/3305 [01:10<07:36,  4.49it/s] 38%|███▊      | 1256/3305 [01:10<06:14,  5.47it/s] 38%|███▊      | 1257/3305 [01:11<05:37,  6.06it/s] 38%|███▊      | 1258/3305 [01:11<05:12,  6.55it/s] 38%|███▊      | 1259/3305 [01:11<05:00,  6.80it/s] 38%|███▊      | 1260/3305 [01:11<04:36,  7.41it/s] 38%|███▊      | 1261/3305 [01:11<04:35,  7.42it/s] 38%|███▊      | 1262/3305 [01:11<04:19,  7.86it/s] 38%|███▊      | 1263/3305 [01:11<04:56,  6.90it/s] 38%|███▊      | 1265/3305 [01:12<04:05,  8.32it/s] 38%|███▊      | 1266/3305 [01:12<04:07,  8.24it/s] 38%|███▊      | 1268/3305 [01:12<03:37,  9.36it/s] 38%|███▊      | 1269/3305 [01:12<03:38,  9.31it/s] 38%|███▊      | 1270/3305 [01:12<03:35,  9.46it/s] 38%|███▊      | 1271/3305 [01:12<03:49,  8.88it/s] 38%|███▊      | 1272/3305 [01:12<03:53,  8.71it/s] 39%|███▊      | 1273/3305 [01:12<04:09,  8.13it/s] 39%|███▊      | 1274/3305 [01:13<04:04,  8.32it/s] 39%|███▊      | 1276/3305 [01:13<03:28,  9.74it/s] 39%|███▊      | 1278/3305 [01:13<03:16, 10.30it/s] 39%|███▊      | 1280/3305 [01:13<03:20, 10.10it/s] 39%|███▉      | 1282/3305 [01:13<03:01, 11.13it/s] 39%|███▉      | 1284/3305 [01:13<03:01, 11.16it/s] 39%|███▉      | 1286/3305 [01:14<03:19, 10.14it/s] 39%|███▉      | 1288/3305 [01:14<03:19, 10.10it/s] 39%|███▉      | 1290/3305 [01:14<03:12, 10.48it/s] 39%|███▉      | 1292/3305 [01:14<03:28,  9.66it/s] 39%|███▉      | 1293/3305 [01:14<03:28,  9.66it/s] 39%|███▉      | 1294/3305 [01:15<03:32,  9.47it/s] 39%|███▉      | 1296/3305 [01:15<03:39,  9.14it/s] 39%|███▉      | 1297/3305 [01:15<03:37,  9.24it/s] 39%|███▉      | 1299/3305 [01:15<03:23,  9.86it/s] 39%|███▉      | 1301/3305 [01:15<02:56, 11.38it/s] 39%|███▉      | 1303/3305 [01:15<03:24,  9.78it/s] 39%|███▉      | 1305/3305 [01:16<04:00,  8.30it/s] 40%|███▉      | 1307/3305 [01:16<03:45,  8.87it/s] 40%|███▉      | 1309/3305 [01:16<03:20,  9.95it/s] 40%|███▉      | 1311/3305 [01:16<03:38,  9.14it/s] 40%|███▉      | 1312/3305 [01:16<03:58,  8.35it/s] 40%|███▉      | 1314/3305 [01:17<03:23,  9.80it/s] 40%|███▉      | 1316/3305 [01:17<03:34,  9.28it/s] 40%|███▉      | 1318/3305 [01:17<03:16, 10.11it/s] 40%|███▉      | 1320/3305 [01:17<03:09, 10.47it/s] 40%|████      | 1322/3305 [01:17<02:58, 11.08it/s] 40%|████      | 1324/3305 [01:18<03:06, 10.65it/s] 40%|████      | 1326/3305 [01:18<03:09, 10.47it/s] 40%|████      | 1328/3305 [01:18<03:00, 10.97it/s] 40%|████      | 1330/3305 [01:18<03:30,  9.37it/s] 40%|████      | 1331/3305 [01:18<03:35,  9.15it/s] 40%|████      | 1332/3305 [01:18<03:33,  9.22it/s] 40%|████      | 1334/3305 [01:19<03:33,  9.23it/s] 40%|████      | 1336/3305 [01:19<03:28,  9.44it/s] 40%|████      | 1338/3305 [01:19<03:37,  9.04it/s] 41%|████      | 1339/3305 [01:19<04:29,  7.29it/s] 41%|████      | 1340/3305 [01:19<04:17,  7.64it/s] 41%|████      | 1342/3305 [01:20<03:36,  9.06it/s] 41%|████      | 1344/3305 [01:20<03:07, 10.43it/s] 41%|████      | 1346/3305 [01:20<03:05, 10.54it/s] 41%|████      | 1348/3305 [01:20<03:12, 10.15it/s] 41%|████      | 1350/3305 [01:20<02:51, 11.40it/s] 41%|████      | 1352/3305 [01:20<02:39, 12.24it/s] 41%|████      | 1354/3305 [01:21<03:06, 10.47it/s] 41%|████      | 1356/3305 [01:21<02:52, 11.28it/s] 41%|████      | 1358/3305 [01:21<03:18,  9.82it/s] 41%|████      | 1360/3305 [01:21<03:20,  9.71it/s] 41%|████      | 1362/3305 [01:21<03:04, 10.53it/s] 41%|████▏     | 1364/3305 [01:22<02:47, 11.61it/s] 41%|████▏     | 1366/3305 [01:22<02:51, 11.29it/s] 41%|████▏     | 1368/3305 [01:22<03:11, 10.11it/s] 41%|████▏     | 1370/3305 [01:22<03:19,  9.68it/s] 42%|████▏     | 1372/3305 [01:22<03:20,  9.66it/s] 42%|████▏     | 1374/3305 [01:23<04:05,  7.87it/s] 42%|████▏     | 1375/3305 [01:23<04:02,  7.97it/s] 42%|████▏     | 1377/3305 [01:23<03:37,  8.86it/s] 42%|████▏     | 1378/3305 [01:23<03:35,  8.96it/s] 42%|████▏     | 1380/3305 [01:23<03:52,  8.29it/s] 42%|████▏     | 1382/3305 [01:24<03:47,  8.44it/s] 42%|████▏     | 1383/3305 [01:24<03:43,  8.60it/s] 42%|████▏     | 1385/3305 [01:24<03:28,  9.22it/s] 42%|████▏     | 1386/3305 [01:24<03:29,  9.16it/s] 42%|████▏     | 1387/3305 [01:24<04:31,  7.05it/s] 42%|████▏     | 1388/3305 [01:25<05:03,  6.31it/s] 42%|████▏     | 1390/3305 [01:25<04:33,  7.01it/s] 42%|████▏     | 1392/3305 [01:25<03:55,  8.13it/s] 42%|████▏     | 1394/3305 [01:25<03:31,  9.05it/s] 42%|████▏     | 1396/3305 [01:25<03:16,  9.72it/s] 42%|████▏     | 1398/3305 [01:26<03:04, 10.33it/s] 42%|████▏     | 1400/3305 [01:26<03:12,  9.88it/s] 42%|████▏     | 1402/3305 [01:26<03:08, 10.07it/s] 42%|████▏     | 1404/3305 [01:26<02:47, 11.38it/s] 43%|████▎     | 1406/3305 [01:26<02:54, 10.91it/s] 43%|████▎     | 1408/3305 [01:26<03:02, 10.38it/s] 43%|████▎     | 1410/3305 [01:27<03:11,  9.87it/s] 43%|████▎     | 1412/3305 [01:27<02:57, 10.65it/s] 43%|████▎     | 1414/3305 [01:27<02:50, 11.08it/s] 43%|████▎     | 1416/3305 [01:27<02:42, 11.65it/s] 43%|████▎     | 1418/3305 [01:27<02:42, 11.58it/s] 43%|████▎     | 1420/3305 [01:28<02:53, 10.87it/s] 43%|████▎     | 1422/3305 [01:28<03:01, 10.35it/s] 43%|████▎     | 1424/3305 [01:28<02:54, 10.75it/s] 43%|████▎     | 1426/3305 [01:28<02:41, 11.62it/s] 43%|████▎     | 1428/3305 [01:28<02:29, 12.57it/s] 43%|████▎     | 1430/3305 [01:28<02:43, 11.46it/s] 43%|████▎     | 1432/3305 [01:29<02:26, 12.81it/s] 43%|████▎     | 1434/3305 [01:29<02:35, 12.05it/s] 43%|████▎     | 1436/3305 [01:29<02:20, 13.27it/s] 44%|████▎     | 1438/3305 [01:29<02:26, 12.76it/s] 44%|████▎     | 1440/3305 [01:29<02:31, 12.32it/s] 44%|████▎     | 1442/3305 [01:29<02:17, 13.54it/s] 44%|████▎     | 1444/3305 [01:29<02:19, 13.30it/s] 44%|████▍     | 1446/3305 [01:30<02:16, 13.65it/s] 44%|████▍     | 1448/3305 [01:30<02:31, 12.24it/s] 44%|████▍     | 1450/3305 [01:30<02:26, 12.66it/s] 44%|████▍     | 1452/3305 [01:30<02:21, 13.07it/s] 44%|████▍     | 1454/3305 [01:30<02:29, 12.35it/s] 44%|████▍     | 1456/3305 [01:30<02:35, 11.88it/s] 44%|████▍     | 1458/3305 [01:31<02:37, 11.71it/s] 44%|████▍     | 1460/3305 [01:31<02:23, 12.86it/s] 44%|████▍     | 1462/3305 [01:31<02:29, 12.32it/s] 44%|████▍     | 1464/3305 [01:31<02:31, 12.13it/s] 44%|████▍     | 1466/3305 [01:31<02:23, 12.79it/s] 44%|████▍     | 1468/3305 [01:31<02:24, 12.75it/s] 44%|████▍     | 1470/3305 [01:32<02:27, 12.47it/s] 45%|████▍     | 1472/3305 [01:32<02:36, 11.74it/s] 45%|████▍     | 1474/3305 [01:32<02:34, 11.84it/s] 45%|████▍     | 1476/3305 [01:32<02:40, 11.42it/s] 45%|████▍     | 1478/3305 [01:32<02:38, 11.52it/s] 45%|████▍     | 1480/3305 [01:32<02:31, 12.02it/s] 45%|████▍     | 1482/3305 [01:33<02:25, 12.56it/s] 45%|████▍     | 1484/3305 [01:33<02:24, 12.57it/s] 45%|████▍     | 1486/3305 [01:33<02:53, 10.51it/s] 45%|████▌     | 1488/3305 [01:33<02:54, 10.43it/s] 45%|████▌     | 1490/3305 [01:33<02:51, 10.60it/s] 45%|████▌     | 1492/3305 [01:34<02:52, 10.50it/s] 45%|████▌     | 1494/3305 [01:34<02:41, 11.19it/s] 45%|████▌     | 1496/3305 [01:34<02:32, 11.87it/s] 45%|████▌     | 1498/3305 [01:34<02:21, 12.78it/s] 45%|████▌     | 1500/3305 [01:34<02:28, 12.13it/s] 45%|████▌     | 1502/3305 [01:34<02:51, 10.53it/s] 46%|████▌     | 1504/3305 [01:35<02:44, 10.97it/s] 46%|████▌     | 1506/3305 [01:35<02:36, 11.50it/s] 46%|████▌     | 1508/3305 [01:35<02:42, 11.04it/s] 46%|████▌     | 1510/3305 [01:35<02:35, 11.56it/s] 46%|████▌     | 1512/3305 [01:35<02:32, 11.74it/s] 46%|████▌     | 1514/3305 [01:35<02:15, 13.24it/s] 46%|████▌     | 1516/3305 [01:35<02:10, 13.74it/s] 46%|████▌     | 1518/3305 [01:36<02:10, 13.73it/s] 46%|████▌     | 1520/3305 [01:36<02:28, 12.02it/s] 46%|████▌     | 1522/3305 [01:36<02:22, 12.54it/s] 46%|████▌     | 1524/3305 [01:36<02:19, 12.74it/s] 46%|████▌     | 1526/3305 [01:36<02:32, 11.67it/s] 46%|████▌     | 1528/3305 [01:37<02:35, 11.44it/s] 46%|████▋     | 1530/3305 [01:37<02:17, 12.90it/s] 46%|████▋     | 1532/3305 [01:37<02:21, 12.50it/s] 46%|████▋     | 1534/3305 [01:37<02:29, 11.86it/s] 46%|████▋     | 1536/3305 [01:37<02:34, 11.47it/s] 47%|████▋     | 1538/3305 [01:37<02:38, 11.11it/s] 47%|████▋     | 1540/3305 [01:38<02:49, 10.40it/s] 47%|████▋     | 1542/3305 [01:38<02:43, 10.76it/s] 47%|████▋     | 1544/3305 [01:38<03:20,  8.78it/s] 47%|████▋     | 1546/3305 [01:38<02:59,  9.81it/s] 47%|████▋     | 1548/3305 [01:38<02:46, 10.54it/s] 47%|████▋     | 1550/3305 [01:39<03:09,  9.25it/s] 47%|████▋     | 1552/3305 [01:39<03:04,  9.49it/s] 47%|████▋     | 1554/3305 [01:39<02:58,  9.83it/s] 47%|████▋     | 1556/3305 [01:39<03:05,  9.41it/s] 47%|████▋     | 1558/3305 [01:39<02:56,  9.91it/s] 47%|████▋     | 1560/3305 [01:40<02:46, 10.46it/s] 47%|████▋     | 1562/3305 [01:40<02:40, 10.85it/s] 47%|████▋     | 1564/3305 [01:40<02:41, 10.77it/s] 47%|████▋     | 1566/3305 [01:40<02:41, 10.77it/s] 47%|████▋     | 1568/3305 [01:40<02:26, 11.84it/s] 48%|████▊     | 1570/3305 [01:41<03:13,  8.95it/s] 48%|████▊     | 1572/3305 [01:41<03:19,  8.69it/s] 48%|████▊     | 1573/3305 [01:41<03:55,  7.36it/s] 48%|████▊     | 1574/3305 [01:41<03:43,  7.76it/s] 48%|████▊     | 1576/3305 [01:41<03:07,  9.23it/s] 48%|████▊     | 1578/3305 [01:42<02:40, 10.76it/s] 48%|████▊     | 1580/3305 [01:42<02:32, 11.28it/s] 48%|████▊     | 1582/3305 [01:42<02:27, 11.69it/s] 48%|████▊     | 1584/3305 [01:42<02:19, 12.36it/s] 48%|████▊     | 1586/3305 [01:42<02:38, 10.87it/s] 48%|████▊     | 1588/3305 [01:42<02:34, 11.13it/s] 48%|████▊     | 1590/3305 [01:43<02:39, 10.74it/s] 48%|████▊     | 1592/3305 [01:43<02:34, 11.06it/s]

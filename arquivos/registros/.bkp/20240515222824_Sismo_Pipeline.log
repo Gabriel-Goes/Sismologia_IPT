@@ -1,0 +1,25 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando Catalog.csv...
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando fluxo_eventos.py...
+
+ - Argumento 1: Catalog.csv
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/nucleo/fluxo_eventos.py", line 404, in <module>
+    print(f' - Argumento 2: {sys.argv[2]}')
+                             ~~~~~~~~^^^
+IndexError: list index out of range
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+

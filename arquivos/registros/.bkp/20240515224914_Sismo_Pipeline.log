@@ -1,0 +1,341 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando Catalog.csv...
+
+ -> Executando fluxo_eventos.py...
+
+ - Argumento 1: Catalog.csv_treated.csv
+ --> Client:
+  http://seisarc.sismo.iag.usp.br
+ --> Client Backup:
+  http://rsbr.on.br:8081/fdsnws/dataselect/1
+-----------------------------------------------------
+
+
+ --------- Iniciando o ProcessarID.py --------- 
+ ------------------------------ Acessando Catálogo ------------------------------ 
+ - Primeiro ID: bsb19030210000000
+ - ID mediano: bsb19510424000000
+ - Último ID: bsb19710805023000
+  0%|          | 0/100 [00:00<?, ?it/s] Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19030210000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19030212000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19030214000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19030215000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19030216000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19061025025200 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19061204110000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19091223000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19110315235500 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19110322180000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19120419080000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19150202000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19151106183000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19170505075000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19171107232500 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19171108010000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19180101000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19180112110000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19190605042000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19190901000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19191109140000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19191110000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19191113000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19191116095500 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19191123042000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19191124060000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19200131111000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19200201043500 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19200209162000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19200311221500 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19220127065040 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19240101000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19270101030000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19280415215900 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19280608213000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19350102011218 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19351021104000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19390628113222 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19410411120500 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19420101183000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19460219040000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19460718071500 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19461007202500 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19470101000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19471215190500 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19480121164740 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19480501000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19491231000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19500227115800 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19500407150000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19510424000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19540101000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19550131050306 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19550301014618 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19590205135000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19590525230800 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19590527170500 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19590529065500 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19620117022744 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19630827000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19630903000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19631002000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19631214210542 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19640119000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19640213112146 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19640321000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19640616000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19640619035620 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19650812000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19650815193656 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19661115080000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19670121185948 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19670805095610 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19670809071408 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19680113015551 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19680113015800 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19680118104000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19680204000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19680215132048 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19680223142302 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19680223143701 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19680223152116 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19680223153303 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19680301000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19680318000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19680827051736 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19681015195420 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19700112044308 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19700129000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19700130000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19700329082748 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19700814045901 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19701101000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19701120235521 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+100%|██████████| 100/100 [00:00<00:00, 222155.93it/s]
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19701201000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19710211000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19710301000000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19710521160000 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19710716195104 não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+ID bsb19710805023000 não encontrado.
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/nucleo/fluxo_eventos.py", line 414, in <module>
+    catalogo, missin_ids = main(
+                           ^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/nucleo/fluxo_eventos.py", line 385, in main
+    catalogo.eventos,
+    ^^^^^^^^^^^^^^^^
+AttributeError: 'Catalog' object has no attribute 'eventos'. Did you mean: 'events'?
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+

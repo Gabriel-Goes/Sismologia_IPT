@@ -35,6 +35,10 @@ parser.add_argument(
     '--catalogo', '-c', type=str, help='Nome do arquivo csv do catalogo'
 )
 parser.add_argument(
+    '--ascending', '-a', action='store_true',
+    help='Nome do arquivo csv do catalogo'
+)
+parser.add_argument(
     '--plot', '-p', action='store_true', help='Plotar distribuição do catalogo'
 )
 args = parser.parse_args()
@@ -68,10 +72,10 @@ def profundidade_catalogo(catalog: pd.DataFrame) -> pd.DataFrame:
     return catalog
 
 
-def order_catalog(catalog: pd.DataFrame) -> pd.DataFrame:
+def order_catalog(catalog: pd.DataFrame,
+                  ascending: bool) -> pd.DataFrame:
     catalog['Time'] = pd.to_datetime(catalog['Time'])
-    catalog = catalog.sort_values(by='Time', ascending=False)
-    catalog = catalog[catalog['Time'] > '2000-01-01']
+    catalog = catalog.sort_values(by='Time', ascending=ascending)
 
     return catalog
 
@@ -196,7 +200,7 @@ def main(args=args):
         catalog = pd.read_csv(f'arquivos/catalogo/{args.catalogo}', sep=',')
         # catalog = brasil_catalogo(catalog)
         catalog = profundidade_catalogo(catalog)
-        catalog = order_catalog(catalog)
+        catalog = order_catalog(catalog, args.ascending)
         catalog.to_csv(
             f'arquivos/catalogo/{args.catalogo}_treated.csv', index=False
         )
@@ -211,4 +215,4 @@ def main(args=args):
 
 
 if __name__ == '__main__':
-    main()
+    catalog = main()

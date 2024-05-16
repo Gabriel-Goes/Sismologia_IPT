@@ -15,6 +15,7 @@
 # é realmente importante.
 
 # ----------------------------  IMPORTS   -------------------------------------
+from obspy.clients import fdsn
 from datetime import datetime
 import os
 import sys
@@ -46,10 +47,16 @@ ID_dict = {"MC": '8091',
            "BC": '8089',
            'USP': 'USP'}
 
-delimt = "-----------------------------------------------------\n"
-delimt2 = "#####################################################\n"
+try:
+    DATA_CLIENT = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
+except Exception as e:
+    print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
+    sys.exit(1)
+DATA_CLIENT_BKP = fdsn.Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
 
-bkp_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+DELIMT = "-----------------------------------------------------\n"
+DELIMT2 = "#####################################################\n"
+BKP_TIME = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
 
 # ---------------------------- FUNÇÕES ----------------------------------------
@@ -70,16 +77,17 @@ class DualOutput(object):
 
 def csv2list(csv_file: str, data=False) -> list:
     if data:
-        with open(csv_file, 'r') as f:
+        evids = []
+        with open(f'arquivos/catalogo/{csv_file}', 'r') as f:
             lines = f.readlines()
-            evids = [line.split(',')[0] for line in lines[1:]]
-        # SPLIT DEPOIS DO USP, E PEGA SÓ O ANO '0000' E SPLIT O XXXXX AS LETRAS
-            evid = [int(evid.split('usp')[1][:4]) for evid in evids]
-            if evid < data:
-                return None
-            else:
-                return evid
+            evids_ = [line.split(',')[0] for line in lines[1:]]
+        # parse  the fourth to seventh value of the evid
+        for evid in evids_:
+            if int(evid[3:7]) > int(data):
+                evids.append(evid)
+        return evids
+
     else:
-        with open(csv_file, 'r') as f:
+        with open(f'arquivos/catalogo/{csv_file}', 'r') as f:
             lines = f.readlines()
             return [line.split(',')[0] for line in lines[1:]]

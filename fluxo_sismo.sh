@@ -34,14 +34,14 @@
 
 # -----------------------------  VARIÁVEIS -------------------------------------
 
-CATALOG=${1:-"arquivos/catalogo/Catalog.csv"}
-TREATCATALOG=${TREATCATALOG:-fasel}
-EVENTS=${EVENTS:-false}
+CATALOG=${1:-"Catalog.csv"}
+EVENTS=${EVENTS:-true}
+TREATCATALOG=${TREATCATALOG:-true}
 TREATEVENTS=${TREATEVENTS:-false}
 PREDICT=${PREDICT:-false}
 POSPROCESS=${POSPROCESS:-false}
-MAPS=${MAPS:-true}
-REPORT=${REPORT:-true}
+MAPS=${MAPS:-false}
+REPORT=${REPORT:-false}
 
 # ----------------------------- CONSTANTES -------------------------------------
 # DEFINE OS DIRETÓRIOS DE TRABALHO
@@ -73,13 +73,6 @@ echo ''
 
 # ------------------------- ETAPA DE AQUISIÇÃO DE DADOS  ----------------------
 if [ "$EVENTS" = true ]; then
-    if [ "$TREATCATALOG" = true ]; then
-        echo ''
-        echo " -------------- INICIANDO O TRATAMENTO -------------------- "
-        echo " Tratando $CATALOG..."
-        python fonte/analise_dados/pre_processa.py $CATALOG
-        echo ''
-    fi
     echo " Criando arquivos de backup..."
     [[ -f /eventos/eventos.csv ]] &&
         mv arquivos/eventos/eventos.csv arquivos/eventos/.bkp/eventos.csv.$(date +%Y%m%d%H%M%S)
@@ -87,9 +80,20 @@ if [ "$EVENTS" = true ]; then
         mv arquivos/registros/missing_ids.csv arquivos/registros/.bkp/missing_ids.csv.$(date +%Y%m%d%H%M%S)
     echo " Arquivos de backup criados com sucesso!"
     echo ''
-    echo ' -> Executando fluxo_eventos.py...'
-    python fonte/nucleo/fluxo_eventos.py $CATALOG
-    echo ''
+    if [ "$TREATCATALOG" = true ]; then
+        echo ''
+        echo " -------------- INICIANDO O TRATAMENTO -------------------- "
+        echo " Tratando $CATALOG..."
+        python fonte/analise_dados/pre_processa.py -c $CATALOG -a -p
+        echo ''
+        echo ' -> Executando fluxo_eventos.py...'
+        python fonte/nucleo/fluxo_eventos.py $CATALOG'_treated.csv'
+        echo ''
+    else
+        echo " -> Executando fluxo_eventos.py..."
+        python fonte/nucleo/fluxo_eventos.py $CATALOG
+        echo ''
+    fi
 fi
 
 # --------- ETAPA DE GERAR LISTA PARA CLASSIFICAÇÃO ( EVENTO | LABEL ) -----------
@@ -153,7 +157,7 @@ if [ "$REPORT" = true ]; then
     python fonte/relatorios-relatorios-sismologia/tex/relatorio_preditivo/python/mapa.py
     pushd fonte/relatorios-relatorios-sismologia
     pdflatex -output-directory=$HOME/projetos/ClassificadorSismologico/arquivos/relatorios/ relatorio_preditivo.tex 
-    po-ipt-latexp-ipt-latexd
+    popd
 fi
 
 echo $DELIMT2
