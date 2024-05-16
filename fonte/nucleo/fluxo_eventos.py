@@ -32,8 +32,8 @@ from utils import csv2list
 def iterar_eventos(eventos: List,
                    data_client: str,
                    data_client_bkp: str,
-                   baixar=False,
-                   random=False) -> None:
+                   baixar=True,
+                   random=True) -> None:
     print(' --> Iterando sobre eventos')
     print(f' - Número de eventos: {len(eventos)}')
     print(f' - Client: {DATA_CLIENT.base_url}')
@@ -49,7 +49,7 @@ def iterar_eventos(eventos: List,
         event_count += 1
         print(f'############ Event {event_count}: {event_id} ############\n')
         if not evento.picks:
-            error_to_save.append({'ID': event_id,
+            error_to_save.append({'EventID': event_id,
                                   'Error': 'Sem picks'})
             print('Sem picks')
             print(DELIMT)
@@ -58,12 +58,13 @@ def iterar_eventos(eventos: List,
         origem = evento.preferred_origin()
         origem_lat = origem.latitude
         origem_lon = origem.longitude
+        origem_depth = origem.depth
         origin_time = origem.time
         dir_name = origin_time.strftime("%Y%m%dT%H%M%S")
         pick_count = 0
         for pick in evento.picks:
             if pick.phase_hint not in ['P'] or pick.waveform_id.channel_code[:1] != 'H':
-                error_to_save.append({'ID': event_id,
+                error_to_save.append({'EventID': event_id,
                                       'Event': dir_name,
                                       'Network': pick.waveform_id.network_code,
                                       'Station': pick.waveform_id.station_code,
@@ -72,6 +73,7 @@ def iterar_eventos(eventos: List,
                                       'Origin Time': origin_time,
                                       'Origem Latitude': origem_lat,
                                       'Origem Longitude': origem_lon,
+                                      'Depth/km': origem_depth,
                                       'Pick': pick.phase_hint,
                                       'Error': 'Pick diferente de P, Pg ou Pn ou Channel diferente de H'})
                 continue
@@ -89,11 +91,11 @@ def iterar_eventos(eventos: List,
             if loc is None:
                 loc = ''
             seed_id = f'{net}.{sta}.{loc}.{chn}'
-            print(f' - Seed ID: {seed_id} ')
+            print(f' - Seed EventID: {seed_id} ')
             try:
                 cha_meta = inv.get_channel_metadata(seed_id)
             except Exception as e:
-                error_to_save.append({'ID': event_id,
+                error_to_save.append({'EventID': event_id,
                                       'Event': dir_name,
                                       'Pick': pick.phase_hint,
                                       'Network': net,
@@ -103,6 +105,7 @@ def iterar_eventos(eventos: List,
                                       'Origin Time': origin_time,
                                       'Origem Latitude': origem_lat,
                                       'Origem Longitude': origem_lon,
+                                      'Depth/km': origem_depth,
                                       'Error': f'channel metadata: {e}'
                                       })
                 print(f' - Error getting channel metadata: {e}')
@@ -111,7 +114,7 @@ def iterar_eventos(eventos: List,
             sta_lat = cha_meta['latitude']
             sta_lon = cha_meta['longitude']
             if not sta_lat or not sta_lon:
-                error_to_save.append({'ID': event_id,
+                error_to_save.append({'EventID': event_id,
                                       'Event': dir_name,
                                       'Pick': pick.phase_hint,
                                       'Network': net,
@@ -120,6 +123,7 @@ def iterar_eventos(eventos: List,
                                       'Pick Longitude': sta_lon,
                                       'Origem Latitude': origem_lat,
                                       'Origem Longitude': origem_lon,
+                                      'Depth/km': origem_depth,
                                       'Origin Time': origin_time,
                                       'Pick Time': pick.time,
                                       'Channel': chn,
@@ -139,7 +143,7 @@ def iterar_eventos(eventos: List,
             if dist_km > 400:
                 print("Estação a mais de 400 km do epicentro.")
                 print(DELIMT)
-                error_to_save.append({'ID': event_id,
+                error_to_save.append({'EventID': event_id,
                                       'Event': dir_name,
                                       'Pick': pick.phase_hint,
                                       'Network': net,
@@ -149,128 +153,151 @@ def iterar_eventos(eventos: List,
                                       'Channel': chn,
                                       'Location': loc,
                                       'Distance': dist_km,
+                                      'Depth/km': origem_depth,
+                                      'Origem Latitude': origem_lat,
+                                      'Origem Longitude': origem_lon,
+                                      'Origin Time': origin_time,
                                       'Error': 'dist_km > 400 km'
                                       })
                 continue
 
             if baixar:
+                np.random.seed(42)
+                random_offset = np.random.randint(5, 21)
+                start_time = pick.time - random_offset
+                end_time = start_time + 60
                 try:
-                    np.random.seed(42)
-                    random_offset = np.random.randint(5, 21)
-                    start_time = pick.time - random_offset
-                    end_time = start_time + 60
+                    st = data_client.get_waveforms(
+                        net, sta, loc, chn,
+                        start_time, end_time)
+                    print(' Downloading ...')
+                    print(f' Pick Time -> {pick.time}')
+                    print(f' Origin Time -> {origin_time}')
+                    print(f' Channel -> {chn}')
+                    print(
+                        f" - Waveform baixada para:\n   - estação {sta}\n   - canal: {chn}")
+
+                except Exception as e:
+                    print(f"Canal {chn} da estação {sta}!\n   ERROR:  {e}")
                     try:
-                        st = data_client.get_waveforms(
+                        st = data_client_bkp.get_waveforms(
                             net, sta, loc, chn,
                             start_time, end_time)
                         print(' Downloading ...')
                         print(f' Pick Time -> {pick.time}')
                         print(f' Origin Time -> {origin_time}')
                         print(f' Channel -> {chn}')
-                        print(
-                            f" - Waveform baixada para:\n\
-                            - estação {sta}\n   - canal: {chn}")
+                        print(f" - Waveform baixada para a estação {sta}.")
+                        print(DELIMT)
 
                     except Exception as e:
-                        print(f"Canal {chn} da estação {sta}!\n   ERROR:  {e}")
-                        try:
-                            st = data_client_bkp.get_waveforms(
-                                net, sta, loc, chn,
-                                start_time, end_time)
-                            print(' Downloading ...')
-                            print(f' Pick Time -> {pick.time}')
-                            print(f' Origin Time -> {origin_time}')
-                            print(f' Channel -> {chn}')
-                            print(f" - Waveform baixada para a estação {sta}.")
-                            print(DELIMT)
-
-                        except Exception as e:
-                            print(f" Erro canal {chn} da estação {sta}: {e}")
-
-                    except Exception as e:
+                        error_to_save.append({
+                            'EventID': event_id,
+                            'Event': dir_name,
+                            'Pick': pick.phase_hint,
+                            'Network': net,
+                            'Station': sta,
+                            'Latitude': sta_lat,
+                            'Longitude': sta_lon,
+                            'Channel': chn,
+                            'Location': loc,
+                            'Distance': dist_km,
+                            'Pick Time': pick.time,
+                            'Origin Time': origin_time,
+                            'Origem Latitude': origem_lat,
+                            'Origem Longitude': origem_lon,
+                            'Depth/km': origem_depth,
+                            'Start Time': start_time,
+                            'End Time': end_time,
+                            'Error': f'Download Error: {e}'
+                        })
                         print(f" Falhou para todos os clientes: {e}")
-                        return e
-
-                    if not st:
-                        print(f"Nenhum dado baixado para a estação {sta}.")
-                        return
-                    os.makedirs(MSEED_DIR, exist_ok=True)
-                    event_name = origin_time.strftime("%Y%m%dT%H%M%S")
-                    print(f" - Diretório event_name: {event_name}")
-                    event_dir = os.path.join(MSEED_DIR, event_name)
-                    event_path = os.path.join(
-                        event_dir, f"{net}_{sta}_{event_name}.mseed"
-                    )
-                    os.makedirs(event_dir, exist_ok=True)
-                    st.write(event_path, format="MSEED")
-
-                except Exception as e:
-                    error_to_save.append({'ID': event_id,
-                                          'Event': dir_name,
-                                          'Pick': pick.phase_hint,
-                                          'Network': net,
-                                          'Station': sta,
-                                          'Latitude': sta_lat,
-                                          'Longitude': sta_lon,
-                                          'Channel': chn,
-                                          'Location': loc,
-                                          'Distance': dist_km,
-                                          'Pick Time': pick.time,
-                                          'Origin Time': origin_time,
-                                          'Start Time': start_time,
-                                          'End Time': end_time,
-                                          'Error': f'Download Error: {e}'
-                                          })
-                    print(f"Error downloading waveform: {e}")
+                        continue
+                if not st:
+                    error_to_save.append({
+                            'EventID': event_id,
+                            'Event': dir_name,
+                            'Pick': pick.phase_hint,
+                            'Network': net,
+                            'Station': sta,
+                            'Latitude': sta_lat,
+                            'Longitude': sta_lon,
+                            'Channel': chn,
+                            'Location': loc,
+                            'Distance': dist_km,
+                            'Pick Time': pick.time,
+                            'Origin Time': origin_time,
+                            'Origem Latitude': origem_lat,
+                            'Origem Longitude': origem_lon,
+                            'Depth/km': origem_depth,
+                            'Start Time': start_time,
+                            'End Time': end_time,
+                            'Error': f'Stream is None'
+                    })
+                    print(f" - Erro: Stream vazia")
                     continue
 
-                try:
-                    magnitude = evento.preferred_magnitude().mag
-                except Exception as e:
-                    print(f" -> Erro ao obter magnitude: {e}")
-                    error_to_save.append({'ID': event_id,
-                                          'Event': dir_name,
-                                          'Pick': pick.phase_hint,
-                                          'Network': net,
-                                          'Station': sta,
-                                          'Latitude': sta_lat,
-                                          'Longitude': sta_lon,
-                                          'Channel': chn,
-                                          'Location': loc,
-                                          'Distance': dist_km,
-                                          'Pick Time': pick.time,
-                                          'Origin Time': origin_time,
-                                          'Start Time': start_time,
-                                          'End Time': end_time,
-                                          'Error': f'No Magnitude: {e}'
-                                          })
-                    magnitude = "None"
+                event_name = origin_time.strftime("%Y%m%dT%H%M%S")
+                print(f" - Diretório event_name: {event_name}")
+                event_dir = os.path.join(MSEED_DIR, event_name)
+                event_path = os.path.join(
+                    event_dir, f"{net}_{sta}_{event_name}.mseed"
+                )
+                os.makedirs(event_dir, exist_ok=True)
+                st.write(event_path, format="MSEED")
 
-                data_to_save.append({
-                    'ID': event_id,
+            try:
+                magnitude = evento.preferred_magnitude().mag
+            except Exception as e:
+                print(f" -> Erro ao obter magnitude: {e}")
+                error_to_save.append({
+                    'EventID': event_id,
                     'Event': dir_name,
-                    'Origin Time': origin_time,
-                    'Origem Longitude': origem_lon,
-                    'Origem Latitude': origem_lat,
-                    'Latitude': sta_lat,
-                    'Longitude': sta_lon,
-                    'MLv': magnitude,
-                    'Distance': dist_km,
-                    'Cat': evento.event_type,
-                    'Certainty': evento.event_type_certainty,
                     'Pick': pick.phase_hint,
                     'Network': net,
                     'Station': sta,
+                    'Latitude': sta_lat,
+                    'Longitude': sta_lon,
                     'Channel': chn,
                     'Location': loc,
+                    'Distance': dist_km,
                     'Pick Time': pick.time,
+                    'Origin Time': origin_time,
+                    'Origem Latitude': origem_lat,
+                    'Origem Longitude': origem_lon,
+                    'Depth/km': origem_depth,
                     'Start Time': start_time,
                     'End Time': end_time,
-                    'Path': event_path,
-                    'Error': 'None',
+                    'Error': f'No Magnitude: {e}'
                 })
+                magnitude = "None"
 
-                print(DELIMT)
+            data_to_save.append({
+                'EventID': event_id,
+                'Event': dir_name,
+                'Origin Time': origin_time,
+                'Origem Longitude': origem_lon,
+                'Origem Latitude': origem_lat,
+                'Depth/km': origem_depth,
+                'Latitude': sta_lat,
+                'Longitude': sta_lon,
+                'MLv': magnitude,
+                'Distance': dist_km,
+                'Cat': evento.event_type,
+                'Certainty': evento.event_type_certainty,
+                'Pick': pick.phase_hint,
+                'Network': net,
+                'Station': sta,
+                'Channel': chn,
+                'Location': loc,
+                'Pick Time': pick.time,
+                'Start Time': start_time,
+                'End Time': end_time,
+                'Path': event_path,
+                'Error': 'None',
+            })
+
+            print(DELIMT)
         print(f' - Event: {event_id}')
         print(f' - Pwave Picks: {pick_count}')
         print(DELIMT2)
@@ -279,10 +306,10 @@ def iterar_eventos(eventos: List,
     with open(
         csv_file_path, mode='w', newline='\n', encoding='utf-8'
     ) as csv_file:
-        fieldnames = ['ID', 'Event', 'Error',
+        fieldnames = ['EventID', 'Event', 'Error',
                       'Pick', 'Network', 'Station', 'Location', 'Channel',
                       'Latitude', 'Longitude', 'Distance',
-                      'Origem Latitude', 'Origem Longitude',
+                      'Origem Latitude', 'Origem Longitude', 'Depth/km',
                       'Pick Time', 'Origin Time', 'Start Time', 'End Time',
                       'Cat',
                       'MLv', 'Certainty',
@@ -297,10 +324,10 @@ def iterar_eventos(eventos: List,
     with open(
         csv_error_path, mode='w', newline='\n', encoding='utf-8'
     ) as csv_file:
-        fieldnames = ['ID', 'Event',
+        fieldnames = ['EventID', 'Event',
                       'Pick', 'Network', 'Station', 'Location', 'Channel',
                       'Latitude', 'Longitude', 'Distance',
-                      'Origem Latitude', 'Origem Longitude',
+                      'Origem Latitude', 'Origem Longitude', 'Depth/km',
                       'Pick Time', 'Origin Time', 'Start Time', 'End Time',
                       'Cat',
                       'MLv', 'Certainty',
@@ -317,7 +344,7 @@ def iterar_eventos(eventos: List,
 
 
 # ---------------------------- MAIN -------------------------------------------
-def main(IDs: List,
+def main(EventIDs: List,
          data_Client: str,
          data_Client_bkp: str) -> [Catalog, Dict, List]:
     print('')
@@ -328,12 +355,12 @@ def main(IDs: List,
     print(" --------- INICIANDO FLUXO DE EVENTOS  --------- ")
     print('')
     print(' ------------------------------ ACESSANDO CATÁLOGO ------------------------------ ')
-    print(f' - Primeiro ID: {IDs[0]}')
-    print(f' - ID mediano: {IDs[int(len(IDs)/2)]}')
-    print(f' - Último ID: {IDs[-1]}')
+    print(f' - Primeiro EventID: {EventIDs[0]}')
+    print(f' - EventID mediano: {EventIDs[int(len(EventIDs)/2)]}')
+    print(f' - Último EventID: {EventIDs[-1]}')
     catalogo = Catalog()
     ids_faltantes = []
-    for id in tqdm(IDs):
+    for id in tqdm(EventIDs):
         try:
             temp_cat = DATA_CLIENT.get_events(eventid=id, includearrivals=True)
             catalogo.append(temp_cat.events[0])
@@ -350,21 +377,18 @@ def main(IDs: List,
 
             except Exception:
                 print(' ------------------------------ Sem dados ------------------------------ ')
-                print(f"ID {id} não encontrado.")
+                print(f"EventID {id} não encontrado.")
                 ids_faltantes.append(id + ' Não encontrado no servidor RSBR.')
 
-    # FUNÇÃO PRINCIPAL DO SCRIPT DE ONDA
     iterar_eventos(
         catalogo.events,
         data_Client,
         data_Client_bkp,
-        random=False,
-        baixar=True
     )
 
     os.makedirs('arquivos/registros/.bkp', exist_ok=True)
     with open('arquivos/registros/id_faltantes.csv', 'w') as f:
-        f.write('ID\n')
+        f.write('EventID\n')
         for id in ids_faltantes:
             f.write(f'{id}\n')
 
@@ -373,8 +397,8 @@ def main(IDs: List,
 
 # ---------------------------- EXECUÇÃO ---------------------------------------
 if __name__ == "__main__":
-    IDs = csv2list(sys.argv[1])
+    EventIDs = csv2list(sys.argv[1])
     catalogo, missin_ids = main(
-        IDs[:],
+        EventIDs[:-1],
         DATA_CLIENT,
         DATA_CLIENT_BKP)

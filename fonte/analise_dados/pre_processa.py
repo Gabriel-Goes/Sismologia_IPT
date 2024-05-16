@@ -18,6 +18,7 @@ import pandas as pd
 from obspy.core import UTCDateTime
 import shapely.geometry
 import geopandas as gpd
+import pygmt
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
@@ -28,7 +29,6 @@ import argparse
 # ----------------------------  ARGUMENTS  ------------------------------------
 parser = argparse.ArgumentParser(description='Pre processamento dos dados')
 parser.add_argument(
-    # Pode ser --eventos ou -e
     '--eventos', '-e', type=str, help='Nome do arquivo csv dos eventos'
 )
 parser.add_argument(
@@ -51,24 +51,23 @@ def brasil_catalogo(catalog: pd.DataFrame) -> pd.DataFrame:
     )
     catalog = gpd.GeoDataFrame(catalog, geometry='geometry')
     brasil = gpd.read_file('arquivos/figuras/mapas/macrorregioesBrasil.json')
-    brasil = brasil[['nome', 'geometry']]
-    brasil['geometry_buffer'] = brasil.buffer(0.5)
-    brasil.geometry = brasil['geometry_buffer']
-    brasil.to_crs(epsg=4326, inplace=True)
-    catalog.crs = brasil.crs
+    brasil = brasil[['geometry']]
+    brasil.to_crs(epsg=32623, inplace=True)
+    brasil['geometry_buffer'] = brasil.buffer(400000)
+    brasil.set_geometry('geometry_buffer', inplace=True)
+    union_br = brasil.unary_union
+    brasil_b = gpd.GeoDataFrame(geometry=[union_br], crs='EPSG:32623')
+    brasil_b.to_crs(epsg=4326, inplace=True)
+    catalog.crs = brasil_b.crs
     catalogo_br = gpd.sjoin(
-        catalog, brasil, how='inner', predicate='within'
+        catalog, brasil_b, how='inner', predicate='within'
     )
-    catalogo_br = catalogo_br[
-        ['EventID', 'Time', 'Depth/km', 'Author', 'Contributor', 'MagType',
-         'Magnitude', 'MagAuthor', 'EventLocationName', 'EventType',
-         'sigla', 'geometry']
-    ]
+    catalogo_br.drop(columns=['index_right'], inplace=True)
     return catalogo_br
 
 
 def profundidade_catalogo(catalog: pd.DataFrame) -> pd.DataFrame:
-    catalog = catalog[catalog['depth'] < 100]
+    catalog = catalog[catalog['Depth/km'] < 100]
     return catalog
 
 
@@ -172,6 +171,7 @@ def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
     plt.show()
 
 
+
 def plot_prof_as_red(catalog: pd.DataFrame) -> None:
     catalog.drop_duplicates(subset='EventID', inplace=True)
     catalog = gpd.GeoDataFrame(
@@ -183,35 +183,116 @@ def plot_prof_as_red(catalog: pd.DataFrame) -> None:
     brasil.to_crs(epsg=4326, inplace=True)
     brasil = brasil.geometry.unary_union
     catalog['color'] = 'blue'
-    catalog.loc[catalog['depth'] > 200, 'color'] = 'red'
-    fig, ax = plt.subplots()
-    catalog.plot(ax=ax, color=catalog['color'], markersize=10)
-    gpd.GeoSeries([brasil]).boundary.plot(ax=ax, color='black')
-    plt.title('Seismic Events: Red if outside Brazil, Blue if inside')
-    plt.xlabel('Longitude')
-    plt.ylabel('Latitude')
-    plt.grid(True)
-    plt.show()
+    catalog.loc[catalog['Depth/km'] > 1, 'color'] = 'green'
+    catalog.loc[catalog['Depth/km'] > 50, 'color'] = 'yellow'
+    catalog.loc[catalog['Depth/km'] > 100, 'color'] = 'orange'
+    catalog.loc[catalog['Depth/km'] > 200, 'color'] = 'red'
+    nb_ev_blue = catalog[catalog['Depth/km'] <= 1].shape[0]
+    nb_ev_1 = catalog[(catalog['Depth/km'] > 1) & (catalog['Depth/km'] <= 50)].shape[0]
+    nb_ev_50 = catalog[(catalog['Depth/km'] > 50) & (catalog['Depth/km'] <= 100)].shape[0]
+    nb_ev_100 = catalog[(catalog['Depth/km'] > 100) & (catalog['Depth/km'] <= 200)].shape[0]
+    nb_ev_200 = catalog[catalog['Depth/km'] > 200].shape[0]
+    fig = pygmt.Figure()
+    fig.coast(shorelines='1/0.5p', projection="M10i", region=[-75, -30, -35, 5], borders=[1], area_thresh=10000, land="gray", water="skyblue")
+    fig.basemap(
+        frame=['a4f3g6', "+t\"Eventos Sismológicos pré-tratamento por Profundidade (km)\""]
+    )
+    fig.plot(x=catalog[catalog['Depth/km'] <= 1].Longitude,
+             y=catalog[catalog['Depth/km'] <= 1].Latitude,
+             style="c0.1c", fill="blue", label=f"Profundidade <= 1 km ({nb_ev_blue})")
+    fig.plot(x=catalog[(catalog['Depth/km'] > 1) & (catalog['Depth/km'] <= 50)].Longitude,
+             y=catalog[(catalog['Depth/km'] > 1) & (catalog['Depth/km'] <= 50)].Latitude,
+             style="c0.2c", fill="green", label=f"Profundidade 1 - 50 km ({nb_ev_1})")
+    fig.plot(x=catalog[(catalog['Depth/km'] > 50) & (catalog['Depth/km'] <= 100)].Longitude,
+             y=catalog[(catalog['Depth/km'] > 50) & (catalog['Depth/km'] <= 100)].Latitude,
+             style="c0.2c", fill="yellow", label=f"Profundidade 50 - 100 km ({nb_ev_50})")
+    fig.plot(x=catalog[(catalog['Depth/km'] > 100) & (catalog['Depth/km'] <= 200)].Longitude,
+             y=catalog[(catalog['Depth/km'] > 100) & (catalog['Depth/km'] <= 200)].Latitude,
+             style="c0.2c", fill="orange", label=f"Profundidade 100 - 200 km ({nb_ev_100})")
+    fig.plot(x=catalog[catalog['Depth/km'] > 200].Longitude,
+             y=catalog[catalog['Depth/km'] > 200].Latitude,
+             style="c0.2c", fill="red", label=f"Profundidade > 200 km ({nb_ev_200})")
+    fig.legend(position="JBR+jBR+o0.5c/0.5c", box="+gwhite+p1p,black")
+    fig.text(x=-52, y=8, text="Eventos Sismológicos pré-tratamento por Profundidade (km)", font="16p,Helvetica-Bold")
+    fig.savefig('arquivos/figuras/pre_process/mapas/mapa_eventos_bruto.png')
+    fig.show()
+
+
+def plot_cleaned_catalog_pygmt(catalog: pd.DataFrame) -> None:
+    catalog = gpd.GeoDataFrame(
+        catalog,
+        geometry=gpd.points_from_xy(catalog.Longitude, catalog.Latitude)
+    )
+    catalog.crs = 'EPSG:4326'
+    catalog['color'] = 'blue'
+    catalog.loc[catalog['Depth/km'] > 1, 'color'] = 'green'
+    catalog.loc[catalog['Depth/km'] > 5, 'color'] = 'orange'
+    catalog.loc[catalog['Depth/km'] > 25, 'color'] = 'red'
+    nb_ev_blue = catalog[catalog['Depth/km'] <= 1].shape[0]
+    nb_ev_1 = catalog[(catalog['Depth/km'] > 1) & (catalog['Depth/km'] <= 5)].shape[0]
+    nb_ev_5 = catalog[(catalog['Depth/km'] > 5) & (catalog['Depth/km'] <= 25)].shape[0]
+    nb_ev_25 = catalog[(catalog['Depth/km'] > 25) & (catalog['Depth/km'] <= 50)].shape[0]
+    fig = pygmt.Figure()
+    fig.coast(shorelines='1/0.5p', projection="M10i", region=[-75, -30, -35, 5],borders=[1], area_thresh=10000, land="gray", water="skyblue")
+    fig.basemap(
+        frame=['a4f3g6', "+t\"Eventos Sismológicos pós-tratamento por Profundidade (km)\""]
+    )
+    fig.plot(x=catalog[catalog['Depth/km'] <= 1].Longitude,
+             y=catalog[catalog['Depth/km'] <= 1].Latitude,
+             style="c0.1c", fill="blue", label=f"Profundidade < 1 km ({nb_ev_blue})")
+    fig.plot(x=catalog[(catalog['Depth/km'] > 1) & (catalog['Depth/km'] <= 5)].Longitude,
+             y=catalog[(catalog['Depth/km'] > 1) & (catalog['Depth/km'] <= 5)].Latitude,
+             style="c0.2c", fill="green", label=f"Profundidade 1 - 5 km ({nb_ev_1})")
+    fig.plot(x=catalog[(catalog['Depth/km'] > 5) & (catalog['Depth/km'] <= 25)].Longitude,
+             y=catalog[(catalog['Depth/km'] > 5) & (catalog['Depth/km'] <= 25)].Latitude,
+             style="c0.2c", fill="orange", label=f"Profundidade 5 - 25 km ({nb_ev_5})")
+    fig.plot(x=catalog[(catalog['Depth/km'] > 25) & (catalog['Depth/km'] <= 50)].Longitude,
+             y=catalog[(catalog['Depth/km'] > 25) & (catalog['Depth/km'] <= 50)].Latitude,
+             style="c0.2c", fill="red", label=f"Profundidade 25 - 50 km ({nb_ev_25})")
+    fig.legend(position="JBR+jBR+o0.5c/0.5c", box="+gwhite+p1p,black")
+    fig.text(x=-52, y=8, text="Eventos Sismológicos pós-tratamento por Profundidade (km)", font="16p,Helvetica-Bold")
+    fig.savefig('arquivos/figuras/pre_process/mapas/mapa_eventos_clean.png')
+    fig.show()
 
 
 # ----------------------------  MAIN  -----------------------------------------
 def main(args=args):
     if args.catalogo:
-        catalog = pd.read_csv(f'arquivos/catalogo/{args.catalogo}', sep=',')
-        # catalog = brasil_catalogo(catalog)
+        catalog = pd.read_csv(f'arquivos/catalogo/{args.catalogo}', sep='|')
+        catalog.rename(columns={'#EventID': 'EventID'}, inplace=True)
         catalog = profundidade_catalogo(catalog)
         catalog = order_catalog(catalog, args.ascending)
+        catalog = brasil_catalogo(catalog)
         catalog.to_csv(
-            f'arquivos/catalogo/{args.catalogo}_treated.csv', index=False
+            f'arquivos/catalogo/{args.catalogo.split('.')[0]}_treated.csv',
+            index=False
         )
-    elif args.eventos:
-        events = pd.read_csv(f'arquivos/eventos/{args.eventos}', sep=',')
-        gerar_predcsv(events)
-        pred, pred_com, pred_nc = filter_pred_com(events)
-    else:
-        print('Nenhum arquivo catalogo foi passado')
+        if args.plot:
+            catalog = pd.read_csv(
+                f'arquivos/catalogo/{args.catalogo}',
+                sep='|'
+            )
+            catalog.rename(columns={'#EventID': 'EventID'}, inplace=True)
+            plot_prof_as_red(catalog)
 
-    return catalog
+            catalogo_treated = pd.read_csv(
+                f'arquivos/catalogo/{args.catalogo.split(".")[0]}_treated.csv'
+            )
+            plot_cleaned_catalog_pygmt(catalogo_treated)
+
+    if args.eventos:
+        eventos = pd.read_csv(f'arquivos/eventos/{args.eventos}', sep='|')
+        gerar_predcsv(eventos)
+        pred, pred_com, pred_nc = filter_pred_com(eventos)
+        if args.plot:
+            eventos = pd.read_csv(
+                f'arquivos/eventos/{args.eventos}',
+                sep=','
+            )
+            plot_cleaned_catalog_pygmt(eventos)
+
+    else:
+        print('Nenhum argumento foi passado')
 
 
 if __name__ == '__main__':

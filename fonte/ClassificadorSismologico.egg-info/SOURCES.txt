@@ -14,9 +14,7 @@ fonte/interface/farejador.py
 fonte/interface/snuffling_farejador.py
 fonte/interface/visualization.py
 fonte/nucleo/__init__.py
-fonte/nucleo/exporter.py
 fonte/nucleo/fluxo_eventos.py
-fonte/nucleo/getEventData.py
 fonte/nucleo/utils.py
 fonte/relatorio-sismologia/__init__.py
 fonte/rnc/__init__.py

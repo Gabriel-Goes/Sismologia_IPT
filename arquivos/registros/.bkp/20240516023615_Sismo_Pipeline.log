@@ -1,0 +1,54 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo-moho-south-america.csv...
+Traceback (most recent call last):
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'depth'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 247, in <module>
+    catalog = main()
+              ^^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 225, in main
+    catalog = profundidade_catalogo(catalog)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 67, in profundidade_catalogo
+    catalog = catalog[catalog['depth'] < 100]
+                      ~~~~~~~^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'depth'
+
+ -> Executando fluxo_eventos.py...
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/nucleo/fluxo_eventos.py", line 376, in <module>
+    IDs = csv2list(sys.argv[1])
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/nucleo/utils.py", line 91, in csv2list
+    with open(f'arquivos/catalogo/{csv_file}', 'r') as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'arquivos/catalogo/catalogo-moho-south-america.csv_treated.csv'
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+

@@ -34,7 +34,7 @@
 
 # -----------------------------  VARIÁVEIS -------------------------------------
 
-CATALOG=${1:-"Catalog.csv"}
+CATALOG=${1:-"catalogo-moho.csv"}
 EVENTS=${EVENTS:-true}
 TREATCATALOG=${TREATCATALOG:-true}
 TREATEVENTS=${TREATEVENTS:-false}
@@ -76,17 +76,19 @@ if [ "$EVENTS" = true ]; then
     echo " Criando arquivos de backup..."
     [[ -f /eventos/eventos.csv ]] &&
         mv arquivos/eventos/eventos.csv arquivos/eventos/.bkp/eventos.csv.$(date +%Y%m%d%H%M%S)
-    [[ -f arquivos/registros/missing_ids.csv ]] &&
-        mv arquivos/registros/missing_ids.csv arquivos/registros/.bkp/missing_ids.csv.$(date +%Y%m%d%H%M%S)
+    [[ -f arquivos/registros/ids_faltantes.csv ]] &&
+        mv arquivos/registros/ids_faltantes.csv arquivos/registros/.bkp/ids_faltantes.csv.$(date +%Y%m%d%H%M%S)
     echo " Arquivos de backup criados com sucesso!"
     echo ''
     if [ "$TREATCATALOG" = true ]; then
         echo ''
         echo " -------------- INICIANDO O TRATAMENTO -------------------- "
         echo " Tratando $CATALOG..."
-        python fonte/analise_dados/pre_processa.py -c $CATALOG -a -p
+        python fonte/analise_dados/pre_processa.py -c $CATALOG -p
         echo ''
         echo ' -> Executando fluxo_eventos.py...'
+        # remove a extensão do arquivo
+        CATALOG=$(echo $CATALOG | cut -d'.' -f1)
         python fonte/nucleo/fluxo_eventos.py $CATALOG'_treated.csv'
         echo ''
     else
@@ -105,7 +107,7 @@ if [ "$TREATEVENTS" = true ]; then
     echo " Arquivos de backup criados com sucesso!"
     echo ''
     echo " -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- "
-    python fonte/analise_dados/pre_processa.py
+    python fonte/analise_dados/pre_processa.py -e eventos.csv -p
     echo ''
 fi
 
