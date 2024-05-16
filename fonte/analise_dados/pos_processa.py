@@ -18,6 +18,8 @@ import matplotlib.ticker as mtick
 from matplotlib.cm import ScalarMappable
 import seaborn as sns
 
+from sklearn.preprocessing import Normalizer
+
 import obspy
 from obspy.core import AttribDict
 from obspy import UTCDateTime
@@ -758,6 +760,80 @@ def plot_mean_snr_recall_event(df):
     plt.ylabel('Recall (%)')
     plt.tight_layout()
     plt.savefig('arquivos/figuras/pos_processo/dist_mean_snrs_recall.png')
+    plt.show()
+
+
+def scatter_snr_prob_norm(df):
+    # Selecionar as colunas que serão normalizadas
+    columns_to_normalize = ['SNR_P']
+    df_selected = df[columns_to_normalize].dropna()
+    normalizer = Normalizer(norm='l1')
+    X_normalized = normalizer.fit_transform(df_selected)
+    df_normalized = pd.DataFrame(X_normalized, columns=columns_to_normalize)
+
+    plt.figure(figsize=(10, 6))
+    x = df_normalized['SNR_P']
+    y = df_normalized['prob_nat']
+    plt.scatter(x, y, alpha=0.5, color='lightskyblue')
+    plt.xlabel('SNR_P (Normalizado)')
+    plt.ylabel('Probabilidade Natural (Normalizado)')
+    plt.title('Gráfico de Dispersão dos Valores Normalizados de SNR_P e Probabilidade Natural')
+    plt.tight_layout()
+    plt.show()
+
+
+def scatter_snr_prob_log(df):
+    df['SNR_P_log'] = np.log(df['SNR_P'])
+    plt.figure(figsize=(10, 6))
+    x = df['prob_nat']
+    y = df['SNR_P_log']
+    plt.scatter(x, y, alpha=0.5, color='lightskyblue')
+    plt.ylabel('SNR_P (log)')
+    plt.xlabel('Probabilidade Natural')
+    plt.title('Gráfico de Dispersão de SNR_P (log) e Probabilidade Natural')
+    plt.tight_layout()
+    plt.show()
+
+
+def scatter_snr_prob_filtered(df):
+    df['SNR_P_capped'] = np.where(df['SNR_P'] > 15, 15, df['SNR_P'])
+    plt.figure(figsize=(10, 6))
+    x = df['SNR_P_capped']
+    y = df['prob_nat']
+    plt.scatter(x, y, alpha=0.5, color='lightskyblue')
+    plt.xlabel('SNR_P')
+    plt.ylabel('Probabilidade Natural')
+    plt.title('Gráfico de Dispersão de SNR_P e Probabilidade Natural (Filtrado)')
+    plt.tight_layout()
+    plt.show()
+
+
+def ratios(df):
+    max_snrp_finite = -np.inf
+    for index, filtro in df.iterrows():
+        print(filtro)
+        break
+        if np.isfinite(filtro.SNR_P) and filtro.SNR_P > max_snrp_finite:
+            max_snrp_finite = filtro.SNR_P
+
+        if np.isfinite(filtro.SNR_P):
+            filtro.SNR_P /= max_snrp_finite
+
+    return df
+
+
+max_snrp_finite = df.loc[np.isfinite(df['SNR_P']), 'SNR_P'].max()
+df['SNR_P_norm'] = df['SNR_P'].apply(lambda x: x / max_snrp_finite if np.isfinite(x) else x)
+
+def scatter_snr_prob_norm(df):
+    plt.figure(figsize=(10, 6))
+    x = df['SNR_P_norm']
+    y = df['prob_nat']
+    plt.scatter(x, y, alpha=0.5, color='lightskyblue')
+    plt.xlabel('SNR_P Normalizado')
+    plt.ylabel('Probabilidade Natural')
+    plt.title('Gráfico de Dispersão de SNR_P Normalizado e Probabilidade Natural')
+    plt.tight_layout()
     plt.show()
 
 
