@@ -168,7 +168,7 @@ def iterar_eventos(eventos: List,
                 end_time = start_time + 60
                 try:
                     st = data_client.get_waveforms(
-                        net, sta, loc, chn,
+                        net, sta, loc, 'HH*',
                         start_time, end_time)
                     print(' Downloading ...')
                     print(f' Pick Time -> {pick.time}')
@@ -181,7 +181,7 @@ def iterar_eventos(eventos: List,
                     print(f"Canal {chn} da estação {sta}!\n   ERROR:  {e}")
                     try:
                         st = data_client_bkp.get_waveforms(
-                            net, sta, loc, chn,
+                            net, sta, loc, 'HH*',
                             start_time, end_time)
                         print(' Downloading ...')
                         print(f' Pick Time -> {pick.time}')

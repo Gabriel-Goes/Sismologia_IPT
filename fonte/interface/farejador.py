@@ -27,6 +27,7 @@ class SeletorEventoApp(QMainWindow):
         self.df = pd.read_csv(
             "arquivos/resultados/ncomercial/df_nc_pos.csv"
         )
+        print(self.df.columns)
         self.central_widget = QWidget(self)
         self.setCentralWidget(self.central_widget)
         self.layout = QVBoxLayout(self.central_widget)
@@ -39,7 +40,6 @@ class SeletorEventoApp(QMainWindow):
         self.eventos_cre = ev[0]
         self.eventos_dec = ev[1]
         self.numb_eventos = ev[2]
-        self.distance = ev
         self.initUI()
         print(' ---------------- SeletorEventoApp Iniciado ---------------- ')
 
@@ -73,6 +73,8 @@ class SeletorEventoApp(QMainWindow):
         self.layout.addWidget(self.labelText)
         self.probNatText = QLabel('Prob. Natural: ')
         self.layout.addWidget(self.probNatText)
+        self.distanceText = QLabel('Distância: ')
+        self.layout.addWidget(self.distanceText)
         self.autoselectCheckbox = QCheckBox('Seleção automática')
         self.layout.addWidget(self.autoselectCheckbox)
         self.autoselectCheckbox.stateChanged.connect(self.updateAutoSelection)
@@ -147,7 +149,9 @@ class SeletorEventoApp(QMainWindow):
             f'{network}_{station}_{event}.mseed'
         )
         try:
-            subprocess.Popen(['snuffler', self.mseed_file_path], )
+            if not os.path.isfile(self.mseed_file_path):
+                raise FileNotFoundError
+            subprocess.Popen(['snuffler', self.mseed_file_path])
             print(f"Snuffler iniciado com {self.mseed_file_path}")
         except Exception as e:
             print(f"Erro ao iniciar o Snuffler: {e}")
@@ -169,19 +173,19 @@ class SeletorEventoApp(QMainWindow):
         if prediction not in codigos:
             label = f'filtered_df é vazio: {prediction}'
         if prediction != label:
-            # Texto em bold e vermelho
             self.predText.setStyleSheet('font-weight: bold')
             self.predText.setStyleSheet('color: red')
         else:
-            # Texto em bold e verde
             self.predText.setStyleSheet('color: black')
         self.predText.setText(f'Predição: {predito}')
-        # Rótulos: 0 - Natural, 1 - Antropogênico
         rotulo = codigos[label]
         if label not in codigos:
             rotulo = f'Não classificado: {label}'
         self.labelText.setText(f'Rótulo: {rotulo}')
         self.probNatText.setText(f'Prob. Natural: {prob_nat}')
+        self.distanceText.setText(
+            f'Distância: {self.df.loc[self.df["file_name"] == self.mseedText, "Distance"].iloc[0]}'
+        )
 
 
 # -------------------------------- Função main ------------------------------ #

@@ -35,9 +35,8 @@
 # -----------------------------  VARIÁVEIS -------------------------------------
 
 CATALOG=${1:-"catalogo-moho.csv"}
-EVENTS=${EVENTS:-false}
-TREATCATALOG=${TREATCATALOG:-false}
-TREATEVENTS=${TREATEVENTS:-false}
+EVENTS=${EVENTS:-true}
+TREATCATALOG=${TREATCATALOG:-true}
 PREDICT=${PREDICT:-true}
 POSPROCESS=${POSPROCESS:-false}
 MAPS=${MAPS:-false}
@@ -98,31 +97,11 @@ if [ "$EVENTS" = true ]; then
     fi
 fi
 
-# --------- ETAPA DE GERAR LISTA PARA CLASSIFICAÇÃO ( EVENTO | LABEL ) -----------
-if [ "$TREATEVENTS" = true ]; then
-    echo " Criando arquivos de backup..."
-    cp arquivos/predcsv/pred.csv arquivos/predcsv/.bkp/pred.csv.$(date +%Y%m%d%H%M%S)
-    cp arquivos/predcsv/pred_commercial.csv arquivos/predcsv/.bkp/pred_commercial.csv.$(date +%Y%m%d%H%M%S)
-    cp arquivos/predcsv/pred_no_commercial.csv arquivos/predcsv/.bkp/pred_no_commercial.csv.$(date +%Y%m%d%H%M%S)
-    echo " Arquivos de backup criados com sucesso!"
-    echo ''
-    echo " -------------- INICIANDO O DATA_ANALYSIS/PREPROCESS.PY -------------------- "
-    python fonte/analise_dados/pre_processa.py -e eventos.csv -p
-    echo ''
-fi
-
 # ------------------------- ETAPA DE PREDIÇÃO  ----------------------------------
 if [ "$PREDICT" = true ]; then
     NOME_TERM="DOCKER"
     COMMAND='docker run -it --rm -v $HOME/projetos:/app discrim:0.1.0'
-    COMMAND_2='python ClassificadorSismologico/fonte/rnc/run.py \
-               --output_dir no_commercial \
-               --events pred_no_commercial.csv \
-               --valid'
-    COMMAND_3='python ClassificadorSismologico/fonte/rnc/run.py \
-               --output_dir commercial \
-               --events pred_commercial.csv \
-               --valid'
+    COMMAND_2='python ClassificadorSismologico/fonte/rnc/run.py'
     echo " ----------------- INICIANDO O PREDICT.PY ---------------------------- "
     i3-msg 'workspace 9'
     alacritty -e bash -c "tmux new-session -d -s $NOME_TERM; \
