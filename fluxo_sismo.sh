@@ -9,9 +9,8 @@
 # Data: 2024-03-05
 # Modificado: 2024-04-10
 #
-#
 
-# ----------------------------  DESCRIPTION  -----------------------------------
+# ----------------------------  DESCRIÇÃO  -----------------------------------
 # Este código recebe uma lista de IDs eventos ou uma data de início e fim e com
 # estas informações cria um arquivo eventos.csv com os eventos sísmicos que 
 # ocorreram no intervalo de tempo especificado ou presentes na lista passada e
