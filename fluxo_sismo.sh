@@ -37,7 +37,7 @@
 CATALOG=${1:-"catalogo-moho.csv"}
 EVENTS=${EVENTS:-true}
 TREATCATALOG=${TREATCATALOG:-true}
-PREDICT=${PREDICT:-true}
+PREDICT=${PREDICT:-false}
 POSPROCESS=${POSPROCESS:-false}
 MAPS=${MAPS:-false}
 REPORT=${REPORT:-false}
@@ -86,7 +86,6 @@ if [ "$EVENTS" = true ]; then
         python fonte/analise_dados/pre_processa.py -c $CATALOG -p
         echo ''
         echo ' -> Executando fluxo_eventos.py...'
-        # remove a extensão do arquivo
         CATALOG=$(echo $CATALOG | cut -d'.' -f1)
         python fonte/nucleo/fluxo_eventos.py $CATALOG'_treated.csv'
         echo ''

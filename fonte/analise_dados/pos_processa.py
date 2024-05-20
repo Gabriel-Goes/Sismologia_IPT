@@ -18,8 +18,6 @@ import matplotlib.ticker as mtick
 from matplotlib.cm import ScalarMappable
 import seaborn as sns
 
-from sklearn.preprocessing import Normalizer
-
 import obspy
 from obspy.core import AttribDict
 from obspy import UTCDateTime
@@ -29,7 +27,8 @@ import geopandas as gpd
 
 from tqdm import tqdm
 from analise_dados.testa_filtros import parsewindow, prepare
-from nucleo.utils import CAT_MAG, CAT_DIS, CAT_SNR
+
+from nucleo.utils import CAT_DIS, CAT_MAG, CAT_SNR
 
 plt.dpi = 300
 
@@ -131,7 +130,6 @@ def plot_box_by_station(df):
         plt.show()
 
 
-# Correlation Matrix
 def plot_corr_matrix(df):
     cols = ['prob_nat', 'Hora',
             'Longitude', 'Latitude', 'Origem Latitude', 'Origem Longitude',
@@ -150,44 +148,6 @@ def plot_corr_matrix(df):
     plt.show()
 
 
-# --------------------------- SCATTERPLOTS ---------------------------------- #
-def plot_scatter(df, x, y):
-    plt.figure(figsize=(10, 6))
-    colors = ['b', 'r']
-    shapes = ['o', 'x']
-    for i, p in enumerate(df['pred'].unique()):
-        df_pred = df[df['pred'] == p]
-        plt.scatter(df_pred[x], df_pred[y],
-                    color=colors[i], marker=shapes[i], alpha=0.5)
-    plt.title('Scatter Plot')
-    plt.xlabel(x)
-    plt.ylabel(y)
-    plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_processo/scatter_plot.png')
-    plt.show()
-
-
-def plot_pairplot(df):
-    df = df[['pred', 'prob_nat', 'Hora',
-             'MLv', 'Distance', 'Num_Estacoes']]
-    sns.pairplot(df, hue='pred')
-    plt.savefig('arquivos/figuras/pos_processo/pairplot.png')
-    plt.show()
-
-
-def plot_swarmplot(df, x, y, natural=True):
-    df = df[['pred', 'prob_nat', 'Hora',
-             'Longitude', 'Latitude', 'MLv', 'Distance', 'Num_Estacoes']]
-    if not natural:
-        df = df[df['pred'] == 1]
-        sns.swarmplot(x=x, y=y, data=df, size=2.5, color='red')
-    else:
-        sns.swarmplot(x=x, y=y, data=df, size=2.5, hue='pred')
-    plt.savefig('arquivos/figuras/pos_processo/swarmplot.png')
-    plt.show()
-
-
-# --------------------------- HISTOGRAMS ------------------------------------ #
 # --------------------------- PROBABILITIES
 def class_prob(prob):
     if prob < 0.2:
@@ -212,6 +172,86 @@ def plot_hist_prob_distribution(df):
     plt.ylabel('Frequência')
     plt.tight_layout()
     plt.savefig('arquivos/figuras/pos_processo/dist_prob_nat.png')
+    plt.show()
+
+
+def plot_mean_snr_prob_nat(df, n=1):
+    df = df[df['SNR_P'] > n]
+    df = df[df['Distance'] < n_]
+    df.set_index(['Event', 'Station'], inplace=True)
+    df = mean_snr_event(df)
+    df['Mean SNR_P_cat'] = pd.Categorical(
+        df['Mean SNR_P_cat'], categories=CAT_SNR, ordered=True
+    )
+    df.loc[:, 'SNR_P_cat'] = df['SNR_P'].apply(class_snrp)
+    df.loc[:, 'Mean SNR_P_cat'] = df['Mean SNR_P'].apply(class_snrp)
+    df_ = df.groupby(level='Event').first()
+    df_.sort_values('Mean SNR_P', inplace=True)
+    f_rel = df_['Mean SNR_P_cat'].value_counts(normalize=True).sort_index()
+    f_abs = df_['Mean SNR_P_cat'].value_counts().sort_index()
+    max_freq = f_rel.max() * 100
+    min_freq = f_rel.min() * 100
+    norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
+    sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
+    sm.set_array([])
+    prob_min = 90
+    total = 0
+    fig, ax = plt.subplots(figsize=(21, 9))
+    for r, a in zip(f_rel.index, f_abs.index):
+        f_a = f_abs.loc[a]
+        freq = f_rel.loc[r] * 100
+        mean_dist = df_[df_['Mean SNR_P_cat'] == r]['Mean Distance'].mean()
+        mean_mag = df_[df_['Mean SNR_P_cat'] == r]['Mean Mag'].mean()
+        nb_sta = df[df['Mean SNR_P_cat'] == r].shape[0]/f_a
+        color = sm.to_rgba(freq)
+        if f_a > 0:
+            total += f_a
+            df_c = df_[df_['Mean SNR_P_cat'] == r]
+            prob = (df_c['prob_nat'].mean() * 100)
+            ax.bar(r, prob, color=color, edgecolor='black', width=0.5)
+            ax.text(
+                r, prob + 0.01, f'{prob:.2f}%',
+                ha='center', va='bottom', fontsize=8, fontweight='bold'
+            )
+            ax.text(
+                a, prob + 1.5,
+                f'#Freq.: {f_a}', ha='center', va='bottom',
+                fontsize=8
+            )
+            ax.text(
+                a, prob + 2.5, f'#Est.: {nb_sta:.1f}',
+                ha='center', va='bottom', fontsize=8
+            )
+            ax.text(
+                a, prob + 3.5, f'Dist.: {mean_dist:.0f}km',
+                ha='center', va='bottom', fontsize=8
+            )
+            ax.text(
+                a, prob + 4.5,
+                f'Mag.: {mean_mag:.1f}', ha='center', va='bottom', fontsize=8
+            )
+            prob_min = prob if prob < prob_min else prob_min
+        else:
+            ax.bar(r, 0, color=sm.to_rgba(0), edgecolor='black', width=0.5)
+            ax.text(r, 0 + 0.01, '0.00%', ha='center', va='bottom')
+            ax.text(a, 0 + 1.5, '0', ha='center', va='bottom')
+
+    cbar = fig.colorbar(sm, ax=ax)
+    plt.title(
+        f'Probabilidade por Média de SNR_P ({n}) por Evento -\
+        Total {df_.shape[0]}'
+    )
+    cbar.ax.set_ylabel('Frequency (%)')
+    cbar.set_ticks([min_freq, max_freq])
+    plt.ylim(prob_min - 5, 100)
+    plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
+    plt.xlabel('Média de SNR_P')
+    plt.ylabel('Probabilidade Natural(%)')
+    plt.tight_layout()
+    plt.savefig(
+        f'arquivos/figuras/pos_processo/mean_snrs_{n}_prob_nat.png'
+    )
+    # Set dpi
     plt.show()
 
 
@@ -692,223 +732,52 @@ def plot_hist_snr_recall_pick(df):
     plt.show()
 
 
-def plot_mean_snr_recall_event(df):
-    df['Mean SNR_P_cat'] = pd.Categorical(
-        df['Mean SNR_P_cat'], categories=CAT_SNR, ordered=True
-    )
-    df_ = df.groupby(level='Event').first()
-    df_.sort_values('Mean SNR_P', inplace=True)
-    f_rel = df_['Mean SNR_P_cat'].value_counts(normalize=True).sort_index()
-    f_abs = df_['Mean SNR_P_cat'].value_counts().sort_index()
-    max_freq = f_rel.max() * 100
-    min_freq = f_rel.min() * 100
-    norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
-    sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
-    sm.set_array([])
-    rc_min = 90
-    total = 0
-    fig, ax = plt.subplots(figsize=(10, 6))
-    for r, a in zip(f_rel.index, f_abs.index):
-        f_a = f_abs.loc[a]
-        freq = f_rel.loc[r] * 100
-        mean_dist = df_[df_['Mean SNR_P_cat'] == r]['Mean Distance'].mean()
-        mean_mag = df_[df_['Mean SNR_P_cat'] == r]['Mean Mag'].mean()
-        nb_sta = df[df['Mean SNR_P_cat'] == r].shape[0]/f_a
-        color = sm.to_rgba(freq)
-        if f_a > 0:
-            total += f_a
-            df_c = df_[df_['Mean SNR_P_cat'] == r]
-            TP = df_c[(df_c['pred'] == 0) & (df_c['label_cat'] == 0)].shape[0]
-            FN = df_c[(df_c['pred'] == 1) & (df_c['label_cat'] == 0)].shape[0]
-            rc = 100 * TP / (TP + FN) if TP + FN != 0 else 0
-            # Reduce font size of ax.text
-            ax.bar(r, rc, color=color, edgecolor='black', width=0.5)
-            ax.text(
-                r, rc + 0.01, f'{rc:.2f}%',
-                ha='center', va='bottom', fontsize=8, fontweight='bold'
-            )
-            ax.text(
-                a, rc + 1.5,
-                f'#Freq.: {f_a}', ha='center', va='bottom',
-                fontsize=8
-            )
-            ax.text(
-                a, rc + 2.5, f'#Est.: {nb_sta:.1f}',
-                ha='center', va='bottom', fontsize=8
-            )
-            ax.text(
-                a, rc + 3.5, f'Dist.: {mean_dist:.0f}km',
-                ha='center', va='bottom', fontsize=8
-            )
-            ax.text(
-                a, rc + 4.5,
-                f'Mag.: {mean_mag:.1f}', ha='center', va='bottom', fontsize=8
-            )
-            rc_min = rc if rc < rc_min else rc_min
-        else:
-            ax.bar(r, 0, color=sm.to_rgba(0), edgecolor='black', width=0.5)
-            ax.text(r, 0 + 0.01, '0.00%', ha='center', va='bottom')
-            ax.text(a, 0 + 1.5, '0', ha='center', va='bottom')
-
-    cbar = fig.colorbar(sm, ax=ax)
-    plt.title(f'Recall por Média de SNR_P por Evento - Total {df_.shape[0]}')
-    cbar.ax.set_ylabel('Frequency (%)')
-    cbar.set_ticks([min_freq, max_freq])
-    plt.ylim(rc_min - 5, 105)
-    plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
-    plt.xlabel('Média de SNR_P')
-    plt.ylabel('Recall (%)')
+def scatter_snr_prob(df):
+    df['SNR_P_log'] = np.log10(df['SNR_P'])
+    # df['SNR_S_log'] = np.log10(df['SNR_S'])
+    plt.figure(figsize=(10, 6))
+    # supperposition of the scatter plot
+    plt.scatter(df['SNR_P_log'], df['prob_nat'], alpha=0.5)
+    plt.grid(True, linestyle='--', linewidth=0.5, color='gray')
+    plt.title('Scatter Plot SNR_P x Probabilidade Natural')
+    plt.xlabel('SNR_P_log')
+    plt.ylabel('Probabilidade Natural')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_processo/dist_mean_snrs_recall.png')
+    plt.savefig('arquivos/figuras/pos_processo/scatter_snrs_prob_nat.png')
     plt.show()
 
 
-def scatter_snr_prob_norm(df):
-    # Selecionar as colunas que serão normalizadas
-    columns_to_normalize = ['SNR_P']
-    df_selected = df[columns_to_normalize].dropna()
-    normalizer = Normalizer(norm='l1')
-    X_normalized = normalizer.fit_transform(df_selected)
-    df_normalized = pd.DataFrame(X_normalized, columns=columns_to_normalize)
-
+def recall_event(df):
     plt.figure(figsize=(10, 6))
-    x = df_normalized['SNR_P']
-    y = df_normalized['prob_nat']
-    plt.scatter(x, y, alpha=0.5, color='lightskyblue')
-    plt.xlabel('SNR_P (Normalizado)')
-    plt.ylabel('Probabilidade Natural (Normalizado)')
-    plt.title('Gráfico de Dispersão dos Valores Normalizados de SNR_P e Probabilidade Natural')
-    plt.tight_layout()
-    plt.show()
+    n = 1
+    while n < 15:
+        df = df[df['SNR_P'] > n]
+        df = mean_snr_event(df)
+        df['Mean SNR_P_cat'] = pd.Categorical(
+            df['Mean SNR_P_cat'], categories=CAT_SNR, ordered=True
+        )
+        df.loc[:, 'SNR_P_cat'] = df['SNR_P'].apply(class_snrp)
+        df.loc[:, 'Mean SNR_P_cat'] = df['Mean SNR_P'].apply(class_snrp)
 
+        # by event, sum the pred_nat value and divide by the number of stations
+        Events_pred = df.groupby(level='Event').apply(
+            lambda x: x['prob_nat'].sum() / x.shape[0]
+        )
+        # if Events_pred > 0.5, then the event is classified as natural
+        Events_pred = Events_pred.apply(lambda x: 0 if x > 0.5 else 1)
+        # get the label of the event
+        Events_label = df.groupby(level='Event').first()['label_cat']
 
-def scatter_snr_prob_log(df):
-    df['SNR_P_log'] = np.log(df['SNR_P'])
-    plt.figure(figsize=(10, 6))
-    x = df['prob_nat']
-    y = df['SNR_P_log']
-    plt.scatter(x, y, alpha=0.5, color='lightskyblue')
-    plt.ylabel('SNR_P (log)')
-    plt.xlabel('Probabilidade Natural')
-    plt.title('Gráfico de Dispersão de SNR_P (log) e Probabilidade Natural')
-    plt.tight_layout()
-    plt.show()
-
-
-def scatter_snr_prob_filtered(df):
-    df['SNR_P_capped'] = np.where(df['SNR_P'] > 15, 15, df['SNR_P'])
-    plt.figure(figsize=(10, 6))
-    x = df['SNR_P_capped']
-    y = df['prob_nat']
-    plt.scatter(x, y, alpha=0.5, color='lightskyblue')
+        def recall_score(y_true, y_pred):
+            return np.mean(y_true == y_pred)
+        rec_score = recall_score(Events_label, Events_pred)
+        plt.plot(n, rec_score, 'ro')
+        n += 1
+    plt.title('Recall por Evento')
     plt.xlabel('SNR_P')
-    plt.ylabel('Probabilidade Natural')
-    plt.title('Gráfico de Dispersão de SNR_P e Probabilidade Natural (Filtrado)')
+    plt.ylabel('Recall')
     plt.tight_layout()
-    plt.show()
-
-
-def ratios(df):
-    max_snrp_finite = -np.inf
-    for index, filtro in df.iterrows():
-        print(filtro)
-        break
-        if np.isfinite(filtro.SNR_P) and filtro.SNR_P > max_snrp_finite:
-            max_snrp_finite = filtro.SNR_P
-
-        if np.isfinite(filtro.SNR_P):
-            filtro.SNR_P /= max_snrp_finite
-
-    return df
-
-
-max_snrp_finite = df.loc[np.isfinite(df['SNR_P']), 'SNR_P'].max()
-df['SNR_P_norm'] = df['SNR_P'].apply(lambda x: x / max_snrp_finite if np.isfinite(x) else x)
-
-def scatter_snr_prob_norm(df):
-    plt.figure(figsize=(10, 6))
-    x = df['SNR_P_norm']
-    y = df['prob_nat']
-    plt.scatter(x, y, alpha=0.5, color='lightskyblue')
-    plt.xlabel('SNR_P Normalizado')
-    plt.ylabel('Probabilidade Natural')
-    plt.title('Gráfico de Dispersão de SNR_P Normalizado e Probabilidade Natural')
-    plt.tight_layout()
-    plt.show()
-
-
-# --------------------------- PROBABILIDADES
-def plot_mean_snr_prob_nat(df, n=1):
-    df['Mean SNR_P_cat'] = pd.Categorical(
-        df['Mean SNR_P_cat'], categories=CAT_SNR, ordered=True
-    )
-    df_ = df.groupby(level='Event').first()
-    df_.sort_values('Mean SNR_P', inplace=True)
-    f_rel = df_['Mean SNR_P_cat'].value_counts(normalize=True).sort_index()
-    f_abs = df_['Mean SNR_P_cat'].value_counts().sort_index()
-    max_freq = f_rel.max() * 100
-    min_freq = f_rel.min() * 100
-    norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
-    sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
-    sm.set_array([])
-    prob_min = 90
-    total = 0
-    fig, ax = plt.subplots(figsize=(21, 9))
-    for r, a in zip(f_rel.index, f_abs.index):
-        f_a = f_abs.loc[a]
-        freq = f_rel.loc[r] * 100
-        mean_dist = df_[df_['Mean SNR_P_cat'] == r]['Mean Distance'].mean()
-        mean_mag = df_[df_['Mean SNR_P_cat'] == r]['Mean Mag'].mean()
-        nb_sta = df[df['Mean SNR_P_cat'] == r].shape[0]/f_a
-        color = sm.to_rgba(freq)
-        if f_a > 0:
-            total += f_a
-            df_c = df_[df_['Mean SNR_P_cat'] == r]
-            prob = (df_c['prob_nat'].mean() * 100)
-            ax.bar(r, prob, color=color, edgecolor='black', width=0.5)
-            ax.text(
-                r, prob + 0.01, f'{prob:.2f}%',
-                ha='center', va='bottom', fontsize=8, fontweight='bold'
-            )
-            ax.text(
-                a, prob + 1.5,
-                f'#Freq.: {f_a}', ha='center', va='bottom',
-                fontsize=8
-            )
-            ax.text(
-                a, prob + 2.5, f'#Est.: {nb_sta:.1f}',
-                ha='center', va='bottom', fontsize=8
-            )
-            ax.text(
-                a, prob + 3.5, f'Dist.: {mean_dist:.0f}km',
-                ha='center', va='bottom', fontsize=8
-            )
-            ax.text(
-                a, prob + 4.5,
-                f'Mag.: {mean_mag:.1f}', ha='center', va='bottom', fontsize=8
-            )
-            prob_min = prob if prob < prob_min else prob_min
-        else:
-            ax.bar(r, 0, color=sm.to_rgba(0), edgecolor='black', width=0.5)
-            ax.text(r, 0 + 0.01, '0.00%', ha='center', va='bottom')
-            ax.text(a, 0 + 1.5, '0', ha='center', va='bottom')
-
-    cbar = fig.colorbar(sm, ax=ax)
-    plt.title(
-        f'Probabilidade por Média de SNR_P ({n}) por Evento -\
-        Total {df_.shape[0]}'
-    )
-    cbar.ax.set_ylabel('Frequency (%)')
-    cbar.set_ticks([min_freq, max_freq])
-    plt.ylim(prob_min - 5, 100)
-    plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
-    plt.xlabel('Média de SNR_P')
-    plt.ylabel('Probabilidade Natural(%)')
-    plt.tight_layout()
-    plt.savefig(
-        f'arquivos/figuras/pos_processo/mean_snrs_{n}_prob_nat.png'
-    )
-    # Set dpi
+    plt.savefig('arquivos/figuras/pos_processo/recall_event.png')
     plt.show()
 
 
@@ -983,7 +852,7 @@ def carregar_dado(tipo='ncomercial', n=1):
     )
     df = pd.merge(df_val, evs, on='file_name', how='left')
     catalogo = pd.read_csv(
-        'arquivos/catalogo/catalogo-moho-south-america_treated.csv'
+        'arquivos/catalogo/catalogo-moho_treated.csv'
     )
     c_depth = catalogo[catalogo['Depth/km'] > 100]
     df = df[~df['EventID'].isin(c_depth['EventID'])]
@@ -991,6 +860,11 @@ def carregar_dado(tipo='ncomercial', n=1):
     df.set_index(['Event', 'Station'], inplace=True)
     df = snr(df, 3)
     df = df[df['SNR_P'] > n]
+    df.replace(
+        [np.inf, -np.inf],
+        np.nan,
+        inplace=True
+    ).dropna(subset=['SNR_P'], inplace=True)
     df = class_region(df)
     df = mean_snr_event(df)
     df = mean_mag_event(df)
@@ -1005,7 +879,7 @@ def carregar_dado(tipo='ncomercial', n=1):
     df['Coord Origem'] = df[
         ['Origem Latitude', 'Origem Longitude']
     ].apply(lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1)
-    df.to_csv('arquivos/resultados/ncomercial/df_nc_pos.csv', index=True)
+    # df.to_csv('arquivos/resultados/ncomercial/df_nc_pos.csv', index=True)
 
     return df
 
@@ -1015,22 +889,22 @@ def ncomercial(df):
     # plot_hist_hour_recall(df)
     # ----------------------------------
     # plot_hist_station_distribution(df)
-    # plot_hist_stations_recall(df)
+    plot_hist_stations_recall(df)
     # ----------------------------------
     # plot_hist_distance_distribution(df)
-    # plot_hist_distance_recall(df)
+    plot_hist_distance_recall(df)
     # ----------------------------------
     # plot_hist_magnitude_distribution(df)
-    # plot_hist_magnitude_recall(df)
+    plot_hist_magnitude_recall(df)
     # ----------------------------------
-    # plot_hist_snrs_distribution(df)
-    # plot_hist_snr_recall_pick(df)
+    plot_hist_snrs_distribution(df)
+    plot_hist_snr_recall_pick(df)
     # plot_mean_snr_recall_event(df)
     # ----------------------------------
-    # plot_box_dist(df)
+    plot_box_dist(df)
     # plot_box_by_network(df)
     # plot_box_by_station(df)
-    # plot_region_correlation(df)
+    plot_region_correlation(df)
 
     return
 
@@ -1038,7 +912,7 @@ def ncomercial(df):
 # -------------------------------- MAIN ------------------------------------- #
 def main():
     df = carregar_dado()
-    # ncomercial(df)
+    ncomercial(df)
     # comercial(df_c)
 
     return df
