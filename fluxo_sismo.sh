@@ -13,9 +13,9 @@
 # ----------------------------  DESCRIÇÃO  -----------------------------------
 # Este código recebe uma lista de IDs eventos ou uma data de início e fim e com
 # estas informações cria um arquivo eventos.csv com os eventos sísmicos que 
-# ocorreram no intervalo de tempo especificado ou presentes na lista passada e
-# foram capturados pela rede sismológica. Com este arquivo, segue-se para o
-# passo de aquisição das formas de onda e classificação.
+# ocorreram no intervalo de tempo especificado ou com os IDs presentes na lista
+# passada e foram capturados pela rede sismológica. Com este arquivo, segue-se
+# para o passo de aquisição das formas de onda e classificação.
 
 # -------------------------------  USO -----------------------------------------
 # Existem duas formas de execução:
