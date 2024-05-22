@@ -5,6 +5,7 @@
 
  ----------------- INICIANDO O PREDICT.PY ---------------------------- 
 [{"success":true}]
+chown: grupo inválido: “ggrl:ggrl”
 
 ========================================================================
                         Fim do Pipeline                                 

@@ -1,8 +1,25 @@
+#
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# --------------------------------- Farejador ---------------------------------
+# Autor: Gabriel Góes Rocha de Lima
+# Universidade de São Paulo - Instituto de Geociências
+
+# ------------------------------- Descrição ----------------------------------
+
+
+# --------------------------------- Imports ---------------------------------
 import sys
 import subprocess
 import os
 import re
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+from PIL import Image
+from PIL import ImageOps
+from PIL import ImageDraw
 
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QMainWindow
@@ -14,9 +31,8 @@ from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtWidgets import QCheckBox
 from PyQt5.QtCore import Qt
 
-from nucleo.utils import DELIMT
 
-
+# ---------------------------- SeletorEventoApp ------------------------------
 class SeletorEventoApp(QMainWindow):
     def __init__(self):
         print(' ---------------- Iniciando SeletorEventoApp ---------------- ')
@@ -24,7 +40,7 @@ class SeletorEventoApp(QMainWindow):
         self.setWindowTitle('Seletor de Eventos, Redes e Estações')
         self.setGeometry(50, 50, 400, 300)
 
-        self.df = pd.read_csv("arquivos/resultados/ncomercial/df_nc_pos.csv")
+        self.df = pd.read_csv("arquivos/resultados/predito.csv")
         print(self.df.columns)
 
         self.central_widget = QWidget(self)
@@ -47,35 +63,45 @@ class SeletorEventoApp(QMainWindow):
         self.networkSelector = QComboBox()
         self.stationSelector = QComboBox()
 
-        self.numb_Eventos = QLabel(f'Número de Eventos: {self.numb_eventos}')
+        self.numb_Eventos = QLabel(f'# Eventos: {self.numb_eventos}')
         self.layout.addWidget(self.numb_Eventos)
         self.layout.addWidget(QLabel('Evento:'))
         self.layout.addWidget(self.eventSelector)
+        self.nb_picksText = QLabel('#Picks: ')
+        self.layout.addWidget(self.nb_picksText)
+        self.ev_predText = QLabel('Predição: ')
+        self.layout.addWidget(self.ev_predText)
+        self.probNatText = QLabel('Prob. Nat.: ')
+        self.layout.addWidget(self.probNatText)
+
         self.layout.addWidget(QLabel('Rede:'))
         self.layout.addWidget(self.networkSelector)
         self.layout.addWidget(QLabel('Estação:'))
         self.layout.addWidget(self.stationSelector)
 
+        self.distanceText = QLabel('Distância: ')
+        self.layout.addWidget(self.distanceText)
+        self.stPredText = QLabel('Predição (pick): ')
+        self.layout.addWidget(self.stPredText)
+        self.stProbText = QLabel('Prob. Natural (pick): ')
+        self.layout.addWidget(self.stProbText)
+
         self.eventSelector.currentIndexChanged.connect(self.updateNetworkAndStationSelectors)
         self.networkSelector.currentIndexChanged.connect(self.updateStationSelector)
         self.stationSelector.currentIndexChanged.connect(self.updateMseedAttributes)
 
-        self.loadButton = QPushButton('Carregar mseed')
+        self.loadButton = QPushButton('Farejar')
         self.loadButton.clicked.connect(self.loadMseed)
         self.layout.addWidget(self.loadButton)
+
+        self.spectreButton = QPushButton('Espectrograma')
+        self.spectreButton.clicked.connect(self.loadSpectre)
+        self.layout.addWidget(self.spectreButton)
 
         self.mseedText = QLabel('Mseed selecionado: ')
         self.layout.addWidget(self.mseedText)
         self.eventText = QLabel('Evento: ')
         self.layout.addWidget(self.eventText)
-        self.predText = QLabel('Predição: ')
-        self.layout.addWidget(self.predText)
-        self.labelText = QLabel('Rótulo: ')
-        self.layout.addWidget(self.labelText)
-        self.probNatText = QLabel('Prob. Natural: ')
-        self.layout.addWidget(self.probNatText)
-        self.distanceText = QLabel('Distância: ')
-        self.layout.addWidget(self.distanceText)
 
         self.autoselectCheckbox = QCheckBox('Seleção automática')
         self.layout.addWidget(self.autoselectCheckbox)
@@ -102,11 +128,14 @@ class SeletorEventoApp(QMainWindow):
         eventos = self.df['Event'].unique()
         numb_eventos = len(eventos)
         eventos_cre = sorted(
-            eventos, key=lambda x: self.df.loc[self.df['Event'] == x, 'prob_nat'].iloc[0]
+            eventos, key=lambda x: self.df.loc[
+                self.df['Event'] == x,
+                'Event Prob_Nat'
+            ].iloc[0]
         )
         eventos_dec = eventos_cre[::-1]
         print(' ---------------- Eventos ordenados ---------------- ')
-        print(DELIMT)
+        print('_____________________________________________________')
         return eventos_cre, eventos_dec, numb_eventos
 
     def updateEventSelector(self, state):
@@ -134,7 +163,11 @@ class SeletorEventoApp(QMainWindow):
         self.stationSelector.addItems(sorted(stations))
         self.updateMseedAttributes()
 
-    def getNetworksAndStationsFromEventFolder(self, event_folder, filter_network=None):
+    def getNetworksAndStationsFromEventFolder(
+            self,
+            event_folder,
+            filter_network=None
+            ):
         arquivos = os.listdir(event_folder)
         networks = set()
         stations = set()
@@ -149,37 +182,59 @@ class SeletorEventoApp(QMainWindow):
         return list(networks), list(stations)
 
     def updateMseedAttributes(self):
-        event = self.eventSelector.currentText()
-        network = self.networkSelector.currentText()
-        station = self.stationSelector.currentText()
-        mseed = f'{network}_{station}_{event}'
+        ev = self.eventSelector.currentText()
+        net = self.networkSelector.currentText()
+        sta = self.stationSelector.currentText()
+        mseed = f'{net}_{sta}_{ev}'
         self.mseedText.setText(f'Arquivo: {mseed}')
-        self.eventText.setText(f'Evento: {event}')
-        self.mseed_file_path = os.path.join('arquivos/mseed', event, f'{network}_{station}_{event}.mseed')
+        self.eventText.setText(f'Evento: {ev}')
+        self.mseed_file_path = os.path.join(
+            'arquivos/mseed', ev, f'{net}_{sta}_{ev}.mseed'
+        )
 
-        filtered_df = self.df.loc[self.df['Event'] == event]
+        filtered_df = self.df[(self.df['Event'] == ev) & (self.df['Station'] == sta)]
+
         if not filtered_df.empty:
-            prediction = filtered_df['pred'].iloc[0]
+            ev_prediction = filtered_df['Event Pred_final'].iloc[0]
+            ev_prob_nat = filtered_df['Event Prob_Nat'].iloc[0]
+            ev_predito = filtered_df['Event Pred_final'].iloc[0]
+            distancia = filtered_df['Distance'].iloc[0]
+            st_prediction = filtered_df['Pick Pred_final'].iloc[0]
+            st_prob_nat = filtered_df['Pick Prob_Nat'].iloc[0]
+            rotulo = filtered_df['Cat'].iloc[0]
         else:
-            prediction = 'Evento não encontrado ou sem predição'
+            ev_prediction = 'Evento não encontrado ou sem predição'
+            ev_prob_nat = 'N/A'
+            ev_predito = 'N/A'
+            distancia = 'N/A'
+            st_prediction = 'N/A'
+            st_prob_nat = 'N/A'
+            rotulo = 'N/A'
 
-        label = filtered_df['label_cat'].iloc[0] if not filtered_df.empty else 'N/A'
-        prob_nat = filtered_df['prob_nat'].iloc[0] if not filtered_df.empty else 'N/A'
-        codigos = {0: 'Natural', 1: 'Antropogênico'}
+        rotulo  = filtered_df['Cat'].iloc[0] if not filtered_df.empty else 'N/A'
+        ev_prob_nat = filtered_df['Event Prob_Nat'].iloc[0] if not filtered_df.empty else 'N/A'
+        ev_predito = filtered_df['Event Pred_final'].iloc[0] if not filtered_df.empty else 'N/A'
+        label = 'Natural' if rotulo == 'earthquake' else 'Anthropogenic'
 
-        predito = codigos.get(prediction, 'Desconhecido')
-        if prediction != label:
-            self.predText.setStyleSheet('font-weight: bold; color: red')
+        self.nb_picksText.setText(f'#Picks: {len(filtered_df)}')
+
+        if ev_prediction != label:
+            self.ev_predText.setStyleSheet('font-weight: bold; color: red')
         else:
-            self.predText.setStyleSheet('color: black')
+            self.ev_predText.setStyleSheet('color: black')
 
-        self.predText.setText(f'Predição: {predito}')
-        rotulo = codigos.get(label, 'Não classificado')
-        self.labelText.setText(f'Rótulo: {rotulo}')
-        self.probNatText.setText(f'Prob. Natural: {prob_nat}')
+        self.ev_predText.setText(f'Predição: {ev_predito}')
+        self.probNatText.setText(f'Prob. Natural: {ev_prob_nat}')
+        self.stPredText.setText(f'Predição (pick): {st_prediction}')
+        self.stProbText.setText(f'Prob. Natural (pick): {st_prob_nat}')
 
-        distancia = filtered_df['Distance'].iloc[0] if not filtered_df.empty else 'N/A'
-        self.distanceText.setText(f'Distância: {distancia}')
+        if distancia != 'N/A':
+            try:
+                self.distanceText.setText(f'Distância: {distancia:.1f} km')
+            except Exception as e:
+                self.distanceText.setText(f'Distância:{e}')
+        else:
+            self.distanceText.setText(f'Distância: {distancia}')
 
     def loadMseed(self):
         try:
@@ -191,6 +246,46 @@ class SeletorEventoApp(QMainWindow):
             print(f"Erro: Arquivo {self.mseed_file_path} não encontrado.")
         except Exception as e:
             print(f"Erro ao iniciar o Snuffler: {e}")
+
+    def loadSpectre(self):
+        try:
+            if not os.path.isfile(self.mseed_file_path):
+                raise FileNotFoundError
+            ev = self.eventSelector.currentText()
+            net = self.networkSelector.currentText()
+            sta = self.stationSelector.currentText()
+
+            npy = f'{net}_{sta}_{ev}.npy'
+            path = os.path.join('arquivos/espectro', ev, npy)
+            spectrogram = np.load(path, allow_pickle=True)
+            spectrogram = np.moveaxis(spectrogram, 0, 2)
+
+            freqs = list(range(1, 51))
+            time = list(np.arange(0.5, 59.75, 0.25))
+            psd_mat = np.array(spectrogram[:, :, 0])
+
+            if psd_mat.shape != (len(time), len(freqs)):
+                print(f"Dimensões do espectrograma inválidas: {psd_mat.shape}")
+                return
+
+            psd_mat_normalized = 255 * (psd_mat - psd_mat.min()) / (psd_mat.max() - psd_mat.min())
+            psd_mat_normalized = psd_mat_normalized.astype(np.uint8)
+
+            cmap = plt.get_cmap('viridis')
+            color_img = cmap(psd_mat_normalized.T)
+            color_img = (color_img[:, :, :3] * 255).astype(np.uint8)
+
+            img = Image.fromarray(color_img)
+            img = img.transpose(Image.FLIP_TOP_BOTTOM)
+            img.save(f'arquivos/figuras/espectros/{ev}_{net}_{sta}.png')
+            img.show()
+
+            print(f"Spectrogram iniciado com {self.mseed_file_path}")
+        except FileNotFoundError:
+            print(f"Erro: Arquivo {self.mseed_file_path} não encontrado.")
+            os.makedirs('arquivos/figuras/espectros', exist_ok=True)
+        except Exception as e:
+            print(f"Erro ao iniciar o Spectrogram: {e}")
 
 
 def main():
