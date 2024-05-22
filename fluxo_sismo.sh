@@ -37,10 +37,10 @@
 CATALOG=${1:-"catalogo-moho.csv"}
 EVENTS=${EVENTS:-false}
 TREATCATALOG=${TREATCATALOG:-false}
-PREDICT=${PREDICT:-true}
+PREDICT=${PREDICT:-false}
 POSPROCESS=${POSPROCESS:-false}
 MAPS=${MAPS:-false}
-REPORT=${REPORT:-false}
+REPORT=${REPORT:-true}
 
 # ----------------------------- CONSTANTES -------------------------------------
 # DEFINE OS DIRETÓRIOS DE TRABALHO
@@ -130,10 +130,10 @@ fi
 # ----------------- ETAPA DE GERAR RELATORIOS ------------------------
 if [ "$REPORT" = true ]; then
     echo " ----------------- Iniciando o pdflatex .tex ---------------------------- "
-    python fonte/relatorios-relatorios-sismologia/tex/relatorio_preditivo/python/figures.py
-    python fonte/relatorios-relatorios-sismologia/tex/relatorio_preditivo/python/mapa.py
-    pushd fonte/relatorios-relatorios-sismologia
-    pdflatex -output-directory=$HOME/projetos/ClassificadorSismologico/arquivos/relatorios/ relatorio_preditivo.tex 
+    python fonte/relatorio-sismologia/tex/relatorio_preditivo/python/figures.py
+    python fonte/relatorio-sismologia/tex/relatorio_preditivo/python/mapa.py
+    pushd fonte/relatorio-sismologia
+    pdflatex -output-directory=$HOME/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/ relatorio_preditivo.tex 
     popd
 fi
 

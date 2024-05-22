@@ -1,0 +1,17 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ ----------------- Iniciando o pdflatex .tex ---------------------------- 
+/home/ggrl/.pyenv/versions/sismologia/bin/python: can't open file '/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorios-relatorios-sismologia/tex/relatorio_preditivo/python/figures.py': [Errno 2] No such file or directory
+/home/ggrl/.pyenv/versions/sismologia/bin/python: can't open file '/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorios-relatorios-sismologia/tex/relatorio_preditivo/python/mapa.py': [Errno 2] No such file or directory
+./fluxo_sismo.sh: linha 135: pushd: fonte/relatorios-relatorios-sismologia: Arquivo ou diretório inexistente
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 

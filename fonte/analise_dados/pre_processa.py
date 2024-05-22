@@ -18,7 +18,7 @@ import pandas as pd
 from obspy.core import UTCDateTime
 import shapely.geometry
 import geopandas as gpd
-import pygmt
+#import pygmt
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
