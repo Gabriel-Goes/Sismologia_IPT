@@ -35,9 +35,9 @@
 # -----------------------------  VARIÁVEIS -------------------------------------
 
 CATALOG=${1:-"catalogo-moho.csv"}
-EVENTS=${EVENTS:-true}
-TREATCATALOG=${TREATCATALOG:-true}
-PREDICT=${PREDICT:-false}
+EVENTS=${EVENTS:-false}
+TREATCATALOG=${TREATCATALOG:-false}
+PREDICT=${PREDICT:-true}
 POSPROCESS=${POSPROCESS:-false}
 MAPS=${MAPS:-false}
 REPORT=${REPORT:-false}
@@ -102,11 +102,12 @@ if [ "$PREDICT" = true ]; then
     COMMAND='docker run -it --rm -v $HOME/projetos:/app discrim:0.1.0'
     COMMAND_2='python ClassificadorSismologico/fonte/rnc/run.py'
     echo " ----------------- INICIANDO O PREDICT.PY ---------------------------- "
-    i3-msg 'workspace 9'
+    i3-msg 'workspace 2'
     alacritty -e bash -c "tmux new-session -d -s $NOME_TERM; \
     tmux send-keys -t $NOME_TERM \"$COMMAND\" C-m; \
     tmux send-keys -t $NOME_TERM \"$COMMAND_2\" C-m; \
     tmux attach -t $NOME_TERM"
+    sudo chown -R $USER:$USER arquivos/espectros
     echo ''
 fi
 
