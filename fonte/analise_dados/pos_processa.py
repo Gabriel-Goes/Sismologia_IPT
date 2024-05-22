@@ -57,67 +57,50 @@ def plot_box_by_network(df):
     stations = df['Network'].unique()
     freq_rel = df['Network'].value_counts(normalize=True)
     norm = plt.Normalize(freq_rel.min(), freq_rel.max())
-    cmap = sns.cubehelix_palette(
-        dark=.25, light=.75, start=.5, rot=-.75, as_cmap=True
-    )
-    station_colors = {
-        station: cmap(norm(freq_rel[station])) for station in stations
-    }
+    cmap = sns.cubehelix_palette(dark=.25, light=.75, start=.5, rot=-.75, as_cmap=True)
+    station_colors = {station: cmap(norm(freq_rel[station])) for station in stations}
+
     plt.figure(figsize=(27, 9))
     ax = plt.gca()
-    sns.boxplot(
-        x='Network', y='prob_nat',
-        data=df, palette=station_colors, showfliers=False
-    )
-    sns.stripplot(
-        x='Network', y='prob_nat',
-        data=df, color='black', size=1, jitter=True, alpha=0.5
-    )
-    plt.title('Boxplot da Probabilidade Natural por Rede')
-    plt.xlabel('Rede')
-    plt.ylabel('Probabilidade Natural')
-    plt.xticks(rotation=45)
+    sns.boxplot(x='Network', y='Pick Prob_Nat', data=df, palette=station_colors, showfliers=False, ax=ax)
+    sns.stripplot(x='Network', y='Pick Prob_Nat', data=df, color='black', size=1, jitter=True, alpha=0.5, ax=ax)
+
+    ax.set_title('Boxplot da Probabilidade Natural por Rede')
+    ax.set_xlabel('Rede')
+    ax.set_ylabel('Probabilidade Natural')
+    ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
+
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
     sm.set_array([])
     cbar = plt.colorbar(sm, ax=ax, orientation='vertical')
     cbar.set_label(f'Frequência Relativa - Total de Eventos: {df.shape[0]}')
     cbar.set_ticks([freq_rel.min(), freq_rel.max()])
     cbar.set_ticklabels([f'{freq_rel.min():.2f}', f'{freq_rel.max():.2f}'])
-    plt.savefig('arquivos/figuras/pos_processo/boxplot_rede.png')
 
+    plt.grid(True, linestyle='--', linewidth=0.5, color='gray')
+    plt.tight_layout()
+    plt.savefig('arquivos/figuras/pos_process/boxplot_rede.png')
     plt.show()
 
 
 def plot_box_by_station(df):
     df = df.reset_index()
     cmap = sns.cubehelix_palette(
-        dark=.25, light=.75, start=.5, rot=-.75, as_cmap=True)
+        dark=.25, light=.75, start=.5, rot=-.75, as_cmap=True
+    )
     networks = df['Network'].unique()
-
     for network in networks:
         network_data = df[df['Network'] == network]
         freq_rel = network_data['Station'].value_counts(normalize=True)
         norm = plt.Normalize(freq_rel.min(), freq_rel.max())
-        station_colors = {
-            station: cmap(
-                norm(freq_rel[station])
-            ) for station in network_data['Station'].unique()
-        }
+        station_colors = {station: cmap(norm(freq_rel[station])) for station in network_data['Station'].unique()}
         plt.figure(figsize=(10, 6))
-        ax = sns.boxplot(
-            x='Station', y='prob_nat',
-            data=network_data, palette=station_colors, showfliers=False
-        )
-        ax = sns.stripplot(
-            x='Station', y='prob_nat',
-            data=network_data, color='red', jitter=True, size=1.5, alpha=0.5
-        )
-        ax.set_title(
-            f'Probabilidade Natural por Estação para a Rede {network}'
-        )
+        ax = sns.boxplot(x='Station', y='Pick Prob_Nat', data=network_data, palette=station_colors, showfliers=False)
+        sns.stripplot(x='Station', y='Pick Prob_Nat', data=network_data, color='red', jitter=True, size=1.5, alpha=0.5, ax=ax)
+        ax.set_title(f'Probabilidade Natural por Estação para a Rede {network}')
         ax.set_xlabel('Estação')
         ax.set_ylabel('Probabilidade Natural')
-        plt.xticks(rotation=45)
+        ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
         sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
         sm.set_array([])
         cbar = plt.colorbar(sm, orientation='vertical', ax=ax)
@@ -125,27 +108,55 @@ def plot_box_by_station(df):
         ticks = np.linspace(0, 1, num=5)
         cbar.set_ticks(ticks)
         cbar.set_ticklabels([f'{norm(t) * 100:.0f}%' for t in ticks])
-
-        plt.savefig(f'arquivos/figuras/pos_processo/boxplot_{network}.png')
+        plt.grid(True, linestyle='--', linewidth=0.5, color='gray')
+        plt.tight_layout()
+        plt.savefig(f'arquivos/figuras/pos_process/boxplot_{network}.png')
         plt.show()
 
 
 def plot_corr_matrix(df):
-    cols = ['prob_nat', 'Hora',
-            'Longitude', 'Latitude', 'Origem Latitude', 'Origem Longitude',
-            'MLv', 'Distance', 'SNR_P']
+    cols = [
+        'Event Prob_Nat', 'Pick Prob_Nat',
+        'Hora',
+        'Origem Latitude', 'Origem Longitude',
+        'MLv', 'Distance', 'SNR_P', 'Noise'
+    ]
     df = df[cols]
     plt.figure(figsize=(10, 6))
     corr = df.corr()
-    mask = np.triu(np.ones_like(corr, dtype=bool))
     sns.heatmap(
-        corr, mask=mask, cmap='RdBu', annot=True, fmt='.2f', square=True,
-        center=0, linewidths=0.5, linecolor='black'
+        corr, cmap='RdBu', annot=True, fmt='.2f',
+        square=True, center=0, linewidths=0.5, linecolor='black'
     )
     plt.title('Correlation Matrix')
+    plt.grid(True, linestyle='--', linewidth=0.5, color='gray')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_processo/corr_matrix.png')
+    plt.savefig('arquivos/figuras/pos_process/corr_matrix.png')
     plt.show()
+
+
+def corr_matrix_2(df):
+    relevant_columns = [
+        'Distance', 'Origem Latitude', 'Origem Longitude',
+        'Depth/km', 'MLv', 'Pick Prob_Nat',
+        'Event Prob_Nat', 'SNR_P', 'SNR_S', 'Noise', 'p',
+        'Mean SNR_P', 'Mean Distance', 'Hora'
+    ]
+
+    df_corr = df[relevant_columns].dropna()
+    corr_m = df_corr.corr()
+    plt.figure(figsize=(14, 10))
+    sns.heatmap(
+        corr_m, annot=True, fmt=".2f", cmap='coolwarm', center=0,
+        square=True, linewidths=0.5, linecolor='black'
+    )
+    plt.title('Matriz de Correlação')
+    plt.show()
+
+    pick_prob_nat_corr = corr_m['Pick Prob_Nat'].sort_values(ascending=False)
+    event_prob_nat_corr = corr_m['Event Prob_Nat'].sort_values(ascending=False)
+    print(pick_prob_nat_corr)
+    print(event_prob_nat_corr)
 
 
 # --------------------------- PROBABILITIES
@@ -177,7 +188,7 @@ def plot_hist_prob_distribution(df):
 
 def plot_mean_snr_prob_nat(df, n=1):
     df = df[df['SNR_P'] > n]
-    df = df[df['Distance'] < n_]
+    df = df[df['Distance'] < n]
     df.set_index(['Event', 'Station'], inplace=True)
     df = mean_snr_event(df)
     df['Mean SNR_P_cat'] = pd.Categorical(
@@ -201,7 +212,6 @@ def plot_mean_snr_prob_nat(df, n=1):
         f_a = f_abs.loc[a]
         freq = f_rel.loc[r] * 100
         mean_dist = df_[df_['Mean SNR_P_cat'] == r]['Mean Distance'].mean()
-        mean_mag = df_[df_['Mean SNR_P_cat'] == r]['Mean Mag'].mean()
         nb_sta = df[df['Mean SNR_P_cat'] == r].shape[0]/f_a
         color = sm.to_rgba(freq)
         if f_a > 0:
@@ -225,10 +235,6 @@ def plot_mean_snr_prob_nat(df, n=1):
             ax.text(
                 a, prob + 3.5, f'Dist.: {mean_dist:.0f}km',
                 ha='center', va='bottom', fontsize=8
-            )
-            ax.text(
-                a, prob + 4.5,
-                f'Mag.: {mean_mag:.1f}', ha='center', va='bottom', fontsize=8
             )
             prob_min = prob if prob < prob_min else prob_min
         else:
@@ -638,18 +644,6 @@ def mean_snr_event(df):
     return df
 
 
-def mean_mag_event(df):
-    df['Mean Mag'] = df.index.get_level_values('Event').map(
-        df.reset_index().groupby('Event')['MLv'].mean()
-    )
-    df['Mean Mag_cat'] = pd.Categorical(
-        df['Mean Mag'].apply(class_mag),
-        categories=CAT_MAG,
-        ordered=True
-    )
-    return df
-
-
 def mean_dist_event(df):
     df['Mean Distance'] = df.index.get_level_values('Event').map(
         df.reset_index().groupby('Event')['Distance'].mean()
@@ -842,34 +836,16 @@ def plot_region_correlation(df):
 
 
 # --------------------------- CREATE ARQUIVOS
-def carregar_dado(tipo='ncomercial', n=1):
-    evs = pd.read_csv('arquivos/eventos/eventos.csv')
-    evs['file_name'] = evs['Path'].apply(
-        lambda x: x.split('/')[-1].split('.')[0]
-    )
-    df_val = pd.read_csv(
-        f'arquivos/resultados/{tipo}/validation_station_level.csv'
-    )
-    df = pd.merge(df_val, evs, on='file_name', how='left')
-    catalogo = pd.read_csv(
-        'arquivos/catalogo/catalogo-moho_treated.csv'
-    )
-    c_depth = catalogo[catalogo['Depth/km'] > 100]
-    df = df[~df['EventID'].isin(c_depth['EventID'])]
-    df = df[df['MLv'] <= 4]
+def carregar_dado(tipo='ncomercial', n=0, mlv=4):
+    df = pd.read_csv('arquivos/resultados/predito.csv')
+    df = df[df['MLv'] <= mlv]
     df.set_index(['Event', 'Station'], inplace=True)
     df = snr(df, 3)
     df = df[df['SNR_P'] > n]
-    df.replace(
-        [np.inf, -np.inf],
-        np.nan,
-        inplace=True
-    ).dropna(subset=['SNR_P'], inplace=True)
     df = class_region(df)
     df = mean_snr_event(df)
-    df = mean_mag_event(df)
     df = mean_dist_event(df)
-    df.loc[:, 'prob_nat_cat'] = df['prob_nat'].apply(class_prob)
+    df.loc[:, 'prob_nat_cat'] = df['Pick Prob_Nat'].apply(class_prob)
     df.loc[:, 'Distance_cat'] = df['Distance'].apply(class_dist)
     df.loc[:, 'Magnitude_cat'] = df['MLv'].apply(class_mag)
     df.loc[:, 'SNR_P_cat'] = df['SNR_P'].apply(class_snrp)
@@ -879,8 +855,8 @@ def carregar_dado(tipo='ncomercial', n=1):
     df['Coord Origem'] = df[
         ['Origem Latitude', 'Origem Longitude']
     ].apply(lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1)
-    # df.to_csv('arquivos/resultados/ncomercial/df_nc_pos.csv', index=True)
 
+    df.to_csv('arquivos/resultados/analisado.csv')
     return df
 
 

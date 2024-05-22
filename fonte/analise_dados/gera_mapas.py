@@ -2,7 +2,7 @@
 # Python 3.11.8
 # ./Classificador_Sismologico/source/data_analysis/make_maps.py
 
-# ----------------------------  DESCRIPTION  -----------------------------------
+# ----------------------------  DESCRIPTION  ----------------------------------
 # Script para gerar mapas com os dados das predições
 # Autor: Gabriel Góes Rocha de Lima
 # Versão: 0.2

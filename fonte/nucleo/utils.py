@@ -47,13 +47,6 @@ ID_dict = {"MC": '8091',
            "BC": '8089',
            'USP': 'USP'}
 
-try:
-    DATA_CLIENT = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
-except Exception as e:
-    print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
-    sys.exit(1)
-DATA_CLIENT_BKP = fdsn.Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
-
 DELIMT = "-----------------------------------------------------\n"
 DELIMT2 = "#####################################################\n"
 BKP_TIME = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
