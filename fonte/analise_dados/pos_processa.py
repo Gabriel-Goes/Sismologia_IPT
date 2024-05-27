@@ -30,25 +30,38 @@ from analise_dados.testa_filtros import parsewindow, prepare
 
 from nucleo.utils import CAT_DIS, CAT_MAG, CAT_SNR
 
-plt.dpi = 300
-
 
 # --------------------------- FUNCTIONS ---------------------------------- #
-def plot_box_dist(df):
-    fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+def plot_box_dist(df, df_2):
+    fig, axes = plt.subplots(3, 5, figsize=(9, 21))
+    df = df.groupby(['Event']).first()
     sns.histplot(
-        df[df['nature'] == 'Natural']['prob_nat'],
-        bins=20, kde=True, ax=axes[0], color='blue'
+        df[df['Event Pred_final'] == 'Natural']['Event Prob_Nat'],
+        bins=20, kde=True, ax=axes[0, 0], color='blue'
     )
-    axes[0].set_title('Distribuição de prob_nat para Eventos Naturais')
+    axes[0, 0].set_title('Distribuição de prob_nat para Eventos Naturais',
+                         fontsize=7)
     sns.histplot(
-        df[df['nature'] == 'Anthropogenic']['prob_nat'],
-        bins=20, kde=True, ax=axes[1], color='red'
+        df[df['Event Pred_final'] == 'Anthropogenic']['Event Prob_Nat'],
+        bins=20, kde=True, ax=axes[0, 0], color='red'
     )
-    axes[1].set_title('Distribuição de prob_nat para Eventos Antrópicos')
-    sns.boxplot(x='nature', y='Distance', data=df, ax=axes[2])
-    axes[2].set_title('Boxplot da Distância por Natureza do Evento')
-    plt.savefig('arquivos/figuras/pos_process/boxplot_dist.png')
+    sns.boxplot(x='Event Pred_final', y='Distance_Q2', data=df, ax=axes[0, 2])
+    sns.boxplot(x='Event Pred_final', y='MLv', data=df, ax=axes[0, 3])
+    sns.boxplot(x='Event Pred_final', y='Hora', data=df_2, ax=axes[0, 4])
+    sns.boxplot(x='Event Pred_final', y='SNR_P_Q2', data=df, ax=axes[0, 1],
+                showfliers=False)
+
+    sns.boxplot(x='Região Origem', y='Event Prob_Nat', data=df, ax=axes[2, 0])
+    sns.boxplot(x='Num_Estacoes', y='Distance_Q2', data=df, ax=axes[1, 0])
+    sns.boxplot(x='Num_Estacoes', y='Event Prob_Nat', data=df, ax=axes[1, 1],
+                showfliers=False)
+    df_1 = df[df['Num_Estacoes'] > 1]
+    sns.boxplot(x='Num_Estacoes', y='SNR_P_Q2', data=df_1, ax=axes[1, 2],
+                showfliers=False)
+    sns.boxplot(x='Região Origem', y='Event Prob_Nat', data=df, ax=axes[2, 0])
+
+    plt.savefig('arquivos/figuras/pos_process/boxplot_dist.png', dpi=300)
+    plt.tight_layout()
     plt.show()
 
 
@@ -455,11 +468,24 @@ def class_dist(dist):
 
 
 def median_dist_event(df):
-    df['Distance'] = df.index.get_level_values('Event').map(
+    df['Distance_Q2'] = df.index.get_level_values('Event').map(
         df.reset_index().groupby('Event')['Distance'].median()
     )
     df['Distance_Q2_cat'] = pd.Categorical(
         df['Distance_Q2'].apply(class_dist),
+        categories=CAT_DIS,
+        ordered=True
+    )
+    return df
+
+
+def closest_dist_event(df):
+    df.sort_values('Distance', inplace=True)
+    df['Distance_n'] = df.index.get_level_values('Event').map(
+        df.reset_index().groupby('Event')['Distance'].first()
+    )
+    df['Distance_n_cat'] = pd.Categorical(
+        df['Distance_n'].apply(class_dist),
         categories=CAT_DIS,
         ordered=True
     )
@@ -500,9 +526,12 @@ def hist_dist_distrib(df):
     plt.show()
 
 
-def hist_dist_recall_pick(df):
-    f_rel = df['Distance_Q2_cat'].value_counts(normalize=True).sort_index()
-    f_abs = df['Distance_Q2_cat'].value_counts().sort_index()
+def hist_dist_recall_pick(df, n=0, d=400, m=8):
+    df = df[df['SNR_P'] > n]
+    df = df[df['Distance'] < d]
+    df = df[df['MLv'] < m]
+    f_rel = df['Distance_cat'].value_counts(normalize=True).sort_index()
+    f_abs = df['Distance_cat'].value_counts().sort_index()
     max_freq = f_rel.max() * 100
     min_freq = f_rel.min() * 100
     norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
@@ -511,7 +540,7 @@ def hist_dist_recall_pick(df):
     fig, ax = plt.subplots(figsize=(9, 6))
 
     for c in f_rel.index:
-        c_df = df[df['Distance_Q2_cat'] == c]
+        c_df = df[df['Distance_cat'] == c]
         TP = c_df[(c_df['Event Pred'].astype(int) == 0) & (c_df['Label'] == 0)].shape[0]
         FN = c_df[(c_df['Event Pred'].astype(int) == 1) & (c_df['Label'] == 0)].shape[0]
         if TP + FN == 0:
@@ -557,12 +586,15 @@ def hist_dist_recall_pick(df):
     plt.xlabel('Epicentral Distance (km)')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_process/hist_ev_distance.png')
+    plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_hist_ev_distance.png', dpi=300)
     plt.show()
     plt.close()
 
 
-def hist_dist_recall_event(df):
+def hist_dist_recall_event(df, n=0, d=400, m=8):
+    df = df[df['SNR_P'] > n]
+    df = df[df['Distance'] < d]
+    df = df[df['MLv'] < m]
     df.sort_values('Distance', inplace=True)
     df = df.groupby(level='Event').first()
     f_rel = df['Distance_cat'].value_counts(normalize=True).sort_index()
@@ -573,6 +605,7 @@ def hist_dist_recall_event(df):
     sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
     sm.set_array([])
     fig, ax = plt.subplots(figsize=(9, 6))
+    rc_min = 90
 
     for c in f_rel.index:
         c_df = df[df['Distance_cat'] == c]
@@ -583,6 +616,7 @@ def hist_dist_recall_event(df):
             rc = 0
         else:
             rc = TP / (TP + FN) * 100
+            rc_min = rc if rc < rc_min else rc_min
             freq = f_rel.loc[c] * 100
             color = sm.to_rgba(freq)
             ax.bar(c, rc, color=color, edgecolor='black', width=0.25)
@@ -621,17 +655,24 @@ def hist_dist_recall_event(df):
         fontsize=8,
         rotation=45
     )
-    plt.ylim(50, 100)
+    plt.suptitle('Recall por Classes de Distância Epicentral Mais Próxima')
+    plt.title(f'Total de Eventos: {df.shape[0]} | SNR_P > {n} | Distância < {d} | MLv < {m}')
+    plt.ylim(rc_min - 5, 103)
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
     plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
     plt.gca().xaxis.grid(False)
     plt.xlabel('Nearest Pick To Epicentral Distance (km)')
     plt.ylabel('Event Recall (%)')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_process/hist_ev_distance_event.png')
+    plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_hist_ev_distance_event.png')
     plt.show()
 
 
-def box_dist_event_prob(df):
+def box_dist_event_prob(df, n=0, d=400, m=8):
+    df = df[df['SNR_P'] > n]
+    df = df[df['Distance'] < d]
+    df = df[df['MLv'] < m]
     df.sort_values('Distance', inplace=True)
     df_ = df.groupby(level='Event').first()
     f_rel = df_['Distance_cat'].value_counts(normalize=True).sort_index()
@@ -651,11 +692,10 @@ def box_dist_event_prob(df):
         prob_data = c_df['Event Prob_Nat'] * 100
         box_data.append(prob_data)
         freq = f_rel.loc[c] * 100
-        color = color_map[c]
+        color = sm.to_rgba(freq)
         bp = ax.boxplot(
-            prob_data,
-            positions=[pos],
-            widths=0.5, patch_artist=True)
+            prob_data, positions=[pos], widths=0.5, patch_artist=True
+        )
         for patch in bp['boxes']:
             patch.set_facecolor(color)
             patch.set_edgecolor('black')
@@ -673,17 +713,17 @@ def box_dist_event_prob(df):
         for flier in bp['fliers']:
             flier.set(marker='.', color='black', alpha=0.5)
 
-        TP = c_df[(c_df['Event Pred'].astype(int) == 0) & (c_df['Label'] == 0)].shape[0]
-        FN = c_df[(c_df['Event Pred'].astype(int) == 1) & (c_df['Label'] == 0)].shape[0]
+        TP = c_df[(c_df['Event Pred'] == 0) & (c_df['Label'] == 0)].shape[0]
+        FN = c_df[(c_df['Event Pred'] == 1) & (c_df['Label'] == 0)].shape[0]
         if TP + FN == 0:
             rc = 0
         else:
             rc = TP / (TP + FN) * 100
-            freq = f_rel.loc[c] * 100
             ax.text(
                 pos, 102, f'{rc:.2f}%',
                 ha='center', va='bottom', fontsize=7, fontweight='bold'
             )
+
     plt.text(
         -0.9, 102, 'Recall ->',
         ha='center', va='bottom', fontsize=7, fontweight='bold')
@@ -709,19 +749,22 @@ def box_dist_event_prob(df):
         fontsize=8,
         rotation=45
     )
-
     cbar = fig.colorbar(sm, ax=ax)
     cbar.ax.set_ylabel('Frequency (%)')
     cbar.set_ticks(np.linspace(min_freq, max_freq, num=12))
     cbar.set_ticklabels(np.linspace(min_freq, max_freq, num=12).astype(int))
     plt.suptitle('Boxplot da Probabilidade de Evento Ser Natural por Classes de Distância Epicentral Mais Próxima')
-    plt.title(f'Total de Eventos: {df_.shape[0]}')
+    plt.title(
+        f'Total de Eventos: {df_.shape[0]} | SNR_P > {n} | Distância < {d} | MLv < {m}',
+        fontsize=7
+    )
     plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
     plt.gca().xaxis.grid(False)
+    plt.axhline(y=50, color='red', linestyle='--', linewidth=0.25)
     plt.xlabel('Nearest Pick To Epicentral Distance (km)')
     plt.ylabel('Probability of Natural Event (%)')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_process/boxplot_ev_distance_event.png')
+    plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_boxplot_ev_distance_event.png')
     plt.show()
 
 
@@ -737,7 +780,7 @@ def class_mag(mag):
         return '>=3'
 
 
-def plot_hist_magnitude_distribution(df):
+def hist_magnitude_distribution(df):
     plt.figure(figsize=(10, 6))
     df['Magnitude_cat'] = pd.Categorical(
         df['Magnitude_cat'],
@@ -754,8 +797,11 @@ def plot_hist_magnitude_distribution(df):
     plt.show()
 
 
-def plot_hist_magnitude_recall(df):
-    fig, axis = plt.subplots(figsize=(10, 6))
+def hist_magnitude_recall(df, n=0, d=400, m=8):
+    df = df[df['SNR_P'] > n]
+    df = df[df['Distance'] < d]
+    df = df[df['MLv'] < m]
+    df = df.groupby(level='Event').first()
     df['Magnitude_cat'] = pd.Categorical(
         df['Magnitude_cat'], categories=CAT_MAG, ordered=True
     )
@@ -765,12 +811,13 @@ def plot_hist_magnitude_recall(df):
     norm = mcolors.Normalize(vmin=0, vmax=max_freq)
     sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
     sm.set_array([])
-    rc_min = 0
+    rc_min = 90
 
+    fig, axis = plt.subplots(figsize=(10, 6))
     for c in f_rel.index:
         df_c = df[df['Magnitude_cat'] == c]
-        TP = df_c[(df_c['pred'] == 0) & (df_c['Label'] == 0)].shape[0]
-        FN = df_c[(df_c['pred'] == 1) & (df_c['Label'] == 0)].shape[0]
+        TP = df_c[(df_c['Event Pred'] == 0) & (df_c['Label'] == 0)].shape[0]
+        FN = df_c[(df_c['Event Pred'] == 1) & (df_c['Label'] == 0)].shape[0]
         rc = 100 * TP / (TP + FN) if TP + FN != 0 else 0
         freq = f_rel.loc[c] * 100
         color = sm.to_rgba(freq)
@@ -781,6 +828,8 @@ def plot_hist_magnitude_recall(df):
     cbar = fig.colorbar(sm, ax=axis)
     cbar.ax.set_ylabel('Frequency (%)')
     cbar.set_ticks([min_freq, max_freq])
+    plt.suptitle('Recall por Classes de Magnitude')
+    plt.title(f'Total de Eventos: {df.shape[0]}')
     plt.xticks(np.arange(len(f_rel.index)), labels=f_rel.index)
     plt.ylim(rc_min - 5, 100)
     plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
@@ -788,6 +837,94 @@ def plot_hist_magnitude_recall(df):
     plt.ylabel('Recall (%)')
     plt.tight_layout()
     plt.savefig('arquivos/figuras/pos_process/dist_ev_cat_mag_recall.png')
+    plt.show()
+
+
+def box_mag_event_prob(df, n=0, d=400, m=8):
+    df = df[df['SNR_P'] > n]
+    df = df[df['Distance'] < d]
+    df = df[df['MLv'] < m]
+    df.sort_values('MLv', inplace=True)
+    df_ = df.groupby(level='Event').first()
+    df['Magnitude_cat'] = pd.Categorical(
+        df['Magnitude_cat'], categories=CAT_MAG, ordered=True
+    )
+
+    f_rel = df_['Magnitude_cat'].value_counts(normalize=True).sort_index()
+    max_freq = f_rel.max() * 100
+    min_freq = f_rel.min() * 100
+    norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
+    sm = plt.cm.ScalarMappable(cmap='viridis', norm=norm)
+    sm.set_array([])
+    fig, ax = plt.subplots(figsize=(19, 9))
+    box_data = []
+    total_rc = 0
+    positions = np.arange(len(f_rel.index))
+    print(f_rel.index)
+
+    for pos, c in zip(positions, f_rel.index):
+        c_df = df_[df_['Magnitude_cat'] == c]
+        prob_data = c_df['Event Prob_Nat'] * 100
+        box_data.append(prob_data)
+        freq = f_rel.loc[c] * 100
+        color = sm.to_rgba(freq)
+        bp = ax.boxplot(
+            prob_data, positions=[pos], widths=0.5, patch_artist=True
+        )
+        for patch in bp['boxes']:
+            patch.set_facecolor(color)
+            patch.set_edgecolor('black')
+        for whisker in bp['whiskers']:
+            whisker.set_color('black')
+        for cap in bp['caps']:
+            cap.set_color('black')
+        for median in bp['medians']:
+            median.set_color('red')
+            ax.text(
+                pos+0.35, median.get_ydata()[0],
+                f'{median.get_ydata()[0]:.2f}%',
+                ha='center', va='bottom', fontsize=5
+            )
+        for flier in bp['fliers']:
+            flier.set(marker='.', color='black', alpha=0.5)
+
+        TP = c_df[(c_df['Event Pred'] == 0) & (c_df['Label'] == 0)].shape[0]
+        FN = c_df[(c_df['Event Pred'] == 1) & (c_df['Label'] == 0)].shape[0]
+        if TP + FN == 0:
+            rc = 0
+        else:
+            rc = TP / (TP + FN) * 100
+            ax.text(
+                pos, 102, f'{rc:.2f}%',
+                ha='center', va='bottom', fontsize=7, fontweight='bold'
+            )
+
+    plt.text(
+        -0.25, 102, 'Recall ->',
+        ha='center', va='bottom', fontsize=7, fontweight='bold')
+
+    plt.xticks(
+        np.arange(len(f_rel.index)),
+        labels=f_rel.index,
+        fontsize=8,
+        rotation=45
+    )
+    cbar = fig.colorbar(sm, ax=ax)
+    cbar.ax.set_ylabel('Frequency (%)')
+    cbar.set_ticks(np.linspace(min_freq, max_freq, num=4))
+    cbar.set_ticklabels(np.linspace(min_freq, max_freq, num=4).astype(int))
+    plt.suptitle('Boxplot da Probabilidade de Evento Ser Natural por Classes de Magnitude')
+    plt.title(
+        f'Total de Eventos: {df_.shape[0]} | SNR_P > {n} | Distância < {d} | MLv < {m}',
+        fontsize=7
+    )
+    plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
+    plt.gca().xaxis.grid(False)
+    plt.axhline(y=50, color='red', linestyle='--', linewidth=0.25)
+    plt.xlabel('Magnitude')
+    plt.ylabel('Probability of Natural Event (%)')
+    plt.tight_layout()
+    plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_boxplot_ev_mag_event.png')
     plt.show()
 
 
@@ -862,14 +999,11 @@ def hist_sta_recall_event(df, n=0, d=400, m=8):
     df = df[df['SNR_P'] > n]
     df = df[df['Distance'] < d]
     df = df[df['MLv'] < m]
-    df = mean_snr_event(df)
     df['Num_Estacoes'] = pd.Categorical(
         df['Num_Estacoes'],
         categories=df['Num_Estacoes'].unique(),
         ordered=True
     )
-    df.loc[:, 'SNR_P_cat'] = df['SNR_P'].apply(class_snrp)
-    df.loc[:, 'Mean SNR_P_cat'] = df['Mean SNR_P'].apply(class_snrp)
     df_ = df.groupby(level='Event').first()
     df_.sort_values('Num_Estacoes', inplace=True)
     f_rel = df_['Num_Estacoes'].value_counts(normalize=True).sort_index()
@@ -891,8 +1025,8 @@ def hist_sta_recall_event(df, n=0, d=400, m=8):
             total += f_a
             df_c = df_[df_['Num_Estacoes'] == r]
             descrito = df_c.describe()
-            TP = df_c[(df_c['Event Pred'] == 0.0) & (df_c['Label'] == 0)].shape[0]
-            FN = df_c[(df_c['Event Pred'] == 1.0) & (df_c['Label'] == 0)].shape[0]
+            TP = df_c[(df_c['Event Pred'] == 0) & (df_c['Label'] == 0)].shape[0]
+            FN = df_c[(df_c['Event Pred'] == 1) & (df_c['Label'] == 0)].shape[0]
             rc = TP / (TP + FN) * 100
             rc_max = rc if rc > rc_max else rc_max
             rc_min = rc if rc < rc_min else rc_min
@@ -981,31 +1115,42 @@ def snr(eventos: pd.DataFrame,
     return eventos
 
 
-def mean_snr_event(df):
-    df['Mean SNR_P'] = df.index.get_level_values('Event').map(
-        df.reset_index().groupby('Event')['SNR_P'].mean()
+def median_snrp_event(df):
+    try:
+        df.set_index(['Event', 'Station'], inplace=True)
+    except KeyError:
+        pass
+
+    df['SNR_P_Q2'] = df.index.get_level_values('Event').map(
+        df.reset_index().groupby('Event')['SNR_P'].median()
     )
-    df['Mean SNR_P_cat'] = pd.Categorical(
-        df['Mean SNR_P'].apply(class_snrp),
+    df['SNR_P_Q2_cat'] = pd.Categorical(
+        df['SNR_P_Q2'].apply(class_snrp),
         categories=CAT_SNR,
         ordered=True
     )
     return df
 
 
-def class_snrp(snr):
-    if snr < 1:
+def class_snrp(snrp):
+    if snrp < 1:
         return '< 1'
-    else:
+    elif 1 <= snrp < 2:
         snr_c = 1
+        while snr_c < 2:
+            if snr_c <= snrp < snr_c + .25:
+                return f'[{snr_c}-{snr_c + .25}['
+            snr_c += .25
+    elif 2 <= snrp < 15:
+        snr_c = 2
         while snr_c < 15:
-            if snr_c <= snr < snr_c + 1:
+            if snr_c <= snrp < snr_c + 1:
                 return f'[{snr_c}-{snr_c + 1}['
             snr_c += 1
-        return '>= 15'
+    return '>= 15'
 
 
-def plot_hist_snr_recall_pick(df):
+def hist_snr_recall_pick(df):
     fig, ax = plt.subplots(figsize=(10, 6))
     df['SNR_P_cat'] = pd.Categorical(
         df['SNR_P_cat'], categories=CAT_SNR, ordered=True
@@ -1029,9 +1174,9 @@ def plot_hist_snr_recall_pick(df):
             TP = df_c[(df_c['Pick Pred'] == 0) & (df_c['Label'] == 0)].shape[0]
             FN = df_c[(df_c['Pick Pred'] == 1) & (df_c['Label'] == 0)].shape[0]
             rc = 100 * TP / (TP + FN) if TP + FN != 0 else 0
-            ax.bar(c, rc, color=color, edgecolor='black', width=0.5)
-            ax.text(c, rc + 0.01, f'{rc:.2f}%', ha='center', va='bottom')
-            ax.text(b, rc + 1.5, f'{f_a}', ha='center', va='bottom')
+            ax.bar(c, rc, color=color, edgecolor='black', width=0.5, label=f'{c}')
+            ax.text(c, rc + 0.01, f'{rc:.2f}%', ha='center', va='bottom', fontsize=6, fontweight='bold')
+            ax.text(b, rc + 1.5, f'{f_a}', ha='center', va='bottom', fontsize=8)
             rc_min = rc if rc < rc_min else rc_min
         else:
             ax.bar(c, 0, color=sm.to_rgba(0), edgecolor='black', width=0.5)
@@ -1039,10 +1184,12 @@ def plot_hist_snr_recall_pick(df):
             ax.text(b, 0 + 1.5, '0', ha='center', va='bottom')
 
     cbar = fig.colorbar(sm, ax=ax)
-    plt.title(f'Recall por SNR_P Pick - Total de Picks: {total}')
     cbar.ax.set_ylabel('Frequency (%)')
     cbar.set_ticks([min_freq, max_freq])
-    plt.ylim(rc_min - 5, 110)
+    plt.suptitle(f'Recall por SNR_P Pick')
+    plt.title(f'Total de Picks: {total}', fontsize=8)
+    plt.xticks(np.arange(len(f_rel.index)), labels=f_rel.index, rotation=90)
+    plt.ylim(rc_min - 5, 105)
     plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
     plt.xlabel('SNR_P')
     plt.ylabel('Recall (%)')
@@ -1051,14 +1198,17 @@ def plot_hist_snr_recall_pick(df):
     plt.show()
 
 
-def plot_mean_snr_recall_event(df):
-    df['Mean SNR_P_cat'] = pd.Categorical(
-        df['Mean SNR_P_cat'], categories=CAT_SNR, ordered=True
+def hist_snr_recall_event(df, n=0, d=400, m=8):
+    df = df[df['SNR_P'] > n]
+    df = df[df['Distance'] < d]
+    df = df[df['MLv'] < m]
+    df = median_snrp_event(df)
+    df['SNR_P_cat'] = pd.Categorical(
+        df['SNR_P_cat'], categories=CAT_SNR, ordered=True
     )
     df_ = df.groupby(level='Event').first()
-    df_.sort_values('Mean SNR_P', inplace=True)
-    f_rel = df_['Mean SNR_P_cat'].value_counts(normalize=True).sort_index()
-    f_abs = df_['Mean SNR_P_cat'].value_counts().sort_index()
+    f_rel = df_['SNR_P_Q2_cat'].value_counts(normalize=True).sort_index()
+    f_abs = df_['SNR_P_Q2_cat'].value_counts().sort_index()
     max_freq = f_rel.max() * 100
     min_freq = f_rel.min() * 100
     norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
@@ -1066,37 +1216,36 @@ def plot_mean_snr_recall_event(df):
     sm.set_array([])
     rc_min = 90
     total = 0
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(19, 9))
     for r, a in zip(f_rel.index, f_abs.index):
         f_a = f_abs.loc[a]
         freq = f_rel.loc[r] * 100
-        mean_dist = df_[df_['Mean SNR_P_cat'] == r]['Mean Distance'].mean()
-        nb_sta = df[df['Mean SNR_P_cat'] == r].shape[0]/f_a
+        median_distance = df_[df_['SNR_P_Q2_cat'] == r]['Distance'].median()
+        nb_sta = df[df['SNR_P_Q2_cat'] == r].shape[0]/f_a
         color = sm.to_rgba(freq)
         if f_a > 0:
             total += f_a
-            df_c = df_[df_['Mean SNR_P_cat'] == r]
+            df_c = df_[df_['SNR_P_Q2_cat'] == r]
             TP = df_c[(df_c['Pick Pred'] == 0) & (df_c['Label'] == 0)].shape[0]
             FN = df_c[(df_c['Pick Pred'] == 1) & (df_c['Label'] == 0)].shape[0]
             rc = 100 * TP / (TP + FN) if TP + FN != 0 else 0
-            # Reduce font size of ax.text
-            ax.bar(r, rc, color=color, edgecolor='black', width=0.5)
+            ax.bar(r, rc, color=color, edgecolor='black', width=0.25)
             ax.text(
-                r, rc + 0.01, f'{rc:.2f}%',
-                ha='center', va='bottom', fontsize=8, fontweight='bold'
+                r, rc + 0.01, f'{rc:.1f}%',
+                ha='center', va='bottom', fontsize=7, fontweight='bold'
             )
             ax.text(
-                a, rc + 1.5,
-                f'#Freq.: {f_a}', ha='center', va='bottom',
-                fontsize=8
+                a, rc + 3.5,
+                f'#{f_a}', ha='center', va='bottom',
+                fontsize=6
             )
             ax.text(
-                a, rc + 2.5, f'#Est.: {nb_sta:.1f}',
-                ha='center', va='bottom', fontsize=8
+                a, rc + 2.5, f'Est.: {nb_sta:.1f}',
+                ha='center', va='bottom', fontsize=6
             )
             ax.text(
-                a, rc + 3.5, f'Dist.: {mean_dist:.0f}km',
-                ha='center', va='bottom', fontsize=8
+                a, rc + 1.5, f'Dist.: {median_distance:.0f}km',
+                ha='center', va='bottom', fontsize=6
             )
             rc_min = rc if rc < rc_min else rc_min
         else:
@@ -1105,15 +1254,16 @@ def plot_mean_snr_recall_event(df):
             ax.text(a, 0 + 1.5, '0', ha='center', va='bottom')
 
     cbar = fig.colorbar(sm, ax=ax)
-    plt.title(f'Recall por Média de SNR_P por Evento - Total {df_.shape[0]}')
     cbar.ax.set_ylabel('Frequency (%)')
     cbar.set_ticks([min_freq, max_freq])
+    plt.suptitle('Recall por Média de SNR_P por Evento')
+    plt.title(f'Total {df_.shape[0]} | SNR_P > {n} | Distância < {d} | MLv < {m}')
+    plt.xticks(np.arange(len(f_rel.index)), labels=f_rel.index, rotation=90)
     plt.ylim(rc_min - 5, 105)
     plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
     plt.xlabel('Média de SNR_P')
     plt.ylabel('Recall (%)')
-    plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_process/dist_mean_snrs_recall.png')
+    plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_dist_mean_snrs_recall.png')
     plt.show()
 
 
@@ -1130,17 +1280,20 @@ def scatter_snr_prob(df):
     plt.show()
 
 
-def recall_event(df):
+def recall_event(df, d=400, m=8):
     plt.figure(figsize=(10, 6))
-    n = 1
+    df = df[df['Distance'] < d]
+    df = df[df['MLv'] < m]
+    total_i = df.groupby(level='Event').first().shape[0]
+    n = 0
     while n < 15:
         df = df[df['SNR_P'] > n]
-        df = mean_snr_event(df)
-        df['Mean SNR_P_cat'] = pd.Categorical(
-            df['Mean SNR_P_cat'], categories=CAT_SNR, ordered=True
+        df = median_snrp_event(df)
+        df['SNR_P_Q2_cat'] = pd.Categorical(
+            df['SNR_P_Q2_cat'], categories=CAT_SNR, ordered=True
         )
         df.loc[:, 'SNR_P_cat'] = df['SNR_P'].apply(class_snrp)
-        df.loc[:, 'Mean SNR_P_cat'] = df['Mean SNR_P'].apply(class_snrp)
+        df.loc[:, 'SNR_P_Q2_cat'] = df['SNR_P_Q2'].apply(class_snrp)
 
         # by event, sum the pred_nat value and divide by the number of stations
         Events_pred = df.groupby(level='Event').apply(
@@ -1156,11 +1309,14 @@ def recall_event(df):
         rec_score = recall_score(Events_label, Events_pred)
         plt.plot(n, rec_score, 'ro')
         n += 1
-    plt.title('Recall por Evento')
+
+    total_f = df.groupby(level='Event').first().shape[0]
+    plt.suptitle('Variação do Recall por Evento com SNR_P Médio Mínimo')
+    plt.title(f'Total de Eventos: {total_i} ~ {total_f} | Distância < {d} | MLv < {m}')
     plt.xlabel('SNR_P')
     plt.ylabel('Recall')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_process/recall_event.png')
+    plt.savefig(f'arquivos/figuras/pos_process/{d}{m}_recall_event.png')
     plt.show()
 
 
@@ -1175,13 +1331,15 @@ def class_region(df):
         )],
         crs='EPSG:4326'
     )
-    region_origem = gpd.sjoin(coord_origem, regions, how='left', op='within')
+    region_origem = gpd.sjoin(
+        coord_origem, regions, how='left', predicate='within'
+    )
     df['Região Origem'] = region_origem['nome'].values
 
     return df
 
 
-def plot_region_correlation(df):
+def region_correlation(df):
     df = df.reset_index()
     df = class_region(df)
     df = df[df['Região Origem'].notna()]
@@ -1195,13 +1353,13 @@ def plot_region_correlation(df):
     plt.figure(figsize=(18, 6))
     plt.suptitle('Correlação entre Coordenada e Probabilidade de ser Natural')
     sns.boxplot(
-        x='Região Origem', y='prob_nat', data=df,
+        x='Região Origem', y='Event Prob_Nat', data=df,
         palette=orig_colors, showfliers=False, order=order_orig,
         medianprops={'color': 'yellow'}, whiskerprops={'color': 'black'},
         meanline=True, showmeans=True, meanprops={'color': 'yellow'}
     )
     sns.stripplot(
-        x='Região Origem', y='prob_nat', data=df, color='red',
+        x='Região Origem', y='Event Prob_Nat', data=df, color='red',
         size=1.5, jitter=True, alpha=0.5, order=order_orig
     )
     plt.title(
@@ -1225,29 +1383,17 @@ def plot_region_correlation(df):
 
 
 # --------------------------- CREATE ARQUIVOS
-def carregar_dado(tipo='ncomercial', n=0, mlv=4):
+def carregar_dado(w=3, n=0, d=400, m=8):
     df = pd.read_csv('arquivos/resultados/predito.csv')
+    df = df[df['MLv'] < m]
+    df = df[df['Distance'] < d]
     df.dropna(subset=['Pick Prob_Nat'], inplace=True)
     df['Label'] = df['Cat'].apply(lambda x: 0 if x == 'earthquake' else 1)
-    df = df[df['MLv'] <= mlv]
+    df['Event Pred'] = df['Event Pred'].astype(int)
     df.set_index(['Event', 'Station'], inplace=True)
-    df = snr(df, 3)
-    df = df[df['SNR_P'] > n]
-    df = class_region(df)
-    df = mean_snr_event(df)
-    df = median_dist_event(df)
-    df.loc[:, 'prob_nat_cat'] = df['Pick Prob_Nat'].apply(class_prob)
-    df.loc[:, 'Distance_Q2_cat'] = df['Distance_Q2'].apply(class_dist)
-    df.loc[:, 'Magnitude_cat'] = df['MLv'].apply(class_mag)
-    df.loc[:, 'SNR_P_cat'] = df['SNR_P'].apply(class_snrp)
-    df.loc[:, 'Mean SNR_P_cat'] = df['Mean SNR_P'].apply(class_snrp)
+    df = snr(df, w)
+    df.to_csv(f'arquivos/resultados/{w}{n}{d}{m}_analisado.csv')
 
-    df['Hora'] = df['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
-    df['Coord Origem'] = df[
-        ['Origem Latitude', 'Origem Longitude']
-    ].apply(lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1)
-
-    df.to_csv('arquivos/resultados/analisado.csv')
     return df
 
 
@@ -1262,19 +1408,17 @@ def comercial(df):
     # ----------------------------------
     # hist_station_distribution(df_cm)
     hist_sta_recall_event(df_cm, 0, 400, 8)
-    '''
     n = 0
     while n < 10:
         n += 0.25
-        hist_stations_recall_event(df_nm, n, 400, 8)
-    '''
+        hist_sta_recall_event(df_cm, n, 400, 8)
     # ----------------------------------
     # hist_dist_distribution(df_cm)
-    hist_dist_recall(df_cm)
-    '''
+    hist_dist_recall_event(df_cm)
+    hist_dist_recall_pick(df_cm)
     # ----------------------------------
-    plot_hist_magnitude_distribution(df_cm)
-    plot_hist_magnitude_recall(df_cm)
+    hist_magnitude_distribution(df_cm)
+    hist_magnitude_recall(df_cm)
     # ----------------------------------
     plot_hist_snr_recall_pick(df_cm)
     plot_mean_snr_recall_event(df_cm)
@@ -1283,51 +1427,67 @@ def comercial(df):
     plot_box_by_network(df_cm)
     plot_box_by_station(df_cm)
     plot_region_correlation(df_cm)
-    '''
     return df_cm
 
 
 def ncomercial(df):
     df_nc = df[(df['Hora'] < 11) | (df['Hora'] >= 22)]
-    # hist_hour_distribution(df_nc)
+    '''
     # hist_hour_recall_pick(df_nc)
     hist_hour_recall_event(df_nc)
     # ----------------------------------
-    '''
-    hist_station_distribution(df_nc)
-    hist_stations_recall_event(df_nc, 0, 400, 8)
+    hist_sta_recall_event(df_nc, 0, 400, 8)
     n = 0
-    while n < 10:
+    while n < 2:
         n += 0.25
-        hist_stations_recall_event(df_nc, n, 400, 8)
-    '''
+        hist_sta_recall_event(df_nc, n, 400, 8)
+        while n >= 2 and n < 10:
+            n += 1
+            hist_sta_recall_event(df_nc, n, 400, 8)
     # ----------------------------------
     # plot_hist_distance_distribution(df)
-    hist_dist_recall(df_nc)
-    '''
+    hist_dist_recall_pick(df_nc)
+    hist_dist_recall_event(df_nc)
+    box_dist_event_prob(df_nc, 2, 400, 8)
+    n = 0
+    while n < 2:
+        n += 0.25
+        box_dist_event_prob(df_nc, n, 400, 8)
+        while n >= 2 and n < 10:
+            n += 1
+            box_dist_event_prob(df_nc, n, 400, 8)
     # ----------------------------------
-    plot_hist_magnitude_distribution(df)
-    plot_hist_magnitude_recall(df_nc)
+    hist_magnitude_recall(df_nc)
+    box_mag_event_prob(df_nc, 0, 400, 8)
     # ----------------------------------
-    plot_hist_snr_recall_pick(df_nc)
-    plot_mean_snr_recall_event(df_nc)
+    hist_snr_recall_pick(df_nc)
+    hist_snr_recall_event(df_nc)
     # ----------------------------------
-    plot_box_dist(df_nc)
-    plot_box_by_network(df)
-    plot_box_by_station(df)
-    plot_region_correlation(df_nc)
+    region_correlation(df_nc)
     '''
     return df_nc
 
 
 # -------------------------------- MAIN ------------------------------------- #
 def main():
-    df = carregar_dado()
-
+    # df = carregar_dado()
+    df = pd.read_csv('arquivos/resultados/analisado.csv', sep=';')
+    df['Hora'] = df['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
+    df['Coord Origem'] = df[['Origem Latitude', 'Origem Longitude']].apply(lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1)
+    df = class_region(df)
+    df = median_snrp_event(df)
+    df = median_dist_event(df)
+    df.loc[:, 'Magnitude_cat'] = df['MLv'].apply(class_mag)
+    df.loc[:, 'Distance_cat'] = df['Distance'].apply(class_dist)
+    df.loc[:, 'SNR_P_cat'] = df['SNR_P'].apply(class_snrp)
+    df.loc[:, 'Pick Prob_Nat_cat'] = df['Pick Prob_Nat'].apply(class_prob)
+    df.loc[:, 'Num_Estacoes'] = df.index.get_level_values('Event').map(
+        df.reset_index().groupby('Event').size()
+    )
     df_nc = ncomercial(df)
-    df_cm = comercial(df)
+    # df_cm = comercial(df)
 
-    return df_nc, df_cm
+    return df, df_nc
 
 
 if __name__ == '__main__':
