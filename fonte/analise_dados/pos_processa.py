@@ -356,19 +356,19 @@ def hist_hour_recall_pick(df):
         if rc != 0:
             y_min = rc if rc < y_min else y_min
             y_max = rc if rc > y_max else y_max
-        freq = f_rel.loc[h] * 100
-        cor = cmap(norm(freq))
-        ax.bar(
-            h, rc, color=cor, edgecolor='black', width=0.5, align='center'
-        )
-        ax.text(
-            h, rc + 0.5, f'{rc:.0f}%', fontsize=8,
-            ha='center', va='bottom', color='black'
-        )
-        ax.text(
-            h, rc + 1.5, f'{f_abs.loc[h]}', fontsize=8,
-            ha='center', va='bottom', color='black'
-        )
+            freq = f_rel.loc[h] * 100
+            cor = cmap(norm(freq))
+            ax.bar(
+                h, rc, color=cor, edgecolor='black', width=0.5, align='center'
+            )
+            ax.text(
+                h, rc + 0.5, f'{rc:.0f}%', fontsize=8,
+                ha='center', va='bottom', color='black'
+            )
+            ax.text(
+                h, rc + 1.5, f'{f_abs.loc[h]}', fontsize=8,
+                ha='center', va='bottom', color='black'
+            )
     cbar = fig.colorbar(sm, ax=ax)
     cbar.ax.set_ylabel('Frequency (%)')
     cbar.set_ticks([min_freq, max_freq])
@@ -412,19 +412,19 @@ def hist_hour_recall_event(df):
             rc = TP / (TP + FN) * 100
         if rc != 0:
             y_min = rc if rc < y_min else y_min
-        freq = f_rel.loc[h] * 100
-        cor = cmap(norm(freq))
-        ax.bar(
-            h, rc, color=cor, edgecolor='black', width=0.5, align='center'
-        )
-        ax.text(
-            h, rc + 0.5, f'{rc:.0f}%', ha='center', va='bottom', color='black',
-            fontsize=8
-        )
-        ax.text(
-            h, rc + 1.5, f'{f_abs.loc[h]}', ha='center', va='bottom',
-            color='black', fontsize=8
-        )
+            freq = f_rel.loc[h] * 100
+            cor = cmap(norm(freq))
+            ax.bar(
+                h, rc, color=cor, edgecolor='black', width=0.5, align='center'
+            )
+            ax.text(
+                h, rc + 0.5, f'{rc:.0f}%', ha='center', va='bottom', color='black',
+                fontsize=8
+            )
+            ax.text(
+                h, rc + 1.5, f'{f_abs.loc[h]}', ha='center', va='bottom',
+                color='black', fontsize=8
+            )
 
     cbar = fig.colorbar(sm, ax=ax)
     cbar.ax.set_ylabel('Frequency (%)')
@@ -497,7 +497,8 @@ def plot_hist_distance_distribution(df):
     plt.show()
 
 
-def plot_hist_distance_recall(df):
+def plot_hist_distance_recall_event(df):
+    # AJUSTAR EVENTO PARA EVENT E NÃO PARA CADA PCIK
     df['Distance_cat'] = pd.Categorical(
         df['Distance_cat'], categories=CAT_DIS, ordered=True
     )
@@ -511,8 +512,8 @@ def plot_hist_distance_recall(df):
 
     for c in f_rel.index:
         c_df = df[df['Distance_cat'] == c]
-        TP = c_df[(c_df['pred'] == 0) & (c_df['Label'] == 0)].shape[0]
-        FN = c_df[(c_df['pred'] == 1) & (c_df['Label'] == 0)].shape[0]
+        TP = c_df[(c_df['Event Pred_final'] == 0) & (c_df['Label'] == 0)].shape[0]
+        FN = c_df[(c_df['Event Pred_final'] == 1) & (c_df['Label'] == 0)].shape[0]
         rc = TP / (TP + FN) * 100
         freq = f_rel.loc[c] * 100
         color = sm.to_rgba(freq)
@@ -738,7 +739,7 @@ def hist_stations_recall_event(df, n=0, d=400, m=8):
     )
     cbar.ax.set_ylabel('Frequency (%)')
     cbar.set_ticks([min_freq, max_freq])
-    plt.ylim(rc_min + 5, rc_max + 5)
+    plt.ylim(rc_min - 5, rc_max + 5)
     plt.xticks(
         sorted(df['Num_Estacoes'].unique()),
         labels=[str(i) for i in sorted(df['Num_Estacoes'].unique())])
@@ -1060,47 +1061,70 @@ def carregar_dado(tipo='ncomercial', n=0, mlv=4):
     return df
 
 
+def comercial(df):
+    df_cm = df[df['Hora'] >= 11]
+    df_cm = df_cm[df_cm['Hora'] < 22]
+
+    # hist_hour_distribution(df_cm)
+    hist_hour_recall_pick(df_cm)
+    hist_hour_recall_event(df_cm)
+    # ----------------------------------
+    # hist_station_distribution(df_cm)
+    hist_stations_recall_event(df_cm, 0, 400, 8)
+    '''
+    n = 0
+    while n < 10:
+        n += 0.25
+        hist_stations_recall_event(df_nm, n, 400, 8)
+    '''
+    # ----------------------------------
+    plot_hist_distance_distribution(df_cm)
+    plot_hist_distance_recall(df_cm)
+    # ----------------------------------
+    '''
+    plot_hist_magnitude_distribution(df_cm)
+    plot_hist_magnitude_recall(df_cm)
+    # ----------------------------------
+    plot_hist_snr_recall_pick(df_cm)
+    plot_mean_snr_recall_event(df_cm)
+    # ----------------------------------
+    plot_box_dist(df_cm)
+    plot_box_by_network(df_cm)
+    plot_box_by_station(df_cm)
+    plot_region_correlation(df_cm)
+    '''
+    return df_cm
+
+
 def ncomercial(df):
     df_nc = df[(df['Hora'] < 11) | (df['Hora'] >= 22)]
-    '''
     hist_hour_distribution(df_nc)
     hist_hour_recall_pick(df_nc)
     hist_hour_recall_event(df_nc)
-    '''
     # ----------------------------------
+    '''
     hist_station_distribution(df_nc)
     hist_stations_recall_event(df_nc, 0, 400, 8)
-    hist_stations_recall_event(df_nc, 1, 400, 8)
-    hist_stations_recall_event(df_nc, 1.25, 400, 8)
-    hist_stations_recall_event(df_nc, 1.5, 400, 8)
-    hist_stations_recall_event(df_nc, 1.75, 400, 8)
-    hist_stations_recall_event(df_nc, 2, 400, 8)
-    hist_stations_recall_event(df_nc, 2.25, 400, 8)
-    hist_stations_recall_event(df_nc, 2.5, 400, 8)
-    hist_stations_recall_event(df_nc, 2.75, 400, 8)
-    hist_stations_recall_event(df_nc, 3, 400, 8)
-    hist_stations_recall_event(df_nc, 4, 400, 8)
-    hist_stations_recall_event(df_nc, 5, 400, 8)
-    hist_stations_recall_event(df_nc, 6, 400, 8)
-    hist_stations_recall_event(df_nc, 7, 400, 8)
-    hist_stations_recall_event(df_nc, 8, 400, 8)
-    hist_stations_recall_event(df_nc, 9, 400, 8)
-    hist_stations_recall_event(df_nc, 10, 400, 8)
+    n = 0
+    while n < 10:
+        n += 0.25
+        hist_stations_recall_event(df_nc, n, 400, 8)
     '''
     # ----------------------------------
-    # plot_hist_distance_distribution(df)
-    # plot_hist_distance_recall(df_nc)
+    '''
+    plot_hist_distance_distribution(df)
+    plot_hist_distance_recall(df_nc)
     # ----------------------------------
-    # plot_hist_magnitude_distribution(df)
-    # plot_hist_magnitude_recall(df_nc)
+    plot_hist_magnitude_distribution(df)
+    plot_hist_magnitude_recall(df_nc)
     # ----------------------------------
-    # plot_hist_snr_recall_pick(df_nc)
-    # plot_mean_snr_recall_event(df_nc)
+    plot_hist_snr_recall_pick(df_nc)
+    plot_mean_snr_recall_event(df_nc)
     # ----------------------------------
-    # plot_box_dist(df_nc)
-    # plot_box_by_network(df)
-    # plot_box_by_station(df)
-    # plot_region_correlation(df_nc)
+    plot_box_dist(df_nc)
+    plot_box_by_network(df)
+    plot_box_by_station(df)
+    plot_region_correlation(df_nc)
     '''
     return df_nc
 
@@ -1108,11 +1132,12 @@ def ncomercial(df):
 # -------------------------------- MAIN ------------------------------------- #
 def main():
     df = carregar_dado()
-    df_nc = ncomercial(df)
-    # comercial(df_c)
 
-    return df_nc
+    df_nc = ncomercial(df)
+    df_cm = comercial(df)
+
+    return df_nc, df_cm
 
 
 if __name__ == '__main__':
-    df, evs = main()
+    df_nc, df_cm = main()

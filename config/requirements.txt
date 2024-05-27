@@ -6,3 +6,5 @@ ipython
 tensorflow
 seaborn
 pyrocko
+shapely
+geopandas
