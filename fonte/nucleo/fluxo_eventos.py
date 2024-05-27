@@ -293,8 +293,8 @@ def iterar_eventos(eventos: List,
                 'Pick Time': pick.time,
                 'Start Time': start_time,
                 'End Time': end_time,
-                'Path': event_path,
-                'Error': 'None',
+                'Path': f"{event_name}/{net}_{sta}_{event_name}.mseed",
+                'Error': None,
             })
 
             print(DELIMT)

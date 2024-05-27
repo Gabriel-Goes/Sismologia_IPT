@@ -15,7 +15,6 @@
 # é realmente importante.
 
 # ----------------------------  IMPORTS   -------------------------------------
-from obspy.clients import fdsn
 from datetime import datetime
 import os
 import sys

@@ -193,6 +193,7 @@ class SeletorEventoApp(QMainWindow):
         )
 
         filtered_df = self.df[(self.df['Event'] == ev) & (self.df['Station'] == sta)]
+        nb_picks  = self.df[(self.df['Event'] == ev)].shape[0]
 
         if not filtered_df.empty:
             ev_prediction = filtered_df['Event Pred_final'].iloc[0]
@@ -216,7 +217,7 @@ class SeletorEventoApp(QMainWindow):
         ev_predito = filtered_df['Event Pred_final'].iloc[0] if not filtered_df.empty else 'N/A'
         label = 'Natural' if rotulo == 'earthquake' else 'Anthropogenic'
 
-        self.nb_picksText.setText(f'#Picks: {len(filtered_df)}')
+        self.nb_picksText.setText(f'#Picks: {nb_picks}')
 
         if ev_prediction != label:
             self.ev_predText.setStyleSheet('font-weight: bold; color: red')

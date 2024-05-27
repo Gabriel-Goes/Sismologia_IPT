@@ -36,10 +36,10 @@
 
 CATALOG=${1:-"catalogo-moho.csv"}
 EVENTS=${EVENTS:-false}
-TREATCATALOG=${TREATCATALOG:-false}
-PREDICT=${PREDICT:-false}
-POSPROCESS=${POSPROCESS:-false}
-MAPS=${MAPS:-false}
+TREATCATALOG=${TREATCATALOG:-true}
+PREDICT=${PREDICT:-true}
+POSPROCESS=${POSPROCESS:-true}
+MAPS=${MAPS:-true}
 REPORT=${REPORT:-true}
 
 # ----------------------------- CONSTANTES -------------------------------------

@@ -3,17 +3,6 @@
                        Iniciando do Pipeline                         
 ========================================================================
 
- ----------------- INICIANDO O PREDICT.PY ---------------------------- 
-[{"success":true}]
-
- ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
-Traceback (most recent call last):
-  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 25, in <module>
-    from shapely.geometry import Point
-ModuleNotFoundError: No module named 'shapely'
-
- -------------- Processo de criação de mapas iniciado ------------------
-
  ----------------- Iniciando o pdflatex .tex ---------------------------- 
 /home/ggrl/.pyenv/versions/sismologia/bin/python: can't open file '/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/tex/relatorio_preditivo/python/figures.py': [Errno 2] No such file or directory
 /home/ggrl/.pyenv/versions/sismologia/bin/python: can't open file '/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/tex/relatorio_preditivo/python/mapa.py': [Errno 2] No such file or directory
