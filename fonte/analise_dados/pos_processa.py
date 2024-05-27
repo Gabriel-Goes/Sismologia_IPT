@@ -443,43 +443,46 @@ def hist_hour_recall_event(df):
 
 # --------------------------- DISTANCES
 def class_dist(dist):
-    if dist < 50:
-        return '<50'
-    elif 50 <= dist < 100:
-        return '[50-100['
-    elif 100 <= dist < 150:
-        return '[100-150['
-    elif 150 <= dist < 200:
-        return '[150-200['
-    elif 200 <= dist < 250:
-        return '[200-250['
-    elif 250 <= dist < 300:
-        return '[250-300['
+    if dist < 25:
+        return '< 25'
     else:
-        return '>=300'
+        dist_c = 25
+        while dist_c < 350:
+            if dist_c <= dist < dist_c + 25:
+                return f'[{dist_c}-{dist_c + 25}['
+            dist_c += 25
+        return '>= 350'
 
 
-def mean_dist_event(df):
-    df['Mean Distance'] = df.index.get_level_values('Event').map(
-        df.reset_index().groupby('Event')['Distance'].mean()
+def median_dist_event(df):
+    df['Distance'] = df.index.get_level_values('Event').map(
+        df.reset_index().groupby('Event')['Distance'].median()
     )
-    df['Mean Distance_cat'] = pd.Categorical(
-        df['Mean Distance'].apply(class_dist),
+    df['Distance_Q2_cat'] = pd.Categorical(
+        df['Distance_Q2'].apply(class_dist),
         categories=CAT_DIS,
         ordered=True
     )
     return df
 
 
-def plot_hist_distance_distribution(df):
+def dist_event(df):
+    df['Distance_cat'] = pd.Categorical(
+        df['Distance'].apply(class_dist),
+        categories=CAT_DIS,
+        ordered=True
+    )
+    return df
+
+
+def hist_dist_distrib(df):
     n, bins, patches = plt.hist(
         df['Distance'],
-        bins=range(50, 450, 50),
+        bins=range(25, 425, 25),
         rwidth=0.8,
         color='lightskyblue',
         weights=np.zeros_like(df['Distance']) + 1. / df['Distance'].size
     )
-    plt.figure(figsize=(10, 6))
     for freq, patch in zip(n, patches):
         freq = freq * 100
         plt.text(patch.get_x() + patch.get_width() / 2,
@@ -497,12 +500,9 @@ def plot_hist_distance_distribution(df):
     plt.show()
 
 
-def plot_hist_distance_recall_event(df):
-    # AJUSTAR EVENTO PARA EVENT E NÃO PARA CADA PCIK
-    df['Distance_cat'] = pd.Categorical(
-        df['Distance_cat'], categories=CAT_DIS, ordered=True
-    )
-    f_rel = df['Distance_cat'].value_counts(normalize=True).sort_index()
+def hist_dist_recall_pick(df):
+    f_rel = df['Distance_Q2_cat'].value_counts(normalize=True).sort_index()
+    f_abs = df['Distance_Q2_cat'].value_counts().sort_index()
     max_freq = f_rel.max() * 100
     min_freq = f_rel.min() * 100
     norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
@@ -511,19 +511,46 @@ def plot_hist_distance_recall_event(df):
     fig, ax = plt.subplots(figsize=(9, 6))
 
     for c in f_rel.index:
-        c_df = df[df['Distance_cat'] == c]
-        TP = c_df[(c_df['Event Pred_final'] == 0) & (c_df['Label'] == 0)].shape[0]
-        FN = c_df[(c_df['Event Pred_final'] == 1) & (c_df['Label'] == 0)].shape[0]
-        rc = TP / (TP + FN) * 100
-        freq = f_rel.loc[c] * 100
-        color = sm.to_rgba(freq)
-        ax.bar(c, rc, color=color, edgecolor='black', width=0.5)
-        ax.text(c, rc + 0.5, f'{rc:.2f}', ha='center', va='bottom')
+        c_df = df[df['Distance_Q2_cat'] == c]
+        TP = c_df[(c_df['Event Pred'].astype(int) == 0) & (c_df['Label'] == 0)].shape[0]
+        FN = c_df[(c_df['Event Pred'].astype(int) == 1) & (c_df['Label'] == 0)].shape[0]
+        if TP + FN == 0:
+            rc = 0
+        else:
+            rc = TP / (TP + FN) * 100
+            freq = f_rel.loc[c] * 100
+            color = sm.to_rgba(freq)
+            ax.bar(c, rc, color=color, edgecolor='black', width=0.5)
+            ax.text(c, rc + 0.25, f'{rc:.2f}',
+                    ha='center', va='bottom',
+                    fontsize=6, fontweight='bold')
+            ax.text(c, rc + 1, f'#{f_abs.loc[c]}',
+                    ha='center', va='bottom',
+                    fontsize=8)
 
     cbar = fig.colorbar(sm, ax=ax)
     cbar.ax.set_ylabel('Frequency (%)')
     cbar.set_ticks([min_freq, f_rel.mean() * 100, max_freq])
-    plt.xticks(np.arange(len(f_rel.index)), labels=f_rel.index)
+    plt.xticks(
+        np.arange(len(f_rel.index)),
+        labels=[
+            '< 25',
+            '[25-50[',
+            '[50-75[',
+            '[75-100[',
+            '[100-125[',
+            '[125-150[',
+            '[150-175[',
+            '[175-200[',
+            '[200-225[',
+            '[225-250[',
+            '[250-275[',
+            '[275-300[',
+            '[300-325[',
+            '[325-350[',
+            '>= 350'
+        ]
+    )
     plt.ylim(50, 100)
     plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
     plt.gca().xaxis.grid(False)
@@ -533,6 +560,169 @@ def plot_hist_distance_recall_event(df):
     plt.savefig('arquivos/figuras/pos_process/hist_ev_distance.png')
     plt.show()
     plt.close()
+
+
+def hist_dist_recall_event(df):
+    df.sort_values('Distance', inplace=True)
+    df = df.groupby(level='Event').first()
+    f_rel = df['Distance_cat'].value_counts(normalize=True).sort_index()
+    f_abs = df['Distance_cat'].value_counts().sort_index()
+    max_freq = f_rel.max() * 100
+    min_freq = f_rel.min() * 100
+    norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
+    sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
+    sm.set_array([])
+    fig, ax = plt.subplots(figsize=(9, 6))
+
+    for c in f_rel.index:
+        c_df = df[df['Distance_cat'] == c]
+        desc_df = c_df.describe()
+        TP = c_df[(c_df['Event Pred'].astype(int) == 0) & (c_df['Label'] == 0)].shape[0]
+        FN = c_df[(c_df['Event Pred'].astype(int) == 1) & (c_df['Label'] == 0)].shape[0]
+        if TP + FN == 0:
+            rc = 0
+        else:
+            rc = TP / (TP + FN) * 100
+            freq = f_rel.loc[c] * 100
+            color = sm.to_rgba(freq)
+            ax.bar(c, rc, color=color, edgecolor='black', width=0.25)
+            ax.text(c, rc + 0.25, f'{rc:.1f}%',
+                    ha='center', va='bottom',
+                    fontsize=6, fontweight='bold')
+            ax.text(c, rc + 1, f'#{f_abs.loc[c]}',
+                    ha='center', va='bottom',
+                    fontsize=6)
+            ax.text(c, rc + 2, f'prob: {desc_df.loc["50%", "Pick Prob_Nat"]*100:.2f} +- {desc_df.loc["std", "Pick Prob_Nat"]*100:.2f}%',
+                    ha='center', va='bottom',
+                    fontsize=6)
+
+    cbar = fig.colorbar(sm, ax=ax)
+    cbar.ax.set_ylabel('Frequency (%)')
+    cbar.set_ticks([min_freq, f_rel.mean() * 100, max_freq])
+    plt.xticks(
+        np.arange(len(f_rel.index)),
+        labels=[
+            '< 25',
+            '[25-50[',
+            '[50-75[',
+            '[75-100[',
+            '[100-125[',
+            '[125-150[',
+            '[150-175[',
+            '[175-200[',
+            '[200-225[',
+            '[225-250[',
+            '[250-275[',
+            '[275-300[',
+            '[300-325[',
+            '[325-350',
+            '>= 350'
+        ],
+        fontsize=8,
+        rotation=45
+    )
+    plt.ylim(50, 100)
+    plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
+    plt.gca().xaxis.grid(False)
+    plt.xlabel('Nearest Pick To Epicentral Distance (km)')
+    plt.ylabel('Event Recall (%)')
+    plt.tight_layout()
+    plt.savefig('arquivos/figuras/pos_process/hist_ev_distance_event.png')
+    plt.show()
+
+
+def box_dist_event_prob(df):
+    df.sort_values('Distance', inplace=True)
+    df_ = df.groupby(level='Event').first()
+    f_rel = df_['Distance_cat'].value_counts(normalize=True).sort_index()
+    palette = sns.color_palette('Paired', n_colors=(f_rel.shape[0]))
+    color_map = {c: palette[i] for i, c in enumerate(f_rel.index)}
+    max_freq = f_rel.max() * 100
+    min_freq = f_rel.min() * 100
+    norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
+    sm = plt.cm.ScalarMappable(cmap='Paired', norm=norm)
+    sm.set_array([])
+    fig, ax = plt.subplots(figsize=(19, 9))
+    box_data = []
+    positions = np.arange(len(f_rel.index))
+
+    for pos, c in zip(positions, f_rel.index):
+        c_df = df_[df_['Distance_cat'] == c]
+        prob_data = c_df['Event Prob_Nat'] * 100
+        box_data.append(prob_data)
+        freq = f_rel.loc[c] * 100
+        color = color_map[c]
+        bp = ax.boxplot(
+            prob_data,
+            positions=[pos],
+            widths=0.5, patch_artist=True)
+        for patch in bp['boxes']:
+            patch.set_facecolor(color)
+            patch.set_edgecolor('black')
+        for whisker in bp['whiskers']:
+            whisker.set_color('black')
+        for cap in bp['caps']:
+            cap.set_color('black')
+        for median in bp['medians']:
+            median.set_color('red')
+            ax.text(
+                pos+0.5, median.get_ydata()[0],
+                f'{median.get_ydata()[0]:.2f}%',
+                ha='center', va='bottom', fontsize=5
+            )
+        for flier in bp['fliers']:
+            flier.set(marker='.', color='black', alpha=0.5)
+
+        TP = c_df[(c_df['Event Pred'].astype(int) == 0) & (c_df['Label'] == 0)].shape[0]
+        FN = c_df[(c_df['Event Pred'].astype(int) == 1) & (c_df['Label'] == 0)].shape[0]
+        if TP + FN == 0:
+            rc = 0
+        else:
+            rc = TP / (TP + FN) * 100
+            freq = f_rel.loc[c] * 100
+            ax.text(
+                pos, 102, f'{rc:.2f}%',
+                ha='center', va='bottom', fontsize=7, fontweight='bold'
+            )
+    plt.text(
+        -0.9, 102, 'Recall ->',
+        ha='center', va='bottom', fontsize=7, fontweight='bold')
+    plt.xticks(
+        np.arange(len(f_rel.index)),
+        labels=[
+            '< 25',
+            '[25-50[',
+            '[50-75[',
+            '[75-100[',
+            '[100-125[',
+            '[125-150[',
+            '[150-175[',
+            '[175-200[',
+            '[200-225[',
+            '[225-250[',
+            '[250-275[',
+            '[275-300[',
+            '[300-325[',
+            '[325-350',
+            '>= 350'
+        ],
+        fontsize=8,
+        rotation=45
+    )
+
+    cbar = fig.colorbar(sm, ax=ax)
+    cbar.ax.set_ylabel('Frequency (%)')
+    cbar.set_ticks(np.linspace(min_freq, max_freq, num=12))
+    cbar.set_ticklabels(np.linspace(min_freq, max_freq, num=12).astype(int))
+    plt.suptitle('Boxplot da Probabilidade de Evento Ser Natural por Classes de Distância Epicentral Mais Próxima')
+    plt.title(f'Total de Eventos: {df_.shape[0]}')
+    plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
+    plt.gca().xaxis.grid(False)
+    plt.xlabel('Nearest Pick To Epicentral Distance (km)')
+    plt.ylabel('Probability of Natural Event (%)')
+    plt.tight_layout()
+    plt.savefig('arquivos/figuras/pos_process/boxplot_ev_distance_event.png')
+    plt.show()
 
 
 # --------------------------- MAGNITUDES
@@ -602,7 +792,7 @@ def plot_hist_magnitude_recall(df):
 
 
 # --------------------------- NUMBER OF STATIONS
-def hist_station_distribution(df):
+def hist_sta_distribution(df):
     plt.figure(figsize=(10, 6))
     sta_count = df.reset_index().groupby('Event').size()
     df['Num_Estacoes'] = df.index.get_level_values('Event').map(sta_count)
@@ -623,7 +813,7 @@ def hist_station_distribution(df):
     plt.show()
 
 
-def hist_stations_recall_pick(df):
+def hist_sta_recall_pick(df):
     fig, ax = plt.subplots(figsize=(10, 6))
     ev_count = df.reset_index().groupby('Event').size()
     df['Num_Estacoes'] = df.index.get_level_values('Event').map(ev_count)
@@ -668,7 +858,7 @@ def hist_stations_recall_pick(df):
     plt.show()
 
 
-def hist_stations_recall_event(df, n=0, d=400, m=8):
+def hist_sta_recall_event(df, n=0, d=400, m=8):
     df = df[df['SNR_P'] > n]
     df = df[df['Distance'] < d]
     df = df[df['MLv'] < m]
@@ -751,7 +941,7 @@ def hist_stations_recall_event(df, n=0, d=400, m=8):
     plt.show()
 
 
-# --------------------------- SNR HISTOGRAMS
+# --------------------------- SNR-P
 def snr(eventos: pd.DataFrame,
         window: int) -> [pd.DataFrame, dict]:
     eventos.sort_index(inplace=True)
@@ -1045,9 +1235,9 @@ def carregar_dado(tipo='ncomercial', n=0, mlv=4):
     df = df[df['SNR_P'] > n]
     df = class_region(df)
     df = mean_snr_event(df)
-    df = mean_dist_event(df)
+    df = median_dist_event(df)
     df.loc[:, 'prob_nat_cat'] = df['Pick Prob_Nat'].apply(class_prob)
-    df.loc[:, 'Distance_cat'] = df['Distance'].apply(class_dist)
+    df.loc[:, 'Distance_Q2_cat'] = df['Distance_Q2'].apply(class_dist)
     df.loc[:, 'Magnitude_cat'] = df['MLv'].apply(class_mag)
     df.loc[:, 'SNR_P_cat'] = df['SNR_P'].apply(class_snrp)
     df.loc[:, 'Mean SNR_P_cat'] = df['Mean SNR_P'].apply(class_snrp)
@@ -1061,6 +1251,7 @@ def carregar_dado(tipo='ncomercial', n=0, mlv=4):
     return df
 
 
+# -------------------------------- MAIN ------------------------------------- #
 def comercial(df):
     df_cm = df[df['Hora'] >= 11]
     df_cm = df_cm[df_cm['Hora'] < 22]
@@ -1070,7 +1261,7 @@ def comercial(df):
     hist_hour_recall_event(df_cm)
     # ----------------------------------
     # hist_station_distribution(df_cm)
-    hist_stations_recall_event(df_cm, 0, 400, 8)
+    hist_sta_recall_event(df_cm, 0, 400, 8)
     '''
     n = 0
     while n < 10:
@@ -1078,10 +1269,10 @@ def comercial(df):
         hist_stations_recall_event(df_nm, n, 400, 8)
     '''
     # ----------------------------------
-    plot_hist_distance_distribution(df_cm)
-    plot_hist_distance_recall(df_cm)
-    # ----------------------------------
+    # hist_dist_distribution(df_cm)
+    hist_dist_recall(df_cm)
     '''
+    # ----------------------------------
     plot_hist_magnitude_distribution(df_cm)
     plot_hist_magnitude_recall(df_cm)
     # ----------------------------------
@@ -1098,8 +1289,8 @@ def comercial(df):
 
 def ncomercial(df):
     df_nc = df[(df['Hora'] < 11) | (df['Hora'] >= 22)]
-    hist_hour_distribution(df_nc)
-    hist_hour_recall_pick(df_nc)
+    # hist_hour_distribution(df_nc)
+    # hist_hour_recall_pick(df_nc)
     hist_hour_recall_event(df_nc)
     # ----------------------------------
     '''
@@ -1111,9 +1302,9 @@ def ncomercial(df):
         hist_stations_recall_event(df_nc, n, 400, 8)
     '''
     # ----------------------------------
+    # plot_hist_distance_distribution(df)
+    hist_dist_recall(df_nc)
     '''
-    plot_hist_distance_distribution(df)
-    plot_hist_distance_recall(df_nc)
     # ----------------------------------
     plot_hist_magnitude_distribution(df)
     plot_hist_magnitude_recall(df_nc)

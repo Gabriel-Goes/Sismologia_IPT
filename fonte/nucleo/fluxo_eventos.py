@@ -27,6 +27,10 @@ from utils import DELIMT, DELIMT2
 from utils import DATA_CLIENT, DATA_CLIENT_BKP
 from utils import csv2list
 
+# ----------------------------  CONSTANTES  -----------------------------------
+# DATA_CLIENT = 'USP'
+# DATA_CLIENT_BKP = 'RSBR'
+
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 def iterar_eventos(eventos: List,

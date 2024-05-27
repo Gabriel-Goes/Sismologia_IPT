@@ -81,20 +81,6 @@ def order_catalog(catalog: pd.DataFrame,
     return catalog
 
 
-def gerar_predcsv(events: pd.DataFrame) -> [pd.DataFrame]:
-    events_eq = events[events['Cat'] == 'earthquake']
-    pred_eq = events_eq[['Event', 'Cat']]
-    pred = events[['Event', 'Cat']]
-    pred_eq['Cat'] = pred_eq['Cat'].apply(
-        lambda x: 0 if x == 'earthquake' else 1
-    )
-    pred['Cat'] = events['Cat'].apply(
-        lambda x: 0 if x == 'earthquake' else 1
-    )
-    pred_eq.to_csv('arquivos/predcsv/pred_earthquake.csv', index=False)
-    pred.to_csv('arquivos/predcsv/pred.csv', index=False)
-
-
 def filter_pred_com(pred: pd.DataFrame) -> pd.DataFrame:
     pred['Hora'] = pred['Event'].apply(lambda x: UTCDateTime(x).hour)
     pred_com = pred[(pred['Hora'] >= 11) & (pred['Hora'] < 22)]
@@ -174,7 +160,7 @@ def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
 
 
 def plot_prof_as_red(catalog: pd.DataFrame) -> None:
-    catalog.drop_duplicates(subset='EventID', inplace=True)
+    catalog.drop_duplicates(subset='#EventID', inplace=True)
     catalog = gpd.GeoDataFrame(
         catalog,
         geometry=gpd.points_from_xy(catalog.Longitude, catalog.Latitude)
@@ -234,22 +220,36 @@ def plot_cleaned_catalog_pygmt(catalog: pd.DataFrame) -> None:
     nb_ev_5 = catalog[(catalog['Depth/km'] > 5) & (catalog['Depth/km'] <= 25)].shape[0]
     nb_ev_25 = catalog[(catalog['Depth/km'] > 25) & (catalog['Depth/km'] <= 50)].shape[0]
     fig = pygmt.Figure()
-    fig.coast(shorelines='1/0.5p', projection="M10i", region=[-75, -30, -35, 5],borders=[1], area_thresh=10000, land="gray", water="skyblue")
-    fig.basemap(
-        frame=['a4f3g6', "+t\"Eventos Sismológicos pós-tratamento por Profundidade (km)\""]
+    fig.coast(
+        shorelines='1/0.5p', projection="M10i", region=[-75, -30, -35, 5],
+        borders=[1], area_thresh=10000, land="gray", water="skyblue"
     )
-    fig.plot(x=catalog[catalog['Depth/km'] <= 1].Longitude,
-             y=catalog[catalog['Depth/km'] <= 1].Latitude,
-             style="c0.1c", fill="blue", label=f"Profundidade < 1 km ({nb_ev_blue})")
-    fig.plot(x=catalog[(catalog['Depth/km'] > 1) & (catalog['Depth/km'] <= 5)].Longitude,
-             y=catalog[(catalog['Depth/km'] > 1) & (catalog['Depth/km'] <= 5)].Latitude,
-             style="c0.2c", fill="green", label=f"Profundidade 1 - 5 km ({nb_ev_1})")
-    fig.plot(x=catalog[(catalog['Depth/km'] > 5) & (catalog['Depth/km'] <= 25)].Longitude,
-             y=catalog[(catalog['Depth/km'] > 5) & (catalog['Depth/km'] <= 25)].Latitude,
-             style="c0.2c", fill="orange", label=f"Profundidade 5 - 25 km ({nb_ev_5})")
-    fig.plot(x=catalog[(catalog['Depth/km'] > 25) & (catalog['Depth/km'] <= 50)].Longitude,
-             y=catalog[(catalog['Depth/km'] > 25) & (catalog['Depth/km'] <= 50)].Latitude,
-             style="c0.2c", fill="red", label=f"Profundidade 25 - 50 km ({nb_ev_25})")
+    fig.basemap(
+        frame=[
+            'a4f3g6',
+            "+t\"Eventos Sismológicos pós-tratamento por Profundidade (km)\""
+        ]
+    )
+    fig.plot(
+        x=catalog[catalog['Depth/km'] <= 1].Longitude,
+        y=catalog[catalog['Depth/km'] <= 1].Latitude,
+        style="c0.1c", fill="blue",
+        label=f"Profundidade < 1 km ({nb_ev_blue})"
+    )
+    fig.plot(
+        x=catalog[(catalog['Depth/km'] > 1) & (catalog['Depth/km'] <= 5)].Longitude,
+        y=catalog[(catalog['Depth/km'] > 1) & (catalog['Depth/km'] <= 5)].Latitude,
+        style="c0.2c", fill="green", label=f"Profundidade 1 - 5 km ({nb_ev_1})")
+    fig.plot(
+        x=catalog[(catalog['Depth/km'] > 5) & (catalog['Depth/km'] <= 25)].Longitude,
+        y=catalog[(catalog['Depth/km'] > 5) & (catalog['Depth/km'] <= 25)].Latitude,
+        style="c0.2c", fill="orange", label=f"Profundidade 5 - 25 km ({nb_ev_5})"
+    )
+    fig.plot(
+        x=catalog[(catalog['Depth/km'] > 25) & (catalog['Depth/km'] <= 50)].Longitude,
+        y=catalog[(catalog['Depth/km'] > 25) & (catalog['Depth/km'] <= 50)].Latitude,
+        style="c0.2c", fill="red", label=f"Profundidade 25 - 50 km ({nb_ev_25})"
+    )
     fig.legend(position="JBR+jBR+o0.5c/0.5c", box="+gwhite+p1p,black")
     fig.text(x=-52, y=8, text="Eventos Sismológicos pós-tratamento por Profundidade (km)", font="16p,Helvetica-Bold")
     fig.savefig('arquivos/figuras/pre_process/mapas/mapa_eventos_clean.png')
@@ -282,9 +282,7 @@ def main(args=args):
             plot_cleaned_catalog_pygmt(catalogo_treated)
 
     if args.eventos:
-        eventos = pd.read_csv(f'arquivos/eventos/{args.eventos}', sep='|')
-        gerar_predcsv(eventos)
-        pred, pred_com, pred_nc = filter_pred_com(eventos)
+        eventos = pd.read_csv(f'arquivos/eventos/{args.eventos}', sep=',')
         if args.plot:
             eventos = pd.read_csv(
                 f'arquivos/eventos/{args.eventos}',

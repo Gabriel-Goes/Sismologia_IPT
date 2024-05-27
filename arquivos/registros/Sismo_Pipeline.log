@@ -44,3 +44,16 @@ Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: cls)
 
 Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.23 ^^M
+        
+!  ==> Fatal error occurred, no output PDF file produced!
+Transcript written on /home/ggrl/projetos/ClassificadorSismologico/arquivos/res
+ultados/relatorios//relatorio_preditivo.log.
+~/projetos/ClassificadorSismologico
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
