@@ -1,0 +1,43 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+0it [00:00, ?it/s]1it [00:00,  5.71it/s]23it [00:00, 101.67it/s]46it [00:00, 149.50it/s]68it [00:00, 174.42it/s]91it [00:00, 190.50it/s]114it [00:00, 200.81it/s]121it [00:00, 167.93it/s]
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:406: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['Hora'] = pd.to_numeric(df['Hora'])
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:407: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['Cat Hora'] = pd.cut(
+Fontconfig warning: "/home/ipt/.config/fontconfig/fonts.conf", line 11: saw number, expected string
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1490, in <module>
+    df, df_nc = main()
+                ^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1483, in main
+    df_nc = ncomercial(df)
+            ^^^^^^^^^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1446, in ncomercial
+    hist_dist_recall_pick(df_nc)
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 567, in hist_dist_recall_pick
+    plt.xticks(
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/pyplot.py", line 2053, in xticks
+    labels_out = ax.set_xticklabels(labels, minor=minor, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/axes/_base.py", line 73, in wrapper
+    return get_method(self)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/_api/deprecation.py", line 297, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/axis.py", line 2025, in set_ticklabels
+    raise ValueError(
+ValueError: The number of FixedLocator locations (14), usually from a call to set_ticks, does not match the number of labels (15).

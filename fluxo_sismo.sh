@@ -33,16 +33,16 @@
 # mesma rede e criará um arquivo eventos.csv
 
 # -----------------------------  VARIÁVEIS -------------------------------------
-
 CATALOG=${1:-"catalogo-moho.csv"}
-EVENTS=${EVENTS:-true}
-TREATCATALOG=${TREATCATALOG:-true}
-PREDICT=${PREDICT:-true}
-POSPROCESS=${POSPROCESS:-false}
-MAPS=${MAPS:-false}
-REPORT=${REPORT:-false}
+EVENTS=${EVENTS:-false}
+TREATCATALOG=${TREATCATALOG:-false}
+PREDICT=${PREDICT:-false}
+POSPROCESS=${POSPROCESS:-true}
+MAPS=${MAPS:-true}
+REPORT=${REPORT:-true}
 
 # ----------------------------- CONSTANTES -------------------------------------
+set -e
 # DEFINE OS DIRETÓRIOS DE TRABALHO
 BASE_DIR=$HOME/projetos/ClassificadorSismologico/
 pushd $BASE_DIR

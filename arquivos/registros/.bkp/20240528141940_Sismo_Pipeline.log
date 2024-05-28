@@ -1,0 +1,43 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo-moho.csv...
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 303, in <module>
+    catalog = main()
+              ^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 282, in main
+    plot_prof_as_red(catalog)
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 166, in plot_prof_as_red
+    catalog.drop_duplicates(subset='EventID', inplace=True)
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/core/frame.py", line 6566, in drop_duplicates
+    result = self[-self.duplicated(subset, keep=keep)]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/core/frame.py", line 6698, in duplicated
+    raise KeyError(Index(diff))
+KeyError: Index(['EventID'], dtype='object')
+
+ -> Executando fluxo_eventos.py...
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/nucleo/fluxo_eventos.py", line 25, in <module>
+    from utils import MSEED_DIR
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/nucleo/utils.py", line 18, in <module>
+    from obspy import fdsn
+ImportError: cannot import name 'fdsn' from 'obspy' (/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/__init__.py)
+
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+[{"success":true}]
+Fontconfig warning: "/home/ipt/.config/fontconfig/fonts.conf", line 11: saw number, expected string
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
+~/projetos/ClassificadorSismologico

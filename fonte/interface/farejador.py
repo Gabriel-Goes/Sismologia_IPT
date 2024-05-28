@@ -40,7 +40,7 @@ class SeletorEventoApp(QMainWindow):
         self.setWindowTitle('Seletor de Eventos, Redes e Estações')
         self.setGeometry(50, 50, 400, 300)
 
-        self.df = pd.read_csv("arquivos/resultados/predito.csv")
+        self.df = pd.read_csv("arquivos/resultados/304008_analisado.csv")
         print(self.df.columns)
 
         self.central_widget = QWidget(self)
@@ -257,7 +257,7 @@ class SeletorEventoApp(QMainWindow):
             sta = self.stationSelector.currentText()
 
             npy = f'{net}_{sta}_{ev}.npy'
-            path = os.path.join('arquivos/espectro', ev, npy)
+            path = os.path.join('arquivos/espectros', ev, npy)
             spectrogram = np.load(path, allow_pickle=True)
             spectrogram = np.moveaxis(spectrogram, 0, 2)
 

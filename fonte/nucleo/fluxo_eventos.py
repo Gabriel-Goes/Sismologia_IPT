@@ -12,7 +12,7 @@
 # ----------------------------  IMPORTS   -------------------------------------
 from obspy.core.event.catalog import Catalog
 from obspy.geodetics import gps2dist_azimuth
-
+import random
 import sys
 import os
 import csv
@@ -26,11 +26,6 @@ from utils import MSEED_DIR
 from utils import DELIMT, DELIMT2
 from utils import DATA_CLIENT, DATA_CLIENT_BKP
 from utils import csv2list
-
-# ----------------------------  CONSTANTES  -----------------------------------
-# DATA_CLIENT = 'USP'
-# DATA_CLIENT_BKP = 'RSBR'
-
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 def iterar_eventos(eventos: List,
@@ -88,9 +83,9 @@ def iterar_eventos(eventos: List,
             sta = pick.waveform_id.station_code
             chn = pick.waveform_id.channel_code
             loc = pick.waveform_id.location_code
-            print(
-                f' - Net: {net}\n - Sta: {sta}\n - Chn: {chn}\n - Loc: {loc}'
-            )
+            # print(
+            #     f' - Net: {net}\n - Sta: {sta}\n - Chn: {chn}\n - Loc: {loc}'
+            # )
             chn = chn[:-1] + 'Z'
             if loc is None:
                 loc = ''
@@ -402,7 +397,9 @@ def main(EventIDs: List,
 # ---------------------------- EXECUÇÃO ---------------------------------------
 if __name__ == "__main__":
     EventIDs = csv2list(sys.argv[1])
+    random.seed(42)
+    RandomIDs = random.sample(EventIDs, 1000)
     catalogo, missin_ids = main(
-        EventIDs[:50],
+        RandomIDs,
         DATA_CLIENT,
         DATA_CLIENT_BKP)

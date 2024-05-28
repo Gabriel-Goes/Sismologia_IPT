@@ -1,0 +1,30 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo-moho.csv...
+Nenhum argumento foi passado
+
+ -> Executando fluxo_eventos.py...
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/nucleo/fluxo_eventos.py", line 25, in <module>
+    from utils import MSEED_DIR
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/nucleo/utils.py", line 18, in <module>
+    from obspy import fdsn
+ImportError: cannot import name 'fdsn' from 'obspy' (/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/__init__.py)
+
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+[{"success":true}]
+Fontconfig warning: "/home/ipt/.config/fontconfig/fonts.conf", line 11: saw number, expected string
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
+~/projetos/ClassificadorSismologico

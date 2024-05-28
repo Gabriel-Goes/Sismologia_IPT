@@ -3,88 +3,6 @@
                        Iniciando do Pipeline                         
 ========================================================================
 
- ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
-0it [00:00, ?it/s]1it [00:00,  5.65it/s]23it [00:00, 100.59it/s]45it [00:00, 146.76it/s]66it [00:00, 167.97it/s]86it [00:00, 176.35it/s]109it [00:00, 190.95it/s]131it [00:00, 198.35it/s]154it [00:00, 205.44it/s]175it [00:01, 202.78it/s]196it [00:01, 201.55it/s]217it [00:01, 201.08it/s]239it [00:01, 205.94it/s]261it [00:01, 208.22it/s]282it [00:01, 208.72it/s]304it [00:01, 210.52it/s]326it [00:01, 211.93it/s]349it [00:01, 214.74it/s]371it [00:01, 212.35it/s]393it [00:02, 205.78it/s]414it [00:02, 164.89it/s]432it [00:02, 152.24it/s]449it [00:02, 149.62it/s]469it [00:02, 161.50it/s]491it [00:02, 174.00it/s]512it [00:02, 183.25it/s]534it [00:02, 191.19it/s]554it [00:03, 187.90it/s]574it [00:03, 183.56it/s]593it [00:03, 180.91it/s]612it [00:03, 183.27it/s]631it [00:03, 182.28it/s]651it [00:03, 187.24it/s]670it [00:03, 150.69it/s]687it [00:03, 147.37it/s]703it [00:03, 148.67it/s]719it [00:04, 148.10it/s]737it [00:04, 155.23it/s]757it [00:04, 163.93it/s]777it [00:04, 173.15it/s]795it [00:04, 173.15it/s]813it [00:04, 161.04it/s]830it [00:04, 158.01it/s]846it [00:04, 155.29it/s]862it [00:05, 132.81it/s]876it [00:05, 120.26it/s]889it [00:05, 115.09it/s]901it [00:05, 107.35it/s]914it [00:05, 111.87it/s]929it [00:05, 120.29it/s]942it [00:05, 120.98it/s]956it [00:05, 125.64it/s]969it [00:05, 126.41it/s]983it [00:06, 130.08it/s]997it [00:06, 115.70it/s]1012it [00:06, 124.37it/s]1027it [00:06, 129.03it/s]1047it [00:06, 146.08it/s]1062it [00:06, 121.50it/s]1075it [00:06, 121.50it/s]1088it [00:06, 110.31it/s]1100it [00:07, 97.42it/s] 1114it [00:07, 107.09it/s]1126it [00:07, 106.86it/s]1138it [00:07, 109.87it/s]1150it [00:07, 112.26it/s]1163it [00:07, 115.41it/s]1175it [00:07, 115.09it/s]1190it [00:07, 122.72it/s]1203it [00:07, 124.70it/s]1216it [00:08, 117.69it/s]1229it [00:08, 118.78it/s]1241it [00:08, 114.35it/s]1253it [00:08, 108.54it/s]1264it [00:08, 96.69it/s] 1275it [00:08, 99.95it/s]1287it [00:08, 104.51it/s]1298it [00:08, 96.64it/s] 1308it [00:09, 90.32it/s]1318it [00:09, 91.26it/s]1330it [00:09, 98.07it/s]1345it [00:09, 112.25it/s]1358it [00:09, 115.84it/s]1371it [00:09, 118.95it/s]1384it [00:09, 99.74it/s] 1395it [00:09, 102.30it/s]1407it [00:09, 105.21it/s]1426it [00:10, 127.70it/s]1445it [00:10, 144.10it/s]1464it [00:10, 156.30it/s]1480it [00:10, 141.97it/s]1495it [00:10, 142.96it/s]1515it [00:10, 157.80it/s]1535it [00:10, 168.75it/s]1555it [00:10, 176.70it/s]1575it [00:10, 182.84it/s]1595it [00:10, 186.96it/s]1616it [00:11, 191.60it/s]1636it [00:11, 189.74it/s]1658it [00:11, 196.22it/s]1680it [00:11, 203.08it/s]1701it [00:11, 204.30it/s]1722it [00:11, 205.44it/s]1744it [00:11, 209.35it/s]1765it [00:11, 168.16it/s]1784it [00:11, 167.13it/s]1805it [00:12, 176.98it/s]1826it [00:12, 183.68it/s]1848it [00:12, 192.94it/s]1869it [00:12, 197.27it/s]1891it [00:12, 201.53it/s]1913it [00:12, 206.24it/s]1935it [00:12, 208.26it/s]1956it [00:12, 207.69it/s]1977it [00:12, 206.70it/s]1999it [00:13, 208.18it/s]2020it [00:13, 207.72it/s]2042it [00:13, 209.08it/s]2063it [00:13, 207.90it/s]2085it [00:13, 209.51it/s]2106it [00:13, 209.23it/s]2127it [00:13, 206.58it/s]2148it [00:13, 199.04it/s]2168it [00:13, 193.14it/s]2188it [00:13, 189.65it/s]2208it [00:14, 180.74it/s]2227it [00:14, 180.33it/s]2247it [00:14, 185.09it/s]2268it [00:14, 190.14it/s]2288it [00:14, 189.93it/s]2307it [00:14, 158.05it/s]
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:405: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df['Hora'] = pd.to_numeric(df['Hora'])
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:406: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df['Cat Hora'] = pd.cut(
-Fontconfig warning: "/home/ipt/.config/fontconfig/fonts.conf", line 11: saw number, expected string
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:689: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
-  fig, ax = plt.subplots(figsize=(19, 9))
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1152: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df['SNR_P_cat'] = pd.Categorical(
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1193: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
-  plt.tight_layout()
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1221: RuntimeWarning: invalid value encountered in scalar divide
-  nb_sta = df[df['SNR_P_Q2_cat'] == r].shape[0]/f_a
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1221: RuntimeWarning: invalid value encountered in scalar divide
-  nb_sta = df[df['SNR_P_Q2_cat'] == r].shape[0]/f_a
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1352: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  sns.boxplot(
-CategoricalIndex(['<1', '[1-2[', '[2-3[', '>=3'], categories=['<1', '[1-2[', '[2-3[', '>=3'], ordered=True, dtype='category', name='Magnitude_cat')
-
  -------------- Processo de criaÃ§Ã£o de mapas iniciado ------------------
 
  ----------------- Iniciando o pdflatex .tex ---------------------------- 
@@ -320,27 +238,56 @@ nary-english.trsl)
 /tex/figuras_tex/footImage.pdf>]
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd) [1]
 (/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
-atorio_preditivo.toc (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)) [2])
-(./tex/relatorio_preditivo/tex/corpo.tex
+atorio_preditivo.toc) [2]) (./tex/relatorio_preditivo/tex/corpo.tex
 (./tex/relatorio_preditivo/tex/introducao.tex)
 (./tex/relatorio_preditivo/tex/atividades_resultados.tex
+
+LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 11.
+
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.11 
-      [1] [2] (./tex/relatorio_preditivo/tex/mapa.tex) [3]
-(./tex/relatorio_preditivo/tex/figures.tex [4
+      [1]
+
+LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 29.
+
+[2] (./tex/relatorio_preditivo/tex/mapa.tex
+
+LaTeX Warning: File `/home/ipt/projetos/ClassificadorSismologico/arquivos/figur
+as/mapas/mapa.png' not found on input line 11.
+
+
+! Package pdftex.def Error: File `/home/ipt/projetos/ClassificadorSismologico/a
+rquivos/figuras/mapas/mapa.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 ...smologico/arquivos/figuras/mapas/mapa.png}
+                                                  
+? (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd))
+
+LaTeX Warning: Reference `LastPage' on page 3 undefined on input line 48.
+
+[3] (./tex/relatorio_preditivo/tex/figures.tex
+
+LaTeX Warning: Reference `LastPage' on page 4 undefined on input line 8.
+
+[4
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.8 
-     </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/mapas/mapa.p
-ng (PNG copy)>] [5
+    ]
+
+LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 24.
+
+[5
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -354,7 +301,11 @@ s been already used, duplicate ignored
 l.24 
       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
 /8.04008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismol
-ogico/arquivos/figuras/pos_process/n_sta_recall_04008.png>] [6
+ogico/arquivos/figuras/pos_process/n_sta_recall_04008.png>]
+
+LaTeX Warning: Reference `LastPage' on page 6 undefined on input line 40.
+
+[6
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -368,7 +319,11 @@ s been already used, duplicate ignored
 l.40 
       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
 /n_sta_recall_1.254008.png> </home/ipt/projetos/ClassificadorSismologico/arquiv
-os/figuras/pos_process/0.54008_boxplot_ev_distance_event.png>] [7
+os/figuras/pos_process/0.54008_boxplot_ev_distance_event.png>]
+
+LaTeX Warning: Reference `LastPage' on page 7 undefined on input line 56.
+
+[7
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -382,7 +337,11 @@ s been already used, duplicate ignored
 l.56 
       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
 /n_sta_recall_1.04008.png> </home/ipt/projetos/ClassificadorSismologico/arquivo
-s/figuras/pos_process/5.04008_boxplot_ev_distance_event.png>] [8
+s/figuras/pos_process/5.04008_boxplot_ev_distance_event.png>]
+
+LaTeX Warning: Reference `LastPage' on page 8 undefined on input line 72.
+
+[8
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -396,7 +355,11 @@ s been already used, duplicate ignored
 l.72 
       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
 /n_sta_recall_1.754008.png> </home/ipt/projetos/ClassificadorSismologico/arquiv
-os/figuras/pos_process/04008_hist_ev_distance_event.png>] [9
+os/figuras/pos_process/04008_hist_ev_distance_event.png>]
+
+LaTeX Warning: Reference `LastPage' on page 9 undefined on input line 88.
+
+[9
 pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -410,7 +373,11 @@ as been already used, duplicate ignored
 l.88 
       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
 /n_sta_recall_2.04008.png> </home/ipt/projetos/ClassificadorSismologico/arquivo
-s/figuras/pos_process/04008_hist_ev_distance.png>] [10
+s/figuras/pos_process/04008_hist_ev_distance.png>]
+
+LaTeX Warning: Reference `LastPage' on page 10 undefined on input line 104.
+
+[10
 pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -424,7 +391,11 @@ as been already used, duplicate ignored
 l.104 
        </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
 s/04008_boxplot_ev_mag_event.png> </home/ipt/projetos/ClassificadorSismologico/
-arquivos/figuras/pos_process/n_sta_recall_0.54008.png>] [11
+arquivos/figuras/pos_process/n_sta_recall_0.54008.png>]
+
+LaTeX Warning: Reference `LastPage' on page 11 undefined on input line 120.
+
+[11
 pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -438,7 +409,11 @@ as been already used, duplicate ignored
 l.120 
        </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
 s/n_sta_recall_4.04008.png> </home/ipt/projetos/ClassificadorSismologico/arquiv
-os/figuras/pos_process/2.04008_boxplot_ev_distance_event.png>] [12
+os/figuras/pos_process/2.04008_boxplot_ev_distance_event.png>]
+
+LaTeX Warning: Reference `LastPage' on page 12 undefined on input line 136.
+
+[12
 pdfTeX warning (ext4): destination with the same identifier (name{figure.16}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -453,6 +428,9 @@ l.136
        </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
 s/7.04008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismo
 logico/arquivos/figuras/pos_process/1.754008_boxplot_ev_distance_event.png>]
+
+LaTeX Warning: Reference `LastPage' on page 13 undefined on input line 152.
+
 [13
 pdfTeX warning (ext4): destination with the same identifier (name{figure.18}) h
 as been already used, duplicate ignored
@@ -468,6 +446,9 @@ l.152
        </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
 s/1.54008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismo
 logico/arquivos/figuras/pos_process/1.254008_boxplot_ev_distance_event.png>]
+
+LaTeX Warning: Reference `LastPage' on page 14 undefined on input line 168.
+
 [14
 pdfTeX warning (ext4): destination with the same identifier (name{figure.20}) h
 as been already used, duplicate ignored
@@ -482,7 +463,11 @@ as been already used, duplicate ignored
 l.168 
        </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
 s/0.754008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSism
-ologico/arquivos/figuras/pos_process/n_sta_recall_1.54008.png>] [15
+ologico/arquivos/figuras/pos_process/n_sta_recall_1.54008.png>]
+
+LaTeX Warning: Reference `LastPage' on page 15 undefined on input line 184.
+
+[15
 pdfTeX warning (ext4): destination with the same identifier (name{figure.22}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -496,7 +481,11 @@ as been already used, duplicate ignored
 l.184 
        </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
 s/n_sta_recall_0.754008.png> </home/ipt/projetos/ClassificadorSismologico/arqui
-vos/figuras/pos_process/dist_snrs_recall.png>] [16
+vos/figuras/pos_process/dist_snrs_recall.png>]
+
+LaTeX Warning: Reference `LastPage' on page 16 undefined on input line 200.
+
+[16
 pdfTeX warning (ext4): destination with the same identifier (name{figure.24}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -510,7 +499,11 @@ as been already used, duplicate ignored
 l.200 
        </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
 s/04008_dist_mean_snrs_recall.png> </home/ipt/projetos/ClassificadorSismologico
-/arquivos/figuras/pos_process/10.04008_boxplot_ev_distance_event.png>] [17
+/arquivos/figuras/pos_process/10.04008_boxplot_ev_distance_event.png>]
+
+LaTeX Warning: Reference `LastPage' on page 17 undefined on input line 216.
+
+[17
 pdfTeX warning (ext4): destination with the same identifier (name{figure.26}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -524,7 +517,11 @@ as been already used, duplicate ignored
 l.216 
        </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
 s/n_sta_recall_3.04008.png> </home/ipt/projetos/ClassificadorSismologico/arquiv
-os/figuras/pos_process/dist_ev_cat_mag_recall.png>] [18
+os/figuras/pos_process/dist_ev_cat_mag_recall.png>]
+
+LaTeX Warning: Reference `LastPage' on page 18 undefined on input line 232.
+
+[18
 pdfTeX warning (ext4): destination with the same identifier (name{figure.28}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -538,7 +535,11 @@ as been already used, duplicate ignored
 l.232 
        </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
 s/n_sta_recall_0.254008.png> </home/ipt/projetos/ClassificadorSismologico/arqui
-vos/figuras/pos_process/3.04008_boxplot_ev_distance_event.png>] [19
+vos/figuras/pos_process/3.04008_boxplot_ev_distance_event.png>]
+
+LaTeX Warning: Reference `LastPage' on page 19 undefined on input line 248.
+
+[19
 pdfTeX warning (ext4): destination with the same identifier (name{figure.30}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -552,7 +553,11 @@ as been already used, duplicate ignored
 l.248 
        </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
 s/9.04008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismo
-logico/arquivos/figuras/pos_process/region_corr.png>] [20
+logico/arquivos/figuras/pos_process/region_corr.png>]
+
+LaTeX Warning: Reference `LastPage' on page 20 undefined on input line 264.
+
+[20
 pdfTeX warning (ext4): destination with the same identifier (name{figure.32}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -566,7 +571,11 @@ as been already used, duplicate ignored
 l.264 
        </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
 s/6.04008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismo
-logico/arquivos/figuras/pos_process/hist_ev_hour_recall_event.png>] [21
+logico/arquivos/figuras/pos_process/hist_ev_hour_recall_event.png>]
+
+LaTeX Warning: Reference `LastPage' on page 21 undefined on input line 280.
+
+[21
 pdfTeX warning (ext4): destination with the same identifier (name{figure.34}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -584,6 +593,9 @@ ologico/arquivos/figuras/pos_process/04008_boxplot_ev_distance_event.png>])
 Overfull \hbox (19.12613pt too wide) in paragraph at lines 57--58
 []\T1/phv/m/n/12 Todos os códi-gos e al-go-rit-mos de-sen-volvi-dos es-tão de-v
 -i-da-mente doc-u-men-ta-dos e disponíveis
+
+LaTeX Warning: Reference `LastPage' on page 22 undefined on input line 58.
+
 [22
 pdfTeX warning (ext4): destination with the same identifier (name{figure.36}) h
 as been already used, duplicate ignored
@@ -603,17 +615,40 @@ ogico/arquivos/figuras/pos_process/4.04008_boxplot_ev_distance_event.png>])
 Overfull \hbox (5.58174pt too wide) in paragraph at lines 8--9
 []\T1/phv/m/n/12 Na área de in-fluên-cia do em-preendi-mento foram reg-istra-do
 s sessenta e sete (67) desmontes
-[23]) [24])
+
+LaTeX Warning: Reference `LastPage' on page 23 undefined on input line 13.
+
+[23])
+
+LaTeX Warning: Reference `LastPage' on page 24 undefined on input line 14.
+
+[24])
 No file relatorio_preditivo.bbl.
 
 AED: lastpage setting LastPage
+
+LaTeX Warning: Reference `LastPage' on page 25 undefined on input line 39.
+
 [25]
 (/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
-atorio_preditivo.aux) ){/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.e
-nc}</usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
+atorio_preditivo.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `relatorio_preditivo.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ ){/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texliv
+e/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/public/c
+m-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uh
+vb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
 Output written on /home/ipt/projetos/ClassificadorSismologico/arquivos/resultad
-os/relatorios/relatorio_preditivo.pdf (28 pages, 3299115 bytes).
+os/relatorios/relatorio_preditivo.pdf (28 pages, 3071679 bytes).
 Transcript written on /home/ipt/projetos/ClassificadorSismologico/arquivos/resu
 ltados/relatorios/relatorio_preditivo.log.

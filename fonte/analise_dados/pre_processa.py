@@ -99,8 +99,8 @@ def check_ev_id():
         'arquivos/catalogo/catalogo-moho-south-america.csv',
         sep='|'
     )
-    oldids = old_c['EventID'].to_list()
-    ids = c['EventID'].to_list()
+    oldids = old_c[''].to_list()
+    ids = c[''].to_list()
     for i in oldids:
         if i not in ids:
             print(i)
@@ -139,7 +139,7 @@ def plot_distrib_hora(
 
 
 def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
-    catalog.drop_duplicates(subset='EventID', inplace=True)
+    catalog.drop_duplicates(subset='', inplace=True)
     catalog = gpd.GeoDataFrame(
         catalog,
         geometry=gpd.points_from_xy(catalog.Longitude, catalog.Latitude)
@@ -157,13 +157,13 @@ def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
     plt.xlabel('Longitude')
     plt.ylabel('Latitude')
     plt.grid(True)
-    plt.savefig('arquivos/figures/pre_process/mapas/bruto_catalog_mapa.png')
+    plt.savefig('arquivos/figures/mapas/bruto_catalog_mapa.png')
     plt.close()
     #plt.show()
 
 
 def plot_prof_as_red(catalog: pd.DataFrame) -> None:
-    catalog.drop_duplicates(subset='#EventID', inplace=True)
+    catalog.drop_duplicates(subset='EventID', inplace=True)
     catalog = gpd.GeoDataFrame(
         catalog,
         geometry=gpd.points_from_xy(catalog.Longitude, catalog.Latitude)
@@ -204,8 +204,7 @@ def plot_prof_as_red(catalog: pd.DataFrame) -> None:
              style="c0.2c", fill="red", label=f"Profundidade > 200 km ({nb_ev_200})")
     fig.legend(position="JBR+jBR+o0.5c/0.5c", box="+gwhite+p1p,black")
     fig.text(x=-52, y=8, text="Eventos Sismológicos pré-tratamento por Profundidade (km)", font="16p,Helvetica-Bold")
-    fig.savefig('arquivos/figuras/pre_process/mapas/mapa_eventos_bruto.png')
-    fig.close()
+    fig.savefig('arquivos/figuras/mapas/mapa_eventos_bruto.png')
     # fig.show()
 
 
@@ -256,8 +255,7 @@ def plot_cleaned_catalog_pygmt(catalog: pd.DataFrame) -> None:
     )
     fig.legend(position="JBR+jBR+o0.5c/0.5c", box="+gwhite+p1p,black")
     fig.text(x=-52, y=8, text="Eventos Sismológicos pós-tratamento por Profundidade (km)", font="16p,Helvetica-Bold")
-    fig.savefig('arquivos/figuras/pre_process/mapas/mapa_eventos_clean.png')
-    fig.close()
+    fig.savefig('arquivos/figuras/mapas/mapa_eventos_clean.png')
     # fig.show()
 
 
@@ -271,6 +269,7 @@ def main(args=args):
         catalog = brasil_catalogo(catalog)
         catalog.to_csv(
             f"arquivos/catalogo/{args.catalogo.split('.')[0]}_treated.csv",
+            sep='|',
             index=False
         )
         if args.plot:
@@ -282,11 +281,12 @@ def main(args=args):
             plot_prof_as_red(catalog)
 
             catalogo_treated = pd.read_csv(
-                f'arquivos/catalogo/{args.catalogo.split(".")[0]}_treated.csv'
+                f'arquivos/catalogo/{args.catalogo.split(".")[0]}_treated.csv',
+                sep='|'
             )
             plot_cleaned_catalog_pygmt(catalogo_treated)
 
-    if args.eventos:
+    elif args.eventos:
         eventos = pd.read_csv(f'arquivos/eventos/{args.eventos}', sep=',')
         if args.plot:
             eventos = pd.read_csv(

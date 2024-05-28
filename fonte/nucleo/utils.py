@@ -15,13 +15,17 @@
 # é realmente importante.
 
 # ----------------------------  IMPORTS   -------------------------------------
+from obspy.clients import fdsn
 from datetime import datetime
 import os
 import sys
 
 # ---------------------------- PARAMETROS -------------------------------------
-PROJETO_DIR = os.environ['HOME'] + "/projetos/ClassificadorSismologico"
-MSEED_DIR = PROJETO_DIR + "arquivos/mseed"
+PROJETO_DIR = os.environ['HOME'] + "/projetos/ClassificadorSismologico/"
+MSEED_DIR = PROJETO_DIR + "arquivos/mseed/"
+CAT_PROB = [
+    '<0.2', '[0.2-0.4[', '[0.4-0.6[', '[0.6-0.8[', '[0.8-0.9[', '>=0.9'
+]
 CAT_SNR = [
         '< 1', '[1-1.25[', '[1.25-1.5[', '[1.5-1.75[', '[1.75-2[', '[2-3[',
         '[3-4[', '[4-5[', '[5-6[', '[6-7[', '[7-8[', '[8-9[', '[9-10[',
@@ -58,10 +62,12 @@ DELIMT = "-----------------------------------------------------\n"
 DELIMT2 = "#####################################################\n"
 BKP_TIME = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
-DATA_CLIENT =
-DATA_CLIENT_BKP =
-
-
+try:
+    DATA_CLIENT = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
+except Exception as e:
+    print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
+    sys.exit(1)
+DATA_CLIENT_BKP = fdsn.Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 class DualOutput(object):
@@ -84,7 +90,7 @@ def csv2list(csv_file: str, data=False) -> list:
         evids = []
         with open(f'arquivos/catalogo/{csv_file}', 'r') as f:
             lines = f.readlines()
-            evids_ = [line.split(',')[0] for line in lines[1:]]
+            evids_ = [line.split('|')[0] for line in lines[1:]]
         for evid in evids_:
             if int(evid[3:7]) > int(data):
                 evids.append(evid)
@@ -93,4 +99,4 @@ def csv2list(csv_file: str, data=False) -> list:
     else:
         with open(f'arquivos/catalogo/{csv_file}', 'r') as f:
             lines = f.readlines()
-            return [line.split(',')[0] for line in lines[1:]]
+            return [line.split('|')[0] for line in lines[1:]]

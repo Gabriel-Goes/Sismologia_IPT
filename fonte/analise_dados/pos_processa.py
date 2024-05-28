@@ -28,7 +28,7 @@ import geopandas as gpd
 from tqdm import tqdm
 from analise_dados.testa_filtros import parsewindow, prepare
 
-from nucleo.utils import CAT_DIS, CAT_MAG, CAT_SNR
+from nucleo.utils import CAT_DIS, CAT_MAG, CAT_SNR, CAT_PROB
 
 
 # --------------------------- FUNCTIONS ---------------------------------- #
@@ -280,9 +280,8 @@ def hist_median_snr_prob_nat(df, n=0, d=400, m=8):
 
 def plot_hist_prob_recall(df):
     fig, ax = plt.subplots(figsize=(10, 6))
-    cat = ['<0.2', '[0.2-0.4[', '[0.4-0.6[', '[0.6-0.8[', '[0.8-0.9[', '>=0.9']
     df['prob_nat_cat'] = pd.Categorical(
-        df['prob_nat_cat'], categories=cat, ordered=True
+        df['prob_nat_cat'], categories=CAT_PROB, ordered=True
     )
     f_rel = df['prob_nat_cat'].value_counts(normalize=True).sort_index()
     max_freq = f_rel.max() * 100
@@ -1088,7 +1087,7 @@ def snr(eventos: pd.DataFrame,
         noisewindow = parsewindow(nw)
         pwindow = parsewindow(pw)
         swindow = parsewindow(sw)
-        st = obspy.read(pick['Path'])
+        st = obspy.read(f"arquivos/mseed/{pick['Path']}")
         noise, trace_p, trace_s = prepare(
             st[0],
             filtro,
@@ -1390,6 +1389,7 @@ def carregar_dado(w=3, n=0, d=400, m=8):
     df['Event Pred'] = df['Event Pred'].astype(int)
     df.set_index(['Event', 'Station'], inplace=True)
     df = snr(df, w)
+    df = df[df['SNR_P'] > n]
     df.to_csv(f'arquivos/resultados/{w}{n}{d}{m}_analisado.csv')
 
     return df
@@ -1461,22 +1461,33 @@ def ncomercial(df):
     hist_snr_recall_event(df_nc)
     # ----------------------------------
     region_correlation(df_nc)
+
+    df_nc.to_csv('arquivos/resultados/nc_analisado.csv')
     return df_nc
 
 
 # -------------------------------- MAIN ------------------------------------- #
 def main():
-    # df = carregar_dado()
-    df = pd.read_csv('arquivos/resultados/304008_analisado.csv', sep=',')
+    df = carregar_dado()
+    # df = pd.read_csv('arquivos/resultados/304008_analisado.csv', sep=',')
     df['Hora'] = df['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
     df['Coord Origem'] = df[['Origem Latitude', 'Origem Longitude']].apply(lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1)
     df = class_region(df)
     df = median_snrp_event(df)
     df = median_dist_event(df)
-    df.loc[:, 'Magnitude_cat'] = df['MLv'].apply(class_mag)
-    df.loc[:, 'Distance_cat'] = df['Distance'].apply(class_dist)
-    df.loc[:, 'SNR_P_cat'] = df['SNR_P'].apply(class_snrp)
-    df.loc[:, 'Pick Prob_Nat_cat'] = df['Pick Prob_Nat'].apply(class_prob)
+    df['Magnitude_cat'] = pd.Categorical(
+        df['MLv'].apply(class_mag), categories=CAT_MAG, ordered=True
+    )
+    df['Distance_cat'] = pd.Categorical(
+        df['Distance'].apply(class_dist), categories=CAT_DIS, ordered=True
+    )
+    df['SNR_P_cat'] = pd.Categorical(
+        df['SNR_P'].apply(class_snrp), categories=CAT_SNR, ordered=True
+    )
+    df['Pick Prob_Nat_cat'] = pd.Categorical(
+        df['Pick Prob_Nat'].apply(class_prob),
+        categories=CAT_PROB, ordered=True
+    )
     df.loc[:, 'Num_Estacoes'] = df.index.get_level_values('Event').map(
         df.reset_index().groupby('Event').size()
     )
@@ -1487,4 +1498,4 @@ def main():
 
 
 if __name__ == '__main__':
-    df_nc, df_cm = main()
+    df, df_nc = main()
