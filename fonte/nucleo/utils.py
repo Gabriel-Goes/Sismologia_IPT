@@ -58,6 +58,10 @@ DELIMT = "-----------------------------------------------------\n"
 DELIMT2 = "#####################################################\n"
 BKP_TIME = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
+DATA_CLIENT =
+DATA_CLIENT_BKP =
+
+
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 class DualOutput(object):
@@ -81,7 +85,6 @@ def csv2list(csv_file: str, data=False) -> list:
         with open(f'arquivos/catalogo/{csv_file}', 'r') as f:
             lines = f.readlines()
             evids_ = [line.split(',')[0] for line in lines[1:]]
-        # parse  the fourth to seventh value of the evid
         for evid in evids_:
             if int(evid[3:7]) > int(data):
                 evids.append(evid)

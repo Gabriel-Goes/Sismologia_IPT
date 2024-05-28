@@ -1,0 +1,64 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:406: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['Hora'] = pd.to_numeric(df['Hora'])
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:407: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['Cat Hora'] = pd.cut(
+Fontconfig warning: "/home/ipt/.config/fontconfig/fonts.conf", line 11: saw number, expected string
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:690: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  fig, ax = plt.subplots(figsize=(19, 9))
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1153: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['SNR_P_cat'] = pd.Categorical(
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1194: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1222: RuntimeWarning: invalid value encountered in scalar divide
+  nb_sta = df[df['SNR_P_Q2_cat'] == r].shape[0]/f_a
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1353: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.boxplot(
+Index(['<1', '>=3', '[1-2[', '[2-3['], dtype='object', name='Magnitude_cat')
+
+ -------------- Processo de criação de mapas iniciado ------------------
+
+ ----------------- Iniciando o pdflatex .tex ---------------------------- 
+/home/ipt/.pyenv/versions/sismologia/bin/python: can't open file '/home/ipt/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/pyscripts/figures.py': [Errno 2] No such file or directory
+/home/ipt/.pyenv/versions/sismologia/bin/python: can't open file '/home/ipt/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/pyscripts/mapa.py': [Errno 2] No such file or directory
+/home/ipt/.local/bin/fluxo_sismo.sh: linha 135: pushd: fonte/relatorio-sismologia: Arquivo ou diretório inexistente
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 
+! Emergency stop.
+<*> 
+    
+!  ==> Fatal error occurred, no output PDF file produced!
+Transcript written on /home/ipt/projetos/ClassificadorSismologico/arquivos/resu
+ltados/relatorios//texput.log.
+~
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
+/home/ipt/.local/bin/fluxo_sismo.sh: linha 144: popd: pilha de diretórios está vazia

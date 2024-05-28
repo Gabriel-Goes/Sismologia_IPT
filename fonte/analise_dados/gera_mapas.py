@@ -35,12 +35,12 @@ def plot_pred_map(data, filename):
 
     )
     fig.show()
-    fig.savefig(f'files/figures/maps/{filename}')
+    fig.savefig(f'arquivos/figuras/mapas/{filename}')
 
 
 # -------------------------------  MAIN  --------------------------------------
 def main():
-    data = pd.read_csv("files/output/no_commercial/df_nc_pos.csv")
+    data = pd.read_csv("arquivos/resultados/304008_analisado.csv")
     plot_pred_map(data, "mapa.png")
 
     return data

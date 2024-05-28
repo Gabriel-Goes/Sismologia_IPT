@@ -1034,11 +1034,11 @@ def hist_sta_recall_event(df, n=0, d=400, m=8):
                 ha='center', va='bottom', fontsize=6, fontweight='bold'
             )
             ax.text(
-                a - 0.15, rc + 0.75, f'S/N: {descrito['SNR_P']['mean']:.0f}±{descrito["SNR_P"]["std"]:.0f} (Q2: {descrito['SNR_P']['50%']:.0f})',
+                a - 0.15, rc + 0.75, f'S/N: {descrito["SNR_P"]["mean"]:.0f}±{descrito["SNR_P"]["std"]:.0f} (Q2: {descrito["SNR_P"]["50%"]:.0f})',
                 ha='center', va='bottom', fontsize=7, rotation=90
             )
             ax.text(
-                a, rc + 0.75, f'Dis: {descrito['Distance']['mean']:.0f}±{descrito["Distance"]["std"]:.0f} km',
+                a, rc + 0.75, f'Dis: {descrito["Distance"]["mean"]:.0f}±{descrito["Distance"]["std"]:.0f} km',
                 ha='center', va='bottom', fontsize=7, rotation=90
             )
             ax.text(

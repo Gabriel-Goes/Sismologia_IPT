@@ -133,8 +133,9 @@ def plot_distrib_hora(
     plt.ylabel('Frequência')
     plt.legend(
         ['Horário Comercial', 'Fora do Horário Comercial'], loc='upper right')
-    plt.savefig('arquivos/figures/pre_process/histogramas/hist_hora.png')
-    plt.show()
+    plt.savefig('arquivos/figuras/pre_process/hist_hora.png')
+    plt.close()
+    #plt.show()
 
 
 def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
@@ -156,7 +157,9 @@ def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
     plt.xlabel('Longitude')
     plt.ylabel('Latitude')
     plt.grid(True)
-    plt.show()
+    plt.savefig('arquivos/figures/pre_process/mapas/bruto_catalog_mapa.png')
+    plt.close()
+    #plt.show()
 
 
 def plot_prof_as_red(catalog: pd.DataFrame) -> None:
@@ -202,7 +205,8 @@ def plot_prof_as_red(catalog: pd.DataFrame) -> None:
     fig.legend(position="JBR+jBR+o0.5c/0.5c", box="+gwhite+p1p,black")
     fig.text(x=-52, y=8, text="Eventos Sismológicos pré-tratamento por Profundidade (km)", font="16p,Helvetica-Bold")
     fig.savefig('arquivos/figuras/pre_process/mapas/mapa_eventos_bruto.png')
-    fig.show()
+    fig.close()
+    # fig.show()
 
 
 def plot_cleaned_catalog_pygmt(catalog: pd.DataFrame) -> None:
@@ -253,7 +257,8 @@ def plot_cleaned_catalog_pygmt(catalog: pd.DataFrame) -> None:
     fig.legend(position="JBR+jBR+o0.5c/0.5c", box="+gwhite+p1p,black")
     fig.text(x=-52, y=8, text="Eventos Sismológicos pós-tratamento por Profundidade (km)", font="16p,Helvetica-Bold")
     fig.savefig('arquivos/figuras/pre_process/mapas/mapa_eventos_clean.png')
-    fig.show()
+    fig.close()
+    # fig.show()
 
 
 # ----------------------------  MAIN  -----------------------------------------

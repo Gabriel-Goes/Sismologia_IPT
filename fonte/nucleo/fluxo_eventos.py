@@ -403,6 +403,6 @@ def main(EventIDs: List,
 if __name__ == "__main__":
     EventIDs = csv2list(sys.argv[1])
     catalogo, missin_ids = main(
-        EventIDs[:-1],
+        EventIDs[:50],
         DATA_CLIENT,
         DATA_CLIENT_BKP)
