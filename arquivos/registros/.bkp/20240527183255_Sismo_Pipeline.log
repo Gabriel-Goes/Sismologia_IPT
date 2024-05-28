@@ -1,0 +1,24 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ ----------------- Iniciando o pdflatex .tex ---------------------------- 
+/home/ggrl/.pyenv/versions/sismologia/bin/python: can't open file '/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/tex/relatorio_preditivo/python/figures.py': [Errno 2] No such file or directory
+/home/ggrl/.pyenv/versions/sismologia/bin/python: can't open file '/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/tex/relatorio_preditivo/python/mapa.py': [Errno 2] No such file or directory
+~/projetos/ClassificadorSismologico/fonte/relatorio-sismologia ~/projetos/ClassificadorSismologico
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./relatorio_preditivo.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+(./sismo_iptex.cls
+Document Class: sismo_iptex 2024/04/23 Classe Sismologia IPT
+
+! LaTeX Error: File `article.cls' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: cls)
+
+Enter file name: 

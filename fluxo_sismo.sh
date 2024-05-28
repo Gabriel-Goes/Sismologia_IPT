@@ -130,8 +130,8 @@ fi
 # ----------------- ETAPA DE GERAR RELATORIOS ------------------------
 if [ "$REPORT" = true ]; then
     echo " ----------------- Iniciando o pdflatex .tex ---------------------------- "
-    python fonte/relatorio-sismologia/tex/relatorio_preditivo/python/figures.py
-    python fonte/relatorio-sismologia/tex/relatorio_preditivo/python/mapa.py
+    python fonte/relatorio-sismologia/pyscripts/figures.py
+    python fonte/relatorio-sismologia/pyscripts/mapa.py
     pushd fonte/relatorio-sismologia
     pdflatex -output-directory=$HOME/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/ relatorio_preditivo.tex 
     popd

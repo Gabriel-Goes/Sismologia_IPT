@@ -62,7 +62,7 @@ def plot_box_dist(df, df_2):
 
     plt.savefig('arquivos/figuras/pos_process/boxplot_dist.png', dpi=300)
     plt.tight_layout()
-    plt.show()
+    #plt.show()()
 
 
 def plot_box_by_network(df):
@@ -93,7 +93,7 @@ def plot_box_by_network(df):
     plt.grid(True, linestyle='--', linewidth=0.5, color='gray')
     plt.tight_layout()
     plt.savefig('arquivos/figuras/pos_process/boxplot_rede.png')
-    plt.show()
+    #plt.show()()
 
 
 def plot_box_by_station(df):
@@ -124,19 +124,23 @@ def plot_box_by_station(df):
         plt.grid(True, linestyle='--', linewidth=0.5, color='gray')
         plt.tight_layout()
         plt.savefig(f'arquivos/figuras/pos_process/boxplot_{network}.png')
-        plt.show()
+        #plt.show()()
 
 
 def plot_corr_matrix(df):
+    df_ = df.groupby(level='Event').first()
     cols = [
-        'Event Prob_Nat', 'Pick Prob_Nat',
+        'Event Prob_Nat',
         'Hora',
         'Origem Latitude', 'Origem Longitude',
-        'MLv', 'Distance', 'SNR_P', 'Noise'
+        'SNR_P_Q2', 'SNR_P', 'Noise',
+        'Depth/km', 'MLv',
+        'Distance_Q2', 'Distance',
+        'Num_Estacoes'
     ]
-    df = df[cols]
+    df_ = df_[cols]
     plt.figure(figsize=(10, 6))
-    corr = df.corr()
+    corr = df_.corr()
     sns.heatmap(
         corr, cmap='RdBu', annot=True, fmt='.2f',
         square=True, center=0, linewidths=0.5, linecolor='black'
@@ -164,7 +168,7 @@ def corr_matrix_2(df):
         square=True, linewidths=0.5, linecolor='black'
     )
     plt.title('Matriz de Correlação')
-    plt.show()
+    #plt.show()()
 
     pick_prob_nat_corr = corr_m['Pick Prob_Nat'].sort_values(ascending=False)
     event_prob_nat_corr = corr_m['Event Prob_Nat'].sort_values(ascending=False)
@@ -196,14 +200,14 @@ def plot_hist_prob_distribution(df):
     plt.ylabel('Frequência')
     plt.tight_layout()
     plt.savefig('arquivos/figuras/pos_process/dist_prob_nat.png')
-    plt.show()
+    #plt.show()()
 
 
-def hist_mean_snr_prob_nat(df, n=0, d=400, m=8):
+def hist_median_snr_prob_nat(df, n=0, d=400, m=8):
     df = df[df['SNR_P'] > n]
     df = df[df['Distance'] < 200]
     df = df[df['MLv'] < m]
-    df = mean_snr_event(df)
+    df = median_snrp_event(df)
     df['Mean SNR_P_cat'] = pd.Categorical(
         df['Mean SNR_P_cat'], categories=CAT_SNR, ordered=True
     )
@@ -271,7 +275,7 @@ def hist_mean_snr_prob_nat(df, n=0, d=400, m=8):
         f'arquivos/figuras/pos_process/mean_snrs_{n}_prob_nat.png'
     )
     # Set dpi
-    plt.show()
+    #plt.show()()
 
 
 def plot_hist_prob_recall(df):
@@ -308,7 +312,7 @@ def plot_hist_prob_recall(df):
     plt.ylabel('Recall (%)')
     plt.tight_layout()
     plt.savefig('arquivos/figuras/pos_process/dist_prob_nat_recall.png')
-    plt.show()
+    #plt.show()()
 
 
 # --------------------------- HOURS
@@ -338,7 +342,7 @@ def hist_hour_distribution(df):
     plt.savefig(
         'arquivos/figuras/pos_process/hist_hora.png'
     )
-    plt.show()
+    #plt.show()()
 
 
 def hist_hour_recall_pick(df):
@@ -394,7 +398,7 @@ def hist_hour_recall_pick(df):
     plt.ylabel('Recall (%)')
     plt.tight_layout()
     plt.savefig('arquivos/figuras/pos_process/hist_ev_hour_recall_pick.png')
-    plt.show()
+    #plt.show()()
     plt.close()
 
 
@@ -451,7 +455,7 @@ def hist_hour_recall_event(df):
     plt.ylabel('Recall (%)')
     plt.tight_layout()
     plt.savefig('arquivos/figuras/pos_process/hist_ev_hour_recall_event.png')
-    plt.show()
+    # #plt.show()()
 
 
 # --------------------------- DISTANCES
@@ -523,7 +527,7 @@ def hist_dist_distrib(df):
     plt.xlabel('Distância Epicentral (km)')
     plt.ylabel('Frequência Relativa')
     plt.savefig('arquivos/figuras/pos_process/dist_ev_distance_rel_freq.png')
-    plt.show()
+    #plt.show()()
 
 
 def hist_dist_recall_pick(df, n=0, d=400, m=8):
@@ -587,7 +591,7 @@ def hist_dist_recall_pick(df, n=0, d=400, m=8):
     plt.ylabel('Recall (%)')
     plt.tight_layout()
     plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_hist_ev_distance.png', dpi=300)
-    plt.show()
+    #plt.show()()
     plt.close()
 
 
@@ -666,7 +670,7 @@ def hist_dist_recall_event(df, n=0, d=400, m=8):
     plt.ylabel('Event Recall (%)')
     plt.tight_layout()
     plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_hist_ev_distance_event.png')
-    plt.show()
+    #plt.show()()
 
 
 def box_dist_event_prob(df, n=0, d=400, m=8):
@@ -765,7 +769,7 @@ def box_dist_event_prob(df, n=0, d=400, m=8):
     plt.ylabel('Probability of Natural Event (%)')
     plt.tight_layout()
     plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_boxplot_ev_distance_event.png')
-    plt.show()
+    #plt.show()()
 
 
 # --------------------------- MAGNITUDES
@@ -794,7 +798,7 @@ def hist_magnitude_distribution(df):
     plt.ylabel('Número de Eventos')
     plt.tight_layout()
     plt.savefig('arquivos/figuras/pos_process/dist_ev_cat_mag.png')
-    plt.show()
+    #plt.show()()
 
 
 def hist_magnitude_recall(df, n=0, d=400, m=8):
@@ -812,7 +816,6 @@ def hist_magnitude_recall(df, n=0, d=400, m=8):
     sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
     sm.set_array([])
     rc_min = 90
-
     fig, axis = plt.subplots(figsize=(10, 6))
     for c in f_rel.index:
         df_c = df[df['Magnitude_cat'] == c]
@@ -824,7 +827,6 @@ def hist_magnitude_recall(df, n=0, d=400, m=8):
         axis.bar(c, rc, color=color, edgecolor='black', width=0.5)
         axis.text(c, rc + 0.01, f'{rc:.2f}%', ha='center', va='bottom')
         rc_min = rc if rc < rc_min else rc_min
-
     cbar = fig.colorbar(sm, ax=axis)
     cbar.ax.set_ylabel('Frequency (%)')
     cbar.set_ticks([min_freq, max_freq])
@@ -837,7 +839,7 @@ def hist_magnitude_recall(df, n=0, d=400, m=8):
     plt.ylabel('Recall (%)')
     plt.tight_layout()
     plt.savefig('arquivos/figuras/pos_process/dist_ev_cat_mag_recall.png')
-    plt.show()
+    # #plt.show()()
 
 
 def box_mag_event_prob(df, n=0, d=400, m=8):
@@ -849,7 +851,6 @@ def box_mag_event_prob(df, n=0, d=400, m=8):
     df['Magnitude_cat'] = pd.Categorical(
         df['Magnitude_cat'], categories=CAT_MAG, ordered=True
     )
-
     f_rel = df_['Magnitude_cat'].value_counts(normalize=True).sort_index()
     max_freq = f_rel.max() * 100
     min_freq = f_rel.min() * 100
@@ -861,7 +862,6 @@ def box_mag_event_prob(df, n=0, d=400, m=8):
     total_rc = 0
     positions = np.arange(len(f_rel.index))
     print(f_rel.index)
-
     for pos, c in zip(positions, f_rel.index):
         c_df = df_[df_['Magnitude_cat'] == c]
         prob_data = c_df['Event Prob_Nat'] * 100
@@ -887,7 +887,6 @@ def box_mag_event_prob(df, n=0, d=400, m=8):
             )
         for flier in bp['fliers']:
             flier.set(marker='.', color='black', alpha=0.5)
-
         TP = c_df[(c_df['Event Pred'] == 0) & (c_df['Label'] == 0)].shape[0]
         FN = c_df[(c_df['Event Pred'] == 1) & (c_df['Label'] == 0)].shape[0]
         if TP + FN == 0:
@@ -898,7 +897,6 @@ def box_mag_event_prob(df, n=0, d=400, m=8):
                 pos, 102, f'{rc:.2f}%',
                 ha='center', va='bottom', fontsize=7, fontweight='bold'
             )
-
     plt.text(
         -0.25, 102, 'Recall ->',
         ha='center', va='bottom', fontsize=7, fontweight='bold')
@@ -925,7 +923,7 @@ def box_mag_event_prob(df, n=0, d=400, m=8):
     plt.ylabel('Probability of Natural Event (%)')
     plt.tight_layout()
     plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_boxplot_ev_mag_event.png')
-    plt.show()
+    # #plt.show()()
 
 
 # --------------------------- NUMBER OF STATIONS
@@ -947,7 +945,7 @@ def hist_sta_distribution(df):
     plt.savefig(
         'arquivos/figuras/pos_process/dist_ev_num_stations_absoluto.png'
     )
-    plt.show()
+    #plt.show()()
 
 
 def hist_sta_recall_pick(df):
@@ -992,7 +990,7 @@ def hist_sta_recall_pick(df):
     plt.savefig(
         'arquivos/figuras/pos_process/dist_ev_num_stations_recall_pick.png'
     )
-    plt.show()
+    #plt.show()()
 
 
 def hist_sta_recall_event(df, n=0, d=400, m=8):
@@ -1072,7 +1070,7 @@ def hist_sta_recall_event(df, n=0, d=400, m=8):
     plt.ylabel('Recall (%)')
     plt.tight_layout()
     plt.savefig(f'arquivos/figuras/pos_process/n_sta_recall_{n}{d}{m}.png')
-    plt.show()
+    # #plt.show()()
 
 
 # --------------------------- SNR-P
@@ -1195,7 +1193,7 @@ def hist_snr_recall_pick(df):
     plt.ylabel('Recall (%)')
     plt.tight_layout()
     plt.savefig('arquivos/figuras/pos_process/dist_snrs_recall.png')
-    plt.show()
+    # #plt.show()()
 
 
 def hist_snr_recall_event(df, n=0, d=400, m=8):
@@ -1264,7 +1262,7 @@ def hist_snr_recall_event(df, n=0, d=400, m=8):
     plt.xlabel('Média de SNR_P')
     plt.ylabel('Recall (%)')
     plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_dist_mean_snrs_recall.png')
-    plt.show()
+    # #plt.show()()
 
 
 def scatter_snr_prob(df):
@@ -1277,7 +1275,7 @@ def scatter_snr_prob(df):
     plt.ylabel('Probabilidade Natural')
     plt.tight_layout()
     plt.savefig('arquivos/figuras/pos_process/scatter_snrs_prob_nat.png')
-    plt.show()
+    #plt.show()()
 
 
 def recall_event(df, d=400, m=8):
@@ -1317,7 +1315,7 @@ def recall_event(df, d=400, m=8):
     plt.ylabel('Recall')
     plt.tight_layout()
     plt.savefig(f'arquivos/figuras/pos_process/{d}{m}_recall_event.png')
-    plt.show()
+    #plt.show()()
 
 
 # --------------------------- REGION
@@ -1379,7 +1377,7 @@ def region_correlation(df):
         f'{freq_orig.max() * 100:.0f}%'
     ])
     plt.savefig('arquivos/figuras/pos_process/region_corr.png')
-    plt.show()
+    # #plt.show()()
 
 
 # --------------------------- CREATE ARQUIVOS
@@ -1420,19 +1418,18 @@ def comercial(df):
     hist_magnitude_distribution(df_cm)
     hist_magnitude_recall(df_cm)
     # ----------------------------------
-    plot_hist_snr_recall_pick(df_cm)
-    plot_mean_snr_recall_event(df_cm)
+    hist_snr_recall_pick(df_cm)
+    # median_snr_recall_event(df_cm)
     # ----------------------------------
     plot_box_dist(df_cm)
     plot_box_by_network(df_cm)
     plot_box_by_station(df_cm)
-    plot_region_correlation(df_cm)
+    region_correlation(df_cm)
     return df_cm
 
 
 def ncomercial(df):
     df_nc = df[(df['Hora'] < 11) | (df['Hora'] >= 22)]
-    '''
     # hist_hour_recall_pick(df_nc)
     hist_hour_recall_event(df_nc)
     # ----------------------------------
@@ -1441,14 +1438,14 @@ def ncomercial(df):
     while n < 2:
         n += 0.25
         hist_sta_recall_event(df_nc, n, 400, 8)
-        while n >= 2 and n < 10:
+        while n >= 2 and n < 4:
             n += 1
             hist_sta_recall_event(df_nc, n, 400, 8)
     # ----------------------------------
     # plot_hist_distance_distribution(df)
     hist_dist_recall_pick(df_nc)
     hist_dist_recall_event(df_nc)
-    box_dist_event_prob(df_nc, 2, 400, 8)
+    box_dist_event_prob(df_nc, 0, 400, 8)
     n = 0
     while n < 2:
         n += 0.25
@@ -1464,14 +1461,13 @@ def ncomercial(df):
     hist_snr_recall_event(df_nc)
     # ----------------------------------
     region_correlation(df_nc)
-    '''
     return df_nc
 
 
 # -------------------------------- MAIN ------------------------------------- #
 def main():
     # df = carregar_dado()
-    df = pd.read_csv('arquivos/resultados/analisado.csv', sep=';')
+    df = pd.read_csv('arquivos/resultados/304008_analisado.csv', sep=',')
     df['Hora'] = df['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
     df['Coord Origem'] = df[['Origem Latitude', 'Origem Longitude']].apply(lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1)
     df = class_region(df)
