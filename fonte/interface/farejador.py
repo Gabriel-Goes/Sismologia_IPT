@@ -24,6 +24,7 @@ from PIL import ImageDraw
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtWidgets import QVBoxLayout
+from PyQt5.QtWidgets import QHBoxLayout
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtWidgets import QComboBox
@@ -65,25 +66,37 @@ class SeletorEventoApp(QMainWindow):
 
         self.numb_Eventos = QLabel(f'# Eventos: {self.numb_eventos}')
         self.layout.addWidget(self.numb_Eventos)
-        self.layout.addWidget(QLabel('Evento:'))
-        self.layout.addWidget(self.eventSelector)
-        self.nb_picksText = QLabel('#Picks: ')
-        self.layout.addWidget(self.nb_picksText)
-        self.ev_predText = QLabel('Predição: ')
-        self.layout.addWidget(self.ev_predText)
-        self.probNatText = QLabel('Prob. Nat.: ')
-        self.layout.addWidget(self.probNatText)
 
-        self.layout.addWidget(QLabel('Rede:'))
-        self.layout.addWidget(self.networkSelector)
-        self.layout.addWidget(QLabel('Estação:'))
-        self.layout.addWidget(self.stationSelector)
+        self.layout.addWidget(QLabel('Eventos, Rede e Estação:'))
+
+        hbox_ev_net_sta = QHBoxLayout()
+        hbox_ev_net_sta.addWidget(QLabel('Evento:'))
+        hbox_ev_net_sta.addWidget(self.eventSelector)
+        hbox_ev_net_sta.addWidget(QLabel('Rede:'))
+        hbox_ev_net_sta.addWidget(self.networkSelector)
+        hbox_ev_net_sta.addWidget(QLabel('Estação:'))
+        hbox_ev_net_sta.addWidget(self.stationSelector)
+        self.layout.addLayout(hbox_ev_net_sta)
+
+        self.hbox_event_labels = QHBoxLayout()
+        self.nb_picksText = QLabel('#Picks: ')
+        self.hbox_event_labels.addWidget(self.nb_picksText)
+        self.ev_predText = QLabel('Predição: ')
+        self.hbox_event_labels.addWidget(self.ev_predText)
+        self.probNatText = QLabel('Probabilidade: ')
+        self.hbox_event_labels.addWidget(self.probNatText)
+        self.layout.addLayout(self.hbox_event_labels)
+
+        # self.layout.addWidget(QLabel('Rede:'))
+        # self.layout.addWidget(self.networkSelector)
+        # self.layout.addWidget(QLabel('Estação:'))
+        # self.layout.addWidget(self.stationSelector)
 
         self.distanceText = QLabel('Distância: ')
         self.layout.addWidget(self.distanceText)
-        self.stPredText = QLabel('Predição (pick): ')
+        self.stPredText = QLabel('Pred. (pick): ')
         self.layout.addWidget(self.stPredText)
-        self.stProbText = QLabel('Prob. Natural (pick): ')
+        self.stProbText = QLabel('Prob. (pick): ')
         self.layout.addWidget(self.stProbText)
 
         self.eventSelector.currentIndexChanged.connect(self.updateNetworkAndStationSelectors)

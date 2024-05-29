@@ -1,0 +1,30 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo-moho.csv...
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 303, in <module>
+    catalog = main()
+              ^^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 282, in main
+    plot_prof_as_red(catalog)
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 207, in plot_prof_as_red
+    fig.savefig('arquivos/figuras/pre_process/mapas/mapa_eventos_bruto.png')
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/pygmt/figure.py", line 372, in savefig
+    self.psconvert(prefix=prefix, fmt=fmt, crop=crop, **kwargs)
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/pygmt/helpers/decorators.py", line 609, in new_module
+    return module_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/pygmt/helpers/decorators.py", line 773, in new_module
+    return module_func(*bound.args, **bound.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/pygmt/figure.py", line 247, in psconvert
+    raise FileNotFoundError(
+FileNotFoundError: No such directory: 'arquivos/figuras/pre_process/mapas', please create it first.

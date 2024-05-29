@@ -26,13 +26,13 @@ Nenhum argumento foi passado
  - Primeiro EventID: usp2024jjlx
  - EventID mediano: usp2024iutb
  - Último EventID: usp2024inlh
-  0%|          | 0/10 [00:00<?, ?it/s] 20%|██        | 2/10 [00:00<00:00, 13.62it/s] 40%|████      | 4/10 [00:00<00:00, 15.27it/s] 60%|██████    | 6/10 [00:00<00:00, 14.07it/s] 80%|████████  | 8/10 [00:00<00:00, 13.77it/s]100%|██████████| 10/10 [00:00<00:00, 14.65it/s]100%|██████████| 10/10 [00:00<00:00, 14.42it/s]
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:00<00:01,  8.49it/s] 30%|███       | 3/10 [00:00<00:00, 13.53it/s] 50%|█████     | 5/10 [00:00<00:00, 15.62it/s] 70%|███████   | 7/10 [00:00<00:00, 14.49it/s] 90%|█████████ | 9/10 [00:00<00:00, 15.11it/s]100%|██████████| 10/10 [00:00<00:00, 14.86it/s]
  --> Iterando sobre eventos
  - Número de eventos: 10
  - Client: http://seisarc.sismo.iag.usp.br
  - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
  --> Adrquirindo Inventário de Estações
-  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:00<00:01,  4.63it/s] 20%|██        | 2/10 [00:00<00:01,  5.64it/s] 30%|███       | 3/10 [00:00<00:01,  6.09it/s] 40%|████      | 4/10 [00:00<00:01,  4.66it/s]/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/obspy/core/inventory/network.py:321: UserWarning: Found more than one matching channel metadata. Returning first.
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:00<00:01,  4.56it/s] 20%|██        | 2/10 [00:00<00:01,  5.58it/s] 30%|███       | 3/10 [00:00<00:01,  6.08it/s] 40%|████      | 4/10 [00:00<00:01,  4.85it/s]/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/obspy/core/inventory/network.py:321: UserWarning: Found more than one matching channel metadata. Returning first.
   warnings.warn(msg)
 ############ Event 1: usp2024jjlx ############
 
@@ -358,7 +358,7 @@ Estação a mais de 400 km do epicentro.
  - Loc: None
  - Seed EventID: BL.CPSB..HHZ 
  - BL.CPSB X,Y : -30.4123, -53.4432
- 70%|███████   | 7/10 [00:01<00:00,  8.06it/s] - Distância até o epicentro: 2632.783874645595 km
+ 70%|███████   | 7/10 [00:00<00:00,  8.38it/s] - Distância até o epicentro: 2632.783874645595 km
 Estação a mais de 400 km do epicentro.
 -----------------------------------------------------
 
@@ -683,7 +683,7 @@ Estação a mais de 400 km do epicentro.
  - Chn: HHR
  - Loc: None
  - Seed EventID: BR.ITTB..HHZ 
- 80%|████████  | 8/10 [00:01<00:00,  7.40it/s] 90%|█████████ | 9/10 [00:01<00:00,  6.93it/s]100%|██████████| 10/10 [00:01<00:00,  6.32it/s]100%|██████████| 10/10 [00:01<00:00,  6.41it/s]
+ 90%|█████████ | 9/10 [00:01<00:00,  8.42it/s]100%|██████████| 10/10 [00:01<00:00,  7.39it/s]100%|██████████| 10/10 [00:01<00:00,  7.02it/s]
  - BR.ITTB X,Y : -4.3672, -55.7343
  - Distância até o epicentro: 603.7493670048727 km
 Estação a mais de 400 km do epicentro.
@@ -896,7 +896,7 @@ Erros salvos com sucesso em arquivos/eventos/erros.csv
 [{"success":true}]
 
  ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
-0it [00:00, ?it/s]6it [00:00, 59.96it/s]27it [00:00, 134.95it/s]
+0it [00:00, ?it/s]5it [00:00, 48.75it/s]27it [00:00, 136.79it/s]
 /home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:405: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
@@ -1330,178 +1330,10 @@ CategoricalIndex(['<1', '[1-2[', '[2-3[', '>=3'], categories=['<1', '[1-2[', '[2
 
  ----------------- Iniciando o pdflatex .tex ---------------------------- 
 /home/ggrl/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-LaTeX file '/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/tex/relatorio_preditivo/tex/figures.tex' has been created successfully.
- -> Mapa '/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/tex/relatorio_preditivo/tex/mapa.tex' gerado com sucesso!
-~/projetos/ClassificadorSismologico/fonte/relatorio-sismologia ~/projetos/ClassificadorSismologico ~/projetos/ClassificadorSismologico
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex)
- restricted \write18 enabled.
-entering extended mode
-(./relatorio_preditivo.tex
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-02-20>
-(./sismo_iptex.cls
-Document Class: sismo_iptex 2024/04/23 Classe Sismologia IPT
-(/usr/share/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
-(/usr/share/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texmf-dist/tex/latex/mdframed/mdframed.sty
-(/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty)
-(/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty))
-(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-(/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)))
-(/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
-(/usr/share/texmf-dist/tex/latex/zref/zref-abspage.sty
-(/usr/share/texmf-dist/tex/latex/zref/zref-base.sty
-(/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty)
-(/usr/share/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
-(/usr/share/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
-(/usr/share/texmf-dist/tex/generic/iftex/iftex.sty))
-(/usr/share/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
-(/usr/share/texmf-dist/tex/latex/auxhook/auxhook.sty)))
-(/usr/share/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texmf-dist/tex/latex/graphics/color.sty
-(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def)
-(/usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-(/usr/share/texmf-dist/tex/latex/mdframed/md-frame-0.mdf))
-(/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
-(/usr/share/texmf-dist/tex/latex/hycolor/hycolor.sty)
-(/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
-(/usr/share/texmf-dist/tex/latex/refcount/refcount.sty)
-(/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
-(/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def)
-(/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty)
-(/usr/share/texmf-dist/tex/latex/hyperref/puenc.def)
-(/usr/share/texmf-dist/tex/latex/url/url.sty)
-(/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
-(/usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
-(/usr/share/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
-(/usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
-(/usr/share/texmf-dist/tex/latex/base/atveryend-ltx.sty)
-(/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
-(/usr/share/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
-(/usr/share/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texmf-dist/tex/latex/base/fontenc.sty)
-(/usr/share/texmf-dist/tex/latex/mathtools/mathtools.sty
-(/usr/share/texmf-dist/tex/latex/tools/calc.sty)
-(/usr/share/texmf-dist/tex/latex/mathtools/mhsetup.sty)
-(/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty)))
-(/usr/share/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
-(/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty)
-(/usr/share/texmf-dist/tex/latex/base/latexsym.sty)
-(/usr/share/texmf-dist/tex/latex/mathabx.sty
-(/usr/share/texmf-dist/tex/latex/mathabx.dcl))
-(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
-(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
-(/usr/share/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
-(/usr/share/texmf-dist/tex/latex/psnfss/helvet.sty)
-(/usr/share/texmf-dist/tex/latex/base/fancyhdr.sty)
-(/usr/share/texmf-dist/tex/latex/tools/indentfirst.sty)
-(/usr/share/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texmf-dist/tex/latex/multirow/multirow.sty)
-(/usr/share/texmf-dist/tex/latex/graphics/lscape.sty)
-(/usr/share/texmf-dist/tex/latex/lastpage/lastpage.sty
-(/usr/share/texmf-dist/tex/latex/lastpage/lastpage2e.sty
-(/usr/share/texmf-dist/tex/latex/lastpage/lastpagemodern.sty) 
-)) (/usr/share/texmf-dist/tex/latex/caption/caption.sty
-(/usr/share/texmf-dist/tex/latex/caption/caption3.sty))
-(/usr/share/texmf-dist/tex/latex/subfig/subfig.sty)
-(/usr/share/texmf-dist/tex/latex/pdfpages/pdfpages.sty
-(/usr/share/texmf-dist/tex/latex/base/ifthen.sty)
-(/usr/share/texmf-dist/tex/latex/eso-pic/eso-pic.sty)
-(/usr/share/texmf-dist/tex/latex/pdfpages/pppdftex.def))
-(/usr/share/texmf-dist/tex/latex/setspace/setspace.sty)
-(/usr/share/texmf-dist/tex/latex/changepage/changepage.sty)
-(/usr/share/texmf-dist/tex/latex/tocloft/tocloft.sty)
-(/usr/share/texmf-dist/tex/latex/lipsum/lipsum.sty
-(/usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty)
-(/usr/share/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))
-(/usr/share/texmf-dist/tex/latex/sectsty/sectsty.sty
-
-LaTeX Warning: Command \underbar  has changed.
-               Check if current package is valid.
-
-
-LaTeX Warning: Command \underline  has changed.
-               Check if current package is valid.
-
-) (/usr/share/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty)
-(/usr/share/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty)
-(/usr/share/texmf-dist/tex/latex/siunitx/siunitx.sty
-(/usr/share/texmf-dist/tex/latex/translations/translations.sty)
-(/usr/share/texmf-dist/tex/latex/tools/array.sty))
-(/usr/share/texmf-dist/tex/latex/was/upgreek.sty)
-(/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(/usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-(/usr/share/texmf-dist/tex/latex/colortbl/colortbl.sty)
-(/usr/share/texmf-dist/tex/latex/tools/tabularx.sty)
-(/usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty)
-(/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
-(/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty))
-(/usr/share/texmf-dist/tex/latex/capt-of/capt-of.sty)
-(/usr/share/texmf-dist/tex/latex/xargs/xargs.sty
-(/usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-(/usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/share/texmf-dist/tex/generic/xkeyval/xkvutils.tex))))
-(/usr/share/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texmf-dist/tex/latex/makecell/makecell.sty)
-(/usr/share/texmf-dist/tex/latex/adjustbox/adjustbox.sty
-(/usr/share/texmf-dist/tex/latex/adjustbox/adjcalc.sty)
-(/usr/share/texmf-dist/tex/latex/adjustbox/trimclip.sty
-(/usr/share/texmf-dist/tex/latex/collectbox/collectbox.sty)
-(/usr/share/texmf-dist/tex/latex/adjustbox/tc-pdftex.def))
-(/usr/share/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty)
-(/usr/share/texmf-dist/tex/latex/varwidth/varwidth.sty))
-(/usr/share/texmf-dist/tex/latex/pdflscape/pdflscape.sty
-(/usr/share/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty))
-(/usr/share/texmf-dist/tex/latex/pdfx/pdfx.sty
-(/usr/share/texmf-dist/tex/generic/iftex/ifpdf.sty)
-(/usr/share/texmf-dist/tex/generic/iftex/ifxetex.sty)
-(/usr/share/texmf-dist/tex/latex/everyshi/everyshi.sty)
-(/usr/share/texmf-dist/tex/generic/iftex/ifluatex.sty){/var/lib/texmf/fonts/map
-/pdftex/updmap/pdftex.map} (/usr/share/texmf-dist/tex/latex/pdfx/l8u-penc.def)
-
-Package hyperref Warning: Option `pdftex' has already been used,
-(hyperref)                setting the option has no effect on input line 1461.
-
-
-Package hyperref Warning: Option `pdfa' has already been used,
-(hyperref)                setting the option has no effect on input line 1461.
-
-(/usr/share/texmf-dist/tex/generic/stringenc/stringenc.sty)
-(/usr/share/texmf-dist/tex/latex/hyperref/psdextra.def)
-(/usr/share/texmf-dist/tex/generic/colorprofiles/colorprofiles.sty
-(/usr/share/texmf-dist/tex/generic/colorprofiles/colorprofiles.tex))
-(/usr/share/texmf-dist/tex/generic/stringenc/se-pdfdoc.def)
-(/usr/share/texmf-dist/tex/latex/pdfx/AdobeColorProfiles.tex)
-(/usr/share/texmf-dist/tex/latex/pdfx/8bit.def)
-** pdfx: No file relatorio_preditivo.xmpdata . Metadata will be incomplete!
-<<sRGB.icc>> (/usr/share/texmf-dist/tex/latex/pdfx/8bit.def)
-(/usr/share/texmf-dist/tex/generic/pdftex/glyphtounicode.tex)
-(/usr/share/texmf-dist/tex/latex/pdfx/glyphtounicode-cmr.tex)
-(/usr/share/texmf-dist/tex/latex/pdfx/glyphtounicode-ntx.tex)
-(/usr/share/texmf-dist/tex/latex/xmpincl/xmpincl.sty)
-(/usr/share/texmf-dist/tex/latex/pdfx/8bit.def)
-Using XMP template file: pdfa.xmp
-<<pdfa.xmpi>>)) (/usr/share/texmf-dist/tex/latex/mathastext/mathastext.sty)
-! Undefined control sequence.
-l.13 \addto
-           \captionsbrazil{%
-? No pages of output.
-
-pdfTeX warning: pdflatex: dangling objects discarded, no output file produced.
-Transcript written on /home/ggrl/projetos/ClassificadorSismologico/arquivos/res
-ultados/relatorios/relatorio_preditivo.log.
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/pyscripts/figures.py", line 46, in <module>
+    generate_latex_for_figures()
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/pyscripts/figures.py", line 36, in generate_latex_for_figures
+    with open(figures_tex_path, 'w') as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorios-sismologia/tex/relatorio_preditivo/tex/figures.tex'

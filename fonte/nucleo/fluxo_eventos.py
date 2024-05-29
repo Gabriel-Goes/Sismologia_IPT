@@ -12,6 +12,7 @@
 # ----------------------------  IMPORTS   -------------------------------------
 from obspy.core.event.catalog import Catalog
 from obspy.geodetics import gps2dist_azimuth
+from obspy.clients.fdsn import Client
 
 import sys
 import os
@@ -24,13 +25,19 @@ from typing import List, Dict
 # ClassificadorSismologico
 from utils import MSEED_DIR
 from utils import DELIMT, DELIMT2
-from utils import DATA_CLIENT, DATA_CLIENT_BKP
 from utils import csv2list
 
 # ----------------------------  CONSTANTES  -----------------------------------
-# DATA_CLIENT = 'USP'
-# DATA_CLIENT_BKP = 'RSBR'
-
+# Clientes para acessar os dados
+try:
+    DATA_CLIENT = Client('http://seisarc.sismo.iag.usp.br/')
+except Exception as e:
+    print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
+try:
+    DATA_CLIENT_BKP = Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
+except Exception as e:
+    print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
+    sys.exit(1)
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 def iterar_eventos(eventos: List,
@@ -403,6 +410,6 @@ def main(EventIDs: List,
 if __name__ == "__main__":
     EventIDs = csv2list(sys.argv[1])
     catalogo, missin_ids = main(
-        EventIDs[:50],
+        EventIDs[:10],
         DATA_CLIENT,
         DATA_CLIENT_BKP)

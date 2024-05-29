@@ -157,13 +157,13 @@ def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
     plt.xlabel('Longitude')
     plt.ylabel('Latitude')
     plt.grid(True)
-    plt.savefig('arquivos/figures/pre_process/mapas/bruto_catalog_mapa.png')
+    plt.savefig('arquivos/figures/mapas/mapa_eventos_brasil.png')
     plt.close()
     #plt.show()
 
 
 def plot_prof_as_red(catalog: pd.DataFrame) -> None:
-    catalog.drop_duplicates(subset='#EventID', inplace=True)
+    catalog.drop_duplicates(subset='EventID', inplace=True)
     catalog = gpd.GeoDataFrame(
         catalog,
         geometry=gpd.points_from_xy(catalog.Longitude, catalog.Latitude)
@@ -204,8 +204,7 @@ def plot_prof_as_red(catalog: pd.DataFrame) -> None:
              style="c0.2c", fill="red", label=f"Profundidade > 200 km ({nb_ev_200})")
     fig.legend(position="JBR+jBR+o0.5c/0.5c", box="+gwhite+p1p,black")
     fig.text(x=-52, y=8, text="Eventos Sismológicos pré-tratamento por Profundidade (km)", font="16p,Helvetica-Bold")
-    fig.savefig('arquivos/figuras/pre_process/mapas/mapa_eventos_bruto.png')
-    fig.close()
+    fig.savefig('arquivos/figuras/mapas/mapa_eventos_depth.png')
     # fig.show()
 
 
@@ -256,8 +255,7 @@ def plot_cleaned_catalog_pygmt(catalog: pd.DataFrame) -> None:
     )
     fig.legend(position="JBR+jBR+o0.5c/0.5c", box="+gwhite+p1p,black")
     fig.text(x=-52, y=8, text="Eventos Sismológicos pós-tratamento por Profundidade (km)", font="16p,Helvetica-Bold")
-    fig.savefig('arquivos/figuras/pre_process/mapas/mapa_eventos_clean.png')
-    fig.close()
+    fig.savefig('arquivos/figuras/mapas/mapa_eventos_clean.png')
     # fig.show()
 
 

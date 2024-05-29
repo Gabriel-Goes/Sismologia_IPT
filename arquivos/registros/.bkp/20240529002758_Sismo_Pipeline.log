@@ -1,0 +1,31 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+[{"success":true}]
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 31, in <module>
+    from nucleo.utils import CAT_DIS, CAT_MAG, CAT_SNR
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/nucleo/utils.py", line 61
+    DATA_CLIENT =
+                 ^
+SyntaxError: invalid syntax
+
+ -------------- Processo de criação de mapas iniciado ------------------
+
+ ----------------- Iniciando o pdflatex .tex ---------------------------- 
+/home/ggrl/.pyenv/versions/sismologia/bin/python: can't open file '/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorios-sismologia/pyscripts/figures.py': [Errno 2] No such file or directory
+/home/ggrl/.pyenv/versions/sismologia/bin/python: can't open file '/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorios-sismologia/pyscripts/mapa.py': [Errno 2] No such file or directory
+./fluxo_sismo.sh: linha 135: pushd: fonte/relatorios-sismologia: Arquivo ou diretório inexistente
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 

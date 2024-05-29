@@ -1,0 +1,21 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo-moho.csv...
+Nenhum argumento foi passado
+
+ -> Executando fluxo_eventos.py...
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/nucleo/fluxo_eventos.py", line 25, in <module>
+    from utils import MSEED_DIR
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/nucleo/utils.py", line 61
+    DATA_CLIENT =
+                 ^
+SyntaxError: invalid syntax

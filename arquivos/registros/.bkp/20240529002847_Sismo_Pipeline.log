@@ -1,0 +1,98 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando [A...
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 303, in <module>
+    catalog = main()
+              ^^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 267, in main
+    catalog = pd.read_csv(f'arquivos/catalogo/{args.catalogo}', sep='|')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'arquivos/catalogo/[A'
+
+ -> Executando fluxo_eventos.py...
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/nucleo/fluxo_eventos.py", line 25, in <module>
+    from utils import MSEED_DIR
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/nucleo/utils.py", line 61
+    DATA_CLIENT =
+                 ^
+SyntaxError: invalid syntax
+
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+[{"success":true}]
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 31, in <module>
+    from nucleo.utils import CAT_DIS, CAT_MAG, CAT_SNR
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/nucleo/utils.py", line 61
+    DATA_CLIENT =
+                 ^
+SyntaxError: invalid syntax
+
+ -------------- Processo de criação de mapas iniciado ------------------
+
+ ----------------- Iniciando o pdflatex .tex ---------------------------- 
+/home/ggrl/.pyenv/versions/sismologia/bin/python: can't open file '/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorios-sismologia/pyscripts/figures.py': [Errno 2] No such file or directory
+/home/ggrl/.pyenv/versions/sismologia/bin/python: can't open file '/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorios-sismologia/pyscripts/mapa.py': [Errno 2] No such file or directory
+./fluxo_sismo.sh: linha 135: pushd: fonte/relatorios-sismologia: Arquivo ou diretório inexistente
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+! I can't find file `relatorio_preditivo.tex'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `^^Xx'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `^^X'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `^^X'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ! I can't find file `^^X'.
+<*> relatorio_preditivo.tex
+                           
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 
+! Emergency stop.
+<*> 
+    
+!  ==> Fatal error occurred, no output PDF file produced!
+Transcript written on /home/ggrl/projetos/ClassificadorSismologico/arquivos/res
+ultados/relatorios/texput.log.
+~/projetos/ClassificadorSismologico
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
+./fluxo_sismo.sh: linha 144: popd: pilha de diretórios está vazia

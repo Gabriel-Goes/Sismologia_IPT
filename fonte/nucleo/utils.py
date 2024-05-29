@@ -20,8 +20,12 @@ import os
 import sys
 
 # ---------------------------- PARAMETROS -------------------------------------
-PROJETO_DIR = os.environ['HOME'] + "/projetos/ClassificadorSismologico"
-MSEED_DIR = PROJETO_DIR + "arquivos/mseed"
+PROJETO_DIR = os.environ['HOME'] + "/projetos/ClassificadorSismologico/"
+MSEED_DIR = PROJETO_DIR + "arquivos/mseed/"
+
+CAT_PROB = [
+    '<0.2', '[0.2-0.4[', '[0.4-0.6[', '[0.6-0.8[', '[0.8-0.9[', '>=0.9'
+]
 CAT_SNR = [
         '< 1', '[1-1.25[', '[1.25-1.5[', '[1.5-1.75[', '[1.75-2[', '[2-3[',
         '[3-4[', '[4-5[', '[5-6[', '[6-7[', '[7-8[', '[8-9[', '[9-10[',
@@ -57,11 +61,6 @@ ID_dict = {"MC": '8091',
 DELIMT = "-----------------------------------------------------\n"
 DELIMT2 = "#####################################################\n"
 BKP_TIME = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-
-DATA_CLIENT =
-DATA_CLIENT_BKP =
-
-
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 class DualOutput(object):
