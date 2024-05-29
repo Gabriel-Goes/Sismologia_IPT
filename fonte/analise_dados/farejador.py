@@ -169,7 +169,15 @@ class SeletorEventoApp(QMainWindow):
                 'Pick Prob_Nat',
             ]]
             print(f'Evento: {selected_event}')
-            print(event_data)
+            print(event_data[[
+                'Origem Latitude',
+                'Origem Longitude',
+                'Network',
+                'SNR_P',
+                'SNR_P_Q2'
+            ]]
+                  )
+
             print('_____________________________________________________\n')
 
     def get_EventsSorted(self):

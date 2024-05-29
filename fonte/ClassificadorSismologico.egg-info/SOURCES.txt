@@ -21,3 +21,4 @@ fonte/rnc/__init__.py
 fonte/rnc/data_process.py
 fonte/rnc/prediction.py
 fonte/rnc/run.py
+fonte/rnc/train.py

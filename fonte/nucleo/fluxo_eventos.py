@@ -24,9 +24,9 @@ from typing import List, Dict
 # import logging  # Utilizar o Logging
 
 # ClassificadorSismologico
-from utils import MSEED_DIR
-from utils import DELIMT, DELIMT2
-from utils import csv2list
+from nucleo.utils import MSEED_DIR
+from nucleo.utils import DELIMT, DELIMT2
+from nucleo.utils import csv2list
 
 # ----------------------------  CONSTANTES  -----------------------------------
 # Clientes para acessar os dados
@@ -39,6 +39,7 @@ try:
 except Exception as e:
     print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
     sys.exit(1)
+
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 def iterar_eventos(eventos: List,
@@ -360,7 +361,7 @@ def main(EventIDs: List,
          data_Client: str,
          data_Client_bkp: str) -> [Catalog, Dict, List]:
     print('')
-    print(f' - Catálogo: {sys.argv[1]}')
+    #print(f' - Catálogo: {sys.argv[1]}')
     print(f' --> Client:\n  {DATA_CLIENT.base_url}')
     print(f' --> Client Backup:\n  {DATA_CLIENT_BKP.base_url}')
     print(DELIMT)

@@ -1,0 +1,57 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+0it [00:00, ?it/s]6it [00:00, 58.67it/s]25it [00:00, 130.57it/s]46it [00:00, 163.05it/s]68it [00:00, 182.35it/s]92it [00:00, 200.86it/s]114it [00:00, 205.10it/s]135it [00:00, 202.82it/s]156it [00:00, 200.02it/s]177it [00:00, 196.39it/s]197it [00:01, 190.11it/s]219it [00:01, 196.63it/s]241it [00:01, 201.21it/s]262it [00:01, 199.91it/s]283it [00:01, 196.64it/s]304it [00:01, 198.50it/s]327it [00:01, 207.47it/s]351it [00:01, 215.94it/s]373it [00:01, 200.32it/s]394it [00:02, 189.24it/s]414it [00:02, 188.63it/s]435it [00:02, 192.87it/s]455it [00:02, 189.55it/s]475it [00:02, 186.66it/s]497it [00:02, 194.59it/s]517it [00:02, 187.36it/s]536it [00:02, 188.09it/s]556it [00:02, 189.72it/s]576it [00:03, 179.31it/s]595it [00:03, 178.03it/s]616it [00:03, 184.85it/s]636it [00:03, 188.80it/s]657it [00:03, 194.83it/s]677it [00:03, 194.31it/s]697it [00:03, 178.28it/s]716it [00:03, 174.54it/s]734it [00:03, 151.71it/s]750it [00:04, 153.31it/s]769it [00:04, 160.39it/s]787it [00:04, 165.64it/s]805it [00:04, 169.12it/s]823it [00:04, 170.79it/s]842it [00:04, 174.80it/s]860it [00:04, 176.28it/s]881it [00:04, 186.12it/s]901it [00:04, 190.00it/s]921it [00:04, 186.41it/s]940it [00:05, 169.37it/s]958it [00:05, 137.39it/s]973it [00:05, 129.89it/s]987it [00:05, 124.12it/s]1003it [00:05, 132.56it/s]1020it [00:05, 138.82it/s]1035it [00:05, 127.11it/s]1049it [00:06, 126.65it/s]1062it [00:06, 120.10it/s]1078it [00:06, 126.88it/s]1094it [00:06, 133.91it/s]1110it [00:06, 139.21it/s]1125it [00:06, 140.01it/s]1140it [00:06, 137.75it/s]1155it [00:06, 140.10it/s]1170it [00:06, 137.51it/s]1184it [00:07, 132.70it/s]1198it [00:07, 134.18it/s]1212it [00:07, 133.63it/s]1226it [00:07, 130.24it/s]1242it [00:07, 137.91it/s]1258it [00:07, 142.64it/s]1276it [00:07, 149.23it/s]1291it [00:07, 147.79it/s]1306it [00:07, 139.71it/s]1322it [00:07, 144.02it/s]1340it [00:08, 152.91it/s]1356it [00:08, 149.73it/s]1378it [00:08, 168.12it/s]1401it [00:08, 183.48it/s]1424it [00:08, 195.53it/s]1446it [00:08, 200.17it/s]1467it [00:08, 186.89it/s]1486it [00:08, 170.37it/s]1505it [00:08, 172.72it/s]1523it [00:09, 168.75it/s]1541it [00:09, 149.84it/s]1557it [00:09, 140.26it/s]1572it [00:09, 115.09it/s]1591it [00:09, 130.97it/s]1609it [00:09, 142.11it/s]1626it [00:09, 147.61it/s]1644it [00:10, 152.02it/s]1660it [00:10, 137.96it/s]1676it [00:10, 141.00it/s]1694it [00:10, 150.21it/s]1712it [00:10, 156.94it/s]1729it [00:10, 137.57it/s]1744it [00:10, 128.72it/s]1761it [00:10, 137.89it/s]1776it [00:10, 139.77it/s]1791it [00:11, 130.19it/s]1805it [00:11, 127.88it/s]1819it [00:11, 125.47it/s]1835it [00:11, 134.56it/s]1849it [00:11, 127.60it/s]1865it [00:11, 135.39it/s]1881it [00:11, 140.62it/s]1897it [00:11, 145.14it/s]1912it [00:12, 130.35it/s]1928it [00:12, 137.23it/s]1943it [00:12, 140.63it/s]1958it [00:12, 138.20it/s]1974it [00:12, 142.81it/s]1990it [00:12, 144.94it/s]2005it [00:12, 141.66it/s]2020it [00:12, 133.43it/s]2035it [00:12, 134.40it/s]2049it [00:13, 131.46it/s]2068it [00:13, 146.91it/s]2090it [00:13, 167.09it/s]2109it [00:13, 172.58it/s]2127it [00:13, 169.81it/s]2145it [00:13, 158.80it/s]2162it [00:13, 159.55it/s]2180it [00:13, 164.20it/s]2197it [00:13, 164.92it/s]2215it [00:13, 167.63it/s]2232it [00:14, 157.75it/s]2251it [00:14, 164.93it/s]2268it [00:14, 161.78it/s]2290it [00:14, 176.31it/s]2309it [00:14, 177.41it/s]2327it [00:14, 171.67it/s]2345it [00:14, 169.33it/s]2367it [00:14, 181.61it/s]2382it [00:14, 159.72it/s]
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:405: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['Hora'] = pd.to_numeric(df['Hora'])
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:406: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['Cat Hora'] = pd.cut(
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:689: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  fig, ax = plt.subplots(figsize=(19, 9))
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1152: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['SNR_P_cat'] = pd.Categorical(
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1193: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout()
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1221: RuntimeWarning: invalid value encountered in scalar divide
+  nb_sta = df[df['SNR_P_Q2_cat'] == r].shape[0]/f_a
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1221: RuntimeWarning: invalid value encountered in scalar divide
+  nb_sta = df[df['SNR_P_Q2_cat'] == r].shape[0]/f_a
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1352: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.boxplot(
+CategoricalIndex(['<1', '[1-2[', '[2-3[', '>=3'], categories=['<1', '[1-2[', '[2-3[', '>=3'], ordered=True, dtype='category', name='Magnitude_cat')
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
+~/projetos/ClassificadorSismologico

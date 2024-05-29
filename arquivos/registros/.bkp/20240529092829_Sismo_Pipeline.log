@@ -1,0 +1,29 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo-moho.csv...
+Nenhum argumento foi passado
+
+ -> Executando fluxo_eventos.py...
+
+ - Catálogo: catalogo-moho_treated.csv
+ --> Client:
+  http://seisarc.sismo.iag.usp.br
+ --> Client Backup:
+  http://rsbr.on.br:8081/fdsnws/dataselect/1
+-----------------------------------------------------
+
+ --------- INICIANDO FLUXO DE EVENTOS  --------- 
+
+ ------------------------------ ACESSANDO CATÁLOGO ------------------------------ 
+ - Primeiro EventID: bsb20080423000048
+ - EventID mediano: usp2021rdoy
+ - Último EventID: bsb19980507013654
+  0%|          | 0/1000 [00:00<?, ?it/s]  0%|          | 1/1000 [00:00<03:13,  5.15it/s]  0%|          | 3/1000 [00:00<02:05,  7.93it/s]  0%|          | 5/1000 [00:00<01:29, 11.07it/s]  1%|          | 7/1000 [00:00<01:25, 11.61it/s]  1%|          | 9/1000 [00:00<01:13, 13.43it/s]  1%|          | 12/1000 [00:00<00:59, 16.66it/s]
