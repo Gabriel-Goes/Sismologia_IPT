@@ -1390,8 +1390,11 @@ def carregar_dado(w=3, n=0, d=400, m=8):
     df.set_index(['Event', 'Station'], inplace=True)
     df = snr(df, w)
 <<<<<<< HEAD
+<<<<<<< HEAD
     df.to_csv(f'arquivos/resultados/analisado_{w}{n}{d}{m}.csv')
 =======
+=======
+>>>>>>> Class
     df = df[df['SNR_P'] > n]
     df.to_csv(f'arquivos/resultados/{w}{n}{d}{m}_analisado.csv')
 >>>>>>> Class
@@ -1466,7 +1469,12 @@ def ncomercial(df):
     # ----------------------------------
     region_correlation(df_nc)
 <<<<<<< HEAD
+<<<<<<< HEAD
     df_nc.to_csv('arquivos/resultados/analisado_nc.csv')
+=======
+
+    df_nc.to_csv('arquivos/resultados/nc_analisado.csv')
+>>>>>>> Class
 =======
 
     df_nc.to_csv('arquivos/resultados/nc_analisado.csv')
@@ -1484,12 +1492,15 @@ def main():
     df = median_snrp_event(df)
     df = median_dist_event(df)
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     df['Magnitude_cat'] = pd.Categorical(df['MLv'].apply(class_mag), categories=CAT_MAG, ordered=True)
     df['Distance_cat'] = pd.Categorical(df['Distance'].apply(class_dist), categories=CAT_DIS, ordered=True)
     df['SNR_P_cat'] = pd.Categorical(df['SNR_P'].apply(class_snrp), categories=CAT_SNR, ordered=True)
     df['Pick Prob_Nat_cat'] = pd.Categorical(df['Pick Prob_Nat'].apply(class_prob), categories=CAT_PROB, ordered=True)
 =======
+=======
+>>>>>>> Class
     df['Magnitude_cat'] = pd.Categorical(
         df['MLv'].apply(class_mag), categories=CAT_MAG, ordered=True
     )
@@ -1503,6 +1514,9 @@ def main():
         df['Pick Prob_Nat'].apply(class_prob),
         categories=CAT_PROB, ordered=True
     )
+<<<<<<< HEAD
+>>>>>>> Class
+=======
 >>>>>>> Class
     df.loc[:, 'Num_Estacoes'] = df.index.get_level_values('Event').map(
         df.reset_index().groupby('Event').size()

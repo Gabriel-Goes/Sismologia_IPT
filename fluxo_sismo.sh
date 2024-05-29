@@ -34,15 +34,9 @@
 
 # -----------------------------  VARIÁVEIS -------------------------------------
 CATALOG=${1:-"catalogo-moho.csv"}
-<<<<<<< HEAD
 EVENTS=${EVENTS:-true}
 TREATCATALOG=${TREATCATALOG:-true}
 PREDICT=${PREDICT:-true}
-=======
-EVENTS=${EVENTS:-false}
-TREATCATALOG=${TREATCATALOG:-false}
-PREDICT=${PREDICT:-false}
->>>>>>> Class
 POSPROCESS=${POSPROCESS:-true}
 MAPS=${MAPS:-true}
 REPORT=${REPORT:-true}

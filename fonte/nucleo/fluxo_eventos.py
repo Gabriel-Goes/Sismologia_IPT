@@ -13,8 +13,12 @@
 from obspy.core.event.catalog import Catalog
 from obspy.geodetics import gps2dist_azimuth
 <<<<<<< HEAD
+<<<<<<< HEAD
 from obspy.clients.fdsn import Client
 
+=======
+import random
+>>>>>>> Class
 =======
 import random
 >>>>>>> Class
@@ -33,6 +37,7 @@ from nucleo.utils import DELIMT, DELIMT2
 from nucleo.utils import csv2list
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # ----------------------------  CONSTANTES  -----------------------------------
 # Clientes para acessar os dados
 try:
@@ -46,6 +51,8 @@ except Exception as e:
     sys.exit(1)
 
 
+=======
+>>>>>>> Class
 =======
 >>>>>>> Class
 # ---------------------------- FUNÇÕES ----------------------------------------

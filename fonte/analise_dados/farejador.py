@@ -44,11 +44,7 @@ class SeletorEventoApp(QMainWindow):
         self.setWindowTitle('Seletor de Eventos, Redes e Estações')
         self.setGeometry(50, 50, 400, 300)
 
-<<<<<<< HEAD:fonte/analise_dados/farejador.py
         self.df = pd.read_csv("arquivos/resultados/analisado_nc.csv")
-=======
-        self.df = pd.read_csv("arquivos/resultados/304008_analisado.csv")
->>>>>>> Class:fonte/interface/farejador.py
         print(self.df.columns)
 
         self.central_widget = QWidget(self)

@@ -24,7 +24,10 @@ import sys
 PROJETO_DIR = os.environ['HOME'] + "/projetos/ClassificadorSismologico/"
 MSEED_DIR = PROJETO_DIR + "arquivos/mseed/"
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> Class
 =======
 >>>>>>> Class
 CAT_PROB = [
@@ -67,7 +70,10 @@ DELIMT2 = "#####################################################\n"
 BKP_TIME = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> Class
 try:
     DATA_CLIENT = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
 except Exception as e:
