@@ -13,9 +13,12 @@ import sys
 import subprocess
 import os
 import re
+import io
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import obspy
+from obspy import UTCDateTime
 
 from PIL import Image
 from PIL import ImageOps
@@ -147,15 +150,26 @@ class SeletorEventoApp(QMainWindow):
         if selected_event:
             df_ = self.df.set_index(['Event', 'Station'])
             event_data = df_.loc[selected_event]
-            print(f'Evento: {selected_event}')
-            print(event_data[[
+            self.event_data = event_data[[
                 'Cat',
                 'Error',
                 'Compo',
                 'Pick',
                 'SNR_P',
                 'Região Origem',
-            ]])
+                'Start Time',
+                'End Time',
+                'Pick Time',
+                'Origem Latitude',
+                'Origem Longitude',
+                'Network',
+                'Distance',
+                'Num_Estacoes',
+                'Event Prob_Nat',
+                'Pick Prob_Nat',
+            ]]
+            print(f'Evento: {selected_event}')
+            print(event_data)
             print('_____________________________________________________\n')
 
     def get_EventsSorted(self):
@@ -282,6 +296,29 @@ class SeletorEventoApp(QMainWindow):
         except Exception as e:
             print(f"Erro ao iniciar o Snuffler: {e}")
 
+    def plot_waveform(self):
+        plt.figure(figsize=(6, 2))
+        ev = self.eventSelector.currentText()
+        net = self.networkSelector.currentText()
+        sta = self.stationSelector.currentText()
+        mseed = f'{net}_{sta}_{ev}'
+        st = obspy.read(f'arquivos/mseed/{ev}/{mseed}.mseed')
+        tr = st[0].detrend('linear').filter('highpass', freq=2.0)
+        t = np.arange(tr.stats.npts) * tr.stats.delta
+        start = UTCDateTime(self.event_data.loc[sta]['Start Time'])
+        pick = UTCDateTime(self.event_data.loc[sta]['Pick Time'])
+        p_start = pick - start
+        plt.axvspan(p_start, p_start+3, alpha=0.5, label='S-Window', color='green')
+        plt.plot(t, tr.data, c='k')
+        plt.tight_layout()
+        buf = io.BytesIO()
+        plt.savefig(buf, format='png')
+        plt.close()
+        buf.seek(0)
+
+        Img_waveform = Image.open(buf)
+        return Img_waveform
+
     def loadSpectre(self):
         try:
             if not os.path.isfile(self.mseed_file_path):
@@ -310,17 +347,25 @@ class SeletorEventoApp(QMainWindow):
             color_img = cmap(psd_mat_normalized.T)
             color_img = (color_img[:, :, :3] * 255).astype(np.uint8)
 
-            img = Image.fromarray(color_img)
-            img = img.transpose(Image.FLIP_TOP_BOTTOM)
-            # Append another image with the same size right above the spectrogram
-            img = ImageOps.expand(img, (0, 0, 0, 60), fill='black')
+            img_spectro = Image.fromarray(color_img)
+            img_spectro = img_spectro.transpose(Image.FLIP_TOP_BOTTOM)
 
+            img_waveform = self.plot_waveform()
 
-            draw = ImageDraw.Draw(img)
-            draw.text((10, 99), f'{ev}_{net}_{sta}', fill='white')
+            total_height = img_spectro.height + img_waveform.height
+            combined_img = Image.new('RGB', (img_waveform.width, total_height))
+            combined_img.paste(img_spectro, (0, 0))
+            combined_img.paste(img_waveform, (0, img_spectro.height))
 
-            img.save(f'arquivos/figuras/espectros/{ev}_{net}_{sta}.png')
-            img.show()
+            draw = ImageDraw.Draw(combined_img)
+            draw.text((255, 5), f'{ev}_{net}_{sta}', fill='white')
+            prob = self.event_data.loc[sta]['Pick Prob_Nat']
+            prob_e = self.event_data.loc[sta]['Event Prob_Nat']
+            draw.text((255, 20), f'Pick: {prob}', fill='white')
+            draw.text((310, 20), f'Event: {prob_e}', fill='white')
+
+            combined_img.save(f'arquivos/figuras/espectros/{ev}_{net}_{sta}.png')
+            combined_img.show()
 
             print(f"Spectrogram iniciado com {self.mseed_file_path}")
         except FileNotFoundError:
@@ -335,6 +380,8 @@ def main():
     ex = SeletorEventoApp()
     ex.show()
     sys.exit(app.exec_())
+
+    return ex
 
 
 if __name__ == "__main__":

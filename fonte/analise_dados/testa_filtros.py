@@ -295,8 +295,6 @@ def parsewindow(line):
     })
 
 
-
-
 def main_plot(picks: pd.DataFrame,
               window: int) -> None:
     # Sort by distance
