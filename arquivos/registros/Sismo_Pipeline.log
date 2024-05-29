@@ -3,900 +3,8 @@
                        Iniciando do Pipeline                         
 ========================================================================
 
- Criando arquivos de backup...
- Arquivos de backup criados com sucesso!
-
-
- -------------- INICIANDO O TRATAMENTO -------------------- 
- Tratando catalogo-moho.csv...
-Nenhum argumento foi passado
-
- -> Executando fluxo_eventos.py...
-
- - Catálogo: catalogo-moho_treated.csv
- --> Client:
-  http://seisarc.sismo.iag.usp.br
- --> Client Backup:
-  http://rsbr.on.br:8081/fdsnws/dataselect/1
------------------------------------------------------
-
- --------- INICIANDO FLUXO DE EVENTOS  --------- 
-
- ------------------------------ ACESSANDO CATÁLOGO ------------------------------ 
- - Primeiro EventID: usp2024jjlx
- - EventID mediano: usp2024iutb
- - Último EventID: usp2024inlh
-  0%|          | 0/10 [00:00<?, ?it/s] 20%|██        | 2/10 [00:00<00:00, 13.62it/s] 40%|████      | 4/10 [00:00<00:00, 15.27it/s] 60%|██████    | 6/10 [00:00<00:00, 14.07it/s] 80%|████████  | 8/10 [00:00<00:00, 13.77it/s]100%|██████████| 10/10 [00:00<00:00, 14.65it/s]100%|██████████| 10/10 [00:00<00:00, 14.42it/s]
- --> Iterando sobre eventos
- - Número de eventos: 10
- - Client: http://seisarc.sismo.iag.usp.br
- - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
- --> Adrquirindo Inventário de Estações
-  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:00<00:01,  4.63it/s] 20%|██        | 2/10 [00:00<00:01,  5.64it/s] 30%|███       | 3/10 [00:00<00:01,  6.09it/s] 40%|████      | 4/10 [00:00<00:01,  4.66it/s]/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/obspy/core/inventory/network.py:321: UserWarning: Found more than one matching channel metadata. Returning first.
-  warnings.warn(msg)
-############ Event 1: usp2024jjlx ############
-
---> Pick 1
- - Net: BL
- - Sta: CPSB
- - Chn: HHN
- - Loc: None
- - Seed EventID: BL.CPSB..HHZ 
- - BL.CPSB X,Y : -30.4123, -53.4432
- - Distância até o epicentro: 258.8807081430831 km
- Downloading ...
- Pick Time -> 2024-05-13T06:03:50.363503Z
- Origin Time -> 2024-05-13T06:03:09.016978Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação CPSB
-   - canal: HHZ
- - Diretório event_name: 20240513T060309
------------------------------------------------------
-
---> Pick 2
- - Net: BL
- - Sta: ITAB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.ITAB..HHZ 
- - BL.ITAB X,Y : -27.2349, -52.1313
- - Distância até o epicentro: 238.8064596839915 km
- Downloading ...
- Pick Time -> 2024-05-13T06:03:46.657267Z
- Origin Time -> 2024-05-13T06:03:09.016978Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação ITAB
-   - canal: HHZ
- - Diretório event_name: 20240513T060309
------------------------------------------------------
-
---> Pick 3
- - Net: ON
- - Sta: TER01
- - Chn: HHZ
- - Loc: None
- - Seed EventID: ON.TER01..HHZ 
- - ON.TER01 X,Y : -28.531839, -49.129072
- - Distância até o epicentro: 210.82972895086854 km
- Downloading ...
- Pick Time -> 2024-05-13T06:03:43.226653Z
- Origin Time -> 2024-05-13T06:03:09.016978Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação TER01
-   - canal: HHZ
- - Diretório event_name: 20240513T060309
------------------------------------------------------
-
- - Event: usp2024jjlx
- - Pwave Picks: 3
-#####################################################
-
-############ Event 2: usp2024jjlt ############
-
---> Pick 1
- - Net: BL
- - Sta: CPSB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.CPSB..HHZ 
- - BL.CPSB X,Y : -30.4123, -53.4432
- - Distância até o epicentro: 254.59109853288606 km
- Downloading ...
- Pick Time -> 2024-05-13T05:59:26.433852Z
- Origin Time -> 2024-05-13T05:58:46.933918Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação CPSB
-   - canal: HHZ
- - Diretório event_name: 20240513T055846
------------------------------------------------------
-
---> Pick 2
- - Net: BL
- - Sta: ITAB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.ITAB..HHZ 
- - BL.ITAB X,Y : -27.2349, -52.1313
- - Distância até o epicentro: 246.64942091729526 km
- Downloading ...
- Pick Time -> 2024-05-13T05:59:24.608500Z
- Origin Time -> 2024-05-13T05:58:46.933918Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação ITAB
-   - canal: HHZ
- - Diretório event_name: 20240513T055846
------------------------------------------------------
-
---> Pick 3
- - Net: ON
- - Sta: TER01
- - Chn: HHZ
- - Loc: None
- - Seed EventID: ON.TER01..HHZ 
- - ON.TER01 X,Y : -28.531839, -49.129072
- - Distância até o epicentro: 213.8497236720682 km
- Downloading ...
- Pick Time -> 2024-05-13T05:59:21.374371Z
- Origin Time -> 2024-05-13T05:58:46.933918Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação TER01
-   - canal: HHZ
- - Diretório event_name: 20240513T055846
------------------------------------------------------
-
- - Event: usp2024jjlt
- - Pwave Picks: 3
-#####################################################
-
-############ Event 3: usp2024jjlb ############
-
---> Pick 1
- - Net: BL
- - Sta: CPSB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.CPSB..HHZ 
- - BL.CPSB X,Y : -30.4123, -53.4432
- - Distância até o epicentro: 241.98825230418137 km
- Downloading ...
- Pick Time -> 2024-05-13T05:38:25.755588Z
- Origin Time -> 2024-05-13T05:37:48.251290Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação CPSB
-   - canal: HHZ
- - Diretório event_name: 20240513T053748
------------------------------------------------------
-
---> Pick 2
- - Net: ON
- - Sta: TER01
- - Chn: HH1
- - Loc: None
- - Seed EventID: ON.TER01..HHZ 
- - ON.TER01 X,Y : -28.531839, -49.129072
- - Distância até o epicentro: 239.55904291546102 km
- Downloading ...
- Pick Time -> 2024-05-13T05:38:24.854953Z
- Origin Time -> 2024-05-13T05:37:48.251290Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação TER01
-   - canal: HHZ
- - Diretório event_name: 20240513T053748
------------------------------------------------------
-
---> Pick 3
- - Net: BL
- - Sta: ITAB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.ITAB..HHZ 
- - BL.ITAB X,Y : -27.2349, -52.1313
- - Distância até o epicentro: 206.41662507233676 km
- Downloading ...
- Pick Time -> 2024-05-13T05:38:21.323567Z
- Origin Time -> 2024-05-13T05:37:48.251290Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação ITAB
-   - canal: HHZ
- - Diretório event_name: 20240513T053748
------------------------------------------------------
-
- - Event: usp2024jjlb
- - Pwave Picks: 3
-#####################################################
-
-############ Event 4: usp2024jjjl ############
-
---> Pick 1
- - Net: BL
- - Sta: PTGB
- - Chn: HHN
- - Loc: None
- - Seed EventID: BL.PTGB..HHZ 
- - BL.PTGB X,Y : -24.72095, -52.01182
- - Distância até o epicentro: 483.5303532953357 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 2
- - Net: BL
- - Sta: PLTB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.PLTB..HHZ 
- - BL.PLTB X,Y : -31.76367, -53.60445
- - Distância até o epicentro: 357.78329789120016 km
- Downloading ...
- Pick Time -> 2024-05-13T04:49:34.622580Z
- Origin Time -> 2024-05-13T04:48:43.054289Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação PLTB
-   - canal: HHZ
- - Diretório event_name: 20240513T044843
------------------------------------------------------
-
---> Pick 3
- - Net: ON
- - Sta: TER01
- - Chn: HH1
- - Loc: None
- - Seed EventID: ON.TER01..HHZ 
- - ON.TER01 X,Y : -28.531839, -49.129072
- - Distância até o epicentro: 244.58980746347748 km
- Downloading ...
- Pick Time -> 2024-05-13T04:49:20.726723Z
- Origin Time -> 2024-05-13T04:48:43.054289Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação TER01
-   - canal: HHZ
- - Diretório event_name: 20240513T044843
------------------------------------------------------
-
---> Pick 4
- - Net: BL
- - Sta: CPSB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.CPSB..HHZ 
- - BL.CPSB X,Y : -30.4123, -53.4432
- - Distância até o epicentro: 235.48954400837917 km
- Downloading ...
- Pick Time -> 2024-05-13T04:49:18.643967Z
- Origin Time -> 2024-05-13T04:48:43.054289Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação CPSB
-   - canal: HHZ
- - Diretório event_name: 20240513T044843
------------------------------------------------------
-
---> Pick 5
- - Net: BL
- - Sta: ITAB
- - Chn: HHN
- - Loc: None
- - Seed EventID: BL.ITAB..HHZ 
- - BL.ITAB X,Y : -27.2349, -52.1313
- - Distância até o epicentro: 210.54430860587868 km
- Downloading ...
- Pick Time -> 2024-05-13T04:49:16.690069Z
- Origin Time -> 2024-05-13T04:48:43.054289Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação ITAB
-   - canal: HHZ
- - Diretório event_name: 20240513T044843
------------------------------------------------------
-
- - Event: usp2024jjjl
- - Pwave Picks: 5
-#####################################################
-
-############ Event 5: usp2024ivqc ############
-
---> Pick 1
- - Net: BR
- - Sta: BOAV
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BR.BOAV..HHZ 
- - BR.BOAV X,Y : 2.3953, -60.5225
- - Distância até o epicentro: 110.68488179650052 km
- Downloading ...
- Pick Time -> 2024-05-05T16:16:41.499362Z
- Origin Time -> 2024-05-05T16:16:23.000000Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação BOAV
-   - canal: HHZ
- - Diretório event_name: 20240505T161623
------------------------------------------------------
-
- - Event: usp2024ivqc
- - Pwave Picks: 1
-#####################################################
-
-############ Event 6: usp2024iutb ############
-
---> Pick 1
- - Net: NB
- - Sta: NBLP
- - Chn: HHZ
- - Loc: None
- - Seed EventID: NB.NBLP..HHZ 
- - NB.NBLP X,Y : -11.414837, -41.758733
- - Distância até o epicentro: 3227.9198020114645 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 2
- - Net: BR
- - Sta: SMTB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BR.SMTB..HHZ 
- - BR.SMTB X,Y : -8.8617, -47.5886
- - Distância até o epicentro: 2647.4957364980205 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 3
- - Net: BL
- - Sta: CPSB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.CPSB..HHZ 
- - BL.CPSB X,Y : -30.4123, -53.4432
- 70%|███████   | 7/10 [00:01<00:00,  8.06it/s] - Distância até o epicentro: 2632.783874645595 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 4
- - Net: BR
- - Sta: IPMB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BR.IPMB..HHZ 
- - BR.IPMB X,Y : -17.982956, -48.211734
- - Distância até o epicentro: 2533.113379229404 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 5
- - Net: BR
- - Sta: PRPB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BR.PRPB..HHZ 
- - BR.PRPB X,Y : -6.1724, -49.815
- - Distância até o epicentro: 2497.76540882187 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 6
- - Net: BL
- - Sta: ITQB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.ITQB..HHZ 
- - BL.ITQB X,Y : -29.6638, -56.6275
- - Distância até o epicentro: 2354.417227393575 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 7
- - Net: BR
- - Sta: MAL2
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BR.MAL2..HHZ 
- - BR.MAL2 X,Y : -2.0184, -54.1807
- - Distância até o epicentro: 2277.4457258554044 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 8
- - Net: BL
- - Sta: TRCB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.TRCB..HHZ 
- - BL.TRCB X,Y : -22.79461, -52.63569
- - Distância até o epicentro: 2235.8057504367875 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 9
- - Net: BR
- - Sta: SNDB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BR.SNDB..HHZ 
- - BR.SNDB X,Y : -11.9742, -51.2943
- - Distância até o epicentro: 2188.2794402755176 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 10
- - Net: BR
- - Sta: BOAV
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BR.BOAV..HHZ 
- - BR.BOAV X,Y : 2.3953, -60.5225
- - Distância até o epicentro: 2122.8820644239086 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 11
- - Net: BR
- - Sta: ARAG
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BR.ARAG..HHZ 
- - BR.ARAG X,Y : -15.706, -51.812
- - Distância até o epicentro: 2124.1278656638156 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 12
- - Net: BL
- - Sta: RVDE
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.RVDE..HHZ 
- - BL.RVDE X,Y : -19.0286, -54.9389
- - Distância até o epicentro: 1863.48926299835 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 13
- - Net: BL
- - Sta: AQDB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.AQDB..HHZ 
- - BL.AQDB X,Y : -20.47579, -55.69971
- - Distância até o epicentro: 1842.4987285076195 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 14
- - Net: BL
- - Sta: PP1B
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.PP1B..HHZ 
- - BL.PP1B X,Y : -17.6003, -54.8796
- - Distância até o epicentro: 1829.6917483958164 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 15
- - Net: BL
- - Sta: MURT
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.MURT..HHZ 
- - BL.MURT X,Y : -21.6592, -57.61
- - Distância até o epicentro: 1721.6061590537558 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 16
- - Net: BL
- - Sta: CLDB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.CLDB..HHZ 
- - BL.CLDB X,Y : -10.8732, -55.7965
- - Distância até o epicentro: 1720.6124567590327 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 17
- - Net: BR
- - Sta: SALV
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BR.SALV..HHZ 
- - BR.SALV X,Y : -15.90118, -55.69356
- - Distância até o epicentro: 1712.3829217669872 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 18
- - Net: XC
- - Sta: PT27
- - Chn: HHZ
- - Loc: None
- - Seed EventID: XC.PT27..HHZ 
- - XC.PT27 X,Y : -16.687511, -56.174298
- - Distância até o epicentro: 1674.7780792423273 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 19
- - Net: BL
- - Sta: COIM
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.COIM..HHZ 
- - BL.COIM X,Y : -19.9092, -57.7889
- - Distância até o epicentro: 1617.162372899901 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 20
- - Net: BR
- - Sta: VILB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BR.VILB..HHZ 
- - BR.VILB X,Y : -12.9528, -60.2002
- - Distância até o epicentro: 1214.3317276686998 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 21
- - Net: NB
- - Sta: RBRC
- - Chn: HHZ
- - Loc: None
- - Seed EventID: NB.RBRC..HHZ 
- - NB.RBRC X,Y : -9.9582, -67.879
- - Distância até o epicentro: 542.8597929462446 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
- - Event: usp2024iutb
- - Pwave Picks: 21
-#####################################################
-
-############ Event 7: usp2024irzo ############
-
---> Pick 1
- - Net: BL
- - Sta: DIAM
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.DIAM..HHZ 
- - BL.DIAM X,Y : -18.2952, -43.6648
- - Distância até o epicentro: 150.10569405021153 km
- Downloading ...
- Pick Time -> 2024-05-03T16:31:09.504721Z
- Origin Time -> 2024-05-03T16:30:44.170000Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação DIAM
-   - canal: HHZ
- - Diretório event_name: 20240503T163044
------------------------------------------------------
-
---> Pick 2
- - Net: VL
- - Sta: GNG4
- - Chn: HHR
- - Loc: None
- - Seed EventID: VL.GNG4..HHZ 
- - VL.GNG4 X,Y : -19.9724, -43.6034
- - Distância até o epicentro: 65.96911336677059 km
- Downloading ...
- Pick Time -> 2024-05-03T16:30:55.391376Z
- Origin Time -> 2024-05-03T16:30:44.170000Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação GNG4
-   - canal: HHZ
- - Diretório event_name: 20240503T163044
------------------------------------------------------
-
---> Pick 3
- - Net: VL
- - Sta: FJAO
- - Chn: HHZ
- - Loc: None
- - Seed EventID: VL.FJAO..HHZ 
- - VL.FJAO X,Y : -20.1001, -44.1283
- - Distância até o epicentro: 56.58223887720579 km
- Downloading ...
- Pick Time -> 2024-05-03T16:30:53.817256Z
- Origin Time -> 2024-05-03T16:30:44.170000Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação FJAO
-   - canal: HHZ
- - Diretório event_name: 20240503T163044
------------------------------------------------------
-
---> Pick 4
- - Net: BL
- - Sta: PRMB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.PRMB..HHZ 
- - BL.PRMB X,Y : -19.4566, -44.1487
- - Distância até o epicentro: 16.189470798491485 km
- Downloading ...
- Pick Time -> 2024-05-03T16:30:47.313819Z
- Origin Time -> 2024-05-03T16:30:44.170000Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação PRMB
-   - canal: HHZ
- - Diretório event_name: 20240503T163044
------------------------------------------------------
-
- - Event: usp2024irzo
- - Pwave Picks: 4
-#####################################################
-
-############ Event 8: usp2024irax ############
-
---> Pick 1
- - Net: BR
- - Sta: SDBA
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BR.SDBA..HHZ 
- - BR.SDBA X,Y : -12.4085, -44.903
- - Distância até o epicentro: 953.3370539140266 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 2
- - Net: BL
- - Sta: CLDB
- - Chn: HHR
- - Loc: None
- - Seed EventID: BL.CLDB..HHZ 
- - BL.CLDB X,Y : -10.8732, -55.7965
- - Distância até o epicentro: 810.2456317402016 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 3
- - Net: BR
- - Sta: SNDB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BR.SNDB..HHZ 
- - BR.SNDB X,Y : -11.9742, -51.2943
- - Distância até o epicentro: 687.9996588348957 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 4
- - Net: BR
- - Sta: ITTB
- - Chn: HHR
- - Loc: None
- - Seed EventID: BR.ITTB..HHZ 
- 80%|████████  | 8/10 [00:01<00:00,  7.40it/s] 90%|█████████ | 9/10 [00:01<00:00,  6.93it/s]100%|██████████| 10/10 [00:01<00:00,  6.32it/s]100%|██████████| 10/10 [00:01<00:00,  6.41it/s]
- - BR.ITTB X,Y : -4.3672, -55.7343
- - Distância até o epicentro: 603.7493670048727 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 5
- - Net: BR
- - Sta: MAL2
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BR.MAL2..HHZ 
- - BR.MAL2 X,Y : -2.0184, -54.1807
- - Distância até o epicentro: 586.6413150897291 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 6
- - Net: BR
- - Sta: SMTB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BR.SMTB..HHZ 
- - BR.SMTB X,Y : -8.8617, -47.5886
- - Distância até o epicentro: 464.97686828684454 km
-Estação a mais de 400 km do epicentro.
------------------------------------------------------
-
---> Pick 7
- - Net: VL
- - Sta: SRLE
- - Chn: HHZ
- - Loc: None
- - Seed EventID: VL.SRLE..HHZ 
- - VL.SRLE X,Y : -5.9564, -49.6125
- - Distância até o epicentro: 97.68761977902052 km
- Downloading ...
- Pick Time -> 2024-05-03T04:03:59.285274Z
- Origin Time -> 2024-05-03T04:03:42.679999Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação SRLE
-   - canal: HHZ
- - Diretório event_name: 20240503T040342
------------------------------------------------------
-
---> Pick 8
- - Net: BR
- - Sta: PRPB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BR.PRPB..HHZ 
- - BR.PRPB X,Y : -6.1724, -49.815
- - Distância até o epicentro: 84.1991488298282 km
- Downloading ...
- Pick Time -> 2024-05-03T04:03:56.769511Z
- Origin Time -> 2024-05-03T04:03:42.679999Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação PRPB
-   - canal: HHZ
- - Diretório event_name: 20240503T040342
------------------------------------------------------
-
- - Event: usp2024irax
- - Pwave Picks: 8
-#####################################################
-
-############ Event 9: usp2024inou ############
-
---> Pick 1
- - Net: BL
- - Sta: BSCB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.BSCB..HHZ 
- - BL.BSCB X,Y : -20.9984, -44.7635
- - Distância até o epicentro: 184.9597779875002 km
- Downloading ...
- Pick Time -> 2024-05-01T06:32:30.206072Z
- Origin Time -> 2024-05-01T06:31:59.533132Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação BSCB
-   - canal: HHZ
- - Diretório event_name: 20240501T063159
------------------------------------------------------
-
---> Pick 2
- - Net: BL
- - Sta: DIAM
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.DIAM..HHZ 
- - BL.DIAM X,Y : -18.2952, -43.6648
- - Distância até o epicentro: 139.06645495494647 km
- Downloading ...
- Pick Time -> 2024-05-01T06:32:22.736124Z
- Origin Time -> 2024-05-01T06:31:59.533132Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação DIAM
-   - canal: HHZ
- - Diretório event_name: 20240501T063159
------------------------------------------------------
-
---> Pick 3
- - Net: BL
- - Sta: PRMB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: BL.PRMB..HHZ 
- - BL.PRMB X,Y : -19.4566, -44.1487
- - Distância até o epicentro: 24.72593328032474 km
- Downloading ...
- Pick Time -> 2024-05-01T06:32:03.926021Z
- Origin Time -> 2024-05-01T06:31:59.533132Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação PRMB
-   - canal: HHZ
- - Diretório event_name: 20240501T063159
------------------------------------------------------
-
- - Event: usp2024inou
- - Pwave Picks: 3
-#####################################################
-
-############ Event 10: usp2024inlh ############
-
---> Pick 1
- - Net: NB
- - Sta: NBCL
- - Chn: HHZ
- - Loc: None
- - Seed EventID: NB.NBCL..HHZ 
- - NB.NBCL X,Y : -4.224377, -38.291041
- - Distância até o epicentro: 332.8400426886958 km
- Downloading ...
- Pick Time -> 2024-05-01T04:45:58.030901Z
- Origin Time -> 2024-05-01T04:45:09.432007Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação NBCL
-   - canal: HHZ
- - Diretório event_name: 20240501T044509
------------------------------------------------------
-
---> Pick 2
- - Net: NB
- - Sta: NBPS
- - Chn: HHZ
- - Loc: None
- - Seed EventID: NB.NBPS..HHZ 
- - NB.NBPS X,Y : -4.393969, -41.445618
- - Distância até o epicentro: 188.65360915524425 km
- Downloading ...
- Pick Time -> 2024-05-01T04:45:39.793931Z
- Origin Time -> 2024-05-01T04:45:09.432007Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação NBPS
-   - canal: HHZ
- - Diretório event_name: 20240501T044509
------------------------------------------------------
-
---> Pick 3
- - Net: NB
- - Sta: NBMO
- - Chn: HHZ
- - Loc: None
- - Seed EventID: NB.NBMO..HHZ 
- - NB.NBMO X,Y : -3.310348, -40.042927
- - Distância até o epicentro: 113.73758602805496 km
- Downloading ...
- Pick Time -> 2024-05-01T04:45:29.039779Z
- Origin Time -> 2024-05-01T04:45:09.432007Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação NBMO
-   - canal: HHZ
- - Diretório event_name: 20240501T044509
------------------------------------------------------
-
---> Pick 4
- - Net: NB
- - Sta: NBSB
- - Chn: HHZ
- - Loc: None
- - Seed EventID: NB.NBSB..HHZ 
- - NB.NBSB X,Y : -3.668, -40.4798
- - Distância até o epicentro: 110.15962659800954 km
- Downloading ...
- Pick Time -> 2024-05-01T04:45:28.447336Z
- Origin Time -> 2024-05-01T04:45:09.432007Z
- Channel -> HHZ
- - Waveform baixada para:
-   - estação NBSB
-   - canal: HHZ
- - Diretório event_name: 20240501T044509
------------------------------------------------------
-
- - Event: usp2024inlh
- - Pwave Picks: 4
-#####################################################
-
-Dados salvos com sucesso em arquivos/eventos/eventos.csv
-Erros salvos com sucesso em arquivos/eventos/erros.csv
-
- ----------------- INICIANDO O PREDICT.PY ---------------------------- 
-[{"success":true}]
-
  ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
-0it [00:00, ?it/s]6it [00:00, 59.96it/s]27it [00:00, 134.95it/s]
+0it [00:00, ?it/s]6it [00:00, 58.67it/s]25it [00:00, 130.57it/s]46it [00:00, 163.05it/s]68it [00:00, 182.35it/s]92it [00:00, 200.86it/s]114it [00:00, 205.10it/s]135it [00:00, 202.82it/s]156it [00:00, 200.02it/s]177it [00:00, 196.39it/s]197it [00:01, 190.11it/s]219it [00:01, 196.63it/s]241it [00:01, 201.21it/s]262it [00:01, 199.91it/s]283it [00:01, 196.64it/s]304it [00:01, 198.50it/s]327it [00:01, 207.47it/s]351it [00:01, 215.94it/s]373it [00:01, 200.32it/s]394it [00:02, 189.24it/s]414it [00:02, 188.63it/s]435it [00:02, 192.87it/s]455it [00:02, 189.55it/s]475it [00:02, 186.66it/s]497it [00:02, 194.59it/s]517it [00:02, 187.36it/s]536it [00:02, 188.09it/s]556it [00:02, 189.72it/s]576it [00:03, 179.31it/s]595it [00:03, 178.03it/s]616it [00:03, 184.85it/s]636it [00:03, 188.80it/s]657it [00:03, 194.83it/s]677it [00:03, 194.31it/s]697it [00:03, 178.28it/s]716it [00:03, 174.54it/s]734it [00:03, 151.71it/s]750it [00:04, 153.31it/s]769it [00:04, 160.39it/s]787it [00:04, 165.64it/s]805it [00:04, 169.12it/s]823it [00:04, 170.79it/s]842it [00:04, 174.80it/s]860it [00:04, 176.28it/s]881it [00:04, 186.12it/s]901it [00:04, 190.00it/s]921it [00:04, 186.41it/s]940it [00:05, 169.37it/s]958it [00:05, 137.39it/s]973it [00:05, 129.89it/s]987it [00:05, 124.12it/s]1003it [00:05, 132.56it/s]1020it [00:05, 138.82it/s]1035it [00:05, 127.11it/s]1049it [00:06, 126.65it/s]1062it [00:06, 120.10it/s]1078it [00:06, 126.88it/s]1094it [00:06, 133.91it/s]1110it [00:06, 139.21it/s]1125it [00:06, 140.01it/s]1140it [00:06, 137.75it/s]1155it [00:06, 140.10it/s]1170it [00:06, 137.51it/s]1184it [00:07, 132.70it/s]1198it [00:07, 134.18it/s]1212it [00:07, 133.63it/s]1226it [00:07, 130.24it/s]1242it [00:07, 137.91it/s]1258it [00:07, 142.64it/s]1276it [00:07, 149.23it/s]1291it [00:07, 147.79it/s]1306it [00:07, 139.71it/s]1322it [00:07, 144.02it/s]1340it [00:08, 152.91it/s]1356it [00:08, 149.73it/s]1378it [00:08, 168.12it/s]1401it [00:08, 183.48it/s]1424it [00:08, 195.53it/s]1446it [00:08, 200.17it/s]1467it [00:08, 186.89it/s]1486it [00:08, 170.37it/s]1505it [00:08, 172.72it/s]1523it [00:09, 168.75it/s]1541it [00:09, 149.84it/s]1557it [00:09, 140.26it/s]1572it [00:09, 115.09it/s]1591it [00:09, 130.97it/s]1609it [00:09, 142.11it/s]1626it [00:09, 147.61it/s]1644it [00:10, 152.02it/s]1660it [00:10, 137.96it/s]1676it [00:10, 141.00it/s]1694it [00:10, 150.21it/s]1712it [00:10, 156.94it/s]1729it [00:10, 137.57it/s]1744it [00:10, 128.72it/s]1761it [00:10, 137.89it/s]1776it [00:10, 139.77it/s]1791it [00:11, 130.19it/s]1805it [00:11, 127.88it/s]1819it [00:11, 125.47it/s]1835it [00:11, 134.56it/s]1849it [00:11, 127.60it/s]1865it [00:11, 135.39it/s]1881it [00:11, 140.62it/s]1897it [00:11, 145.14it/s]1912it [00:12, 130.35it/s]1928it [00:12, 137.23it/s]1943it [00:12, 140.63it/s]1958it [00:12, 138.20it/s]1974it [00:12, 142.81it/s]1990it [00:12, 144.94it/s]2005it [00:12, 141.66it/s]2020it [00:12, 133.43it/s]2035it [00:12, 134.40it/s]2049it [00:13, 131.46it/s]2068it [00:13, 146.91it/s]2090it [00:13, 167.09it/s]2109it [00:13, 172.58it/s]2127it [00:13, 169.81it/s]2145it [00:13, 158.80it/s]2162it [00:13, 159.55it/s]2180it [00:13, 164.20it/s]2197it [00:13, 164.92it/s]2215it [00:13, 167.63it/s]2232it [00:14, 157.75it/s]2251it [00:14, 164.93it/s]2268it [00:14, 161.78it/s]2290it [00:14, 176.31it/s]2309it [00:14, 177.41it/s]2327it [00:14, 171.67it/s]2345it [00:14, 169.33it/s]2367it [00:14, 181.61it/s]2382it [00:14, 159.72it/s]
 /home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:405: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
@@ -909,392 +17,8 @@ Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   df['Cat Hora'] = pd.cut(
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
 /home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:689: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
   fig, ax = plt.subplots(figsize=(19, 9))
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
 posx and posy should be finite values
 posx and posy should be finite values
 posx and posy should be finite values
@@ -1313,8 +37,8 @@ Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   df['SNR_P_cat'] = pd.Categorical(
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1221: RuntimeWarning: invalid value encountered in scalar divide
-  nb_sta = df[df['SNR_P_Q2_cat'] == r].shape[0]/f_a
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1193: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout()
 /home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1221: RuntimeWarning: invalid value encountered in scalar divide
   nb_sta = df[df['SNR_P_Q2_cat'] == r].shape[0]/f_a
 /home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1221: RuntimeWarning: invalid value encountered in scalar divide
@@ -1326,182 +50,8 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
   sns.boxplot(
 CategoricalIndex(['<1', '[1-2[', '[2-3[', '>=3'], categories=['<1', '[1-2[', '[2-3[', '>=3'], ordered=True, dtype='category', name='Magnitude_cat')
 
- -------------- Processo de criação de mapas iniciado ------------------
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
 
- ----------------- Iniciando o pdflatex .tex ---------------------------- 
-/home/ggrl/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-LaTeX file '/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/tex/relatorio_preditivo/tex/figures.tex' has been created successfully.
- -> Mapa '/home/ggrl/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/tex/relatorio_preditivo/tex/mapa.tex' gerado com sucesso!
-~/projetos/ClassificadorSismologico/fonte/relatorio-sismologia ~/projetos/ClassificadorSismologico ~/projetos/ClassificadorSismologico
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex)
- restricted \write18 enabled.
-entering extended mode
-(./relatorio_preditivo.tex
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-02-20>
-(./sismo_iptex.cls
-Document Class: sismo_iptex 2024/04/23 Classe Sismologia IPT
-(/usr/share/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
-(/usr/share/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texmf-dist/tex/latex/mdframed/mdframed.sty
-(/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty)
-(/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty))
-(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-(/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)))
-(/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
-(/usr/share/texmf-dist/tex/latex/zref/zref-abspage.sty
-(/usr/share/texmf-dist/tex/latex/zref/zref-base.sty
-(/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty)
-(/usr/share/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
-(/usr/share/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
-(/usr/share/texmf-dist/tex/generic/iftex/iftex.sty))
-(/usr/share/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
-(/usr/share/texmf-dist/tex/latex/auxhook/auxhook.sty)))
-(/usr/share/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texmf-dist/tex/latex/graphics/color.sty
-(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def)
-(/usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-(/usr/share/texmf-dist/tex/latex/mdframed/md-frame-0.mdf))
-(/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
-(/usr/share/texmf-dist/tex/latex/hycolor/hycolor.sty)
-(/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
-(/usr/share/texmf-dist/tex/latex/refcount/refcount.sty)
-(/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
-(/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def)
-(/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty)
-(/usr/share/texmf-dist/tex/latex/hyperref/puenc.def)
-(/usr/share/texmf-dist/tex/latex/url/url.sty)
-(/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
-(/usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
-(/usr/share/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
-(/usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
-(/usr/share/texmf-dist/tex/latex/base/atveryend-ltx.sty)
-(/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
-(/usr/share/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
-(/usr/share/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texmf-dist/tex/latex/base/fontenc.sty)
-(/usr/share/texmf-dist/tex/latex/mathtools/mathtools.sty
-(/usr/share/texmf-dist/tex/latex/tools/calc.sty)
-(/usr/share/texmf-dist/tex/latex/mathtools/mhsetup.sty)
-(/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty)))
-(/usr/share/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
-(/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty)
-(/usr/share/texmf-dist/tex/latex/base/latexsym.sty)
-(/usr/share/texmf-dist/tex/latex/mathabx.sty
-(/usr/share/texmf-dist/tex/latex/mathabx.dcl))
-(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
-(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
-(/usr/share/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
-(/usr/share/texmf-dist/tex/latex/psnfss/helvet.sty)
-(/usr/share/texmf-dist/tex/latex/base/fancyhdr.sty)
-(/usr/share/texmf-dist/tex/latex/tools/indentfirst.sty)
-(/usr/share/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texmf-dist/tex/latex/multirow/multirow.sty)
-(/usr/share/texmf-dist/tex/latex/graphics/lscape.sty)
-(/usr/share/texmf-dist/tex/latex/lastpage/lastpage.sty
-(/usr/share/texmf-dist/tex/latex/lastpage/lastpage2e.sty
-(/usr/share/texmf-dist/tex/latex/lastpage/lastpagemodern.sty) 
-)) (/usr/share/texmf-dist/tex/latex/caption/caption.sty
-(/usr/share/texmf-dist/tex/latex/caption/caption3.sty))
-(/usr/share/texmf-dist/tex/latex/subfig/subfig.sty)
-(/usr/share/texmf-dist/tex/latex/pdfpages/pdfpages.sty
-(/usr/share/texmf-dist/tex/latex/base/ifthen.sty)
-(/usr/share/texmf-dist/tex/latex/eso-pic/eso-pic.sty)
-(/usr/share/texmf-dist/tex/latex/pdfpages/pppdftex.def))
-(/usr/share/texmf-dist/tex/latex/setspace/setspace.sty)
-(/usr/share/texmf-dist/tex/latex/changepage/changepage.sty)
-(/usr/share/texmf-dist/tex/latex/tocloft/tocloft.sty)
-(/usr/share/texmf-dist/tex/latex/lipsum/lipsum.sty
-(/usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty)
-(/usr/share/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))
-(/usr/share/texmf-dist/tex/latex/sectsty/sectsty.sty
-
-LaTeX Warning: Command \underbar  has changed.
-               Check if current package is valid.
-
-
-LaTeX Warning: Command \underline  has changed.
-               Check if current package is valid.
-
-) (/usr/share/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty)
-(/usr/share/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty)
-(/usr/share/texmf-dist/tex/latex/siunitx/siunitx.sty
-(/usr/share/texmf-dist/tex/latex/translations/translations.sty)
-(/usr/share/texmf-dist/tex/latex/tools/array.sty))
-(/usr/share/texmf-dist/tex/latex/was/upgreek.sty)
-(/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(/usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-(/usr/share/texmf-dist/tex/latex/colortbl/colortbl.sty)
-(/usr/share/texmf-dist/tex/latex/tools/tabularx.sty)
-(/usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty)
-(/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
-(/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty))
-(/usr/share/texmf-dist/tex/latex/capt-of/capt-of.sty)
-(/usr/share/texmf-dist/tex/latex/xargs/xargs.sty
-(/usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-(/usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/share/texmf-dist/tex/generic/xkeyval/xkvutils.tex))))
-(/usr/share/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texmf-dist/tex/latex/makecell/makecell.sty)
-(/usr/share/texmf-dist/tex/latex/adjustbox/adjustbox.sty
-(/usr/share/texmf-dist/tex/latex/adjustbox/adjcalc.sty)
-(/usr/share/texmf-dist/tex/latex/adjustbox/trimclip.sty
-(/usr/share/texmf-dist/tex/latex/collectbox/collectbox.sty)
-(/usr/share/texmf-dist/tex/latex/adjustbox/tc-pdftex.def))
-(/usr/share/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty)
-(/usr/share/texmf-dist/tex/latex/varwidth/varwidth.sty))
-(/usr/share/texmf-dist/tex/latex/pdflscape/pdflscape.sty
-(/usr/share/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty))
-(/usr/share/texmf-dist/tex/latex/pdfx/pdfx.sty
-(/usr/share/texmf-dist/tex/generic/iftex/ifpdf.sty)
-(/usr/share/texmf-dist/tex/generic/iftex/ifxetex.sty)
-(/usr/share/texmf-dist/tex/latex/everyshi/everyshi.sty)
-(/usr/share/texmf-dist/tex/generic/iftex/ifluatex.sty){/var/lib/texmf/fonts/map
-/pdftex/updmap/pdftex.map} (/usr/share/texmf-dist/tex/latex/pdfx/l8u-penc.def)
-
-Package hyperref Warning: Option `pdftex' has already been used,
-(hyperref)                setting the option has no effect on input line 1461.
-
-
-Package hyperref Warning: Option `pdfa' has already been used,
-(hyperref)                setting the option has no effect on input line 1461.
-
-(/usr/share/texmf-dist/tex/generic/stringenc/stringenc.sty)
-(/usr/share/texmf-dist/tex/latex/hyperref/psdextra.def)
-(/usr/share/texmf-dist/tex/generic/colorprofiles/colorprofiles.sty
-(/usr/share/texmf-dist/tex/generic/colorprofiles/colorprofiles.tex))
-(/usr/share/texmf-dist/tex/generic/stringenc/se-pdfdoc.def)
-(/usr/share/texmf-dist/tex/latex/pdfx/AdobeColorProfiles.tex)
-(/usr/share/texmf-dist/tex/latex/pdfx/8bit.def)
-** pdfx: No file relatorio_preditivo.xmpdata . Metadata will be incomplete!
-<<sRGB.icc>> (/usr/share/texmf-dist/tex/latex/pdfx/8bit.def)
-(/usr/share/texmf-dist/tex/generic/pdftex/glyphtounicode.tex)
-(/usr/share/texmf-dist/tex/latex/pdfx/glyphtounicode-cmr.tex)
-(/usr/share/texmf-dist/tex/latex/pdfx/glyphtounicode-ntx.tex)
-(/usr/share/texmf-dist/tex/latex/xmpincl/xmpincl.sty)
-(/usr/share/texmf-dist/tex/latex/pdfx/8bit.def)
-Using XMP template file: pdfa.xmp
-<<pdfa.xmpi>>)) (/usr/share/texmf-dist/tex/latex/mathastext/mathastext.sty)
-! Undefined control sequence.
-l.13 \addto
-           \captionsbrazil{%
-? No pages of output.
-
-pdfTeX warning: pdflatex: dangling objects discarded, no output file produced.
-Transcript written on /home/ggrl/projetos/ClassificadorSismologico/arquivos/res
-ultados/relatorios/relatorio_preditivo.log.
+~/projetos/ClassificadorSismologico

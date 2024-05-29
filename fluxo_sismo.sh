@@ -35,11 +35,11 @@
 # -----------------------------  VARIÁVEIS -------------------------------------
 
 CATALOG=${1:-"catalogo-moho.csv"}
-EVENTS=${EVENTS:-true}
-TREATCATALOG=${TREATCATALOG:-true}
-PREDICT=${PREDICT:-true}
+EVENTS=${EVENTS:-false}
+TREATCATALOG=${TREATCATALOG:-false}
+PREDICT=${PREDICT:-false}
 POSPROCESS=${POSPROCESS:-true}
-MAPS=${MAPS:-true}
+MAPS=${MAPS:-false}
 REPORT=${REPORT:-false}
 
 # ----------------------------- CONSTANTES -------------------------------------

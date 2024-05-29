@@ -41,7 +41,7 @@ class SeletorEventoApp(QMainWindow):
         self.setWindowTitle('Seletor de Eventos, Redes e Estações')
         self.setGeometry(50, 50, 400, 300)
 
-        self.df = pd.read_csv("arquivos/resultados/predito.csv")
+        self.df = pd.read_csv("arquivos/resultados/analisado_nc.csv")
         print(self.df.columns)
 
         self.central_widget = QWidget(self)
@@ -87,11 +87,6 @@ class SeletorEventoApp(QMainWindow):
         self.hbox_event_labels.addWidget(self.probNatText)
         self.layout.addLayout(self.hbox_event_labels)
 
-        # self.layout.addWidget(QLabel('Rede:'))
-        # self.layout.addWidget(self.networkSelector)
-        # self.layout.addWidget(QLabel('Estação:'))
-        # self.layout.addWidget(self.stationSelector)
-
         self.distanceText = QLabel('Distância: ')
         self.layout.addWidget(self.distanceText)
         self.stPredText = QLabel('Pred. (pick): ')
@@ -124,6 +119,10 @@ class SeletorEventoApp(QMainWindow):
         self.layout.addWidget(self.invertCheckbox)
         self.invertCheckbox.stateChanged.connect(self.updateEventSelector)
 
+        self.logCheckbox = QCheckBox('Log')
+        self.layout.addWidget(self.logCheckbox)
+        self.logCheckbox.stateChanged.connect(self.updateLog)
+
         self.updateEventSelector(Qt.Checked)
         self.updateNetworkAndStationSelectors()
 
@@ -136,6 +135,28 @@ class SeletorEventoApp(QMainWindow):
             self.eventSelector.currentIndexChanged.disconnect(self.loadMseed)
             self.networkSelector.currentIndexChanged.disconnect(self.loadMseed)
             self.stationSelector.currentIndexChanged.disconnect(self.loadMseed)
+
+    def updateLog(self, state):
+        if state == Qt.Checked:
+            self.eventSelector.currentIndexChanged.connect(self.logEvent)
+        else:
+            self.eventSelector.currentIndexChanged.disconnect(self.logEvent)
+
+    def logEvent(self):
+        selected_event = self.eventSelector.currentText()
+        if selected_event:
+            df_ = self.df.set_index(['Event', 'Station'])
+            event_data = df_.loc[selected_event]
+            print(f'Evento: {selected_event}')
+            print(event_data[[
+                'Cat',
+                'Error',
+                'Compo',
+                'Pick',
+                'SNR_P',
+                'Região Origem',
+            ]])
+            print('_____________________________________________________\n')
 
     def get_EventsSorted(self):
         eventos = self.df['Event'].unique()
@@ -157,13 +178,15 @@ class SeletorEventoApp(QMainWindow):
             self.eventSelector.addItems(self.eventos_dec)
         else:
             self.eventSelector.addItems(self.eventos_cre)
+        if self.logCheckbox.isChecked():
+            self.eventSelector.currentIndexChanged.connect(self.logEvent)
 
     def updateNetworkAndStationSelectors(self):
         self.networkSelector.clear()
         self.stationSelector.clear()
         selected_event = self.eventSelector.currentText()
-        event_folder = os.path.join('arquivos/mseed', selected_event)
-        networks, stations = self.getNetworksAndStationsFromEventFolder(event_folder)
+        # event_folder = os.path.join('arquivos/mseed', selected_event)
+        networks, stations = self.getNetworksAndStations(selected_event)
         self.networkSelector.addItems(sorted(networks))
         self.updateStationSelector()
 
@@ -171,27 +194,25 @@ class SeletorEventoApp(QMainWindow):
         self.stationSelector.clear()
         selected_event = self.eventSelector.currentText()
         selected_network = self.networkSelector.currentText()
-        event_folder = os.path.join('arquivos/mseed', selected_event)
-        _, stations = self.getNetworksAndStationsFromEventFolder(event_folder, selected_network)
+        _, stations = self.getNetworksAndStations(selected_event, selected_network)
         self.stationSelector.addItems(sorted(stations))
         self.updateMseedAttributes()
 
-    def getNetworksAndStationsFromEventFolder(
+    def getNetworksAndStations(
             self,
-            event_folder,
+            selected_event,
             filter_network=None
             ):
-        arquivos = os.listdir(event_folder)
+        picks = self.df[self.df['Event'] == selected_event]
         networks = set()
         stations = set()
-        for file in arquivos:
-            if file.endswith('.mseed'):
-                match = re.match(r'(\w+)_(\w+)_(\w+).mseed', file)
-                if match:
-                    network, station, _ = match.groups()
-                    if not filter_network or filter_network == network:
-                        networks.add(network)
-                        stations.add(station)
+        for _, pick in picks.iterrows():
+            network = pick['Network']
+            station = pick['Station']
+            if filter_network and network != filter_network:
+                continue
+            networks.add(network)
+            stations.add(station)
         return list(networks), list(stations)
 
     def updateMseedAttributes(self):
@@ -270,7 +291,7 @@ class SeletorEventoApp(QMainWindow):
             sta = self.stationSelector.currentText()
 
             npy = f'{net}_{sta}_{ev}.npy'
-            path = os.path.join('arquivos/espectro', ev, npy)
+            path = os.path.join('arquivos/espectros', ev, npy)
             spectrogram = np.load(path, allow_pickle=True)
             spectrogram = np.moveaxis(spectrogram, 0, 2)
 

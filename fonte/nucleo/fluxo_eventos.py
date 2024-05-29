@@ -17,6 +17,7 @@ from obspy.clients.fdsn import Client
 import sys
 import os
 import csv
+import random
 import numpy as np
 from tqdm import tqdm
 from typing import List, Dict
@@ -409,7 +410,9 @@ def main(EventIDs: List,
 # ---------------------------- EXECUÇÃO ---------------------------------------
 if __name__ == "__main__":
     EventIDs = csv2list(sys.argv[1])
+    random.seed(42)
+    RandomIDs = random.sample(EventIDs, 1000)
     catalogo, missin_ids = main(
-        EventIDs[:10],
+        RandomIDs,
         DATA_CLIENT,
         DATA_CLIENT_BKP)
