@@ -1,0 +1,11 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando fluxo_eventos.py...
+vpnc: Error binding to source port. Try '--local-port 0'
+Failed to bind to 0.0.0.0:4500: Address already in use

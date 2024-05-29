@@ -12,8 +12,12 @@
 # ----------------------------  IMPORTS   -------------------------------------
 from obspy.core.event.catalog import Catalog
 from obspy.geodetics import gps2dist_azimuth
+<<<<<<< HEAD
 from obspy.clients.fdsn import Client
 
+=======
+import random
+>>>>>>> Class
 import sys
 import os
 import csv
@@ -28,6 +32,7 @@ from nucleo.utils import MSEED_DIR
 from nucleo.utils import DELIMT, DELIMT2
 from nucleo.utils import csv2list
 
+<<<<<<< HEAD
 # ----------------------------  CONSTANTES  -----------------------------------
 # Clientes para acessar os dados
 try:
@@ -41,6 +46,8 @@ except Exception as e:
     sys.exit(1)
 
 
+=======
+>>>>>>> Class
 # ---------------------------- FUNÇÕES ----------------------------------------
 def iterar_eventos(eventos: List,
                    data_client: str,
@@ -97,9 +104,9 @@ def iterar_eventos(eventos: List,
             sta = pick.waveform_id.station_code
             chn = pick.waveform_id.channel_code
             loc = pick.waveform_id.location_code
-            print(
-                f' - Net: {net}\n - Sta: {sta}\n - Chn: {chn}\n - Loc: {loc}'
-            )
+            # print(
+            #     f' - Net: {net}\n - Sta: {sta}\n - Chn: {chn}\n - Loc: {loc}'
+            # )
             chn = chn[:-1] + 'Z'
             if loc is None:
                 loc = ''

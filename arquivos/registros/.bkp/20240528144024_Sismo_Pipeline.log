@@ -1,0 +1,25 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+[{"success":true}]
+Fontconfig warning: "/home/ipt/.config/fontconfig/fonts.conf", line 11: saw number, expected string
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:406: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['Hora'] = pd.to_numeric(df['Hora'])
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:407: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['Cat Hora'] = pd.cut(
+Fontconfig warning: "/home/ipt/.config/fontconfig/fonts.conf", line 11: saw number, expected string
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:690: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  fig, ax = plt.subplots(figsize=(19, 9))
