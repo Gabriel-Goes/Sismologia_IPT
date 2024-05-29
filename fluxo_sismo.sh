@@ -35,12 +35,12 @@
 # -----------------------------  VARIÁVEIS -------------------------------------
 
 CATALOG=${1:-"catalogo-moho.csv"}
-EVENTS=${EVENTS:-false}
-TREATCATALOG=${TREATCATALOG:-false}
-PREDICT=${PREDICT:-false}
+EVENTS=${EVENTS:-true}
+TREATCATALOG=${TREATCATALOG:-true}
+PREDICT=${PREDICT:-true}
 POSPROCESS=${POSPROCESS:-true}
-MAPS=${MAPS:-false}
-REPORT=${REPORT:-false}
+MAPS=${MAPS:-true}
+REPORT=${REPORT:-true}
 
 # ----------------------------- CONSTANTES -------------------------------------
 # DEFINE OS DIRETÓRIOS DE TRABALHO
