@@ -33,10 +33,6 @@ from obspy.clients.fdsn import Client
 
 from tqdm import tqdm
 
-# Import Snuffler application
-from pyrocko import snuffler
-from pyrocko import pile
-
 
 # ------------------------------ FUNCTIONS ---------------------------------- #
 # GET TRACES AND DATA
@@ -396,9 +392,6 @@ def main_plot(picks: pd.DataFrame,
     )
 
     plt.close()
-
-    # p = pile.make_pile(pick['Path'])
-    # snuffler.snuffle(p)
 
 
 # -------------------------------- MAIN ------------------------------------- #

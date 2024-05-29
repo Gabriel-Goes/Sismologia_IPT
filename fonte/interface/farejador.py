@@ -312,6 +312,13 @@ class SeletorEventoApp(QMainWindow):
 
             img = Image.fromarray(color_img)
             img = img.transpose(Image.FLIP_TOP_BOTTOM)
+            # Append another image with the same size right above the spectrogram
+            img = ImageOps.expand(img, (0, 0, 0, 60), fill='black')
+
+
+            draw = ImageDraw.Draw(img)
+            draw.text((10, 99), f'{ev}_{net}_{sta}', fill='white')
+
             img.save(f'arquivos/figuras/espectros/{ev}_{net}_{sta}.png')
             img.show()
 
