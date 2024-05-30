@@ -1,5 +1,4 @@
 analise_dados
-interface
 nucleo
 relatorio-sismologia
 rnc

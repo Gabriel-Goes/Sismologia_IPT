@@ -8,11 +8,6 @@ fonte/analise_dados/gera_mapas.py
 fonte/analise_dados/pos_processa.py
 fonte/analise_dados/pre_processa.py
 fonte/analise_dados/testa_filtros.py
-fonte/analise_dados/visualiza.py
-fonte/interface/__init__.py
-fonte/interface/farejador.py
-fonte/interface/snuffling_farejador.py
-fonte/interface/visualization.py
 fonte/nucleo/__init__.py
 fonte/nucleo/fluxo_eventos.py
 fonte/nucleo/utils.py
