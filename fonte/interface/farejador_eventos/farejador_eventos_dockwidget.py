@@ -29,8 +29,19 @@ import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 
-from qgis.PyQt import uic, QtWidgets
+from qgis.core import QgsProject
+from qgis.core import QgsVectorLayer
+from qgis.core import QgsField
+from qgis.core import QgsFeature
+from qgis.core import QgsGeometry
+from qgis.core import QgsPointXY
+from qgis.core import QgsRendererCategory
+from qgis.core import QgsCategorizedSymbolRenderer
+from qgis.core import QgsSymbol
+
+from qgis.PyQt.QtCore import QVariant
 from qgis.PyQt import QtCore
+from qgis.PyQt import uic, QtWidgets
 
 from obspy import read, UTCDateTime
 from PIL import Image, ImageDraw
@@ -48,10 +59,10 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         """Constructor."""
         super(FarejadorDockWidget, self).__init__(parent)
         self.df = pd.read_csv(f"{PROJ_DIR}arquivos/resultados/analisado_nc.csv")
-        print(self.df.head())
+        self.layer = None
         self.setupUi(self)
-        print('Iniciando interface...\n')
         self.initUI()
+        self.createLayerFromDF()
 
     def initUI(self):
         self.eventSelector = self.findChild(QtWidgets.QComboBox, 'eventSelector')
@@ -78,6 +89,10 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         self.invertCheckbox.stateChanged.connect(self.updateEventSelector)
         self.logCheckbox.stateChanged.connect(self.updateLog)
 
+        self.eventSelector.currentIndexChanged.connect(self.updateNetworkAndStationSelectors)
+        self.networkSelector.currentIndexChanged.connect(self.updateStationSelector)
+        self.eventSelector.currentIndexChanged.connect(self.logEvent)
+
         ev = self.get_EventsSorted()
         self.eventos_cre, self.eventos_dec, self.numb_eventos = ev
 
@@ -87,6 +102,66 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
     def closeEvent(self, event):
         self.closingPlugin.emit()
         event.accept()
+
+    def createLayerFromDF(self):
+        layer = QgsVectorLayer("Point?crs=EPSG:4326", "Eventos Sismológicos", "memory")
+        pr = layer.dataProvider()
+        pr.addAttributes([
+            QgsField("Event", QVariant.String),
+            QgsField("Station", QVariant.String),
+            QgsField("Network", QVariant.String),
+            QgsField("Cat", QVariant.String),
+            QgsField("Error", QVariant.Double),
+            QgsField("Compo", QVariant.String),
+            QgsField("Pick", QVariant.String),
+            QgsField("SNR_P", QVariant.Double),
+            QgsField("Região Origem", QVariant.String),
+            QgsField("Start Time", QVariant.String),
+            QgsField("End Time", QVariant.String),
+            QgsField("Pick Time", QVariant.String),
+            QgsField("Origem Latitude", QVariant.Double),
+            QgsField("Origem Longitude", QVariant.Double),
+            QgsField("Distance", QVariant.Double),
+            QgsField("Num_Estacoes", QVariant.Int),
+            QgsField("Event Prob_Nat", QVariant.Double),
+            QgsField("Pick Prob_Nat", QVariant.Double),
+            QgsField("Event Pred_final", QVariant.String),
+            QgsField("Pick Pred_final", QVariant.String),
+        ])
+        layer.updateFields()
+        features = []
+        for _, row in self.df.iterrows():
+            feature = QgsFeature()
+            point = QgsPointXY(row['Origem Longitude'], row['Origem Latitude'])
+            feature.setGeometry(QgsGeometry.fromPointXY(point))
+            feature.setAttributes([
+                row['Event'],
+                row['Station'],
+                row['Network'],
+                row['Cat'],
+                row['Error'],
+                row['Compo'],
+                row['Pick'],
+                row['SNR_P'],
+                row['Região Origem'],
+                row['Start Time'],
+                row['End Time'],
+                row['Pick Time'],
+                row['Origem Latitude'],
+                row['Origem Longitude'],
+                row['Distance'],
+                row['Num_Estacoes'],
+                row['Event Prob_Nat'],
+                row['Pick Prob_Nat'],
+                row['Event Pred_final'],
+                row['Pick Pred_final'],
+            ])
+            features.append(feature)
+
+        pr.addFeatures(features)
+        layer.updateExtents()
+        self.layer = layer
+        QgsProject.instance().addMapLayer(layer)
 
     def updateAutoSelection(self, state):
         if state == QtCore.Qt.Checked:
@@ -137,6 +212,27 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             ]]
                   )
             print('_____________________________________________________\n')
+        if self.layer is None:
+            print('Camada não definida.')
+            return
+
+        symbol_selected = QgsSymbol.defaultSymbol(self.layer.geometryType())
+        symbol_selected.setColor(QtCore.Qt.red)
+        symbol_selected.setSize(10)
+        symbol_default = QgsSymbol.defaultSymbol(self.layer.geometryType())
+        symbol_default.setColor(QtCore.Qt.blue)
+        symbol_default.setSize(5)
+
+        categories = []
+        for f in self.layer.getFeatures():
+            if f['Event'] == selected_event:
+                categories.append(QgsRendererCategory(f['Event'], symbol_selected, f['Event']))
+            else:
+                categories.append(QgsRendererCategory(f['Event'], symbol_default, f['Event']))
+
+        renderer = QgsCategorizedSymbolRenderer("Event", categories)
+        self.layer.setRenderer(renderer)
+        self.layer.triggerRepaint()
 
     def get_EventsSorted(self):
         eventos = self.df['Event'].unique()
@@ -178,6 +274,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         self.updateMseedAttributes()
 
     def getNetworksAndStations(self, selected_event, filter_network=None):
+        print(f"Evento selecionado: {selected_event}")
         picks = self.df[self.df['Event'] == selected_event]
         networks = set()
         stations = set()
@@ -188,6 +285,8 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
                 continue
             networks.add(network)
             stations.add(station)
+        print(f"Redes: {networks}")
+        print(f"Estações: {stations}")
         return list(networks), list(stations)
 
     def updateMseedAttributes(self):
@@ -198,7 +297,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         self.mseedText.setText(f'Arquivo: {mseed}')
         self.eventText.setText(f'Evento: {ev}')
         self.mseed_file_path = os.path.join(
-            'arquivos/mseed', ev, f'{net}_{sta}_{ev}.mseed'
+           PROJ_DIR, 'arquivos/mseed', ev, f'{net}_{sta}_{ev}.mseed'
         )
 
         filtered_df = self.df[(self.df['Event'] == ev) & (self.df['Station'] == sta)]
@@ -263,7 +362,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         net = self.networkSelector.currentText()
         sta = self.stationSelector.currentText()
         mseed = f'{net}_{sta}_{ev}'
-        st = read(f'arquivos/mseed/{ev}/{mseed}.mseed')
+        st = read(f'{PROJ_DIR}arquivos/mseed/{ev}/{mseed}.mseed')
         tr = st[0].detrend('linear').filter('highpass', freq=2.0)
         t = np.arange(tr.stats.npts) * tr.stats.delta
         start = UTCDateTime(self.event_data.loc[sta]['Start Time'])
@@ -289,7 +388,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             sta = self.stationSelector.currentText()
 
             npy = f'{net}_{sta}_{ev}.npy'
-            path = os.path.join('arquivos/espectros', ev, npy)
+            path = os.path.join(PROJ_DIR, 'arquivos/espectros', ev, npy)
             spectrogram = np.load(path, allow_pickle=True)
             spectrogram = np.moveaxis(spectrogram, 0, 2)
 
@@ -325,12 +424,11 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             draw.text((255, 20), f'Pick: {prob}', fill='white')
             draw.text((310, 20), f'Event: {prob_e}', fill='white')
 
-            combined_img.save(f'arquivos/figuras/espectros/{ev}_{net}_{sta}.png')
+            combined_img.save(f'{PROJ_DIR}arquivos/figuras/espectros/{ev}_{net}_{sta}.png')
             combined_img.show()
 
-            print(f"Spectrogram iniciado com {self.mseed_file_path}")
-        except FileNotFoundError:
-            print(f"Erro: Arquivo {self.mseed_file_path} não encontrado.")
-            os.makedirs('arquivos/figuras/espectros', exist_ok=True)
+            print(f"Spectrogram iniciado com {path}")
         except Exception as e:
-            print(f"Erro ao iniciar o Spectrogram: {e}")
+            print(f"Erro ao iniciar o Espectrograma: {e}")
+            if e == FileNotFoundError:
+                print(f"Arquivo {path} não encontrado.")

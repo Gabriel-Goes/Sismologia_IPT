@@ -12,6 +12,8 @@
 # ----------------------------  IMPORTS   -------------------------------------
 import pygmt
 import pandas as pd
+import geopandas as gpd
+from shapely import wkt
 
 
 # ---------------------------  FUNCTIONS  -------------------------------------
@@ -22,28 +24,71 @@ def plot_pred_map(data, filename):
     ]
     fig = pygmt.Figure()
     pygmt.makecpt(
-        cmap="polar", series=[data.prob_nat.min(), data.prob_nat.max()]
+        cmap="polar", series=[data['Event Prob_Nat'].min(),
+                              data['Event Prob_Nat'].max()],
     )
     fig.basemap(region=region, projection='M15c', frame=True)
     fig.coast(land="lightgray", water="skyblue")
     fig.plot(
         x=data['Longitude'],
         y=data['Latitude'],
-        fill=data.prob_nat,
-        style='c0.3c',
+        fill=data['Event Prob_Nat'],
+        style='c0.15c',
         cmap=True,
-
     )
+    fig.colorbar(frame=["x+lProbabilidade", "y+lm"])
     fig.show()
     fig.savefig(f'arquivos/figuras/mapas/{filename}')
 
 
+def plot_macroregions(gdf, df):
+    for idx, row in gdf.iterrows():
+        nome_macroregiao = row["nome"]  # Ajuste conforme necessário para o nome da coluna correta
+
+        fig = pygmt.Figure()
+        bounds = row.geometry.bounds
+        region = [bounds[0] - 1, bounds[2] + 1, bounds[1] - 1, bounds[3] + 1]
+
+        fig.basemap(region=region, projection="M6i", frame=True)
+        fig.coast(shorelines=True, resolution='10m', borders=[1], water='skyblue')
+
+        for poly in row.goemetry:
+            wkt_polygon = geometry.to_wkt()
+        fig.plot(
+            data=wkt_polygon,
+            pen="1p,black",
+            fill="lightgray"
+        )
+
+
+
+def plot_macroregions(gdf, data):
+    gdf = gdf.to_crs(epsg=4326)
+    for idx, row in gdf.iterrows():
+        nome_macroregiao = row["nome"]  # Ajuste conforme necessário para o nome da coluna correta
+        fig = pygmt.Figure()
+        bounds = row.geometry.bounds
+        lon_min, lat_min, lon_max, lat_max = bounds
+        if lon_max - lon_min > 360 or lat_max - lat_min > 180:
+            raise ValueError("Os limites da região excedem os valores válidos")
+
+        region = [max(-180, lon_min - 1), min(180, lon_max + 1), max(-90, lat_min - 1), min(90, lat_max + 1)]
+        fig.basemap(region=region, projection="M6i", frame=True)
+        fig.coast(shorelines=True, resolution='10m', borders=[1], water='skyblue')
+        wkt_polygon = row.geometry.to_wkt()
+        fig.plot(data=wkt_polygon, pen="1p,black", fill="lightgray")
+
+        fig.savefig(f"arquivos/figuras/mapas/{nome_macroregiao}_pred.png")
+
 # -------------------------------  MAIN  --------------------------------------
 def main():
     data = pd.read_csv("arquivos/resultados/304008_analisado.csv")
+    data=data.groupby(['Event','Station']).first()
     plot_pred_map(data, "mapa.png")
+    gdf = gpd.read_file("arquivos/figuras/mapas/macrorregioesBrasil.json")
+    plot_macroregions(gdf, data)
 
-    return data
+    return data, gdf
 
 
 if __name__ == "__main__":

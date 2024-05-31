@@ -3,7 +3,7 @@
 # ./Classificador_Sismologico/pyscripts/Exporter.py
 
 
-# ----------------------------  DESCRIPTION  -----------------------------------
+# ----------------------------  DESCRIPTION  ----------------------------------
 # Script para processar dados sismicos
 # Autor: Gabriel Góes Rocha de Lima (adaptado de Bianchi)
 # Original: fdsnwscsv.py (por Bianchi)
