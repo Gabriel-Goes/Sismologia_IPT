@@ -1,0 +1,13 @@
+setup.py
+farejador_eventos/FarejadorSismologico.egg-info/PKG-INFO
+farejador_eventos/FarejadorSismologico.egg-info/SOURCES.txt
+farejador_eventos/FarejadorSismologico.egg-info/dependency_links.txt
+farejador_eventos/FarejadorSismologico.egg-info/top_level.txt
+farejador_eventos/test/__init__.py
+farejador_eventos/test/qgis_interface.py
+farejador_eventos/test/test_farejador_eventos_dockwidget.py
+farejador_eventos/test/test_init.py
+farejador_eventos/test/test_qgis_environment.py
+farejador_eventos/test/test_resources.py
+farejador_eventos/test/test_translations.py
+farejador_eventos/test/utilities.py

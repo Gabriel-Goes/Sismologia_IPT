@@ -25,8 +25,8 @@ from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
 from qgis.PyQt.QtCore import Qt
-from .resources import *
-from .farejador_eventos_dockwidget import FarejadorDockWidget
+from farejador_eventos.resources import *
+from farejador_eventos.farejador_eventos_dockwidget import FarejadorDockWidget
 import os.path
 
 

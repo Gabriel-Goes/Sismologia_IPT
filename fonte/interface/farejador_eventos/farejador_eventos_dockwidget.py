@@ -21,7 +21,6 @@
  *                                                                         *
  ***************************************************************************/
 """
-
 import os
 import io
 import subprocess
@@ -29,24 +28,14 @@ import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 
-from qgis.core import QgsProject
-from qgis.core import QgsVectorLayer
-from qgis.core import QgsField
-from qgis.core import QgsFeature
-from qgis.core import QgsGeometry
-from qgis.core import QgsPointXY
-from qgis.core import QgsRendererCategory
-from qgis.core import QgsCategorizedSymbolRenderer
-from qgis.core import QgsSymbol
-
+from qgis.core import QgsProject, QgsVectorLayer, QgsField, QgsFeature, QgsGeometry, QgsPointXY, QgsRendererCategory, QgsCategorizedSymbolRenderer, QgsSymbol
 from qgis.PyQt.QtCore import QVariant
-from qgis.PyQt import QtCore
-from qgis.PyQt import uic, QtWidgets
+from qgis.PyQt import QtCore, QtWidgets
 
 from obspy import read, UTCDateTime
 from PIL import Image, ImageDraw
 
-from .farejador_eventos_dockwidget_base import Ui_FarejadorDockWidgetBase
+from farejdor_eventos.farejador_eventos_dockwidget_base import Ui_FarejadorDockWidgetBase
 
 
 PROJ_DIR = os.environ['HOME'] + "/projetos/ClassificadorSismologico/"
@@ -59,7 +48,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         """Constructor."""
         super(FarejadorDockWidget, self).__init__(parent)
         self.df = pd.read_csv(f"{PROJ_DIR}arquivos/resultados/analisado_nc.csv")
-        self.layer = None
+        self.layer= None
         self.setupUi(self)
         self.initUI()
         self.createLayerFromDF()
@@ -105,15 +94,12 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
     def createLayerFromDF(self):
         layer = QgsVectorLayer("Point?crs=EPSG:4326", "Eventos Sismológicos", "memory")
-        pr = layer.dataProvider()
-        pr.addAttributes([
+        provider = layer.dataProvider()
+        provider.addAttributes([
             QgsField("Event", QVariant.String),
             QgsField("Station", QVariant.String),
             QgsField("Network", QVariant.String),
             QgsField("Cat", QVariant.String),
-            QgsField("Error", QVariant.Double),
-            QgsField("Compo", QVariant.String),
-            QgsField("Pick", QVariant.String),
             QgsField("SNR_P", QVariant.Double),
             QgsField("Região Origem", QVariant.String),
             QgsField("Start Time", QVariant.String),
@@ -129,7 +115,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             QgsField("Pick Pred_final", QVariant.String),
         ])
         layer.updateFields()
-        features = []
+
         for _, row in self.df.iterrows():
             feature = QgsFeature()
             point = QgsPointXY(row['Origem Longitude'], row['Origem Latitude'])
@@ -139,9 +125,6 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
                 row['Station'],
                 row['Network'],
                 row['Cat'],
-                row['Error'],
-                row['Compo'],
-                row['Pick'],
                 row['SNR_P'],
                 row['Região Origem'],
                 row['Start Time'],
@@ -156,12 +139,11 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
                 row['Event Pred_final'],
                 row['Pick Pred_final'],
             ])
-            features.append(feature)
+            provider.addFeature(feature)
 
-        pr.addFeatures(features)
         layer.updateExtents()
         self.layer = layer
-        QgsProject.instance().addMapLayer(layer)
+        QgsProject.instance().addMapLayer(self.layer)
 
     def updateAutoSelection(self, state):
         if state == QtCore.Qt.Checked:
@@ -209,30 +191,29 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
                 'Network',
                 'SNR_P',
                 'SNR_P_Q2'
-            ]]
-                  )
+            ]])
             print('_____________________________________________________\n')
-        if self.layer is None:
-            print('Camada não definida.')
-            return
 
-        symbol_selected = QgsSymbol.defaultSymbol(self.layer.geometryType())
-        symbol_selected.setColor(QtCore.Qt.red)
-        symbol_selected.setSize(10)
-        symbol_default = QgsSymbol.defaultSymbol(self.layer.geometryType())
-        symbol_default.setColor(QtCore.Qt.blue)
-        symbol_default.setSize(5)
+            if self.layer is None:
+                print('Camada não definida.')
+                return
+            symbol_selected = QgsSymbol.defaultSymbol(self.layer.geometryType())
+            symbol_selected.setColor(QtCore.Qt.red)
+            symbol_selected.setSize(10)
+            symbol_default = QgsSymbol.defaultSymbol(self.layer.geometryType())
+            symbol_default.setColor(QtCore.Qt.blue)
+            symbol_default.setSize(5)
 
-        categories = []
-        for f in self.layer.getFeatures():
-            if f['Event'] == selected_event:
-                categories.append(QgsRendererCategory(f['Event'], symbol_selected, f['Event']))
-            else:
-                categories.append(QgsRendererCategory(f['Event'], symbol_default, f['Event']))
+            categories = []
+            for f in self.layer.getFeatures():
+                if f['Event'] == selected_event:
+                    categories.append(QgsRendererCategory(f['Event'], symbol_selected, f['Event']))
+                else:
+                    categories.append(QgsRendererCategory(f['Event'], symbol_default, f['Event']))
 
-        renderer = QgsCategorizedSymbolRenderer("Event", categories)
-        self.layer.setRenderer(renderer)
-        self.layer.triggerRepaint()
+            renderer = QgsCategorizedSymbolRenderer("Event", categories)
+            self.layer.setRenderer(renderer)
+            self.layer.triggerRepaint()
 
     def get_EventsSorted(self):
         eventos = self.df['Event'].unique()
@@ -274,7 +255,6 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         self.updateMseedAttributes()
 
     def getNetworksAndStations(self, selected_event, filter_network=None):
-        print(f"Evento selecionado: {selected_event}")
         picks = self.df[self.df['Event'] == selected_event]
         networks = set()
         stations = set()
@@ -285,8 +265,6 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
                 continue
             networks.add(network)
             stations.add(station)
-        print(f"Redes: {networks}")
-        print(f"Estações: {stations}")
         return list(networks), list(stations)
 
     def updateMseedAttributes(self):
