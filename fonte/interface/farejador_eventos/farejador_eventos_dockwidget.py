@@ -26,6 +26,7 @@ import io
 import subprocess
 import pandas as pd
 import numpy as np
+import logging
 from matplotlib import pyplot as plt
 
 from qgis.core import QgsProject, QgsVectorLayer, QgsField, QgsFeature, QgsGeometry, QgsPointXY, QgsRendererCategory, QgsCategorizedSymbolRenderer, QgsSymbol
@@ -35,10 +36,11 @@ from qgis.PyQt import QtCore, QtWidgets
 from obspy import read, UTCDateTime
 from PIL import Image, ImageDraw
 
-from farejdor_eventos.farejador_eventos_dockwidget_base import Ui_FarejadorDockWidgetBase
+from farejador_eventos.farejador_eventos_dockwidget_base import Ui_FarejadorDockWidgetBase
 
 
 PROJ_DIR = os.environ['HOME'] + "/projetos/ClassificadorSismologico/"
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s', filename=f"{PROJ_DIR}arquivos/registros/farejador.log")
 
 
 class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
@@ -93,57 +95,70 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         event.accept()
 
     def createLayerFromDF(self):
-        layer = QgsVectorLayer("Point?crs=EPSG:4326", "Eventos Sismológicos", "memory")
-        provider = layer.dataProvider()
-        provider.addAttributes([
-            QgsField("Event", QVariant.String),
-            QgsField("Station", QVariant.String),
-            QgsField("Network", QVariant.String),
-            QgsField("Cat", QVariant.String),
-            QgsField("SNR_P", QVariant.Double),
-            QgsField("Região Origem", QVariant.String),
-            QgsField("Start Time", QVariant.String),
-            QgsField("End Time", QVariant.String),
-            QgsField("Pick Time", QVariant.String),
-            QgsField("Origem Latitude", QVariant.Double),
-            QgsField("Origem Longitude", QVariant.Double),
-            QgsField("Distance", QVariant.Double),
-            QgsField("Num_Estacoes", QVariant.Int),
-            QgsField("Event Prob_Nat", QVariant.Double),
-            QgsField("Pick Prob_Nat", QVariant.Double),
-            QgsField("Event Pred_final", QVariant.String),
-            QgsField("Pick Pred_final", QVariant.String),
-        ])
-        layer.updateFields()
-
-        for _, row in self.df.iterrows():
-            feature = QgsFeature()
-            point = QgsPointXY(row['Origem Longitude'], row['Origem Latitude'])
-            feature.setGeometry(QgsGeometry.fromPointXY(point))
-            feature.setAttributes([
-                row['Event'],
-                row['Station'],
-                row['Network'],
-                row['Cat'],
-                row['SNR_P'],
-                row['Região Origem'],
-                row['Start Time'],
-                row['End Time'],
-                row['Pick Time'],
-                row['Origem Latitude'],
-                row['Origem Longitude'],
-                row['Distance'],
-                row['Num_Estacoes'],
-                row['Event Prob_Nat'],
-                row['Pick Prob_Nat'],
-                row['Event Pred_final'],
-                row['Pick Pred_final'],
+        logging.info('Criando camada de eventos sismológicos...')
+        try:
+            layer = QgsVectorLayer("Point?crs=EPSG:4326", "Eventos Sismológicos", "memory")
+            provider = layer.dataProvider()
+            provider.addAttributes([
+                QgsField("Event", QVariant.String),
+                QgsField("Station", QVariant.String),
+                QgsField("Network", QVariant.String),
+                QgsField("Cat", QVariant.String),
+                QgsField("SNR_P", QVariant.Double),
+                QgsField("Região Origem", QVariant.String),
+                QgsField("Start Time", QVariant.String),
+                QgsField("End Time", QVariant.String),
+                QgsField("Pick Time", QVariant.String),
+                QgsField("Origem Latitude", QVariant.Double),
+                QgsField("Origem Longitude", QVariant.Double),
+                QgsField("Distance", QVariant.Double),
+                QgsField("Num_Estacoes", QVariant.Int),
+                QgsField("Event Prob_Nat", QVariant.Double),
+                QgsField("Pick Prob_Nat", QVariant.Double),
+                QgsField("Event Pred_final", QVariant.String),
+                QgsField("Pick Pred_final", QVariant.String),
             ])
-            provider.addFeature(feature)
+            layer.updateFields()
 
-        layer.updateExtents()
-        self.layer = layer
-        QgsProject.instance().addMapLayer(self.layer)
+            features = []
+            selected_event = self.eventSelector.currentText()
+            for _, row in self.df.iterrows():
+                if row['Event'] != selected_event:
+                    continue
+                feature = QgsFeature()
+                point = QgsPointXY(row['Origem Longitude'], row['Origem Latitude'])
+                feature.setGeometry(QgsGeometry.fromPointXY(point))
+                feature.setAttributes([
+                    row['Event'],
+                    row['Station'],
+                    row['Network'],
+                    row['Cat'],
+                    row['SNR_P'],
+                    row['Região Origem'],
+                    row['Start Time'],
+                    row['End Time'],
+                    row['Pick Time'],
+                    row['Origem Latitude'],
+                    row['Origem Longitude'],
+                    row['Distance'],
+                    row['Num_Estacoes'],
+                    row['Event Prob_Nat'],
+                    row['Pick Prob_Nat'],
+                    row['Event Pred_final'],
+                    row['Pick Pred_final'],
+                ])
+                features.append(feature)
+
+            provider.addFeatures(features)
+            logging.info('Camada de eventos sismológicos criada com sucesso.')
+
+            layer.updateExtents()
+            logging.info('Atualizando extensão da camada de eventos sismológicos.')
+            self.layer = layer
+            QgsProject.instance().addMapLayer(self.layer)
+            logging.info('Camada de eventos sismológicos adicionada ao projeto.')
+        except Exception as e:
+            logging.error(f'Erro ao criar camada de eventos sismológicos: {e}')
 
     def updateAutoSelection(self, state):
         if state == QtCore.Qt.Checked:
@@ -162,58 +177,65 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             self.eventSelector.currentIndexChanged.disconnect(self.logEvent)
 
     def logEvent(self):
-        selected_event = self.eventSelector.currentText()
-        if selected_event:
-            df_ = self.df.set_index(['Event', 'Station'])
-            event_data = df_.loc[selected_event]
-            self.event_data = event_data[[
-                'Cat',
-                'Error',
-                'Compo',
-                'Pick',
-                'SNR_P',
-                'Região Origem',
-                'Start Time',
-                'End Time',
-                'Pick Time',
-                'Origem Latitude',
-                'Origem Longitude',
-                'Network',
-                'Distance',
-                'Num_Estacoes',
-                'Event Prob_Nat',
-                'Pick Prob_Nat',
-            ]]
-            print(f'Evento: {selected_event}')
-            print(event_data[[
-                'Origem Latitude',
-                'Origem Longitude',
-                'Network',
-                'SNR_P',
-                'SNR_P_Q2'
-            ]])
-            print('_____________________________________________________\n')
+        try:
+            selected_event = self.eventSelector.currentText()
+            logging.info(f'Evento {selected_event} selecionado.')
+            if selected_event:
+                df_ = self.df.set_index(['Event', 'Station'])
+                event_data = df_.loc[selected_event]
+                self.event_data = event_data[[
+                    'Cat',
+                    'Error',
+                    'Compo',
+                    'Pick',
+                    'SNR_P',
+                    'Região Origem',
+                    'Start Time',
+                    'End Time',
+                    'Pick Time',
+                    'Origem Latitude',
+                    'Origem Longitude',
+                    'Network',
+                    'Distance',
+                    'Num_Estacoes',
+                    'Event Prob_Nat',
+                    'Pick Prob_Nat',
+                ]]
+                print(f'Evento: {selected_event}')
+                print(event_data[[
+                    'Origem Latitude',
+                    'Origem Longitude',
+                    'Network',
+                    'SNR_P',
+                    'SNR_P_Q2'
+                ]])
+                print('_____________________________________________________\n')
+                logging.info(f'Evento {selected_event} logado com sucesso.')
 
-            if self.layer is None:
-                print('Camada não definida.')
-                return
-            symbol_selected = QgsSymbol.defaultSymbol(self.layer.geometryType())
-            symbol_selected.setColor(QtCore.Qt.red)
-            symbol_selected.setSize(10)
-            symbol_default = QgsSymbol.defaultSymbol(self.layer.geometryType())
-            symbol_default.setColor(QtCore.Qt.blue)
-            symbol_default.setSize(5)
+                if self.layer is None:
+                    logging.warning('Camada não definida.')
+                    print('Camada não definida.')
+                    return
+                symbol_selected = QgsSymbol.defaultSymbol(self.layer.geometryType())
+                symbol_selected.setColor(QtCore.Qt.red)
+                symbol_selected.setSize(10)
+                symbol_default = QgsSymbol.defaultSymbol(self.layer.geometryType())
+                symbol_default.setColor(QtCore.Qt.blue)
+                symbol_default.setSize(5)
 
-            categories = []
-            for f in self.layer.getFeatures():
-                if f['Event'] == selected_event:
-                    categories.append(QgsRendererCategory(f['Event'], symbol_selected, f['Event']))
-                else:
-                    categories.append(QgsRendererCategory(f['Event'], symbol_default, f['Event']))
+                categories = []
+                for f in self.layer.getFeatures():
+                    if f['Event'] == selected_event:
+                        categories.append(QgsRendererCategory(f['Event'], symbol_selected, f['Event']))
+                    else:
+                        categories.append(QgsRendererCategory(f['Event'], symbol_default, f['Event']))
 
-            renderer = QgsCategorizedSymbolRenderer("Event", categories)
-            self.layer.setRenderer(renderer)
-            self.layer.triggerRepaint()
+                renderer = QgsCategorizedSymbolRenderer("Event", categories)
+                self.layer.setRenderer(renderer)
+                self.layer.triggerRepaint()
+                logging.info('Camada de eventos sismológicos atualizada.')
+        except Exception as e:
+            logging.error(f'Erro ao logar evento: {e}')
 
     def get_EventsSorted(self):
         eventos = self.df['Event'].unique()
