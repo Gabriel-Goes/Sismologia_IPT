@@ -21,6 +21,8 @@
  *                                                                         *
  ***************************************************************************/
 """
+
+# ------------------------------- IMPORTS ----------------------------------- #
 import os
 import io
 import subprocess
@@ -29,20 +31,29 @@ import numpy as np
 import logging
 from matplotlib import pyplot as plt
 
-from qgis.core import QgsProject, QgsVectorLayer, QgsField, QgsFeature, QgsGeometry, QgsPointXY, QgsRendererCategory, QgsCategorizedSymbolRenderer, QgsSymbol
+from qgis.core import QgsProject
+from qgis.core import QgsVectorLayer
+from qgis.core import QgsField
+from qgis.core import QgsFeature
+from qgis.core import QgsGeometry
+from qgis.core import QgsPointXY
+from qgis.core import QgsRendererCategory
+from qgis.core import QgsCategorizedSymbolRenderer
+from qgis.core import QgsSymbol
 from qgis.PyQt.QtCore import QVariant
 from qgis.PyQt import QtCore, QtWidgets
 
 from obspy import read, UTCDateTime
 from PIL import Image, ImageDraw
 
-from farejador_eventos.farejador_eventos_dockwidget_base import Ui_FarejadorDockWidgetBase
+from farejadordockwidget_base import Ui_FarejadorDockWidgetBase
 
-
+# ----------------------------- CONSTANTES ---------------------------------- #
 PROJ_DIR = os.environ['HOME'] + "/projetos/ClassificadorSismologico/"
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s', filename=f"{PROJ_DIR}arquivos/registros/farejador.log")
 
 
+# -------------------------------- CLASSE ----------------------------------- #
 class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
     closingPlugin = QtCore.pyqtSignal()
 
@@ -418,9 +429,11 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             psd_mat = np.array(spectrogram[:, :, 0])
 
             if psd_mat.shape != (len(time), len(freqs)):
-                print(f"Dimensões do espectrograma inválidas: {psd_mat.shape}")
+                logging.error(f"Dimensões inválidas: {psd_mat.shape}")
+                print(f"Dimensões inválidas: {psd_mat.shape}")
                 return
 
+            logging.info(f"Espectrograma carregado com sucesso: {path}")
             psd_mat_normalized = 255 * (psd_mat - psd_mat.min()) / (psd_mat.max() - psd_mat.min())
             psd_mat_normalized = psd_mat_normalized.astype(np.uint8)
 
@@ -450,7 +463,9 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
             print(f"Spectrogram iniciado com {path}")
         except Exception as e:
+            logging.error(e)
             logging.error(f"Erro ao iniciar o Espectrograma: {e}")
             print(f"Erro ao iniciar o Espectrograma: {e}")
             if e == FileNotFoundError:
                 print(f"Arquivo {path} não encontrado.")
+

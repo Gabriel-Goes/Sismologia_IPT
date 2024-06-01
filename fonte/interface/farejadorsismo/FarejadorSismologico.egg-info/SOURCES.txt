@@ -1,0 +1,13 @@
+setup.py
+farejadorsismo/FarejadorSismologico.egg-info/PKG-INFO
+farejadorsismo/FarejadorSismologico.egg-info/SOURCES.txt
+farejadorsismo/FarejadorSismologico.egg-info/dependency_links.txt
+farejadorsismo/FarejadorSismologico.egg-info/top_level.txt
+farejadorsismo/test/__init__.py
+farejadorsismo/test/qgis_interface.py
+farejadorsismo/test/test_farejador_eventos_dockwidget.py
+farejadorsismo/test/test_init.py
+farejadorsismo/test/test_qgis_environment.py
+farejadorsismo/test/test_resources.py
+farejadorsismo/test/test_translations.py
+farejadorsismo/test/utilities.py

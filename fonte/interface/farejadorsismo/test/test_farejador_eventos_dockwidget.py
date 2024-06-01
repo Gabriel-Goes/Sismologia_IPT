@@ -16,7 +16,7 @@ import unittest
 
 from qgis.PyQt.QtGui import QDockWidget
 
-from farejador_eventos_dockwidget import FarejadorDockWidget
+from farejadorsismo_dockwidget import FarejadorDockWidget
 
 from utilities import get_qgis_app
 

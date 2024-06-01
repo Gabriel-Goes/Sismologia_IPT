@@ -38,15 +38,15 @@ LOCALES =
 # translation
 SOURCES = \
 	__init__.py \
-	farejador_eventos.py farejador_eventos_dockwidget.py
+	farejadorsismo.py farejadorsismo_dockwidget.py
 
-PLUGINNAME = farejador_eventos
+PLUGINNAME = farejadorsismo
 
 PY_FILES = \
 	__init__.py \
-	farejador_eventos.py farejador_eventos_dockwidget.py
+	farejadorsismo.py farejadorsismo_dockwidget.py
 
-UI_FILES = farejador_eventos_dockwidget_base.ui
+UI_FILES = farejadorsismo_dockwidget_base.ui
 
 EXTRAS = metadata.txt icon.png
 

@@ -32,5 +32,5 @@ def classFactory(iface):  # pylint: disable=invalid-name
     :type iface: QgsInterface
     """
     #
-    from .farejador_eventos import Farejador
+    from farejadorsismo import Farejador
     return Farejador(iface)

@@ -21,12 +21,14 @@
  *                                                                         *
  ***************************************************************************/
 """
-from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
+from qgis.PyQt.QtCore import QSettings
+from qgis.PyQt.QtCore import QTranslator
+from qgis.PyQt.QtCore import QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
 from qgis.PyQt.QtCore import Qt
-from farejador_eventos.resources import *
-from farejador_eventos.farejador_eventos_dockwidget import FarejadorDockWidget
+from resources import *
+from farejadorsismo_dockwidget import FarejadorDockWidget
 import os.path
 
 
@@ -100,7 +102,7 @@ class Farejador:
         return action
 
     def initGui(self):
-        icon_path = ':/plugins/farejador_eventos/icon.png'
+        icon_path = ':/plugins/farejadorsismo/icon.png'
         self.add_action(
             icon_path,
             text=self.tr(u'Fareje rastros de sismos.'),
