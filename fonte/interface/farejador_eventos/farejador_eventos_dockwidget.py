@@ -50,10 +50,9 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         """Constructor."""
         super(FarejadorDockWidget, self).__init__(parent)
         self.df = pd.read_csv(f"{PROJ_DIR}arquivos/resultados/analisado_nc.csv")
-        self.layer= None
+        self.createLayerFromDF()
         self.setupUi(self)
         self.initUI()
-        self.createLayerFromDF()
 
     def initUI(self):
         self.eventSelector = self.findChild(QtWidgets.QComboBox, 'eventSelector')
@@ -82,7 +81,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
         self.eventSelector.currentIndexChanged.connect(self.updateNetworkAndStationSelectors)
         self.networkSelector.currentIndexChanged.connect(self.updateStationSelector)
-        self.eventSelector.currentIndexChanged.connect(self.logEvent)
+        self.stationSelector.currentIndexChanged.connect(self.updateMseedAttributes)
 
         ev = self.get_EventsSorted()
         self.eventos_cre, self.eventos_dec, self.numb_eventos = ev
@@ -97,8 +96,8 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
     def createLayerFromDF(self):
         logging.info('Criando camada de eventos sismológicos...')
         try:
-            layer = QgsVectorLayer("Point?crs=EPSG:4326", "Eventos Sismológicos", "memory")
-            provider = layer.dataProvider()
+            self.layer = QgsVectorLayer("Point?crs=EPSG:4326", "Eventos Sismológicos", "memory")
+            provider = self.layer.dataProvider()
             provider.addAttributes([
                 QgsField("Event", QVariant.String),
                 QgsField("Station", QVariant.String),
@@ -118,45 +117,8 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
                 QgsField("Event Pred_final", QVariant.String),
                 QgsField("Pick Pred_final", QVariant.String),
             ])
-            layer.updateFields()
-
-            features = []
-            selected_event = self.eventSelector.currentText()
-            for _, row in self.df.iterrows():
-                if row['Event'] != selected_event:
-                    continue
-                feature = QgsFeature()
-                point = QgsPointXY(row['Origem Longitude'], row['Origem Latitude'])
-                feature.setGeometry(QgsGeometry.fromPointXY(point))
-                feature.setAttributes([
-                    row['Event'],
-                    row['Station'],
-                    row['Network'],
-                    row['Cat'],
-                    row['SNR_P'],
-                    row['Região Origem'],
-                    row['Start Time'],
-                    row['End Time'],
-                    row['Pick Time'],
-                    row['Origem Latitude'],
-                    row['Origem Longitude'],
-                    row['Distance'],
-                    row['Num_Estacoes'],
-                    row['Event Prob_Nat'],
-                    row['Pick Prob_Nat'],
-                    row['Event Pred_final'],
-                    row['Pick Pred_final'],
-                ])
-                features.append(feature)
-
-            provider.addFeatures(features)
+            self.layer.updateFields()
             logging.info('Camada de eventos sismológicos criada com sucesso.')
-
-            layer.updateExtents()
-            logging.info('Atualizando extensão da camada de eventos sismológicos.')
-            self.layer = layer
-            QgsProject.instance().addMapLayer(self.layer)
-            logging.info('Camada de eventos sismológicos adicionada ao projeto.')
         except Exception as e:
             logging.error(f'Erro ao criar camada de eventos sismológicos: {e}')
 
@@ -172,70 +134,129 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
     def updateLog(self, state):
         if state == QtCore.Qt.Checked:
+            logging.info('Log de eventos habilitado.')
             self.eventSelector.currentIndexChanged.connect(self.logEvent)
         else:
+            logging.info('Log de eventos desabilitado.')
             self.eventSelector.currentIndexChanged.disconnect(self.logEvent)
 
     def logEvent(self):
+        if self.layer is None:
+            logging.warning('Camada não definida.')
+            return
+        if self.eventSelector.currentText() in [f['Event'] for f in self.layer.getFeatures()]:
+            logging.info(f'Evento {self.eventSelector.currentText()} presente na camada.')
+            self.repaintLayer()
+            return
         try:
-            selected_event = self.eventSelector.currentText()
-            logging.info(f'Evento {selected_event} selecionado.')
-            if selected_event:
+            selected_ev = self.eventSelector.currentText()
+            if selected_ev:
+                logging.info(f'Evento {selected_ev} selecionado.')
                 df_ = self.df.set_index(['Event', 'Station'])
-                event_data = df_.loc[selected_event]
-                self.event_data = event_data[[
+                sel_ev_data = df_.loc[selected_ev]
+                self.event_data = sel_ev_data[[
                     'Cat',
-                    'Error',
-                    'Compo',
                     'Pick',
-                    'SNR_P',
-                    'Região Origem',
                     'Start Time',
                     'End Time',
                     'Pick Time',
                     'Origem Latitude',
                     'Origem Longitude',
+                    'Região Origem',
                     'Network',
                     'Distance',
+                    'SNR_P',
+                    'MLv',
                     'Num_Estacoes',
                     'Event Prob_Nat',
                     'Pick Prob_Nat',
                 ]]
-                print(f'Evento: {selected_event}')
-                print(event_data[[
-                    'Origem Latitude',
-                    'Origem Longitude',
-                    'Network',
-                    'SNR_P',
-                    'SNR_P_Q2'
-                ]])
-                print('_____________________________________________________\n')
-                logging.info(f'Evento {selected_event} logado com sucesso.')
+                logging.info(f'{selected_ev}_data definido.')
 
-                if self.layer is None:
-                    logging.warning('Camada não definida.')
-                    print('Camada não definida.')
-                    return
-                symbol_selected = QgsSymbol.defaultSymbol(self.layer.geometryType())
-                symbol_selected.setColor(QtCore.Qt.red)
-                symbol_selected.setSize(10)
-                symbol_default = QgsSymbol.defaultSymbol(self.layer.geometryType())
-                symbol_default.setColor(QtCore.Qt.blue)
-                symbol_default.setSize(5)
+                features = []
+                provider = self.layer.dataProvider()
+                ev = self.eventSelector.currentText()
+                st = self.stationSelector.currentText()
+                for _, row in self.df.iterrows():
+                    if row['Event'] != ev or row['Station'] != st:
+                        continue
+                    if any(f['Event'] == row['Event'] and f['Station'] == row['Station'] for f in features):
+                        logging.info(f'Feature de {row["Event"]} {row["Station"]} já existe na camada.')
+                        continue
 
-                categories = []
-                for f in self.layer.getFeatures():
-                    if f['Event'] == selected_event:
-                        categories.append(QgsRendererCategory(f['Event'], symbol_selected, f['Event']))
-                    else:
-                        categories.append(QgsRendererCategory(f['Event'], symbol_default, f['Event']))
+                    feature = QgsFeature()
+                    point = QgsPointXY(row['Origem Longitude'], row['Origem Latitude'])
+                    feature.setGeometry(QgsGeometry.fromPointXY(point))
+                    feature.setAttributes([
+                        row['Event'],
+                        row['Station'],
+                        row['Network'],
+                        row['Cat'],
+                        row['SNR_P'],
+                        row['Região Origem'],
+                        row['Start Time'],
+                        row['End Time'],
+                        row['Pick Time'],
+                        row['Origem Latitude'],
+                        row['Origem Longitude'],
+                        row['Distance'],
+                        row['Num_Estacoes'],
+                        row['Event Prob_Nat'],
+                        row['Pick Prob_Nat'],
+                        row['Event Pred_final'],
+                        row['Pick Pred_final'],
+                    ])
+                    features.append(feature)
+                    logging.info(f'Adicionando feature de {row["Event"]} {row['Station']} à camada.')
 
-                renderer = QgsCategorizedSymbolRenderer("Event", categories)
-                self.layer.setRenderer(renderer)
-                self.layer.triggerRepaint()
-                logging.info('Camada de eventos sismológicos atualizada.')
+                provider.addFeatures(features)
+                logging.info('Provider Add Features success!.')
+
+                self.repaintLayer()
+                self.layer.updateExtents()
+                logging.info('Upadate Extents success!.')
+                QgsProject.instance().addMapLayer(self.layer)
+                logging.info('Add Map Layer success!.')
+
         except Exception as e:
             logging.error(f'Erro ao logar evento: {e}')
+
+    def repaintLayer(self):
+        if self.layer is None:
+            logging.warning('Camada não definida.')
+            return
+
+        symbol_selected = QgsSymbol.defaultSymbol(self.layer.geometryType())
+        symbol_selected.setSize(5)
+        symbol_default = QgsSymbol.defaultSymbol(self.layer.geometryType())
+        symbol_default.setSize(2.5)
+
+        categories = []
+        for f in self.layer.getFeatures():
+            if f['Event'] == self.eventSelector.currentText():
+                if f['Event Pred_final'] == 'Natural':
+                    symbol_clone = symbol_selected.clone()
+                    symbol_clone.setColor(QtCore.Qt.blue)
+                    categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
+                else:
+                    symbol_clone = symbol_selected.clone()
+                    symbol_clone.setColor(QtCore.Qt.red)
+                    categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
+            else:
+                if f['Event Pred_final'] == 'Natural':
+                    symbol_clone = symbol_default.clone()
+                    symbol_clone.setColor(QtCore.Qt.blue)
+                    categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
+                else:
+                    symbol_clone = symbol_default.clone()
+                    symbol_clone.setColor(QtCore.Qt.red)
+                    categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
+
+        renderer = QgsCategorizedSymbolRenderer("Event", categories)
+        self.layer.setRenderer(None)
+        self.layer.setRenderer(renderer)
+        self.layer.triggerRepaint()
+        logging.info('Layer Trigger Repaint.')
 
     def get_EventsSorted(self):
         eventos = self.df['Event'].unique()
@@ -263,8 +284,8 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
     def updateNetworkAndStationSelectors(self):
         self.networkSelector.clear()
         self.stationSelector.clear()
-        selected_event = self.eventSelector.currentText()
-        networks, stations = self.getNetworksAndStations(selected_event)
+        self.selected_event = self.eventSelector.currentText()
+        networks, stations = self.getNetworksAndStations(self.selected_event)
         self.networkSelector.addItems(sorted(networks))
         self.updateStationSelector()
 
@@ -429,6 +450,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
             print(f"Spectrogram iniciado com {path}")
         except Exception as e:
+            logging.error(f"Erro ao iniciar o Espectrograma: {e}")
             print(f"Erro ao iniciar o Espectrograma: {e}")
             if e == FileNotFoundError:
                 print(f"Arquivo {path} não encontrado.")
