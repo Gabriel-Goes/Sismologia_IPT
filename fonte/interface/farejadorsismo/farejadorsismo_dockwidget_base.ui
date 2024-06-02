@@ -52,6 +52,17 @@
        </widget>
       </item>
       <item>
+       <widget class="QComboBox" name="labelOrdenarEventos"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_atrib">
+        <property name="text">
+         <string>Atributo:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+      <item>
        <widget class="QComboBox" name="eventSelector"/>
       </item>
       <item>
@@ -160,7 +171,7 @@
     <item>
      <widget class="QCheckBox" name="invertCheckbox">
       <property name="text">
-       <string>Alta Probabilidade</string>
+       <string>Ordenar Eventos</string>
       </property>
      </widget>
     </item>

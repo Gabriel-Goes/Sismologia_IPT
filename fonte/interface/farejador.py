@@ -118,9 +118,9 @@ class SeletorEventoApp(QMainWindow):
         self.layout.addWidget(self.autoselectCheckbox)
         self.autoselectCheckbox.stateChanged.connect(self.updateAutoSelection)
 
-        self.invertCheckbox = QCheckBox('Alta Probabilidade')
-        self.layout.addWidget(self.invertCheckbox)
-        self.invertCheckbox.stateChanged.connect(self.updateEventSelector)
+        self.sortColumComboBox = QCheckBox('Ordenar Eventos')
+        self.layout.addWidget(self.sortColumComboBox)
+        self.sortColumComboBox.stateChanged.connect(self.updateEventSelector)
 
         self.logCheckbox = QCheckBox('Log')
         self.layout.addWidget(self.logCheckbox)

@@ -49,10 +49,27 @@ from PIL import Image, ImageDraw
 
 from .farejadorsismo_dockwidget_base import Ui_FarejadorDockWidgetBase
 
+
 # ----------------------------- CONSTANTES ---------------------------------- #
-PROJ_DIR = os.environ['HOME'] + "/projetos/ClassificadorSismologico/"
-FIGURE_DIR = f"{PROJ_DIR}arquivos/figuras/"
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s', filename=f"{PROJ_DIR}arquivos/registros/farejador.log")
+PROJ_DIR = os.path.expanduser("~/projetos/ClassificadorSismologico/")
+FIGURE_DIR = os.path.join(PROJ_DIR, "arquivos/figuras/")
+LOG_FILE = os.path.join(PROJ_DIR, "arquivos/registros/farejador.log")
+CSV_FILE = os.path.join(PROJ_DIR, "arquivos/resultados/analisado_nc.csv")
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filename=LOG_FILE
+)
+
+COLUMN_NAMES = [
+    "Event", "Station", "Network",
+    "Event Pred_final", "Pick Pred_final", "Event Prob_Nat", "Pick Prob_Nat",
+    "Start Time", "End Time", "Pick Time",
+    "Cat", "MLv", "SNR_P", "SNR_P_Q2", "Distance", "Distance_Q2",
+    "Região Origem", "Num_Estacoes",
+    "Origem Latitude", "Origem Longitude",
+]
 
 
 # -------------------------------- CLASSE ----------------------------------- #
@@ -62,16 +79,25 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
     def __init__(self, parent=None):
         """Constructor."""
         super(FarejadorDockWidget, self).__init__(parent)
-        self.df = pd.read_csv(f"{PROJ_DIR}arquivos/resultados/analisado_nc.csv")
-        self.createLayerFromDF()
+        self.df = self.load_csv(CSV_FILE)
+        self.layer = None
         self.setupUi(self)
         self.initUI()
 
+    def load_csv(self, csv_file):
+        try:
+            return pd.read_csv(csv_file)
+        except Exception as e:
+            logging.error(f'Erro ao carregar {csv_file}: {e}')
+            QtWidgets.QMessageBox.critical(
+                    self, 'Erro', f'Erro ao carregar {csv_file}: {e}')
+            return pd.DataFrame(columns=COLUMN_NAMES)
+
     def initUI(self):
+        self.numb_Eventos = self.findChild(QtWidgets.QLabel, 'numb_Eventos')
         self.eventSelector = self.findChild(QtWidgets.QComboBox, 'eventSelector')
         self.networkSelector = self.findChild(QtWidgets.QComboBox, 'networkSelector')
         self.stationSelector = self.findChild(QtWidgets.QComboBox, 'stationSelector')
-        self.numb_Eventos = self.findChild(QtWidgets.QLabel, 'numb_Eventos')
         self.nb_picksText = self.findChild(QtWidgets.QLabel, 'nb_picksText')
         self.ev_predText = self.findChild(QtWidgets.QLabel, 'ev_predText')
         self.probNatText = self.findChild(QtWidgets.QLabel, 'probNatText')
@@ -83,21 +109,43 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         self.loadButton = self.findChild(QtWidgets.QPushButton, 'loadButton')
         self.spectreButton = self.findChild(QtWidgets.QPushButton, 'spectreButton')
         self.autoselectCheckbox = self.findChild(QtWidgets.QCheckBox, 'autoselectCheckbox')
-        self.invertCheckbox = self.findChild(QtWidgets.QCheckBox, 'invertCheckbox')
         self.logCheckbox = self.findChild(QtWidgets.QCheckBox, 'logCheckbox')
+        self.invertCheckbox = self.findChild(QtWidgets.QCheckBox, 'invertCheckbox')
+
+        self.labelOrdenarEventos = QtWidgets.QLabel(self)
+        self.labelOrdenarEventos.setText('Ordenar Eventos por: ')
+
+        self.filterLineEdit = QtWidgets.QLineEdit(self)
+        self.filterLineEdit.setPlaceholderText('Digite para filtrar eventos')
+        self.filterLineEdit.textChanged.connect(self.updateEventFilter)
+
+        self.sortColumnComboBox = QtWidgets.QComboBox(self)
+        self.sortColumnComboBox.addItems([
+            'Event',
+            'SNR_P_Q2',
+            'Distance_Q2',
+            'Event Prob_Nat',
+            'MLv',
+        ])
+        self.sortColumnComboBox.currentIndexChanged.connect(self.get_EventsSorted)
+
+        layout = self.findChild(QtWidgets.QVBoxLayout, 'verticalLayout')
+        filter_sort_layout = QtWidgets.QHBoxLayout()
+        filter_sort_layout.addWidget(self.labelOrdenarEventos)
+        filter_sort_layout.addWidget(self.filterLineEdit)
+        filter_sort_layout.addWidget(self.sortColumnComboBox)
+        layout.insertWidget(0, self.filterLineEdit)
+        self.get_EventsSorted()
 
         self.loadButton.clicked.connect(self.loadSnuffler)
         self.spectreButton.clicked.connect(self.loadSpectre)
         self.autoselectCheckbox.stateChanged.connect(self.updateAutoSelection)
-        self.invertCheckbox.stateChanged.connect(self.updateEventSelector)
+        self.sortColumnComboBox.currentIndexChanged.connect(self.updateEventSelector)
         self.logCheckbox.stateChanged.connect(self.updateLog)
 
         self.eventSelector.currentIndexChanged.connect(self.updateNetworkAndStationSelectors)
         self.networkSelector.currentIndexChanged.connect(self.updateStationSelector)
         self.stationSelector.currentIndexChanged.connect(self.updateMseedAttributes)
-
-        ev = self.get_EventsSorted()
-        self.eventos_cre, self.eventos_dec, self.numb_eventos = ev
 
         self.updateEventSelector(QtCore.Qt.Checked)
         self.updateNetworkAndStationSelectors()
@@ -106,44 +154,29 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         self.closingPlugin.emit()
         event.accept()
 
+    def updateEventFilter(self, text):
+        filtered_events = [ev for ev in self.ev_dec if text.lower() in ev.lower()]
+        self.eventSelector.clear()
+        self.eventSelector.addItems(filtered_events)
+
     def createLayerFromDF(self):
-        logging.info('Criando camada de eventos sismológicos...')
+        logging.info('Criando camada de eventos...')
         try:
             self.layer = QgsVectorLayer("Point?crs=EPSG:4326", "Eventos Sismológicos", "memory")
             provider = self.layer.dataProvider()
             provider.addAttributes([
-                QgsField("Event", QVariant.String),
-                QgsField("Station", QVariant.String),
-                QgsField("Network", QVariant.String),
-                QgsField("Cat", QVariant.String),
-                QgsField("SNR_P", QVariant.Double),
-                QgsField("Região Origem", QVariant.String),
-                QgsField("Start Time", QVariant.String),
-                QgsField("End Time", QVariant.String),
-                QgsField("Pick Time", QVariant.String),
-                QgsField("Origem Latitude", QVariant.Double),
-                QgsField("Origem Longitude", QVariant.Double),
-                QgsField("Distance", QVariant.Double),
-                QgsField("Num_Estacoes", QVariant.Int),
-                QgsField("Event Prob_Nat", QVariant.Double),
-                QgsField("Pick Prob_Nat", QVariant.Double),
-                QgsField("Event Pred_final", QVariant.String),
-                QgsField("Pick Pred_final", QVariant.String),
+                QgsField(name, QVariant.String) for name in COLUMN_NAMES
             ])
             self.layer.updateFields()
-            logging.info('Camada de eventos sismológicos criada com sucesso.')
+            logging.info('Camada de eventos criada com sucesso.')
         except Exception as e:
-            logging.error(f'Erro ao criar camada de eventos sismológicos: {e}')
+            logging.error(f'Erro ao criar camada sismológicos: {e}')
 
     def updateAutoSelection(self, state):
         if state == QtCore.Qt.Checked:
             self.eventSelector.currentIndexChanged.connect(self.loadSpectre)
-            # self.networkSelector.currentIndexChanged.connect(self.loadSpectre)
-            # self.stationSelector.currentIndexChanged.connect(self.loadSpectre)
         else:
             self.eventSelector.currentIndexChanged.disconnect(self.loadSpectre)
-            # self.networkSelector.currentIndexChanged.disconnect(self.loadSpectre)
-            # self.stationSelector.currentIndexChanged.disconnect(self.loadSpectre)
 
     def updateLog(self, state):
         if state == QtCore.Qt.Checked:
@@ -151,13 +184,14 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             self.eventSelector.currentIndexChanged.connect(self.logEvent)
         else:
             logging.info('Log de eventos desabilitado.')
-            self.eventSelector.currentIndexChanged.disconnect(self.logEvent)
+            self.eventSelector.currentIndexChanged.connect(self.logEvent)
 
     def logEvent(self):
         ev = self.eventSelector.currentText()
         sta = self.stationSelector.currentText()
         if self.layer is None:
             logging.warning('Camada não definida.')
+            self.createLayerFromDF()
             return
         if ev in [f['Event'] for f in self.layer.getFeatures()]:
             logging.info(f'Evento {ev} presente na camada.')
@@ -171,83 +205,28 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             )
             return
         try:
-            if ev:
-                logging.info(f'Evento {ev} selecionado.')
-                df_ = self.df.set_index(['Event', 'Station'])
-                ev_data = df_.loc[ev]
-                self.event_data = ev_data[[
-                    'Cat',
-                    'Pick',
-                    'Start Time',
-                    'End Time',
-                    'Pick Time',
-                    'Origem Latitude',
-                    'Origem Longitude',
-                    'Região Origem',
-                    'Network',
-                    'Distance',
-                    'SNR_P',
-                    'MLv',
-                    'Num_Estacoes',
-                    'Event Prob_Nat',
-                    'Pick Prob_Nat',
-                ]]
-                logging.info(f'{ev}_data definido.')
-
-                features = []
-                provider = self.layer.dataProvider()
-                ev = self.eventSelector.currentText()
-                st = self.stationSelector.currentText()
-                for _, row in self.df.iterrows():
-                    if row['Event'] != ev or row['Station'] != st:
-                        continue
-                    if any(f['Event'] == row['Event'] and f['Station'] == row['Station'] for f in features):
-                        logging.info(f'Feature de {row["Event"]} {row["Station"]} já existe na camada.')
-                        continue
-
-                    feature = QgsFeature()
-                    point = QgsPointXY(row['Origem Longitude'], row['Origem Latitude'])
-                    feature.setGeometry(QgsGeometry.fromPointXY(point))
-                    feature.setAttributes([
-                        row['Event'],
-                        row['Station'],
-                        row['Network'],
-                        row['Cat'],
-                        row['SNR_P'],
-                        row['Região Origem'],
-                        row['Start Time'],
-                        row['End Time'],
-                        row['Pick Time'],
-                        row['Origem Latitude'],
-                        row['Origem Longitude'],
-                        row['Distance'],
-                        row['Num_Estacoes'],
-                        row['Event Prob_Nat'],
-                        row['Pick Prob_Nat'],
-                        row['Event Pred_final'],
-                        row['Pick Pred_final'],
-                    ])
-                    features.append(feature)
-                    logging.info(f'Adicionando feature de {row["Event"]} {row['Station']} à camada.')
-
-                provider.addFeatures(features)
-                logging.info('Provider Add Features success!.')
-
-                self.repaintLayer()
-                self.layer.updateExtents()
-                logging.info('Upadate Extents success!.')
-                QgsProject.instance().addMapLayer(self.layer)
-                self.feature = next(
-                    self.layer.getFeatures(
-                        QgsFeatureRequest().setFilterExpression(
-                            f'Event = \'{ev}\' AND Station = \'{sta}\''
-                        )
-                    )
-                )
-                logging.info('Add Map Layer success!.')
-
+            self.addFeatureToLayer(ev, sta)
         except Exception as e:
-            logging.error(f'Erro ao logar evento: {e}')
+            logging.error(f'Erro ao logar evento {ev}-{sta}: {e}')
+
+    def addFeatureToLayer(self, ev, sta):
+        logging.info(f'Evento {ev} selecionado')
+        df_ = self.df.set_index(['Event', 'Station'])
+        ev_data = df_.loc[ev]
+        self.event_data = ev_data[[COLUMN_NAMES]]
+
+        features = []
+        provider = self.layer.dataProvider()
+        for _, row in self.df.iterrows():
+            if row['Event'] != ev:
+                continue
+            if any(f['Event'] == row['Event'] for f in features):
+                logging.info(f'Feature de {row["Event"]} já existe na camada.')
+                continue
+
+            feature = QgsFeature()
+            point = QgsPointXY(row['Origem Longitude'], row['Origem Latitude'])
+            feature.setGeometry(QgsGeometry.fromPointXY(point))
 
     def repaintLayer(self):
         try:
@@ -289,25 +268,26 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             logging.error(e)
 
     def get_EventsSorted(self):
-        eventos = self.df['Event'].unique()
-        numb_eventos = len(eventos)
-        eventos_cre = sorted(
-            eventos, key=lambda x: self.df.loc[
-                self.df['Event'] == x,
-                'Event Prob_Nat'
-            ].iloc[0]
-        )
-        eventos_dec = eventos_cre[::-1]
-        print(' ---------------- Eventos ordenados ---------------- ')
-        print('_____________________________________________________')
-        return eventos_cre, eventos_dec, numb_eventos
+        evs = self.df['Event'].unique()
+        self.numb_Eventos.setText(f'Número de Eventos: {len(evs)}')
+        sort_column = self.sortColumnComboBox.currentText()
+        if sort_column == 'Event':
+            self.ev_cre = sorted(evs)
+        else:
+            self.ev_cre = sorted(
+                evs, key=lambda x: self.df.loc[
+                    self.df['Event'] == x, sort_column
+                ].iloc[0]
+            )
+        self.ev_dec = self.ev_cre[::-1]
+        self.updateEventSelector(self.invertCheckbox.checkState())
 
     def updateEventSelector(self, state):
         self.eventSelector.clear()
         if state == QtCore.Qt.Checked:
-            self.eventSelector.addItems(self.eventos_dec)
+            self.eventSelector.addItems(self.ev_dec)
         else:
-            self.eventSelector.addItems(self.eventos_cre)
+            self.eventSelector.addItems(self.ev_cre)
         if self.logCheckbox.isChecked():
             self.eventSelector.currentIndexChanged.connect(self.logEvent)
 
@@ -478,11 +458,13 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             prob = self.feature['Pick Prob_Nat']
             prob_e = self.feature['Event Prob_Nat']
             distance = self.feature['Distance']
+            snrp_q = self.feature['SNR_P_Q2']
             snrp = self.feature['SNR_P']
             draw.text((255, 20), f'Pick: {prob}', fill='white')
             draw.text((310, 20), f'Event: {prob_e}', fill='white')
             draw.text((255, 35), f'Distance: {distance:.1f} km', fill='white')
-            draw.text((355, 35), f'SNR_P: {snrp:.1f}', fill='white')
+            draw.text((355, 35), f'SNR: {snrp:.1f}', fill='white')
+            draw.text((355, 45), f'SNR Q2: {snrp_q:.1f}', fill='white')
 
             combined_img.save(f'{FIGURE_DIR}/espectros/{ev}_{net}_{sta}.png')
             combined_img.show()

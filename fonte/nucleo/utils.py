@@ -23,13 +23,6 @@ import sys
 # ---------------------------- PARAMETROS -------------------------------------
 PROJETO_DIR = os.environ['HOME'] + "/projetos/ClassificadorSismologico/"
 MSEED_DIR = PROJETO_DIR + "arquivos/mseed/"
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> Class
-=======
->>>>>>> Class
 CAT_PROB = [
     '<0.2', '[0.2-0.4[', '[0.4-0.6[', '[0.6-0.8[', '[0.8-0.9[', '>=0.9'
 ]
@@ -69,19 +62,14 @@ DELIMT = "-----------------------------------------------------\n"
 DELIMT2 = "#####################################################\n"
 BKP_TIME = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> Class
-try:
-    DATA_CLIENT = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
-except Exception as e:
-    print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
-    sys.exit(1)
-DATA_CLIENT_BKP = fdsn.Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
+# try:
+#     DATA_CLIENT = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
+# except Exception as e:
+#     print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
+#     sys.exit(1)
+# DATA_CLIENT_BKP = fdsn.Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
 
->>>>>>> Class
+
 # ---------------------------- FUNÇÕES ----------------------------------------
 class DualOutput(object):
     def __init__(self, filename):

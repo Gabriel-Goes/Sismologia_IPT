@@ -1389,15 +1389,8 @@ def carregar_dado(w=3, n=0, d=400, m=8):
     df['Event Pred'] = df['Event Pred'].astype(int)
     df.set_index(['Event', 'Station'], inplace=True)
     df = snr(df, w)
-<<<<<<< HEAD
-<<<<<<< HEAD
-    df.to_csv(f'arquivos/resultados/analisado_{w}{n}{d}{m}.csv')
-=======
-=======
->>>>>>> Class
     df = df[df['SNR_P'] > n]
     df.to_csv(f'arquivos/resultados/{w}{n}{d}{m}_analisado.csv')
->>>>>>> Class
 
     return df
 
@@ -1468,39 +1461,24 @@ def ncomercial(df):
     hist_snr_recall_event(df_nc)
     # ----------------------------------
     region_correlation(df_nc)
-<<<<<<< HEAD
-<<<<<<< HEAD
-    df_nc.to_csv('arquivos/resultados/analisado_nc.csv')
-=======
-
+    # ----------------------------------
+    # Plot the Prob_Nat_std x Event
+    # ----------------------------------
     df_nc.to_csv('arquivos/resultados/nc_analisado.csv')
->>>>>>> Class
-=======
 
-    df_nc.to_csv('arquivos/resultados/nc_analisado.csv')
->>>>>>> Class
     return df_nc
 
 
 # -------------------------------- MAIN ------------------------------------- #
 def main():
-    df = carregar_dado()
-    # df = pd.read_csv('arquivos/resultados/304008_analisado.csv', sep=',')
+    # df = carregar_dado()
+    df = pd.read_csv('arquivos/resultados/304008_analisado.csv', sep=',')
     df['Hora'] = df['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
     df['Coord Origem'] = df[['Origem Latitude', 'Origem Longitude']].apply(lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1)
     df = class_region(df)
     df = median_snrp_event(df)
     df = median_dist_event(df)
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-    df['Magnitude_cat'] = pd.Categorical(df['MLv'].apply(class_mag), categories=CAT_MAG, ordered=True)
-    df['Distance_cat'] = pd.Categorical(df['Distance'].apply(class_dist), categories=CAT_DIS, ordered=True)
-    df['SNR_P_cat'] = pd.Categorical(df['SNR_P'].apply(class_snrp), categories=CAT_SNR, ordered=True)
-    df['Pick Prob_Nat_cat'] = pd.Categorical(df['Pick Prob_Nat'].apply(class_prob), categories=CAT_PROB, ordered=True)
-=======
-=======
->>>>>>> Class
     df['Magnitude_cat'] = pd.Categorical(
         df['MLv'].apply(class_mag), categories=CAT_MAG, ordered=True
     )
@@ -1514,13 +1492,20 @@ def main():
         df['Pick Prob_Nat'].apply(class_prob),
         categories=CAT_PROB, ordered=True
     )
-<<<<<<< HEAD
->>>>>>> Class
-=======
->>>>>>> Class
     df.loc[:, 'Num_Estacoes'] = df.index.get_level_values('Event').map(
         df.reset_index().groupby('Event').size()
     )
+    # calculate the std of Pick Prob_Nat by event
+    df['Pick Prob_Nat_std'] = df.index.get_level_values('Event').map(
+        df.groupby('Event')['Pick Prob_Nat'].std()
+    )
+    df['SNRP_std'] = df.index.get_level_values('Event').map(
+        df.groupby('Event')['SNR_P'].std()
+    )
+    df['Distance_std'] = df.index.get_level_values('Event').map(
+        df.groupby('Event')['Distance'].std()
+    )
+
     df_nc = ncomercial(df)
     # df_cm = comercial(df)
 

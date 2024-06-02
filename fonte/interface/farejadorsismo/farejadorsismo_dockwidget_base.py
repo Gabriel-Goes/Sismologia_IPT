@@ -118,5 +118,5 @@ class Ui_FarejadorDockWidgetBase(object):
         self.mseedText.setText(_translate("FarejadorDockWidgetBase", "Mseed selecionado:"))
         self.eventText.setText(_translate("FarejadorDockWidgetBase", "Evento:"))
         self.autoselectCheckbox.setText(_translate("FarejadorDockWidgetBase", "Seleção automática"))
-        self.invertCheckbox.setText(_translate("FarejadorDockWidgetBase", "Alta Probabilidade"))
+        self.invertCheckbox.setText(_translate("FarejadorDockWidgetBase", "Ordenar Eventos"))
         self.logCheckbox.setText(_translate("FarejadorDockWidgetBase", "Log"))
