@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/plugins/farejadorsismo" >
+    <qresource prefix="/plugins/farejadorsismo/resources" >
         <file>icon.png</file>
     </qresource>
 </RCC>

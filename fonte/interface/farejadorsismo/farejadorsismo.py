@@ -27,8 +27,8 @@ from qgis.PyQt.QtCore import QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
 from qgis.PyQt.QtCore import Qt
-from resources import *
-from farejadorsismo_dockwidget import FarejadorDockWidget
+from .resources import *
+from .farejadorsismo_dockwidget import FarejadorDockWidget
 import os.path
 
 
@@ -102,7 +102,7 @@ class Farejador:
         return action
 
     def initGui(self):
-        icon_path = ':/plugins/farejadorsismo/icon.png'
+        icon_path = ':/plugins/farejadorsismo/resources/icon.png'
         self.add_action(
             icon_path,
             text=self.tr(u'Fareje rastros de sismos.'),

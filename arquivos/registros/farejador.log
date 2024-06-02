@@ -1,0 +1,152 @@
+2024-06-01 21:07:22,974 - INFO - Criando camada de eventos sismológicos...
+2024-06-01 21:07:22,975 - INFO - Camada de eventos sismológicos criada com sucesso.
+2024-06-01 21:07:25,244 - ERROR - Erro ao iniciar o Espectrograma: 
+2024-06-01 21:07:25,260 - DEBUG - Loaded backend Qt5Agg version 5.15.10.
+2024-06-01 21:07:25,644 - ERROR - img_waveform Error: 'FarejadorDockWidget' object has no attribute 'feature'
+2024-06-01 21:07:26,858 - INFO - Log de eventos habilitado.
+2024-06-01 21:07:27,237 - INFO - Evento 20211113T065314 selecionado.
+2024-06-01 21:07:27,241 - INFO - 20211113T065314_data definido.
+2024-06-01 21:07:27,281 - INFO - Adicionando feature de 20211113T065314 NBPN à camada.
+2024-06-01 21:07:27,292 - INFO - Provider Add Features success!.
+2024-06-01 21:07:27,292 - INFO - Layer Trigger Repaint.
+2024-06-01 21:07:27,292 - INFO - Upadate Extents success!.
+2024-06-01 21:07:27,296 - INFO - Add Map Layer success!.
+2024-06-01 21:07:28,691 - DEBUG - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0.
+2024-06-01 21:07:28,691 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerifDisplay.ttf', name='DejaVu Serif Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,691 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBol.ttf', name='STIXGeneral', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-01 21:07:28,691 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymReg.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,691 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneral.ttf', name='STIXGeneral', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,691 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Oblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-01 21:07:28,691 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,691 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,691 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymReg.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,691 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Bold.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-01 21:07:28,691 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansDisplay.ttf', name='DejaVu Sans Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,691 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Bold.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-01 21:07:28,691 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFiveSymReg.ttf', name='STIXSizeFiveSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,691 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmsy10.ttf', name='cmsy10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,691 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmss10.ttf', name='cmss10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,691 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Italic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmb10.ttf', name='cmb10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmex10.ttf', name='cmex10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBol.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymBol.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmmi10.ttf', name='cmmi10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBolIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-BoldOblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 1.335
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymReg.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralItalic.ttf', name='STIXGeneral', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmr10.ttf', name='cmr10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-BoldItalic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 0.33499999999999996
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymBol.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBolIta.ttf', name='STIXGeneral', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Oblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 1.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymReg.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 0.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUni.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmtt10.ttf', name='cmtt10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-BoldOblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymBol.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymBol.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMBatnan.otf', name='Serto Batnan', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMKharput.otf', name='Serto Kharput', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMMalankara.otf', name='Serto Malankara', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFontPropo-Italic.otf', name='OpenDyslexic Nerd Font Propo', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMUrhoy.otf', name='Serto Urhoy', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,692 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFontPropo-Bold.otf', name='OpenDyslexic Nerd Font Propo', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMCtesiphon.otf', name='East Syriac Ctesiphon', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMMardin.otf', name='Serto Mardin', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMJerusalemItalic.otf', name='Serto Jerusalem', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFont-Italic.otf', name='OpenDyslexic Nerd Font', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFont-BoldItalic.otf', name='OpenDyslexicAlt Nerd Font', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicMNerdFontMono-Regular.otf', name='OpenDyslexicM Nerd Font Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMNisibin.otf', name='Estrangelo Nisibin', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFont-Italic.otf', name='OpenDyslexicAlt Nerd Font', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFontPropo-BoldItalic.otf', name='OpenDyslexic Nerd Font Propo', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMJerusalemBold.otf', name='Serto Jerusalem', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFont-BoldItalic.otf', name='OpenDyslexic Nerd Font', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicMNerdFont-Regular.otf', name='OpenDyslexicM Nerd Font', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMBatnanBold.otf', name='Serto Batnan', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMJerusalemOutline.otf', name='Serto Jerusalem Outline', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMUrhoyBold.otf', name='Serto Urhoy', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFont-Bold.otf', name='OpenDyslexicAlt Nerd Font', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFontPropo-Italic.otf', name='OpenDyslexicAlt Nerd Font Propo', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicMNerdFontPropo-Regular.otf', name='OpenDyslexicM Nerd Font Propo', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMTalada.otf', name='Estrangelo Talada', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFontPropo-Regular.otf', name='OpenDyslexic Nerd Font Propo', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFont-Regular.otf', name='OpenDyslexic Nerd Font', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMMardinBold.otf', name='Serto Mardin', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFont-Regular.otf', name='OpenDyslexicAlt Nerd Font', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFontPropo-Bold.otf', name='OpenDyslexicAlt Nerd Font Propo', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFontPropo-Regular.otf', name='OpenDyslexicAlt Nerd Font Propo', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMJerusalem.otf', name='Serto Jerusalem', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMQenNeshrin.otf', name='Estrangelo Quenneshrin', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/GohaTibebZemen.otf', name='Goha-Tibeb Zemen', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMAdiabene.otf', name='East Syriac Adiabene', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,693 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMAntioch.otf', name='Estrangelo Antioch', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,694 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMNisibinOutline.otf', name='Estrangelo Nisibin Outline', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,694 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFontPropo-BoldItalic.otf', name='OpenDyslexicAlt Nerd Font Propo', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-06-01 21:07:28,694 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMEdessa.otf', name='Estrangelo Edessa', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,694 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMMidyat.otf', name='Estrangelo Midyat', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,694 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMTurAbdin.otf', name='Estrangelo TurAbdin', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-01 21:07:28,694 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFont-Bold.otf', name='OpenDyslexic Nerd Font', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-01 21:07:28,694 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/PowerlineSymbols.otf', name='PowerlineSymbols', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
+2024-06-01 21:07:28,694 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/GohaTibebZemen.ttf', name='Goha-Tibeb Zemen', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
+2024-06-01 21:07:28,694 - DEBUG - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+2024-06-01 21:07:28,763 - DEBUG - STREAM b'IHDR' 16 13
+2024-06-01 21:07:28,763 - DEBUG - STREAM b'tEXt' 41 57
+2024-06-01 21:07:28,763 - DEBUG - STREAM b'pHYs' 110 9
+2024-06-01 21:07:28,763 - DEBUG - STREAM b'IDAT' 131 19622
+2024-06-01 21:07:28,996 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20211113T065314/NB_NBPN_20211113T065314.npy
+2024-06-01 21:07:30,963 - INFO - Evento 20160906T034820 selecionado.
+2024-06-01 21:07:30,966 - INFO - 20160906T034820_data definido.
+2024-06-01 21:07:30,983 - INFO - Adicionando feature de 20160906T034820 PARB à camada.
+2024-06-01 21:07:31,017 - INFO - Provider Add Features success!.
+2024-06-01 21:07:31,018 - INFO - Layer Trigger Repaint.
+2024-06-01 21:07:31,018 - INFO - Upadate Extents success!.
+2024-06-01 21:07:31,018 - INFO - Add Map Layer success!.
+2024-06-01 21:07:31,019 - INFO - Evento 20160906T034820 presente na camada.
+2024-06-01 21:07:31,019 - INFO - Layer Trigger Repaint.
+2024-06-01 21:07:32,139 - DEBUG - STREAM b'IHDR' 16 13
+2024-06-01 21:07:32,140 - DEBUG - STREAM b'tEXt' 41 57
+2024-06-01 21:07:32,140 - DEBUG - STREAM b'pHYs' 110 9
+2024-06-01 21:07:32,140 - DEBUG - STREAM b'IDAT' 131 16729
+2024-06-01 21:07:32,160 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20160906T034820/BL_PARB_20160906T034820.npy
+2024-06-01 21:07:33,227 - INFO - Evento 20211113T065314 presente na camada.
+2024-06-01 21:07:33,228 - INFO - Layer Trigger Repaint.
+2024-06-01 21:07:33,235 - INFO - Evento 20211113T065314 presente na camada.
+2024-06-01 21:07:33,235 - INFO - Layer Trigger Repaint.
+2024-06-01 21:07:34,091 - DEBUG - STREAM b'IHDR' 16 13
+2024-06-01 21:07:34,091 - DEBUG - STREAM b'tEXt' 41 57
+2024-06-01 21:07:34,091 - DEBUG - STREAM b'pHYs' 110 9
+2024-06-01 21:07:34,091 - DEBUG - STREAM b'IDAT' 131 19622
+2024-06-01 21:07:34,111 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20211113T065314/NB_NBPN_20211113T065314.npy
+2024-06-01 21:08:44,016 - DEBUG - STREAM b'IHDR' 16 13
+2024-06-01 21:08:44,016 - DEBUG - STREAM b'tEXt' 41 57
+2024-06-01 21:08:44,016 - DEBUG - STREAM b'pHYs' 110 9
+2024-06-01 21:08:44,016 - DEBUG - STREAM b'IDAT' 131 19622
+2024-06-01 21:08:44,035 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20211113T065314/NB_NBPN_20211113T065314.npy
+2024-06-01 21:08:45,646 - INFO - Evento 20160906T034820 presente na camada.
+2024-06-01 21:08:45,647 - INFO - Layer Trigger Repaint.
+2024-06-01 21:08:45,647 - INFO - Evento 20160906T034820 presente na camada.
+2024-06-01 21:08:45,648 - INFO - Layer Trigger Repaint.
+2024-06-01 21:08:48,852 - DEBUG - STREAM b'IHDR' 16 13
+2024-06-01 21:08:48,852 - DEBUG - STREAM b'tEXt' 41 57
+2024-06-01 21:08:48,852 - DEBUG - STREAM b'pHYs' 110 9
+2024-06-01 21:08:48,852 - DEBUG - STREAM b'IDAT' 131 16729
+2024-06-01 21:08:48,870 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20160906T034820/BL_PARB_20160906T034820.npy
+2024-06-01 21:08:59,829 - INFO - Evento 20230111T083734 selecionado.
+2024-06-01 21:08:59,831 - INFO - 20230111T083734_data definido.
+2024-06-01 21:08:59,859 - INFO - Adicionando feature de 20230111T083734 SOEA à camada.
+2024-06-01 21:08:59,863 - INFO - Provider Add Features success!.
+2024-06-01 21:08:59,864 - INFO - Layer Trigger Repaint.
+2024-06-01 21:08:59,864 - INFO - Upadate Extents success!.
+2024-06-01 21:08:59,864 - INFO - Add Map Layer success!.
+2024-06-01 21:08:59,865 - INFO - Evento 20230111T083734 presente na camada.
+2024-06-01 21:08:59,865 - INFO - Layer Trigger Repaint.
+2024-06-01 21:09:00,564 - INFO - Evento 20160906T034820 presente na camada.
+2024-06-01 21:09:00,565 - INFO - Layer Trigger Repaint.
+2024-06-01 21:09:00,565 - INFO - Evento 20160906T034820 presente na camada.
+2024-06-01 21:09:00,566 - INFO - Layer Trigger Repaint.

@@ -39,6 +39,7 @@ from qgis.core import QgsGeometry
 from qgis.core import QgsPointXY
 from qgis.core import QgsRendererCategory
 from qgis.core import QgsCategorizedSymbolRenderer
+from qgis.core import QgsFeatureRequest
 from qgis.core import QgsSymbol
 from qgis.PyQt.QtCore import QVariant
 from qgis.PyQt import QtCore, QtWidgets
@@ -46,10 +47,11 @@ from qgis.PyQt import QtCore, QtWidgets
 from obspy import read, UTCDateTime
 from PIL import Image, ImageDraw
 
-from farejadordockwidget_base import Ui_FarejadorDockWidgetBase
+from .farejadorsismo_dockwidget_base import Ui_FarejadorDockWidgetBase
 
 # ----------------------------- CONSTANTES ---------------------------------- #
 PROJ_DIR = os.environ['HOME'] + "/projetos/ClassificadorSismologico/"
+FIGURE_DIR = f"{PROJ_DIR}arquivos/figuras/"
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s', filename=f"{PROJ_DIR}arquivos/registros/farejador.log")
 
 
@@ -84,7 +86,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         self.invertCheckbox = self.findChild(QtWidgets.QCheckBox, 'invertCheckbox')
         self.logCheckbox = self.findChild(QtWidgets.QCheckBox, 'logCheckbox')
 
-        self.loadButton.clicked.connect(self.loadMseed)
+        self.loadButton.clicked.connect(self.loadSnuffler)
         self.spectreButton.clicked.connect(self.loadSpectre)
         self.autoselectCheckbox.stateChanged.connect(self.updateAutoSelection)
         self.invertCheckbox.stateChanged.connect(self.updateEventSelector)
@@ -135,13 +137,13 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
     def updateAutoSelection(self, state):
         if state == QtCore.Qt.Checked:
-            self.eventSelector.currentIndexChanged.connect(self.loadMseed)
-            self.networkSelector.currentIndexChanged.connect(self.loadMseed)
-            self.stationSelector.currentIndexChanged.connect(self.loadMseed)
+            self.eventSelector.currentIndexChanged.connect(self.loadSpectre)
+            # self.networkSelector.currentIndexChanged.connect(self.loadSpectre)
+            # self.stationSelector.currentIndexChanged.connect(self.loadSpectre)
         else:
-            self.eventSelector.currentIndexChanged.disconnect(self.loadMseed)
-            self.networkSelector.currentIndexChanged.disconnect(self.loadMseed)
-            self.stationSelector.currentIndexChanged.disconnect(self.loadMseed)
+            self.eventSelector.currentIndexChanged.disconnect(self.loadSpectre)
+            # self.networkSelector.currentIndexChanged.disconnect(self.loadSpectre)
+            # self.stationSelector.currentIndexChanged.disconnect(self.loadSpectre)
 
     def updateLog(self, state):
         if state == QtCore.Qt.Checked:
@@ -152,20 +154,28 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             self.eventSelector.currentIndexChanged.disconnect(self.logEvent)
 
     def logEvent(self):
+        ev = self.eventSelector.currentText()
+        sta = self.stationSelector.currentText()
         if self.layer is None:
             logging.warning('Camada não definida.')
             return
-        if self.eventSelector.currentText() in [f['Event'] for f in self.layer.getFeatures()]:
-            logging.info(f'Evento {self.eventSelector.currentText()} presente na camada.')
+        if ev in [f['Event'] for f in self.layer.getFeatures()]:
+            logging.info(f'Evento {ev} presente na camada.')
             self.repaintLayer()
+            self.feature = next(
+                self.layer.getFeatures(
+                    QgsFeatureRequest().setFilterExpression(
+                        f'Event = \'{ev}\' AND Station = \'{sta}\''
+                    )
+                )
+            )
             return
         try:
-            selected_ev = self.eventSelector.currentText()
-            if selected_ev:
-                logging.info(f'Evento {selected_ev} selecionado.')
+            if ev:
+                logging.info(f'Evento {ev} selecionado.')
                 df_ = self.df.set_index(['Event', 'Station'])
-                sel_ev_data = df_.loc[selected_ev]
-                self.event_data = sel_ev_data[[
+                ev_data = df_.loc[ev]
+                self.event_data = ev_data[[
                     'Cat',
                     'Pick',
                     'Start Time',
@@ -182,7 +192,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
                     'Event Prob_Nat',
                     'Pick Prob_Nat',
                 ]]
-                logging.info(f'{selected_ev}_data definido.')
+                logging.info(f'{ev}_data definido.')
 
                 features = []
                 provider = self.layer.dataProvider()
@@ -227,47 +237,56 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
                 self.layer.updateExtents()
                 logging.info('Upadate Extents success!.')
                 QgsProject.instance().addMapLayer(self.layer)
+                self.feature = next(
+                    self.layer.getFeatures(
+                        QgsFeatureRequest().setFilterExpression(
+                            f'Event = \'{ev}\' AND Station = \'{sta}\''
+                        )
+                    )
+                )
                 logging.info('Add Map Layer success!.')
 
         except Exception as e:
             logging.error(f'Erro ao logar evento: {e}')
 
     def repaintLayer(self):
-        if self.layer is None:
-            logging.warning('Camada não definida.')
-            return
+        try:
+            symbol_selected = QgsSymbol.defaultSymbol(self.layer.geometryType())
+            symbol_selected.setSize(5)
+            symbol_default = QgsSymbol.defaultSymbol(self.layer.geometryType())
+            symbol_default.setSize(2.5)
 
-        symbol_selected = QgsSymbol.defaultSymbol(self.layer.geometryType())
-        symbol_selected.setSize(5)
-        symbol_default = QgsSymbol.defaultSymbol(self.layer.geometryType())
-        symbol_default.setSize(2.5)
-
-        categories = []
-        for f in self.layer.getFeatures():
-            if f['Event'] == self.eventSelector.currentText():
-                if f['Event Pred_final'] == 'Natural':
-                    symbol_clone = symbol_selected.clone()
-                    symbol_clone.setColor(QtCore.Qt.blue)
-                    categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
+            categories = []
+            for f in self.layer.getFeatures():
+                if f['Event'] == self.eventSelector.currentText():
+                    if f['Event Pred_final'] == 'Natural':
+                        symbol_clone = symbol_selected.clone()
+                        symbol_clone.setColor(QtCore.Qt.blue)
+                        categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
+                    else:
+                        symbol_clone = symbol_selected.clone()
+                        symbol_clone.setColor(QtCore.Qt.red)
+                        categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
                 else:
-                    symbol_clone = symbol_selected.clone()
-                    symbol_clone.setColor(QtCore.Qt.red)
-                    categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
-            else:
-                if f['Event Pred_final'] == 'Natural':
-                    symbol_clone = symbol_default.clone()
-                    symbol_clone.setColor(QtCore.Qt.blue)
-                    categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
-                else:
-                    symbol_clone = symbol_default.clone()
-                    symbol_clone.setColor(QtCore.Qt.red)
-                    categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
+                    if f['Event Pred_final'] == 'Natural':
+                        symbol_clone = symbol_default.clone()
+                        symbol_clone.setColor(QtCore.Qt.blue)
+                        categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
+                    else:
+                        symbol_clone = symbol_default.clone()
+                        symbol_clone.setColor(QtCore.Qt.red)
+                        categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
 
-        renderer = QgsCategorizedSymbolRenderer("Event", categories)
-        self.layer.setRenderer(None)
-        self.layer.setRenderer(renderer)
-        self.layer.triggerRepaint()
-        logging.info('Layer Trigger Repaint.')
+            renderer = QgsCategorizedSymbolRenderer("Event", categories)
+            self.layer.setRenderer(None)
+            self.layer.setRenderer(renderer)
+            self.layer.triggerRepaint()
+            logging.info('Layer Trigger Repaint.')
+        except Exception as e:
+            if self.layer is None:
+                logging.warning('Camada não definida.')
+                return
+            logging.error(e)
 
     def get_EventsSorted(self):
         eventos = self.df['Event'].unique()
@@ -377,7 +396,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         else:
             self.distanceText.setText(f'Distância: {distancia}')
 
-    def loadMseed(self):
+    def loadSnuffler(self):
         try:
             if not os.path.isfile(self.mseed_file_path):
                 raise FileNotFoundError
@@ -397,8 +416,8 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         st = read(f'{PROJ_DIR}arquivos/mseed/{ev}/{mseed}.mseed')
         tr = st[0].detrend('linear').filter('highpass', freq=2.0)
         t = np.arange(tr.stats.npts) * tr.stats.delta
-        start = UTCDateTime(self.event_data.loc[sta]['Start Time'])
-        pick = UTCDateTime(self.event_data.loc[sta]['Pick Time'])
+        pick = UTCDateTime(self.feature['Pick Time'])
+        start = UTCDateTime(self.feature['Start Time'])
         p_start = pick - start
         plt.axvspan(p_start, p_start + 3, alpha=0.5, label='S-Window', color='green')
         plt.plot(t, tr.data, c='k')
@@ -407,7 +426,6 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         plt.savefig(buf, format='png')
         plt.close()
         buf.seek(0)
-
         Img_waveform = Image.open(buf)
         return Img_waveform
 
@@ -433,9 +451,9 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
                 print(f"Dimensões inválidas: {psd_mat.shape}")
                 return
 
-            logging.info(f"Espectrograma carregado com sucesso: {path}")
-            psd_mat_normalized = 255 * (psd_mat - psd_mat.min()) / (psd_mat.max() - psd_mat.min())
-            psd_mat_normalized = psd_mat_normalized.astype(np.uint8)
+            psd_mat_normalized = (
+                psd_mat - psd_mat.min()) / (psd_mat.max() - psd_mat.min())
+            psd_mat_normalized = (psd_mat_normalized * 255).astype(np.uint8)
 
             cmap = plt.get_cmap('viridis')
             color_img = cmap(psd_mat_normalized.T)
@@ -443,8 +461,12 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
             img_spectro = Image.fromarray(color_img)
             img_spectro = img_spectro.transpose(Image.FLIP_TOP_BOTTOM)
-
-            img_waveform = self.plot_waveform()
+            try:
+                img_waveform = self.plot_waveform()
+            except Exception as e:
+                print(f"Erro ao plotar waveform: {e}")
+                logging.error(f"img_waveform Error: {e}")
+                return
 
             total_height = img_spectro.height + img_waveform.height
             combined_img = Image.new('RGB', (img_waveform.width, total_height))
@@ -453,19 +475,23 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
             draw = ImageDraw.Draw(combined_img)
             draw.text((255, 5), f'{ev}_{net}_{sta}', fill='white')
-            prob = self.event_data.loc[sta]['Pick Prob_Nat']
-            prob_e = self.event_data.loc[sta]['Event Prob_Nat']
+            prob = self.feature['Pick Prob_Nat']
+            prob_e = self.feature['Event Prob_Nat']
+            distance = self.feature['Distance']
+            snrp = self.feature['SNR_P']
             draw.text((255, 20), f'Pick: {prob}', fill='white')
             draw.text((310, 20), f'Event: {prob_e}', fill='white')
+            draw.text((255, 35), f'Distance: {distance:.1f} km', fill='white')
+            draw.text((355, 35), f'SNR_P: {snrp:.1f}', fill='white')
 
-            combined_img.save(f'{PROJ_DIR}arquivos/figuras/espectros/{ev}_{net}_{sta}.png')
+            combined_img.save(f'{FIGURE_DIR}/espectros/{ev}_{net}_{sta}.png')
             combined_img.show()
-
+            logging.info(f"Spectrogram iniciado com {path}")
             print(f"Spectrogram iniciado com {path}")
         except Exception as e:
-            logging.error(e)
+            print(e)
             logging.error(f"Erro ao iniciar o Espectrograma: {e}")
             print(f"Erro ao iniciar o Espectrograma: {e}")
             if e == FileNotFoundError:
+                logging.error(f"FileNootFoundError: {e}")
                 print(f"Arquivo {path} não encontrado.")
-
