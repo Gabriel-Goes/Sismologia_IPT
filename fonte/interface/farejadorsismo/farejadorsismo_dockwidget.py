@@ -288,33 +288,31 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         symbol_selected.setSize(4)
         symbol_default = QgsSymbol.defaultSymbol(self.layer.geometryType())
         symbol_default.setSize(2)
+        current_ev = self.eventSelector.currentText()
         try:
             categories = []
-            for i, f in self.df.iterrows():
-                if f['Event'] == self.eventSelector.currentText():
-                    if f['Event Pred_final'] == 'Natural':
-                        symbol_clone = symbol_selected.clone()
-                        symbol_clone.setColor(QtCore.Qt.blue)
-                        categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
-                    else:
-                        symbol_clone = symbol_selected.clone()
-                        symbol_clone.setColor(QtCore.Qt.red)
-                        categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
-                else:
-                    if f['Event Pred_final'] == 'Natural':
-                        symbol_clone = symbol_default.clone()
-                        symbol_clone.setColor(QtCore.Qt.blue)
-                        categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
-                    else:
-                        symbol_clone = symbol_default.clone()
-                        symbol_clone.setColor(QtCore.Qt.red)
-                        categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
-
+            if self.prev_ev is not None:
+                previous_ev_data = self.df[self.df['Event'] == self.prev_ev]
+                for _, f in previous_ev_data.iterrows():
+                    symbol_clone = symbol_default.clone()
+                    symbol_clone.setColor(
+                        QtCore.Qt.blue if f['Event Pred_final'] == 'Natural' else QtCore.Qt.red
+                    )
+                    categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
+            current_ev_data = self.df[self.df['Event'] == current_ev]
+            for _, f in current_ev_data.iterrows():
+                symbol_clone = symbol_selected.clone()
+                symbol_clone.setColor(
+                    QtCore.Qt.blue if f['Event Pred_final'] == 'Natural' else QtCore.Qt.red
+                )
+                categories.append(
+                    QgsRendererCategory(f['Event'], symbol_clone, f['Event'])
+                )
             renderer = QgsCategorizedSymbolRenderer("Event", categories)
-            self.layer.setRenderer(None)
             self.layer.setRenderer(renderer)
             self.layer.triggerRepaint()
             logging.info(f'Camada {self.layer.name()} redesenhada.')
+            self.prev_ev = current_ev
         except Exception as e:
             if self.layer is None:
                 logging.warning('Camada não definida.')
