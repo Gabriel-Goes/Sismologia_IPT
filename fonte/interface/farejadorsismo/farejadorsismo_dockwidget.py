@@ -70,15 +70,16 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
     def __init__(self, parent=None):
         super(FarejadorDockWidget, self).__init__(parent)
         self.df = self.load_csv(CSV_FILE)
-        self.layer = None
+        self.createLayerFromDF()
         self.setupUi(self)
         self.initUI()
+        self.updateUI()
 
     def load_csv(self, csv_file):
         try:
             df = pd.read_csv(CSV_FILE)
-            return df
             logging.info(f'{csv_file} carregado com sucesso.')
+            return df
         except Exception as e:
             logging.error(f'Erro ao carregar {csv_file}: {e}')
             QtWidgets.QMessageBox.critical(
@@ -98,6 +99,10 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             logging.info('Camada criada e adicionada ao projeto.')
         except Exception as e:
             logging.error(f'Erro ao criar camada sismológicos: {e}')
+
+    def updateUI(self):
+        self.updateEventSelector(QtCore.Qt.Checked)
+        self.updateNetworkAndStationSelectors()
 
     def initUI(self):
         self.numb_Ev = self.findChild(QtWidgets.QLabel, 'numb_Eventos')
@@ -144,6 +149,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         filter_sort_layout.addWidget(self.filterLineEdit)
         filter_sort_layout.addWidget(self.sortColumnComboBox)
         layout.insertWidget(0, self.filterLineEdit)
+        self.get_EventsSorted()
 
         self.loadButton.clicked.connect(self.loadSnuffler)
         self.spectreButton.clicked.connect(self.loadSpectre)
@@ -155,16 +161,12 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         self.networkSelector.currentIndexChanged.connect(self.updateStationSelector)
         self.stationSelector.currentIndexChanged.connect(self.updateMseedAttributes)
 
-        self.createLayerFromDF()
-        self.get_EventsSorted()
-        self.updateEventSelector(QtCore.Qt.Checked)
-        self.updateNetworkAndStationSelectors()
         logging.info('Interface iniciada...')
 
     def get_EventsSorted(self):
         sort_column = self.sortColumnComboBox.currentText()
         if sort_column == 'Event':
-            logging.info('Ordenando eventos por Evento.')
+            logging.info('Ordenando eventos por "Evento".')
             self.ev_cre = sorted(self.df['Event'].unique())
         else:
             logging.info(f'Ordenando eventos por {sort_column}.')
@@ -175,32 +177,29 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             )
         self.ev_dec = self.ev_cre[::-1]
 
-    def getNetworksAndStations(self, filter=None):
-        try:
-            picks = self.df[self.df['Event'] == self.eventSelector.currentText()]
-            logging.info(f'{picks.shape[0]} picks encontrados...')
-            self.nets = set()
-            self.stas = set()
-            filter_net = self.networkSelector.currentText()
-            for _, pick in picks.iterrows():
-                net = pick['Network']
-                sta = pick['Station']
-                if filter is True and net != filter_net:
-                    continue
-                logging.info(f'Adquirindo Station {sta} e Network {net}...')
-                self.nets.add(net)
-                self.stas.add(sta)
-        except Exception as e:
-            logging.error(f'Erro ao adquirir Station e Network: {e}')
+    def getNetworksAndStations(self, filter_by_net=True):
+        ev = self.eventSelector.currentText()
+        picks = self.df[self.df['Event'] == ev]
+        nets = set()
+        stas = set()
+        filter_net = self.networkSelector.currentText() if filter_by_net else None
+        for _, pick in picks.iterrows():
+            net = pick['Network']
+            sta = pick['Station']
+            if filter_by_net and net != filter_net:
+                continue
+            nets.add(net)
+            stas.add(sta)
+        return nets, stas
 
     def updateNetworkAndStationSelectors(self):
         logging.info('\n #### Atualizando seletores #### \n')
         try:
             self.networkSelector.clear()
             self.stationSelector.clear()
-            self.getNetworksAndStations(filter=True)
-            logging.info(f'{len(self.stas)} picks por {len(self.nets)} redes adquiridos.')
-            self.networkSelector.addItems(sorted(list(self.nets)))
+            nets, stas = self.getNetworksAndStations(False)
+            logging.info(f'{len(stas)} picks por {len(nets)} redes adquiridos.')
+            self.networkSelector.addItems(sorted(nets))
             self.updateStationSelector()
             logging.info(f'Seletores atualizados: {self.eventSelector.currentText()}.')
         except Exception as e:
@@ -217,8 +216,8 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
     def updateStationSelector(self):
         self.stationSelector.clear()
-        self.getNetworksAndStations()
-        self.stationSelector.addItems(sorted(list(self.stas)))
+        nets, stas = self.getNetworksAndStations()
+        self.stationSelector.addItems(sorted(stas))
         self.updateMseedAttributes()
 
     def updateEventFilter(self, text):
@@ -238,11 +237,10 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             self.eventSelector.currentIndexChanged.connect(self.logEvent)
         else:
             logging.info('Log de eventos desabilitado.')
-            self.eventSelector.currentIndexChanged.connect(self.logEvent)
+            self.eventSelector.currentIndexChanged.disconnect(self.logEvent)
 
     def logEvent(self):
         ev = self.eventSelector.currentText()
-        sta = self.stationSelector.currentText()
         logging.info(f'Evento {ev} selecionado')
         if self.layer is None:
             logging.warning('Camada não definida.')
@@ -252,12 +250,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         features = self.layer.getFeatures(request)
         if any(features):
             logging.info(f'Evento {ev} presente na camada.')
-            logging.info(f'Features {features}...')
-            try:
-                self.repaintLayer()
-                return
-            except Exception as e:
-                logging.error(f'Erro ao redesenhar {ev}-{sta}:\n {e}')
+            self.repaintLayer()
         else:
             logging.info(f'Evento {ev} não presente na camada.')
             self.addFeatureToLayer()
@@ -284,15 +277,15 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             logging.error(f'Erro ao adicionar {self.ev_data.head()}:\n {e}')
         try:
             QgsProject.instance().addMapLayer(self.layer)
-            logging.info(f'Pick {self.ev_data[['Event', "Station"]]} adicionada.')
+            logging.info(f'Camada {self.layer.name()} adicionada ao projeto.')
         except Exception as e:
             logging.error(f'Erro ao adicionar {self.ev_data.head()} à camada:\n {e}')
 
     def repaintLayer(self):
         symbol_selected = QgsSymbol.defaultSymbol(self.layer.geometryType())
-        symbol_selected.setSize(5)
+        symbol_selected.setSize(4)
         symbol_default = QgsSymbol.defaultSymbol(self.layer.geometryType())
-        symbol_default.setSize(2.5)
+        symbol_default.setSize(2)
         try:
             categories = []
             for i, f in self.ev_data.iterrows():
@@ -316,10 +309,10 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
                         categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
 
             renderer = QgsCategorizedSymbolRenderer("Event", categories)
-            self.layer.setRenderer(None)
+            # self.layer.setRenderer(None)
             self.layer.setRenderer(renderer)
             self.layer.triggerRepaint()
-            logging.info('Layer Trigger Repaint.')
+            logging.info(f'Camada {self.layer.name()} redesenhada.')
         except Exception as e:
             if self.layer is None:
                 logging.warning('Camada não definida.')
@@ -395,14 +388,17 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         ev = self.eventSelector.currentText()
         net = self.networkSelector.currentText()
         sta = self.stationSelector.currentText()
+        pick = self.ev_data[self.ev_data['Station'] == sta]
         mseed = f'{net}_{sta}_{ev}'
         st = read(f'{PROJ_DIR}arquivos/mseed/{ev}/{mseed}.mseed')
         tr = st[0].detrend('linear').filter('highpass', freq=2.0)
         t = np.arange(tr.stats.npts) * tr.stats.delta
-        pick = UTCDateTime(self.ev_data['Pick Time'])
-        start = UTCDateTime(self.ev_data['Start Time'])
-        p_start = pick - start
+        pick_t = UTCDateTime(pick['Pick Time'])
+        start_t = UTCDateTime(pick['Start Time'])
+        p_start = pick_t - start_t
+        n_start = pick_t - 4.9
         plt.axvspan(p_start, p_start + 3, alpha=0.5, label='S-Window', color='green')
+        plt.axvspan(n_start, n_start + 4, alpha=0.5, label='N-Window', color='red')
         plt.plot(t, tr.data, c='k')
         plt.tight_layout()
         buf = io.BytesIO()
@@ -475,7 +471,6 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             logging.info(f"Spectrogram iniciado com {path}")
             print(f"Spectrogram iniciado com {path}")
         except Exception as e:
-            print(e)
             logging.error(f"Erro ao iniciar o Espectrograma: {e}")
             print(f"Erro ao iniciar o Espectrograma: {e}")
             if e == FileNotFoundError:
