@@ -179,10 +179,11 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
     def getNetworksAndStations(self, filter_by_net=True):
         ev = self.eventSelector.currentText()
+        net = self.networkSelector.currentText()
         picks = self.df[self.df['Event'] == ev]
         nets = set()
         stas = set()
-        filter_net = self.networkSelector.currentText() if filter_by_net else None
+        filter_net = net if filter_by_net else None
         for _, pick in picks.iterrows():
             net = pick['Network']
             sta = pick['Station']
@@ -288,7 +289,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         symbol_default.setSize(2)
         try:
             categories = []
-            for i, f in self.ev_data.iterrows():
+            for i, f in self.df.iterrows():
                 if f['Event'] == self.eventSelector.currentText():
                     if f['Event Pred_final'] == 'Natural':
                         symbol_clone = symbol_selected.clone()
@@ -309,7 +310,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
                         categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
 
             renderer = QgsCategorizedSymbolRenderer("Event", categories)
-            # self.layer.setRenderer(None)
+            self.layer.setRenderer(None)
             self.layer.setRenderer(renderer)
             self.layer.triggerRepaint()
             logging.info(f'Camada {self.layer.name()} redesenhada.')

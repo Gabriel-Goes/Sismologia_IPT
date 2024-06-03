@@ -1,117 +1,170 @@
-2024-06-02 21:54:09,990 - INFO - /home/ggrl/projetos/ClassificadorSismologico/arquivos/resultados/analisado_nc.csv carregado com sucesso.
-2024-06-02 21:54:09,991 - INFO - Criando camada de eventos...
-2024-06-02 21:54:10,278 - INFO - Camada criada e adicionada ao projeto.
-2024-06-02 21:54:10,284 - INFO - Ordenando eventos por "Evento".
-2024-06-02 21:54:10,284 - INFO - Interface iniciada...
-2024-06-02 21:54:10,284 - INFO - 
+2024-06-02 22:44:49,228 - INFO - /home/ggrl/projetos/ClassificadorSismologico/arquivos/resultados/analisado_nc.csv carregado com sucesso.
+2024-06-02 22:44:49,228 - INFO - Criando camada de eventos...
+2024-06-02 22:44:49,473 - INFO - Camada criada e adicionada ao projeto.
+2024-06-02 22:44:49,479 - INFO - Ordenando eventos por "Evento".
+2024-06-02 22:44:49,479 - INFO - Interface iniciada...
+2024-06-02 22:44:49,479 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-02 21:54:10,285 - INFO - 3 picks por 2 redes adquiridos.
-2024-06-02 21:54:10,290 - INFO - Seletores atualizados: 20240513T055846.
-2024-06-02 21:54:10,290 - INFO - 
+2024-06-02 22:44:49,480 - INFO - 3 picks por 2 redes adquiridos.
+2024-06-02 22:44:49,485 - INFO - Seletores atualizados: 20240513T055846.
+2024-06-02 22:44:49,485 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-02 21:54:10,292 - INFO - 3 picks por 2 redes adquiridos.
-2024-06-02 21:54:10,296 - INFO - Seletores atualizados: 20240513T055846.
-2024-06-02 21:54:12,894 - INFO - Log de eventos habilitado.
-2024-06-02 21:54:18,714 - INFO - 
+2024-06-02 22:44:49,488 - INFO - 3 picks por 2 redes adquiridos.
+2024-06-02 22:44:49,493 - INFO - Seletores atualizados: 20240513T055846.
+2024-06-02 22:44:58,455 - INFO - Log de eventos habilitado.
+2024-06-02 22:44:59,573 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-02 21:54:18,719 - INFO - 3 picks por 2 redes adquiridos.
-2024-06-02 21:54:18,729 - INFO - Seletores atualizados: 20240513T053748.
-2024-06-02 21:54:18,729 - INFO - Evento 20240513T053748 selecionado
-2024-06-02 21:54:18,729 - INFO - Evento 20240513T053748 não presente na camada.
-2024-06-02 21:54:18,729 - INFO - Adicionando 20240513T053748 à camada...
-2024-06-02 21:54:18,730 - INFO - Pick CPSB adicionado.
-2024-06-02 21:54:18,730 - INFO - Pick ITAB adicionado.
-2024-06-02 21:54:18,731 - INFO - Pick TER01 adicionado.
-2024-06-02 21:54:18,793 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-02 21:54:18,794 - INFO - Evento 20240513T053748 adicionado à camada.
-2024-06-02 21:54:18,794 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-02 21:54:20,770 - INFO - 
+2024-06-02 22:44:59,578 - INFO - 3 picks por 2 redes adquiridos.
+2024-06-02 22:44:59,587 - INFO - Seletores atualizados: 20240513T053748.
+2024-06-02 22:44:59,588 - INFO - Evento 20240513T053748 selecionado
+2024-06-02 22:44:59,588 - INFO - Evento 20240513T053748 não presente na camada.
+2024-06-02 22:44:59,588 - INFO - Adicionando 20240513T053748 à camada...
+2024-06-02 22:44:59,589 - INFO - Pick CPSB adicionado.
+2024-06-02 22:44:59,589 - INFO - Pick ITAB adicionado.
+2024-06-02 22:44:59,589 - INFO - Pick TER01 adicionado.
+2024-06-02 22:45:00,044 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-02 22:45:00,046 - INFO - Evento 20240513T053748 adicionado à camada.
+2024-06-02 22:45:00,052 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-02 22:45:02,491 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-02 21:54:20,773 - INFO - 3 picks por 1 redes adquiridos.
-2024-06-02 21:54:20,778 - INFO - Seletores atualizados: 20240501T063159.
-2024-06-02 21:54:20,778 - INFO - Evento 20240501T063159 selecionado
-2024-06-02 21:54:20,778 - INFO - Evento 20240501T063159 não presente na camada.
-2024-06-02 21:54:20,778 - INFO - Adicionando 20240501T063159 à camada...
-2024-06-02 21:54:20,779 - INFO - Pick BSCB adicionado.
-2024-06-02 21:54:20,779 - INFO - Pick DIAM adicionado.
-2024-06-02 21:54:20,779 - INFO - Pick PRMB adicionado.
-2024-06-02 21:54:20,818 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-02 21:54:20,818 - INFO - Evento 20240501T063159 adicionado à camada.
-2024-06-02 21:54:20,818 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-02 21:54:30,280 - INFO - 
+2024-06-02 22:45:02,495 - INFO - 3 picks por 2 redes adquiridos.
+2024-06-02 22:45:02,503 - INFO - Seletores atualizados: 20240513T055846.
+2024-06-02 22:45:02,503 - INFO - Evento 20240513T055846 selecionado
+2024-06-02 22:45:02,503 - INFO - Evento 20240513T055846 não presente na camada.
+2024-06-02 22:45:02,503 - INFO - Adicionando 20240513T055846 à camada...
+2024-06-02 22:45:02,504 - INFO - Pick CPSB adicionado.
+2024-06-02 22:45:02,504 - INFO - Pick ITAB adicionado.
+2024-06-02 22:45:02,504 - INFO - Pick TER01 adicionado.
+2024-06-02 22:45:02,950 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-02 22:45:02,952 - INFO - Evento 20240513T055846 adicionado à camada.
+2024-06-02 22:45:02,952 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-02 22:45:05,084 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-02 21:54:30,285 - INFO - 4 picks por 1 redes adquiridos.
-2024-06-02 21:54:30,297 - INFO - Seletores atualizados: 20240501T030109.
-2024-06-02 21:54:30,297 - INFO - Evento 20240501T030109 selecionado
-2024-06-02 21:54:30,297 - INFO - Evento 20240501T030109 não presente na camada.
-2024-06-02 21:54:30,297 - INFO - Adicionando 20240501T030109 à camada...
-2024-06-02 21:54:30,298 - INFO - Pick NBCL adicionado.
-2024-06-02 21:54:30,298 - INFO - Pick NBMO adicionado.
-2024-06-02 21:54:30,299 - INFO - Pick NBPB adicionado.
-2024-06-02 21:54:30,299 - INFO - Pick NBSB adicionado.
-2024-06-02 21:54:30,362 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-02 21:54:30,362 - INFO - Evento 20240501T030109 adicionado à camada.
-2024-06-02 21:54:30,362 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-02 21:54:30,858 - INFO - 
+2024-06-02 22:45:05,088 - INFO - 3 picks por 2 redes adquiridos.
+2024-06-02 22:45:05,097 - INFO - Seletores atualizados: 20240513T053748.
+2024-06-02 22:45:05,098 - INFO - Evento 20240513T053748 selecionado
+2024-06-02 22:45:05,098 - INFO - Evento 20240513T053748 presente na camada.
+2024-06-02 22:45:05,537 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-02 22:45:07,128 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-02 21:54:30,863 - INFO - 2 picks por 1 redes adquiridos.
-2024-06-02 21:54:30,872 - INFO - Seletores atualizados: 20240424T070442.
-2024-06-02 21:54:30,872 - INFO - Evento 20240424T070442 selecionado
-2024-06-02 21:54:30,872 - INFO - Evento 20240424T070442 não presente na camada.
-2024-06-02 21:54:30,872 - INFO - Adicionando 20240424T070442 à camada...
-2024-06-02 21:54:30,873 - INFO - Pick ARAG adicionado.
-2024-06-02 21:54:30,873 - INFO - Pick SNDB adicionado.
-2024-06-02 21:54:30,934 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-02 21:54:30,934 - INFO - Evento 20240424T070442 adicionado à camada.
-2024-06-02 21:54:30,934 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-02 21:54:31,346 - INFO - 
+2024-06-02 22:45:07,132 - INFO - 3 picks por 1 redes adquiridos.
+2024-06-02 22:45:07,139 - INFO - Seletores atualizados: 20240501T063159.
+2024-06-02 22:45:07,139 - INFO - Evento 20240501T063159 selecionado
+2024-06-02 22:45:07,139 - INFO - Evento 20240501T063159 não presente na camada.
+2024-06-02 22:45:07,139 - INFO - Adicionando 20240501T063159 à camada...
+2024-06-02 22:45:07,139 - INFO - Pick BSCB adicionado.
+2024-06-02 22:45:07,139 - INFO - Pick DIAM adicionado.
+2024-06-02 22:45:07,140 - INFO - Pick PRMB adicionado.
+2024-06-02 22:45:07,612 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-02 22:45:07,614 - INFO - Evento 20240501T063159 adicionado à camada.
+2024-06-02 22:45:07,614 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-02 22:45:09,139 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-02 21:54:31,349 - INFO - 4 picks por 1 redes adquiridos.
-2024-06-02 21:54:31,354 - INFO - Seletores atualizados: 20240501T030109.
-2024-06-02 21:54:31,354 - INFO - Evento 20240501T030109 selecionado
-2024-06-02 21:54:31,354 - INFO - Evento 20240501T030109 presente na camada.
-2024-06-02 21:54:31,392 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-02 21:54:31,858 - INFO - 
+2024-06-02 22:45:09,143 - INFO - 3 picks por 2 redes adquiridos.
+2024-06-02 22:45:09,149 - INFO - Seletores atualizados: 20240513T053748.
+2024-06-02 22:45:09,149 - INFO - Evento 20240513T053748 selecionado
+2024-06-02 22:45:09,149 - INFO - Evento 20240513T053748 presente na camada.
+2024-06-02 22:45:09,604 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-02 22:45:10,843 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-02 21:54:31,862 - INFO - 2 picks por 1 redes adquiridos.
-2024-06-02 21:54:31,870 - INFO - Seletores atualizados: 20240424T070442.
-2024-06-02 21:54:31,870 - INFO - Evento 20240424T070442 selecionado
-2024-06-02 21:54:31,870 - INFO - Evento 20240424T070442 presente na camada.
-2024-06-02 21:54:31,910 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-02 21:54:32,274 - INFO - 
+2024-06-02 22:45:10,846 - INFO - 3 picks por 2 redes adquiridos.
+2024-06-02 22:45:10,851 - INFO - Seletores atualizados: 20240513T055846.
+2024-06-02 22:45:10,851 - INFO - Evento 20240513T055846 selecionado
+2024-06-02 22:45:10,851 - INFO - Evento 20240513T055846 presente na camada.
+2024-06-02 22:45:11,278 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-02 22:45:12,730 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-02 21:54:32,279 - INFO - 3 picks por 1 redes adquiridos.
-2024-06-02 21:54:32,289 - INFO - Seletores atualizados: 20240226T063440.
-2024-06-02 21:54:32,289 - INFO - Evento 20240226T063440 selecionado
-2024-06-02 21:54:32,289 - INFO - Evento 20240226T063440 não presente na camada.
-2024-06-02 21:54:32,289 - INFO - Adicionando 20240226T063440 à camada...
-2024-06-02 21:54:32,290 - INFO - Pick BB19B adicionado.
-2024-06-02 21:54:32,290 - INFO - Pick FRTB adicionado.
-2024-06-02 21:54:32,290 - INFO - Pick ITRB adicionado.
-2024-06-02 21:54:32,352 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-02 21:54:32,352 - INFO - Evento 20240226T063440 adicionado à camada.
-2024-06-02 21:54:32,352 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-02 21:54:32,905 - INFO - 
+2024-06-02 22:45:12,734 - INFO - 3 picks por 2 redes adquiridos.
+2024-06-02 22:45:12,743 - INFO - Seletores atualizados: 20240513T053748.
+2024-06-02 22:45:12,743 - INFO - Evento 20240513T053748 selecionado
+2024-06-02 22:45:12,743 - INFO - Evento 20240513T053748 presente na camada.
+2024-06-02 22:45:13,175 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-02 22:45:15,764 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-02 21:54:32,910 - INFO - 4 picks por 2 redes adquiridos.
-2024-06-02 21:54:32,920 - INFO - Seletores atualizados: 20240204T095650.
-2024-06-02 21:54:32,920 - INFO - Evento 20240204T095650 selecionado
-2024-06-02 21:54:32,920 - INFO - Evento 20240204T095650 não presente na camada.
-2024-06-02 21:54:32,920 - INFO - Adicionando 20240204T095650 à camada...
-2024-06-02 21:54:32,921 - INFO - Pick BB19B adicionado.
-2024-06-02 21:54:32,921 - INFO - Pick CANS adicionado.
-2024-06-02 21:54:32,922 - INFO - Pick IPMB adicionado.
-2024-06-02 21:54:32,922 - INFO - Pick ITRB adicionado.
-2024-06-02 21:54:32,986 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-02 21:54:32,986 - INFO - Evento 20240204T095650 adicionado à camada.
-2024-06-02 21:54:32,986 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-02 22:45:15,766 - INFO - 3 picks por 1 redes adquiridos.
+2024-06-02 22:45:15,771 - INFO - Seletores atualizados: 20240501T063159.
+2024-06-02 22:45:15,771 - INFO - Evento 20240501T063159 selecionado
+2024-06-02 22:45:15,771 - INFO - Evento 20240501T063159 presente na camada.
+2024-06-02 22:45:16,235 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-02 22:45:25,926 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-06-02 22:45:25,931 - INFO - 4 picks por 1 redes adquiridos.
+2024-06-02 22:45:25,940 - INFO - Seletores atualizados: 20240501T030109.
+2024-06-02 22:45:25,940 - INFO - Evento 20240501T030109 selecionado
+2024-06-02 22:45:25,940 - INFO - Evento 20240501T030109 não presente na camada.
+2024-06-02 22:45:25,941 - INFO - Adicionando 20240501T030109 à camada...
+2024-06-02 22:45:25,941 - INFO - Pick NBCL adicionado.
+2024-06-02 22:45:25,942 - INFO - Pick NBMO adicionado.
+2024-06-02 22:45:25,942 - INFO - Pick NBPB adicionado.
+2024-06-02 22:45:25,942 - INFO - Pick NBSB adicionado.
+2024-06-02 22:45:26,408 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-02 22:45:26,409 - INFO - Evento 20240501T030109 adicionado à camada.
+2024-06-02 22:45:26,410 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-02 22:45:28,404 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-06-02 22:45:28,406 - INFO - 2 picks por 1 redes adquiridos.
+2024-06-02 22:45:28,411 - INFO - Seletores atualizados: 20240424T070442.
+2024-06-02 22:45:28,411 - INFO - Evento 20240424T070442 selecionado
+2024-06-02 22:45:28,411 - INFO - Evento 20240424T070442 não presente na camada.
+2024-06-02 22:45:28,411 - INFO - Adicionando 20240424T070442 à camada...
+2024-06-02 22:45:28,411 - INFO - Pick ARAG adicionado.
+2024-06-02 22:45:28,412 - INFO - Pick SNDB adicionado.
+2024-06-02 22:45:28,862 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-02 22:45:28,864 - INFO - Evento 20240424T070442 adicionado à camada.
+2024-06-02 22:45:28,864 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-02 22:45:33,800 - INFO - Ordenando eventos por Event Prob_Nat.
+2024-06-02 22:45:33,869 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-06-02 22:45:33,871 - INFO - 0 picks por 0 redes adquiridos.
+2024-06-02 22:45:33,872 - INFO - Seletores atualizados: .
+2024-06-02 22:45:33,872 - INFO - Evento  selecionado
+2024-06-02 22:45:33,872 - INFO - Evento  não presente na camada.
+2024-06-02 22:45:33,872 - INFO - Adicionando  à camada...
+2024-06-02 22:45:34,305 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-02 22:45:34,307 - INFO - Evento  adicionado à camada.
+2024-06-02 22:45:34,307 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-02 22:45:34,307 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-06-02 22:45:34,308 - INFO - 2 picks por 1 redes adquiridos.
+2024-06-02 22:45:34,312 - INFO - Seletores atualizados: 20211113T065314.
+2024-06-02 22:45:34,312 - INFO - Evento 20211113T065314 selecionado
+2024-06-02 22:45:34,313 - INFO - Evento 20211113T065314 não presente na camada.
+2024-06-02 22:45:34,313 - INFO - Adicionando 20211113T065314 à camada...
+2024-06-02 22:45:34,313 - INFO - Pick NBPN adicionado.
+2024-06-02 22:45:34,313 - INFO - Pick NBTA adicionado.
+2024-06-02 22:45:34,754 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-02 22:45:34,756 - INFO - Evento 20211113T065314 adicionado à camada.
+2024-06-02 22:45:34,756 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-02 22:45:49,900 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-06-02 22:45:49,903 - INFO - 3 picks por 2 redes adquiridos.
+2024-06-02 22:45:49,908 - INFO - Seletores atualizados: 20160906T034820.
+2024-06-02 22:45:49,908 - INFO - Evento 20160906T034820 selecionado
+2024-06-02 22:45:49,908 - INFO - Evento 20160906T034820 não presente na camada.
+2024-06-02 22:45:49,908 - INFO - Adicionando 20160906T034820 à camada...
+2024-06-02 22:45:49,908 - INFO - Pick PARB adicionado.
+2024-06-02 22:45:49,908 - INFO - Pick PET01 adicionado.
+2024-06-02 22:45:49,909 - INFO - Pick VABB adicionado.
+2024-06-02 22:45:50,366 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-02 22:45:50,368 - INFO - Evento 20160906T034820 adicionado à camada.
+2024-06-02 22:45:50,368 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-02 22:45:50,368 - INFO - Evento 20160906T034820 selecionado
+2024-06-02 22:45:50,369 - INFO - Evento 20160906T034820 presente na camada.
+2024-06-02 22:45:50,836 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-02 22:46:00,334 - DEBUG - Loaded backend Qt5Agg version 5.15.10.
+2024-06-02 22:46:00,772 - ERROR - img_waveform Error: 'Series' object cannot be interpreted as an integer
