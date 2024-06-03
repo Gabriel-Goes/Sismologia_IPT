@@ -70,6 +70,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
     def __init__(self, parent=None):
         super(FarejadorDockWidget, self).__init__(parent)
         self.df = self.load_csv(CSV_FILE)
+        self.prev_ev = None
         self.createLayerFromDF()
         self.setupUi(self)
         self.initUI()
@@ -389,15 +390,15 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         ev = self.eventSelector.currentText()
         net = self.networkSelector.currentText()
         sta = self.stationSelector.currentText()
-        pick = self.ev_data[self.ev_data['Station'] == sta]
+        pick = self.ev_data[self.ev_data.Station == sta]
         mseed = f'{net}_{sta}_{ev}'
         st = read(f'{PROJ_DIR}arquivos/mseed/{ev}/{mseed}.mseed')
         tr = st[0].detrend('linear').filter('highpass', freq=2.0)
         t = np.arange(tr.stats.npts) * tr.stats.delta
-        pick_t = UTCDateTime(pick['Pick Time'])
-        start_t = UTCDateTime(pick['Start Time'])
+        pick_t = UTCDateTime(pick['Pick Time'].values[0])
+        start_t = UTCDateTime(pick['Start Time'].values[0])
         p_start = pick_t - start_t
-        n_start = pick_t - 4.9
+        n_start = p_start - 4.9
         plt.axvspan(p_start, p_start + 3, alpha=0.5, label='S-Window', color='green')
         plt.axvspan(n_start, n_start + 4, alpha=0.5, label='N-Window', color='red')
         plt.plot(t, tr.data, c='k')
@@ -407,7 +408,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         plt.close()
         buf.seek(0)
         Img_waveform = Image.open(buf)
-        return Img_waveform
+        return Img_waveform, pick
 
     def loadSpectre(self):
         try:
@@ -428,7 +429,6 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
             if psd_mat.shape != (len(time), len(freqs)):
                 logging.error(f"Dimensões inválidas: {psd_mat.shape}")
-                print(f"Dimensões inválidas: {psd_mat.shape}")
                 return
 
             psd_mat_normalized = (
@@ -442,9 +442,8 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             img_spectro = Image.fromarray(color_img)
             img_spectro = img_spectro.transpose(Image.FLIP_TOP_BOTTOM)
             try:
-                img_waveform = self.plot_waveform()
+                img_waveform, pick = self.plot_waveform()
             except Exception as e:
-                print(f"Erro ao plotar waveform: {e}")
                 logging.error(f"img_waveform Error: {e}")
                 return
 
@@ -455,28 +454,25 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
             draw = ImageDraw.Draw(combined_img)
             draw.text((255, 5), f'{ev}_{net}_{sta}', fill='white')
-            pick = self.ev_data
-            prob = pick['Pick Prob_Nat']
-            prob_e = pick['Event Prob_Nat']
-            distance = pick['Distance']
-            snrp_q = pick['SNR_P_Q2']
-            snrp = pick['SNR_P']
+            prob = pick['Pick Prob_Nat'].values[0]
+            prob_e = pick['Event Prob_Nat'].values[0]
+            distance = pick['Distance'].values[0]
+            snrp_q = pick['SNR_P_Q2'].values[0]
+            snrp = pick['SNR_P'].values[0]
             draw.text((255, 20), f'Pick: {prob}', fill='white')
             draw.text((310, 20), f'Event: {prob_e}', fill='white')
             draw.text((255, 35), f'Distance: {distance:.1f} km', fill='white')
             draw.text((355, 35), f'SNR: {snrp:.1f}', fill='white')
             draw.text((355, 45), f'SNR Q2: {snrp_q:.1f}', fill='white')
+            logging.info(f"Espectrograma iniciado com {path}")
 
             combined_img.save(f'{FIGURE_DIR}/espectros/{ev}_{net}_{sta}.png')
             combined_img.show()
             logging.info(f"Spectrogram iniciado com {path}")
-            print(f"Spectrogram iniciado com {path}")
         except Exception as e:
             logging.error(f"Erro ao iniciar o Espectrograma: {e}")
-            print(f"Erro ao iniciar o Espectrograma: {e}")
             if e == FileNotFoundError:
                 logging.error(f"FileNootFoundError: {e}")
-                print(f"Arquivo {path} não encontrado.")
 
     def closeEvent(self, event):
         self.closingPlugin.emit()
