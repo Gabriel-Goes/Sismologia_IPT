@@ -76,16 +76,36 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         self.initUI()
         self.updateUI()
 
-    def load_csv(self, csv_file):
+    def csv2dict(self, csv_file):
         try:
             df = pd.read_csv(CSV_FILE)
+            df.set_index('Event', inplace=True)
             logging.info(f'{csv_file} carregado com sucesso.')
-            return df
+            eventos = {}
         except Exception as e:
             logging.error(f'Erro ao carregar {csv_file}: {e}')
             QtWidgets.QMessageBox.critical(
                 self, 'Erro', f'Erro ao carregar {csv_file}: {e}'
             )
+        for ev, group in df.iterrows():
+            if ev not in eventos:
+                eventos[ev] = [
+                    group[[
+                        'EventID',
+                        'Origem Latitude', 'Origem Longitude', 'Origin Time',
+                        'Cat', 'Label', 'Certainty',
+                        'Event Prob_Nat', 'Event Pred', 'Event Pred_final',
+                        'Região Origem', 'Hora',
+                        'SNR_P_Q2', 'SNR_P_Q2_cat',
+                        'Distance_Q2', 'Distance_Q2_cat',
+                        'Depth/km', 'MLv', 'Magnitude_cat',
+                        'Pick Prob_Nat_std', 'SNRP_std', 'Distance_std',
+                        'Num_Estacoes',
+                    ]].iloc[0],
+                    group
+                ]
+
+        return eventos
 
     def createLayerFromDF(self):
         logging.info('Criando camada de eventos...')
