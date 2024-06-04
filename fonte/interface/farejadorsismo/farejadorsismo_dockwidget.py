@@ -142,12 +142,16 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         self.sortColumnComboBox = QtWidgets.QComboBox(self)
         self.sortColumnComboBox.addItems([
             'Event',
-            'SNR_P_Q2',
-            'Distance_Q2',
             'Event Prob_Nat',
             'MLv',
-            'Certainty',
             'Num_Estacoes',
+            'SNRP_std',
+            'SNR_P_Q2',
+            'Distance_std',
+            'Distance_Q2',
+            'Pick Prob_Nat',
+            'Pick Prob_Nat_std',
+
         ])
         self.sortColumnComboBox.currentIndexChanged.connect(self.get_EventsSorted)
 
