@@ -54,7 +54,7 @@ from .farejadorsismo_dockwidget_base import Ui_FarejadorDockWidgetBase
 PROJ_DIR = os.path.expanduser("~/projetos/ClassificadorSismologico/")
 FIGURE_DIR = os.path.join(PROJ_DIR, "arquivos/figuras/")
 LOG_FILE = os.path.join(PROJ_DIR, "arquivos/registros/farejador.log")
-CSV_FILE = os.path.join(PROJ_DIR, "arquivos/resultados/analisado_nc.csv")
+CSV_FILE = os.path.join(PROJ_DIR, "arquivos/resultados/analisado.csv")
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -69,7 +69,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
     def __init__(self, parent=None):
         super(FarejadorDockWidget, self).__init__(parent)
-        self.df = self.load_csv(CSV_FILE)
+        self.eventos = self.csv2dict(CSV_FILE)
         self.prev_ev = None
         self.createLayerFromDF()
         self.setupUi(self)
@@ -78,42 +78,29 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
     def csv2dict(self, csv_file):
         try:
-            df = pd.read_csv(CSV_FILE)
-            df.set_index('Event', inplace=True)
+            self.df = pd.read_csv(CSV_FILE)
             logging.info(f'{csv_file} carregado com sucesso.')
-            eventos = {}
         except Exception as e:
             logging.error(f'Erro ao carregar {csv_file}: {e}')
             QtWidgets.QMessageBox.critical(
                 self, 'Erro', f'Erro ao carregar {csv_file}: {e}'
             )
-        for ev, group in df.iterrows():
+            return None
+        eventos = {}
+        for ev, picks in self.df.groupby('Event'):
             if ev not in eventos:
-                eventos[ev] = [
-                    group[[
-                        'EventID',
-                        'Origem Latitude', 'Origem Longitude', 'Origin Time',
-                        'Cat', 'Label', 'Certainty',
-                        'Event Prob_Nat', 'Event Pred', 'Event Pred_final',
-                        'Região Origem', 'Hora',
-                        'SNR_P_Q2', 'SNR_P_Q2_cat',
-                        'Distance_Q2', 'Distance_Q2_cat',
-                        'Depth/km', 'MLv', 'Magnitude_cat',
-                        'Pick Prob_Nat_std', 'SNRP_std', 'Distance_std',
-                        'Num_Estacoes',
-                    ]].iloc[0],
-                    group
-                ]
+                eventos[ev] = picks.reset_index().set_index('Station')
 
         return eventos
 
     def createLayerFromDF(self):
         logging.info('Criando camada de eventos...')
         try:
+            cols = self.df.columns
             self.layer = QgsVectorLayer("Point?crs=EPSG:4326", "Eventos Sismológicos", "memory")
             provider = self.layer.dataProvider()
             provider.addAttributes([
-                QgsField(name, QVariant.String) for name in self.df.columns
+                QgsField(name, QVariant.String) for name in cols
             ])
             self.layer.updateFields()
             QgsProject.instance().addMapLayer(self.layer)
@@ -127,7 +114,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
     def initUI(self):
         self.numb_Ev = self.findChild(QtWidgets.QLabel, 'numb_Eventos')
-        self.numb_Ev.setText(f"Total de Eventos: {len(self.df['Event'].unique())}")
+        self.numb_Ev.setText(f"Total de Eventos: {len(self.eventos.keys())}")
         self.eventSelector = self.findChild(QtWidgets.QComboBox, 'eventSelector')
         self.networkSelector = self.findChild(QtWidgets.QComboBox, 'networkSelector')
         self.stationSelector = self.findChild(QtWidgets.QComboBox, 'stationSelector')
@@ -186,9 +173,10 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
     def get_EventsSorted(self):
         sort_column = self.sortColumnComboBox.currentText()
+        list_ev = list(self.eventos.keys())
         if sort_column == 'Event':
             logging.info('Ordenando eventos por "Evento".')
-            self.ev_cre = sorted(self.df['Event'].unique())
+            self.ev_cre = sorted(list_ev)
         else:
             logging.info(f'Ordenando eventos por {sort_column}.')
             self.ev_cre = sorted(
@@ -409,10 +397,12 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         net = self.networkSelector.currentText()
         sta = self.stationSelector.currentText()
         pick = self.ev_data[self.ev_data.Station == sta]
+        logging.info(f"Pick {pick}")
         mseed = f'{net}_{sta}_{ev}'
         st = read(f'{PROJ_DIR}arquivos/mseed/{ev}/{mseed}.mseed')
         tr = st[0].detrend('linear').filter('highpass', freq=2.0)
         t = np.arange(tr.stats.npts) * tr.stats.delta
+        logging.info(f'Stream carregada e Traço calculado {mseed}')
         pick_t = UTCDateTime(pick['Pick Time'].values[0])
         start_t = UTCDateTime(pick['Start Time'].values[0])
         p_start = pick_t - start_t
@@ -435,6 +425,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             ev = self.eventSelector.currentText()
             net = self.networkSelector.currentText()
             sta = self.stationSelector.currentText()
+            self.ev_data = self.df[self.df.Event == ev]
 
             npy = f'{net}_{sta}_{ev}.npy'
             path = os.path.join(PROJ_DIR, 'arquivos/espectros', ev, npy)
@@ -477,11 +468,14 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             distance = pick['Distance'].values[0]
             snrp_q = pick['SNR_P_Q2'].values[0]
             snrp = pick['SNR_P'].values[0]
-            draw.text((255, 20), f'Pick: {prob}', fill='white')
-            draw.text((310, 20), f'Event: {prob_e}', fill='white')
-            draw.text((255, 35), f'Distance: {distance:.1f} km', fill='white')
-            draw.text((355, 35), f'SNR: {snrp:.1f}', fill='white')
-            draw.text((355, 45), f'SNR Q2: {snrp_q:.1f}', fill='white')
+            snrp_std = pick['SNRP_std'].values[0]
+            dist_std = pick['Distance_std'].values[0]
+            pick_std = pick['Pick Prob_Nat_std'].values[0]
+            draw.text((255, 20), f'Pick: {prob:.2f}/({pick_std:.2f})', fill='white')
+            draw.text((395, 20), f'Event: {prob_e:.2f}', fill='white')
+            draw.text((255, 35), f'Distance: {distance:.0f} ({dist_std:.0f}) km', fill='white')
+            draw.text((395, 35), f'SNR: {snrp:.1f}', fill='white')
+            draw.text((495, 35), f'SNR Q2: {snrp_q:.1f}/({snrp_std:.1f})', fill='white')
             logging.info(f"Espectrograma iniciado com {path}")
 
             combined_img.save(f'{FIGURE_DIR}/espectros/{ev}_{net}_{sta}.png')

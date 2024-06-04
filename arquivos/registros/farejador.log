@@ -1,491 +1,427 @@
-2024-06-03 12:59:42,678 - INFO - /home/ggrl/projetos/ClassificadorSismologico/arquivos/resultados/analisado_nc.csv carregado com sucesso.
-2024-06-03 12:59:42,678 - INFO - Criando camada de eventos...
-2024-06-03 12:59:42,951 - INFO - Camada criada e adicionada ao projeto.
-2024-06-03 12:59:42,958 - INFO - Ordenando eventos por "Evento".
-2024-06-03 12:59:42,958 - INFO - Interface iniciada...
-2024-06-03 12:59:42,958 - INFO - 
+2024-06-04 13:40:18,797 - INFO - /home/ggrl/projetos/ClassificadorSismologico/arquivos/resultados/analisado.csv carregado com sucesso.
+2024-06-04 13:40:19,262 - INFO - Criando camada de eventos...
+2024-06-04 13:40:19,495 - INFO - Camada criada e adicionada ao projeto.
+2024-06-04 13:40:19,501 - INFO - Ordenando eventos por "Evento".
+2024-06-04 13:40:19,501 - INFO - Interface iniciada...
+2024-06-04 13:40:19,501 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 12:59:42,960 - INFO - 3 picks por 2 redes adquiridos.
-2024-06-03 12:59:42,965 - INFO - Seletores atualizados: 20240513T055846.
-2024-06-03 12:59:42,965 - INFO - 
+2024-06-04 13:40:19,503 - INFO - 3 picks por 2 redes adquiridos.
+2024-06-04 13:40:19,509 - INFO - Seletores atualizados: 20240513T055846.
+2024-06-04 13:40:19,509 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 12:59:42,967 - INFO - 3 picks por 2 redes adquiridos.
-2024-06-03 12:59:42,972 - INFO - Seletores atualizados: 20240513T055846.
-2024-06-03 13:00:15,866 - INFO - Ordenando eventos por Event Prob_Nat.
-2024-06-03 13:00:15,941 - INFO - 
+2024-06-04 13:40:19,511 - INFO - 3 picks por 2 redes adquiridos.
+2024-06-04 13:40:19,517 - INFO - Seletores atualizados: 20240513T055846.
+2024-06-04 13:40:25,079 - INFO - Log de eventos habilitado.
+2024-06-04 13:40:27,086 - INFO - Ordenando eventos por SNR_P_Q2.
+2024-06-04 13:40:27,277 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:00:15,943 - INFO - 0 picks por 0 redes adquiridos.
-2024-06-03 13:00:15,944 - INFO - Seletores atualizados: .
-2024-06-03 13:00:15,945 - INFO - 
+2024-06-04 13:40:27,280 - INFO - 0 picks por 0 redes adquiridos.
+2024-06-04 13:40:27,281 - INFO - Seletores atualizados: .
+2024-06-04 13:40:27,281 - INFO - Evento  selecionado
+2024-06-04 13:40:27,281 - INFO - Evento  não presente na camada.
+2024-06-04 13:40:27,281 - INFO - Adicionando  à camada...
+2024-06-04 13:40:27,323 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:27,323 - INFO - Evento  adicionado à camada.
+2024-06-04 13:40:27,323 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:27,323 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:00:15,945 - INFO - 2 picks por 1 redes adquiridos.
-2024-06-03 13:00:15,950 - INFO - Seletores atualizados: 20211113T065314.
-2024-06-03 13:00:19,497 - DEBUG - Loaded backend Qt5Agg version 5.15.10.
-2024-06-03 13:00:19,511 - ERROR - img_waveform Error: 'FarejadorDockWidget' object has no attribute 'ev_data'
-2024-06-03 13:00:23,721 - INFO - Log de eventos habilitado.
-2024-06-03 13:00:24,673 - ERROR - img_waveform Error: 'FarejadorDockWidget' object has no attribute 'ev_data'
-2024-06-03 13:00:26,627 - INFO - 
+2024-06-04 13:40:27,324 - INFO - 1 picks por 1 redes adquiridos.
+2024-06-04 13:40:27,330 - INFO - Seletores atualizados: 20160706T164756.
+2024-06-04 13:40:27,330 - INFO - Evento 20160706T164756 selecionado
+2024-06-04 13:40:27,330 - INFO - Evento 20160706T164756 não presente na camada.
+2024-06-04 13:40:27,330 - INFO - Adicionando 20160706T164756 à camada...
+2024-06-04 13:40:27,330 - INFO - Pick MACA adicionado.
+2024-06-04 13:40:27,370 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:27,370 - INFO - Evento 20160706T164756 adicionado à camada.
+2024-06-04 13:40:27,370 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:35,740 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:00:26,632 - INFO - 3 picks por 2 redes adquiridos.
-2024-06-03 13:00:26,641 - INFO - Seletores atualizados: 20160906T034820.
-2024-06-03 13:00:26,641 - INFO - Evento 20160906T034820 selecionado
-2024-06-03 13:00:26,642 - INFO - Evento 20160906T034820 não presente na camada.
-2024-06-03 13:00:26,642 - INFO - Adicionando 20160906T034820 à camada...
-2024-06-03 13:00:26,652 - INFO - Pick PARB adicionado.
-2024-06-03 13:00:26,653 - INFO - Pick PET01 adicionado.
-2024-06-03 13:00:26,653 - INFO - Pick VABB adicionado.
-2024-06-03 13:00:26,698 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:00:26,698 - INFO - Evento 20160906T034820 adicionado à camada.
-2024-06-03 13:00:26,698 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-03 13:00:27,315 - INFO - 
+2024-06-04 13:40:35,743 - INFO - 0 picks por 0 redes adquiridos.
+2024-06-04 13:40:35,744 - INFO - Seletores atualizados: .
+2024-06-04 13:40:35,744 - INFO - Evento  selecionado
+2024-06-04 13:40:35,744 - INFO - Evento  não presente na camada.
+2024-06-04 13:40:35,744 - INFO - Adicionando  à camada...
+2024-06-04 13:40:35,789 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:35,789 - INFO - Evento  adicionado à camada.
+2024-06-04 13:40:35,789 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:35,789 - INFO - Evento  selecionado
+2024-06-04 13:40:35,789 - INFO - Evento  não presente na camada.
+2024-06-04 13:40:35,789 - INFO - Adicionando  à camada...
+2024-06-04 13:40:35,840 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:35,841 - INFO - Evento  adicionado à camada.
+2024-06-04 13:40:35,841 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:35,841 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:00:27,318 - INFO - 2 picks por 1 redes adquiridos.
-2024-06-03 13:00:27,324 - INFO - Seletores atualizados: 20211113T065314.
-2024-06-03 13:00:27,324 - INFO - Evento 20211113T065314 selecionado
-2024-06-03 13:00:27,325 - INFO - Evento 20211113T065314 não presente na camada.
-2024-06-03 13:00:27,325 - INFO - Adicionando 20211113T065314 à camada...
-2024-06-03 13:00:27,325 - INFO - Pick NBPN adicionado.
-2024-06-03 13:00:27,325 - INFO - Pick NBTA adicionado.
-2024-06-03 13:00:27,374 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:00:27,374 - INFO - Evento 20211113T065314 adicionado à camada.
-2024-06-03 13:00:27,374 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-03 13:00:29,042 - DEBUG - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0.
-2024-06-03 13:00:29,042 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerifDisplay.ttf', name='DejaVu Serif Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,042 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBol.ttf', name='STIXGeneral', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymReg.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneral.ttf', name='STIXGeneral', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Oblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymReg.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Bold.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansDisplay.ttf', name='DejaVu Sans Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Bold.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFiveSymReg.ttf', name='STIXSizeFiveSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmsy10.ttf', name='cmsy10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmss10.ttf', name='cmss10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Italic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmb10.ttf', name='cmb10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmex10.ttf', name='cmex10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBol.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymBol.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmmi10.ttf', name='cmmi10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBolIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-BoldOblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 1.335
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymReg.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralItalic.ttf', name='STIXGeneral', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmr10.ttf', name='cmr10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-BoldItalic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 0.33499999999999996
-2024-06-03 13:00:29,043 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymBol.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBolIta.ttf', name='STIXGeneral', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Oblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 1.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymReg.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 0.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUni.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmtt10.ttf', name='cmtt10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-BoldOblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymBol.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymBol.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMBatnan.otf', name='Serto Batnan', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMKharput.otf', name='Serto Kharput', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMMalankara.otf', name='Serto Malankara', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFontPropo-Italic.otf', name='OpenDyslexic Nerd Font Propo', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMUrhoy.otf', name='Serto Urhoy', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFontPropo-Bold.otf', name='OpenDyslexic Nerd Font Propo', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMCtesiphon.otf', name='East Syriac Ctesiphon', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMMardin.otf', name='Serto Mardin', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMJerusalemItalic.otf', name='Serto Jerusalem', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFont-Italic.otf', name='OpenDyslexic Nerd Font', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFont-BoldItalic.otf', name='OpenDyslexicAlt Nerd Font', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicMNerdFontMono-Regular.otf', name='OpenDyslexicM Nerd Font Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMNisibin.otf', name='Estrangelo Nisibin', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFont-Italic.otf', name='OpenDyslexicAlt Nerd Font', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFontPropo-BoldItalic.otf', name='OpenDyslexic Nerd Font Propo', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMJerusalemBold.otf', name='Serto Jerusalem', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFont-BoldItalic.otf', name='OpenDyslexic Nerd Font', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicMNerdFont-Regular.otf', name='OpenDyslexicM Nerd Font', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMBatnanBold.otf', name='Serto Batnan', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-2024-06-03 13:00:29,044 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMJerusalemOutline.otf', name='Serto Jerusalem Outline', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMUrhoyBold.otf', name='Serto Urhoy', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFont-Bold.otf', name='OpenDyslexicAlt Nerd Font', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFontPropo-Italic.otf', name='OpenDyslexicAlt Nerd Font Propo', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicMNerdFontPropo-Regular.otf', name='OpenDyslexicM Nerd Font Propo', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMTalada.otf', name='Estrangelo Talada', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFontPropo-Regular.otf', name='OpenDyslexic Nerd Font Propo', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFont-Regular.otf', name='OpenDyslexic Nerd Font', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMMardinBold.otf', name='Serto Mardin', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFont-Regular.otf', name='OpenDyslexicAlt Nerd Font', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFontPropo-Bold.otf', name='OpenDyslexicAlt Nerd Font Propo', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFontPropo-Regular.otf', name='OpenDyslexicAlt Nerd Font Propo', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMJerusalem.otf', name='Serto Jerusalem', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMQenNeshrin.otf', name='Estrangelo Quenneshrin', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/GohaTibebZemen.otf', name='Goha-Tibeb Zemen', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMAdiabene.otf', name='East Syriac Adiabene', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMAntioch.otf', name='Estrangelo Antioch', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMNisibinOutline.otf', name='Estrangelo Nisibin Outline', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFontPropo-BoldItalic.otf', name='OpenDyslexicAlt Nerd Font Propo', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMEdessa.otf', name='Estrangelo Edessa', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMMidyat.otf', name='Estrangelo Midyat', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMTurAbdin.otf', name='Estrangelo TurAbdin', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFont-Bold.otf', name='OpenDyslexic Nerd Font', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/PowerlineSymbols.otf', name='PowerlineSymbols', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
-2024-06-03 13:00:29,045 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/GohaTibebZemen.ttf', name='Goha-Tibeb Zemen', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
-2024-06-03 13:00:29,045 - DEBUG - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
-2024-06-03 13:00:29,131 - DEBUG - STREAM b'IHDR' 16 13
-2024-06-03 13:00:29,131 - DEBUG - STREAM b'tEXt' 41 57
-2024-06-03 13:00:29,131 - DEBUG - STREAM b'pHYs' 110 9
-2024-06-03 13:00:29,131 - DEBUG - STREAM b'IDAT' 131 19777
-2024-06-03 13:00:29,143 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20211113T065314/NB_NBPN_20211113T065314.npy
-2024-06-03 13:00:29,499 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20211113T065314/NB_NBPN_20211113T065314.npy
-2024-06-03 13:00:33,132 - INFO - 
+2024-06-04 13:40:35,842 - INFO - 2 picks por 2 redes adquiridos.
+2024-06-04 13:40:35,848 - INFO - Seletores atualizados: 20200117T075903.
+2024-06-04 13:40:35,849 - INFO - Evento 20200117T075903 selecionado
+2024-06-04 13:40:35,849 - INFO - Evento 20200117T075903 não presente na camada.
+2024-06-04 13:40:35,849 - INFO - Adicionando 20200117T075903 à camada...
+2024-06-04 13:40:35,850 - INFO - Pick CLDB adicionado.
+2024-06-04 13:40:35,850 - INFO - Pick PDRB adicionado.
+2024-06-04 13:40:35,894 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:35,894 - INFO - Evento 20200117T075903 adicionado à camada.
+2024-06-04 13:40:35,895 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:35,895 - INFO - Evento 20200117T075903 selecionado
+2024-06-04 13:40:35,895 - INFO - Evento 20200117T075903 presente na camada.
+2024-06-04 13:40:35,945 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:35,959 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:00:33,137 - INFO - 3 picks por 2 redes adquiridos.
-2024-06-03 13:00:33,146 - INFO - Seletores atualizados: 20160906T034820.
-2024-06-03 13:00:33,146 - INFO - Evento 20160906T034820 selecionado
-2024-06-03 13:00:33,147 - INFO - Evento 20160906T034820 presente na camada.
-2024-06-03 13:00:33,212 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:00:34,567 - ERROR - img_waveform Error: index 0 is out of bounds for axis 0 with size 0
-2024-06-03 13:00:38,636 - INFO - 
+2024-06-04 13:40:35,962 - INFO - 0 picks por 0 redes adquiridos.
+2024-06-04 13:40:35,963 - INFO - Seletores atualizados: .
+2024-06-04 13:40:35,963 - INFO - Evento  selecionado
+2024-06-04 13:40:35,963 - INFO - Evento  não presente na camada.
+2024-06-04 13:40:35,963 - INFO - Adicionando  à camada...
+2024-06-04 13:40:36,006 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:36,006 - INFO - Evento  adicionado à camada.
+2024-06-04 13:40:36,006 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:36,006 - INFO - Evento  selecionado
+2024-06-04 13:40:36,006 - INFO - Evento  não presente na camada.
+2024-06-04 13:40:36,006 - INFO - Adicionando  à camada...
+2024-06-04 13:40:36,047 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:36,048 - INFO - Evento  adicionado à camada.
+2024-06-04 13:40:36,048 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:36,048 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:00:38,638 - INFO - 1 picks por 1 redes adquiridos.
-2024-06-03 13:00:38,643 - INFO - Seletores atualizados: 20230111T083734.
-2024-06-03 13:00:38,643 - INFO - Evento 20230111T083734 selecionado
-2024-06-03 13:00:38,643 - INFO - Evento 20230111T083734 não presente na camada.
-2024-06-03 13:00:38,643 - INFO - Adicionando 20230111T083734 à camada...
-2024-06-03 13:00:38,644 - INFO - Pick SOEA adicionado.
-2024-06-03 13:00:38,686 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:00:38,686 - INFO - Evento 20230111T083734 adicionado à camada.
-2024-06-03 13:00:38,686 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-03 13:00:40,677 - INFO - 
+2024-06-04 13:40:36,049 - INFO - 2 picks por 2 redes adquiridos.
+2024-06-04 13:40:36,055 - INFO - Seletores atualizados: 20200117T075903.
+2024-06-04 13:40:36,055 - INFO - Evento 20200117T075903 selecionado
+2024-06-04 13:40:36,055 - INFO - Evento 20200117T075903 presente na camada.
+2024-06-04 13:40:36,105 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:36,105 - INFO - Evento 20200117T075903 selecionado
+2024-06-04 13:40:36,105 - INFO - Evento 20200117T075903 presente na camada.
+2024-06-04 13:40:36,171 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:36,333 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:00:40,683 - INFO - 3 picks por 2 redes adquiridos.
-2024-06-03 13:00:40,693 - INFO - Seletores atualizados: 20160906T034820.
-2024-06-03 13:00:40,693 - INFO - Evento 20160906T034820 selecionado
-2024-06-03 13:00:40,693 - INFO - Evento 20160906T034820 presente na camada.
-2024-06-03 13:00:40,759 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:00:42,940 - ERROR - img_waveform Error: index 0 is out of bounds for axis 0 with size 0
-2024-06-03 13:00:44,173 - INFO - 
+2024-06-04 13:40:36,336 - INFO - 0 picks por 0 redes adquiridos.
+2024-06-04 13:40:36,338 - INFO - Seletores atualizados: .
+2024-06-04 13:40:36,338 - INFO - Evento  selecionado
+2024-06-04 13:40:36,338 - INFO - Evento  não presente na camada.
+2024-06-04 13:40:36,338 - INFO - Adicionando  à camada...
+2024-06-04 13:40:36,383 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:36,384 - INFO - Evento  adicionado à camada.
+2024-06-04 13:40:36,384 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:36,384 - INFO - Evento  selecionado
+2024-06-04 13:40:36,384 - INFO - Evento  não presente na camada.
+2024-06-04 13:40:36,384 - INFO - Adicionando  à camada...
+2024-06-04 13:40:36,427 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:36,427 - INFO - Evento  adicionado à camada.
+2024-06-04 13:40:36,427 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:36,428 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:00:44,176 - INFO - 1 picks por 1 redes adquiridos.
-2024-06-03 13:00:44,184 - INFO - Seletores atualizados: 20230111T083734.
-2024-06-03 13:00:44,184 - INFO - Evento 20230111T083734 selecionado
-2024-06-03 13:00:44,184 - INFO - Evento 20230111T083734 presente na camada.
-2024-06-03 13:00:44,254 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:00:44,268 - INFO - 
+2024-06-04 13:40:36,429 - INFO - 2 picks por 2 redes adquiridos.
+2024-06-04 13:40:36,435 - INFO - Seletores atualizados: 20200117T075903.
+2024-06-04 13:40:36,435 - INFO - Evento 20200117T075903 selecionado
+2024-06-04 13:40:36,435 - INFO - Evento 20200117T075903 presente na camada.
+2024-06-04 13:40:36,483 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:36,483 - INFO - Evento 20200117T075903 selecionado
+2024-06-04 13:40:36,483 - INFO - Evento 20200117T075903 presente na camada.
+2024-06-04 13:40:36,534 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:36,546 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:00:44,272 - INFO - 3 picks por 2 redes adquiridos.
-2024-06-03 13:00:44,279 - INFO - Seletores atualizados: 20160420T023435.
-2024-06-03 13:00:44,279 - INFO - Evento 20160420T023435 selecionado
-2024-06-03 13:00:44,280 - INFO - Evento 20160420T023435 não presente na camada.
-2024-06-03 13:00:44,280 - INFO - Adicionando 20160420T023435 à camada...
-2024-06-03 13:00:44,280 - INFO - Pick PARB adicionado.
-2024-06-03 13:00:44,280 - INFO - Pick PET01 adicionado.
-2024-06-03 13:00:44,281 - INFO - Pick VABB adicionado.
-2024-06-03 13:00:44,334 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:00:44,334 - INFO - Evento 20160420T023435 adicionado à camada.
-2024-06-03 13:00:44,334 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-03 13:00:44,780 - INFO - 
+2024-06-04 13:40:36,549 - INFO - 0 picks por 0 redes adquiridos.
+2024-06-04 13:40:36,550 - INFO - Seletores atualizados: .
+2024-06-04 13:40:36,550 - INFO - Evento  selecionado
+2024-06-04 13:40:36,550 - INFO - Evento  não presente na camada.
+2024-06-04 13:40:36,550 - INFO - Adicionando  à camada...
+2024-06-04 13:40:36,599 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:36,599 - INFO - Evento  adicionado à camada.
+2024-06-04 13:40:36,599 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:36,599 - INFO - Evento  selecionado
+2024-06-04 13:40:36,599 - INFO - Evento  não presente na camada.
+2024-06-04 13:40:36,599 - INFO - Adicionando  à camada...
+2024-06-04 13:40:36,641 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:36,641 - INFO - Evento  adicionado à camada.
+2024-06-04 13:40:36,641 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:36,641 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:00:44,785 - INFO - 3 picks por 1 redes adquiridos.
-2024-06-03 13:00:44,794 - INFO - Seletores atualizados: 20190508T103420.
-2024-06-03 13:00:44,794 - INFO - Evento 20190508T103420 selecionado
-2024-06-03 13:00:44,794 - INFO - Evento 20190508T103420 não presente na camada.
-2024-06-03 13:00:44,794 - INFO - Adicionando 20190508T103420 à camada...
-2024-06-03 13:00:44,795 - INFO - Pick MAJ01 adicionado.
-2024-06-03 13:00:44,795 - INFO - Pick TER01 adicionado.
-2024-06-03 13:00:44,796 - INFO - Pick TIJ01 adicionado.
-2024-06-03 13:00:44,858 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:00:44,858 - INFO - Evento 20190508T103420 adicionado à camada.
-2024-06-03 13:00:44,858 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-03 13:00:44,871 - INFO - 
+2024-06-04 13:40:36,642 - INFO - 2 picks por 2 redes adquiridos.
+2024-06-04 13:40:36,648 - INFO - Seletores atualizados: 20200117T075903.
+2024-06-04 13:40:36,648 - INFO - Evento 20200117T075903 selecionado
+2024-06-04 13:40:36,648 - INFO - Evento 20200117T075903 presente na camada.
+2024-06-04 13:40:36,700 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:36,701 - INFO - Evento 20200117T075903 selecionado
+2024-06-04 13:40:36,701 - INFO - Evento 20200117T075903 presente na camada.
+2024-06-04 13:40:36,764 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:36,848 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:00:44,874 - INFO - 3 picks por 2 redes adquiridos.
-2024-06-03 13:00:44,878 - INFO - Seletores atualizados: 20160630T222641.
-2024-06-03 13:00:44,878 - INFO - Evento 20160630T222641 selecionado
-2024-06-03 13:00:44,878 - INFO - Evento 20160630T222641 não presente na camada.
-2024-06-03 13:00:44,878 - INFO - Adicionando 20160630T222641 à camada...
-2024-06-03 13:00:44,879 - INFO - Pick ESAR adicionado.
-2024-06-03 13:00:44,879 - INFO - Pick PARB adicionado.
-2024-06-03 13:00:44,879 - INFO - Pick VAS01 adicionado.
-2024-06-03 13:00:44,924 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:00:44,924 - INFO - Evento 20160630T222641 adicionado à camada.
-2024-06-03 13:00:44,924 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-03 13:00:44,956 - INFO - 
+2024-06-04 13:40:36,851 - INFO - 0 picks por 0 redes adquiridos.
+2024-06-04 13:40:36,853 - INFO - Seletores atualizados: .
+2024-06-04 13:40:36,853 - INFO - Evento  selecionado
+2024-06-04 13:40:36,853 - INFO - Evento  não presente na camada.
+2024-06-04 13:40:36,853 - INFO - Adicionando  à camada...
+2024-06-04 13:40:36,897 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:36,897 - INFO - Evento  adicionado à camada.
+2024-06-04 13:40:36,897 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:36,898 - INFO - Evento  selecionado
+2024-06-04 13:40:36,898 - INFO - Evento  não presente na camada.
+2024-06-04 13:40:36,898 - INFO - Adicionando  à camada...
+2024-06-04 13:40:36,937 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:36,937 - INFO - Evento  adicionado à camada.
+2024-06-04 13:40:36,937 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:36,938 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:00:44,959 - INFO - 2 picks por 1 redes adquiridos.
-2024-06-03 13:00:44,963 - INFO - Seletores atualizados: 20211001T092637.
-2024-06-03 13:00:44,963 - INFO - Evento 20211001T092637 selecionado
-2024-06-03 13:00:44,963 - INFO - Evento 20211001T092637 não presente na camada.
-2024-06-03 13:00:44,963 - INFO - Adicionando 20211001T092637 à camada...
-2024-06-03 13:00:44,964 - INFO - Pick NBPN adicionado.
-2024-06-03 13:00:44,964 - INFO - Pick NBTA adicionado.
-2024-06-03 13:00:45,010 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:00:45,010 - INFO - Evento 20211001T092637 adicionado à camada.
-2024-06-03 13:00:45,010 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-03 13:00:45,093 - INFO - 
+2024-06-04 13:40:36,939 - INFO - 2 picks por 2 redes adquiridos.
+2024-06-04 13:40:36,944 - INFO - Seletores atualizados: 20200117T075903.
+2024-06-04 13:40:36,945 - INFO - Evento 20200117T075903 selecionado
+2024-06-04 13:40:36,945 - INFO - Evento 20200117T075903 presente na camada.
+2024-06-04 13:40:37,007 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:37,007 - INFO - Evento 20200117T075903 selecionado
+2024-06-04 13:40:37,007 - INFO - Evento 20200117T075903 presente na camada.
+2024-06-04 13:40:37,053 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:37,220 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:00:45,096 - INFO - 1 picks por 1 redes adquiridos.
-2024-06-03 13:00:45,100 - INFO - Seletores atualizados: 20220216T071523.
-2024-06-03 13:00:45,100 - INFO - Evento 20220216T071523 selecionado
-2024-06-03 13:00:45,100 - INFO - Evento 20220216T071523 não presente na camada.
-2024-06-03 13:00:45,100 - INFO - Adicionando 20220216T071523 à camada...
-2024-06-03 13:00:45,101 - INFO - Pick NBTA adicionado.
-2024-06-03 13:00:45,148 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:00:45,148 - INFO - Evento 20220216T071523 adicionado à camada.
-2024-06-03 13:00:45,148 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-03 13:00:50,788 - DEBUG - STREAM b'IHDR' 16 13
-2024-06-03 13:00:50,788 - DEBUG - STREAM b'tEXt' 41 57
-2024-06-03 13:00:50,788 - DEBUG - STREAM b'pHYs' 110 9
-2024-06-03 13:00:50,788 - DEBUG - STREAM b'IDAT' 131 21390
-2024-06-03 13:00:50,791 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20220216T071523/NB_NBTA_20220216T071523.npy
-2024-06-03 13:00:50,809 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20220216T071523/NB_NBTA_20220216T071523.npy
-2024-06-03 13:00:56,165 - INFO - 
+2024-06-04 13:40:37,222 - INFO - 0 picks por 0 redes adquiridos.
+2024-06-04 13:40:37,223 - INFO - Seletores atualizados: .
+2024-06-04 13:40:37,224 - INFO - Evento  selecionado
+2024-06-04 13:40:37,224 - INFO - Evento  não presente na camada.
+2024-06-04 13:40:37,224 - INFO - Adicionando  à camada...
+2024-06-04 13:40:37,271 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:37,271 - INFO - Evento  adicionado à camada.
+2024-06-04 13:40:37,271 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:37,271 - INFO - Evento  selecionado
+2024-06-04 13:40:37,272 - INFO - Evento  não presente na camada.
+2024-06-04 13:40:37,272 - INFO - Adicionando  à camada...
+2024-06-04 13:40:37,311 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:37,311 - INFO - Evento  adicionado à camada.
+2024-06-04 13:40:37,311 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:37,311 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:00:56,168 - INFO - 2 picks por 2 redes adquiridos.
-2024-06-03 13:00:56,173 - INFO - Seletores atualizados: 20200307T031349.
-2024-06-03 13:00:56,173 - INFO - Evento 20200307T031349 selecionado
-2024-06-03 13:00:56,173 - INFO - Evento 20200307T031349 não presente na camada.
-2024-06-03 13:00:56,173 - INFO - Adicionando 20200307T031349 à camada...
-2024-06-03 13:00:56,174 - INFO - Pick BB19B adicionado.
-2024-06-03 13:00:56,174 - INFO - Pick TQJ3B adicionado.
-2024-06-03 13:00:56,213 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:00:56,213 - INFO - Evento 20200307T031349 adicionado à camada.
-2024-06-03 13:00:56,213 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-03 13:00:58,547 - DEBUG - STREAM b'IHDR' 16 13
-2024-06-03 13:00:58,547 - DEBUG - STREAM b'tEXt' 41 57
-2024-06-03 13:00:58,547 - DEBUG - STREAM b'pHYs' 110 9
-2024-06-03 13:00:58,547 - DEBUG - STREAM b'IDAT' 131 17806
-2024-06-03 13:00:58,551 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20200307T031349/BL_BB19B_20200307T031349.npy
-2024-06-03 13:00:58,568 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20200307T031349/BL_BB19B_20200307T031349.npy
-2024-06-03 13:01:02,845 - INFO - Ordenando eventos por SNR_P_Q2.
-2024-06-03 13:01:02,920 - INFO - 
+2024-06-04 13:40:37,312 - INFO - 2 picks por 2 redes adquiridos.
+2024-06-04 13:40:37,318 - INFO - Seletores atualizados: 20200117T075903.
+2024-06-04 13:40:37,318 - INFO - Evento 20200117T075903 selecionado
+2024-06-04 13:40:37,318 - INFO - Evento 20200117T075903 presente na camada.
+2024-06-04 13:40:37,363 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:37,363 - INFO - Evento 20200117T075903 selecionado
+2024-06-04 13:40:37,363 - INFO - Evento 20200117T075903 presente na camada.
+2024-06-04 13:40:37,429 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:37,442 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:01:02,922 - INFO - 0 picks por 0 redes adquiridos.
-2024-06-03 13:01:02,923 - INFO - Seletores atualizados: .
-2024-06-03 13:01:02,923 - INFO - Evento  selecionado
-2024-06-03 13:01:02,923 - INFO - Evento  não presente na camada.
-2024-06-03 13:01:02,923 - INFO - Adicionando  à camada...
-2024-06-03 13:01:02,965 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:01:02,966 - INFO - Evento  adicionado à camada.
-2024-06-03 13:01:02,966 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-03 13:01:02,966 - INFO - 
+2024-06-04 13:40:37,445 - INFO - 0 picks por 0 redes adquiridos.
+2024-06-04 13:40:37,446 - INFO - Seletores atualizados: .
+2024-06-04 13:40:37,446 - INFO - Evento  selecionado
+2024-06-04 13:40:37,447 - INFO - Evento  não presente na camada.
+2024-06-04 13:40:37,447 - INFO - Adicionando  à camada...
+2024-06-04 13:40:37,511 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:37,511 - INFO - Evento  adicionado à camada.
+2024-06-04 13:40:37,511 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:37,511 - INFO - Evento  selecionado
+2024-06-04 13:40:37,511 - INFO - Evento  não presente na camada.
+2024-06-04 13:40:37,511 - INFO - Adicionando  à camada...
+2024-06-04 13:40:37,551 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:37,551 - INFO - Evento  adicionado à camada.
+2024-06-04 13:40:37,551 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:37,551 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:01:02,966 - INFO - 3 picks por 1 redes adquiridos.
-2024-06-03 13:01:02,971 - INFO - Seletores atualizados: 20200823T092657.
-2024-06-03 13:01:02,971 - INFO - Evento 20200823T092657 selecionado
-2024-06-03 13:01:02,971 - INFO - Evento 20200823T092657 não presente na camada.
-2024-06-03 13:01:02,971 - INFO - Adicionando 20200823T092657 à camada...
-2024-06-03 13:01:02,972 - INFO - Pick NBMA adicionado.
-2024-06-03 13:01:02,972 - INFO - Pick NBPV adicionado.
-2024-06-03 13:01:02,972 - INFO - Pick NBTA adicionado.
-2024-06-03 13:01:03,016 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:01:03,016 - INFO - Evento 20200823T092657 adicionado à camada.
-2024-06-03 13:01:03,016 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-03 13:01:07,484 - INFO - 
+2024-06-04 13:40:37,552 - INFO - 4 picks por 2 redes adquiridos.
+2024-06-04 13:40:37,559 - INFO - Seletores atualizados: 20180125T012720.
+2024-06-04 13:40:37,559 - INFO - Evento 20180125T012720 selecionado
+2024-06-04 13:40:37,559 - INFO - Evento 20180125T012720 não presente na camada.
+2024-06-04 13:40:37,559 - INFO - Adicionando 20180125T012720 à camada...
+2024-06-04 13:40:37,560 - INFO - Pick ABR01 adicionado.
+2024-06-04 13:40:37,560 - INFO - Pick GUA01 adicionado.
+2024-06-04 13:40:37,560 - INFO - Pick RIB01 adicionado.
+2024-06-04 13:40:37,560 - INFO - Pick SJMB adicionado.
+2024-06-04 13:40:37,606 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:37,606 - INFO - Evento 20180125T012720 adicionado à camada.
+2024-06-04 13:40:37,606 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:40:37,607 - INFO - Evento 20180125T012720 selecionado
+2024-06-04 13:40:37,607 - INFO - Evento 20180125T012720 presente na camada.
+2024-06-04 13:40:37,672 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:40:39,665 - DEBUG - Loaded backend Qt5Agg version 5.15.10.
+2024-06-04 13:40:39,720 - INFO - Pick                Event Station  ...   SNRP_std Distance_std
+859  20180125T012720    SJMB  ...  22.063559   112.283465
+
+[1 rows x 51 columns]
+2024-06-04 13:40:40,149 - INFO - Stream carregada e Traço calculado BL_SJMB_20180125T012720
+2024-06-04 13:40:40,152 - DEBUG - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0.
+2024-06-04 13:40:40,152 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerifDisplay.ttf', name='DejaVu Serif Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,152 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBol.ttf', name='STIXGeneral', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymReg.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneral.ttf', name='STIXGeneral', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Oblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymReg.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Bold.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansDisplay.ttf', name='DejaVu Sans Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Bold.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFiveSymReg.ttf', name='STIXSizeFiveSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmsy10.ttf', name='cmsy10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmss10.ttf', name='cmss10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Italic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmb10.ttf', name='cmb10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmex10.ttf', name='cmex10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBol.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymBol.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmmi10.ttf', name='cmmi10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBolIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-BoldOblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 1.335
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymReg.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralItalic.ttf', name='STIXGeneral', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmr10.ttf', name='cmr10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-BoldItalic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 0.33499999999999996
+2024-06-04 13:40:40,153 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymBol.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBolIta.ttf', name='STIXGeneral', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Oblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 1.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymReg.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 0.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUni.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmtt10.ttf', name='cmtt10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-BoldOblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymBol.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymBol.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMBatnan.otf', name='Serto Batnan', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMKharput.otf', name='Serto Kharput', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMMalankara.otf', name='Serto Malankara', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFontPropo-Italic.otf', name='OpenDyslexic Nerd Font Propo', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMUrhoy.otf', name='Serto Urhoy', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFontPropo-Bold.otf', name='OpenDyslexic Nerd Font Propo', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMCtesiphon.otf', name='East Syriac Ctesiphon', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMMardin.otf', name='Serto Mardin', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMJerusalemItalic.otf', name='Serto Jerusalem', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFont-Italic.otf', name='OpenDyslexic Nerd Font', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFont-BoldItalic.otf', name='OpenDyslexicAlt Nerd Font', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicMNerdFontMono-Regular.otf', name='OpenDyslexicM Nerd Font Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMNisibin.otf', name='Estrangelo Nisibin', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFont-Italic.otf', name='OpenDyslexicAlt Nerd Font', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFontPropo-BoldItalic.otf', name='OpenDyslexic Nerd Font Propo', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMJerusalemBold.otf', name='Serto Jerusalem', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFont-BoldItalic.otf', name='OpenDyslexic Nerd Font', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-06-04 13:40:40,154 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicMNerdFont-Regular.otf', name='OpenDyslexicM Nerd Font', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMBatnanBold.otf', name='Serto Batnan', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMJerusalemOutline.otf', name='Serto Jerusalem Outline', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMUrhoyBold.otf', name='Serto Urhoy', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFont-Bold.otf', name='OpenDyslexicAlt Nerd Font', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFontPropo-Italic.otf', name='OpenDyslexicAlt Nerd Font Propo', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicMNerdFontPropo-Regular.otf', name='OpenDyslexicM Nerd Font Propo', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMTalada.otf', name='Estrangelo Talada', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFontPropo-Regular.otf', name='OpenDyslexic Nerd Font Propo', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFont-Regular.otf', name='OpenDyslexic Nerd Font', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMMardinBold.otf', name='Serto Mardin', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFont-Regular.otf', name='OpenDyslexicAlt Nerd Font', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFontPropo-Bold.otf', name='OpenDyslexicAlt Nerd Font Propo', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFontPropo-Regular.otf', name='OpenDyslexicAlt Nerd Font Propo', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMJerusalem.otf', name='Serto Jerusalem', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMQenNeshrin.otf', name='Estrangelo Quenneshrin', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/GohaTibebZemen.otf', name='Goha-Tibeb Zemen', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMAdiabene.otf', name='East Syriac Adiabene', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMAntioch.otf', name='Estrangelo Antioch', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMNisibinOutline.otf', name='Estrangelo Nisibin Outline', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFontPropo-BoldItalic.otf', name='OpenDyslexicAlt Nerd Font Propo', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMEdessa.otf', name='Estrangelo Edessa', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMMidyat.otf', name='Estrangelo Midyat', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMTurAbdin.otf', name='Estrangelo TurAbdin', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFont-Bold.otf', name='OpenDyslexic Nerd Font', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/PowerlineSymbols.otf', name='PowerlineSymbols', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
+2024-06-04 13:40:40,155 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/GohaTibebZemen.ttf', name='Goha-Tibeb Zemen', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
+2024-06-04 13:40:40,155 - DEBUG - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+2024-06-04 13:40:40,222 - DEBUG - STREAM b'IHDR' 16 13
+2024-06-04 13:40:40,222 - DEBUG - STREAM b'tEXt' 41 57
+2024-06-04 13:40:40,222 - DEBUG - STREAM b'pHYs' 110 9
+2024-06-04 13:40:40,222 - DEBUG - STREAM b'IDAT' 131 13755
+2024-06-04 13:40:40,229 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20180125T012720/BL_SJMB_20180125T012720.npy
+2024-06-04 13:40:40,515 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20180125T012720/BL_SJMB_20180125T012720.npy
+2024-06-04 13:41:07,946 - INFO - Pick                Event Station  ...   SNRP_std Distance_std
+856  20180125T012720   ABR01  ...  22.063559   112.283465
+
+[1 rows x 51 columns]
+2024-06-04 13:41:07,950 - INFO - Stream carregada e Traço calculado ON_ABR01_20180125T012720
+2024-06-04 13:41:08,023 - DEBUG - STREAM b'IHDR' 16 13
+2024-06-04 13:41:08,023 - DEBUG - STREAM b'tEXt' 41 57
+2024-06-04 13:41:08,023 - DEBUG - STREAM b'pHYs' 110 9
+2024-06-04 13:41:08,023 - DEBUG - STREAM b'IDAT' 131 15787
+2024-06-04 13:41:08,027 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20180125T012720/ON_ABR01_20180125T012720.npy
+2024-06-04 13:41:08,046 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20180125T012720/ON_ABR01_20180125T012720.npy
+2024-06-04 13:41:19,044 - INFO - Pick                Event Station  ...   SNRP_std Distance_std
+857  20180125T012720   GUA01  ...  22.063559   112.283465
+
+[1 rows x 51 columns]
+2024-06-04 13:41:19,047 - INFO - Stream carregada e Traço calculado ON_GUA01_20180125T012720
+2024-06-04 13:41:19,107 - DEBUG - STREAM b'IHDR' 16 13
+2024-06-04 13:41:19,107 - DEBUG - STREAM b'tEXt' 41 57
+2024-06-04 13:41:19,107 - DEBUG - STREAM b'pHYs' 110 9
+2024-06-04 13:41:19,107 - DEBUG - STREAM b'IDAT' 131 12690
+2024-06-04 13:41:19,111 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20180125T012720/ON_GUA01_20180125T012720.npy
+2024-06-04 13:41:19,127 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20180125T012720/ON_GUA01_20180125T012720.npy
+2024-06-04 13:41:24,816 - INFO - Pick                Event Station  ...   SNRP_std Distance_std
+858  20180125T012720   RIB01  ...  22.063559   112.283465
+
+[1 rows x 51 columns]
+2024-06-04 13:41:24,820 - INFO - Stream carregada e Traço calculado ON_RIB01_20180125T012720
+2024-06-04 13:41:24,902 - DEBUG - STREAM b'IHDR' 16 13
+2024-06-04 13:41:24,902 - DEBUG - STREAM b'tEXt' 41 57
+2024-06-04 13:41:24,902 - DEBUG - STREAM b'pHYs' 110 9
+2024-06-04 13:41:24,902 - DEBUG - STREAM b'IDAT' 131 12509
+2024-06-04 13:41:24,905 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20180125T012720/ON_RIB01_20180125T012720.npy
+2024-06-04 13:41:24,919 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20180125T012720/ON_RIB01_20180125T012720.npy
+2024-06-04 13:42:45,711 - INFO - 
  #### Atualizando seletores #### 
 
-2024-06-03 13:01:07,487 - INFO - 2 picks por 2 redes adquiridos.
-2024-06-03 13:01:07,493 - INFO - Seletores atualizados: 20200117T075903.
-2024-06-03 13:01:07,493 - INFO - Evento 20200117T075903 selecionado
-2024-06-03 13:01:07,493 - INFO - Evento 20200117T075903 não presente na camada.
-2024-06-03 13:01:07,493 - INFO - Adicionando 20200117T075903 à camada...
-2024-06-03 13:01:07,494 - INFO - Pick CLDB adicionado.
-2024-06-03 13:01:07,494 - INFO - Pick PDRB adicionado.
-2024-06-03 13:01:07,537 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:01:07,537 - INFO - Evento 20200117T075903 adicionado à camada.
-2024-06-03 13:01:07,537 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-03 13:01:07,537 - INFO - Evento 20200117T075903 selecionado
-2024-06-03 13:01:07,537 - INFO - Evento 20200117T075903 presente na camada.
-2024-06-03 13:01:07,586 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:01:12,734 - INFO - 
- #### Atualizando seletores #### 
+2024-06-04 13:42:45,714 - INFO - 3 picks por 2 redes adquiridos.
+2024-06-04 13:42:45,720 - INFO - Seletores atualizados: 20191117T014639.
+2024-06-04 13:42:45,720 - INFO - Evento 20191117T014639 selecionado
+2024-06-04 13:42:45,720 - INFO - Evento 20191117T014639 não presente na camada.
+2024-06-04 13:42:45,720 - INFO - Adicionando 20191117T014639 à camada...
+2024-06-04 13:42:45,721 - INFO - Pick CAJU adicionado.
+2024-06-04 13:42:45,721 - INFO - Pick PRPB adicionado.
+2024-06-04 13:42:45,721 - INFO - Pick SRLE adicionado.
+2024-06-04 13:42:45,775 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:42:45,775 - INFO - Evento 20191117T014639 adicionado à camada.
+2024-06-04 13:42:45,775 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
+2024-06-04 13:42:45,775 - INFO - Evento 20191117T014639 selecionado
+2024-06-04 13:42:45,776 - INFO - Evento 20191117T014639 presente na camada.
+2024-06-04 13:42:45,832 - INFO - Camada Eventos Sismológicos redesenhada.
+2024-06-04 13:42:47,164 - INFO - Pick                 Event Station  ...   SNRP_std Distance_std
+1161  20191117T014639    PRPB  ...  13.801302    10.065949
 
-2024-06-03 13:01:12,739 - INFO - 7 picks por 1 redes adquiridos.
-2024-06-03 13:01:12,748 - INFO - Seletores atualizados: 20121219T045439.
-2024-06-03 13:01:12,748 - INFO - Evento 20121219T045439 selecionado
-2024-06-03 13:01:12,748 - INFO - Evento 20121219T045439 não presente na camada.
-2024-06-03 13:01:12,748 - INFO - Adicionando 20121219T045439 à camada...
-2024-06-03 13:01:12,749 - INFO - Pick BSFB adicionado.
-2024-06-03 13:01:12,750 - INFO - Pick MCI6 adicionado.
-2024-06-03 13:01:12,750 - INFO - Pick MCI7 adicionado.
-2024-06-03 13:01:12,750 - INFO - Pick MCI8 adicionado.
-2024-06-03 13:01:12,751 - INFO - Pick MCI9 adicionado.
-2024-06-03 13:01:12,751 - INFO - Pick PMNB adicionado.
-2024-06-03 13:01:12,751 - INFO - Pick SJMB adicionado.
-2024-06-03 13:01:12,819 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:01:12,819 - INFO - Evento 20121219T045439 adicionado à camada.
-2024-06-03 13:01:12,819 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-03 13:01:12,819 - INFO - Evento 20121219T045439 selecionado
-2024-06-03 13:01:12,819 - INFO - Evento 20121219T045439 presente na camada.
-2024-06-03 13:01:12,870 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:01:14,663 - DEBUG - STREAM b'IHDR' 16 13
-2024-06-03 13:01:14,663 - DEBUG - STREAM b'tEXt' 41 57
-2024-06-03 13:01:14,663 - DEBUG - STREAM b'pHYs' 110 9
-2024-06-03 13:01:14,663 - DEBUG - STREAM b'IDAT' 131 16994
-2024-06-03 13:01:14,667 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20121219T045439/BL_BSFB_20121219T045439.npy
-2024-06-03 13:01:14,685 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20121219T045439/BL_BSFB_20121219T045439.npy
-2024-06-03 13:01:19,363 - DEBUG - STREAM b'IHDR' 16 13
-2024-06-03 13:01:19,363 - DEBUG - STREAM b'tEXt' 41 57
-2024-06-03 13:01:19,363 - DEBUG - STREAM b'pHYs' 110 9
-2024-06-03 13:01:19,364 - DEBUG - STREAM b'IDAT' 131 10313
-2024-06-03 13:01:19,367 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20121219T045439/BL_MCI6_20121219T045439.npy
-2024-06-03 13:01:19,380 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20121219T045439/BL_MCI6_20121219T045439.npy
-2024-06-03 13:01:28,100 - DEBUG - STREAM b'IHDR' 16 13
-2024-06-03 13:01:28,100 - DEBUG - STREAM b'tEXt' 41 57
-2024-06-03 13:01:28,100 - DEBUG - STREAM b'pHYs' 110 9
-2024-06-03 13:01:28,100 - DEBUG - STREAM b'IDAT' 131 16806
-2024-06-03 13:01:28,104 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20121219T045439/BL_SJMB_20121219T045439.npy
-2024-06-03 13:01:28,119 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20121219T045439/BL_SJMB_20121219T045439.npy
-2024-06-03 13:02:20,759 - DEBUG - STREAM b'IHDR' 16 13
-2024-06-03 13:02:20,759 - DEBUG - STREAM b'tEXt' 41 57
-2024-06-03 13:02:20,759 - DEBUG - STREAM b'pHYs' 110 9
-2024-06-03 13:02:20,759 - DEBUG - STREAM b'IDAT' 131 10313
-2024-06-03 13:02:20,763 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20121219T045439/BL_MCI6_20121219T045439.npy
-2024-06-03 13:02:20,777 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20121219T045439/BL_MCI6_20121219T045439.npy
-2024-06-03 13:02:27,915 - DEBUG - STREAM b'IHDR' 16 13
-2024-06-03 13:02:27,915 - DEBUG - STREAM b'tEXt' 41 57
-2024-06-03 13:02:27,915 - DEBUG - STREAM b'pHYs' 110 9
-2024-06-03 13:02:27,915 - DEBUG - STREAM b'IDAT' 131 10014
-2024-06-03 13:02:27,918 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20121219T045439/BL_MCI7_20121219T045439.npy
-2024-06-03 13:02:27,932 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20121219T045439/BL_MCI7_20121219T045439.npy
-2024-06-03 13:02:30,813 - DEBUG - STREAM b'IHDR' 16 13
-2024-06-03 13:02:30,813 - DEBUG - STREAM b'tEXt' 41 57
-2024-06-03 13:02:30,813 - DEBUG - STREAM b'pHYs' 110 9
-2024-06-03 13:02:30,813 - DEBUG - STREAM b'IDAT' 131 10014
-2024-06-03 13:02:30,816 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20121219T045439/BL_MCI7_20121219T045439.npy
-2024-06-03 13:02:30,828 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20121219T045439/BL_MCI7_20121219T045439.npy
-2024-06-03 13:02:37,608 - DEBUG - STREAM b'IHDR' 16 13
-2024-06-03 13:02:37,609 - DEBUG - STREAM b'tEXt' 41 57
-2024-06-03 13:02:37,609 - DEBUG - STREAM b'pHYs' 110 9
-2024-06-03 13:02:37,609 - DEBUG - STREAM b'IDAT' 131 10335
-2024-06-03 13:02:37,612 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20121219T045439/BL_MCI8_20121219T045439.npy
-2024-06-03 13:02:37,625 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20121219T045439/BL_MCI8_20121219T045439.npy
-2024-06-03 13:05:23,598 - INFO - 
- #### Atualizando seletores #### 
+[1 rows x 51 columns]
+2024-06-04 13:42:47,168 - INFO - Stream carregada e Traço calculado BR_PRPB_20191117T014639
+2024-06-04 13:42:47,233 - DEBUG - STREAM b'IHDR' 16 13
+2024-06-04 13:42:47,233 - DEBUG - STREAM b'tEXt' 41 57
+2024-06-04 13:42:47,233 - DEBUG - STREAM b'pHYs' 110 9
+2024-06-04 13:42:47,233 - DEBUG - STREAM b'IDAT' 131 15565
+2024-06-04 13:42:47,237 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20191117T014639/BR_PRPB_20191117T014639.npy
+2024-06-04 13:42:47,251 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20191117T014639/BR_PRPB_20191117T014639.npy
+2024-06-04 13:42:54,330 - INFO - Pick                 Event Station  ...   SNRP_std Distance_std
+1160  20191117T014639    CAJU  ...  13.801302    10.065949
 
-2024-06-03 13:05:23,600 - INFO - 2 picks por 2 redes adquiridos.
-2024-06-03 13:05:23,605 - INFO - Seletores atualizados: 20200117T075903.
-2024-06-03 13:05:23,605 - INFO - Evento 20200117T075903 selecionado
-2024-06-03 13:05:23,605 - INFO - Evento 20200117T075903 presente na camada.
-2024-06-03 13:05:23,654 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:05:23,655 - INFO - Evento 20200117T075903 selecionado
-2024-06-03 13:05:23,655 - INFO - Evento 20200117T075903 presente na camada.
-2024-06-03 13:05:23,698 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:05:27,705 - INFO - 
- #### Atualizando seletores #### 
+[1 rows x 51 columns]
+2024-06-04 13:42:54,335 - INFO - Stream carregada e Traço calculado VL_CAJU_20191117T014639
+2024-06-04 13:42:54,403 - DEBUG - STREAM b'IHDR' 16 13
+2024-06-04 13:42:54,403 - DEBUG - STREAM b'tEXt' 41 57
+2024-06-04 13:42:54,403 - DEBUG - STREAM b'pHYs' 110 9
+2024-06-04 13:42:54,403 - DEBUG - STREAM b'IDAT' 131 17219
+2024-06-04 13:42:54,406 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20191117T014639/VL_CAJU_20191117T014639.npy
+2024-06-04 13:42:54,421 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20191117T014639/VL_CAJU_20191117T014639.npy
+2024-06-04 13:42:57,026 - INFO - Pick                 Event Station  ...   SNRP_std Distance_std
+1162  20191117T014639    SRLE  ...  13.801302    10.065949
 
-2024-06-03 13:05:27,710 - INFO - 7 picks por 1 redes adquiridos.
-2024-06-03 13:05:27,720 - INFO - Seletores atualizados: 20121219T045439.
-2024-06-03 13:05:27,720 - INFO - Evento 20121219T045439 selecionado
-2024-06-03 13:05:27,721 - INFO - Evento 20121219T045439 presente na camada.
-2024-06-03 13:05:27,789 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:05:27,789 - INFO - Evento 20121219T045439 selecionado
-2024-06-03 13:05:27,789 - INFO - Evento 20121219T045439 presente na camada.
-2024-06-03 13:05:27,845 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:05:28,441 - INFO - 
- #### Atualizando seletores #### 
-
-2024-06-03 13:05:28,444 - INFO - 5 picks por 2 redes adquiridos.
-2024-06-03 13:05:28,449 - INFO - Seletores atualizados: 20210330T222940.
-2024-06-03 13:05:28,449 - INFO - Evento 20210330T222940 selecionado
-2024-06-03 13:05:28,449 - INFO - Evento 20210330T222940 não presente na camada.
-2024-06-03 13:05:28,449 - INFO - Adicionando 20210330T222940 à camada...
-2024-06-03 13:05:28,450 - INFO - Pick BOAV adicionado.
-2024-06-03 13:05:28,450 - INFO - Pick GUY1 adicionado.
-2024-06-03 13:05:28,450 - INFO - Pick GUY2 adicionado.
-2024-06-03 13:05:28,450 - INFO - Pick GUY3 adicionado.
-2024-06-03 13:05:28,451 - INFO - Pick GUY4 adicionado.
-2024-06-03 13:05:28,503 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:05:28,504 - INFO - Evento 20210330T222940 adicionado à camada.
-2024-06-03 13:05:28,504 - INFO - Camada Eventos Sismológicos adicionada ao projeto.
-2024-06-03 13:05:28,504 - INFO - Evento 20210330T222940 selecionado
-2024-06-03 13:05:28,504 - INFO - Evento 20210330T222940 presente na camada.
-2024-06-03 13:05:28,565 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:05:38,794 - DEBUG - STREAM b'IHDR' 16 13
-2024-06-03 13:05:38,794 - DEBUG - STREAM b'tEXt' 41 57
-2024-06-03 13:05:38,795 - DEBUG - STREAM b'pHYs' 110 9
-2024-06-03 13:05:38,795 - DEBUG - STREAM b'IDAT' 131 6572
-2024-06-03 13:05:38,798 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20210330T222940/XV_GUY4_20210330T222940.npy
-2024-06-03 13:05:38,810 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20210330T222940/XV_GUY4_20210330T222940.npy
-2024-06-03 13:05:43,126 - DEBUG - STREAM b'IHDR' 16 13
-2024-06-03 13:05:43,127 - DEBUG - STREAM b'tEXt' 41 57
-2024-06-03 13:05:43,127 - DEBUG - STREAM b'pHYs' 110 9
-2024-06-03 13:05:43,127 - DEBUG - STREAM b'IDAT' 131 12952
-2024-06-03 13:05:43,130 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20210330T222940/XV_GUY3_20210330T222940.npy
-2024-06-03 13:05:43,143 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20210330T222940/XV_GUY3_20210330T222940.npy
-2024-06-03 13:05:51,581 - DEBUG - STREAM b'IHDR' 16 13
-2024-06-03 13:05:51,581 - DEBUG - STREAM b'tEXt' 41 57
-2024-06-03 13:05:51,581 - DEBUG - STREAM b'pHYs' 110 9
-2024-06-03 13:05:51,581 - DEBUG - STREAM b'IDAT' 131 13620
-2024-06-03 13:05:51,585 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20210330T222940/XV_GUY2_20210330T222940.npy
-2024-06-03 13:05:51,600 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20210330T222940/XV_GUY2_20210330T222940.npy
-2024-06-03 13:05:58,539 - DEBUG - STREAM b'IHDR' 16 13
-2024-06-03 13:05:58,539 - DEBUG - STREAM b'tEXt' 41 57
-2024-06-03 13:05:58,539 - DEBUG - STREAM b'pHYs' 110 9
-2024-06-03 13:05:58,539 - DEBUG - STREAM b'IDAT' 131 14313
-2024-06-03 13:05:58,543 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20210330T222940/XV_GUY1_20210330T222940.npy
-2024-06-03 13:05:58,557 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20210330T222940/XV_GUY1_20210330T222940.npy
-2024-06-03 13:21:07,980 - INFO - 
- #### Atualizando seletores #### 
-
-2024-06-03 13:21:07,983 - INFO - 7 picks por 1 redes adquiridos.
-2024-06-03 13:21:07,988 - INFO - Seletores atualizados: 20121219T045439.
-2024-06-03 13:21:07,988 - INFO - Evento 20121219T045439 selecionado
-2024-06-03 13:21:07,988 - INFO - Evento 20121219T045439 presente na camada.
-2024-06-03 13:21:07,992 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:21:07,992 - INFO - Evento 20121219T045439 selecionado
-2024-06-03 13:21:07,992 - INFO - Evento 20121219T045439 presente na camada.
-2024-06-03 13:21:07,995 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:21:08,706 - INFO - 
- #### Atualizando seletores #### 
-
-2024-06-03 13:21:08,708 - INFO - 5 picks por 2 redes adquiridos.
-2024-06-03 13:21:08,713 - INFO - Seletores atualizados: 20210330T222940.
-2024-06-03 13:21:08,713 - INFO - Evento 20210330T222940 selecionado
-2024-06-03 13:21:08,714 - INFO - Evento 20210330T222940 presente na camada.
-2024-06-03 13:21:08,717 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:21:08,717 - INFO - Evento 20210330T222940 selecionado
-2024-06-03 13:21:08,717 - INFO - Evento 20210330T222940 presente na camada.
-2024-06-03 13:21:08,719 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:21:09,362 - INFO - 
- #### Atualizando seletores #### 
-
-2024-06-03 13:21:09,365 - INFO - 7 picks por 1 redes adquiridos.
-2024-06-03 13:21:09,370 - INFO - Seletores atualizados: 20121219T045439.
-2024-06-03 13:21:09,370 - INFO - Evento 20121219T045439 selecionado
-2024-06-03 13:21:09,370 - INFO - Evento 20121219T045439 presente na camada.
-2024-06-03 13:21:09,374 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:21:09,374 - INFO - Evento 20121219T045439 selecionado
-2024-06-03 13:21:09,374 - INFO - Evento 20121219T045439 presente na camada.
-2024-06-03 13:21:09,378 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:21:09,563 - INFO - 
- #### Atualizando seletores #### 
-
-2024-06-03 13:21:09,568 - INFO - 2 picks por 2 redes adquiridos.
-2024-06-03 13:21:09,577 - INFO - Seletores atualizados: 20200117T075903.
-2024-06-03 13:21:09,577 - INFO - Evento 20200117T075903 selecionado
-2024-06-03 13:21:09,577 - INFO - Evento 20200117T075903 presente na camada.
-2024-06-03 13:21:09,582 - INFO - Camada Eventos Sismológicos redesenhada.
-2024-06-03 13:21:09,582 - INFO - Evento 20200117T075903 selecionado
-2024-06-03 13:21:09,582 - INFO - Evento 20200117T075903 presente na camada.
-2024-06-03 13:21:09,585 - INFO - Camada Eventos Sismológicos redesenhada.
+[1 rows x 51 columns]
+2024-06-04 13:42:57,030 - INFO - Stream carregada e Traço calculado VL_SRLE_20191117T014639
+2024-06-04 13:42:57,092 - DEBUG - STREAM b'IHDR' 16 13
+2024-06-04 13:42:57,092 - DEBUG - STREAM b'tEXt' 41 57
+2024-06-04 13:42:57,092 - DEBUG - STREAM b'pHYs' 110 9
+2024-06-04 13:42:57,092 - DEBUG - STREAM b'IDAT' 131 16713
+2024-06-04 13:42:57,096 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20191117T014639/VL_SRLE_20191117T014639.npy
+2024-06-04 13:42:57,113 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20191117T014639/VL_SRLE_20191117T014639.npy
