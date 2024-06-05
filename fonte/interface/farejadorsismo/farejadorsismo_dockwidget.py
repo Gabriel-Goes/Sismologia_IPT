@@ -39,8 +39,12 @@ from qgis.core import QgsGeometry
 from qgis.core import QgsPointXY
 from qgis.core import QgsRendererCategory
 from qgis.core import QgsCategorizedSymbolRenderer
+from qgis.core import QgsSingleSymbolRenderer
 from qgis.core import QgsFeatureRequest
 from qgis.core import QgsSymbol
+from qgis.core import QgsRectangle
+from qgis.core import QgsLineSymbol
+from qgis.utils import iface
 from qgis.PyQt.QtCore import QVariant
 from qgis.PyQt import QtCore, QtWidgets
 
@@ -54,7 +58,7 @@ from .farejadorsismo_dockwidget_base import Ui_FarejadorDockWidgetBase
 PROJ_DIR = os.path.expanduser("~/projetos/ClassificadorSismologico/")
 FIGURE_DIR = os.path.join(PROJ_DIR, "arquivos/figuras/")
 LOG_FILE = os.path.join(PROJ_DIR, "arquivos/registros/farejador.log")
-CSV_FILE = os.path.join(PROJ_DIR, "arquivos/resultados/analisado.csv")
+CSV_FILE = os.path.join(PROJ_DIR, "arquivos/resultados/nc_analisado.csv")
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -70,7 +74,6 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
     def __init__(self, parent=None):
         super(FarejadorDockWidget, self).__init__(parent)
         self.eventos = self.csv2dict(CSV_FILE)
-        self.prev_ev = None
         self.createLayerFromDF()
         self.setupUi(self)
         self.initUI()
@@ -132,26 +135,25 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         self.logCheckbox = self.findChild(QtWidgets.QCheckBox, 'logCheckbox')
         self.invertCheckbox = self.findChild(QtWidgets.QCheckBox, 'invertCheckbox')
 
-        self.labelOrdenarEventos = QtWidgets.QLabel(self)
-        self.labelOrdenarEventos.setText('Ordenar Eventos por: ')
-
         self.filterLineEdit = QtWidgets.QLineEdit(self)
         self.filterLineEdit.setPlaceholderText('Digite para filtrar eventos')
         self.filterLineEdit.textChanged.connect(self.updateEventFilter)
 
+        self.labelOrdenarEventos = QtWidgets.QLabel(self)
+        self.labelOrdenarEventos.setText('Ordenar Eventos por: ')
+
         self.sortColumnComboBox = QtWidgets.QComboBox(self)
         self.sortColumnComboBox.addItems([
-            'Event',
+            'Hora',
             'Event Prob_Nat',
             'MLv',
             'Num_Estacoes',
-            'SNRP_std',
-            'SNR_P_Q2',
-            'Distance_std',
-            'Distance_Q2',
             'Pick Prob_Nat',
+            'Distance_Q2',
+            'SNR_P_Q2',
             'Pick Prob_Nat_std',
-
+            'Distance_std',
+            'SNRP_std',
         ])
         self.sortColumnComboBox.currentIndexChanged.connect(self.get_EventsSorted)
 
@@ -168,6 +170,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         self.autoselectCheckbox.stateChanged.connect(self.updateAutoSelection)
         self.sortColumnComboBox.currentIndexChanged.connect(self.updateEventSelector)
         self.logCheckbox.stateChanged.connect(self.updateLog)
+        self.invertCheckbox.stateChanged.connect(self.updateEventSelector)
 
         self.eventSelector.currentIndexChanged.connect(self.updateNetworkAndStationSelectors)
         self.networkSelector.currentIndexChanged.connect(self.updateStationSelector)
@@ -253,6 +256,14 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             logging.info('Log de eventos desabilitado.')
             self.eventSelector.currentIndexChanged.disconnect(self.logEvent)
 
+    def updateInvert(self, state):
+        if state == QtCore.Qt.Checked:
+            self.eventSelector.clear()
+            self.eventSelector.addItems(self.ev_dec)
+        else:
+            self.eventSelector.clear()
+            self.eventSelector.addItems(self.ev_cre)
+
     def logEvent(self):
         ev = self.eventSelector.currentText()
         logging.info(f'Evento {ev} selecionado')
@@ -295,31 +306,80 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         except Exception as e:
             logging.error(f'Erro ao adicionar {self.ev_data.head()} à camada:\n {e}')
 
+    def get_or_createBufferLayer(self):
+        for layer in QgsProject.instance().mapLayers().values():
+            if layer.name() == "Buffers":
+                return layer
+        buffer_layer = QgsVectorLayer(
+            "Polygon?crs=EPSG:4326", "Buffers", "memory"
+        )
+        buffer_layer_provider = buffer_layer.dataProvider()
+        buffer_layer_provider.addAttributes([
+            QgsField("Event", QVariant.String)
+        ])
+        buffer_layer.updateFields()
+        QgsProject.instance().addMapLayer(buffer_layer)
+        return buffer_layer
+
     def repaintLayer(self):
         symbol_selected = QgsSymbol.defaultSymbol(self.layer.geometryType())
-        symbol_selected.setSize(4)
-        symbol_default = QgsSymbol.defaultSymbol(self.layer.geometryType())
-        symbol_default.setSize(2)
+        symbol_selected.setSize(2)
+        raio_graus = 20 / 111.32
+        buffer_layer = self.get_or_createBufferLayer()
+        buffer_layer_provider = buffer_layer.dataProvider()
         current_ev = self.eventSelector.currentText()
         try:
             categories = []
-            if self.prev_ev is not None:
-                previous_ev_data = self.df[self.df['Event'] == self.prev_ev]
-                for _, f in previous_ev_data.iterrows():
-                    symbol_clone = symbol_default.clone()
-                    symbol_clone.setColor(
-                        QtCore.Qt.blue if f['Event Pred_final'] == 'Natural' else QtCore.Qt.red
-                    )
-                    categories.append(QgsRendererCategory(f['Event'], symbol_clone, f['Event']))
-            current_ev_data = self.df[self.df['Event'] == current_ev]
-            for _, f in current_ev_data.iterrows():
-                symbol_clone = symbol_selected.clone()
-                symbol_clone.setColor(
-                    QtCore.Qt.blue if f['Event Pred_final'] == 'Natural' else QtCore.Qt.red
+            circle_features = []
+            current_ev_data = self.df[self.df['Event'] == current_ev].iloc[0]
+            symbol_clone = symbol_selected.clone()
+            symbol_clone.setColor(
+                QtCore.Qt.blue if current_ev_data['Event Pred_final'] == 'Natural' else QtCore.Qt.red
+            )
+            categories.append(
+                QgsRendererCategory(
+                    current_ev_data['Event'],
+                    symbol_clone,
+                    current_ev_data['Event']
                 )
-                categories.append(
-                    QgsRendererCategory(f['Event'], symbol_clone, f['Event'])
-                )
+            )
+            point = QgsPointXY(
+                current_ev_data['Origem Longitude'],
+                current_ev_data['Origem Latitude'])
+            circle_geom = QgsGeometry.fromPointXY(point).buffer(raio_graus, 50)
+            circle_feature = QgsFeature()
+            circle_feature.setGeometry(circle_geom)
+            circle_feature.setAttributes([current_ev_data['Event']])
+            circle_features.append(circle_feature)
+            rect = QgsRectangle(
+                point.x() - raio_graus, point.y() - raio_graus,
+                point.x() + raio_graus, point.y() + raio_graus
+            )
+            iface.mapCanvas().setExtent(rect)
+
+            buffer_layer.startEditing()
+            buffer_layer.deleteFeatures(
+                [f.id() for f in buffer_layer.getFeatures()]
+            )
+            buffer_layer_provider.addFeatures(circle_features)
+            buffer_layer.commitChanges()
+            buffer_layer.updateExtents()
+
+            # Estilizar a camada de buffer para mostrar apenas a linha externa
+            line_symbol_layer = QgsLineSymbol.createSimple({
+                'color': 'black',
+                'width': '1'
+            })
+            polygon_symbol = QgsSymbol.defaultSymbol(buffer_layer.geometryType())
+            polygon_symbol.deleteSymbolLayer(0)
+            polygon_symbol.appendSymbolLayer(line_symbol_layer)
+            buffer_layer.setRenderer(QgsSingleSymbolRenderer(polygon_symbol))
+
+            # Forçar atualização completa da camada de buffer
+            buffer_layer.triggerRepaint()
+            QgsProject.instance().layerTreeRoot().findLayer(buffer_layer.id()).setItemVisibilityChecked(True)
+            iface.mapCanvas().refresh()
+
             renderer = QgsCategorizedSymbolRenderer("Event", categories)
             self.layer.setRenderer(renderer)
             self.layer.triggerRepaint()
@@ -388,7 +448,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         try:
             if not os.path.isfile(self.mseed_file_path):
                 raise FileNotFoundError
-            subprocess.Popen(['snuffler', self.mseed_file_path])
+            subprocess.Popen(['.pyenv/versions/snuffler/bin/snuffler', self.mseed_file_path])
             print(f"Snuffler iniciado com {self.mseed_file_path}")
         except FileNotFoundError:
             print(f"Erro: Arquivo {self.mseed_file_path} não encontrado.")

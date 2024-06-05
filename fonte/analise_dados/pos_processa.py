@@ -1509,21 +1509,6 @@ def main():
     df_nc = ncomercial(df)
     # df_cm = comercial(df)
 
-    # dict_df = {
-
-    # }
-
-    #  subtract two lists of strings, and return a list with the differences
-    # ['a', 'b', 'c'] - ['a', 'b'] = ['c']
-    # ['a', 'b'] - ['a', 'b', 'c'] = []
-    # ['a', 'b', 'c'] - ['a', 'b', 'c'] = []
-
-    # df_nc = df_nc.drop(df_cm.index)
-    # df_cm = df_cm.drop(df_nc.index)
-
-
-
-
     return df_nc, df
 
 
