@@ -178,8 +178,10 @@ def corr_matrix_2(df):
 
 # --------------------------- PROBABILITIES
 def class_prob(prob):
-    if prob < 0.2:
+    if prob < 0.1:
         return '<0.2'
+    elif 0.1 <= prob < 0.2:
+        return '[0.1-0.2['
     elif 0.2 <= prob < 0.4:
         return '[0.2-0.4['
     elif 0.4 <= prob < 0.6:
@@ -313,6 +315,104 @@ def plot_hist_prob_recall(df):
     plt.savefig('arquivos/figuras/pos_process/dist_prob_nat_recall.png')
     #plt.show()()
 
+
+def box_prob_std(df, n=0, d=400, m=8):
+    df.dropna(
+        subset=[
+            'Pick Prob_Nat_std',
+            'Prob_Nat_std_cat',
+            'Event Prob_Nat',
+            'Event Pred',
+            'Label'
+        ],
+        inplace=True
+    )
+    df = df[df['SNR_P'] > n]
+    df = df[df['Distance'] < d]
+    df = df[df['MLv'] < m]
+    df.sort_values('Pick Prob_Nat_std', inplace=True)
+    df = df.groupby('Event').first()
+    df.dropna(subset=['Prob_Nat_std_cat'], inplace=True)
+    f_rel = df['Prob_Nat_std_cat'].value_counts(normalize=True).sort_index()
+    print(f_rel.unique())
+    max_freq = f_rel.max() * 100
+    min_freq = f_rel.min() * 100
+    if not np.isfinite(max_freq) or not np.isfinite(min_freq):
+        print("max_freq ou min_freq não são finitos:")
+        print(f"max_freq: {max_freq}, min_freq: {min_freq}")
+        return
+    norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
+    sm = plt.cm.ScalarMappable(cmap='viridis', norm=norm)
+    sm.set_array([])
+    fig, ax = plt.subplots(figsize=(19, 9))
+    box_data = []
+    total_rc = 0
+    positions = np.arange(len(f_rel.index))
+    print(f_rel.index)
+    print("Categorias e posições:")
+    print(f_rel.index, positions)
+    for pos, c in zip(positions, f_rel.index):
+        c_df = df[df['Prob_Nat_std_cat'] == c]
+        prob_data = c_df['Event Prob_Nat'] * 100
+        box_data.append(prob_data)
+        freq = f_rel.loc[c] * 100
+        color = sm.to_rgba(freq)
+        bp = ax.boxplot(
+            prob_data, positions=[pos], widths=0.5, patch_artist=True
+        )
+        for patch in bp['boxes']:
+            patch.set_facecolor(color)
+            patch.set_edgecolor('black')
+        for whisker in bp['whiskers']:
+            whisker.set_color('black')
+        for cap in bp['caps']:
+            cap.set_color('black')
+        for median in bp['medians']:
+            median.set_color('red')
+            ax.text(
+                pos+0.35, median.get_ydata()[0],
+                f'{median.get_ydata()[0]:.2f}%',
+                ha='center', va='bottom', fontsize=5
+            )
+        for flier in bp['fliers']:
+            flier.set(marker='.', color='black', alpha=0.5)
+        TP = c_df[(c_df['Event Pred'] == 0) & (c_df['Label'] == 0)].shape[0]
+        FN = c_df[(c_df['Event Pred'] == 1) & (c_df['Label'] == 0)].shape[0]
+        if TP + FN == 0:
+            rc = 0
+        else:
+            rc = TP / (TP + FN) * 100
+            ax.text(
+                pos, 102, f'{rc:.2f}%',
+                ha='center', va='bottom', fontsize=7, fontweight='bold'
+            )
+    plt.text(
+        -0.25, 102, 'Recall ->',
+        ha='center', va='bottom', fontsize=7, fontweight='bold')
+
+    plt.xticks(
+        np.arange(len(f_rel.index)),
+        labels=f_rel.index,
+        fontsize=8,
+        rotation=45
+    )
+    cbar = fig.colorbar(sm, ax=ax)
+    cbar.ax.set_ylabel('Frequency (%)')
+    cbar.set_ticks(np.linspace(min_freq, max_freq, num=4))
+    cbar.set_ticklabels(np.linspace(min_freq, max_freq, num=4).astype(int))
+    plt.suptitle('Boxplot da Probabilidade de Evento Ser Natural por Classes de Magnitude')
+    plt.title(
+        f'Total de Eventos: {df.shape[0]} | SNR_P > {n} | Distância < {d} | MLv < {m}',
+        fontsize=7
+    )
+    plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
+    plt.gca().xaxis.grid(False)
+    plt.axhline(y=50, color='red', linestyle='--', linewidth=0.25)
+    plt.xlabel('Magnitude')
+    plt.ylabel('Probability of Natural Event (%)')
+    plt.tight_layout()
+    plt.show()
+    plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_boxplot_std_prob_nat.png')
 
 # --------------------------- HOURS
 def hist_hour_distribution(df):
@@ -1478,7 +1578,18 @@ def main():
     df = class_region(df)
     df = median_snrp_event(df)
     df = median_dist_event(df)
-
+    df.loc[:, 'Num_Estacoes'] = df.index.get_level_values('Event').map(
+        df.reset_index().groupby('Event').size()
+    )
+    df['Pick Prob_Nat_std'] = df.index.get_level_values('Event').map(
+        df.groupby('Event')['Pick Prob_Nat'].std()
+    )
+    df['SNRP_std'] = df.index.get_level_values('Event').map(
+        df.groupby('Event')['SNR_P'].std()
+    )
+    df['Distance_std'] = df.index.get_level_values('Event').map(
+        df.groupby('Event')['Distance'].std()
+    )
     df['Magnitude_cat'] = pd.Categorical(
         df['MLv'].apply(class_mag), categories=CAT_MAG, ordered=True
     )
@@ -1492,20 +1603,10 @@ def main():
         df['Pick Prob_Nat'].apply(class_prob),
         categories=CAT_PROB, ordered=True
     )
-    df.loc[:, 'Num_Estacoes'] = df.index.get_level_values('Event').map(
-        df.reset_index().groupby('Event').size()
+    df['Prob_Nat_std_cat'] = pd.Categorical(
+        df['Pick Prob_Nat_std'].apply(class_prob),
+        categories=CAT_PROB, ordered=True
     )
-    # calculate the std of Pick Prob_Nat by event
-    df['Pick Prob_Nat_std'] = df.index.get_level_values('Event').map(
-        df.groupby('Event')['Pick Prob_Nat'].std()
-    )
-    df['SNRP_std'] = df.index.get_level_values('Event').map(
-        df.groupby('Event')['SNR_P'].std()
-    )
-    df['Distance_std'] = df.index.get_level_values('Event').map(
-        df.groupby('Event')['Distance'].std()
-    )
-
     df_nc = ncomercial(df)
     # df_cm = comercial(df)
 

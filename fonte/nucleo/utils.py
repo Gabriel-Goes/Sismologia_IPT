@@ -24,7 +24,8 @@ import sys
 PROJETO_DIR = os.environ['HOME'] + "/projetos/ClassificadorSismologico/"
 MSEED_DIR = PROJETO_DIR + "arquivos/mseed/"
 CAT_PROB = [
-    '<0.2', '[0.2-0.4[', '[0.4-0.6[', '[0.6-0.8[', '[0.8-0.9[', '>=0.9'
+    '<0.1', '[0.1-0.2[', '[0.2-0.4[',
+    '[0.4-0.6[', '[0.6-0.8[', '[0.8-0.9[', '>=0.9'
 ]
 CAT_SNR = [
         '< 1', '[1-1.25[', '[1.25-1.5[', '[1.5-1.75[', '[1.75-2[', '[2-3[',

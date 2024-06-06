@@ -101,6 +101,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         try:
             cols = self.df.columns
             self.layer = QgsVectorLayer("Point?crs=EPSG:4326", "Eventos Sismológicos", "memory")
+            self.layer.loadNamedStyle('/home/ipt/database/qml/eventos_sismologicos.qml')
             provider = self.layer.dataProvider()
             provider.addAttributes([
                 QgsField(name, QVariant.String) for name in cols
@@ -322,35 +323,21 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         return buffer_layer
 
     def repaintLayer(self):
-        symbol_selected = QgsSymbol.defaultSymbol(self.layer.geometryType())
-        symbol_selected.setSize(3)
         raio_graus = 20 / 111.32
         buffer_layer = self.get_or_createBufferLayer()
         buffer_layer_provider = buffer_layer.dataProvider()
-        current_ev = self.eventSelector.currentText()
+        ev = self.eventSelector.currentText()
         try:
             categories = []
             circle_features = []
-            current_ev_data = self.df[self.df['Event'] == current_ev].iloc[0]
-            symbol_clone = symbol_selected.clone()
-            symbol_clone.setColor(
-                QtCore.Qt.blue if current_ev_data['Event Pred_final'] == 'Natural' else
-                QtCore.Qt.red
-            )
-            categories.append(
-                QgsRendererCategory(
-                    current_ev_data['Event'],
-                    symbol_clone,
-                    current_ev_data['Event']
-                )
-            )
+            ev_data = self.df[self.df['Event'] == ev].iloc[0]
             point = QgsPointXY(
-                current_ev_data['Origem Longitude'],
-                current_ev_data['Origem Latitude'])
+                ev_data['Origem Longitude'],
+                ev_data['Origem Latitude'])
             circle_geom = QgsGeometry.fromPointXY(point).buffer(raio_graus, 50)
             circle_feature = QgsFeature()
             circle_feature.setGeometry(circle_geom)
-            circle_feature.setAttributes([current_ev_data['Event']])
+            circle_feature.setAttributes([ev_data['Event']])
             circle_features.append(circle_feature)
             rect = QgsRectangle(
                 point.x() - raio_graus, point.y() - raio_graus,
@@ -383,7 +370,6 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             self.layer.setRenderer(renderer)
             self.layer.triggerRepaint()
             logging.info(f'Camada {self.layer.name()} redesenhada.')
-            self.prev_ev = current_ev
         except Exception as e:
             if self.layer is None:
                 logging.warning('Camada não definida.')
