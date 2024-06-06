@@ -12,20 +12,13 @@
 # ----------------------------  IMPORTS   -------------------------------------
 from obspy.core.event.catalog import Catalog
 from obspy.geodetics import gps2dist_azimuth
-<<<<<<< HEAD
-<<<<<<< HEAD
 from obspy.clients.fdsn import Client
 
-=======
 import random
->>>>>>> Class
-=======
-import random
->>>>>>> Class
 import sys
 import os
 import csv
-import random
+# import random
 import numpy as np
 from tqdm import tqdm
 from typing import List, Dict
@@ -36,8 +29,6 @@ from nucleo.utils import MSEED_DIR
 from nucleo.utils import DELIMT, DELIMT2
 from nucleo.utils import csv2list
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 # ----------------------------  CONSTANTES  -----------------------------------
 # Clientes para acessar os dados
 try:
@@ -51,10 +42,6 @@ except Exception as e:
     sys.exit(1)
 
 
-=======
->>>>>>> Class
-=======
->>>>>>> Class
 # ---------------------------- FUNÇÕES ----------------------------------------
 def iterar_eventos(eventos: List,
                    data_client: str,
@@ -425,9 +412,9 @@ def main(EventIDs: List,
 # ---------------------------- EXECUÇÃO ---------------------------------------
 if __name__ == "__main__":
     EventIDs = csv2list(sys.argv[1])
-    random.seed(42)
-    RandomIDs = random.sample(EventIDs, 1000)
+    # random.seed(42)
+    # RandomIDs = random.sample(EventIDs, 1000)
     catalogo, missin_ids = main(
-        RandomIDs,
+        EventIDs,
         DATA_CLIENT,
         DATA_CLIENT_BKP)

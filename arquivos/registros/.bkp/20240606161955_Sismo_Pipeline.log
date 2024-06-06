@@ -1,0 +1,15 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo-moho.csv...
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 160
+    <<<<<<< HEAD
+    ^^
+SyntaxError: invalid syntax

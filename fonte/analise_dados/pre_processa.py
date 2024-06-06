@@ -157,15 +157,7 @@ def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
     plt.xlabel('Longitude')
     plt.ylabel('Latitude')
     plt.grid(True)
-<<<<<<< HEAD
-<<<<<<< HEAD
-    plt.savefig('arquivos/figures/mapas/mapa_eventos_brasil.png')
-=======
     plt.savefig('arquivos/figures/mapas/bruto_catalog_mapa.png')
->>>>>>> Class
-=======
-    plt.savefig('arquivos/figures/mapas/bruto_catalog_mapa.png')
->>>>>>> Class
     plt.close()
     #plt.show()
 
@@ -212,15 +204,7 @@ def plot_prof_as_red(catalog: pd.DataFrame) -> None:
              style="c0.2c", fill="red", label=f"Profundidade > 200 km ({nb_ev_200})")
     fig.legend(position="JBR+jBR+o0.5c/0.5c", box="+gwhite+p1p,black")
     fig.text(x=-52, y=8, text="Eventos Sismológicos pré-tratamento por Profundidade (km)", font="16p,Helvetica-Bold")
-<<<<<<< HEAD
-<<<<<<< HEAD
-    fig.savefig('arquivos/figuras/mapas/mapa_eventos_depth.png')
-=======
     fig.savefig('arquivos/figuras/mapas/mapa_eventos_bruto.png')
->>>>>>> Class
-=======
-    fig.savefig('arquivos/figuras/mapas/mapa_eventos_bruto.png')
->>>>>>> Class
     # fig.show()
 
 
