@@ -323,7 +323,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
     def repaintLayer(self):
         symbol_selected = QgsSymbol.defaultSymbol(self.layer.geometryType())
-        symbol_selected.setSize(2)
+        symbol_selected.setSize(3)
         raio_graus = 20 / 111.32
         buffer_layer = self.get_or_createBufferLayer()
         buffer_layer_provider = buffer_layer.dataProvider()
@@ -334,7 +334,8 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             current_ev_data = self.df[self.df['Event'] == current_ev].iloc[0]
             symbol_clone = symbol_selected.clone()
             symbol_clone.setColor(
-                QtCore.Qt.blue if current_ev_data['Event Pred_final'] == 'Natural' else QtCore.Qt.red
+                QtCore.Qt.blue if current_ev_data['Event Pred_final'] == 'Natural' else
+                QtCore.Qt.red
             )
             categories.append(
                 QgsRendererCategory(
@@ -356,7 +357,6 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
                 point.x() + raio_graus, point.y() + raio_graus
             )
             iface.mapCanvas().setExtent(rect)
-
             buffer_layer.startEditing()
             buffer_layer.deleteFeatures(
                 [f.id() for f in buffer_layer.getFeatures()]
@@ -364,22 +364,21 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             buffer_layer_provider.addFeatures(circle_features)
             buffer_layer.commitChanges()
             buffer_layer.updateExtents()
-
-            # Estilizar a camada de buffer para mostrar apenas a linha externa
             line_symbol_layer = QgsLineSymbol.createSimple({
                 'color': 'black',
                 'width': '1'
             })
-            polygon_symbol = QgsSymbol.defaultSymbol(buffer_layer.geometryType())
+            polygon_symbol = QgsSymbol.defaultSymbol(
+                buffer_layer.geometryType()
+            )
             polygon_symbol.deleteSymbolLayer(0)
             polygon_symbol.appendSymbolLayer(line_symbol_layer)
             buffer_layer.setRenderer(QgsSingleSymbolRenderer(polygon_symbol))
-
-            # Forçar atualização completa da camada de buffer
             buffer_layer.triggerRepaint()
-            QgsProject.instance().layerTreeRoot().findLayer(buffer_layer.id()).setItemVisibilityChecked(True)
+            QgsProject.instance().layerTreeRoot().findLayer(
+                buffer_layer.id()
+            ).setItemVisibilityChecked(True)
             iface.mapCanvas().refresh()
-
             renderer = QgsCategorizedSymbolRenderer("Event", categories)
             self.layer.setRenderer(renderer)
             self.layer.triggerRepaint()
