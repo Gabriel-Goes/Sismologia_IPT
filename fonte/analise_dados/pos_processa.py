@@ -1571,8 +1571,8 @@ def ncomercial(df):
 
 # -------------------------------- MAIN ------------------------------------- #
 def main():
-    # df = carregar_dado()
-    df = pd.read_csv('arquivos/resultados/304008_analisado.csv', sep=',')
+    df = carregar_dado()
+    # df = pd.read_csv('arquivos/resultados/304008_analisado.csv', sep=',')
     df['Hora'] = df['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
     df['Coord Origem'] = df[['Origem Latitude', 'Origem Longitude']].apply(lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1)
     df = class_region(df)

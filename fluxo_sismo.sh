@@ -34,9 +34,9 @@
 
 # -----------------------------  VARIÁVEIS -------------------------------------
 CATALOG=${1:-"catalogo-moho.csv"}
-EVENTS=${EVENTS:-true}
-TREATCATALOG=${TREATCATALOG:-true}
-PREDICT=${PREDICT:-true}
+EVENTS=${EVENTS:-false}
+TREATCATALOG=${TREATCATALOG:-false}
+PREDICT=${PREDICT:-false}
 POSPROCESS=${POSPROCESS:-true}
 MAPS=${MAPS:-true}
 REPORT=${REPORT:-true}
@@ -100,7 +100,8 @@ fi
 # ------------------------- ETAPA DE PREDIÇÃO  ----------------------------------
 if [ "$PREDICT" = true ]; then
     NOME_TERM="Predict"
-    COMMAND='python fonte/rnc/run.py'
+    COMMAND='pushd /home/ipt/projetos/ClassificadorSismologico; \
+        python fonte/rnc/run.py'
     echo " ----------------- INICIANDO O PREDICT.PY ---------------------------- "
     i3-msg 'workspace 2'
     alacritty -e bash -c "tmux new-session -d -s $NOME_TERM; \

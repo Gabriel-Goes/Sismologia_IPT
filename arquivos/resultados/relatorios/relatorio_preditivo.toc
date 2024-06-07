@@ -5,6 +5,6 @@
 \contentsline {subsection}{\numberline {2.2}Testes e validação do Classificador}{2}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Implicações e futuras diretrizes}{2}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}Análise de Eventos em Horários Não Comerciais}{3}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Documentação e divulgação}{23}{subsection.2.5}%
-\contentsline {section}{\numberline {3}CONSIDERAÇÕES FINAIS}{23}{section.3}%
-\contentsline {section}{\numberline {4}REFERÊNCIAS BIBLIOGRÁFICAS}{25}{section.4}%
+\contentsline {subsection}{\numberline {2.5}Documentação e divulgação}{24}{subsection.2.5}%
+\contentsline {section}{\numberline {3}CONSIDERAÇÕES FINAIS}{24}{section.3}%
+\contentsline {section}{\numberline {4}REFERÊNCIAS BIBLIOGRÁFICAS}{26}{section.4}%
