@@ -14,11 +14,10 @@ from obspy.core.event.catalog import Catalog
 from obspy.geodetics import gps2dist_azimuth
 from obspy.clients.fdsn import Client
 
-import random
 import sys
 import os
 import csv
-# import random
+import random
 import numpy as np
 from tqdm import tqdm
 from typing import List, Dict
@@ -29,25 +28,14 @@ from nucleo.utils import MSEED_DIR
 from nucleo.utils import DELIMT, DELIMT2
 from nucleo.utils import csv2list
 
-# ----------------------------  CONSTANTES  -----------------------------------
-# Clientes para acessar os dados
-try:
-    DATA_CLIENT = Client('http://seisarc.sismo.iag.usp.br/')
-except Exception as e:
-    print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
-try:
-    DATA_CLIENT_BKP = Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
-except Exception as e:
-    print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
-    sys.exit(1)
-
 
 # ---------------------------- FUNÇÕES ----------------------------------------
-def iterar_eventos(eventos: List,
-                   data_client: str,
-                   data_client_bkp: str,
-                   baixar=True,
-                   random=True) -> None:
+def iterar_eventos(
+    eventos: List,
+    DATA_CLIENT: str,
+    DATA_CLIENT_BKP: str,
+    baixar=True,
+    ) -> None:
     print(' --> Iterando sobre eventos')
     print(f' - Número de eventos: {len(eventos)}')
     print(f' - Client: {DATA_CLIENT.base_url}')
@@ -98,9 +86,7 @@ def iterar_eventos(eventos: List,
             sta = pick.waveform_id.station_code
             chn = pick.waveform_id.channel_code
             loc = pick.waveform_id.location_code
-            # print(
-            #     f' - Net: {net}\n - Sta: {sta}\n - Chn: {chn}\n - Loc: {loc}'
-            # )
+
             chn = chn[:-1] + 'Z'
             if loc is None:
                 loc = ''
@@ -181,20 +167,22 @@ def iterar_eventos(eventos: List,
                 start_time = pick.time - random_offset
                 end_time = start_time + 60
                 try:
-                    st = data_client.get_waveforms(
+                    st = DATA_CLIENT.get_waveforms(
                         net, sta, loc, 'HH*',
-                        start_time, end_time)
+                        start_time, end_time
+                    )
                     print(' Downloading ...')
                     print(f' Pick Time -> {pick.time}')
                     print(f' Origin Time -> {origin_time}')
                     print(f' Channel -> {chn}')
                     print(
-                        f" - Waveform baixada para:\n   - estação {sta}\n   - canal: {chn}")
+                        " - Waveform baixada para:\n",
+                        f"- estação {sta}\n   - canal: {chn}")
 
                 except Exception as e:
                     print(f"Canal {chn} da estação {sta}!\n   ERROR:  {e}")
                     try:
-                        st = data_client_bkp.get_waveforms(
+                        st = DATA_CLIENT_BKP.get_waveforms(
                             net, sta, loc, 'HH*',
                             start_time, end_time)
                         print(' Downloading ...')
@@ -229,26 +217,26 @@ def iterar_eventos(eventos: List,
                         continue
                 if not st:
                     error_to_save.append({
-                            'EventID': event_id,
-                            'Event': dir_name,
-                            'Pick': pick.phase_hint,
-                            'Network': net,
-                            'Station': sta,
-                            'Latitude': sta_lat,
-                            'Longitude': sta_lon,
-                            'Channel': chn,
-                            'Location': loc,
-                            'Distance': dist_km,
-                            'Pick Time': pick.time,
-                            'Origin Time': origin_time,
-                            'Origem Latitude': origem_lat,
-                            'Origem Longitude': origem_lon,
-                            'Depth/km': origem_depth,
-                            'Start Time': start_time,
-                            'End Time': end_time,
-                            'Error': f'Stream is None'
+                        'EventID': event_id,
+                        'Event': dir_name,
+                        'Pick': pick.phase_hint,
+                        'Network': net,
+                        'Station': sta,
+                        'Latitude': sta_lat,
+                        'Longitude': sta_lon,
+                        'Channel': chn,
+                        'Location': loc,
+                        'Distance': dist_km,
+                        'Pick Time': pick.time,
+                        'Origin Time': origin_time,
+                        'Origem Latitude': origem_lat,
+                        'Origem Longitude': origem_lon,
+                        'Depth/km': origem_depth,
+                        'Start Time': start_time,
+                        'End Time': end_time,
+                        'Error': 'Stream is None'
                     })
-                    print(f" - Erro: Stream vazia")
+                    print(" - Erro: Stream vazia")
                     continue
 
                 event_name = origin_time.strftime("%Y%m%dT%H%M%S")
@@ -357,12 +345,12 @@ def iterar_eventos(eventos: List,
     return
 
 
-# ---------------------------- MAIN -------------------------------------------
-def main(EventIDs: List,
-         data_Client: str,
-         data_Client_bkp: str) -> [Catalog, Dict, List]:
+def fluxo_eventos(
+        EventIDs: List,
+        DATA_CLIENT: str,
+        DATA_CLIENT_BKP: str) -> [Catalog, Dict, List]:
     print('')
-    #print(f' - Catálogo: {sys.argv[1]}')
+    # print(f' - Catálogo: {sys.argv[1]}')
     print(f' --> Client:\n  {DATA_CLIENT.base_url}')
     print(f' --> Client Backup:\n  {DATA_CLIENT_BKP.base_url}')
     print(DELIMT)
@@ -370,7 +358,7 @@ def main(EventIDs: List,
     print('')
     print(' ------------------------------ ACESSANDO CATÁLOGO ------------------------------ ')
     print(f' - Primeiro EventID: {EventIDs[0]}')
-    print(f' - EventID mediano: {EventIDs[int(len(EventIDs)/2)]}')
+    print(f' - EventID mediano: {EventIDs[int(len(EventIDs) / 2)]}')
     print(f' - Último EventID: {EventIDs[-1]}')
     catalogo = Catalog()
     ids_faltantes = []
@@ -396,8 +384,8 @@ def main(EventIDs: List,
 
     iterar_eventos(
         catalogo.events,
-        data_Client,
-        data_Client_bkp,
+        DATA_CLIENT,
+        DATA_CLIENT_BKP,
     )
 
     os.makedirs('arquivos/registros/.bkp', exist_ok=True)
@@ -409,12 +397,37 @@ def main(EventIDs: List,
     return catalogo, ids_faltantes
 
 
-# ---------------------------- EXECUÇÃO ---------------------------------------
+# ---------------------------- MAIN -------------------------------------------
+def main(
+        http_1='http://seisarc.sismo.iag.usp.br/',
+        http_2='http://rsbr.on.br:8081/fdsnws/dataselect/1/',
+        rand=False):
+    try:
+        DATA_CLIENT = Client(http_1)
+    except Exception as e:
+        print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
+        try:
+            DATA_CLIENT_BKP = Client(http_2)
+        except Exception as e:
+            print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
+            sys.exit(1)
+
+    if rand:
+        random.seed(42)
+        EventIDs = csv2list(sys.argv[1])
+        RandomIDs = random.sample(EventIDs, rand)
+        catalogo, missin_ids = fluxo_eventos(
+            RandomIDs,
+            DATA_CLIENT,
+            DATA_CLIENT_BKP)
+
+    else:
+        EventIDs = csv2list(sys.argv[1])
+        catalogo, missin_ids = main(
+            EventIDs,
+            DATA_CLIENT,
+            DATA_CLIENT_BKP)
+
+
 if __name__ == "__main__":
-    EventIDs = csv2list(sys.argv[1])
-    # random.seed(42)
-    # RandomIDs = random.sample(EventIDs, 1000)
-    catalogo, missin_ids = main(
-        EventIDs,
-        DATA_CLIENT,
-        DATA_CLIENT_BKP)
+    main()

@@ -15,7 +15,6 @@
 # é realmente importante.
 
 # ----------------------------  IMPORTS   -------------------------------------
-from obspy.clients import fdsn
 from datetime import datetime
 import os
 import sys
@@ -23,6 +22,7 @@ import sys
 # ---------------------------- PARAMETROS -------------------------------------
 PROJETO_DIR = os.environ['HOME'] + "/projetos/ClassificadorSismologico/"
 MSEED_DIR = PROJETO_DIR + "arquivos/mseed/"
+
 CAT_PROB = [
     '<0.1', '[0.1-0.2[', '[0.2-0.4[',
     '[0.4-0.6[', '[0.6-0.8[', '[0.8-0.9[', '>=0.9'
@@ -62,13 +62,6 @@ ID_dict = {"MC": '8091',
 DELIMT = "-----------------------------------------------------\n"
 DELIMT2 = "#####################################################\n"
 BKP_TIME = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-
-# try:
-#     DATA_CLIENT = fdsn.Client('http://seisarc.sismo.iag.usp.br/')
-# except Exception as e:
-#     print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
-#     sys.exit(1)
-# DATA_CLIENT_BKP = fdsn.Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
 
 
 # ---------------------------- FUNÇÕES ----------------------------------------

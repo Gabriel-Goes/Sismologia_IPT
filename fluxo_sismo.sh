@@ -12,7 +12,7 @@
 
 # ----------------------------  DESCRIÇÃO  -----------------------------------
 # Este código recebe uma lista de IDs eventos ou uma data de início e fim e com
-# estas informações cria um arquivo eventos.csv com os eventos sísmicos que 
+# estas informações cria um arquivo eventos.csv com os eventos sísmicos que
 # ocorreram no intervalo de tempo especificado ou com os IDs presentes na lista
 # passada e foram capturados pela rede sismológica. Com este arquivo, segue-se
 # para o passo de aquisição das formas de onda e classificação.
@@ -135,7 +135,7 @@ if [ "$REPORT" = true ]; then
     python fonte/relatorio-sismologia/pyscripts/figures.py
     python fonte/relatorio-sismologia/pyscripts/mapa.py
     pushd fonte/relatorio-sismologia
-    pdflatex -output-directory=$HOME/projetos/ClassificadorSismologico/arquivos/resultados/relatorios relatorio_preditivo.tex 
+    pdflatex -output-directory=$HOME/projetos/ClassificadorSismologico/arquivos/resultados/relatorios relatorio_preditivo.tex
     popd
 fi
 
