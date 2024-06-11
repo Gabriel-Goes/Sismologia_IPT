@@ -1569,6 +1569,61 @@ def ncomercial(df):
     return df_nc
 
 
+def clean_data(df):
+    df.dropna(subset=['Event Prob_Nat'], inplace=True)
+    df_Ant = df[df['Event Prob_Nat'] < 0.5]
+    events_Ant = df_Ant.groupby(level='Event').first()
+    events_Ant = events_Ant[[
+        'Distance',
+        'Depth/km',
+        'MLv',
+        'Pick Pred',
+        'Pick Prob_Nat',
+        'Pick Prob_Ant',
+        'Event Prob_Nat',
+        'Event Prob_Ant',
+        'SNR_P',
+        'SNR_S',
+        'Noise',
+        'p',
+        'Hora',
+        'SNR_P_Q2',
+        'Distance_Q2',
+        'Num_Estacoes',
+        'Pick Prob_Nat_std',
+        'SNRP_std',
+        'Distance_std'
+    ]]
+
+    events_Ant_90 = events_Ant[events_Ant['Event Prob_Ant'] >= 0.9]
+
+    # get events higher then 0.8 and lower then 0.9
+    events_Ant_80 = events_Ant[
+        (events_Ant['Event Prob_Ant'] < 0.9) &
+        (events_Ant['Event Prob_Ant'] >= 0.8)
+    ]
+
+    events_Ant_70 = events_Ant[
+        (events_Ant['Event Prob_Ant'] < 0.8) &
+        (events_Ant['Event Prob_Ant'] >= 0.7)
+    ]
+
+    events_Ant_65 = events_Ant[
+        (events_Ant['Event Prob_Ant'] < 0.7) &
+        (events_Ant['Event Prob_Ant'] >= 0.65)
+    ]
+
+    events_Ant_60 = events_Ant[
+        (events_Ant['Event Prob_Ant'] < 0.65) &
+        (events_Ant['Event Prob_Ant'] >= 0.6)
+    ]
+
+
+
+    return events_Ant, events_Ant_90, events_Ant_80, events_Ant_70, events_Ant_65, events_Ant_60
+
+
+
 # -------------------------------- MAIN ------------------------------------- #
 def main():
     df = carregar_dado()
@@ -1614,4 +1669,4 @@ def main():
 
 
 if __name__ == '__main__':
-    df, df_nc = main()
+    df_nc, df = main()
