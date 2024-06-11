@@ -52,17 +52,6 @@
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="labelOrdenarEventos"/>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_atrib">
-        <property name="text">
-         <string>Atributo:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-      <item>
        <widget class="QComboBox" name="eventSelector"/>
       </item>
       <item>
@@ -181,6 +170,16 @@
        <string>Log</string>
       </property>
      </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="csvLabel">
+      <property name="text">
+       <string>Arquivo CSV:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="csvSelector"/>
     </item>
    </layout>
   </widget>

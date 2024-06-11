@@ -58,6 +58,7 @@ from .farejadorsismo_dockwidget_base import Ui_FarejadorDockWidgetBase
 PROJ_DIR = os.path.expanduser("~/projetos/ClassificadorSismologico/")
 FIGURE_DIR = os.path.join(PROJ_DIR, "arquivos/figuras/")
 LOG_FILE = os.path.join(PROJ_DIR, "arquivos/registros/farejador.log")
+CSV_DIR = os.path.join(PROJ_DIR, "arquivos/resultados/")
 CSV_FILE = os.path.join(PROJ_DIR, "arquivos/resultados/ncomercial.csv")
 
 logging.basicConfig(
@@ -73,11 +74,26 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
     def __init__(self, parent=None):
         super(FarejadorDockWidget, self).__init__(parent)
-        self.eventos = self.csv2dict(CSV_FILE)
+        self.loadCSVFiles()
+        # self.eventos = self.csv2dict(CSV_FILE)
         self.createLayerFromDF()
         self.setupUi(self)
         self.initUI()
         self.updateUI()
+
+    def onCSVSelected(self):
+        selected_csv = self.csvSelector.currentText()
+        csv_path = os.path.join(CSV_DIR, selected_csv)
+        self.eventos = self.csv2dict(csv_path)
+        self.createLayerFromDF()
+        self.updateUI()
+
+    def loadCSVFiles(self):
+        self.csvSelector = self.findChild(QtWidgets.QComboBox, 'csvSelector')
+        csv_files = self.list_files(CSV_DIR)
+        self.csvSelector.addItems(csv_files)
+        self.csvSelector.currentIndexChanged.connect(self.onCSVSelected)
+        self.onCSVSelected()
 
     def csv2dict(self, csv_file):
         try:
