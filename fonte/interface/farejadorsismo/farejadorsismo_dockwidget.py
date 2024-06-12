@@ -58,8 +58,8 @@ from .farejadorsismo_dockwidget_base import Ui_FarejadorDockWidgetBase
 PROJ_DIR = os.path.expanduser("~/projetos/ClassificadorSismologico/")
 FIGURE_DIR = os.path.join(PROJ_DIR, "arquivos/figuras/")
 LOG_FILE = os.path.join(PROJ_DIR, "arquivos/registros/farejador.log")
-CSV_DIR = os.path.join(PROJ_DIR, "arquivos/resultados/")
-CSV_FILE = os.path.join(PROJ_DIR, "arquivos/resultados/ncomercial.csv")
+CSV_DIR = os.path.join(PROJ_DIR, "arquivos/resultados/analisado/")
+CSV_FILE = os.path.join(PROJ_DIR, "arquivos/resultados/analisado/nc_analisado.csv")
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -74,18 +74,11 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
     def __init__(self, parent=None):
         super(FarejadorDockWidget, self).__init__(parent)
-        self.loadCSVFiles()
-        # self.eventos = self.csv2dict(CSV_FILE)
-        self.createLayerFromDF()
+        self.eventos = self.csv2dict(CSV_FILE)
+        # self.createLayerFromDF()
         self.setupUi(self)
         self.initUI()
-        self.updateUI()
-
-    def onCSVSelected(self):
-        selected_csv = self.csvSelector.currentText()
-        csv_path = os.path.join(CSV_DIR, selected_csv)
-        self.eventos = self.csv2dict(csv_path)
-        self.createLayerFromDF()
+        self.loadCSVFiles()
         self.updateUI()
 
     def loadCSVFiles(self):
@@ -95,9 +88,19 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         self.csvSelector.currentIndexChanged.connect(self.onCSVSelected)
         self.onCSVSelected()
 
+    def onCSVSelected(self):
+        selected_csv = self.csvSelector.currentText()
+        csv_path = os.path.join(CSV_DIR, selected_csv)
+        self.eventos = self.csv2dict(csv_path)
+        if self.eventos is None:
+            self.eventos = {}
+        self.createLayerFromDF()
+        self.get_EventsSorted()
+        self.updateUI()
+
     def csv2dict(self, csv_file):
         try:
-            self.df = pd.read_csv(CSV_FILE)
+            self.df = pd.read_csv(csv_file)
             logging.info(f'{csv_file} carregado com sucesso.')
         except Exception as e:
             logging.error(f'Erro ao carregar {csv_file}: {e}')
@@ -557,7 +560,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
 
     def list_files(self, directory):
         return [
-            f for f in os.listdir(directory) if os.path.isfile(
-                os.path.join(directory, f)
-            )
+            f for f in os.listdir(directory)
+            if os.path.isfile(
+                os.path.join(directory, f)) and f.endswith('.csv')
         ]
