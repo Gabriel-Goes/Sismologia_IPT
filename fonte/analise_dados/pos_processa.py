@@ -1639,6 +1639,9 @@ def main():
     df['Pick Prob_Nat_std'] = df.index.get_level_values('Event').map(
         df.groupby('Event')['Pick Prob_Nat'].std()
     )
+    # set Pick Prob_Nat_std to -1 if the event has only one station (std=nan)
+    df.loc[df['Num_Estacoes'] == 1, 'Pick Prob_Nat_std'] = -1
+
     df['SNRP_std'] = df.index.get_level_values('Event').map(
         df.groupby('Event')['SNR_P'].std()
     )
@@ -1664,6 +1667,9 @@ def main():
     )
     df_nc = ncomercial(df)
     # df_cm = comercial(df)
+
+    df_nc.to_csv('arquivos/resultados/nc_analisado_final.csv')
+    df.to_csv('arquivos/resultados/analisado_final.csv')
 
     return df_nc, df
 

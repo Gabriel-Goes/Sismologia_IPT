@@ -6,12 +6,12 @@ then
     echo "QGIS is running. Closing it..."
     pkill qgis.bin
 fi
-i
+
 cp -r $HOME/projetos/ClassificadorSismologico/fonte/interface/farejadorsismo $HOME/.local/share/QGIS/QGIS3/profiles/Gabriel/python/plugins
 
 pushd $HOME
 export PYTHONPATH=$HOME/.pyenv/versions/sismologia/lib/python3.11/site-packages:$HOME/.pyenv/versions/sismologia/bin/python:$PYTHONPATH
-exec qgis
+exec qgis &
 popd
 
 echo "Farejador de Sismos instalado com sucesso!"
