@@ -1,7 +1,6 @@
 # Git Ignore
 *.npy
 *.pyc
-*.png
 *.jpeg
 *.mseed
 

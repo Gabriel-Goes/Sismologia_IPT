@@ -2,13 +2,12 @@
 # -*- coding: utf-8 -*-
 #
 # -----------------------------------------------------------------------------
-# ./ClassificadorSismologico/Sismo_Pipeline.sh
+# ./ClassificadorSismologico/fluxo_sismo.sh
 # Autor: Gabriel Góes Rocha de Lima
-# Modificado do código de Lucas Schirbel
-# Versão: 0.2
+# Modificado do código de Lucas Schirbel & Marcelo Bianchi
+# Versão: 0.3.0
 # Data: 2024-03-05
-# Modificado: 2024-04-10
-#
+# Modificado: 2024-06-17
 
 # ----------------------------  DESCRIÇÃO  -----------------------------------
 # Este código recebe uma lista de IDs eventos ou uma data de início e fim e com
@@ -32,20 +31,74 @@
 # Caso utilize uma lista de IDs, o script irá adquirir os eventos sísmicos desta
 # mesma rede e criará um arquivo eventos.csv
 
-# -----------------------------  VARIÁVEIS -------------------------------------
-CATALOG=${1:-"catalogo-moho.csv"}
-EVENTS=${EVENTS:-false}
-TREATCATALOG=${TREATCATALOG:-false}
-PREDICT=${PREDICT:-false}
-POSPROCESS=${POSPROCESS:-true}
-MAPS=${MAPS:-true}
-REPORT=${REPORT:-true}
+# -----------------------------  VARIÁVEIS ------------------------------------
+CATALOG='catalogo-moho.csv'
+EVENTS=false
+TREATCATALOG=false
+PREDICT=false
+POSPROCESS=false
+MAPS=false
+REPORT=false
+
+# ------------------------- PARSE ARGUMENTOS ----------------------------------
+if [ $# -eq 0 ]; then
+    EVENTS=true
+    TREATCATALOG=true
+    PREDICT=true
+    POSPROCESS=true
+    MAPS=true
+    REPORT=true
+else
+    if [ -f './arquivos/catalogo/'$1 ]; then
+        CATALOG=$1
+        shift
+    fi
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            --help|-h)
+                echo "Uso: $0 [opções] [catalogo.csv]"
+                echo "Opções:"
+                echo "  --eventos, -e:   Executa a aquisição de eventos sísmicos"
+                echo "  --pre, -pe:       Executa o tratamento do catálogo"
+                echo "  --predict, -pr:   Executa o script de predição"
+                echo "  --pos, -po:       Executa o pós-processamento"
+                echo "  --maps, -m:       Executa a geração de mapas"
+                echo "  --report, -r:     Executa a geração de relatórios"
+                exit 0
+                ;;
+            --eventos|-e)
+                EVENTS=true
+                ;;
+            --pre|-pe)
+                TREATCATALOG=true
+                ;;
+            --predict|-pr)
+                PREDICT=true
+                ;;
+            --pos|-po)
+                POSPROCESS=true
+                ;;
+            --maps|-m)
+                MAPS=true
+                ;;
+            --report|-r)
+                REPORT=true
+                ;;
+            *)
+                echo "Opção inválida: $1"
+                exit 1
+                ;;
+        esac
+
+        shift
+    done
+fi
+
 
 # ----------------------------- CONSTANTES -------------------------------------
 set -e
 # DEFINE OS DIRETÓRIOS DE TRABALHO
 BASE_DIR=$HOME/projetos/ClassificadorSismologico/
-set -e
 pushd $BASE_DIR
 
 # DEFINE O DIRETÓRIO DE LOGS
@@ -72,6 +125,13 @@ echo $DELIMT2
 echo ''
 
 # ------------------------- ETAPA DE AQUISIÇÃO DE DADOS  ----------------------
+if [ "$TREATCATALOG" = true ]; then
+        echo ''
+        echo " -------------- INICIANDO O TRATAMENTO -------------------- "
+        echo " Tratando $CATALOG..."
+        python fonte/analise_dados/pre_processa.py -c $CATALOG -m
+fi
+
 if [ "$EVENTS" = true ]; then
     echo " Criando arquivos de backup..."
     [[ -f /eventos/eventos.csv ]] &&
@@ -81,10 +141,6 @@ if [ "$EVENTS" = true ]; then
     echo " Arquivos de backup criados com sucesso!"
     echo ''
     if [ "$TREATCATALOG" = true ]; then
-        echo ''
-        echo " -------------- INICIANDO O TRATAMENTO -------------------- "
-        echo " Tratando $CATALOG..."
-        python fonte/analise_dados/pre_processa.py -c $CATALOG -p
         echo ''
         echo ' -> Executando fluxo_eventos.py...'
         CATALOG=$(echo $CATALOG | cut -d'.' -f1)
@@ -132,7 +188,8 @@ fi
 # ----------------- ETAPA DE GERAR RELATORIOS ------------------------
 if [ "$REPORT" = true ]; then
     echo " ----------------- Iniciando o pdflatex .tex ---------------------------- "
-    python fonte/relatorio-sismologia/pyscripts/figures.py
+    python fonte/relatorio-sismologia/pyscripts/figures.py --path 'pre_processa'
+    python fonte/relatorio-sismologia/pyscripts/figures.py --path 'pos_processa'
     python fonte/relatorio-sismologia/pyscripts/mapa.py
     pushd fonte/relatorio-sismologia
     pdflatex -output-directory=$HOME/projetos/ClassificadorSismologico/arquivos/resultados/relatorios relatorio_preditivo.tex 

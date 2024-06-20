@@ -1,0 +1,10 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ -------------- Processo de criação de mapas iniciado ------------------
+
+ ----------------- Iniciando o pdflatex .tex ---------------------------- 
+usage: figures.py [-h] --path PATH
+figures.py: error: the following arguments are required: --path

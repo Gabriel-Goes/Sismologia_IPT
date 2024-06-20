@@ -56,10 +56,11 @@ from .farejadorsismo_dockwidget_base import Ui_FarejadorDockWidgetBase
 
 # ----------------------------- CONSTANTES ---------------------------------- #
 PROJ_DIR = os.path.expanduser("~/projetos/ClassificadorSismologico/")
-FIGURE_DIR = os.path.join(PROJ_DIR, "arquivos/figuras/")
-LOG_FILE = os.path.join(PROJ_DIR, "arquivos/registros/farejador.log")
-CSV_DIR = os.path.join(PROJ_DIR, "arquivos/resultados/analisado/")
-CSV_FILE = os.path.join(PROJ_DIR, "arquivos/resultados/analisado/nc_analisado.csv")
+FILES_DIR = os.path.join(PROJ_DIR, "arquivos/")
+FIGURE_DIR = os.path.join(FILES_DIR, "figuras/")
+LOG_FILE = os.path.join(FILES_DIR, "registros/farejador.log")
+CSV_DIR = os.path.join(FILES_DIR, "resultados/analisado/")
+CSV_FILE = os.path.join(CSV_DIR, "nc_analisado.csv")
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -205,10 +206,11 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             logging.info('Ordenando eventos por "Evento".')
             self.ev_cre = sorted(list_ev)
         else:
+            df = self.df.dropna(subset=[sort_column])
             logging.info(f'Ordenando eventos por {sort_column}.')
             self.ev_cre = sorted(
-                self.df['Event'].unique(), key=lambda x: self.df.loc[
-                    self.df['Event'] == x, sort_column
+                df['Event'].unique(), key=lambda x: df.loc[
+                    df['Event'] == x, sort_column
                 ].iloc[0]
             )
         self.ev_dec = self.ev_cre[::-1]
@@ -468,16 +470,24 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         logging.info(f"Pick {pick}")
         mseed = f'{net}_{sta}_{ev}'
         st = read(f'{PROJ_DIR}arquivos/mseed/{ev}/{mseed}.mseed')
-        tr = st[0].detrend('linear').filter('highpass', freq=2.0)
-        t = np.arange(tr.stats.npts) * tr.stats.delta
+        st.detrend('linear').taper(0.05).filter(
+            'highpass', freq=2, corners=4, zerophase=True
+        )
+        t = np.arange(st.stats.npts) * st.stats.delta
         logging.info(f'Stream carregada e Traço calculado {mseed}')
         pick_t = UTCDateTime(pick['Pick Time'].values[0])
         start_t = UTCDateTime(pick['Start Time'].values[0])
         p_start = pick_t - start_t
         n_start = p_start - 4.9
-        plt.axvspan(p_start, p_start + 3, alpha=0.5, label='S-Window', color='green')
-        plt.axvspan(n_start, n_start + 4, alpha=0.5, label='N-Window', color='red')
-        plt.plot(t, tr.data, c='k')
+        plt.axvspan(
+            p_start, p_start + 3,
+            alpha=0.5, label='S-Window', color='green'
+        )
+        plt.axvspan(
+            n_start, n_start + 4, alpha=0.5,
+            label='N-Window', color='red'
+        )
+        plt.plot(t, st.data, c='k')
         plt.tight_layout()
         buf = io.BytesIO()
         plt.savefig(buf, format='png')

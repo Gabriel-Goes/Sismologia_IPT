@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Python 3.11.8
-# ./Classificador_Sismologico/pyscripts/pre_process.py
+# ./Classificador_Sismologico/analise_dados/pre_processa.py
 
 # ---------------------------  DESCRIPTION  -----------------------------------
 # Script para tratar dados anterior a classificação.
@@ -18,15 +18,30 @@ import pandas as pd
 from obspy.core import UTCDateTime
 import shapely.geometry
 import geopandas as gpd
+from geopandas.datasets import get_path
 import pygmt
+# from pygmt.clib import Session
+
+# import matplotlib
+# matplotlib.use("pgf")
+# matplotlib.rcParams.update({
+#     "pgf.texsystem": "pdflatex",
+#     "font.family": "serif",
+#     "text.usetex": True,
+#     "pgf.rcfonts": False,
+# })
 
 import matplotlib.pyplot as plt
-import matplotlib.ticker as mtick
+# import matplotlib.ticker as mtick
 import numpy as np
+import locale
 
 import argparse
 
+# Defina o locale para português do Brasil
+locale.setlocale(locale.LC_ALL, 'pt_BR.utf8')
 
+# Configurações do Matplotlib para usar pgf
 ###############################################################################
 # ----------------------------  ARGUMENTS  ------------------------------------
 parser = argparse.ArgumentParser(description='Pre processamento dos dados')
@@ -34,51 +49,55 @@ parser.add_argument(
     '--eventos', '-e', type=str, help='Nome do arquivo csv dos eventos'
 )
 parser.add_argument(
-    '--catalogo', '-c', type=str, help='Nome do arquivo csv do catalogo'
+    '--csv', '-c', type=str, help='Nome do arquivo csv do catalogo'
 )
 parser.add_argument(
     '--ascending', '-a', action='store_true',
-    help='Nome do arquivo csv do catalogo'
+    help='Ordenar catalogo por data crescente'
 )
 parser.add_argument(
-    '--plot', '-p', action='store_true', help='Plotar distribuição do catalogo'
+    '--map', '-m', action='store_true', help='Plotar distribuição do catalogo'
 )
 args = parser.parse_args()
 
 
 # ----------------------------  FUNCTIONS  ------------------------------------
-def brasil_catalogo(catalog: pd.DataFrame) -> pd.DataFrame:
-    catalog['geometry'] = catalog.apply(
+def read_catalogo(csv: str, sep: str = '|') -> pd.DataFrame:
+    catalog_raw = pd.read_csv(f'arquivos/catalogo/{csv}', sep=sep)
+    catalog_raw.rename(columns={'#EventID': 'EventID'}, inplace=True)
+
+    return catalog_raw
+
+
+def data_catalogo(
+        catalogo: pd.DataFrame,
+        ascending: bool = False,
+        data: str = '2010'
+        ) -> pd.DataFrame:
+    catalogo['Time'] = pd.to_datetime(catalogo['Time'])
+    catalogo['Hora'] = catalogo['Time'].apply(lambda x: x.hour)
+    catalogo['Time'] = pd.to_datetime(catalogo['Time'])
+    catalogo.sort_values(by='Time', ascending=ascending, inplace=True)
+    catalogo = catalogo[catalogo['Time'] > data+'-01-01']
+
+    return catalogo
+
+
+def brasil_catalogo(catalogo: pd.DataFrame) -> pd.DataFrame:
+    df = catalogo.copy()
+    df['geometry'] = df.apply(
         lambda x: shapely.geometry.Point(x['Longitude'], x['Latitude']), axis=1
     )
-    catalog = gpd.GeoDataFrame(catalog, geometry='geometry')
-    brasil = gpd.read_file('arquivos/figuras/mapas/macrorregioesBrasil.json')
-    brasil = brasil[['geometry']]
-    brasil.to_crs(epsg=32623, inplace=True)
-    brasil['geometry_buffer'] = brasil.buffer(400000)
-    brasil.set_geometry('geometry_buffer', inplace=True)
-    union_br = brasil.unary_union
-    brasil_b = gpd.GeoDataFrame(geometry=[union_br], crs='EPSG:32623')
-    brasil_b.to_crs(epsg=4326, inplace=True)
-    catalog.crs = brasil_b.crs
-    catalogo_br = gpd.sjoin(
-        catalog, brasil_b, how='inner', predicate='within'
-    )
-    catalogo_br.drop(columns=['index_right'], inplace=True)
-    return catalogo_br
+    df = gpd.GeoDataFrame(df, geometry='geometry')
+    world = gpd.read_file(get_path('naturalearth_lowres'))
+    s_america = world[world['continent'] == 'South America']
+    brasil = s_america[s_america['name'] == 'Brazil']
+    brasil = brasil.to_crs(epsg=32723)
+    brasil_buffer = brasil.buffer(400000)
+    brasil_buffer = brasil_buffer.to_crs(epsg=4326)
+    catalog_br = df[df.within(brasil_buffer.unary_union)]
 
-
-def profundidade_catalogo(catalog: pd.DataFrame) -> pd.DataFrame:
-    catalog = catalog[catalog['Depth/km'] < 100]
-    return catalog
-
-
-def order_catalog(catalog: pd.DataFrame,
-                  ascending: bool) -> pd.DataFrame:
-    catalog['Time'] = pd.to_datetime(catalog['Time'])
-    catalog = catalog.sort_values(by='Time', ascending=ascending)
-
-    return catalog
+    return catalog_br
 
 
 def filter_pred_com(pred: pd.DataFrame) -> pd.DataFrame:
@@ -107,35 +126,81 @@ def check_ev_id():
 
 
 # ----------------------------  PLOT  -----------------------------------------
+# Função para plotar a distribuição por hora
 def plot_distrib_hora(
-        pred: pd.DataFrame) -> None:
-    counts = pred['Hora'].value_counts(sort=False).reindex(
-        np.arange(24), fill_value=0
-    )
+        catalog: pd.DataFrame, title='bruto',
+        textwidth=7, scale=1.0, aspect_ratio=6/8) -> None:
+    data_i = catalog['Time'].min().strftime('%b de %Y')
+    data_f = catalog['Time'].max().strftime('%b de %Y')
+    counts = catalog['Hora'].value_counts(sort=False).reindex(np.arange(24), fill_value=0)
     density = counts / counts.sum()
-    plt.figure(figsize=(10, 6))
-    colors = ['blue' if (11 <= hour < 22) else 'red' for hour in counts.index]
-    bars = plt.bar(counts.index, density, color=colors, alpha=0.5, width=0.8)
+    width = textwidth * scale
+    height = width * aspect_ratio
+    fig, ax = plt.subplots(figsize=(width, height), constrained_layout=True)
+    colors = ['#1f77b4' if (11 <= hour < 22) else '#ff7f0e' for hour in counts.index]
+    bars = ax.bar(
+        counts.index,
+        density,
+        color=colors, alpha=0.7, width=0.8, edgecolor='black'
+    )
+    yval_max = 0
     for b, l in zip(bars, counts):
         yval = b.get_height()
-        plt.text(
+        yval_max = yval if yval > yval_max else yval_max
+        ax.text(
             b.get_x() + b.get_width() / 2,
-            yval + 0.001,
+            yval + 0.002,
             int(l),
-            ha='center',
-            va='bottom'
+            ha='center', va='bottom', fontsize=8
         )
-    plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(xmax=1))
-    plt.xticks(range(0, 24))
-    plt.grid(axis='y')
-    plt.title('Distribuição de eventos sísmicos por hora (UTC)')
-    plt.xlabel('Hora (UTC)')
-    plt.ylabel('Frequência')
-    plt.legend(
-        ['Horário Comercial', 'Fora do Horário Comercial'], loc='upper right')
-    plt.savefig('arquivos/figuras/pre_process/hist_hora.png')
+    plt.line = ax.axhline(
+        y=0.04166, color='red', linewidth=0.4, alpha=0.6, linestyle='--')
+    ax.legend(
+        [bars[0], bars[12]],
+        ['Horário Não Comercial', 'Horário Comercial'],
+        loc='best',
+        fontsize=8, fancybox=False,
+        edgecolor="black").get_frame().set_linewidth(0.5)
+    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, _: '{:.0%}'.format(y)))
+    ax.set_xticks(range(0, 24))
+    ax.set_xticklabels(range(0, 24), fontsize=8)
+    ax.set_yticklabels(['{:,.0%}'.format(x) for x in ax.get_yticks()], fontsize=8)
+    ax.grid(axis='y', linestyle='--', linewidth=0.7)
+    fig.suptitle('Distribuição de Eventos por Hora', fontsize=10)
+    ax.set_title(f'Catálogo {title} com {catalog.shape[0]} eventos de {data_i} à {data_f}', fontsize=8)
+    ax.set_xlabel('Hora (UTC)', fontsize=9)
+    ax.set_ylabel('Frequência (%)', fontsize=9)
+    ax.set_ylim(0, 0.07)
+    plt.savefig(f'arquivos/figuras/pre_processa/hist_hora_{title}.pgf', dpi=300)
+    plt.savefig(f'arquivos/figuras/pre_processa/hist_hora_{title}.png', dpi=300)
     plt.close()
-    #plt.show()
+
+
+def profundidade_catalogo(
+        catalogo: pd.DataFrame,
+        title='bruto',
+        textwidth=7, scale=1.0, aspect_ratio=6/8,
+        ) -> None:
+    width = textwidth * scale
+    height = width * aspect_ratio
+    plt.figure(figsize=(width, height), constrained_layout=True)
+    plt.yscale('log')
+    plt.hist(
+        catalogo['Depth/km'],
+        bins=50,
+        color='#1f77b4',
+        edgecolor='black',
+        alpha=0.7,
+        density=True
+    )
+    plt.suptitle('Distribuição de Profundidade')
+    plt.title(f'Catálogo {title} com {catalogo.shape[0]} eventos')
+    plt.xlabel('Profundidade (km)')
+    plt.ylabel('Frequência relativa (log$_{10}$ %)')
+    plt.grid(True, linestyle='--', linewidth=0.7, alpha=0.7)
+    plt.tight_layout()
+    plt.savefig(f'arquivos/figuras/pre_processa/hist_profundidade_{title}.png')
+    plt.savefig(f'arquivos/figuras/pre_processa/hist_profundidade_{title}.pgf')
 
 
 def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
@@ -159,145 +224,147 @@ def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
     plt.grid(True)
     plt.savefig('arquivos/figures/mapas/bruto_catalog_mapa.png')
     plt.close()
-    #plt.show()
+    # plt.show()
 
 
-def plot_prof_as_red(catalog: pd.DataFrame) -> None:
+def plot_prof_as_red(catalog: pd.DataFrame, title='bruto') -> None:
     catalog.drop_duplicates(subset='EventID', inplace=True)
     catalog = gpd.GeoDataFrame(
         catalog,
         geometry=gpd.points_from_xy(catalog.Longitude, catalog.Latitude)
     )
+
+    capitals = pd.DataFrame({
+        "city": [
+            "São Paulo", "Rio de Janeiro", "Belo Horizonte", "Brasília",
+            "Salvador", "Fortaleza", "Manaus", "Curitiba", "Recife",
+            "Porto Alegre"
+        ],
+        "latitude": [
+            -23.55052, -22.90684, -19.9245, -15.7801, -12.9714,
+            -3.71722, -3.119028, -25.4284, -8.04756, -30.03306
+        ],
+        "longitude": [
+            -46.63331, -43.1729, -43.9352, -47.9292, -38.5014,
+            -38.5434, -60.021731, -49.2733, -34.87664, -51.2300
+        ]
+    })
+    region = (
+        catalog['Longitude'].min() - 0.1,
+        catalog['Longitude'].max() + 0.1,
+        catalog['Latitude'].min() - 0.1,
+        catalog['Latitude'].max() + 0.1
+    )
     catalog.crs = 'EPSG:4326'
     brasil = gpd.read_file('arquivos/figuras/mapas/macrorregioesBrasil.json')
     brasil.to_crs(epsg=4326, inplace=True)
     brasil = brasil.geometry.unary_union
-    catalog['color'] = 'blue'
-    catalog.loc[catalog['Depth/km'] > 1, 'color'] = 'green'
-    catalog.loc[catalog['Depth/km'] > 50, 'color'] = 'yellow'
-    catalog.loc[catalog['Depth/km'] > 100, 'color'] = 'orange'
-    catalog.loc[catalog['Depth/km'] > 200, 'color'] = 'red'
-    nb_ev_blue = catalog[catalog['Depth/km'] <= 1].shape[0]
-    nb_ev_1 = catalog[(catalog['Depth/km'] > 1) & (catalog['Depth/km'] <= 50)].shape[0]
-    nb_ev_50 = catalog[(catalog['Depth/km'] > 50) & (catalog['Depth/km'] <= 100)].shape[0]
-    nb_ev_100 = catalog[(catalog['Depth/km'] > 100) & (catalog['Depth/km'] <= 200)].shape[0]
-    nb_ev_200 = catalog[catalog['Depth/km'] > 200].shape[0]
-    fig = pygmt.Figure()
-    fig.coast(shorelines='1/0.5p', projection="M10i", region=[-75, -30, -35, 5], borders=[1], area_thresh=10000, land="gray", water="skyblue")
-    fig.basemap(
-        frame=['a4f3g6', "+t\"Eventos Sismológicos pré-tratamento por Profundidade (km)\""]
+    pygmt.makecpt(
+        cmap="jet",
+        series=[catalog['Depth/km'].min(),
+                catalog['Depth/km'].max()]
     )
-    fig.plot(x=catalog[catalog['Depth/km'] <= 1].Longitude,
-             y=catalog[catalog['Depth/km'] <= 1].Latitude,
-             style="c0.1c", fill="blue", label=f"Profundidade <= 1 km ({nb_ev_blue})")
-    fig.plot(x=catalog[(catalog['Depth/km'] > 1) & (catalog['Depth/km'] <= 50)].Longitude,
-             y=catalog[(catalog['Depth/km'] > 1) & (catalog['Depth/km'] <= 50)].Latitude,
-             style="c0.2c", fill="green", label=f"Profundidade 1 - 50 km ({nb_ev_1})")
-    fig.plot(x=catalog[(catalog['Depth/km'] > 50) & (catalog['Depth/km'] <= 100)].Longitude,
-             y=catalog[(catalog['Depth/km'] > 50) & (catalog['Depth/km'] <= 100)].Latitude,
-             style="c0.2c", fill="yellow", label=f"Profundidade 50 - 100 km ({nb_ev_50})")
-    fig.plot(x=catalog[(catalog['Depth/km'] > 100) & (catalog['Depth/km'] <= 200)].Longitude,
-             y=catalog[(catalog['Depth/km'] > 100) & (catalog['Depth/km'] <= 200)].Latitude,
-             style="c0.2c", fill="orange", label=f"Profundidade 100 - 200 km ({nb_ev_100})")
-    fig.plot(x=catalog[catalog['Depth/km'] > 200].Longitude,
-             y=catalog[catalog['Depth/km'] > 200].Latitude,
-             style="c0.2c", fill="red", label=f"Profundidade > 200 km ({nb_ev_200})")
-    fig.legend(position="JBR+jBR+o0.5c/0.5c", box="+gwhite+p1p,black")
-    fig.text(x=-52, y=8, text="Eventos Sismológicos pré-tratamento por Profundidade (km)", font="16p,Helvetica-Bold")
-    fig.savefig('arquivos/figuras/mapas/mapa_eventos_bruto.png')
-    # fig.show()
-
-
-def plot_cleaned_catalog_pygmt(catalog: pd.DataFrame) -> None:
-    catalog = gpd.GeoDataFrame(
-        catalog,
-        geometry=gpd.points_from_xy(catalog.Longitude, catalog.Latitude)
-    )
-    catalog.crs = 'EPSG:4326'
-    catalog['color'] = 'blue'
-    catalog.loc[catalog['Depth/km'] > 1, 'color'] = 'green'
-    catalog.loc[catalog['Depth/km'] > 5, 'color'] = 'orange'
-    catalog.loc[catalog['Depth/km'] > 25, 'color'] = 'red'
-    nb_ev_blue = catalog[catalog['Depth/km'] <= 1].shape[0]
-    nb_ev_1 = catalog[(catalog['Depth/km'] > 1) & (catalog['Depth/km'] <= 5)].shape[0]
-    nb_ev_5 = catalog[(catalog['Depth/km'] > 5) & (catalog['Depth/km'] <= 25)].shape[0]
-    nb_ev_25 = catalog[(catalog['Depth/km'] > 25) & (catalog['Depth/km'] <= 50)].shape[0]
     fig = pygmt.Figure()
     fig.coast(
-        shorelines='1/0.5p', projection="M10i", region=[-75, -30, -35, 5],
-        borders=[1], area_thresh=10000, land="gray", water="skyblue"
+        shorelines='1/0.5p',
+        projection="M10i",
+        region=region,
+        borders=[1],
+        area_thresh=10000,
+        land="gray",
+        water="skyblue"
     )
-    fig.basemap(
-        frame=[
-            'a4f3g6',
-            "+t\"Eventos Sismológicos pós-tratamento por Profundidade (km)\""
-        ]
+    if title == 'bruto':
+        fig.basemap(
+            frame=[
+                'a4f3g6',
+                "+tEventos sismológicos pré-tratamento por profundidade (km)"
+            ]
+        )
+    else:
+        fig.basemap(
+            frame=[
+                'a4f3g6',
+                "+tEventos sismológicos pós-tratamento por profundidade (km)"
+            ]
+        )
+    fig.plot(
+        x=catalog['Longitude'],
+        y=catalog['Latitude'],
+        size=0.03 * (catalog['Magnitude']),
+        fill=catalog['Depth/km'],
+        cmap=True,
+        style="cc",
+        pen="black"
     )
     fig.plot(
-        x=catalog[catalog['Depth/km'] <= 1].Longitude,
-        y=catalog[catalog['Depth/km'] <= 1].Latitude,
-        style="c0.1c", fill="blue",
-        label=f"Profundidade < 1 km ({nb_ev_blue})"
-    )
-    fig.plot(
-        x=catalog[(catalog['Depth/km'] > 1) & (catalog['Depth/km'] <= 5)].Longitude,
-        y=catalog[(catalog['Depth/km'] > 1) & (catalog['Depth/km'] <= 5)].Latitude,
-        style="c0.2c", fill="green", label=f"Profundidade 1 - 5 km ({nb_ev_1})")
-    fig.plot(
-        x=catalog[(catalog['Depth/km'] > 5) & (catalog['Depth/km'] <= 25)].Longitude,
-        y=catalog[(catalog['Depth/km'] > 5) & (catalog['Depth/km'] <= 25)].Latitude,
-        style="c0.2c", fill="orange", label=f"Profundidade 5 - 25 km ({nb_ev_5})"
-    )
-    fig.plot(
-        x=catalog[(catalog['Depth/km'] > 25) & (catalog['Depth/km'] <= 50)].Longitude,
-        y=catalog[(catalog['Depth/km'] > 25) & (catalog['Depth/km'] <= 50)].Latitude,
-        style="c0.2c", fill="red", label=f"Profundidade 25 - 50 km ({nb_ev_25})"
+        x=capitals['longitude'],
+        y=capitals['latitude'],
+        style="t0.3", fill="white", pen="black",
+        label="Capitais"
     )
     fig.legend(position="JBR+jBR+o0.5c/0.5c", box="+gwhite+p1p,black")
-    fig.text(x=-52, y=8, text="Eventos Sismológicos pós-tratamento por Profundidade (km)", font="16p,Helvetica-Bold")
-    fig.savefig('arquivos/figuras/mapas/mapa_eventos_clean.png')
-    # fig.show()
+    fig.basemap(rose="jTL+w2c+o0.5c/0.5c+f")
+    fig.colorbar(
+        frame=["x+lProfundidade (km)", "y+lm"],
+        position="JMR+jMR+o0.5c/0.5c",
+        box="+gwhite+p1p,black"
+    )
+    try:
+        print('Salvando mapa...')
+        fig.savefig(f'arquivos/figuras/mapas/mapa_eventos_{title}.png')
+    except pygmt.clib.GMTCLibError as e:
+        print(f"Erro ao salvar como PNG: {e}")
+    finally:
+        fig = None  # Limpar a figura para liberar recursos
 
 
 # ----------------------------  MAIN  -----------------------------------------
 def main(args=args):
-    if args.catalogo:
-        catalog = pd.read_csv(f'arquivos/catalogo/{args.catalogo}', sep='|')
-        catalog.rename(columns={'#EventID': 'EventID'}, inplace=True)
-        catalog = profundidade_catalogo(catalog)
-        catalog = order_catalog(catalog, args.ascending)
-        catalog = brasil_catalogo(catalog)
-        catalog.to_csv(
-            f"arquivos/catalogo/{args.catalogo.split('.')[0]}_treated.csv",
+    args.csv = 'catalogo-moho.csv'
+    args.map = True
+    if args.csv:
+        print(f'Tratando {args.csv}...')
+        catalogo_r = read_catalogo(args.csv, sep='|')
+        catalogo = data_catalogo(catalogo_r)
+        catalogo = brasil_catalogo(catalogo)
+        catalogo['Author'] = catalogo['Author'].str.upper()
+        catalogo['Author'] = catalogo['Author'].str.strip()
+        catalogo['Author'] = catalogo['Author'].replace(
+            {
+                'CLEUSA': 'CLEUSA',
+                'BRUNO@LAB88': 'BRUNO',
+                'BBCOLLACO': 'BRUNO',
+                'MARCELO': 'MASSUMPCAO',
+            }
+        )
+        print(catalogo['Author'].value_counts())
+        print(catalogo.describe().T)
+        plot_distrib_hora(catalogo, title='tratado')
+        plot_distrib_hora(catalogo_r)
+        profundidade_catalogo(catalogo_r)
+        profundidade_catalogo(catalogo, title='tratado')
+        catalogo.to_csv(
+            f"arquivos/catalogo/{args.csv.split('.')[0]}_treated.csv",
             sep='|',
             index=False
         )
-        if args.plot:
-            catalog = pd.read_csv(
-                f'arquivos/catalogo/{args.catalogo}',
-                sep='|'
-            )
-            catalog.rename(columns={'#EventID': 'EventID'}, inplace=True)
-            plot_prof_as_red(catalog)
-
-            catalogo_treated = pd.read_csv(
-                f'arquivos/catalogo/{args.catalogo.split(".")[0]}_treated.csv',
-                sep='|'
-            )
-            plot_cleaned_catalog_pygmt(catalogo_treated)
+        if args.map:
+            print('Plotando mapa...')
+            plot_prof_as_red(catalogo_r)
+            plot_prof_as_red(catalogo, 'tratado')
 
     elif args.eventos:
         eventos = pd.read_csv(f'arquivos/eventos/{args.eventos}', sep=',')
-        if args.plot:
-            eventos = pd.read_csv(
-                f'arquivos/eventos/{args.eventos}',
-                sep=','
-            )
-            plot_cleaned_catalog_pygmt(eventos)
+        if args.map:
+            plot_prof_as_red(eventos)
 
     else:
         print('Nenhum argumento foi passado')
+        return None
+
+    return catalogo
 
 
 if __name__ == '__main__':
-    catalog = main()
+    catalogo = main()

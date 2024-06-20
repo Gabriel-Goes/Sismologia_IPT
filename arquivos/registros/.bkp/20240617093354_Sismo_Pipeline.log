@@ -1,0 +1,753 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+0it [00:00, ?it/s]1it [00:00,  3.65it/s]23it [00:00, 76.71it/s]36it [00:00, 86.98it/s]48it [00:00, 84.80it/s]59it [00:00, 82.32it/s]69it [00:00, 84.08it/s]79it [00:01, 82.38it/s]88it [00:01, 81.70it/s]97it [00:01, 80.86it/s]107it [00:01, 85.66it/s]116it [00:01, 83.16it/s]128it [00:01, 92.86it/s]145it [00:01, 113.57it/s]160it [00:01, 120.85it/s]173it [00:01, 114.48it/s]185it [00:02, 106.78it/s]204it [00:02, 128.09it/s]219it [00:02, 130.72it/s]233it [00:02, 130.48it/s]254it [00:02, 150.91it/s]275it [00:02, 165.05it/s]292it [00:02, 156.17it/s]312it [00:02, 167.58it/s]333it [00:02, 178.76it/s]353it [00:03, 183.54it/s]374it [00:03, 189.64it/s]395it [00:03, 195.03it/s]417it [00:03, 200.33it/s]439it [00:03, 205.53it/s]461it [00:03, 208.46it/s]483it [00:03, 211.05it/s]505it [00:03, 202.07it/s]526it [00:03, 185.88it/s]545it [00:04, 172.18it/s]566it [00:04, 180.99it/s]587it [00:04, 186.86it/s]608it [00:04, 192.99it/s]628it [00:04, 193.87it/s]649it [00:04, 197.98it/s]669it [00:04, 190.09it/s]689it [00:04, 189.55it/s]709it [00:04, 188.26it/s]728it [00:04, 187.20it/s]749it [00:05, 193.26it/s]769it [00:05, 170.54it/s]787it [00:05, 168.35it/s]809it [00:05, 180.48it/s]830it [00:05, 187.27it/s]850it [00:05, 175.05it/s]871it [00:05, 183.81it/s]893it [00:05, 191.45it/s]915it [00:05, 196.85it/s]936it [00:06, 200.55it/s]958it [00:06, 204.47it/s]979it [00:06, 204.29it/s]1000it [00:06, 205.07it/s]1022it [00:06, 206.63it/s]1044it [00:06, 207.85it/s]1065it [00:06, 201.02it/s]1086it [00:06, 194.43it/s]1106it [00:06, 195.16it/s]1127it [00:07, 198.47it/s]1148it [00:07, 200.39it/s]1169it [00:07, 190.65it/s]1189it [00:07, 181.37it/s]1208it [00:07, 180.44it/s]1229it [00:07, 188.14it/s]1250it [00:07, 192.96it/s]1271it [00:07, 197.36it/s]1291it [00:07, 194.93it/s]1312it [00:07, 199.06it/s]1333it [00:08, 201.55it/s]1354it [00:08, 200.00it/s]1375it [00:08, 199.26it/s]1395it [00:08, 197.74it/s]1415it [00:08, 196.55it/s]1435it [00:08, 196.64it/s]1455it [00:08, 196.10it/s]1476it [00:08, 199.48it/s]1496it [00:08, 194.60it/s]1516it [00:09, 195.82it/s]1536it [00:09, 196.95it/s]1556it [00:09, 195.18it/s]1577it [00:09, 198.01it/s]1598it [00:09, 200.76it/s]1619it [00:09, 200.15it/s]1640it [00:09, 201.63it/s]1661it [00:09, 204.03it/s]1682it [00:09, 205.30it/s]1703it [00:09, 187.04it/s]1723it [00:10, 190.47it/s]1745it [00:10, 196.51it/s]1766it [00:10, 198.78it/s]1787it [00:10, 199.37it/s]1808it [00:10, 194.78it/s]1828it [00:10, 194.61it/s]1848it [00:10, 196.13it/s]1869it [00:10, 197.52it/s]1889it [00:10, 195.76it/s]1909it [00:11, 195.12it/s]1929it [00:11, 196.45it/s]1951it [00:11, 201.96it/s]1973it [00:11, 205.31it/s]1994it [00:11, 203.96it/s]2015it [00:11, 203.16it/s]2036it [00:11, 199.72it/s]2057it [00:11, 200.55it/s]2078it [00:11, 201.51it/s]2099it [00:11, 202.15it/s]2120it [00:12, 202.91it/s]2141it [00:12, 201.59it/s]2163it [00:12, 204.29it/s]2184it [00:12, 200.46it/s]2206it [00:12, 204.11it/s]2228it [00:12, 206.34it/s]2250it [00:12, 208.30it/s]2272it [00:12, 209.48it/s]2293it [00:12, 208.82it/s]2314it [00:12, 197.11it/s]2336it [00:13, 201.14it/s]2357it [00:13, 202.09it/s]2378it [00:13, 198.74it/s]2400it [00:13, 202.50it/s]2421it [00:13, 204.55it/s]2442it [00:13, 193.42it/s]2462it [00:13, 160.25it/s]2480it [00:13, 162.49it/s]2500it [00:14, 170.63it/s]2521it [00:14, 179.20it/s]2540it [00:14, 172.01it/s]2561it [00:14, 181.99it/s]2582it [00:14, 188.06it/s]2604it [00:14, 194.25it/s]2625it [00:14, 198.71it/s]2647it [00:14, 202.08it/s]2668it [00:14, 180.91it/s]2687it [00:15, 164.65it/s]2705it [00:15, 163.29it/s]2725it [00:15, 172.21it/s]2746it [00:15, 181.93it/s]2767it [00:15, 188.38it/s]2787it [00:15, 177.37it/s]2806it [00:15, 178.26it/s]2827it [00:15, 185.98it/s]2849it [00:15, 193.27it/s]2870it [00:16, 195.94it/s]2890it [00:16, 196.31it/s]2910it [00:16, 197.22it/s]2930it [00:16, 195.81it/s]2950it [00:16, 195.52it/s]2971it [00:16, 199.45it/s]2991it [00:16, 191.97it/s]3012it [00:16, 196.06it/s]3033it [00:16, 198.61it/s]3054it [00:16, 201.02it/s]3075it [00:17, 202.79it/s]3096it [00:17, 203.97it/s]3117it [00:17, 201.30it/s]3138it [00:17, 203.43it/s]3159it [00:17, 205.11it/s]3180it [00:17, 206.45it/s]3201it [00:17, 206.88it/s]3222it [00:17, 206.25it/s]3244it [00:17, 207.61it/s]3266it [00:17, 208.95it/s]3287it [00:18, 208.26it/s]3308it [00:18, 207.54it/s]3329it [00:18, 208.17it/s]3350it [00:18, 208.13it/s]3372it [00:18, 208.75it/s]3393it [00:18, 206.37it/s]3414it [00:18, 204.41it/s]3435it [00:18, 199.22it/s]3455it [00:18, 186.31it/s]3476it [00:19, 190.73it/s]3496it [00:19, 178.91it/s]3517it [00:19, 187.07it/s]3538it [00:19, 192.38it/s]3559it [00:19, 196.57it/s]3579it [00:19, 197.34it/s]3600it [00:19, 200.68it/s]3621it [00:19, 202.00it/s]3642it [00:19, 203.86it/s]3663it [00:19, 205.34it/s]3684it [00:20, 198.64it/s]3705it [00:20, 199.51it/s]3726it [00:20, 196.70it/s]3747it [00:20, 198.56it/s]3767it [00:20, 197.70it/s]3787it [00:20, 187.73it/s]3806it [00:20, 185.77it/s]3826it [00:20, 188.51it/s]3845it [00:20, 186.77it/s]3865it [00:21, 187.14it/s]3884it [00:21, 185.64it/s]3906it [00:21, 193.66it/s]3927it [00:21, 197.71it/s]3947it [00:21, 193.38it/s]3967it [00:21, 195.05it/s]3987it [00:21, 194.58it/s]4008it [00:21, 196.14it/s]4029it [00:21, 197.79it/s]4049it [00:21, 197.84it/s]4069it [00:22, 187.37it/s]4089it [00:22, 190.03it/s]4110it [00:22, 194.74it/s]4131it [00:22, 197.75it/s]4151it [00:22, 194.22it/s]4172it [00:22, 197.86it/s]4193it [00:22, 200.25it/s]4214it [00:22, 199.41it/s]4234it [00:22, 163.04it/s]4252it [00:23, 140.43it/s]4268it [00:23, 130.91it/s]4282it [00:23, 118.80it/s]4297it [00:23, 125.50it/s]4314it [00:23, 135.86it/s]4335it [00:23, 154.41it/s]4355it [00:23, 165.81it/s]4373it [00:23, 167.25it/s]4393it [00:24, 174.96it/s]4413it [00:24, 180.05it/s]4433it [00:24, 183.77it/s]4455it [00:24, 191.81it/s]4476it [00:24, 196.07it/s]4497it [00:24, 198.40it/s]4517it [00:24, 179.04it/s]4537it [00:24, 184.06it/s]4556it [00:24, 171.42it/s]4574it [00:25, 167.67it/s]4595it [00:25, 177.53it/s]4615it [00:25, 182.56it/s]4635it [00:25, 186.39it/s]4654it [00:25, 186.64it/s]4673it [00:25, 184.63it/s]4694it [00:25, 190.39it/s]4714it [00:25, 179.41it/s]4735it [00:25, 186.14it/s]4755it [00:26, 189.99it/s]4775it [00:26, 180.15it/s]4796it [00:26, 187.31it/s]4815it [00:26, 181.31it/s]4836it [00:26, 187.31it/s]4858it [00:26, 194.60it/s]4879it [00:26, 198.68it/s]4900it [00:26, 201.52it/s]4921it [00:26, 203.25it/s]4942it [00:26, 190.62it/s]4963it [00:27, 193.83it/s]4984it [00:27, 197.41it/s]5006it [00:27, 201.48it/s]5027it [00:27, 191.84it/s]5048it [00:27, 196.21it/s]5068it [00:27, 195.32it/s]5089it [00:27, 197.01it/s]5109it [00:27, 192.05it/s]5129it [00:27, 193.04it/s]5149it [00:28, 193.16it/s]5170it [00:28, 196.64it/s]5190it [00:28, 194.35it/s]5210it [00:28, 188.80it/s]5230it [00:28, 190.60it/s]5250it [00:28, 189.01it/s]5270it [00:28, 191.20it/s]5291it [00:28, 193.75it/s]5311it [00:28, 195.33it/s]5331it [00:28, 195.88it/s]5351it [00:29, 183.81it/s]5372it [00:29, 188.70it/s]5392it [00:29, 191.68it/s]5413it [00:29, 194.84it/s]5433it [00:29, 182.46it/s]5453it [00:29, 187.12it/s]5472it [00:29, 184.34it/s]5493it [00:29, 190.94it/s]5513it [00:29, 185.70it/s]5535it [00:30, 193.36it/s]5557it [00:30, 198.40it/s]5579it [00:30, 202.38it/s]5600it [00:30, 204.56it/s]5621it [00:30, 204.13it/s]5643it [00:30, 206.20it/s]5664it [00:30, 206.26it/s]5685it [00:30, 205.38it/s]5707it [00:30, 207.30it/s]5728it [00:31, 195.78it/s]5749it [00:31, 197.62it/s]5771it [00:31, 201.56it/s]5792it [00:31, 202.20it/s]5813it [00:31, 203.73it/s]5834it [00:31, 189.34it/s]5855it [00:31, 194.79it/s]5876it [00:31, 197.86it/s]5897it [00:31, 200.72it/s]5919it [00:31, 203.60it/s]5940it [00:32, 205.27it/s]5962it [00:32, 206.80it/s]5983it [00:32, 207.70it/s]6005it [00:32, 208.49it/s]6026it [00:32, 208.92it/s]6048it [00:32, 209.62it/s]6069it [00:32, 207.90it/s]6090it [00:32, 206.91it/s]6112it [00:32, 208.65it/s]6133it [00:33, 207.79it/s]6155it [00:33, 208.87it/s]6177it [00:33, 209.70it/s]6198it [00:33, 209.67it/s]6219it [00:33, 204.22it/s]6240it [00:33, 205.84it/s]6261it [00:33, 206.87it/s]6283it [00:33, 208.31it/s]6304it [00:33, 208.20it/s]6325it [00:33, 208.17it/s]6347it [00:34, 209.38it/s]6368it [00:34, 209.53it/s]6390it [00:34, 210.37it/s]6412it [00:34, 210.80it/s]6434it [00:34, 210.02it/s]6456it [00:34, 210.70it/s]6478it [00:34, 211.33it/s]6500it [00:34, 211.27it/s]6522it [00:34, 211.89it/s]6544it [00:34, 211.98it/s]6566it [00:35, 211.38it/s]6588it [00:35, 211.45it/s]6610it [00:35, 209.61it/s]6631it [00:35, 209.43it/s]6652it [00:35, 207.70it/s]6673it [00:35, 208.11it/s]6695it [00:35, 209.28it/s]6716it [00:35, 198.46it/s]6737it [00:35, 198.94it/s]6758it [00:36, 200.65it/s]6779it [00:36, 203.12it/s]6801it [00:36, 205.87it/s]6822it [00:36, 203.00it/s]6843it [00:36, 204.72it/s]6864it [00:36, 200.50it/s]6886it [00:36, 203.58it/s]6907it [00:36, 192.06it/s]6929it [00:36, 197.52it/s]6949it [00:36, 193.40it/s]6970it [00:37, 184.34it/s]6990it [00:37, 185.93it/s]7009it [00:37, 175.88it/s]7028it [00:37, 167.13it/s]7045it [00:37, 167.10it/s]7062it [00:37, 142.88it/s]7077it [00:37, 141.81it/s]7095it [00:37, 151.41it/s]7111it [00:38, 149.35it/s]7129it [00:38, 156.40it/s]7146it [00:38, 159.74it/s]7163it [00:38, 145.50it/s]7178it [00:38, 114.77it/s]7199it [00:38, 136.48it/s]7215it [00:38, 133.10it/s]7235it [00:38, 145.43it/s]7256it [00:39, 161.73it/s]7274it [00:39, 141.90it/s]7290it [00:39, 140.14it/s]7305it [00:39, 134.05it/s]7327it [00:39, 154.27it/s]7346it [00:39, 157.33it/s]7367it [00:39, 171.01it/s]7387it [00:39, 177.13it/s]7407it [00:39, 181.74it/s]7429it [00:40, 190.61it/s]7450it [00:40, 195.70it/s]7470it [00:40, 192.50it/s]7492it [00:40, 198.41it/s]7513it [00:40, 201.29it/s]7534it [00:40, 203.65it/s]7555it [00:40, 204.43it/s]7577it [00:40, 205.89it/s]7598it [00:40, 201.58it/s]7620it [00:41, 204.83it/s]7641it [00:41, 206.27it/s]7662it [00:41, 206.53it/s]7683it [00:41, 206.70it/s]7704it [00:41, 205.72it/s]7725it [00:41, 205.49it/s]7746it [00:41, 203.85it/s]7757it [00:41, 186.13it/s]
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:505: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['Hora'] = pd.to_numeric(df['Hora'])
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:506: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['Cat Hora'] = pd.cut(
+Fontconfig warning: "/home/ipt/.config/fontconfig/fonts.conf", line 11: saw number, expected string
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:789: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  fig, ax = plt.subplots(figsize=(19, 9))
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1252: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['SNR_P_cat'] = pd.Categorical(
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1293: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout()
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1321: RuntimeWarning: invalid value encountered in scalar divide
+  nb_sta = df[df['SNR_P_Q2_cat'] == r].shape[0]/f_a
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1452: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.boxplot(
+CategoricalIndex(['<1', '[1-2[', '[2-3[', '>=3'], categories=['<1', '[1-2[', '[2-3[', '>=3'], ordered=True, dtype='category', name='Magnitude_cat')
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+
+ -------------- Processo de criaÃ§Ã£o de mapas iniciado ------------------
+
+ ----------------- Iniciando o pdflatex .tex ---------------------------- 
+/home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+LaTeX file '/home/ipt/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/tex/relatorio_preditivo/tex/figures.tex' has been created successfully.
+ -> Mapa '/home/ipt/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/tex/relatorio_preditivo/tex/mapa.tex' gerado com sucesso!
+~/projetos/ClassificadorSismologico/fonte/relatorio-sismologia ~/projetos/ClassificadorSismologico ~/projetos/ClassificadorSismologico
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./relatorio_preditivo.tex
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-01-16> (./sismo_iptex.cls
+Document Class: sismo_iptex 2024/04/23 Classe Sismologia IPT
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/zref/zref-abspage.sty
+(/usr/share/texlive/texmf-dist/tex/latex/zref/zref-base.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-0.mdf))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/mathabx/mathabx.sty
+(/usr/share/texlive/texmf-dist/tex/generic/mathabx/mathabx.dcl))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/helvet.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fancyhdr.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/indentfirst.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/lastpage/lastpage.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def))
+(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/changepage/changepage.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tocloft/tocloft.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/sectsty/sectsty.sty
+
+LaTeX Warning: Command \underbar  has changed.
+               Check if current package is valid.
+
+
+LaTeX Warning: Command \underline  has changed.
+               Check if current package is valid.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/translations/translations.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/was/upgreek.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty
+
+! LaTeX Error: Command \captionof already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 ...nd\captionof[1]{\def\@captype{#1}\caption}
+                                                  
+? ) (/usr/share/texlive/texmf-dist/tex/latex/xargs/xargs.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex))))
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/trimclip.sty
+(/usr/share/texlive/texmf-dist/tex/latex/collectbox/collectbox.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/tc-pdftex.def))
+(/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/pdfx.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifpdf.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/everyshi/everyshi.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty){/var/lib/texmf/f
+onts/map/pdftex/updmap/pdftex.map}
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/l8u-penc.def)
+
+Package hyperref Warning: Option `pdftex' has already been used,
+(hyperref)                setting the option has no effect on input line 1461.
+
+
+Package hyperref Warning: Option `pdfa' has already been used,
+(hyperref)                setting the option has no effect on input line 1461.
+
+(/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc-greekbasic.def)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/psdextra.def)
+(/usr/share/texlive/texmf-dist/tex/generic/colorprofiles/colorprofiles.sty
+(/usr/share/texlive/texmf-dist/tex/generic/colorprofiles/colorprofiles.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/stringenc/se-pdfdoc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/AdobeColorProfiles.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
+** pdfx: No file relatorio_preditivo.xmpdata . Metadata will be incomplete!
+<<sRGB.icc>> (/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftex/glyphtounicode.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/glyphtounicode-cmr.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/glyphtounicode-ntx.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/xmpincl/xmpincl.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
+Using XMP template file: pdfa.xmp
+<<pdfa.xmpi>>))
+(/usr/share/texlive/texmf-dist/tex/latex/mathastext/mathastext.sty
+** ! and ?
+** punctuation: , . : ; and \colon
+** + and =
+** adding = ; and + to \nfss@catcodes
+** parentheses ( ) [ ] and slash /
+** alldelims: < > \backslash \setminus | \vert \mid \{ and \}
+** \# \mathdollar \% \& 
+** \imath and \jmath 
+** Latin letters in the `normal' (resp. `bold') math versions are now
+** set up to use the fonts T1/phv/m(b)/it
+** Other characters (digits, ...) and \log-like names will be
+** typeset with the n shape.
+** \hbar
+** minus as endash
+** \Huge and \HUGE have been (re)-defined.
+** mathastext has declared larger sizes for subscripts.
+** To keep LaTeX defaults, use option `defaultmathsizes'.
+)
+! Undefined control sequence.
+l.13 \addto
+           \captionsbrazil{%
+? ! Undefined control sequence.
+l.13 \addto\captionsbrazil
+                          {%
+? ! Undefined control sequence.
+l.17 \addto
+           \captionsenglish{%
+? ! Undefined control sequence.
+l.17 \addto\captionsenglish
+                           {%
+? (/usr/share/texlive/texmf-dist/tex/latex/abntex2/abntex2cite.sty
+(/usr/share/texlive/texmf-dist/tex/latex/abntex2/abntex2abrev.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)
+(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
+atorio_preditivo.aux)
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
+atorio_preditivo.out)
+(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
+atorio_preditivo.out)
+(/usr/share/texlive/texmf-dist/tex/latex/ragged2e/ragged2e.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictio
+nary-english.trsl)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(./tex/relatorio_preditivo/tex/capa.tex [1 <./tex/figuras_tex/headImage.pdf> <.
+/tex/figuras_tex/footImage.pdf>]
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd) [1]
+(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
+atorio_preditivo.toc (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)) [2])
+(./tex/relatorio_preditivo/tex/corpo.tex
+(./tex/relatorio_preditivo/tex/introducao.tex)
+(./tex/relatorio_preditivo/tex/atividades_resultados.tex
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.11 
+      [1] [2] (./tex/relatorio_preditivo/tex/mapa.tex
+
+LaTeX Warning: File `/home/ipt/projetos/ClassificadorSismologico/arquivos/figur
+as/mapas/mapa.png' not found on input line 11.
+
+
+! Package pdftex.def Error: File `/home/ipt/projetos/ClassificadorSismologico/a
+rquivos/figuras/mapas/mapa.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 ...smologico/arquivos/figuras/mapas/mapa.png}
+                                                  
+? (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd)) [3]
+(./tex/relatorio_preditivo/tex/figures.tex [4
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.8 
+    ] [5
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.24 
+     
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.24 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+/8.04008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismol
+ogico/arquivos/figuras/pos_process/n_sta_recall_04008.png>] [6
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.40 
+     
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.40 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+/n_sta_recall_1.254008.png> </home/ipt/projetos/ClassificadorSismologico/arquiv
+os/figuras/pos_process/0.54008_boxplot_ev_distance_event.png>] [7
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.56 
+     
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.56 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+/n_sta_recall_1.04008.png> </home/ipt/projetos/ClassificadorSismologico/arquivo
+s/figuras/pos_process/5.04008_boxplot_ev_distance_event.png>] [8
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.72 
+     
+pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.72 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+/n_sta_recall_1.754008.png> </home/ipt/projetos/ClassificadorSismologico/arquiv
+os/figuras/pos_process/04008_hist_ev_distance_event.png>] [9
+pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.88 
+     
+pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.88 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+/n_sta_recall_2.04008.png> </home/ipt/projetos/ClassificadorSismologico/arquivo
+s/figuras/pos_process/04008_hist_ev_distance.png>] [10
+pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.104 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.104 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+s/04008_boxplot_ev_mag_event.png> </home/ipt/projetos/ClassificadorSismologico/
+arquivos/figuras/pos_process/n_sta_recall_0.54008.png>] [11
+pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.120 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.15}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.120 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+s/n_sta_recall_4.04008.png> </home/ipt/projetos/ClassificadorSismologico/arquiv
+os/figuras/pos_process/2.04008_boxplot_ev_distance_event.png>] [12
+pdfTeX warning (ext4): destination with the same identifier (name{figure.16}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.136 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.17}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.136 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+s/7.04008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismo
+logico/arquivos/figuras/pos_process/1.754008_boxplot_ev_distance_event.png>]
+[13
+pdfTeX warning (ext4): destination with the same identifier (name{figure.18}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.152 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.19}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.152 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+s/1.54008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismo
+logico/arquivos/figuras/pos_process/1.254008_boxplot_ev_distance_event.png>]
+[14
+pdfTeX warning (ext4): destination with the same identifier (name{figure.20}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.168 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.21}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.168 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+s/0.754008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSism
+ologico/arquivos/figuras/pos_process/n_sta_recall_1.54008.png>] [15
+pdfTeX warning (ext4): destination with the same identifier (name{figure.22}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.184 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.23}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.184 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+s/n_sta_recall_0.754008.png> </home/ipt/projetos/ClassificadorSismologico/arqui
+vos/figuras/pos_process/dist_snrs_recall.png>] [16
+pdfTeX warning (ext4): destination with the same identifier (name{figure.24}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.192 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+s/04008_boxplot_std_prob_nat.png>] [17
+pdfTeX warning (ext4): destination with the same identifier (name{figure.25}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.208 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.26}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.208 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+s/04008_dist_mean_snrs_recall.png> </home/ipt/projetos/ClassificadorSismologico
+/arquivos/figuras/pos_process/10.04008_boxplot_ev_distance_event.png>] [18
+pdfTeX warning (ext4): destination with the same identifier (name{figure.27}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.224 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.28}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.224 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+s/n_sta_recall_3.04008.png> </home/ipt/projetos/ClassificadorSismologico/arquiv
+os/figuras/pos_process/dist_ev_cat_mag_recall.png>] [19
+pdfTeX warning (ext4): destination with the same identifier (name{figure.29}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.240 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.30}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.240 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+s/n_sta_recall_0.254008.png> </home/ipt/projetos/ClassificadorSismologico/arqui
+vos/figuras/pos_process/3.04008_boxplot_ev_distance_event.png>] [20
+pdfTeX warning (ext4): destination with the same identifier (name{figure.31}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.256 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.32}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.256 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+s/9.04008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismo
+logico/arquivos/figuras/pos_process/region_corr.png>] [21
+pdfTeX warning (ext4): destination with the same identifier (name{figure.33}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.272 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.34}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.272 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+s/6.04008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismo
+logico/arquivos/figuras/pos_process/hist_ev_hour_recall_event.png>] [22
+pdfTeX warning (ext4): destination with the same identifier (name{figure.35}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.288 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.36}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.288 
+       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
+s/0.254008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSism
+ologico/arquivos/figuras/pos_process/04008_boxplot_ev_distance_event.png>])
+Overfull \hbox (19.12613pt too wide) in paragraph at lines 57--58
+[]\T1/phv/m/n/12 Todos os códi-gos e al-go-rit-mos de-sen-volvi-dos es-tão de-v
+-i-da-mente doc-u-men-ta-dos e disponíveis
+[23
+pdfTeX warning (ext4): destination with the same identifier (name{figure.37}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.58 
+     
+pdfTeX warning (ext4): destination with the same identifier (name{figure.38}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.58 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
+/1.04008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismol
+ogico/arquivos/figuras/pos_process/4.04008_boxplot_ev_distance_event.png>])
+(./tex/relatorio_preditivo/tex/consideracoes_finais.tex
+Overfull \hbox (5.58174pt too wide) in paragraph at lines 8--9
+[]\T1/phv/m/n/12 Na área de in-fluên-cia do em-preendi-mento foram reg-istra-do
+s sessenta e sete (67) desmontes
+[24]) [25])
+No file relatorio_preditivo.bbl.
+
+AED: lastpage setting LastPage
+[26]
+(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
+atorio_preditivo.aux) ){/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.e
+nc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf
+/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/he
+lvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro
+8a.pfb>
+Output written on /home/ipt/projetos/ClassificadorSismologico/arquivos/resultad
+os/relatorios/relatorio_preditivo.pdf (29 pages, 3070590 bytes).
+Transcript written on /home/ipt/projetos/ClassificadorSismologico/arquivos/resu
+ltados/relatorios/relatorio_preditivo.log.

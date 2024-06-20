@@ -1,0 +1,203 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+0it [00:00, ?it/s]1it [00:00,  3.69it/s]22it [00:00, 74.70it/s]43it [00:00, 118.35it/s]60it [00:00, 130.49it/s]82it [00:00, 156.12it/s]104it [00:00, 173.93it/s]125it [00:00, 182.40it/s]147it [00:00, 192.19it/s]168it [00:01, 185.62it/s]188it [00:01, 186.60it/s]208it [00:01, 170.08it/s]228it [00:01, 177.87it/s]247it [00:01, 170.38it/s]265it [00:01, 142.68it/s]281it [00:01, 144.61it/s]297it [00:01, 147.83it/s]313it [00:02, 130.68it/s]327it [00:02, 112.25it/s]340it [00:02, 114.18it/s]360it [00:02, 135.04it/s]381it [00:02, 152.72it/s]403it [00:02, 169.32it/s]423it [00:02, 169.54it/s]441it [00:02, 162.26it/s]463it [00:03, 177.25it/s]482it [00:03, 180.54it/s]504it [00:03, 190.58it/s]526it [00:03, 197.85it/s]548it [00:03, 202.78it/s]569it [00:03, 147.34it/s]587it [00:03, 134.19it/s]603it [00:03, 139.78it/s]625it [00:04, 157.81it/s]647it [00:04, 172.35it/s]666it [00:04, 170.06it/s]684it [00:04, 167.37it/s]702it [00:04, 163.39it/s]720it [00:04, 167.69it/s]738it [00:04, 143.93it/s]755it [00:04, 149.08it/s]772it [00:05, 154.08it/s]789it [00:05, 157.98it/s]806it [00:05, 160.33it/s]823it [00:05, 149.82it/s]840it [00:05, 154.04it/s]857it [00:05, 157.85it/s]874it [00:05, 160.32it/s]891it [00:05, 161.98it/s]908it [00:05, 160.63it/s]926it [00:05, 165.07it/s]943it [00:06, 165.42it/s]961it [00:06, 168.07it/s]978it [00:06, 163.39it/s]999it [00:06, 173.33it/s]1020it [00:06, 181.59it/s]1040it [00:06, 185.89it/s]1061it [00:06, 191.99it/s]1081it [00:06, 184.93it/s]1102it [00:06, 191.60it/s]1123it [00:07, 194.53it/s]1144it [00:07, 196.44it/s]1165it [00:07, 198.12it/s]1185it [00:07, 195.63it/s]1205it [00:07, 167.10it/s]1223it [00:07, 141.96it/s]1239it [00:07, 136.01it/s]1257it [00:07, 146.44it/s]1276it [00:07, 156.19it/s]1293it [00:08, 144.92it/s]1309it [00:08, 148.02it/s]1325it [00:08, 149.24it/s]1341it [00:08, 150.95it/s]1357it [00:08, 150.55it/s]1373it [00:08, 140.92it/s]1390it [00:08, 147.28it/s]1407it [00:08, 153.27it/s]1423it [00:09, 147.62it/s]1438it [00:09, 137.99it/s]1452it [00:09, 132.65it/s]1467it [00:09, 135.95it/s]1485it [00:09, 146.60it/s]1503it [00:09, 154.32it/s]1521it [00:09, 160.00it/s]1538it [00:09, 152.76it/s]1554it [00:09, 144.69it/s]1572it [00:10, 152.33it/s]1594it [00:10, 170.12it/s]1616it [00:10, 183.38it/s]1637it [00:10, 187.68it/s]1656it [00:10, 188.20it/s]1675it [00:10, 183.72it/s]1694it [00:10, 158.68it/s]1712it [00:10, 162.82it/s]1729it [00:10, 159.12it/s]1748it [00:11, 167.38it/s]1766it [00:11, 164.41it/s]1783it [00:11, 151.40it/s]1799it [00:11, 127.08it/s]1813it [00:11, 116.67it/s]1826it [00:11, 115.11it/s]1840it [00:11, 120.16it/s]1859it [00:11, 136.49it/s]1874it [00:12, 118.28it/s]1887it [00:12, 116.69it/s]1906it [00:12, 134.38it/s]1923it [00:12, 142.56it/s]1940it [00:12, 148.84it/s]1957it [00:12, 153.41it/s]1973it [00:12, 155.16it/s]1989it [00:12, 152.76it/s]2005it [00:12, 143.87it/s]2022it [00:13, 149.69it/s]2039it [00:13, 153.73it/s]2058it [00:13, 162.65it/s]2077it [00:13, 169.14it/s]2096it [00:13, 172.57it/s]2114it [00:13, 163.33it/s]2131it [00:13, 137.16it/s]2146it [00:13, 127.75it/s]2160it [00:14, 116.73it/s]2176it [00:14, 125.95it/s]2195it [00:14, 141.03it/s]2212it [00:14, 144.61it/s]2230it [00:14, 153.07it/s]2252it [00:14, 169.74it/s]2272it [00:14, 178.17it/s]2291it [00:14, 148.25it/s]2307it [00:15, 130.66it/s]2322it [00:15, 123.25it/s]2341it [00:15, 138.66it/s]2361it [00:15, 152.72it/s]2380it [00:15, 161.35it/s]2400it [00:15, 170.17it/s]2419it [00:15, 175.50it/s]2438it [00:15, 179.10it/s]2457it [00:15, 173.03it/s]2475it [00:15, 169.65it/s]2493it [00:16, 159.18it/s]2510it [00:16, 160.68it/s]2529it [00:16, 168.53it/s]2550it [00:16, 178.62it/s]2569it [00:16, 181.79it/s]2588it [00:16, 179.39it/s]2607it [00:16, 173.00it/s]2627it [00:16, 178.27it/s]2645it [00:16, 178.34it/s]2663it [00:17, 177.79it/s]2681it [00:17, 144.59it/s]2697it [00:17, 135.67it/s]2712it [00:17, 129.53it/s]2733it [00:17, 149.21it/s]2749it [00:17, 148.45it/s]2768it [00:17, 158.38it/s]2785it [00:17, 157.23it/s]2802it [00:18, 150.58it/s]2818it [00:18, 152.20it/s]2835it [00:18, 156.67it/s]2852it [00:18, 159.57it/s]2869it [00:18, 161.30it/s]2887it [00:18, 165.94it/s]2904it [00:18, 162.16it/s]2923it [00:18, 169.86it/s]2942it [00:18, 175.05it/s]2961it [00:18, 177.30it/s]2979it [00:19, 165.55it/s]2996it [00:19, 164.97it/s]3013it [00:19, 146.53it/s]3029it [00:19, 139.42it/s]3050it [00:19, 156.20it/s]3069it [00:19, 163.71it/s]3086it [00:19, 149.61it/s]3105it [00:19, 158.50it/s]3122it [00:20, 160.09it/s]3139it [00:20, 143.92it/s]3158it [00:20, 154.38it/s]3177it [00:20, 163.55it/s]3194it [00:20, 145.03it/s]3211it [00:20, 148.01it/s]3230it [00:20, 158.68it/s]3249it [00:20, 167.00it/s]3268it [00:20, 172.00it/s]3286it [00:21, 167.96it/s]3304it [00:21, 166.62it/s]3322it [00:21, 169.58it/s]3340it [00:21, 171.40it/s]3358it [00:21, 164.01it/s]3376it [00:21, 167.50it/s]3393it [00:21, 166.55it/s]3410it [00:21, 156.07it/s]3426it [00:21, 146.36it/s]3441it [00:22, 136.63it/s]3455it [00:22, 123.18it/s]3468it [00:22, 121.25it/s]3484it [00:22, 131.24it/s]3505it [00:22, 151.14it/s]3525it [00:22, 164.60it/s]3545it [00:22, 173.84it/s]3564it [00:22, 177.45it/s]3584it [00:22, 181.82it/s]3605it [00:23, 188.10it/s]3625it [00:23, 191.39it/s]3646it [00:23, 194.31it/s]3666it [00:23, 192.55it/s]3686it [00:23, 191.97it/s]3707it [00:23, 195.33it/s]3727it [00:23, 196.53it/s]3747it [00:23, 197.34it/s]3767it [00:23, 192.98it/s]3787it [00:24, 188.86it/s]3806it [00:24, 187.39it/s]3827it [00:24, 191.90it/s]3847it [00:24, 193.48it/s]3867it [00:24, 192.18it/s]3887it [00:24, 194.45it/s]3908it [00:24, 197.42it/s]3928it [00:24, 198.12it/s]3949it [00:24, 200.02it/s]3970it [00:24, 197.80it/s]3991it [00:25, 198.90it/s]4012it [00:25, 200.75it/s]4033it [00:25, 201.95it/s]4054it [00:25, 198.70it/s]4075it [00:25, 200.14it/s]4096it [00:25, 200.94it/s]4117it [00:25, 200.31it/s]4138it [00:25, 200.38it/s]4159it [00:25, 196.15it/s]4179it [00:25, 194.71it/s]4200it [00:26, 197.30it/s]4221it [00:26, 199.08it/s]4241it [00:26, 198.98it/s]4261it [00:26, 193.73it/s]4281it [00:26, 184.64it/s]4300it [00:26, 172.10it/s]4321it [00:26, 181.74it/s]4342it [00:26, 188.16it/s]4363it [00:26, 193.02it/s]4384it [00:27, 197.11it/s]4405it [00:27, 199.46it/s]4426it [00:27, 198.33it/s]4446it [00:27, 198.06it/s]4466it [00:27, 148.35it/s]4483it [00:27, 140.07it/s]4499it [00:27, 134.55it/s]4514it [00:28, 117.08it/s]4527it [00:28, 108.67it/s]4539it [00:28, 95.66it/s] 4550it [00:28, 93.45it/s]4563it [00:28, 100.58it/s]4574it [00:28, 96.52it/s] 4584it [00:28, 87.39it/s]4594it [00:29, 83.74it/s]4603it [00:29, 80.62it/s]4618it [00:29, 97.47it/s]4629it [00:29, 78.09it/s]4639it [00:29, 82.06it/s]4654it [00:29, 97.00it/s]4673it [00:29, 119.79it/s]4689it [00:29, 127.99it/s]4703it [00:29, 124.71it/s]4719it [00:30, 131.65it/s]4733it [00:30, 132.76it/s]4747it [00:30, 124.90it/s]4760it [00:30, 109.68it/s]4772it [00:30, 110.92it/s]4788it [00:30, 121.67it/s]4801it [00:30, 106.13it/s]4813it [00:31, 93.93it/s] 4824it [00:31, 96.82it/s]4837it [00:31, 104.87it/s]4857it [00:31, 129.11it/s]4871it [00:31, 131.88it/s]4885it [00:31, 123.91it/s]4898it [00:31, 110.44it/s]4910it [00:31, 99.95it/s] 4921it [00:31, 98.74it/s]4932it [00:32, 92.04it/s]4942it [00:32, 92.71it/s]4955it [00:32, 99.30it/s]4966it [00:32, 99.05it/s]4977it [00:32, 88.88it/s]4987it [00:32, 83.98it/s]4998it [00:32, 89.77it/s]5016it [00:32, 112.81it/s]5035it [00:33, 129.73it/s]5049it [00:33, 112.96it/s]5061it [00:33, 90.89it/s] 5072it [00:33, 94.83it/s]5083it [00:33, 89.71it/s]5100it [00:33, 108.00it/s]5116it [00:33, 121.00it/s]5129it [00:34, 110.01it/s]5141it [00:34, 92.28it/s] 5152it [00:34, 81.62it/s]5161it [00:34, 81.04it/s]5170it [00:34, 78.69it/s]5181it [00:34, 85.42it/s]5191it [00:34, 88.13it/s]5206it [00:34, 103.49it/s]5218it [00:35, 107.88it/s]5233it [00:35, 118.23it/s]5246it [00:35, 110.41it/s]5265it [00:35, 130.67it/s]5285it [00:35, 149.55it/s]5302it [00:35, 154.71it/s]5323it [00:35, 168.14it/s]5341it [00:35, 166.34it/s]5358it [00:35, 163.52it/s]5378it [00:35, 172.39it/s]5396it [00:36, 129.79it/s]5411it [00:36, 113.45it/s]5428it [00:36, 125.29it/s]5448it [00:36, 142.44it/s]5466it [00:36, 151.47it/s]5485it [00:36, 160.62it/s]5502it [00:36, 161.02it/s]5522it [00:37, 171.73it/s]5542it [00:37, 179.01it/s]5562it [00:37, 184.95it/s]5583it [00:37, 191.02it/s]5604it [00:37, 195.08it/s]5625it [00:37, 196.72it/s]5645it [00:37, 196.92it/s]5665it [00:37, 197.24it/s]5685it [00:37, 180.78it/s]5706it [00:37, 187.67it/s]5727it [00:38, 192.24it/s]5748it [00:38, 195.20it/s]5769it [00:38, 196.75it/s]5789it [00:38, 197.66it/s]5809it [00:38, 193.57it/s]5829it [00:38, 188.78it/s]5850it [00:38, 192.43it/s]5870it [00:38, 164.83it/s]5888it [00:39, 143.25it/s]5904it [00:39, 145.88it/s]5920it [00:39, 149.39it/s]5936it [00:39, 122.51it/s]5950it [00:39, 108.96it/s]5963it [00:39, 113.16it/s]5976it [00:39, 113.13it/s]5988it [00:39, 109.28it/s]6005it [00:40, 123.84it/s]6024it [00:40, 140.06it/s]6039it [00:40, 128.96it/s]6056it [00:40, 139.54it/s]6077it [00:40, 157.66it/s]6098it [00:40, 170.72it/s]6119it [00:40, 179.99it/s]6138it [00:40, 168.17it/s]6158it [00:40, 176.58it/s]6178it [00:41, 182.91it/s]6197it [00:41, 158.13it/s]6214it [00:41, 142.66it/s]6230it [00:41, 145.76it/s]6246it [00:41, 149.07it/s]6266it [00:41, 161.07it/s]6285it [00:41, 167.46it/s]6303it [00:41, 154.54it/s]6319it [00:41, 155.01it/s]6335it [00:42, 146.99it/s]6352it [00:42, 151.09it/s]6368it [00:42, 138.95it/s]6383it [00:42, 139.25it/s]6398it [00:42, 121.87it/s]6411it [00:42, 112.25it/s]6423it [00:42, 103.24it/s]6434it [00:42, 103.26it/s]6449it [00:43, 113.05it/s]6461it [00:43, 112.66it/s]6475it [00:43, 119.61it/s]6492it [00:43, 133.36it/s]6509it [00:43, 141.95it/s]6527it [00:43, 139.74it/s]6542it [00:43, 121.94it/s]6555it [00:43, 111.19it/s]6571it [00:44, 121.48it/s]6584it [00:44, 120.72it/s]6597it [00:44, 116.95it/s]6609it [00:44, 106.16it/s]6620it [00:44, 99.67it/s] 6633it [00:44, 106.97it/s]6647it [00:44, 111.41it/s]6659it [00:44, 105.58it/s]6671it [00:45, 107.83it/s]6683it [00:45, 110.10it/s]6697it [00:45, 117.39it/s]6717it [00:45, 139.88it/s]6732it [00:45, 133.11it/s]6749it [00:45, 139.89it/s]6764it [00:45, 115.12it/s]6777it [00:45, 109.26it/s]6789it [00:46, 100.26it/s]6801it [00:46, 104.79it/s]6813it [00:46, 106.98it/s]6825it [00:46, 98.54it/s] 6836it [00:46, 94.09it/s]6849it [00:46, 102.91it/s]6862it [00:46, 109.38it/s]6876it [00:46, 116.38it/s]6888it [00:46, 106.89it/s]6900it [00:47, 98.42it/s] 6911it [00:47, 91.89it/s]6923it [00:47, 97.80it/s]6934it [00:47, 97.60it/s]6949it [00:47, 111.00it/s]6966it [00:47, 125.07it/s]6983it [00:47, 135.43it/s]7002it [00:47, 149.87it/s]7018it [00:47, 144.82it/s]7038it [00:48, 159.19it/s]7058it [00:48, 160.35it/s]7075it [00:48, 147.50it/s]7091it [00:48, 141.47it/s]7106it [00:48, 137.92it/s]7122it [00:48, 139.63it/s]7137it [00:48, 117.23it/s]7150it [00:48, 120.22it/s]7170it [00:49, 139.09it/s]7189it [00:49, 151.25it/s]7205it [00:49, 119.24it/s]7219it [00:49, 118.67it/s]7232it [00:49, 119.41it/s]7251it [00:49, 135.52it/s]7271it [00:49, 152.45it/s]7287it [00:49, 139.52it/s]7302it [00:50, 120.06it/s]7315it [00:50, 117.22it/s]7331it [00:50, 126.76it/s]7350it [00:50, 143.00it/s]7370it [00:50, 156.74it/s]7387it [00:50, 150.16it/s]7403it [00:50, 150.56it/s]7424it [00:50, 164.80it/s]7444it [00:51, 174.60it/s]7463it [00:51, 178.80it/s]7483it [00:51, 184.63it/s]7503it [00:51, 188.60it/s]7524it [00:51, 193.08it/s]7544it [00:51, 194.15it/s]7564it [00:51, 194.40it/s]7584it [00:51, 194.07it/s]7605it [00:51, 196.51it/s]7625it [00:51, 191.97it/s]7645it [00:52, 191.75it/s]7666it [00:52, 194.68it/s]7686it [00:52, 196.21it/s]7706it [00:52, 197.11it/s]7726it [00:52, 197.67it/s]7747it [00:52, 198.62it/s]7757it [00:52, 147.48it/s]
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:505: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['Hora'] = pd.to_numeric(df['Hora'])
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:506: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['Cat Hora'] = pd.cut(
+Fontconfig warning: "/home/ipt/.config/fontconfig/fonts.conf", line 11: saw number, expected string
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:789: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  fig, ax = plt.subplots(figsize=(19, 9))
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1252: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['SNR_P_cat'] = pd.Categorical(
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1293: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout()
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1321: RuntimeWarning: invalid value encountered in scalar divide
+  nb_sta = df[df['SNR_P_Q2_cat'] == r].shape[0]/f_a
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1452: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.boxplot(
+CategoricalIndex(['<1', '[1-2[', '[2-3[', '>=3'], categories=['<1', '[1-2[', '[2-3[', '>=3'], ordered=True, dtype='category', name='Magnitude_cat')
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+
+ -------------- Processo de criação de mapas iniciado ------------------
+
+ ----------------- Iniciando o pdflatex .tex ---------------------------- 
+usage: figures.py [-h] --path PATH
+figures.py: error: the following arguments are required: --path
