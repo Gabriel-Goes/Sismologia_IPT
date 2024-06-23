@@ -33,13 +33,13 @@
 # mesma rede e criará um arquivo eventos.csv
 
 # -----------------------------  VARIÁVEIS -------------------------------------
-CATALOG=${1:-"catalogo-moho.csv"}
+CATALOG=${1:-"catalogo-moho-maio.csv"}
 EVENTS=${EVENTS:-false}
-TREATCATALOG=${TREATCATALOG:-false}
+TREATCATALOG=${TREATCATALOG:-true}
 PREDICT=${PREDICT:-false}
-POSPROCESS=${POSPROCESS:-true}
-MAPS=${MAPS:-true}
-REPORT=${REPORT:-true}
+POSPROCESS=${POSPROCESS:-false}
+MAPS=${MAPS:-false}
+REPORT=${REPORT:-false}
 
 # ----------------------------- CONSTANTES -------------------------------------
 set -e

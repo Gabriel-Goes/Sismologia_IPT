@@ -1,0 +1,34 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\pagestyle{empty}
+\usepackage[utf8]{inputenc}
+\usepackage{parskip}
+\usepackage{setspace}
+\singlespacing
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=30mm,
+    right=30mm,
+    top=25mm,
+    bottom=25mm
+}
+\usepackage{fontspec}
+\setmainfont{Arial}
+
+
+\begin{document}
+
+\begin{center}
+    \fontsize{12}{14}\textbf{\uppercase{NATURAL OU  ANTROPOGÊNICO: EFICÁCIA DE MODELO DE REDES NEURAIS CONVOLUCIONAIS EM REDE SISMOLÓGICA ESPARSA}}\\
+    \fontsize{11}{13}\textit{de Lima, GGR¹²; Schirbel, L²}\\
+    \fontsize{10}{12}¹Instituto de Geociências, Universidade de São Paulo - IGc/USP; ²Instituto de Pesquisas Tecnológicas - IPT\\
+\end{center}
+
+\par{
+    \fontsize{12}{14}\textbf{Resumo: }O projeto "Classificador Sismológico" visa testar a performance de um modelo de classificação de eventos sísmicos, desenvolvido pelo Laboratório de Planetologia e Geociências da Universidade de Nantes, no contexto da rede sismológica brasileira. O algoritmo francês, que emprega redes neurais convolucionais, foi originalmente treinado com dados de sismos da região metropolitana francesa e demonstrou uma precisão superior a 95\% na distinção entre eventos naquela região. Este desempenho foi validado tanto em território francês quanto com dados do estado norte-americano de Utah. O objetivo do presente estudo é verificar a eficácia desse modelo ao classificar eventos sísmicos em uma rede esparsa como a brasileira, que apresenta um contexto geológico distinto do conjunto de treino original. Para a realização do estudo, foi utilizado o catálogo de eventos sismológicos da rede brasileira, que abrange o período de fevereiro de 1903 a maio de 2024, contendo inicialmente 10.173 eventos após seleção por área que engloba o território continental brasileiro e também em horários onde não são esperadas detonações de desmonte. Após um processo de pré-processamento, que incluiu a aplicação de um filtro temporal e geográfico, os dados foram reduzidos para 2.594 eventos, todos rotulados como naturais. Este tratamento dos dados envolveu a limitação da idade dos eventos a partir da integração nacional dos dados da rede sísmica, de janeiro de 2010, e a inclusão apenas dos eventos que se encontram dentro de um buffer de 400 km em torno do território continental brasileiro. A análise exploratória dos eventos sismológicos do catálogo revelou diferenças significativas na distribuição dos horários de ocorrência dos eventos selecionados em comparação com o catálogo completo, sugerindo a possibilidade de que o catálogo de eventos possa estar poluído por alguns eventos antropogênicos, o que destaca a importância de uma revisão cuidadosa dos dados. Os resultados obtidos até o momento apontam que, para eventos captados por mais de quatro estações, o recall é superior a 95\%, enquanto para eventos com menos estações, o recall atinge 90\%. Com o avanço do projeto, espera-se que o modelo francês possa ajudar a revisar o catálogo de eventos naturais da rede brasileira, além de auxiliar na classificação de eventos sismológicos, aumentando a automação dos serviços prestados pelo Instituto.  O projeto também se beneficiará da integração de tecnologias avançadas como ObsPy e Pyrocko como um complemento para o QGIS. Essas ferramentas permitirão uma análise mais detalhada dos dados sismológicos, facilitando a visualização espacial e a interpretação das propriedades geofísicas dos eventos classificados. A implementação dessas tecnologias contribuirá para aprimorar a precisão do sistema automatizado de classificação e a geração de relatórios detalhados, fornecendo informações valiosas para o trabalho de analistas sismológicos nos contextos locais e regionais.
+}
+
+\fontsize{12}{14}\textbf{\uppercase{PALAVRAS-CHAVE:}} Redes neurais convolucionais; classificação de eventos sismológicos; rede esparsa; sismos antropogênicos
+
+\end{document}

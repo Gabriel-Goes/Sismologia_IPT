@@ -398,19 +398,16 @@ def fluxo_eventos(
 
 
 # ---------------------------- MAIN -------------------------------------------
-def main(
-        http_1='http://seisarc.sismo.iag.usp.br/',
-        http_2='http://rsbr.on.br:8081/fdsnws/dataselect/1/',
-        rand=False):
+def main(rand=False):
     try:
-        DATA_CLIENT = Client(http_1)
+        DATA_CLIENT = Client('http://seisarc.sismo.iag.usp.br/')
     except Exception as e:
         print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
-        try:
-            DATA_CLIENT_BKP = Client(http_2)
-        except Exception as e:
-            print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
-            sys.exit(1)
+    try:
+        DATA_CLIENT_BKP = Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
+    except Exception as e:
+        print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
+        sys.exit(1)
 
     if rand:
         random.seed(42)
@@ -423,7 +420,7 @@ def main(
 
     else:
         EventIDs = csv2list(sys.argv[1])
-        catalogo, missin_ids = main(
+        catalogo, missin_ids = fluxo_eventos(
             EventIDs,
             DATA_CLIENT,
             DATA_CLIENT_BKP)
