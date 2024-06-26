@@ -471,7 +471,10 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         mseed = f'{net}_{sta}_{ev}'
         st = read(f'{PROJ_DIR}arquivos/mseed/{ev}/{mseed}.mseed')
         st.detrend('linear').taper(0.05).filter(
-            'highpass', freq=2, corners=4, zerophase=True
+            'highpass',
+            freq=2,
+            corners=4,
+            zerophase=True
         )
         t = np.arange(st.stats.npts) * st.stats.delta
         logging.info(f'Stream carregada e Traço calculado {mseed}')
