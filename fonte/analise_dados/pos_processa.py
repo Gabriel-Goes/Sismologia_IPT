@@ -1618,10 +1618,7 @@ def clean_data(df):
         (events_Ant['Event Prob_Ant'] >= 0.6)
     ]
 
-
-
     return events_Ant, events_Ant_90, events_Ant_80, events_Ant_70, events_Ant_65, events_Ant_60
-
 
 
 # -------------------------------- MAIN ------------------------------------- #
