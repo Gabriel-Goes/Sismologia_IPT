@@ -126,7 +126,6 @@ def check_ev_id():
 
 
 # ----------------------------  PLOT  -----------------------------------------
-# Função para plotar a distribuição por hora
 def plot_distrib_hora(
         catalog: pd.DataFrame, title='bruto',
         textwidth=7, scale=1.0, aspect_ratio=6/8) -> None:
@@ -185,22 +184,34 @@ def profundidade_catalogo(
     height = width * aspect_ratio
     plt.figure(figsize=(width, height), constrained_layout=True)
     plt.yscale('log')
-    plt.hist(
+    n, bins, patches = plt.hist(
         catalogo['Depth/km'],
-        bins=50,
+        bins=10,
         color='#1f77b4',
         edgecolor='black',
         alpha=0.7,
-        density=True
+        density=False,
     )
+    for i in range(len(patches)):
+        bin_value = n[i] / catalogo.shape[0] * 100
+        plt.text(
+            patches[i].get_x() + patches[i].get_width() / 2 + 2,
+            patches[i].get_height() + patches[i].get_height() * 0.05,
+            f'{bin_value:.2f}%',
+            ha='center',
+            va='bottom',
+            fontsize=8,
+            rotation=0,
+        )
     plt.suptitle('Distribuição de Profundidade')
     plt.title(f'Catálogo {title} com {catalogo.shape[0]} eventos')
     plt.xlabel('Profundidade (km)')
-    plt.ylabel('Frequência relativa (log$_{10}$ %)')
+    plt.ylabel('Frequência absoluta (log)')
     plt.grid(True, linestyle='--', linewidth=0.7, alpha=0.7)
     plt.tight_layout()
     plt.savefig(f'arquivos/figuras/pre_processa/hist_profundidade_{title}.png')
     plt.savefig(f'arquivos/figuras/pre_processa/hist_profundidade_{title}.pgf')
+    plt.show()
 
 
 def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
@@ -303,7 +314,7 @@ def plot_prof_as_red(catalog: pd.DataFrame, title='bruto') -> None:
         style="t0.3", fill="white", pen="black",
         label="Capitais"
     )
-    fig.legend(position="JBR+jBR+o0.5c/0.5c", box="+gwhite+p1p,black")
+    fig.legend(position="JBR+jBR+o1.5c/0.5c", box="+gwhite+p1p,black")
     fig.basemap(rose="jTL+w2c+o0.5c/0.5c+f")
     fig.colorbar(
         frame=["x+lProfundidade (km)", "y+lm"],
@@ -317,6 +328,70 @@ def plot_prof_as_red(catalog: pd.DataFrame, title='bruto') -> None:
         print(f"Erro ao salvar como PNG: {e}")
     finally:
         fig = None  # Limpar a figura para liberar recursos
+
+
+def plot_by_macrorregioes(
+        catalog: pd.DataFrame,
+        title: str = 'bruto',
+        attribute: str = 'Depth/km',
+        textwidth=7,
+        scale=1.0,
+        aspect_ratio=6/8,
+        bins=10
+        ) -> None:
+    width = textwidth * scale
+    height = width * aspect_ratio
+    macro_br = gpd.read_file('arquivos/figuras/mapas/macrorregioesBrasil.json')
+    macro_br = macro_br.to_crs(epsg=4326)
+    regions = list(macro_br['nome']) + ['Exterior']
+    num_regions = len(regions)
+    cols = 3
+    rows = (num_regions + cols - 1) // cols  # Número de linhas necessário
+
+    fig, axes = plt.subplots(rows, cols, figsize=(width, height), constrained_layout=True)
+    axes = axes.flatten()  # Flatten para iteração fácil
+
+    all_geometries = macro_br['geometry'].unary_union  # Combina todas as geometrias das macrorregiões
+
+    for i, regiao in enumerate(regions):
+        ax = axes[i]
+        ax.set_title(regiao, fontsize=10)
+        ax.set_yscale('log')
+        ax.grid(True, linestyle='--', linewidth=0.7, alpha=0.7)
+        ax.set_xlabel('Profundidade (km)', fontsize=8)
+        ax.set_ylabel('Frequência', fontsize=8)
+
+        if regiao != 'Exterior':
+            data = catalog[attribute][catalog['geometry'].within(macro_br.loc[macro_br['nome'] == regiao, 'geometry'].values[0])]
+        else:
+            data = catalog[attribute][~catalog['geometry'].within(all_geometries)]
+
+        counts, bin_edges, _ = ax.hist(
+            data,
+            bins=bins,
+            color='#1f77b4',
+            edgecolor='black',
+            alpha=0.7,
+            density=False
+        )
+
+        for j in range(len(bin_edges) - 1):
+            bin_value = counts[j] / catalog.shape[0] * 100  # Proporção relativa em %
+            ax.text(
+                (bin_edges[j] + bin_edges[j+1]) / 2,
+                counts[j],
+                f'{bin_value:.2f}%',
+                ha='center',
+                va='bottom',
+                fontsize=6,
+            )
+
+    for ax in axes[num_regions:]:
+        fig.delaxes(ax)
+
+    fig.suptitle('Distribuição de Profundidade por Macrorregiões', fontsize=12)
+    plt.subplots_adjust(top=0.92)
+    plt.show()
 
 
 # ----------------------------  MAIN  -----------------------------------------

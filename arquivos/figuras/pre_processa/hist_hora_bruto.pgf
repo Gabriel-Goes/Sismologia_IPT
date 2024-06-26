@@ -1489,11 +1489,11 @@
 \pgfusepath{clip}%
 \pgfsetbuttcap%
 \pgfsetroundjoin%
-\pgfsetlinewidth{0.702625pt}%
+\pgfsetlinewidth{0.401500pt}%
 \definecolor{currentstroke}{rgb}{1.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{currentstroke}%
-\pgfsetstrokeopacity{0.700000}%
-\pgfsetdash{{2.590000pt}{1.120000pt}}{0.000000pt}%
+\pgfsetstrokeopacity{0.600000}%
+\pgfsetdash{{1.480000pt}{0.640000pt}}{0.000000pt}%
 \pgfpathmoveto{\pgfqpoint{0.496694in}{3.037444in}}%
 \pgfpathlineto{\pgfqpoint{6.958330in}{3.037444in}}%
 \pgfusepath{stroke}%

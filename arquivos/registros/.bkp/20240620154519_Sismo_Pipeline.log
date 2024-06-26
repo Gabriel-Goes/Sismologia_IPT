@@ -412,62 +412,87 @@ your preamble.
 /tex/figuras_tex/footImage.pdf>]
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd) [1]
 (/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
-atorio_preditivo.toc (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+atorio_preditivo.toc) [2]) (./tex/relatorio_preditivo/tex/corpo.tex
+(./tex/relatorio_preditivo/tex/introducao.tex
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)) [2])
-(./tex/relatorio_preditivo/tex/corpo.tex
-(./tex/relatorio_preditivo/tex/introducao.tex
+(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 (./tex/relatorio_preditivo/tex/manual_mapa.tex)
-(./tex/relatorio_preditivo/tex/hist_prof_figures.tex)
+(./tex/relatorio_preditivo/tex/hist_hour_figures.tex
+(/home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pre_processa/hist
+_hora_bruto.pgf)
+(/home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pre_processa/hist
+_hora_tratado.pgf)) (./tex/relatorio_preditivo/tex/hist_prof_figures.tex))
+
+LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 6.
+
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.30 
-      [1] (./tex/relatorio_preditivo/tex/hist_hour_figures.tex
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pre_processa/hist
-_hora_bruto.pgf)
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pre_processa/hist
-_hora_tratado.pgf))) [2
+l.6 \newpage
+             [1] (./tex/relatorio_preditivo/tex/metodos.tex
+
+LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 9.
+
+[2
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.6 \newpage
-            
+l.9 
+    
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.6 \newpage
-             </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/mapa
-s/mapa_eventos_bruto.png (PNG copy)> </home/ipt/projetos/ClassificadorSismologi
-co/arquivos/figuras/mapas/mapa_eventos_tratado.png (PNG copy)> </home/ipt/proje
-tos/ClassificadorSismologico/arquivos/figuras/pre_processa/hist_profundidade_br
-uto.png> </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pre_proc
-essa/hist_profundidade_tratado.png>] (./tex/relatorio_preditivo/tex/metodos.tex
+l.9 
+     </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/mapas/mapa_e
+ventos_bruto.png (PNG copy)> </home/ipt/projetos/ClassificadorSismologico/arqui
+vos/figuras/mapas/mapa_eventos_tratado.png (PNG copy)>]
+
+LaTeX Warning: Reference `LastPage' on page 3 undefined on input line 26.
+
 [3
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.18 
-     ]) [4] [5])
+l.26 
+      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pre_process
+a/hist_profundidade_bruto.png> </home/ipt/projetos/ClassificadorSismologico/arq
+uivos/figuras/pre_processa/hist_profundidade_tratado.png>])
+
+LaTeX Warning: Reference `LastPage' on page 4 undefined on input line 10.
+
+[4])
 No file relatorio_preditivo.bbl.
 
 AED: lastpage setting LastPage
-[6]
+
+LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 40.
+
+[5]
 (/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
 atorio_preditivo.aux)
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `relatorio_preditivo.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
 
  ){/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/helvetic/uhvro8a.pfb>
 Output written on /home/ipt/projetos/ClassificadorSismologico/arquivos/resultad
-os/relatorios/relatorio_preditivo.pdf (9 pages, 1610362 bytes).
+os/relatorios/relatorio_preditivo.pdf (8 pages, 1598039 bytes).
 Transcript written on /home/ipt/projetos/ClassificadorSismologico/arquivos/resu
 ltados/relatorios/relatorio_preditivo.log.
