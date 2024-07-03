@@ -1,4 +1,4 @@
 analise_dados
 nucleo
 relatorio-sismologia
-rnc_
+rnc
