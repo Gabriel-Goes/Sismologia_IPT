@@ -101,13 +101,14 @@ def brasil_catalogo(catalogo: pd.DataFrame) -> pd.DataFrame:
 
 
 def filter_pred_com(pred: pd.DataFrame) -> pd.DataFrame:
+    pred = pred.reset_index()
     pred['Hora'] = pred['Event'].apply(lambda x: UTCDateTime(x).hour)
     pred_com = pred[(pred['Hora'] >= 11) & (pred['Hora'] < 22)]
     pred_nc = pred[(pred['Hora'] < 11) | (pred['Hora'] >= 22)]
     pred_com = pred_com.drop(columns=['Hora'])
     pred_nc = pred_nc.drop(columns=['Hora'])
-    pred_com.to_csv('arquivos/predcsv/pred_commercial.csv', index=False)
-    pred_nc.to_csv('arquivos/predcsv/pred_no_commercial.csv', index=False)
+    pred_com.to_csv('arquivos/resultados/test_comm.csv', index=False)
+    pred_nc.to_csv('arquivos/resultados/test_ncomm.csv', index=False)
 
     return pred, pred_com, pred_nc
 
