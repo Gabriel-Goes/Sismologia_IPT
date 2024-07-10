@@ -5,7 +5,7 @@
 # ----------------------------  DESCRIPTION  -----------------------------------
 # Script para gerar catálogo de eventos sísmicos
 # Autor: Gabriel Góes Rocha de Lima
-# Versão: 0.2
+# Versão: 0.2.0
 # Data: 2024-02-27
 # Modificação mais recente: 2024-04-10
 
@@ -14,11 +14,10 @@ from obspy.core.event.catalog import Catalog
 from obspy.geodetics import gps2dist_azimuth
 from obspy.clients.fdsn import Client
 
-import random
 import sys
 import os
 import csv
-# import random
+import random
 import numpy as np
 from tqdm import tqdm
 from typing import List, Dict
@@ -29,34 +28,21 @@ from nucleo.utils import MSEED_DIR
 from nucleo.utils import DELIMT, DELIMT2
 from nucleo.utils import csv2list
 
-# ----------------------------  CONSTANTES  -----------------------------------
-# Clientes para acessar os dados
-try:
-    DATA_CLIENT = Client('http://seisarc.sismo.iag.usp.br/')
-except Exception as e:
-    print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
-try:
-    DATA_CLIENT_BKP = Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
-except Exception as e:
-    print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
-    sys.exit(1)
-
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 def iterar_eventos(eventos: List,
-                   data_client: str,
-                   data_client_bkp: str,
+                   data_client: Client,
+                   data_client_bkp: Client,
                    baixar=True,
                    random=True) -> None:
     print(' --> Iterando sobre eventos')
     print(f' - Número de eventos: {len(eventos)}')
-    print(f' - Client: {DATA_CLIENT.base_url}')
-    print(f' - Client Backup: {DATA_CLIENT_BKP.base_url}')
     data_to_save = []
     error_to_save = []
     event_count = 0
     print(' --> Adrquirindo Inventário de Estações')
-    inv = DATA_CLIENT.get_stations(level='channel')
+    inventario = data_client.get_stations()
+    inventario_bkp = data_client_bkp.get_stations()
 
     for evento in tqdm(eventos):
         event_id = evento.resource_id.id.split("/")[-1]
@@ -107,23 +93,28 @@ def iterar_eventos(eventos: List,
             seed_id = f'{net}.{sta}.{loc}.{chn}'
             print(f' - Seed EventID: {seed_id} ')
             try:
-                cha_meta = inv.get_channel_metadata(seed_id)
+                cha_meta = inventario.get_channel_metadata(seed_id)
             except Exception as e:
-                error_to_save.append({'EventID': event_id,
-                                      'Event': dir_name,
-                                      'Pick': pick.phase_hint,
-                                      'Network': net,
-                                      'Station': sta,
-                                      'Channel': chn,
-                                      'Location': loc,
-                                      'Origin Time': origin_time,
-                                      'Origem Latitude': origem_lat,
-                                      'Origem Longitude': origem_lon,
-                                      'Depth/km': origem_depth,
-                                      'Error': f'channel metadata: {e}'
-                                      })
-                print(f' - Error getting channel metadata: {e}')
-                continue
+                print(f' - Error getting channel metadata from SEISARC: {e}')
+                try:
+                    cha_meta = inventario_bkp.get_channel_metadata(seed_id)
+                except Exception as e:
+                    error_to_save.append({
+                        'EventID': event_id,
+                        'Event': dir_name,
+                        'Pick': pick.phase_hint,
+                        'Network': net,
+                        'Station': sta,
+                        'Channel': chn,
+                        'Location': loc,
+                        'Origin Time': origin_time,
+                        'Origem Latitude': origem_lat,
+                        'Origem Longitude': origem_lon,
+                        'Depth/km': origem_depth,
+                        'Error': f'channel metadata: {e}'
+                    })
+                    print(f' - Error getting channel metadata: {e}')
+                    continue
 
             sta_lat = cha_meta['latitude']
             sta_lon = cha_meta['longitude']
@@ -246,9 +237,9 @@ def iterar_eventos(eventos: List,
                             'Depth/km': origem_depth,
                             'Start Time': start_time,
                             'End Time': end_time,
-                            'Error': f'Stream is None'
+                            'Error': 'Stream is None'
                     })
-                    print(f" - Erro: Stream vazia")
+                    print(" - Erro: Stream vazia")
                     continue
 
                 event_name = origin_time.strftime("%Y%m%dT%H%M%S")
@@ -358,11 +349,21 @@ def iterar_eventos(eventos: List,
 
 
 # ---------------------------- MAIN -------------------------------------------
-def main(EventIDs: List,
-         data_Client: str,
-         data_Client_bkp: str) -> [Catalog, Dict, List]:
+def main(EventIDs: List) -> [Catalog, Dict, List]:
+    # Clientes para acessar os dados
+    try:
+        DATA_CLIENT = Client('http://seisarc.sismo.iag.usp.br/')
+    except Exception as e:
+        print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
+        sys.exit(1)
+    try:
+        DATA_CLIENT_BKP = Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
+    except Exception as e:
+        print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
+        sys.exit(1)
+
     print('')
-    #print(f' - Catálogo: {sys.argv[1]}')
+    print(f' - Catálogo: {sys.argv[1]}')
     print(f' --> Client:\n  {DATA_CLIENT.base_url}')
     print(f' --> Client Backup:\n  {DATA_CLIENT_BKP.base_url}')
     print(DELIMT)
@@ -396,8 +397,8 @@ def main(EventIDs: List,
 
     iterar_eventos(
         catalogo.events,
-        data_Client,
-        data_Client_bkp,
+        DATA_CLIENT,
+        DATA_CLIENT_BKP
     )
 
     os.makedirs('arquivos/registros/.bkp', exist_ok=True)
@@ -411,10 +412,11 @@ def main(EventIDs: List,
 
 # ---------------------------- EXECUÇÃO ---------------------------------------
 if __name__ == "__main__":
+
     EventIDs = csv2list(sys.argv[1])
-    # random.seed(42)
-    # RandomIDs = random.sample(EventIDs, 1000)
-    catalogo, missin_ids = main(
-        EventIDs,
-        DATA_CLIENT,
-        DATA_CLIENT_BKP)
+    if sys.argv[2] == 'True':
+        print(' --> Modo de teste ativado')
+        random.seed(42)
+        EventIDs = random.sample(EventIDs, 500)
+
+    catalogo, missin_ids = main(EventIDs)

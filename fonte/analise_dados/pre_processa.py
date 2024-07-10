@@ -20,6 +20,7 @@ import shapely.geometry
 import geopandas as gpd
 from geopandas.datasets import get_path
 import pygmt
+import random
 # from pygmt.clib import Session
 
 # import matplotlib
@@ -46,17 +47,25 @@ locale.setlocale(locale.LC_ALL, 'pt_BR.utf8')
 # ----------------------------  ARGUMENTS  ------------------------------------
 parser = argparse.ArgumentParser(description='Pre processamento dos dados')
 parser.add_argument(
-    '--eventos', '-e', type=str, help='Nome do arquivo csv dos eventos'
+    '--eventos', '-e', default='eventos.csv',
+    type=str, help='Nome do arquivo csv dos eventos'
 )
 parser.add_argument(
-    '--csv', '-c', type=str, help='Nome do arquivo csv do catalogo'
+    '--csv', '-c', default='Catalog.csv',
+    type=str, help='Nome do arquivo csv do catalogo'
 )
 parser.add_argument(
-    '--ascending', '-a', action='store_true',
+    # Default TRUE
+    '--ascending', '-a', action='store_false', default=True,
     help='Ordenar catalogo por data crescente'
 )
 parser.add_argument(
-    '--map', '-m', action='store_true', help='Plotar distribuição do catalogo'
+    '--map', '-m', default=False, type=bool,
+    help='Plotar distribuição do catalogo'
+)
+parser.add_argument(
+    '--test', '-t', default=False, type=bool,
+    help='Testar a função'
 )
 args = parser.parse_args()
 
@@ -78,7 +87,7 @@ def data_catalogo(
     catalogo['Hora'] = catalogo['Time'].apply(lambda x: x.hour)
     catalogo['Time'] = pd.to_datetime(catalogo['Time'])
     catalogo.sort_values(by='Time', ascending=ascending, inplace=True)
-    catalogo = catalogo[catalogo['Time'] > data+'-01-01']
+    catalogo = catalogo[catalogo['Time'] > data + '-01-01']
 
     return catalogo
 
@@ -397,11 +406,13 @@ def plot_by_macrorregioes(
 
 # ----------------------------  MAIN  -----------------------------------------
 def main(args=args):
-    args.csv = 'catalogo-moho.csv'
-    args.map = True
+    print(f' Args: {args}')
     if args.csv:
-        print(f'Tratando {args.csv}...')
         catalogo_r = read_catalogo(args.csv, sep='|')
+        if args.test is True:
+            print('Testando...')
+            random.seed(42)
+            catalogo_r = catalogo_r.sample(catalogo_r.shape[0] // 3)
         catalogo = data_catalogo(catalogo_r)
         catalogo = brasil_catalogo(catalogo)
         catalogo['Author'] = catalogo['Author'].str.upper()

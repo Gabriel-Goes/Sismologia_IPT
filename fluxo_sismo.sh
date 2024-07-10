@@ -11,7 +11,7 @@
 
 # ----------------------------  DESCRIÇÃO  -----------------------------------
 # Este código recebe uma lista de IDs eventos ou uma data de início e fim e com
-# estas informações cria um arquivo eventos.csv com os eventos sísmicos que 
+# estas informações cria um arquivo eventos.csv com os eventos sísmicos que
 # ocorreram no intervalo de tempo especificado ou com os IDs presentes na lista
 # passada e foram capturados pela rede sismológica. Com este arquivo, segue-se
 # para o passo de aquisição das formas de onda e classificação.
@@ -39,6 +39,7 @@ PREDICT=false
 POSPROCESS=false
 MAPS=false
 REPORT=false
+TEST=false
 
 # ------------------------- PARSE ARGUMENTOS ----------------------------------
 if [ $# -eq 0 ]; then
@@ -48,6 +49,7 @@ if [ $# -eq 0 ]; then
     POSPROCESS=true
     MAPS=true
     REPORT=true
+    TEST=false
 else
     if [ -f './arquivos/catalogo/'$1 ]; then
         CATALOG=$1
@@ -58,11 +60,12 @@ else
             --help|-h)
                 echo "Uso: $0 [opções] [catalogo.csv]"
                 echo "Opções:"
-                echo "  --eventos, -e:   Executa a aquisição de eventos sísmicos"
+                echo "  --eventos, -e:    Executa a aquisição de eventos sísmicos"
                 echo "  --pre, -pe:       Executa o tratamento do catálogo"
                 echo "  --predict, -pr:   Executa o script de predição"
                 echo "  --pos, -po:       Executa o pós-processamento"
                 echo "  --maps, -m:       Executa a geração de mapas"
+                echo "  --test, -t:       Executa um bach de testes com 500 eventos"
                 echo "  --report, -r:     Executa a geração de relatórios"
                 exit 0
                 ;;
@@ -80,6 +83,9 @@ else
                 ;;
             --maps|-m)
                 MAPS=true
+                ;;
+            --test|-t)
+                TEST=true
                 ;;
             --report|-r)
                 REPORT=true
@@ -124,12 +130,24 @@ echo "                       Iniciando do Pipeline                         "
 echo $DELIMT2
 echo ''
 
+# PRINT ARGUMENTS RECEIVED AND DEFAULTS
+echo "Argumentos recebidos:"
+echo "  Catalogo: $CATALOG"
+echo "  EVENTS: $EVENTS"
+echo "  TREATCATALOG: $TREATCATALOG"
+echo "  PREDICT: $PREDICT"
+echo "  POSPROCESS: $POSPROCESS"
+echo "  MAPS: $MAPS"
+echo "  REPORT: $REPORT"
+echo "  TEST: $TEST"
+echo ''
+
 # ------------------------- ETAPA DE AQUISIÇÃO DE DADOS  ----------------------
 if [ "$TREATCATALOG" = true ]; then
         echo ''
         echo " -------------- INICIANDO O TRATAMENTO -------------------- "
         echo " Tratando $CATALOG..."
-        python fonte/analise_dados/pre_processa.py -c $CATALOG -m
+        python fonte/analise_dados/pre_processa.py -c $CATALOG -t $TEST
 fi
 
 if [ "$EVENTS" = true ]; then
@@ -144,11 +162,11 @@ if [ "$EVENTS" = true ]; then
         echo ''
         echo ' -> Executando fluxo_eventos.py...'
         CATALOG=$(echo $CATALOG | cut -d'.' -f1)
-        python fonte/nucleo/fluxo_eventos.py $CATALOG'_treated.csv'
+        python fonte/nucleo/fluxo_eventos.py $CATALOG'_treated.csv' $TEST
         echo ''
     else
         echo " -> Executando fluxo_eventos.py..."
-        python fonte/nucleo/fluxo_eventos.py $CATALOG
+        python fonte/nucleo/fluxo_eventos.py $CATALOG $TEST
         echo ''
     fi
 fi
@@ -192,7 +210,7 @@ if [ "$REPORT" = true ]; then
     python fonte/relatorio-sismologia/pyscripts/figures.py --path 'pos_processa'
     python fonte/relatorio-sismologia/pyscripts/mapa.py
     pushd fonte/relatorio-sismologia
-    pdflatex -output-directory=$HOME/projetos/ClassificadorSismologico/arquivos/resultados/relatorios relatorio_preditivo.tex 
+    pdflatex -output-directory=$HOME/projetos/ClassificadorSismologico/arquivos/resultados/relatorios relatorio_preditivo.tex
     popd
 fi
 

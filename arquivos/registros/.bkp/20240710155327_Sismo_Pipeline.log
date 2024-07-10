@@ -1,0 +1,59 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo-moho.csv
+  EVENTS: false
+  TREATCATALOG: true
+  PREDICT: true
+  POSPROCESS: true
+  MAPS: true
+  REPORT: false
+  TEST: true
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo-moho.csv...
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:101: FutureWarning: The geopandas.dataset module is deprecated and will be removed in GeoPandas 1.0. You can get the original 'naturalearth_lowres' data from https://www.naturalearthdata.com/downloads/110m-cultural-vectors/.
+  world = gpd.read_file(get_path('naturalearth_lowres'))
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:176: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_yticklabels(['{:,.0%}'.format(x) for x in ax.get_yticks()], fontsize=8)
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:176: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_yticklabels(['{:,.0%}'.format(x) for x in ax.get_yticks()], fontsize=8)
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:221: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout()
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:221: UserWarning: The figure layout has changed to tight
+  plt.tight_layout()
+ Args: Namespace(eventos='eventos.csv', csv='catalogo-moho.csv', ascending=True, map=False, test=True)
+Testando...
+Author
+JROBERTO                796
+MASSUMPCAO               50
+BRUNO                    30
+CLEUSA                   26
+JROBERTO@VITORIA         20
+UNB                       8
+UFRN                      4
+UNB;IAG                   2
+MBIANCHI                  1
+BRUNO@MAVERICK.LOCAL      1
+JROBERTO@TUBARAO          1
+IAG                       1
+USGS                      1
+UFRN;UNB;ISC              1
+UFRN;UNB                  1
+Name: count, dtype: int64
+           count  ...        std
+Time         943  ...        NaN
+Latitude   943.0  ...   7.502174
+Longitude  943.0  ...  11.155286
+Depth/km   943.0  ...  89.163715
+Catalog      0.0  ...        NaN
+Magnitude  943.0  ...   0.933364
+Hora       943.0  ...   6.820126
+
+[7 rows x 8 columns]
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+[{"success":true}]

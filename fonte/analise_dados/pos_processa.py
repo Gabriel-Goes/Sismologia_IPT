@@ -31,7 +31,11 @@ from analise_dados.testa_filtros import parsewindow, prepare
 from nucleo.utils import CAT_DIS, CAT_MAG, CAT_SNR, CAT_PROB
 
 
-# --------------------------- FUNCTIONS ---------------------------------- #
+# ----------------------------- PATHS --------------------------------------- #
+POS_PATH = 'arquivos/figuras/pos_processa'
+
+
+# --------------------------- FUNCTIONS ------------------------------------- #
 def plot_box_dist(df, df_2):
     fig, axes = plt.subplots(3, 5, figsize=(9, 21))
     df = df.groupby(['Event']).first()
@@ -60,7 +64,7 @@ def plot_box_dist(df, df_2):
                 showfliers=False)
     sns.boxplot(x='Região Origem', y='Event Prob_Nat', data=df, ax=axes[2, 0])
 
-    plt.savefig('arquivos/figuras/pos_process/boxplot_dist.png', dpi=300)
+    plt.savefig(f'{POS_PATH}/boxplot_dist.png', dpi=300)
     plt.tight_layout()
     #plt.show()()
 
@@ -92,7 +96,7 @@ def plot_box_by_network(df):
 
     plt.grid(True, linestyle='--', linewidth=0.5, color='gray')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_process/boxplot_rede.png')
+    plt.savefig(f'{POS_PATH}/boxplot_rede.png')
     #plt.show()()
 
 
@@ -123,7 +127,7 @@ def plot_box_by_station(df):
         cbar.set_ticklabels([f'{norm(t) * 100:.0f}%' for t in ticks])
         plt.grid(True, linestyle='--', linewidth=0.5, color='gray')
         plt.tight_layout()
-        plt.savefig(f'arquivos/figuras/pos_process/boxplot_{network}.png')
+        plt.savefig(f'{POS_PATH}/boxplot_{network}.png')
         #plt.show()()
 
 
@@ -148,7 +152,7 @@ def plot_corr_matrix(df):
     plt.title('Correlation Matrix')
     plt.grid(True, linestyle='--', linewidth=0.5, color='gray')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_process/corr_matrix.png')
+    plt.savefig(f'{POS_PATH}/corr_matrix.png')
     plt.show()
 
 
@@ -201,7 +205,7 @@ def plot_hist_prob_distribution(df):
     plt.xlabel('Probabilidade Natural')
     plt.ylabel('Frequência')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_process/dist_prob_nat.png')
+    plt.savefig(f'{POS_PATH}/dist_prob_nat.png')
     #plt.show()()
 
 
@@ -274,7 +278,7 @@ def hist_median_snr_prob_nat(df, n=0, d=400, m=8):
     plt.ylabel('Probabilidade Natural(%)')
     plt.tight_layout()
     plt.savefig(
-        f'arquivos/figuras/pos_process/mean_snrs_{n}_prob_nat.png'
+        f'{POS_PATH}/mean_snrs_{n}_prob_nat.png'
     )
     # Set dpi
     #plt.show()()
@@ -312,7 +316,7 @@ def plot_hist_prob_recall(df):
     plt.xlabel('Probabilidade Natural')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_process/dist_prob_nat_recall.png')
+    plt.savefig(f'{POS_PATH}/dist_prob_nat_recall.png')
     #plt.show()()
 
 
@@ -412,7 +416,7 @@ def box_prob_std(df, n=0, d=400, m=8):
     plt.ylabel('Probability of Natural Event (%)')
     plt.tight_layout()
     plt.show()
-    plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_boxplot_std_prob_nat.png')
+    plt.savefig(f'{POS_PATH}/{n}{d}{m}_boxplot_std_prob_nat.png')
 
 # --------------------------- HOURS
 def hist_hour_distribution(df):
@@ -439,7 +443,7 @@ def hist_hour_distribution(df):
     # Legenda: Commercial e Não-Comercial
     plt.legend(['Não-Comercial'], loc='upper right')
     plt.savefig(
-        'arquivos/figuras/pos_process/hist_hora.png'
+        f'{POS_PATH}/hist_hora.png'
     )
     #plt.show()()
 
@@ -496,7 +500,7 @@ def hist_hour_recall_pick(df):
     plt.xlabel('Hora do Dia')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_process/hist_ev_hour_recall_pick.png')
+    plt.savefig(f'{POS_PATH}/hist_ev_hour_recall_pick.png')
     #plt.show()()
     plt.close()
 
@@ -553,7 +557,7 @@ def hist_hour_recall_event(df):
     plt.xlabel('Hora do Dia')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_process/hist_ev_hour_recall_event.png')
+    plt.savefig(f'{POS_PATH}/hist_ev_hour_recall_event.png')
     # #plt.show()()
 
 
@@ -625,7 +629,7 @@ def hist_dist_distrib(df):
     plt.title('Distribuição de Eventos por Distância Epicentral')
     plt.xlabel('Distância Epicentral (km)')
     plt.ylabel('Frequência Relativa')
-    plt.savefig('arquivos/figuras/pos_process/dist_ev_distance_rel_freq.png')
+    plt.savefig(f'{POS_PATH}/dist_ev_distance_rel_freq.png')
     #plt.show()()
 
 
@@ -689,7 +693,7 @@ def hist_dist_recall_pick(df, n=0, d=400, m=8):
     plt.xlabel('Epicentral Distance (km)')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_hist_ev_distance.png', dpi=300)
+    plt.savefig(f'{POS_PATH}/{n}{d}{m}_hist_ev_distance.png', dpi=300)
     #plt.show()()
     plt.close()
 
@@ -768,7 +772,7 @@ def hist_dist_recall_event(df, n=0, d=400, m=8):
     plt.xlabel('Nearest Pick To Epicentral Distance (km)')
     plt.ylabel('Event Recall (%)')
     plt.tight_layout()
-    plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_hist_ev_distance_event.png')
+    plt.savefig(f'{POS_PATH}/{n}{d}{m}_hist_ev_distance_event.png')
     #plt.show()()
 
 
@@ -867,7 +871,7 @@ def box_dist_event_prob(df, n=0, d=400, m=8):
     plt.xlabel('Nearest Pick To Epicentral Distance (km)')
     plt.ylabel('Probability of Natural Event (%)')
     plt.tight_layout()
-    plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_boxplot_ev_distance_event.png')
+    plt.savefig(f'{POS_PATH}/{n}{d}{m}_boxplot_ev_distance_event.png')
     #plt.show()()
 
 
@@ -896,7 +900,7 @@ def hist_magnitude_distribution(df):
     plt.xlabel('Categoria de Magnitude')
     plt.ylabel('Número de Eventos')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_process/dist_ev_cat_mag.png')
+    plt.savefig(f'{POS_PATH}/dist_ev_cat_mag.png')
     #plt.show()()
 
 
@@ -937,7 +941,7 @@ def hist_magnitude_recall(df, n=0, d=400, m=8):
     plt.xlabel('Magnitude')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_process/dist_ev_cat_mag_recall.png')
+    plt.savefig(f'{POS_PATH}/dist_ev_cat_mag_recall.png')
     # #plt.show()()
 
 
@@ -1021,7 +1025,7 @@ def box_mag_event_prob(df, n=0, d=400, m=8):
     plt.xlabel('Magnitude')
     plt.ylabel('Probability of Natural Event (%)')
     plt.tight_layout()
-    plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_boxplot_ev_mag_event.png')
+    plt.savefig(f'{POS_PATH}/{n}{d}{m}_boxplot_ev_mag_event.png')
     # #plt.show()()
 
 
@@ -1042,7 +1046,7 @@ def hist_sta_distribution(df):
     plt.ylabel('Número de Eventos')
     plt.tight_layout()
     plt.savefig(
-        'arquivos/figuras/pos_process/dist_ev_num_stations_absoluto.png'
+        f'{POS_PATH}/dist_ev_num_stations_absoluto.png'
     )
     #plt.show()()
 
@@ -1087,7 +1091,7 @@ def hist_sta_recall_pick(df):
     plt.ylim(y_min, 100)
     plt.tight_layout()
     plt.savefig(
-        'arquivos/figuras/pos_process/dist_ev_num_stations_recall_pick.png'
+        f'{POS_PATH}/dist_ev_num_stations_recall_pick.png'
     )
     #plt.show()()
 
@@ -1168,7 +1172,7 @@ def hist_sta_recall_event(df, n=0, d=400, m=8):
     plt.xlabel('Número de Estações')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig(f'arquivos/figuras/pos_process/n_sta_recall_{n}{d}{m}.png')
+    plt.savefig(f'{POS_PATH}/n_sta_recall_{n}{d}{m}.png')
     # #plt.show()()
 
 
@@ -1291,7 +1295,7 @@ def hist_snr_recall_pick(df):
     plt.xlabel('SNR_P')
     plt.ylabel('Recall (%)')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_process/dist_snrs_recall.png')
+    plt.savefig(f'{POS_PATH}/dist_snrs_recall.png')
     # #plt.show()()
 
 
@@ -1360,7 +1364,7 @@ def hist_snr_recall_event(df, n=0, d=400, m=8):
     plt.gca().yaxis.grid(True, linestyle='--', linewidth=0.5, color='gray')
     plt.xlabel('Média de SNR_P')
     plt.ylabel('Recall (%)')
-    plt.savefig(f'arquivos/figuras/pos_process/{n}{d}{m}_dist_mean_snrs_recall.png')
+    plt.savefig(f'{POS_PATH}/{n}{d}{m}_dist_mean_snrs_recall.png')
     # #plt.show()()
 
 
@@ -1373,7 +1377,7 @@ def scatter_snr_prob(df):
     plt.xlabel('SNR_P_log')
     plt.ylabel('Probabilidade Natural')
     plt.tight_layout()
-    plt.savefig('arquivos/figuras/pos_process/scatter_snrs_prob_nat.png')
+    plt.savefig(f'{POS_PATH}/scatter_snrs_prob_nat.png')
     #plt.show()()
 
 
@@ -1413,7 +1417,7 @@ def recall_event(df, d=400, m=8):
     plt.xlabel('SNR_P')
     plt.ylabel('Recall')
     plt.tight_layout()
-    plt.savefig(f'arquivos/figuras/pos_process/{d}{m}_recall_event.png')
+    plt.savefig(f'{POS_PATH}/{d}{m}_recall_event.png')
     #plt.show()()
 
 
@@ -1475,7 +1479,7 @@ def region_correlation(df):
         f'{freq_orig.min() * 100:.0f}%',
         f'{freq_orig.max() * 100:.0f}%'
     ])
-    plt.savefig('arquivos/figuras/pos_process/region_corr.png')
+    plt.savefig(f'{POS_PATH}/region_corr.png')
     # #plt.show()()
 
 

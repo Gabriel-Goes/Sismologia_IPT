@@ -1,0 +1,71 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo-moho.csv
+  EVENTS: true
+  TREATCATALOG: true
+  PREDICT: true
+  POSPROCESS: true
+  MAPS: true
+  REPORT: false
+  TEST: true
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo-moho.csv...
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:101: FutureWarning: The geopandas.dataset module is deprecated and will be removed in GeoPandas 1.0. You can get the original 'naturalearth_lowres' data from https://www.naturalearthdata.com/downloads/110m-cultural-vectors/.
+  world = gpd.read_file(get_path('naturalearth_lowres'))
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:176: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_yticklabels(['{:,.0%}'.format(x) for x in ax.get_yticks()], fontsize=8)
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:176: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_yticklabels(['{:,.0%}'.format(x) for x in ax.get_yticks()], fontsize=8)
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:221: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout()
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:221: UserWarning: The figure layout has changed to tight
+  plt.tight_layout()
+ Args: Namespace(eventos='eventos.csv', csv='catalogo-moho.csv', ascending=True, map=False, test=True)
+Testando...
+Author
+JROBERTO                 765
+MASSUMPCAO                49
+CLEUSA                    36
+BRUNO                     35
+JROBERTO@VITORIA          18
+UNB                        8
+UFRN                       5
+IAG;IPT                    3
+UFRN;UNB                   2
+IAG;UNB;UFRN;USGS          1
+IAG;UNB                    1
+IAG;ESAR;UNESP-RC;IPT      1
+UNB;IAG                    1
+UNB; IAG                   1
+BRUNO@MAVERICK.LOCAL       1
+IAG                        1
+UFRN;UNB;ISC               1
+Name: count, dtype: int64
+           count  ...        std
+Time         929  ...        NaN
+Latitude   929.0  ...   7.712068
+Longitude  929.0  ...   11.00441
+Depth/km   929.0  ...  99.076737
+Catalog      0.0  ...        NaN
+Magnitude  928.0  ...   0.930622
+Hora       929.0  ...   6.975124
+
+[7 rows x 8 columns]
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+
+ -> Executando fluxo_eventos.py...
+
+Erro ao conectar com o servidor Seisarc.sismo.iag.usp.br: No FDSN services could be discovered at 'http://seisarc.sismo.iag.usp.br'. This could be due to a temporary service outage or an invalid FDSN service address.
+
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+[{"success":true}]
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 

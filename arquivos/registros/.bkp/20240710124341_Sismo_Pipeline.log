@@ -1,0 +1,11 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo-moho.csv...
+usage: pre_processa.py [-h] [--eventos EVENTOS] [--csv CSV] [--ascending]
+                       [--map] [--test]
+pre_processa.py: error: unrecognized arguments: true true
