@@ -95,7 +95,6 @@ else
                 exit 1
                 ;;
         esac
-
         shift
     done
 fi
@@ -147,7 +146,7 @@ if [ "$TREATCATALOG" = true ]; then
         echo ''
         echo " -------------- INICIANDO O TRATAMENTO -------------------- "
         echo " Tratando $CATALOG..."
-        python fonte/analise_dados/pre_processa.py -c $CATALOG -t $TEST
+        python fonte/analise_dados/pre_processa.py -c $CATALOG
 fi
 
 if [ "$EVENTS" = true ]; then

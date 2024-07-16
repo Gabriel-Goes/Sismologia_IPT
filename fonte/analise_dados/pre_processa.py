@@ -21,28 +21,16 @@ import geopandas as gpd
 from geopandas.datasets import get_path
 import pygmt
 import random
-# from pygmt.clib import Session
-
-# import matplotlib
-# matplotlib.use("pgf")
-# matplotlib.rcParams.update({
-#     "pgf.texsystem": "pdflatex",
-#     "font.family": "serif",
-#     "text.usetex": True,
-#     "pgf.rcfonts": False,
-# })
-
 import matplotlib.pyplot as plt
-# import matplotlib.ticker as mtick
 import numpy as np
 import locale
-
 import argparse
+import warnings
 
-# Defina o locale para português do Brasil
-locale.setlocale(locale.LC_ALL, 'pt_BR.utf8')
+warnings.filterwarnings("ignore")
 
 # Configurações do Matplotlib para usar pgf
+locale.setlocale(locale.LC_ALL, 'pt_BR.utf8')
 ###############################################################################
 # ----------------------------  ARGUMENTS  ------------------------------------
 parser = argparse.ArgumentParser(description='Pre processamento dos dados')
@@ -60,7 +48,7 @@ parser.add_argument(
     help='Ordenar catalogo por data crescente'
 )
 parser.add_argument(
-    '--map', '-m', default=False, type=bool,
+    '--map', '-m', default=True, type=bool,
     help='Plotar distribuição do catalogo'
 )
 parser.add_argument(
@@ -186,10 +174,10 @@ def plot_distrib_hora(
 
 
 def profundidade_catalogo(
-        catalogo: pd.DataFrame,
-        title='bruto',
-        textwidth=7, scale=1.0, aspect_ratio=6/8,
-        ) -> None:
+    catalogo: pd.DataFrame,
+    title='bruto',
+    textwidth=7, scale=1.0, aspect_ratio=6 / 8
+    ) -> None:
     width = textwidth * scale
     height = width * aspect_ratio
     plt.figure(figsize=(width, height), constrained_layout=True)
@@ -254,7 +242,6 @@ def plot_prof_as_red(catalog: pd.DataFrame, title='bruto') -> None:
         catalog,
         geometry=gpd.points_from_xy(catalog.Longitude, catalog.Latitude)
     )
-
     capitals = pd.DataFrame({
         "city": [
             "São Paulo", "Rio de Janeiro", "Belo Horizonte", "Brasília",
@@ -272,7 +259,7 @@ def plot_prof_as_red(catalog: pd.DataFrame, title='bruto') -> None:
     })
     region = (
         catalog['Longitude'].min() - 0.1,
-        catalog['Longitude'].max() + 0.1,
+        catalog['Longitude'].max() + 1.25,
         catalog['Latitude'].min() - 0.1,
         catalog['Latitude'].max() + 0.1
     )
@@ -280,12 +267,12 @@ def plot_prof_as_red(catalog: pd.DataFrame, title='bruto') -> None:
     brasil = gpd.read_file('arquivos/figuras/mapas/macrorregioesBrasil.json')
     brasil.to_crs(epsg=4326, inplace=True)
     brasil = brasil.geometry.unary_union
+    fig = pygmt.Figure()
     pygmt.makecpt(
         cmap="jet",
         series=[catalog['Depth/km'].min(),
                 catalog['Depth/km'].max()]
     )
-    fig = pygmt.Figure()
     fig.coast(
         shorelines='1/0.5p',
         projection="M10i",
@@ -321,23 +308,38 @@ def plot_prof_as_red(catalog: pd.DataFrame, title='bruto') -> None:
     fig.plot(
         x=capitals['longitude'],
         y=capitals['latitude'],
-        style="t0.3", fill="white", pen="black",
+        style="c0.15+bc", fill="white", pen="black",
         label="Capitais"
     )
-    fig.legend(position="JBR+jBR+o1.5c/0.5c", box="+gwhite+p1p,black")
+    fig.plot(
+        x=capitals['longitude'],
+        y=capitals['latitude'],
+        style="c0.075c", fill="black",
+        label="Capitais"
+    )
+    for index, row in capitals.iterrows():
+        fig.text(
+            x=row['longitude'],
+            y=row['latitude'],
+            text=row['city'],
+            font="10p,Helvetica,black",
+            justify="TL",  # Ajuste de acordo com a necessidade
+            offset="0.1c/0.1c"
+        )
+    fig.legend(position="JBR+jBR+o3c/0c", box="+gwhite+p1p,black")
     fig.basemap(rose="jTL+w2c+o0.5c/0.5c+f")
     fig.colorbar(
-        frame=["x+lProfundidade (km)", "y+lm"],
-        position="JMR+jMR+o0.5c/0.5c",
-        box="+gwhite+p1p,black"
+        frame=["x+lProfundidade", "y+lkm"],
+        box="+gwhite+p1p,black",
+        position="JMR+o-2c/-9c+w5c/0.25c"
     )
     try:
         print('Salvando mapa...')
         fig.savefig(f'arquivos/figuras/mapas/mapa_eventos_{title}.png')
     except pygmt.clib.GMTCLibError as e:
         print(f"Erro ao salvar como PNG: {e}")
-    finally:
-        fig = None  # Limpar a figura para liberar recursos
+
+    fig.show()
 
 
 def plot_by_macrorregioes(

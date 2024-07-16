@@ -66,7 +66,7 @@ def plot_box_dist(df, df_2):
 
     plt.savefig(f'{POS_PATH}/boxplot_dist.png', dpi=300)
     plt.tight_layout()
-    #plt.show()()
+    # plt.show()()
 
 
 def plot_box_by_network(df):
@@ -235,9 +235,9 @@ def hist_median_snr_prob_nat(df, n=0, d=400, m=8):
         f_a = f_abs.loc[a]
         freq = f_rel.loc[r] * 100
         mean_dist = df_[df_['Mean SNR_P_cat'] == r]['Mean Distance'].mean()
-        nb_sta = df[df['Mean SNR_P_cat'] == r].shape[0]/f_a
         color = sm.to_rgba(freq)
         if f_a > 0:
+            nb_sta = df[df['Mean SNR_P_cat'] == r].shape[0] / f_a
             total += f_a
             df_c = df_[df_['Mean SNR_P_cat'] == r]
             prob = (df_c['Event Prob_Nat'].mean() * 100)
@@ -418,6 +418,7 @@ def box_prob_std(df, n=0, d=400, m=8):
     plt.show()
     plt.savefig(f'{POS_PATH}/{n}{d}{m}_boxplot_std_prob_nat.png')
 
+
 # --------------------------- HOURS
 def hist_hour_distribution(df):
     counts = df['Hora'].value_counts(sort=False).reindex(
@@ -445,12 +446,12 @@ def hist_hour_distribution(df):
     plt.savefig(
         f'{POS_PATH}/hist_hora.png'
     )
-    #plt.show()()
+    # plt.show()()
 
 
 def hist_hour_recall_pick(df):
-    df['Hora'] = pd.to_numeric(df['Hora'])
-    df['Cat Hora'] = pd.cut(
+    df.loc[:, 'Hora'] = pd.to_numeric(df['Hora'])
+    df.loc[:, 'Cat Hora'] = pd.cut(
         df['Hora'], bins=range(0, 25, 1), right=False, labels=range(0, 24, 1)
     )
     f_rel = df['Cat Hora'].value_counts(normalize=True).sort_index()
@@ -501,13 +502,13 @@ def hist_hour_recall_pick(df):
     plt.ylabel('Recall (%)')
     plt.tight_layout()
     plt.savefig(f'{POS_PATH}/hist_ev_hour_recall_pick.png')
-    #plt.show()()
-    plt.close()
+    # plt.show()
+    plt.close(fig)
 
 
 def hist_hour_recall_event(df):
-    df['Hora'] = pd.to_numeric(df['Hora'])
-    df['Cat Hora'] = pd.cut(
+    df.loc[:, 'Hora'] = pd.to_numeric(df['Hora'])
+    df.loc[:, 'Cat Hora'] = pd.cut(
         df['Hora'], bins=range(0, 25, 1), right=False, labels=range(0, 24, 1)
     )
     df = df.groupby(level='Event').first()
@@ -695,7 +696,7 @@ def hist_dist_recall_pick(df, n=0, d=400, m=8):
     plt.tight_layout()
     plt.savefig(f'{POS_PATH}/{n}{d}{m}_hist_ev_distance.png', dpi=300)
     #plt.show()()
-    plt.close()
+    plt.close(fig)
 
 
 def hist_dist_recall_event(df, n=0, d=400, m=8):
@@ -1193,7 +1194,7 @@ def snr(eventos: pd.DataFrame,
         swindow = parsewindow(sw)
         st = obspy.read(f"arquivos/mseed/{pick['Path']}")
         noise, trace_p, trace_s = prepare(
-            st[0],
+            st[2],
             filtro,
             noisewindow, pwindow, swindow
         )
@@ -1253,7 +1254,7 @@ def class_snrp(snrp):
 
 def hist_snr_recall_pick(df):
     fig, ax = plt.subplots(figsize=(10, 6))
-    df['SNR_P_cat'] = pd.Categorical(
+    df.loc[:, 'SNR_P_cat'] = pd.Categorical(
         df['SNR_P_cat'], categories=CAT_SNR, ordered=True
     )
     f_rel = df['SNR_P_cat'].value_counts(normalize=True).sort_index()
@@ -1287,7 +1288,7 @@ def hist_snr_recall_pick(df):
     cbar = fig.colorbar(sm, ax=ax)
     cbar.ax.set_ylabel('Frequency (%)')
     cbar.set_ticks([min_freq, max_freq])
-    plt.suptitle(f'Recall por SNR_P Pick')
+    plt.suptitle('Recall por SNR_P Pick')
     plt.title(f'Total de Picks: {total}', fontsize=8)
     plt.xticks(np.arange(len(f_rel.index)), labels=f_rel.index, rotation=90)
     plt.ylim(rc_min - 5, 105)
@@ -1322,9 +1323,9 @@ def hist_snr_recall_event(df, n=0, d=400, m=8):
         f_a = f_abs.loc[a]
         freq = f_rel.loc[r] * 100
         median_distance = df_[df_['SNR_P_Q2_cat'] == r]['Distance'].median()
-        nb_sta = df[df['SNR_P_Q2_cat'] == r].shape[0]/f_a
         color = sm.to_rgba(freq)
         if f_a > 0:
+            nb_sta = df[df['SNR_P_Q2_cat'] == r].shape[0] / f_a
             total += f_a
             df_c = df_[df_['SNR_P_Q2_cat'] == r]
             TP = df_c[(df_c['Pick Pred'] == 0) & (df_c['Label'] == 0)].shape[0]
@@ -1628,41 +1629,42 @@ def clean_data(df):
 # -------------------------------- MAIN ------------------------------------- #
 def main():
     df = carregar_dado()
+    print(df.columns)
     # df = pd.read_csv('arquivos/resultados/304008_analisado.csv', sep=',')
-    df['Hora'] = df['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
-    df['Coord Origem'] = df[['Origem Latitude', 'Origem Longitude']].apply(lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1)
+    df.loc[:, 'Hora'] = df['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
+    df.loc[:, 'Coord Origem'] = df[['Origem Latitude', 'Origem Longitude']].apply(lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1)
     df = class_region(df)
     df = median_snrp_event(df)
     df = median_dist_event(df)
     df.loc[:, 'Num_Estacoes'] = df.index.get_level_values('Event').map(
         df.reset_index().groupby('Event').size()
     )
-    df['Pick Prob_Nat_std'] = df.index.get_level_values('Event').map(
+    df.loc[:, 'Pick Prob_Nat_std'] = df.index.get_level_values('Event').map(
         df.groupby('Event')['Pick Prob_Nat'].std()
     )
     # set Pick Prob_Nat_std to -1 if the event has only one station (std=nan)
     df.loc[df['Num_Estacoes'] == 1, 'Pick Prob_Nat_std'] = -1
 
-    df['SNRP_std'] = df.index.get_level_values('Event').map(
+    df.loc[:, 'SNRP_std'] = df.index.get_level_values('Event').map(
         df.groupby('Event')['SNR_P'].std()
     )
-    df['Distance_std'] = df.index.get_level_values('Event').map(
+    df.loc[:, 'Distance_std'] = df.index.get_level_values('Event').map(
         df.groupby('Event')['Distance'].std()
     )
-    df['Magnitude_cat'] = pd.Categorical(
+    df.loc[:, 'Magnitude_cat'] = pd.Categorical(
         df['MLv'].apply(class_mag), categories=CAT_MAG, ordered=True
     )
-    df['Distance_cat'] = pd.Categorical(
+    df.loc[:, 'Distance_cat'] = pd.Categorical(
         df['Distance'].apply(class_dist), categories=CAT_DIS, ordered=True
     )
-    df['SNR_P_cat'] = pd.Categorical(
+    df.loc[:, 'SNR_P_cat'] = pd.Categorical(
         df['SNR_P'].apply(class_snrp), categories=CAT_SNR, ordered=True
     )
-    df['Pick Prob_Nat_cat'] = pd.Categorical(
+    df.loc[:, 'Pick Prob_Nat_cat'] = pd.Categorical(
         df['Pick Prob_Nat'].apply(class_prob),
         categories=CAT_PROB, ordered=True
     )
-    df['Prob_Nat_std_cat'] = pd.Categorical(
+    df.loc[:, 'Prob_Nat_std_cat'] = pd.Categorical(
         df['Pick Prob_Nat_std'].apply(class_prob),
         categories=CAT_PROB, ordered=True
     )

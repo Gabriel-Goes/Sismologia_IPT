@@ -31,6 +31,7 @@ import pandas as pd
 import numpy as np
 import logging
 from matplotlib import pyplot as plt
+from PIL import Image, ImageDraw
 
 from qgis.core import QgsProject
 from qgis.core import QgsVectorLayer
@@ -49,7 +50,6 @@ from qgis.PyQt.QtCore import QVariant
 from qgis.PyQt import QtCore, QtWidgets
 
 from obspy import read, UTCDateTime
-from PIL import Image, ImageDraw
 
 from .farejadorsismo_dockwidget_base import Ui_FarejadorDockWidgetBase
 
@@ -462,7 +462,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             print(f"Erro ao iniciar o Snuffler: {e}")
 
     def plot_waveform(self):
-        plt.figure(figsize=(6, 2))
+        fig, axs = plt.subplots(nrows=3, ncols=1, figsize=(6, 7))
         ev = self.eventSelector.currentText()
         net = self.networkSelector.currentText()
         sta = self.stationSelector.currentText()
@@ -476,21 +476,35 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             corners=4,
             zerophase=True
         )
-        t = np.arange(st.stats.npts) * st.stats.delta
         logging.info(f'Stream carregada e Traço calculado {mseed}')
         pick_t = UTCDateTime(pick['Pick Time'].values[0])
         start_t = UTCDateTime(pick['Start Time'].values[0])
         p_start = pick_t - start_t
         n_start = p_start - 4.9
-        plt.axvspan(
-            p_start, p_start + 3,
-            alpha=0.5, label='S-Window', color='green'
-        )
-        plt.axvspan(
-            n_start, n_start + 4, alpha=0.5,
-            label='N-Window', color='red'
-        )
-        plt.plot(t, st.data, c='k')
+        colors = ['red', 'green', 'blue']
+        line_width = 0.25
+        # set ticks only at the bottom of the last axis, they share the same x-axis
+        for i, tr in enumerate(st[:3]):
+            t = np.arange(tr.stats.npts) * tr.stats.delta
+            axs[i].plot(t, tr.data, c=colors[i % len(colors)], linewidth=line_width)
+            axs[i].set_ylabel(f'Amplitude ({tr.stats.channel})')
+            axs[i].axvspan(
+                p_start, p_start + 3, alpha=0.25,
+                label='S-Window', color='green'
+            )
+            axs[i].axvspan(
+                n_start, n_start + 4, alpha=0.25,
+                label='N-Window', color='red'
+            )
+            for spine in axs[i].spines.values():
+                spine.set_visible(False)
+            axs[i].spines['left'].set_visible(True)
+
+        axs[-1].spines['bottom'].set_visible(True)
+        axs[-1].set_xticks(np.arange(0, 60, 10))
+        axs[-1].set_xticks(np.arange(0, 60, 5), minor=True)
+        axs[-1].set_xlabel('Time [s]')
+        handles, labels = axs[0].get_legend_handles_labels()
         plt.tight_layout()
         buf = io.BytesIO()
         plt.savefig(buf, format='png')

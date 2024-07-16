@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.9.18)  10 JUL 2024 15:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.9.18)  11 JUL 2024 13:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1085,12 +1085,6 @@ Type  H <return>  for immediate help.
                                                   
 l.30 ...nd\captionof[1]{\def\@captype{#1}\caption}
                                                   
-? ^^[[3~
-Type <return> to proceed, S to scroll future error messages,
-R to run without stopping, Q to run quietly,
-I to insert something, E to edit your file,
-1 or ... or 9 to ignore the next 1 to 9 tokens of input,
-H for help, X to quit.
 ? 
 ) (/usr/share/texlive/texmf-dist/tex/latex/xargs/xargs.sty
 Package: xargs 2008/03/22 v1.1  extended macro definitions  (mpg)
@@ -1775,26 +1769,8 @@ File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 11.39996pt on input line 24.
 
-(./relatorio_preditivo.aux
-
-LaTeX Warning: Label `fig:2:mapa' multiply defined.
-
-
-LaTeX Warning: Label `fig:2:mapa' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:2:mapa' multiply defined.
-
-
-LaTeX Warning: Label `fig:2:mapa2' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:2:mapa2' multiply defined.
-
-
-LaTeX Warning: Label `fig:2:mapa' multiply defined.
-
-)
+(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
+atorio_preditivo.aux)
 \openout1 = `relatorio_preditivo.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
@@ -1815,7 +1791,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
- (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count385
 \scratchdimen=\dimen351
@@ -1847,7 +1824,10 @@ e
 ))
 Package hyperref Info: Link coloring OFF on input line 24.
 
-(./relatorio_preditivo.out) (./relatorio_preditivo.out)
+(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
+atorio_preditivo.out)
+(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
+atorio_preditivo.out)
 \@outlinefile=\write5
 \openout5 = `relatorio_preditivo.out'.
 
@@ -1940,12 +1920,12 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 11.39996pt on input line 12.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 13.67995pt on input line 12.
-<tex/figuras_tex/headImage.pdf, id=45, 159.36037pt x 72.1896pt>
+<tex/figuras_tex/headImage.pdf, id=48, 159.36037pt x 72.1896pt>
 File: tex/figuras_tex/headImage.pdf Graphic file (type pdf)
 <use tex/figuras_tex/headImage.pdf>
 Package pdftex.def Info: tex/figuras_tex/headImage.pdf  used on input line 12.
 (pdftex.def)             Requested size: 143.42297pt x 64.97002pt.
-<tex/figuras_tex/footImage.pdf, id=46, 264.30975pt x 28.35594pt>
+<tex/figuras_tex/footImage.pdf, id=49, 264.30975pt x 28.35594pt>
 File: tex/figuras_tex/footImage.pdf Graphic file (type pdf)
 <use tex/figuras_tex/footImage.pdf>
 Package pdftex.def Info: tex/figuras_tex/footImage.pdf  used on input line 12.
@@ -1978,41 +1958,40 @@ Package pdftex.def Info: tex/figuras_tex/footImage.pdf  used on input line 17.
  [1
 
 ]
-(./relatorio_preditivo.toc
-LaTeX Font Info:    Trying to load font information for U+msa on input line 1.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
+atorio_preditivo.toc
+LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 1.
-
+LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 1.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 2.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 1
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 2
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.59998pt on input line 1.
+(Font)              scaled to size 7.59998pt on input line 2.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 1.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 2.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 11.39996pt on input line 1.
+(Font)              scaled to size 11.39996pt on input line 2.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 1.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 2.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 9.49997pt on input line 1.
+(Font)              scaled to size 9.49997pt on input line 2.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 1.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 2.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 7.59998pt on input line 1.
+(Font)              scaled to size 7.59998pt on input line 2.
 )
 \tf@toc=\write6
 \openout6 = `relatorio_preditivo.toc'.
@@ -2031,30 +2010,27 @@ Package pdftex.def Info: tex/figuras_tex/footImage.pdf  used on input line 20.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 13.67995pt on input line 3.
 
-
-LaTeX Warning: Reference `fig:1:map' on page 1 undefined on input line 20.
-
 (./tex/relatorio_preditivo/tex/manual_mapa.tex
 </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/mapas/mapa_evento
-s_bruto.png, id=84, 794.7291pt x 773.0481pt>
+s_bruto.png, id=89, 760.7622pt x 754.2579pt>
 File: /home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/mapas/mapa_e
 ventos_bruto.png Graphic file (type png)
 <use /home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/mapas/mapa_ev
 entos_bruto.png>
 Package pdftex.def Info: /home/ipt/projetos/ClassificadorSismologico/arquivos/f
 iguras/mapas/mapa_eventos_bruto.png  used on input line 6.
-(pdftex.def)             Requested size: 794.72716pt x 773.04622pt.
+(pdftex.def)             Requested size: 760.76035pt x 754.25606pt.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 9.49997pt on input line 6.
 </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/mapas/mapa_evento
-s_tratado.png, id=85, 794.7291pt x 772.5663pt>
+s_tratado.png, id=90, 760.7622pt x 753.0534pt>
 File: /home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/mapas/mapa_e
 ventos_tratado.png Graphic file (type png)
 <use /home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/mapas/mapa_ev
 entos_tratado.png>
 Package pdftex.def Info: /home/ipt/projetos/ClassificadorSismologico/arquivos/f
 iguras/mapas/mapa_eventos_tratado.png  used on input line 10.
-(pdftex.def)             Requested size: 794.72716pt x 772.56442pt.
+(pdftex.def)             Requested size: 760.76035pt x 753.05156pt.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 10.40245pt on input line 11.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
@@ -2066,7 +2042,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 )
 (./tex/relatorio_preditivo/tex/hist_prof_figures.tex
 </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pre_processa/hist
-_profundidade_bruto.png, id=86, 505.89pt x 379.4175pt>
+_profundidade_bruto.png, id=91, 505.89pt x 379.4175pt>
 File: /home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pre_processa
 /hist_profundidade_bruto.png Graphic file (type png)
 <use /home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pre_processa/
@@ -2075,7 +2051,7 @@ Package pdftex.def Info: /home/ipt/projetos/ClassificadorSismologico/arquivos/f
 iguras/pre_processa/hist_profundidade_bruto.png  used on input line 7.
 (pdftex.def)             Requested size: 505.88875pt x 379.41656pt.
 </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pre_processa/hist
-_profundidade_tratado.png, id=88, 505.89pt x 379.4175pt>
+_profundidade_tratado.png, id=93, 505.89pt x 379.4175pt>
 File: /home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pre_processa
 /hist_profundidade_tratado.png Graphic file (type png)
 <use /home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pre_processa/
@@ -2179,26 +2155,14 @@ Package pdftex.def Info: tex/figuras_tex/footImage.pdf  used on input line 40.
 [6]
 (/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
 atorio_preditivo.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-
-Package rerunfilecheck Warning: File `relatorio_preditivo.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `relatorio_preditivo.out':
-(rerunfilecheck)             Before: A8BD9A4297180A4F2142B0872F1577C3;682
-(rerunfilecheck)             After:  B551929539ED44A1385186283061532B;732.
+Package rerunfilecheck Info: File `relatorio_preditivo.out' has not changed.
+(rerunfilecheck)             Checksum: B551929539ED44A1385186283061532B;732.
  ) 
 Here is how much of TeX's memory you used:
- 48172 strings out of 476091
- 1081833 string characters out of 5794081
+ 48163 strings out of 476091
+ 1082295 string characters out of 5794081
  1888330 words of memory out of 5000000
- 67631 multiletter control sequences out of 15000+600000
+ 67622 multiletter control sequences out of 15000+600000
  561883 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,16n,104p,1613b,2702s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2207,9 +2171,9 @@ e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/helvetic/uhvro8a.pfb>
 Output written on /home/ipt/projetos/ClassificadorSismologico/arquivos/resultad
-os/relatorios/relatorio_preditivo.pdf (9 pages, 1605752 bytes).
+os/relatorios/relatorio_preditivo.pdf (9 pages, 1595272 bytes).
 PDF statistics:
- 155 PDF objects out of 1000 (max. 8388607)
+ 160 PDF objects out of 1000 (max. 8388607)
  29 named destinations out of 1000 (max. 500000)
- 127 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 135 words of extra memory for PDF output out of 10000 (max. 10000000)
 
