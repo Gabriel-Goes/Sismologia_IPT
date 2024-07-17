@@ -1500,6 +1500,24 @@ def carregar_dado(w=3, n=0, d=400, m=8):
     return df
 
 
+def scatter(df, a, b, c):
+    plt.figure(figsize=(10, 6))
+    df = df[df[b] != -1]
+    x = df[a]
+    y = df[b]
+    cmap = plt.get_cmap('coolwarm_r')
+    z = df[c]
+    sc = plt.scatter(x, y, c=z, cmap=cmap, alpha=0.5)
+    plt.colorbar(sc)
+    plt.xlabel(a)
+    plt.ylabel(b)
+    plt.title(f'{a} x {c}')
+    plt.tight_layout()
+    plt.ylim(y.min(), y.max())
+    plt.xlim(0, x.max())
+    plt.show()
+
+
 # -------------------------------- MAIN ------------------------------------- #
 def comercial(df):
     df_cm = df[df['Hora'] >= 11]
@@ -1651,6 +1669,9 @@ def main():
     df.loc[:, 'Distance_std'] = df.index.get_level_values('Event').map(
         df.groupby('Event')['Distance'].std()
     )
+    df.loc[:, 'CFT_std'] = df.index.get_level_values('Event').map(
+        df.groupby('Event')['CFT'].std()
+    )
     df.loc[:, 'Magnitude_cat'] = pd.Categorical(
         df['MLv'].apply(class_mag), categories=CAT_MAG, ordered=True
     )
@@ -1668,6 +1689,7 @@ def main():
         df['Pick Prob_Nat_std'].apply(class_prob),
         categories=CAT_PROB, ordered=True
     )
+
     df_nc = ncomercial(df)
     # df_cm = comercial(df)
 
