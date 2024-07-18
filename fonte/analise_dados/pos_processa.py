@@ -508,9 +508,13 @@ def hist_hour_recall_pick(df):
 
 def hist_hour_recall_event(df):
     df.loc[:, 'Hora'] = pd.to_numeric(df['Hora'])
-    df.loc[:, 'Cat Hora'] = pd.cut(
-        df['Hora'], bins=range(0, 25, 1), right=False, labels=range(0, 24, 1)
+    cat_hora = pd.cut(
+        df['Hora'],
+        bins=range(0, 25, 1),
+        right=False,
+        labels=range(0, 24, 1),
     )
+    df.loc[:, 'Cat Hora'] = cat_hora
     df = df.groupby(level='Event').first()
     f_rel = df['Cat Hora'].value_counts(normalize=True).sort_index()
     f_abs = df['Cat Hora'].value_counts().sort_index()
@@ -1647,7 +1651,7 @@ def clean_data(df):
 # -------------------------------- MAIN ------------------------------------- #
 def main():
     df = carregar_dado()
-    print(df.columns)
+    # print(df.columns)
     # df = pd.read_csv('arquivos/resultados/304008_analisado.csv', sep=',')
     df.loc[:, 'Hora'] = df['Origin Time'].apply(lambda x: UTCDateTime(x).hour)
     df.loc[:, 'Coord Origem'] = df[['Origem Latitude', 'Origem Longitude']].apply(lambda x: [x['Origem Latitude'], x['Origem Longitude']], axis=1)
@@ -1661,7 +1665,7 @@ def main():
         df.groupby('Event')['Pick Prob_Nat'].std()
     )
     # set Pick Prob_Nat_std to -1 if the event has only one station (std=nan)
-    df.loc[df['Num_Estacoes'] == 1, 'Pick Prob_Nat_std'] = -1
+    # df.loc[df['Num_Estacoes'] == 1, 'Pick Prob_Nat_std'] = -1
 
     df.loc[:, 'SNRP_std'] = df.index.get_level_values('Event').map(
         df.groupby('Event')['SNR_P'].std()

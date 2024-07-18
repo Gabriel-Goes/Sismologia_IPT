@@ -60,7 +60,7 @@ FILES_DIR = os.path.join(PROJ_DIR, "arquivos/")
 FIGURE_DIR = os.path.join(FILES_DIR, "figuras/")
 LOG_FILE = os.path.join(FILES_DIR, "registros/farejador.log")
 CSV_DIR = os.path.join(FILES_DIR, "resultados/analisado/")
-CSV_FILE = os.path.join(CSV_DIR, "nc_analisado.csv")
+CSV_FILE = os.path.join(CSV_DIR, "nc_analisado_final.csv")
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -175,6 +175,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             'Pick Prob_Nat_std',
             'Distance_std',
             'SNRP_std',
+            'CFT_std',
         ])
         self.sortColumnComboBox.currentIndexChanged.connect(self.get_EventsSorted)
 
@@ -566,8 +567,11 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             snrp_std = pick['SNRP_std'].values[0]
             dist_std = pick['Distance_std'].values[0]
             pick_std = pick['Pick Prob_Nat_std'].values[0]
+            cft_std = pick['CFT_std'].values[0]
+            cft = pick['CFT'].values[0]
             draw.text((255, 20), f'Pick: {prob:.2f}/({pick_std:.2f})', fill='white')
             draw.text((395, 20), f'Event: {prob_e:.2f}', fill='white')
+            draw.text((495, 20), f'CFT: {cft:.1f}/({cft_std:.1f})', fill='white')
             draw.text((255, 35), f'Distance: {distance:.0f} ({dist_std:.0f}) km', fill='white')
             draw.text((395, 35), f'SNR: {snrp:.1f}', fill='white')
             draw.text((495, 35), f'SNR Q2: {snrp_q:.1f}/({snrp_std:.1f})', fill='white')
