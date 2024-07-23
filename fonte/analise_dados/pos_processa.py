@@ -647,7 +647,7 @@ def hist_dist_recall_pick(df, n=0, d=400, m=8):
     max_freq = f_rel.max() * 100
     min_freq = f_rel.min() * 100
     norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
-    sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
+    sm = plt.cm.ScalarMappable(cmap='nipy_spectral', norm=norm)
     sm.set_array([])
     fig, ax = plt.subplots(figsize=(9, 6))
 
@@ -699,8 +699,8 @@ def hist_dist_recall_pick(df, n=0, d=400, m=8):
     plt.ylabel('Recall (%)')
     plt.tight_layout()
     plt.savefig(f'{POS_PATH}/{n}{d}{m}_hist_ev_distance.png', dpi=300)
-    #plt.show()()
-    plt.close(fig)
+    plt.show()
+    plt.close()
 
 
 def hist_dist_recall_event(df, n=0, d=400, m=8):
@@ -1178,7 +1178,8 @@ def hist_sta_recall_event(df, n=0, d=400, m=8):
     plt.ylabel('Recall (%)')
     plt.tight_layout()
     plt.savefig(f'{POS_PATH}/n_sta_recall_{n}{d}{m}.png')
-    # #plt.show()()
+    plt.close()
+    # plt.show()
 
 
 # --------------------------- SNR-P
