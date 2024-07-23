@@ -19,22 +19,28 @@ class Ui_FarejadorDockWidgetBase(object):
         self.dockWidgetContents.setObjectName("dockWidgetContents")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.dockWidgetContents)
         self.verticalLayout.setObjectName("verticalLayout")
+
         self.titulo = QtWidgets.QLabel(self.dockWidgetContents)
         self.titulo.setAlignment(QtCore.Qt.AlignCenter)
         self.titulo.setObjectName("titulo")
         self.verticalLayout.addWidget(self.titulo)
+
         self.csvLabel = QtWidgets.QLabel(self.dockWidgetContents)
         self.csvLabel.setObjectName("csvLabel")
         self.verticalLayout.addWidget(self.csvLabel)
+
         self.csvSelector = QtWidgets.QComboBox(self.dockWidgetContents)
         self.csvSelector.setObjectName("csvSelector")
         self.verticalLayout.addWidget(self.csvSelector)
+
         self.numb_Eventos = QtWidgets.QLabel(self.dockWidgetContents)
         self.numb_Eventos.setObjectName("numb_Eventos")
         self.verticalLayout.addWidget(self.numb_Eventos)
+
         self.label = QtWidgets.QLabel(self.dockWidgetContents)
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
+
         self.hbox_ev_net_sta = QtWidgets.QHBoxLayout()
         self.hbox_ev_net_sta.setObjectName("hbox_ev_net_sta")
         self.label_evento = QtWidgets.QLabel(self.dockWidgetContents)
@@ -56,6 +62,7 @@ class Ui_FarejadorDockWidgetBase(object):
         self.stationSelector.setObjectName("stationSelector")
         self.hbox_ev_net_sta.addWidget(self.stationSelector)
         self.verticalLayout.addLayout(self.hbox_ev_net_sta)
+
         self.hbox_event_labels = QtWidgets.QHBoxLayout()
         self.hbox_event_labels.setObjectName("hbox_event_labels")
         self.nb_picksText = QtWidgets.QLabel(self.dockWidgetContents)
@@ -68,6 +75,7 @@ class Ui_FarejadorDockWidgetBase(object):
         self.probNatText.setObjectName("probNatText")
         self.hbox_event_labels.addWidget(self.probNatText)
         self.verticalLayout.addLayout(self.hbox_event_labels)
+
         self.distanceText = QtWidgets.QLabel(self.dockWidgetContents)
         self.distanceText.setObjectName("distanceText")
         self.verticalLayout.addWidget(self.distanceText)
@@ -83,7 +91,8 @@ class Ui_FarejadorDockWidgetBase(object):
         self.spectreButton = QtWidgets.QPushButton(self.dockWidgetContents)
         self.spectreButton.setObjectName("spectreButton")
         self.verticalLayout.addWidget(self.spectreButton)
-        self.mseedText = QtWidgets.QLabel(self.dockWidgetContents)
+        self.mseedText = QtWidgets.QLineEdit(self.dockWidgetContents)
+        self.mseedText.setReadOnly(True)
         self.mseedText.setObjectName("mseedText")
         self.verticalLayout.addWidget(self.mseedText)
         self.eventText = QtWidgets.QLabel(self.dockWidgetContents)

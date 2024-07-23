@@ -119,16 +119,39 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
     def createLayerFromDF(self):
         logging.info('Criando camada de eventos...')
         try:
-            cols = self.df.columns
-            self.layer = QgsVectorLayer("Point?crs=EPSG:4326", "Eventos Sismológicos", "memory")
-            self.layer.loadNamedStyle('/home/ipt/database/qml/eventos_sismologicos.qml')
-            provider = self.layer.dataProvider()
-            provider.addAttributes([
-                QgsField(name, QVariant.String) for name in cols
-            ])
-            self.layer.updateFields()
-            QgsProject.instance().addMapLayer(self.layer)
-            logging.info('Camada criada e adicionada ao projeto.')
+            layer_name = 'Eventos Sismológicos'
+            existing_layer = None
+            for layer in QgsProject.instance().mapLayers().values():
+                if layer.name() == layer_name:
+                    existing_layer = layer
+                    break
+            if existing_layer:
+                self.layer - existing_layer
+                provider = self.layer.dataProvider()
+                logging.info('Camada existente encontrada e utilizada.')
+            else:
+                cols = self.df.columns
+                self.layer = QgsVectorLayer("Point?crs=EPSG:4326", "Eventos Sismológicos", "memory")
+                self.layer.loadNamedStyle('/home/ipt/database/qml/eventos_sismologicos.qml')
+                provider = self.layer.dataProvider()
+                provider.addAttributes([
+                    QgsField(name, QVariant.String) for name in cols
+                ])
+                self.layer.updateFields()
+                QgsProject.instance().addMapLayer(self.layer)
+                logging.info('Camada criada e adicionada ao projeto.')
+            features = []
+            for index, row in self.df.iterrows():
+                feature = QgsFeature()
+                point = QgsPointXY(row['Longitude'], row['Latitude'])
+                feature.setGeometry(QgsGeometry.fromPointXY(point))
+                attributes = [row[col] for col in cols]
+                feature.setAttributes(attributes)
+                features.append(feature)
+            provider.addFeatures(features)
+            self.layer.updateExtents()
+            self.setStationStyle()
+            self.addLabelsToStations()
         except Exception as e:
             logging.error(f'Erro ao criar camada sismológicos: {e}')
 
@@ -148,7 +171,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         self.distanceText = self.findChild(QtWidgets.QLabel, 'distanceText')
         self.stPredText = self.findChild(QtWidgets.QLabel, 'stPredText')
         self.stProbText = self.findChild(QtWidgets.QLabel, 'stProbText')
-        self.mseedText = self.findChild(QtWidgets.QLabel, 'mseedText')
+        self.mseedText = self.findChild(QtWidgets.QLineEdit, 'mseedText')
         self.eventText = self.findChild(QtWidgets.QLabel, 'eventText')
         self.loadButton = self.findChild(QtWidgets.QPushButton, 'loadButton')
         self.spectreButton = self.findChild(QtWidgets.QPushButton, 'spectreButton')
