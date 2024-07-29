@@ -45,8 +45,11 @@ from qgis.core import QgsFeatureRequest
 from qgis.core import QgsSymbol
 from qgis.core import QgsRectangle
 from qgis.core import QgsLineSymbol
-from qgis.utils import iface
+from qgis.core import QgsSimpleMarkerSymbolLayer
+from qgis.core import QgsMarkerSymbol
+from qgis.PyQt.QtGui import QColor
 from qgis.PyQt.QtCore import QVariant
+from qgis.utils import iface
 from qgis.PyQt import QtCore, QtWidgets
 
 from obspy import read, UTCDateTime
@@ -117,43 +120,111 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         return eventos
 
     def createLayerFromDF(self):
-        logging.info('Criando camada de eventos...')
         try:
-            layer_name = 'Eventos Sismológicos'
-            existing_layer = None
-            for layer in QgsProject.instance().mapLayers().values():
-                if layer.name() == layer_name:
-                    existing_layer = layer
-                    break
-            if existing_layer:
-                self.layer - existing_layer
-                provider = self.layer.dataProvider()
-                logging.info('Camada existente encontrada e utilizada.')
-            else:
-                cols = self.df.columns
-                self.layer = QgsVectorLayer("Point?crs=EPSG:4326", "Eventos Sismológicos", "memory")
-                self.layer.loadNamedStyle('/home/ipt/database/qml/eventos_sismologicos.qml')
-                provider = self.layer.dataProvider()
-                provider.addAttributes([
-                    QgsField(name, QVariant.String) for name in cols
-                ])
-                self.layer.updateFields()
-                QgsProject.instance().addMapLayer(self.layer)
-                logging.info('Camada criada e adicionada ao projeto.')
-            features = []
-            for index, row in self.df.iterrows():
+            if self.df.empty:
+                raise ValueError('DataFrame vazio.')
+
+            required_columns = [
+                'Origem Longitude', 'Origem Latitude', 'Event',
+                'Longitude', 'Latitude', 'Station', 'Network'
+            ]
+            for col in required_columns:
+                if col not in self.df.columns:
+                    raise ValueError(f'Coluna {col} não encontrada.')
+
+            # Camada de eventos
+            event_layer_name = 'Eventos'
+            existing_event_layer = QgsProject.instance().mapLayersByName(event_layer_name)
+            if existing_event_layer:
+                QgsProject.instance().removeMapLayer(existing_event_layer[0].id())
+
+            event_layer = QgsVectorLayer('Point?crs=EPSG:4326', event_layer_name, 'memory')
+            event_provider = event_layer.dataProvider()
+            event_provider.addAttributes([
+                QgsField('EventID', QVariant.String),
+                QgsField('Origem Longitude', QVariant.Double),
+                QgsField('Origem Latitude', QVariant.Double)
+            ])
+            event_layer.updateFields()
+
+            event_features = []
+            for event_id, group in self.df.groupby('Event'):
+                event_row = group.iloc[0]
                 feature = QgsFeature()
-                point = QgsPointXY(row['Longitude'], row['Latitude'])
-                feature.setGeometry(QgsGeometry.fromPointXY(point))
-                attributes = [row[col] for col in cols]
-                feature.setAttributes(attributes)
-                features.append(feature)
-            provider.addFeatures(features)
-            self.layer.updateExtents()
-            self.setStationStyle()
-            self.addLabelsToStations()
+                event_point = QgsPointXY(event_row['Origem Longitude'], event_row['Origem Latitude'])
+                feature.setGeometry(QgsGeometry.fromPointXY(event_point))
+                feature.setAttributes([event_id, event_row['Origem Longitude'], event_row['Origem Latitude']])
+                event_features.append(feature)
+
+            event_provider.addFeatures(event_features)
+            event_layer.updateExtents()
+            QgsProject.instance().addMapLayer(event_layer)
+            logging.info(f'Camada de eventos "{event_layer_name}" criada com sucesso.')
+
+            # Camada de estações
+            station_layer_name = 'Estacoes'
+            existing_station_layer = QgsProject.instance().mapLayersByName(station_layer_name)
+            if existing_station_layer:
+                QgsProject.instance().removeMapLayer(existing_station_layer[0].id())
+
+            station_layer = QgsVectorLayer('Point?crs=EPSG:4326', station_layer_name, 'memory')
+            station_provider = station_layer.dataProvider()
+            station_provider.addAttributes([
+                QgsField('Station', QVariant.String),
+                QgsField('Network', QVariant.String),
+                QgsField('Longitude', QVariant.Double),
+                QgsField('Latitude', QVariant.Double),
+                QgsField('EventID', QVariant.String)
+            ])
+            station_layer.updateFields()
+
+            station_features = []
+            for _, row in self.df.iterrows():
+                feature = QgsFeature()
+                station_point = QgsPointXY(row['Longitude'], row['Latitude'])
+                feature.setGeometry(QgsGeometry.fromPointXY(station_point))
+                feature.setAttributes([row['Station'], row['Network'], row['Longitude'], row['Latitude'], row['Event']])
+                station_features.append(feature)
+
+            station_provider.addFeatures(station_features)
+            station_layer.updateExtents()
+            QgsProject.instance().addMapLayer(station_layer)
+            logging.info(f'Camada de estações "{station_layer_name}" criada com sucesso.')
+
+            # Estilizando as camadas
+            self.setEventStyle(event_layer)
+            self.setStationStyle(station_layer)
+
+        except (KeyError, ValueError) as e:
+            logging.error(f'Erro ao criar camadas: {e}')
+            QtWidgets.QMessageBox.critical(
+                self, 'Erro', f'Erro ao criar camadas: {str(e)}'
+            )
+
         except Exception as e:
-            logging.error(f'Erro ao criar camada sismológicos: {e}')
+            logging.error(f'Erro ao criar camadas: {e}')
+            QtWidgets.QMessageBox.critical(
+                self, 'Erro', f'Erro ao criar camadas: {str(e)}'
+            )
+
+    def setEventStyle(self, layer):
+        event_symbol = QgsSymbol.defaultSymbol(layer.geometryType())
+        event_symbol.setColor(QColor("blue"))  # Cor azul para eventos
+        event_symbol.setSize(4)  # Tamanho do símbolo
+        renderer = QgsSingleSymbolRenderer(event_symbol)
+        layer.setRenderer(renderer)
+        layer.triggerRepaint()
+
+    def setStationStyle(self, layer):
+        station_symbol = QgsMarkerSymbol()
+        triangle_layer = QgsSimpleMarkerSymbolLayer()
+        triangle_layer.setShape(QgsSimpleMarkerSymbolLayer.Triangle)
+        triangle_layer.setColor(QColor('red'))
+        triangle_layer.setSize(3)
+        station_symbol.changeSymbolLayer(0, triangle_layer)
+        renderer = QgsSingleSymbolRenderer(station_symbol)
+        layer.setRenderer(renderer)
+        layer.triggerRepaint()
 
     def updateUI(self):
         self.updateEventSelector(QtCore.Qt.Checked)

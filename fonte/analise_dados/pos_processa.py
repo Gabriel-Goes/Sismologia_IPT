@@ -317,7 +317,7 @@ def plot_hist_prob_recall(df):
     plt.ylabel('Recall (%)')
     plt.tight_layout()
     plt.savefig(f'{POS_PATH}/dist_prob_nat_recall.png')
-    #plt.show()()
+    # plt.show()
 
 
 def box_prob_std(df, n=0, d=400, m=8):
@@ -417,6 +417,100 @@ def box_prob_std(df, n=0, d=400, m=8):
     plt.tight_layout()
     plt.show()
     plt.savefig(f'{POS_PATH}/{n}{d}{m}_boxplot_std_prob_nat.png')
+
+
+# distribuição de CFT por Recall
+def class_cft(cft):
+    # from 1.75 to 3
+    if cft < 1.75:
+        return 0
+    elif 1.75 <= cft < 2.25:
+        return 1
+    elif 2.25 <= cft < 2.75:
+        return 2
+    elif 2.75 <= cft < 3.25:
+        return 3
+    elif 3.25 <= cft < 3.75:
+        return 4
+    elif 3.75 <= cft < 4.25:
+        return 5
+    else:
+        return 6
+
+
+def hist_cft_recall(df):
+    CAT_CFT = range(0, 7)
+    df['CFT_cat'] = pd.Categorical(
+        df['CFT'].apply(class_cft),
+        categories=CAT_CFT,
+        ordered=True
+    )
+    f_rel = df['CFT_cat'].value_counts(normalize=True).sort_index()
+    f_abs = df['CFT_cat'].value_counts().sort_index()
+    max_freq = f_rel.max() * 100
+    min_freq = f_rel.min() * 100
+    norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
+    cmap = plt.cm.magma
+    sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+    sm.set_array([])
+    y_min = 90
+    y_max = 0
+
+    fig, ax = plt.subplots(figsize=(14, 8))
+    for c in f_rel.index:
+        c_df = df[df['CFT_cat'] == c]
+        TP = c_df[(c_df['Event Pred'] == 0) & (c_df['Label'] == 0)].shape[0]
+        FN = c_df[(c_df['Event Pred'] == 1) & (c_df['Label'] == 0)].shape[0]
+        if TP + FN == 0:
+            rc = 0
+        else:
+            rc = TP / (TP + FN) * 100
+        if rc != 0:
+            y_min = rc if rc < y_min else y_min
+            freq = f_rel.loc[c] * 100
+            cor = cmap(norm(freq))
+            ax.bar(
+                c, rc, color=cor, edgecolor='black', width=0.5, align='center'
+            )
+            ax.text(
+                c, rc + 0.5, f'{rc:.0f}%', fontsize=8,
+                ha='center', va='bottom', color='black'
+            )
+            ax.text(
+                c, rc + 1.5, f'{f_abs.loc[c]}', fontsize=8,
+                ha='center', va='bottom', color='black'
+            )
+    cbar = fig.colorbar(sm, ax=ax)
+    cbar.ax.set_ylabel('Frequency (%)')
+    cbar.set_ticks([min_freq, max_freq])
+    cbar.set_ticklabels([f'{min_freq:.2f}%', f'{max_freq:.2f}%'])
+    plt.xticks(range(0, 8), labels=[f'{c}' for c in range(0, 8)])
+    plt.ylim(y_min - 5, y_max + 5)
+    plt.grid(True, linestyle='--', linewidth=0.5, color='gray', axis='y')
+    plt.title(f'Distribuição de Recall por CFT dos Eventos - Event Level Total: {df.shape[0]}')
+    plt.xlabel('CFT')
+    plt.ylabel('Recall (%)')
+    plt.tight_layout()
+    plt.savefig(f'{POS_PATH}/hist_ev_cft_recall_event.png')
+    # #plt.show()
+
+
+def calc_event_prob(df, z_values):
+    df['Event Prob_Nat_f'] = [{} for _ in range(len(df))]
+    for z in z_values:
+        for ev_index, evento in df.groupby('Event').groups.items():
+            prob_nat_x = 0
+            counter = 0
+            evento_df = df.loc[evento]
+            for _, pick in evento_df.groupby('Station'):
+                if pick['CFT'].values[0] < z:
+                    continue
+                prob_nat_x += pick['Pick Prob_Nat'].values[0]
+                counter += 1
+            prob_nat_n = prob_nat_x / counter if counter > 0 else -1
+            print(f'Evento: {ev_index} | Prob_Nat: {prob_nat_n}')
+            df.at[ev_index, 'Event Prob_Nat_f'][str(z)] = prob_nat_n
+    return df
 
 
 # --------------------------- HOURS
@@ -635,7 +729,7 @@ def hist_dist_distrib(df):
     plt.xlabel('Distância Epicentral (km)')
     plt.ylabel('Frequência Relativa')
     plt.savefig(f'{POS_PATH}/dist_ev_distance_rel_freq.png')
-    #plt.show()()
+    #plt.show()
 
 
 def hist_dist_recall_pick(df, n=0, d=400, m=8):
@@ -714,7 +808,7 @@ def hist_dist_recall_event(df, n=0, d=400, m=8):
     max_freq = f_rel.max() * 100
     min_freq = f_rel.min() * 100
     norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
-    sm = plt.cm.ScalarMappable(cmap='magma', norm=norm)
+    sm = plt.cm.ScalarMappable(cmap='nipy_spectral', norm=norm)
     sm.set_array([])
     fig, ax = plt.subplots(figsize=(9, 6))
     rc_min = 90
@@ -778,7 +872,7 @@ def hist_dist_recall_event(df, n=0, d=400, m=8):
     plt.ylabel('Event Recall (%)')
     plt.tight_layout()
     plt.savefig(f'{POS_PATH}/{n}{d}{m}_hist_ev_distance_event.png')
-    #plt.show()()
+    # plt.show()
 
 
 def box_dist_event_prob(df, n=0, d=400, m=8):
@@ -788,8 +882,8 @@ def box_dist_event_prob(df, n=0, d=400, m=8):
     df.sort_values('Distance', inplace=True)
     df_ = df.groupby(level='Event').first()
     f_rel = df_['Distance_cat'].value_counts(normalize=True).sort_index()
-    palette = sns.color_palette('Paired', n_colors=(f_rel.shape[0]))
-    color_map = {c: palette[i] for i, c in enumerate(f_rel.index)}
+    # palette = sns.color_palette('Paired', n_colors=(f_rel.shape[0]))
+    # color_map = {c: palette[i] for i, c in enumerate(f_rel.index)}
     max_freq = f_rel.max() * 100
     min_freq = f_rel.min() * 100
     norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
@@ -800,13 +894,17 @@ def box_dist_event_prob(df, n=0, d=400, m=8):
     positions = np.arange(len(f_rel.index))
 
     for pos, c in zip(positions, f_rel.index):
+        print(f' pos: {pos}')
         c_df = df_[df_['Distance_cat'] == c]
         prob_data = c_df['Event Prob_Nat'] * 100
         box_data.append(prob_data)
         freq = f_rel.loc[c] * 100
         color = sm.to_rgba(freq)
         bp = ax.boxplot(
-            prob_data, positions=[pos], widths=0.5, patch_artist=True
+            prob_data,
+            positions=[pos],
+            widths=0.5,
+            patch_artist=True
         )
         for patch in bp['boxes']:
             patch.set_facecolor(color)
@@ -817,8 +915,9 @@ def box_dist_event_prob(df, n=0, d=400, m=8):
             cap.set_color('black')
         for median in bp['medians']:
             median.set_color('red')
+            print(f' media_getydata: {median.get_ydata()}')
             ax.text(
-                pos+0.5, median.get_ydata()[0],
+                pos + 0.5, median.get_ydata()[0],
                 f'{median.get_ydata()[0]:.2f}%',
                 ha='center', va='bottom', fontsize=5
             )
@@ -877,7 +976,7 @@ def box_dist_event_prob(df, n=0, d=400, m=8):
     plt.ylabel('Probability of Natural Event (%)')
     plt.tight_layout()
     plt.savefig(f'{POS_PATH}/{n}{d}{m}_boxplot_ev_distance_event.png')
-    #plt.show()()
+    #plt.show()
 
 
 # --------------------------- MAGNITUDES
@@ -1178,8 +1277,7 @@ def hist_sta_recall_event(df, n=0, d=400, m=8):
     plt.ylabel('Recall (%)')
     plt.tight_layout()
     plt.savefig(f'{POS_PATH}/n_sta_recall_{n}{d}{m}.png')
-    plt.close()
-    # plt.show()
+    plt.show()
 
 
 # --------------------------- SNR-P
@@ -1371,7 +1469,7 @@ def hist_snr_recall_event(df, n=0, d=400, m=8):
     plt.xlabel('Média de SNR_P')
     plt.ylabel('Recall (%)')
     plt.savefig(f'{POS_PATH}/{n}{d}{m}_dist_mean_snrs_recall.png')
-    # #plt.show()()
+    # #plt.show()
 
 
 def scatter_snr_prob(df):
@@ -1424,7 +1522,7 @@ def recall_event(df, d=400, m=8):
     plt.ylabel('Recall')
     plt.tight_layout()
     plt.savefig(f'{POS_PATH}/{d}{m}_recall_event.png')
-    #plt.show()()
+    # plt.show()
 
 
 # --------------------------- REGION
@@ -1489,7 +1587,7 @@ def region_correlation(df):
     # #plt.show()()
 
 
-# --------------------------- CREATE ARQUIVOS
+# --------------------------- CRIAR ARQUIVOS
 def carregar_dado(w=3, n=0, d=400, m=8):
     df = pd.read_csv('arquivos/resultados/predito.csv')
     df = df[df['MLv'] < m]
@@ -1592,6 +1690,7 @@ def ncomercial(df):
     # ----------------------------------
     # Plot the Prob_Nat_std x Event
     # ----------------------------------
+    plt.close()
     df_nc.to_csv('arquivos/resultados/nc_analisado.csv')
 
     return df_nc
