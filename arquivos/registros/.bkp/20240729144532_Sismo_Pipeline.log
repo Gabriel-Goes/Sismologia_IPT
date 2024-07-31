@@ -1,0 +1,71 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo-moho.csv
+  EVENTS: false
+  TREATCATALOG: true
+  PREDICT: false
+  POSPROCESS: false
+  MAPS: false
+  REPORT: false
+  TEST: false
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo-moho.csv...
+plot [WARNING]: 0.15+b not a valid number and may not be decoded properly.
+plot [WARNING]: 0.15+b not a valid number and may not be decoded properly.
+ Args: Namespace(eventos='eventos.csv', csv='catalogo-moho.csv', ascending=True, map=True, test=False)
+Author
+JROBERTO                 2390
+MASSUMPCAO                140
+CLEUSA                    104
+BRUNO                      80
+UNB                        18
+UFRN                       15
+MBIANCHI                    5
+IAG                         5
+UNB;IAG                     5
+IAG;IPT                     3
+IAG;UNB                     3
+IPT                         2
+UFRN;UNB                    2
+USGS                        2
+IAG;UNB;UFRN;USGS           1
+IAG;UNB;ESAR;UNESP-RC       1
+IAG;ESAR;UNESP-RC;IPT       1
+IAG;ESAR                    1
+UNB; IAG                    1
+JROBERTO@TUBARAO            1
+UNB;ISC                     1
+UFRN;UNB;ISC                1
+Name: count, dtype: int64
+        EventID                       Time  ...  Hora                     geometry
+1   usp2024jjlx 2024-05-13 06:03:09.016978  ...     6  POINT (-51.14961 -29.20655)
+2   usp2024jjlt 2024-05-13 05:58:46.933918  ...     5  POINT (-51.14868 -29.28344)
+3   usp2024jjlb 2024-05-13 05:37:48.251290  ...     5  POINT (-51.51981 -29.01688)
+4   usp2024jjjl 2024-05-13 04:48:43.054289  ...     4  POINT (-51.55998 -29.06603)
+17  usp2024ivqc 2024-05-05 16:16:23.000000  ...    16    POINT (-59.56000 2.65000)
+
+[5 rows x 16 columns]
+            count  ...        std
+Time         2782  ...        NaN
+Latitude   2782.0  ...   7.591672
+Longitude  2782.0  ...  10.953745
+Depth/km   2782.0  ...  85.505145
+Catalog       0.0  ...        NaN
+Magnitude  2780.0  ...   0.927095
+Hora       2782.0  ...   6.964219
+
+[7 rows x 8 columns]
+Plotando mapa...
+Salvando mapa...
+Salvando mapa...
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
+~/projetos/ClassificadorSismologico

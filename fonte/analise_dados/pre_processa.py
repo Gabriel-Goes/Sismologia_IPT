@@ -5,20 +5,19 @@
 # ---------------------------  DESCRIPTION  -----------------------------------
 # Script para tratar dados anterior a classificação.
 # Autor: Gabriel Góes Rocha de Lima
-# Versão: 0.2
+# Versão: 0.2.1
 # Data: 2024-02-27
-# Modificação mais recente: 2024-04-10
+# Modificação mais recente: 2024-07-29
 # Descrição: Este script será chamado antes da aquisição dos dados e apóes a
 # aquisição dos dados. Ele será responsável por tratar os dados do catálogo.csv
-# e dos eventos.csv. O catalogo.csv será tratado criando um
-# catalogo_treated.csv que será iterado pela eventos_fluxo.py
+# e dos eventos.csv. O catalogo.csv será filtrado criando um
+# catalogo_treated.csv que será iterado pela fluxo_eventos.py
 
 # ----------------------------  IMPORTS   -------------------------------------
 import pandas as pd
 from obspy.core import UTCDateTime
 import shapely.geometry
 import geopandas as gpd
-from geopandas.datasets import get_path
 import pygmt
 import random
 import matplotlib.pyplot as plt
@@ -70,7 +69,7 @@ def data_catalogo(
         catalogo: pd.DataFrame,
         ascending: bool = False,
         data: str = '2010'
-        ) -> pd.DataFrame:
+) -> pd.DataFrame:
     catalogo['Time'] = pd.to_datetime(catalogo['Time'])
     catalogo['Hora'] = catalogo['Time'].apply(lambda x: x.hour)
     catalogo['Time'] = pd.to_datetime(catalogo['Time'])
@@ -86,9 +85,8 @@ def brasil_catalogo(catalogo: pd.DataFrame) -> pd.DataFrame:
         lambda x: shapely.geometry.Point(x['Longitude'], x['Latitude']), axis=1
     )
     df = gpd.GeoDataFrame(df, geometry='geometry')
-    world = gpd.read_file(get_path('naturalearth_lowres'))
-    s_america = world[world['continent'] == 'South America']
-    brasil = s_america[s_america['name'] == 'Brazil']
+    world = gpd.read_file('/home/ipt/database/shp/ne_110m_admin_0_countries.shp')
+    brasil = world[world['SOVEREIGNT'] == 'Brazil']
     brasil = brasil.to_crs(epsg=32723)
     brasil_buffer = brasil.buffer(400000)
     brasil_buffer = brasil_buffer.to_crs(epsg=4326)
@@ -125,11 +123,16 @@ def check_ev_id():
 
 # ----------------------------  PLOT  -----------------------------------------
 def plot_distrib_hora(
-        catalog: pd.DataFrame, title='bruto',
-        textwidth=7, scale=1.0, aspect_ratio=6/8) -> None:
+        catalog: pd.DataFrame, title='completo',
+        textwidth=7, scale=1.0, aspect_ratio=6 / 8
+) -> None:
+    print('')
+    print('Plotando distribuição de eventos por hora...')
     data_i = catalog['Time'].min().strftime('%b de %Y')
     data_f = catalog['Time'].max().strftime('%b de %Y')
     counts = catalog['Hora'].value_counts(sort=False).reindex(np.arange(24), fill_value=0)
+    print(f' Catálogo {title} com {catalog.shape[0]} eventos')
+    print(f' {data_i} à {data_f}')
     density = counts / counts.sum()
     width = textwidth * scale
     height = width * aspect_ratio
@@ -174,42 +177,32 @@ def plot_distrib_hora(
 
 
 def profundidade_catalogo(
-    catalogo: pd.DataFrame,
-    title='bruto',
-    textwidth=7, scale=1.0, aspect_ratio=6 / 8
-    ) -> None:
+        catalogo: pd.DataFrame,
+        title='completo',
+        textwidth=7, scale=1.0, aspect_ratio=6 / 8
+) -> None:
     width = textwidth * scale
     height = width * aspect_ratio
     plt.figure(figsize=(width, height), constrained_layout=True)
     plt.yscale('log')
     n, bins, patches = plt.hist(
         catalogo['Depth/km'],
-        bins=10,
+        bins=100,
         color='#1f77b4',
         edgecolor='black',
         alpha=0.7,
         density=False,
     )
-    for i in range(len(patches)):
-        bin_value = n[i] / catalogo.shape[0] * 100
-        plt.text(
-            patches[i].get_x() + patches[i].get_width() / 2 + 2,
-            patches[i].get_height() + patches[i].get_height() * 0.05,
-            f'{bin_value:.2f}%',
-            ha='center',
-            va='bottom',
-            fontsize=8,
-            rotation=0,
-        )
     plt.suptitle('Distribuição de Profundidade')
     plt.title(f'Catálogo {title} com {catalogo.shape[0]} eventos')
     plt.xlabel('Profundidade (km)')
     plt.ylabel('Frequência absoluta (log)')
+    plt.xticks(np.arange(0, 700, 50))
     plt.grid(True, linestyle='--', linewidth=0.7, alpha=0.7)
     plt.tight_layout()
     plt.savefig(f'arquivos/figuras/pre_processa/hist_profundidade_{title}.png')
     plt.savefig(f'arquivos/figuras/pre_processa/hist_profundidade_{title}.pgf')
-    plt.show()
+    # plt.show()
 
 
 def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
@@ -231,12 +224,12 @@ def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
     plt.xlabel('Longitude')
     plt.ylabel('Latitude')
     plt.grid(True)
-    plt.savefig('arquivos/figures/mapas/bruto_catalog_mapa.png')
+    plt.savefig('arquivos/figures/mapas/completo_catalog_mapa.png')
     plt.close()
     # plt.show()
 
 
-def plot_prof_as_red(catalog: pd.DataFrame, title='bruto') -> None:
+def plot_prof_as_red(catalog: pd.DataFrame, title='completo') -> None:
     catalog.drop_duplicates(subset='EventID', inplace=True)
     catalog = gpd.GeoDataFrame(
         catalog,
@@ -244,17 +237,16 @@ def plot_prof_as_red(catalog: pd.DataFrame, title='bruto') -> None:
     )
     capitals = pd.DataFrame({
         "city": [
-            "São Paulo", "Rio de Janeiro", "Belo Horizonte", "Brasília",
-            "Salvador", "Fortaleza", "Manaus", "Curitiba", "Recife",
-            "Porto Alegre"
+            "Brasília",
+            "Salvador", "Fortaleza", "Manaus", "Recife",
         ],
         "latitude": [
-            -23.55052, -22.90684, -19.9245, -15.7801, -12.9714,
-            -3.71722, -3.119028, -25.4284, -8.04756, -30.03306
+            -15.7801, -12.9714,
+            -3.71722, -3.119028, -8.04756
         ],
         "longitude": [
-            -46.63331, -43.1729, -43.9352, -47.9292, -38.5014,
-            -38.5434, -60.021731, -49.2733, -34.87664, -51.2300
+            -47.9292, -38.5014,
+            -38.5434, -60.021731, -34.87664
         ]
     })
     region = (
@@ -282,7 +274,7 @@ def plot_prof_as_red(catalog: pd.DataFrame, title='bruto') -> None:
         land="gray",
         water="skyblue"
     )
-    if title == 'bruto':
+    if title == 'completo':
         fig.basemap(
             frame=[
                 'a4f3g6',
@@ -308,7 +300,7 @@ def plot_prof_as_red(catalog: pd.DataFrame, title='bruto') -> None:
     fig.plot(
         x=capitals['longitude'],
         y=capitals['latitude'],
-        style="c0.15+bc", fill="white", pen="black",
+        style="c0.1", fill="white", pen="black",
         label="Capitais"
     )
     fig.plot(
@@ -338,19 +330,18 @@ def plot_prof_as_red(catalog: pd.DataFrame, title='bruto') -> None:
         fig.savefig(f'arquivos/figuras/mapas/mapa_eventos_{title}.png')
     except pygmt.clib.GMTCLibError as e:
         print(f"Erro ao salvar como PNG: {e}")
-
-    fig.show()
+    # fig.show()
 
 
 def plot_by_macrorregioes(
         catalog: pd.DataFrame,
-        title: str = 'bruto',
+        title: str = 'completo',
         attribute: str = 'Depth/km',
         textwidth=7,
         scale=1.0,
-        aspect_ratio=6/8,
+        aspect_ratio=6 / 8,
         bins=10
-        ) -> None:
+) -> None:
     width = textwidth * scale
     height = width * aspect_ratio
     macro_br = gpd.read_file('arquivos/figuras/mapas/macrorregioesBrasil.json')
@@ -358,13 +349,14 @@ def plot_by_macrorregioes(
     regions = list(macro_br['nome']) + ['Exterior']
     num_regions = len(regions)
     cols = 3
-    rows = (num_regions + cols - 1) // cols  # Número de linhas necessário
-
-    fig, axes = plt.subplots(rows, cols, figsize=(width, height), constrained_layout=True)
-    axes = axes.flatten()  # Flatten para iteração fácil
-
-    all_geometries = macro_br['geometry'].unary_union  # Combina todas as geometrias das macrorregiões
-
+    rows = (num_regions + cols - 1) // cols
+    fig, axes = plt.subplots(
+        rows, cols,
+        figsize=(width, height),
+        constrained_layout=True
+    )
+    axes = axes.flatten()
+    all_geometries = macro_br['geometry'].unary_union
     for i, regiao in enumerate(regions):
         ax = axes[i]
         ax.set_title(regiao, fontsize=10)
@@ -372,12 +364,14 @@ def plot_by_macrorregioes(
         ax.grid(True, linestyle='--', linewidth=0.7, alpha=0.7)
         ax.set_xlabel('Profundidade (km)', fontsize=8)
         ax.set_ylabel('Frequência', fontsize=8)
-
         if regiao != 'Exterior':
-            data = catalog[attribute][catalog['geometry'].within(macro_br.loc[macro_br['nome'] == regiao, 'geometry'].values[0])]
+            data = catalog[attribute][catalog['geometry'].within(
+                macro_br.loc[macro_br['nome'] == regiao, 'geometry'].values[0]
+            )]
         else:
-            data = catalog[attribute][~catalog['geometry'].within(all_geometries)]
-
+            data = catalog[attribute][~catalog['geometry'].within(
+                all_geometries
+            )]
         counts, bin_edges, _ = ax.hist(
             data,
             bins=bins,
@@ -386,29 +380,26 @@ def plot_by_macrorregioes(
             alpha=0.7,
             density=False
         )
-
         for j in range(len(bin_edges) - 1):
-            bin_value = counts[j] / catalog.shape[0] * 100  # Proporção relativa em %
+            bin_value = counts[j] / catalog.shape[0] * 100
             ax.text(
-                (bin_edges[j] + bin_edges[j+1]) / 2,
+                (bin_edges[j] + bin_edges[j + 1]) / 2,
                 counts[j],
                 f'{bin_value:.2f}%',
                 ha='center',
                 va='bottom',
                 fontsize=6,
             )
-
     for ax in axes[num_regions:]:
         fig.delaxes(ax)
-
     fig.suptitle('Distribuição de Profundidade por Macrorregiões', fontsize=12)
     plt.subplots_adjust(top=0.92)
-    plt.show()
+    # plt.show()
 
 
 # ----------------------------  MAIN  -----------------------------------------
 def main(args=args):
-    print(f' Args: {args}')
+    print(f'Argumentos recebidos:\n {args.eventos}\n {args.csv}\n {args.map}\n {args.test}')
     if args.csv:
         catalogo_r = read_catalogo(args.csv, sep='|')
         if args.test is True:
@@ -421,27 +412,27 @@ def main(args=args):
         catalogo['Author'] = catalogo['Author'].str.strip()
         catalogo['Author'] = catalogo['Author'].replace(
             {
-                'CLEUSA': 'CLEUSA',
                 'BRUNO@LAB88': 'BRUNO',
                 'BBCOLLACO': 'BRUNO',
+                'BRUNO@MAVERICK.LOCAL': 'BRUNO',
                 'MARCELO': 'MASSUMPCAO',
+                'JROBERTO@VITORIA': 'JROBERTO',
             }
         )
-        print(catalogo['Author'].value_counts())
-        print(catalogo.describe().T)
-        plot_distrib_hora(catalogo, title='tratado')
+        plot_distrib_hora(catalogo, title='filtrado')
         plot_distrib_hora(catalogo_r)
         profundidade_catalogo(catalogo_r)
-        profundidade_catalogo(catalogo, title='tratado')
+        profundidade_catalogo(catalogo, title='filtrado')
+        c_filtrado = f"arquivos/catalogo/{args.csv.split('.')[0]}_filtrado.csv"
         catalogo.to_csv(
-            f"arquivos/catalogo/{args.csv.split('.')[0]}_treated.csv",
+            c_filtrado,
             sep='|',
             index=False
         )
         if args.map:
             print('Plotando mapa...')
             plot_prof_as_red(catalogo_r)
-            plot_prof_as_red(catalogo, 'tratado')
+            plot_prof_as_red(catalogo, 'filtrado')
 
     elif args.eventos:
         eventos = pd.read_csv(f'arquivos/eventos/{args.eventos}', sep=',')
@@ -452,6 +443,7 @@ def main(args=args):
         print('Nenhum argumento foi passado')
         return None
 
+    plt.close()
     return catalogo
 
 

@@ -44,16 +44,20 @@ TEST=false
 # ------------------------- PARSE ARGUMENTOS ----------------------------------
 if [ $# -eq 0 ]; then
     EVENTS=true
-    TREATCATALOG=true
+              # Código para ajuda  TREATCATALOG=true
     PREDICT=true
     POSPROCESS=true
     MAPS=true
     REPORT=true
     TEST=false
 else
-    if [ -f './arquivos/catalogo/'$1 ]; then
-        CATALOG=$1
+    if [ -f  "./arquivos/catalogo/$1" ]; then
+        CATALOG=$(basename "$1")
+        echo "Catalogo: $CATALOG"
         shift
+    else
+        echo "Erro: Arquivo $1 não encontrado!"
+        exit 1
     fi
     while [[ $# -gt 0 ]]; do
         case $1 in
@@ -109,13 +113,13 @@ pushd $BASE_DIR
 # DEFINE O DIRETÓRIO DE LOGS
 LOG_DIR="arquivos/registros"
 LOG_FILE="$LOG_DIR/Sismo_Pipeline.log"
-LOG_FILE_BKP="$LOG_DIR/.bkp/$(date +%Y%m%d%H%M%S)_Sismo_Pipeline.log"
-mkdir -p arquivos
-mkdir -p $LOG_DIR
+mkdir -p arquivos/$LOG_DIR
 
-# CRIA O ARQUIVO DE LOG
-mv -f $LOG_FILE $LOG_FILE_BKP
-touch "$LOG_FILE"
+if [ -f $LOG_FILE ]; then
+    mv $LOG_FILE $LOG_DIR/.bkp/Sismo_Pipeline.log.$(date +%Y%m%d%H%M%S)
+    touch "$LOG_FILE"
+fi
+
 exec 1> >(tee -a "$LOG_FILE") 2>&1
 
 # DEFINE DELIMITADORES PARA LOGS
@@ -133,7 +137,7 @@ echo ''
 echo "Argumentos recebidos:"
 echo "  Catalogo: $CATALOG"
 echo "  EVENTS: $EVENTS"
-echo "  TREATCATALOG: $TREATCATALOG"
+echo "  TREATCATALOG: $TREATCATALOG"            # Código para ajuda
 echo "  PREDICT: $PREDICT"
 echo "  POSPROCESS: $POSPROCESS"
 echo "  MAPS: $MAPS"
@@ -157,16 +161,16 @@ if [ "$EVENTS" = true ]; then
         mv arquivos/registros/ids_faltantes.csv arquivos/registros/.bkp/ids_faltantes.csv.$(date +%Y%m%d%H%M%S)
     echo " Arquivos de backup criados com sucesso!"
     echo ''
-    if [ "$TREATCATALOG" = true ]; then
+    if [ "$TEST" = false]; then
         echo ''
         echo ' -> Executando fluxo_eventos.py...'
         CATALOG=$(echo $CATALOG | cut -d'.' -f1)
-        python fonte/nucleo/fluxo_eventos.py $CATALOG'_treated.csv' $TEST
+        python fonte/nucleo/fluxo_eventos.py $CATALOG
         echo ''
     else
         echo " -> Executando fluxo_eventos.py..."
         python fonte/nucleo/fluxo_eventos.py $CATALOG $TEST
-        echo ''
+        echo ''            # Código para ajuda
     fi
 fi
 

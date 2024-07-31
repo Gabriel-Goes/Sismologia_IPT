@@ -412,7 +412,6 @@ def main(EventIDs: List) -> [Catalog, Dict, List]:
 
 # ---------------------------- EXECUÇÃO ---------------------------------------
 if __name__ == "__main__":
-
     EventIDs = csv2list(sys.argv[1])
     if sys.argv[2] == 'True':
         print(' --> Modo de teste ativado')

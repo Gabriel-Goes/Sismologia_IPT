@@ -1,0 +1,39 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: Catalog_jul.csv
+  EVENTS: false
+  TREATCATALOG: true
+  PREDICT: false
+  POSPROCESS: false
+  MAPS: false
+  REPORT: false
+  TEST: false
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando Catalog_jul.csv...
+plot [WARNING]: Length <unit> b not supported - revert to default unit [cm]
+plot [WARNING]: 0.1+ not a valid number and may not be decoded properly.
+plot [WARNING]: Length <unit> b not supported - revert to default unit [cm]
+plot [WARNING]: 0.1+ not a valid number and may not be decoded properly.
+ Args: Namespace(eventos='eventos.csv', csv='Catalog_jul.csv', ascending=True, map=True, test=False)
+
+Plotando distribuição de eventos por hora...
+ Catálogo filtrado com 2916 eventos
+ nov de 2010 à jul de 2024
+
+Plotando distribuição de eventos por hora...
+ Catálogo completo com 10218 eventos
+ nov de 2010 à jul de 2024
+Plotando mapa...
+Salvando mapa...
+Salvando mapa...
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
+~/projetos/ClassificadorSismologico

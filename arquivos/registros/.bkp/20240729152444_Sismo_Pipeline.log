@@ -1,0 +1,53 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: Catalog_jul.csv
+  EVENTS: false
+  TREATCATALOG: true
+  PREDICT: false
+  POSPROCESS: false
+  MAPS: false
+  REPORT: false
+  TEST: false
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando Catalog_jul.csv...
+ Args: Namespace(eventos='eventos.csv', csv='Catalog_jul.csv', ascending=True, map=True, test=False)
+Traceback (most recent call last):
+  File "fiona/ogrext.pyx", line 136, in fiona.ogrext.gdal_open_vector
+  File "fiona/_err.pyx", line 291, in fiona._err.exc_wrap_pointer
+fiona._err.CPLE_OpenFailedError: /home/ipt/database/shp/ne_110m_admin_0_countries.shp: Arquivo ou diretório inexistente
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 452, in <module>
+    catalogo = main()
+               ^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 411, in main
+    catalogo = brasil_catalogo(catalogo)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 88, in brasil_catalogo
+    world = gpd.read_file('/home/ipt/database/shp/ne_110m_admin_0_countries.shp')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/geopandas/io/file.py", line 297, in _read_file
+    return _read_file_fiona(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/geopandas/io/file.py", line 338, in _read_file_fiona
+    with reader(path_or_bytes, **kwargs) as features:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/fiona/env.py", line 457, in wrapper
+    return f(*args, **kwds)
+           ^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/fiona/__init__.py", line 292, in open
+    colxn = Collection(
+            ^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/fiona/collection.py", line 243, in __init__
+    self.session.start(self, **kwargs)
+  File "fiona/ogrext.pyx", line 588, in fiona.ogrext.Session.start
+  File "fiona/ogrext.pyx", line 143, in fiona.ogrext.gdal_open_vector
+fiona.errors.DriverError: /home/ipt/database/shp/ne_110m_admin_0_countries.shp: Arquivo ou diretório inexistente
