@@ -1,67 +1,0 @@
-
-########################################################################
- ---------------- Iniciando do Pipeline --------------------------------
-
- -> Executando ProcessarDadosSismologicos.py...
-
- - Argumento 1: /home/ggrl/projetos/ClassificadorSismologico/files/catalogo/catalogo-moho_bkp.csv
- --> Client:
-  http://seisarc.sismo.iag.usp.br
- --> Client Backup:
-  http://rsbr.on.br:8081/fdsnws/dataselect/1
------------------------------------------------------
-
-
- --------- Iniciando o ProcessarID.py --------- 
- ------------------------------ Acessando Catálogo ------------------------------ 
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:00<00:25,  3.91it/s]  4%|▍         | 4/100 [00:00<00:08, 11.66it/s]  6%|▌         | 6/100 [00:00<00:06, 14.24it/s]  9%|▉         | 9/100 [00:00<00:05, 17.19it/s] 12%|█▏        | 12/100 [00:00<00:04, 17.93it/s] 15%|█▌        | 15/100 [00:00<00:04, 19.05it/s] 18%|█▊        | 18/100 [00:01<00:04, 20.02it/s] 21%|██        | 21/100 [00:01<00:04, 19.71it/s] 24%|██▍       | 24/100 [00:01<00:03, 20.53it/s] 27%|██▋       | 27/100 [00:01<00:03, 21.39it/s] 30%|███       | 30/100 [00:01<00:03, 21.42it/s] 33%|███▎      | 33/100 [00:01<00:03, 21.12it/s] 36%|███▌      | 36/100 [00:01<00:02, 21.69it/s] 39%|███▉      | 39/100 [00:02<00:02, 21.26it/s] 42%|████▏     | 42/100 [00:02<00:02, 21.22it/s] 45%|████▌     | 45/100 [00:02<00:02, 20.83it/s] 48%|████▊     | 48/100 [00:02<00:02, 21.45it/s] 51%|█████     | 51/100 [00:02<00:02, 20.81it/s] 54%|█████▍    | 54/100 [00:02<00:02, 19.67it/s] 56%|█████▌    | 56/100 [00:02<00:02, 18.93it/s] 59%|█████▉    | 59/100 [00:03<00:02, 19.60it/s] 61%|██████    | 61/100 [00:03<00:02, 19.11it/s] 64%|██████▍   | 64/100 [00:03<00:01, 19.39it/s] 66%|██████▌   | 66/100 [00:03<00:01, 17.92it/s] 68%|██████▊   | 68/100 [00:03<00:01, 18.37it/s] 70%|███████   | 70/100 [00:03<00:01, 18.62it/s] 72%|███████▏  | 72/100 [00:03<00:01, 18.07it/s] 75%|███████▌  | 75/100 [00:03<00:01, 18.55it/s] 77%|███████▋  | 77/100 [00:04<00:01, 18.48it/s] 79%|███████▉  | 79/100 [00:04<00:01, 17.34it/s] 82%|████████▏ | 82/100 [00:04<00:00, 19.08it/s] 85%|████████▌ | 85/100 [00:04<00:00, 19.54it/s] 88%|████████▊ | 88/100 [00:04<00:00, 19.56it/s] 90%|█████████ | 90/100 [00:04<00:00, 19.65it/s] 92%|█████████▏| 92/100 [00:04<00:00, 19.35it/s] 94%|█████████▍| 94/100 [00:04<00:00, 18.91it/s] 96%|█████████▌| 96/100 [00:05<00:00, 17.60it/s] 98%|█████████▊| 98/100 [00:05<00:00, 17.63it/s]100%|██████████| 100/100 [00:05<00:00, 17.94it/s]100%|██████████| 100/100 [00:05<00:00, 18.93it/s]
- --> Iterando sobre eventos
- - Número de eventos: 100
- - Client: http://seisarc.sismo.iag.usp.br
- - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
- - Estações no Inventário: 1480
-Press Enter to continue ...
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:00<00:05, 19.37it/s]
-############ Event 1: usp2020hkyw ############
-
---> Pick 1
- - Net: BR
- - Sta: PDRB
- - BR.PDRB X,Y : -11.612297, -56.729597
- - Distância até o epicentro: 0.22934459104391727 km
- Downloading ...
- Pick Time -> 2020-04-15T14:40:19.978417Z
- Origin Time -> 2020-04-15T14:40:20.000000Z
- Channel -> HHZ
- - Saving File: 20200415T144020/BR_PDRB_20200415T144020.mseed
------------------------------------------------------
-
- - Event: usp2020hkyw
- - Pwave Picks: 1
- - Streams: 1
-#####################################################
-
-############ Event 2: usp2022gpbs ############
-
---> Pick 1
- - Net: NB
- - Sta: NBMO
- - NB.NBMO X,Y : [], []
-Traceback (most recent call last):
-  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 94, in <module>
-    catalogo, inentory, missin_ids = main(
-                                     ^^^^^
-  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 56, in main
-    iterate_events(
-  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/BaixarFormaOnda.py", line 156, in iterate_events
-    dist, az, baz = gps2dist_azimuth(origem_lat, origem_lon, sta_lat, sta_lon)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/geodetics/base.py", line 267, in gps2dist_azimuth
-    values = calc_vincenty_inverse(lat1, lon1, lat2, lon2, a, f)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/geodetics/base.py", line 137, in calc_vincenty_inverse
-    lat2 = math.radians(lat2)
-           ^^^^^^^^^^^^^^^^^^
-TypeError: only length-1 arrays can be converted to Python scalars
-
- Criando arquivos de backup...

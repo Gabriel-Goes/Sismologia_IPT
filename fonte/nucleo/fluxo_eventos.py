@@ -21,7 +21,7 @@ import random
 import numpy as np
 from tqdm import tqdm
 from typing import List, Dict
-# import logging  # Utilizar o Logging
+import logging  # Utilizar o Logging
 
 # ClassificadorSismologico
 from nucleo.utils import MSEED_DIR
@@ -30,19 +30,28 @@ from nucleo.utils import csv2list
 
 
 # ---------------------------- FUNÇÕES ----------------------------------------
-def iterar_eventos(eventos: List,
-                   data_client: Client,
-                   data_client_bkp: Client,
-                   baixar=True,
-                   random=True) -> None:
+def iterar_eventos(
+        eventos: List,
+        data_client: Client,
+        data_client_bkp: Client,
+        baixar=True,
+        random=True
+) -> None:
     print(' --> Iterando sobre eventos')
     print(f' - Número de eventos: {len(eventos)}')
     data_to_save = []
     error_to_save = []
     event_count = 0
     print(' --> Adrquirindo Inventário de Estações')
-    inventario = data_client.get_stations()
-    inventario_bkp = data_client_bkp.get_stations()
+    try:
+        inventario = data_client.get_stations()
+    except Exception as e:
+        print(f'Erro ao adquirir inventário de estações: {e}')
+        try:
+            inventario_bkp = data_client_bkp.get_stations()
+        except Exception as e:
+            print(f'Erro ao adquirir inventário de estações: {e}')
+            sys.exit(1)
 
     for evento in tqdm(eventos):
         event_id = evento.resource_id.id.split("/")[-1]
@@ -350,26 +359,24 @@ def iterar_eventos(eventos: List,
 
 # ---------------------------- MAIN -------------------------------------------
 def main(EventIDs: List) -> [Catalog, Dict, List]:
-    # Clientes para acessar os dados
+    print('Iniciando conexão com Seisarc')
+    print(DELIMT)
     try:
         DATA_CLIENT = Client('http://seisarc.sismo.iag.usp.br/')
+        print(f' --> Client:\n  {DATA_CLIENT.base_url}')
     except Exception as e:
         print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
-        sys.exit(1)
-    try:
-        DATA_CLIENT_BKP = Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
-    except Exception as e:
-        print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
-        sys.exit(1)
+        try:
+            DATA_CLIENT_BKP = Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
+            print(f' --> Client Backup:\n  {DATA_CLIENT_BKP.base_url}')
+        except Exception as e:
+            print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
+            sys.exit(1)
 
-    print('')
-    print(f' - Catálogo: {sys.argv[1]}')
-    print(f' --> Client:\n  {DATA_CLIENT.base_url}')
-    print(f' --> Client Backup:\n  {DATA_CLIENT_BKP.base_url}')
-    print(DELIMT)
     print(" --------- INICIANDO FLUXO DE EVENTOS  --------- ")
     print('')
     print(' ------------------------------ ACESSANDO CATÁLOGO ------------------------------ ')
+    print(f' - Catálogo: {sys.argv[1]}')
     print(f' - Primeiro EventID: {EventIDs[0]}')
     print(f' - EventID mediano: {EventIDs[int(len(EventIDs)/2)]}')
     print(f' - Último EventID: {EventIDs[-1]}')

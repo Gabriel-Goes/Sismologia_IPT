@@ -1,52 +1,0 @@
-
-########################################################################
- ---------------- Iniciando do Pipeline --------------------------------
-
- -> Executando ProcessarDadosSismologicos.py...
-
- - Argumento 1: /home/ggrl/projetos/ClassificadorSismologico/files/catalogo/catalogo-moho_bkp.csv
- --> Client:
-  http://seisarc.sismo.iag.usp.br
- --> Client Backup:
-  http://rsbr.on.br:8081/fdsnws/dataselect/1
------------------------------------------------------
-
-
- --------- Iniciando o ProcessarID.py --------- 
- ------------------------------ Acessando Catálogo ------------------------------ 
-  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:00<00:23,  4.13it/s]  4%|▍         | 4/100 [00:00<00:07, 12.22it/s]  6%|▌         | 6/100 [00:00<00:07, 12.28it/s]  9%|▉         | 9/100 [00:00<00:05, 15.65it/s] 12%|█▏        | 12/100 [00:00<00:04, 18.10it/s] 15%|█▌        | 15/100 [00:00<00:04, 19.30it/s] 18%|█▊        | 18/100 [00:01<00:04, 20.14it/s] 21%|██        | 21/100 [00:01<00:04, 19.33it/s] 23%|██▎       | 23/100 [00:01<00:03, 19.45it/s] 26%|██▌       | 26/100 [00:01<00:03, 20.15it/s] 29%|██▉       | 29/100 [00:01<00:03, 21.00it/s] 32%|███▏      | 32/100 [00:01<00:03, 21.06it/s] 35%|███▌      | 35/100 [00:01<00:03, 21.08it/s] 38%|███▊      | 38/100 [00:02<00:03, 20.61it/s] 41%|████      | 41/100 [00:02<00:02, 20.83it/s] 44%|████▍     | 44/100 [00:02<00:02, 19.92it/s] 47%|████▋     | 47/100 [00:02<00:02, 19.35it/s] 50%|█████     | 50/100 [00:02<00:02, 20.16it/s] 53%|█████▎    | 53/100 [00:02<00:02, 20.75it/s] 56%|█████▌    | 56/100 [00:02<00:02, 20.87it/s] 59%|█████▉    | 59/100 [00:03<00:02, 20.48it/s] 62%|██████▏   | 62/100 [00:03<00:01, 20.48it/s] 65%|██████▌   | 65/100 [00:03<00:01, 19.37it/s] 67%|██████▋   | 67/100 [00:03<00:01, 19.24it/s] 70%|███████   | 70/100 [00:03<00:01, 19.24it/s] 73%|███████▎  | 73/100 [00:03<00:01, 20.14it/s] 76%|███████▌  | 76/100 [00:03<00:01, 19.63it/s] 79%|███████▉  | 79/100 [00:04<00:01, 20.09it/s] 82%|████████▏ | 82/100 [00:04<00:00, 20.38it/s] 85%|████████▌ | 85/100 [00:04<00:00, 20.36it/s] 88%|████████▊ | 88/100 [00:04<00:00, 19.24it/s] 90%|█████████ | 90/100 [00:04<00:00, 19.25it/s] 92%|█████████▏| 92/100 [00:04<00:00, 19.09it/s] 94%|█████████▍| 94/100 [00:04<00:00, 17.88it/s] 96%|█████████▌| 96/100 [00:05<00:00, 16.74it/s] 98%|█████████▊| 98/100 [00:05<00:00, 16.76it/s]100%|██████████| 100/100 [00:05<00:00, 17.32it/s]100%|██████████| 100/100 [00:05<00:00, 18.94it/s]
- --> Iterando sobre eventos
- - Número de eventos: 100
- - Client: http://seisarc.sismo.iag.usp.br
- - Client Backup: http://rsbr.on.br:8081/fdsnws/dataselect/1
- - Estações no Inventário: 1480
-Press Enter to continue ...
-  0%|          | 0/100 [00:00<?, ?it/s]  0%|          | 0/100 [00:00<?, ?it/s]
-############ Event 1: usp2020hkyw ############
-
---> Pick 1
- - Net: BR
- - Sta: PDRB
- - X,Y BR.PDRB: [-11.612297 -11.612297], [-56.729597 -56.729597]
-Traceback (most recent call last):
-  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 94, in <module>
-    catalogo, inentory, missin_ids = main(
-                                     ^^^^^
-  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/ProcessarDadosSismologicos.py", line 56, in main
-    iterate_events(
-  File "/home/ggrl/projetos/ClassificadorSismologico/source/Core/BaixarFormaOnda.py", line 157, in iterate_events
-    dist, az, baz = gps2dist_azimuth(origem_lat, origem_lon, sta_lat, sta_lon)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/geodetics/base.py", line 280, in gps2dist_azimuth
-    raise e
-  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/geodetics/base.py", line 267, in gps2dist_azimuth
-    values = calc_vincenty_inverse(lat1, lon1, lat2, lon2, a, f)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/geodetics/base.py", line 126, in calc_vincenty_inverse
-    _check_latitude(lat2, 'lat2')
-  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.11/site-packages/obspy/geodetics/base.py", line 51, in _check_latitude
-    if latitude > 90 or latitude < -90:
-       ^^^^^^^^^^^^^
-ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
-
- Criando arquivos de backup...

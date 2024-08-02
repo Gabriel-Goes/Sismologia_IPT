@@ -1,1214 +1,0 @@
-
-========================================================================
-                       Iniciando do Pipeline                         
-========================================================================
-
-Argumentos recebidos:
-  Catalogo: catalogo-moho.csv
-  EVENTS: false
-  TREATCATALOG: true
-  PREDICT: false
-  POSPROCESS: true
-  MAPS: true
-  REPORT: true
-  TEST: false
-
-
- -------------- INICIANDO O TRATAMENTO -------------------- 
- Tratando catalogo-moho.csv...
-plot [WARNING]: 0.15+b not a valid number and may not be decoded properly.
-plot [WARNING]: 0.15+b not a valid number and may not be decoded properly.
- Args: Namespace(eventos='eventos.csv', csv='catalogo-moho.csv', ascending=True, map=True, test=False)
-Author
-JROBERTO                 2326
-MASSUMPCAO                140
-CLEUSA                    104
-BRUNO                      78
-JROBERTO@VITORIA           64
-UNB                        18
-UFRN                       15
-MBIANCHI                    5
-UNB;IAG                     5
-IAG                         5
-IAG;IPT                     3
-IAG;UNB                     3
-USGS                        2
-UFRN;UNB                    2
-BRUNO@MAVERICK.LOCAL        2
-IPT                         2
-IAG;UNB;UFRN;USGS           1
-JROBERTO@TUBARAO            1
-IAG;UNB;ESAR;UNESP-RC       1
-IAG;ESAR;UNESP-RC;IPT       1
-IAG;ESAR                    1
-UNB; IAG                    1
-UNB;ISC                     1
-UFRN;UNB;ISC                1
-Name: count, dtype: int64
-            count  ...        std
-Time         2782  ...        NaN
-Latitude   2782.0  ...   7.591672
-Longitude  2782.0  ...  10.953745
-Depth/km   2782.0  ...  85.505145
-Catalog       0.0  ...        NaN
-Magnitude  2780.0  ...   0.927095
-Hora       2782.0  ...   6.964219
-
-[7 rows x 8 columns]
-Plotando mapa...
-Salvando mapa...
-Salvando mapa...
- ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
-0it [00:00, ?it/s]1it [00:00,  3.60it/s]23it [00:00, 76.16it/s]45it [00:00, 122.17it/s]65it [00:00, 145.70it/s]86it [00:00, 163.98it/s]107it [00:00, 176.25it/s]127it [00:00, 180.01it/s]148it [00:00, 188.84it/s]168it [00:01, 181.44it/s]190it [00:01, 190.27it/s]210it [00:01, 188.63it/s]231it [00:01, 194.24it/s]252it [00:01, 197.49it/s]272it [00:01, 194.75it/s]294it [00:01, 199.55it/s]315it [00:01, 183.94it/s]336it [00:01, 188.93it/s]356it [00:02, 187.95it/s]375it [00:02, 188.20it/s]396it [00:02, 192.05it/s]416it [00:02, 187.27it/s]438it [00:02, 196.03it/s]460it [00:02, 202.60it/s]481it [00:02, 193.37it/s]501it [00:02, 181.81it/s]523it [00:02, 190.92it/s]544it [00:03, 193.26it/s]564it [00:03, 194.18it/s]584it [00:03, 171.08it/s]605it [00:03, 180.50it/s]627it [00:03, 189.20it/s]647it [00:03, 189.60it/s]667it [00:03, 191.85it/s]687it [00:03, 185.26it/s]706it [00:03, 184.96it/s]726it [00:04, 188.09it/s]747it [00:04, 191.92it/s]769it [00:04, 197.49it/s]789it [00:04, 192.26it/s]809it [00:04, 144.00it/s]826it [00:04, 142.19it/s]848it [00:04, 160.46it/s]867it [00:04, 167.87it/s]887it [00:05, 170.25it/s]905it [00:05, 163.57it/s]927it [00:05, 176.85it/s]946it [00:05, 177.55it/s]968it [00:05, 185.56it/s]987it [00:05, 177.38it/s]1005it [00:05, 164.93it/s]1026it [00:05, 175.19it/s]1048it [00:05, 186.90it/s]1067it [00:06, 178.24it/s]1087it [00:06, 182.73it/s]1108it [00:06, 189.69it/s]1129it [00:06, 193.90it/s]1149it [00:06, 183.30it/s]1171it [00:06, 191.46it/s]1191it [00:06, 189.39it/s]1211it [00:06, 186.56it/s]1230it [00:06, 178.25it/s]1252it [00:07, 189.18it/s]1274it [00:07, 195.72it/s]1294it [00:07, 194.81it/s]1314it [00:07, 188.58it/s]1334it [00:07, 189.66it/s]1354it [00:07, 189.26it/s]1376it [00:07, 197.17it/s]1398it [00:07, 203.02it/s]1419it [00:07, 200.43it/s]1441it [00:07, 204.03it/s]1462it [00:08, 180.65it/s]1481it [00:08, 167.55it/s]1503it [00:08, 180.38it/s]1525it [00:08, 189.99it/s]1547it [00:08, 196.56it/s]1568it [00:08, 159.55it/s]1586it [00:08, 160.19it/s]1605it [00:08, 166.88it/s]1626it [00:09, 177.07it/s]1648it [00:09, 186.89it/s]1669it [00:09, 191.92it/s]1691it [00:09, 198.46it/s]1713it [00:09, 203.43it/s]1734it [00:09, 203.77it/s]1756it [00:09, 206.91it/s]1778it [00:09, 205.52it/s]1799it [00:09, 172.53it/s]1818it [00:10, 169.44it/s]1836it [00:10, 163.61it/s]1857it [00:10, 174.49it/s]1879it [00:10, 185.67it/s]1899it [00:10, 189.45it/s]1921it [00:10, 195.65it/s]1941it [00:10, 190.23it/s]1961it [00:10, 189.83it/s]1984it [00:10, 198.95it/s]2005it [00:11, 200.84it/s]2026it [00:11, 196.35it/s]2048it [00:11, 201.67it/s]2071it [00:11, 207.76it/s]2093it [00:11, 210.83it/s]2115it [00:11, 206.39it/s]2136it [00:11, 198.37it/s]2159it [00:11, 205.14it/s]2181it [00:11, 208.45it/s]2203it [00:11, 211.09it/s]2225it [00:12, 213.30it/s]2247it [00:12, 214.06it/s]2269it [00:12, 214.82it/s]2291it [00:12, 215.39it/s]2314it [00:12, 217.06it/s]2336it [00:12, 217.35it/s]2358it [00:12, 195.97it/s]2380it [00:12, 202.42it/s]2403it [00:12, 207.61it/s]2425it [00:13, 210.70it/s]2447it [00:13, 213.14it/s]2469it [00:13, 212.95it/s]2491it [00:13, 211.19it/s]2513it [00:13, 213.64it/s]2535it [00:13, 214.79it/s]2557it [00:13, 215.73it/s]2579it [00:13, 216.99it/s]2602it [00:13, 218.06it/s]2624it [00:13, 217.08it/s]2646it [00:14, 217.56it/s]2668it [00:14, 217.34it/s]2690it [00:14, 216.81it/s]2712it [00:14, 217.27it/s]2734it [00:14, 217.09it/s]2756it [00:14, 216.74it/s]2778it [00:14, 216.60it/s]2801it [00:14, 217.82it/s]2823it [00:14, 217.44it/s]2845it [00:14, 217.72it/s]2868it [00:15, 218.53it/s]2890it [00:15, 218.15it/s]2913it [00:15, 218.77it/s]2935it [00:15, 218.38it/s]2957it [00:15, 217.92it/s]2979it [00:15, 217.52it/s]3001it [00:15, 217.78it/s]3023it [00:15, 217.69it/s]3045it [00:15, 217.85it/s]3067it [00:15, 217.50it/s]3089it [00:16, 217.90it/s]3111it [00:16, 202.87it/s]3132it [00:16, 173.74it/s]3154it [00:16, 184.31it/s]3176it [00:16, 193.25it/s]3198it [00:16, 196.64it/s]3220it [00:16, 202.43it/s]3243it [00:16, 208.70it/s]3266it [00:16, 212.85it/s]3289it [00:17, 216.02it/s]3311it [00:17, 216.97it/s]3334it [00:17, 219.17it/s]3356it [00:17, 218.84it/s]3378it [00:17, 218.67it/s]3400it [00:17, 218.84it/s]3422it [00:17, 218.96it/s]3444it [00:17, 219.06it/s]3467it [00:17, 219.85it/s]3490it [00:18, 220.41it/s]3513it [00:18, 221.58it/s]3536it [00:18, 221.76it/s]3559it [00:18, 216.92it/s]3581it [00:18, 217.66it/s]3604it [00:18, 218.43it/s]3626it [00:18, 218.67it/s]3648it [00:18, 217.36it/s]3671it [00:18, 218.58it/s]3693it [00:18, 218.95it/s]3716it [00:19, 219.39it/s]3738it [00:19, 218.29it/s]3760it [00:19, 217.23it/s]3782it [00:19, 218.04it/s]3804it [00:19, 217.60it/s]3826it [00:19, 217.99it/s]3848it [00:19, 217.99it/s]3870it [00:19, 218.21it/s]3892it [00:19, 215.82it/s]3915it [00:19, 217.96it/s]3938it [00:20, 219.17it/s]3961it [00:20, 219.64it/s]3984it [00:20, 219.55it/s]4006it [00:20, 206.75it/s]4029it [00:20, 211.45it/s]4051it [00:20, 213.72it/s]4074it [00:20, 216.02it/s]4097it [00:20, 217.40it/s]4120it [00:20, 218.26it/s]4142it [00:21, 217.50it/s]4164it [00:21, 217.82it/s]4186it [00:21, 218.00it/s]4208it [00:21, 218.27it/s]4231it [00:21, 219.02it/s]4253it [00:21, 218.82it/s]4276it [00:21, 219.21it/s]4298it [00:21, 210.38it/s]4321it [00:21, 213.56it/s]4344it [00:21, 216.11it/s]4366it [00:22, 217.18it/s]4389it [00:22, 218.18it/s]4411it [00:22, 218.58it/s]4433it [00:22, 218.16it/s]4455it [00:22, 216.00it/s]4478it [00:22, 217.59it/s]4501it [00:22, 217.96it/s]4523it [00:22, 216.78it/s]4546it [00:22, 218.45it/s]4568it [00:22, 218.06it/s]4590it [00:23, 217.67it/s]4613it [00:23, 219.00it/s]4635it [00:23, 217.32it/s]4657it [00:23, 215.93it/s]4679it [00:23, 215.02it/s]4701it [00:23, 213.41it/s]4724it [00:23, 215.73it/s]4747it [00:23, 217.53it/s]4769it [00:23, 217.92it/s]4791it [00:23, 218.40it/s]4813it [00:24, 218.87it/s]4835it [00:24, 219.06it/s]4858it [00:24, 219.82it/s]4880it [00:24, 201.53it/s]4901it [00:24, 200.78it/s]4923it [00:24, 205.58it/s]4946it [00:24, 210.56it/s]4969it [00:24, 213.47it/s]4991it [00:24, 215.26it/s]5013it [00:25, 210.12it/s]5035it [00:25, 212.09it/s]5058it [00:25, 214.95it/s]5080it [00:25, 216.32it/s]5103it [00:25, 217.70it/s]5126it [00:25, 219.06it/s]5148it [00:25, 219.31it/s]5171it [00:25, 220.21it/s]5194it [00:25, 221.11it/s]5217it [00:25, 219.73it/s]5239it [00:26, 217.82it/s]5262it [00:26, 218.58it/s]5285it [00:26, 219.22it/s]5308it [00:26, 219.89it/s]5331it [00:26, 220.23it/s]5354it [00:26, 216.18it/s]5376it [00:26, 215.27it/s]5398it [00:26, 216.58it/s]5420it [00:26, 217.56it/s]5443it [00:27, 218.64it/s]5466it [00:27, 219.58it/s]5489it [00:27, 220.10it/s]5512it [00:27, 215.13it/s]5534it [00:27, 210.36it/s]5556it [00:27, 210.99it/s]5578it [00:27, 207.51it/s]5600it [00:27, 209.51it/s]5622it [00:27, 211.38it/s]5644it [00:27, 209.25it/s]5665it [00:28, 206.97it/s]5687it [00:28, 209.19it/s]5708it [00:28, 208.31it/s]5729it [00:28, 208.55it/s]5751it [00:28, 211.28it/s]5773it [00:28, 212.35it/s]5795it [00:28, 212.83it/s]5817it [00:28, 211.98it/s]5839it [00:28, 212.49it/s]5861it [00:29, 212.46it/s]5883it [00:29, 210.78it/s]5905it [00:29, 211.82it/s]5927it [00:29, 211.91it/s]5949it [00:29, 212.57it/s]5971it [00:29, 213.29it/s]5993it [00:29, 213.33it/s]6015it [00:29, 213.70it/s]6037it [00:29, 213.61it/s]6059it [00:29, 214.16it/s]6081it [00:30, 213.88it/s]6103it [00:30, 213.53it/s]6125it [00:30, 214.03it/s]6147it [00:30, 213.38it/s]6169it [00:30, 213.19it/s]6191it [00:30, 213.42it/s]6213it [00:30, 213.97it/s]6235it [00:30, 213.77it/s]6257it [00:30, 213.73it/s]6279it [00:30, 213.99it/s]6301it [00:31, 214.07it/s]6323it [00:31, 214.24it/s]6345it [00:31, 214.70it/s]6367it [00:31, 214.39it/s]6389it [00:31, 214.94it/s]6411it [00:31, 214.67it/s]6433it [00:31, 214.07it/s]6455it [00:31, 211.78it/s]6477it [00:31, 212.99it/s]6499it [00:31, 213.38it/s]6521it [00:32, 214.04it/s]6543it [00:32, 214.47it/s]6565it [00:32, 214.36it/s]6587it [00:32, 214.37it/s]6609it [00:32, 212.53it/s]6631it [00:32, 211.07it/s]6653it [00:32, 211.06it/s]6675it [00:32, 211.45it/s]6697it [00:32, 178.83it/s]6717it [00:33, 183.45it/s]6738it [00:33, 189.86it/s]6758it [00:33, 175.24it/s]6780it [00:33, 185.70it/s]6800it [00:33, 181.01it/s]6819it [00:33, 174.00it/s]6837it [00:33, 171.26it/s]6857it [00:33, 175.99it/s]6875it [00:34, 159.86it/s]6894it [00:34, 166.27it/s]6913it [00:34, 172.30it/s]6935it [00:34, 183.56it/s]6957it [00:34, 191.78it/s]6979it [00:34, 198.60it/s]7001it [00:34, 203.11it/s]7023it [00:34, 206.67it/s]7045it [00:34, 209.18it/s]7067it [00:34, 210.04it/s]7089it [00:35, 189.85it/s]7109it [00:35, 183.70it/s]7128it [00:35, 176.63it/s]7146it [00:35, 170.25it/s]7167it [00:35, 180.81it/s]7187it [00:35, 181.72it/s]7206it [00:35, 174.03it/s]7227it [00:35, 182.20it/s]7247it [00:35, 186.73it/s]7266it [00:36, 176.15it/s]7288it [00:36, 187.25it/s]7310it [00:36, 194.73it/s]7330it [00:36, 193.15it/s]7351it [00:36, 197.17it/s]7373it [00:36, 202.39it/s]7394it [00:36, 169.09it/s]7412it [00:36, 151.83it/s]7431it [00:37, 160.87it/s]7453it [00:37, 174.31it/s]7472it [00:37, 165.54it/s]7490it [00:37, 155.68it/s]7510it [00:37, 166.14it/s]7530it [00:37, 174.93it/s]7551it [00:37, 183.85it/s]7572it [00:37, 189.30it/s]7593it [00:37, 194.25it/s]7615it [00:38, 199.15it/s]7637it [00:38, 203.19it/s]7658it [00:38, 205.07it/s]7679it [00:38, 198.82it/s]7699it [00:38, 179.61it/s]7718it [00:38, 169.39it/s]7736it [00:38, 154.21it/s]7758it [00:38, 169.21it/s]7762it [00:38, 199.69it/s]
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:611: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df.loc[:, 'Cat Hora'] = cat_hora
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
- pos: 0
- media_getydata: [70. 70.]
- pos: 1
- media_getydata: [88.7 88.7]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [88.15 88.15]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [94.05 94.05]
- pos: 6
- media_getydata: [88.5 88.5]
- pos: 7
- media_getydata: [94.85 94.85]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
- media_getydata: [94.1 94.1]
- pos: 10
- media_getydata: [96.25 96.25]
- pos: 11
- media_getydata: [95.2 95.2]
- pos: 12
- media_getydata: [76.7 76.7]
- pos: 13
- media_getydata: [66.8 66.8]
- pos: 14
- media_getydata: [75.1 75.1]
- pos: 0
- media_getydata: [70. 70.]
- pos: 1
- media_getydata: [88.7 88.7]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [88.15 88.15]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [94.05 94.05]
- pos: 6
- media_getydata: [88.5 88.5]
- pos: 7
- media_getydata: [94.85 94.85]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
- media_getydata: [94.1 94.1]
- pos: 10
- media_getydata: [96.25 96.25]
- pos: 11
- media_getydata: [95.2 95.2]
- pos: 12
- media_getydata: [76.7 76.7]
- pos: 13
- media_getydata: [66.8 66.8]
- pos: 14
- media_getydata: [76.55 76.55]
- pos: 0
- media_getydata: [70. 70.]
- pos: 1
- media_getydata: [88.7 88.7]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [88.15 88.15]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [94.05 94.05]
- pos: 6
- media_getydata: [88.5 88.5]
- pos: 7
- media_getydata: [94.85 94.85]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
- media_getydata: [94.2 94.2]
- pos: 10
- media_getydata: [96.25 96.25]
- pos: 11
- media_getydata: [95.2 95.2]
- pos: 12
- media_getydata: [76.7 76.7]
- pos: 13
- media_getydata: [66.8 66.8]
- pos: 14
- media_getydata: [76.55 76.55]
- pos: 0
- media_getydata: [70. 70.]
- pos: 1
- media_getydata: [88.7 88.7]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [88.15 88.15]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [94.05 94.05]
- pos: 6
- media_getydata: [88.5 88.5]
- pos: 7
- media_getydata: [94.85 94.85]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
- media_getydata: [94.2 94.2]
- pos: 10
- media_getydata: [96.25 96.25]
- pos: 11
- media_getydata: [95.2 95.2]
- pos: 12
- media_getydata: [80.5 80.5]
- pos: 13
- media_getydata: [70.9 70.9]
- pos: 14
- media_getydata: [76.55 76.55]
- pos: 0
- media_getydata: [70. 70.]
- pos: 1
- media_getydata: [88.75 88.75]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [88.1 88.1]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [94. 94.]
- pos: 6
- media_getydata: [90.15 90.15]
- pos: 7
- media_getydata: [95.4 95.4]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
- media_getydata: [96.1 96.1]
- pos: 10
- media_getydata: [96.25 96.25]
- pos: 11
- media_getydata: [96.1 96.1]
- pos: 12
- media_getydata: [76.7 76.7]
- pos: 13
- media_getydata: [62.7 62.7]
- pos: 14
- media_getydata: [78. 78.]
- pos: 0
- media_getydata: [70.4 70.4]
- pos: 1
- media_getydata: [88.75 88.75]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [89.95 89.95]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [94.35 94.35]
- pos: 6
- media_getydata: [86. 86.]
- pos: 7
- media_getydata: [96.25 96.25]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
- media_getydata: [98.65 98.65]
- pos: 10
- media_getydata: [96.25 96.25]
- pos: 11
- media_getydata: [96.1 96.1]
- pos: 12
- media_getydata: [75.2 75.2]
- pos: 13
- media_getydata: [62.7 62.7]
- pos: 14
- media_getydata: [78.15 78.15]
- pos: 0
- media_getydata: [70.4 70.4]
- pos: 1
- media_getydata: [88.75 88.75]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [89.3 89.3]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [93.9 93.9]
- pos: 6
- media_getydata: [88.5 88.5]
- pos: 7
- media_getydata: [96.25 96.25]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
- media_getydata: [98.9 98.9]
- pos: 10
- media_getydata: [97.25 97.25]
- pos: 11
- media_getydata: [96.6 96.6]
- pos: 12
- media_getydata: [79.75 79.75]
- pos: 13
- media_getydata: [66.8 66.8]
- pos: 14
- media_getydata: [78. 78.]
- pos: 0
- media_getydata: [71.05 71.05]
- pos: 1
- media_getydata: [88.75 88.75]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [91. 91.]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [93.9 93.9]
- pos: 6
- media_getydata: [88.5 88.5]
- pos: 7
- media_getydata: [96.2 96.2]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
- media_getydata: [98.8 98.8]
- pos: 10
- media_getydata: [97.4 97.4]
- pos: 11
- media_getydata: [97.1 97.1]
- pos: 12
- media_getydata: [81.75 81.75]
- pos: 13
- media_getydata: [66.8 66.8]
- pos: 14
- media_getydata: [83. 83.]
- pos: 0
- media_getydata: [71.05 71.05]
- pos: 1
- media_getydata: [89. 89.]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [90.6 90.6]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [94.05 94.05]
- pos: 6
- media_getydata: [90.95 90.95]
- pos: 7
- media_getydata: [96.8 96.8]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
- media_getydata: [98.8 98.8]
- pos: 10
- media_getydata: [97.4 97.4]
- pos: 11
- media_getydata: [97.1 97.1]
- pos: 12
- media_getydata: [88.3 88.3]
- pos: 13
- media_getydata: [62.7 62.7]
- pos: 14
- media_getydata: [83.7 83.7]
- pos: 0
- media_getydata: [71.7 71.7]
- pos: 1
- media_getydata: [90.5 90.5]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [88.15 88.15]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [95.05 95.05]
- pos: 6
- media_getydata: [91.7 91.7]
- pos: 7
- media_getydata: [96.2 96.2]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
- media_getydata: [98.9 98.9]
- pos: 10
- media_getydata: [97.1 97.1]
- pos: 11
- media_getydata: [97.1 97.1]
- pos: 12
- media_getydata: [94.7 94.7]
- pos: 13
- media_getydata: [89.2 89.2]
- pos: 14
- media_getydata: [97.8 97.8]
- pos: 0
- media_getydata: [71.8 71.8]
- pos: 1
- media_getydata: [91.1 91.1]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [88.75 88.75]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [95.3 95.3]
- pos: 6
- media_getydata: [89.45 89.45]
- pos: 7
- media_getydata: [96.9 96.9]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
- media_getydata: [98.9 98.9]
- pos: 10
- media_getydata: [98.65 98.65]
- pos: 11
- media_getydata: [96.85 96.85]
- pos: 12
- media_getydata: [92.3 92.3]
- pos: 13
- media_getydata: [89.2 89.2]
- pos: 14
- media_getydata: [97.8 97.8]
- pos: 0
- media_getydata: [72. 72.]
- pos: 1
- media_getydata: [90.95 90.95]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [89.95 89.95]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [96. 96.]
- pos: 6
- media_getydata: [92.9 92.9]
- pos: 7
- media_getydata: [97.9 97.9]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
- media_getydata: [98.9 98.9]
- pos: 10
- media_getydata: [99.5 99.5]
- pos: 11
- media_getydata: [98. 98.]
- pos: 12
- media_getydata: [87.9 87.9]
- pos: 13
- media_getydata: [89.2 89.2]
- pos: 14
- media_getydata: [98.7 98.7]
- pos: 0
- media_getydata: [72.15 72.15]
- pos: 1
- media_getydata: [90.95 90.95]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [90.6 90.6]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [96.95 96.95]
- pos: 6
- media_getydata: [93. 93.]
- pos: 7
- media_getydata: [98.05 98.05]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
- media_getydata: [99. 99.]
- pos: 10
- media_getydata: [99.8 99.8]
- pos: 11
- media_getydata: [97.2 97.2]
- pos: 12
- media_getydata: [87.9 87.9]
- pos: 13
- media_getydata: [84.3 84.3]
- pos: 14
- media_getydata: [97.65 97.65]
- pos: 0
- media_getydata: [72.15 72.15]
- pos: 1
- media_getydata: [91.1 91.1]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [89.95 89.95]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [96.8 96.8]
- pos: 6
- media_getydata: [94.3 94.3]
- pos: 7
- media_getydata: [97.9 97.9]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
- media_getydata: [99. 99.]
- pos: 10
- media_getydata: [99.8 99.8]
- pos: 11
- media_getydata: [97.2 97.2]
- pos: 12
- media_getydata: [87.9 87.9]
- pos: 13
- media_getydata: [89.85 89.85]
- pos: 14
- media_getydata: [97.5 97.5]
- pos: 0
- media_getydata: [71.95 71.95]
- pos: 1
- media_getydata: [91.8 91.8]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [89.3 89.3]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [96.35 96.35]
- pos: 6
- media_getydata: [94.95 94.95]
- pos: 7
- media_getydata: [98.2 98.2]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1359: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
-  fig, ax = plt.subplots(figsize=(10, 6))
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1401: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
-  plt.tight_layout()
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1560: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  sns.boxplot(
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
- media_getydata: [99. 99.]
- pos: 10
- media_getydata: [99.9 99.9]
- pos: 11
- media_getydata: [97.2 97.2]
- pos: 12
- media_getydata: [87.9 87.9]
- pos: 13
- media_getydata: [89.85 89.85]
- pos: 14
- media_getydata: [97.5 97.5]
- pos: 0
- media_getydata: [71.9 71.9]
- pos: 1
- media_getydata: [91.8 91.8]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [90.6 90.6]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [96.8 96.8]
- pos: 6
- media_getydata: [94.2 94.2]
- pos: 7
- media_getydata: [98.2 98.2]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
- media_getydata: [99.1 99.1]
- pos: 10
- media_getydata: [99.9 99.9]
- pos: 11
- media_getydata: [97.2 97.2]
- pos: 12
- media_getydata: [87.9 87.9]
- pos: 13
- media_getydata: [89.85 89.85]
- pos: 14
- media_getydata: [97.5 97.5]
- pos: 0
- media_getydata: [71.9 71.9]
- pos: 1
- media_getydata: [92. 92.]
- pos: 2
- media_getydata: [nan nan]
- pos: 3
- media_getydata: [89.95 89.95]
- pos: 4
- media_getydata: [nan nan]
- pos: 5
- media_getydata: [96.9 96.9]
- pos: 6
- media_getydata: [94.2 94.2]
- pos: 7
- media_getydata: [98.2 98.2]
- pos: 8
- media_getydata: [nan nan]
- pos: 9
- media_getydata: [99.3 99.3]
- pos: 10
- media_getydata: [99.85 99.85]
- pos: 11
- media_getydata: [97.2 97.2]
- pos: 12
- media_getydata: [95.1 95.1]
- pos: 13
- media_getydata: [89.85 89.85]
- pos: 14
- media_getydata: [97.8 97.8]
-CategoricalIndex(['<1', '[1-2[', '[2-3[', '>=3'], categories=['<1', '[1-2[', '[2-3[', '>=3'], ordered=True, dtype='category', name='Magnitude_cat')
-
- -------------- Processo de criação de mapas iniciado ------------------
-
- ----------------- Iniciando o pdflatex .tex ---------------------------- 
-/home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pre_processa
-LaTeX file '/home/ipt/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/tex/relatorio_preditivo/tex/pre_processa_figures.tex' has been created successfully.
-/home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_processa
-LaTeX file '/home/ipt/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/tex/relatorio_preditivo/tex/pos_processa_figures.tex' has been created successfully.
- -> Mapa '/home/ipt/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/tex/relatorio_preditivo/tex/mapa.tex' gerado com sucesso!
-~/projetos/ClassificadorSismologico/fonte/relatorio-sismologia ~/projetos/ClassificadorSismologico ~/projetos/ClassificadorSismologico
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex)
- restricted \write18 enabled.
-entering extended mode
-(./relatorio_preditivo.tex
-LaTeX2e <2022-11-01> patch level 1
-L3 programming layer <2023-01-16> (./sismo_iptex.cls
-Document Class: sismo_iptex 2024/04/23 Classe Sismologia IPT
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)))
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/zref/zref-abspage.sty
-(/usr/share/texlive/texmf-dist/tex/latex/zref/zref-base.sty
-(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty))
-(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-0.mdf))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
-(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
-(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
-(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
-(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty)))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/mathabx/mathabx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/mathabx/mathabx.dcl))
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/helvet.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/fancyhdr.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/indentfirst.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/lastpage/lastpage.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def))
-(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/changepage/changepage.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tocloft/tocloft.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))
-(/usr/share/texlive/texmf-dist/tex/latex/sectsty/sectsty.sty
-
-LaTeX Warning: Command \underbar  has changed.
-               Check if current package is valid.
-
-
-LaTeX Warning: Command \underline  has changed.
-               Check if current package is valid.
-
-) (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/translations/translations.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/was/upgreek.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty
-
-! LaTeX Error: Command \captionof already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.30 ...nd\captionof[1]{\def\@captype{#1}\caption}
-                                                  
-? ) (/usr/share/texlive/texmf-dist/tex/latex/xargs/xargs.sty
-(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex))))
-(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjustbox.sty
-(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjcalc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/trimclip.sty
-(/usr/share/texlive/texmf-dist/tex/latex/collectbox/collectbox.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/tc-pdftex.def))
-(/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/pdfx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifpdf.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/everyshi/everyshi.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty){/var/lib/texmf/f
-onts/map/pdftex/updmap/pdftex.map}
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/l8u-penc.def)
-
-Package hyperref Warning: Option `pdftex' has already been used,
-(hyperref)                setting the option has no effect on input line 1461.
-
-
-Package hyperref Warning: Option `pdfa' has already been used,
-(hyperref)                setting the option has no effect on input line 1461.
-
-(/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc-greekbasic.def)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/psdextra.def)
-(/usr/share/texlive/texmf-dist/tex/generic/colorprofiles/colorprofiles.sty
-(/usr/share/texlive/texmf-dist/tex/generic/colorprofiles/colorprofiles.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/stringenc/se-pdfdoc.def)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/AdobeColorProfiles.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
-** pdfx: No file relatorio_preditivo.xmpdata . Metadata will be incomplete!
-<<sRGB.icc>> (/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
-(/usr/share/texlive/texmf-dist/tex/generic/pdftex/glyphtounicode.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/glyphtounicode-cmr.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/glyphtounicode-ntx.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/xmpincl/xmpincl.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
-Using XMP template file: pdfa.xmp
-<<pdfa.xmpi>>))
-(/usr/share/texlive/texmf-dist/tex/latex/abntex2/abntex2cite.sty
-(/usr/share/texlive/texmf-dist/tex/latex/abntex2/abntex2abrev.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/pgfplots/pgfplots.sty
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered
-.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
-f)))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
-tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
-tex))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
-.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
-ric.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
-e.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
-.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
-tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
-.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
-tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
-thmetics.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
-x)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
-code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
-.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
-x)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
-ode.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
-s.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
-ex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
-.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
-x)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
-tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
-x)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
-ode.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
-tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex))
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
-)
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
-.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
-.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
-.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarytopaths.code.tex)))
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code
-.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.t
-ex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
-gfsupp_loader.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex
-)
-Package pgfplots: loading complementary utilities for your pgf version...
-
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
-gfsupp_pgfutil-common-lists.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotslists
-tructure.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotslists
-tructureext.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray
-.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatri
-x.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshare
-d.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque
-.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.te
-x
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.co
-de.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code
-.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.sur
-fshading.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surf
-shading.pgfsys-pdftex.def)))
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.
-tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex
-))
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.t
-ex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.t
-ex
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.cod
-e.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.
-tex)))
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.cod
-e.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex
-) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex
-) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarydecorations.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.cod
-e.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarydecorations.pathmorphing.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
-decorations.pathmorphing.code.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarydecorations.pathreplacing.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
-decorations.pathreplacing.code.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.co
-ntourlua.code.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibraryplotmarks.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.co
-de.tex))) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
-(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf)
-(/usr/share/texlive/texmf-dist/tex/generic/babel-portuges/brazil.ldf))
-(/usr/share/texlive/texmf-dist/tex/generic/babel/locale/en/babel-english.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/mathastext/mathastext.sty
-** ! and ?
-** punctuation: , . : ; and \colon
-** + and =
-** adding = ; and + to \nfss@catcodes
-** parentheses ( ) [ ] and slash /
-** alldelims: < > \backslash \setminus | \vert \mid \{ and \}
-** \# \mathdollar \% \& 
-** \imath and \jmath 
-** Latin letters in the `normal' (resp. `bold') math versions are now
-** set up to use the fonts T1/phv/m(b)/it
-** Other characters (digits, ...) and \log-like names will be
-** typeset with the n shape.
-** \hbar
-** minus as endash
-** \Huge and \HUGE have been (re)-defined.
-** mathastext has declared larger sizes for subscripts.
-** To keep LaTeX defaults, use option `defaultmathsizes'.
-) (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
-atorio_preditivo.aux)
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
-(/usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
-atorio_preditivo.out)
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
-atorio_preditivo.out)
-(/usr/share/texlive/texmf-dist/tex/latex/ragged2e/ragged2e.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictio
-nary-brazil.trsl)
-(/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictio
-nary-english.trsl)
-*geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
-
-Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
-ick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into 
-your preamble.
- on input line 24.
-
-(./tex/relatorio_preditivo/tex/capa.tex [1 <./tex/figuras_tex/headImage.pdf> <.
-/tex/figuras_tex/footImage.pdf>]
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd) [1]
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
-atorio_preditivo.toc (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)) [2])
-(./tex/relatorio_preditivo/tex/corpo.tex
-(./tex/relatorio_preditivo/tex/introducao.tex
-(./tex/relatorio_preditivo/tex/manual_mapa.tex)
-(./tex/relatorio_preditivo/tex/hist_prof_figures.tex)
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.30 
-      [1] (./tex/relatorio_preditivo/tex/hist_hour_figures.tex
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pre_processa/hist
-_hora_bruto.pgf)
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pre_processa/hist
-_hora_tratado.pgf))) [2
-pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.6 \newpage
-            
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.6 \newpage
-             </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/mapa
-s/mapa_eventos_bruto.png (PNG copy)> </home/ipt/projetos/ClassificadorSismologi
-co/arquivos/figuras/mapas/mapa_eventos_tratado.png (PNG copy)> </home/ipt/proje
-tos/ClassificadorSismologico/arquivos/figuras/pre_processa/hist_profundidade_br
-uto.png> </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pre_proc
-essa/hist_profundidade_tratado.png>] (./tex/relatorio_preditivo/tex/metodos.tex
-[3
-pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.18 
-     ]) [4] [5])
-No file relatorio_preditivo.bbl.
-
-AED: lastpage setting LastPage
-[6]
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
-atorio_preditivo.aux) ){/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.e
-nc}</usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on /home/ipt/projetos/ClassificadorSismologico/arquivos/resultad
-os/relatorios/relatorio_preditivo.pdf (9 pages, 1595272 bytes).
-Transcript written on /home/ipt/projetos/ClassificadorSismologico/arquivos/resu
-ltados/relatorios/relatorio_preditivo.log.

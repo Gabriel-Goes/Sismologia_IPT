@@ -1,1761 +1,0 @@
-
-========================================================================
-                       Iniciando do Pipeline                         
-========================================================================
-
- ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
-0it [00:00, ?it/s]1it [00:00,  3.78it/s]22it [00:00, 76.02it/s]43it [00:00, 120.46it/s]65it [00:00, 150.77it/s]86it [00:00, 168.48it/s]108it [00:00, 182.18it/s]130it [00:00, 192.04it/s]152it [00:00, 198.25it/s]174it [00:01, 202.99it/s]195it [00:01, 204.13it/s]216it [00:01, 203.61it/s]237it [00:01, 202.70it/s]258it [00:01, 203.25it/s]280it [00:01, 206.28it/s]301it [00:01, 204.83it/s]322it [00:01, 203.91it/s]343it [00:01, 200.66it/s]364it [00:02, 200.52it/s]385it [00:02, 201.52it/s]407it [00:02, 205.20it/s]428it [00:02, 203.95it/s]449it [00:02, 205.64it/s]470it [00:02, 203.71it/s]492it [00:02, 207.20it/s]514it [00:02, 209.67it/s]535it [00:02, 209.11it/s]557it [00:02, 209.59it/s]578it [00:03, 204.84it/s]599it [00:03, 206.28it/s]621it [00:03, 208.47it/s]643it [00:03, 209.66it/s]664it [00:03, 209.03it/s]686it [00:03, 209.89it/s]708it [00:03, 210.54it/s]730it [00:03, 211.12it/s]752it [00:03, 211.79it/s]774it [00:03, 212.01it/s]796it [00:04, 212.39it/s]818it [00:04, 212.51it/s]840it [00:04, 213.02it/s]862it [00:04, 211.42it/s]884it [00:04, 211.53it/s]906it [00:04, 212.22it/s]928it [00:04, 213.11it/s]950it [00:04, 213.77it/s]972it [00:04, 213.72it/s]994it [00:05, 214.09it/s]1016it [00:05, 214.10it/s]1038it [00:05, 213.52it/s]1060it [00:05, 213.40it/s]1082it [00:05, 213.41it/s]1104it [00:05, 213.57it/s]1126it [00:05, 213.79it/s]1148it [00:05, 212.09it/s]1170it [00:05, 212.38it/s]1192it [00:05, 213.06it/s]1214it [00:06, 212.33it/s]1236it [00:06, 211.57it/s]1258it [00:06, 212.15it/s]1280it [00:06, 211.40it/s]1302it [00:06, 210.17it/s]1324it [00:06, 210.79it/s]1346it [00:06, 211.70it/s]1368it [00:06, 211.95it/s]1390it [00:06, 211.99it/s]1412it [00:07, 190.82it/s]1432it [00:07, 169.42it/s]1450it [00:07, 165.20it/s]1471it [00:07, 175.68it/s]1490it [00:07, 175.03it/s]1508it [00:07, 159.71it/s]1529it [00:07, 171.08it/s]1547it [00:07, 158.61it/s]1564it [00:07, 155.40it/s]1585it [00:08, 168.09it/s]1603it [00:08, 160.00it/s]1620it [00:08, 153.33it/s]1636it [00:08, 138.66it/s]1651it [00:08, 109.30it/s]1665it [00:08, 115.04it/s]1678it [00:08, 112.26it/s]1690it [00:09, 105.97it/s]1705it [00:09, 115.11it/s]1720it [00:09, 122.24it/s]1739it [00:09, 137.19it/s]1754it [00:09, 115.13it/s]1767it [00:09, 101.67it/s]1778it [00:09, 98.91it/s] 1798it [00:09, 122.43it/s]1819it [00:10, 144.37it/s]1836it [00:10, 146.60it/s]1852it [00:10, 127.79it/s]1866it [00:10, 124.84it/s]1883it [00:10, 134.94it/s]1900it [00:10, 143.38it/s]1919it [00:10, 153.45it/s]1935it [00:10, 152.44it/s]1952it [00:10, 155.20it/s]1972it [00:11, 167.37it/s]1989it [00:11, 150.07it/s]2005it [00:11, 133.54it/s]2019it [00:11, 130.25it/s]2041it [00:11, 152.71it/s]2063it [00:11, 169.74it/s]2084it [00:11, 180.02it/s]2103it [00:12, 135.03it/s]2119it [00:12, 121.76it/s]2138it [00:12, 136.36it/s]2159it [00:12, 152.88it/s]2178it [00:12, 159.74it/s]2200it [00:12, 174.55it/s]2222it [00:12, 185.93it/s]2244it [00:12, 193.67it/s]2265it [00:12, 197.76it/s]2286it [00:13, 185.17it/s]2308it [00:13, 193.30it/s]2328it [00:13, 195.09it/s]2348it [00:13, 175.63it/s]2368it [00:13, 178.20it/s]2389it [00:13, 186.26it/s]2410it [00:13, 191.35it/s]2430it [00:13, 173.74it/s]2448it [00:13, 169.90it/s]2466it [00:14, 161.27it/s]2487it [00:14, 173.29it/s]2505it [00:14, 133.36it/s]2520it [00:14, 120.02it/s]2538it [00:14, 132.93it/s]2559it [00:14, 151.29it/s]2576it [00:14, 130.30it/s]2591it [00:15, 115.65it/s]2604it [00:15, 113.67it/s]2617it [00:15, 103.57it/s]2635it [00:15, 116.36it/s]2649it [00:15, 121.58it/s]2662it [00:15, 108.89it/s]2674it [00:15, 103.72it/s]2685it [00:16, 99.27it/s] 2702it [00:16, 116.34it/s]2719it [00:16, 128.79it/s]2735it [00:16, 136.07it/s]2753it [00:16, 148.09it/s]2774it [00:16, 159.21it/s]2791it [00:16, 142.30it/s]2810it [00:16, 150.61it/s]2826it [00:16, 138.40it/s]2841it [00:17, 132.29it/s]2855it [00:17, 122.16it/s]2869it [00:17, 125.59it/s]2883it [00:17, 128.74it/s]2899it [00:17, 136.72it/s]2916it [00:17, 145.23it/s]2931it [00:17, 136.59it/s]2947it [00:17, 139.70it/s]2962it [00:17, 142.44it/s]2978it [00:18, 146.34it/s]2997it [00:18, 157.62it/s]3014it [00:18, 160.50it/s]3031it [00:18, 153.76it/s]3047it [00:18, 152.91it/s]3066it [00:18, 161.93it/s]3083it [00:18, 162.17it/s]3100it [00:18, 136.33it/s]3115it [00:19, 119.85it/s]3129it [00:19, 124.05it/s]3149it [00:19, 140.51it/s]3170it [00:19, 156.79it/s]3187it [00:19, 132.51it/s]3203it [00:19, 137.76it/s]3222it [00:19, 150.86it/s]3238it [00:19, 147.96it/s]3254it [00:19, 150.33it/s]3272it [00:20, 156.29it/s]3288it [00:20, 137.70it/s]3303it [00:20, 117.53it/s]3316it [00:20, 111.68it/s]3335it [00:20, 129.03it/s]3350it [00:20, 133.80it/s]3370it [00:20, 150.50it/s]3389it [00:20, 155.54it/s]3407it [00:21, 161.65it/s]3424it [00:21, 163.81it/s]3441it [00:21, 155.75it/s]3457it [00:21, 153.99it/s]3473it [00:21, 130.94it/s]3487it [00:21, 121.23it/s]3500it [00:21, 112.39it/s]3515it [00:21, 121.43it/s]3536it [00:22, 142.39it/s]3551it [00:22, 144.27it/s]3566it [00:22, 134.58it/s]3584it [00:22, 145.85it/s]3599it [00:22, 126.58it/s]3616it [00:22, 136.13it/s]3631it [00:22, 139.04it/s]3646it [00:22, 132.17it/s]3666it [00:22, 149.14it/s]3685it [00:23, 158.85it/s]3702it [00:23, 152.17it/s]3722it [00:23, 165.03it/s]3739it [00:23, 159.70it/s]3756it [00:23, 151.32it/s]3774it [00:23, 158.49it/s]3793it [00:23, 165.77it/s]3810it [00:23, 164.67it/s]3828it [00:23, 167.03it/s]3848it [00:24, 176.17it/s]3866it [00:24, 163.74it/s]3883it [00:24, 137.30it/s]3903it [00:24, 152.03it/s]3923it [00:24, 164.21it/s]3944it [00:24, 175.76it/s]3963it [00:24, 141.64it/s]3979it [00:25, 110.64it/s]3993it [00:25, 107.59it/s]4010it [00:25, 119.39it/s]4024it [00:25, 117.59it/s]4037it [00:25, 120.48it/s]4056it [00:25, 136.48it/s]4071it [00:25, 126.14it/s]4085it [00:25, 119.88it/s]4099it [00:26, 123.97it/s]4112it [00:26, 125.11it/s]4125it [00:26, 119.14it/s]4138it [00:26, 117.63it/s]4153it [00:26, 125.08it/s]4166it [00:26, 124.76it/s]4181it [00:26, 127.23it/s]4194it [00:26, 122.91it/s]4209it [00:26, 129.66it/s]4223it [00:27, 119.33it/s]4236it [00:27, 121.29it/s]4250it [00:27, 123.70it/s]4267it [00:27, 133.47it/s]4281it [00:27, 128.98it/s]4294it [00:27, 125.09it/s]4307it [00:27, 123.20it/s]4324it [00:27, 135.33it/s]4338it [00:27, 126.08it/s]4351it [00:28, 120.79it/s]4364it [00:28, 113.78it/s]4376it [00:28, 113.91it/s]4393it [00:28, 127.90it/s]4411it [00:28, 137.55it/s]4429it [00:28, 147.29it/s]4447it [00:28, 155.11it/s]4466it [00:28, 163.28it/s]4483it [00:28, 160.17it/s]4500it [00:29, 161.68it/s]4517it [00:29, 160.50it/s]4534it [00:29, 160.23it/s]4555it [00:29, 172.42it/s]4573it [00:29, 170.90it/s]4594it [00:29, 180.99it/s]4613it [00:29, 147.12it/s]4629it [00:29, 128.27it/s]4644it [00:29, 133.21it/s]4666it [00:30, 153.42it/s]4685it [00:30, 161.50it/s]4702it [00:30, 144.39it/s]4718it [00:30, 129.21it/s]4732it [00:30, 131.73it/s]4750it [00:30, 144.03it/s]4766it [00:30, 138.68it/s]4782it [00:30, 139.98it/s]4797it [00:31, 128.71it/s]4813it [00:31, 136.31it/s]4828it [00:31, 127.65it/s]4846it [00:31, 140.42it/s]4865it [00:31, 151.06it/s]4884it [00:31, 159.96it/s]4901it [00:31, 161.07it/s]4918it [00:31, 153.25it/s]4934it [00:31, 144.23it/s]4949it [00:32, 144.81it/s]4964it [00:32, 136.33it/s]4978it [00:32, 124.52it/s]4994it [00:32, 132.82it/s]5008it [00:32, 132.44it/s]5022it [00:32, 133.25it/s]5039it [00:32, 138.33it/s]5053it [00:32, 122.75it/s]5069it [00:33, 132.11it/s]5086it [00:33, 142.07it/s]5105it [00:33, 152.57it/s]5121it [00:33, 129.36it/s]5142it [00:33, 148.21it/s]5158it [00:33, 147.21it/s]5176it [00:33, 155.28it/s]5196it [00:33, 165.83it/s]5213it [00:33, 166.41it/s]5230it [00:34, 166.43it/s]5247it [00:34, 159.04it/s]5264it [00:34, 154.13it/s]5280it [00:34, 153.42it/s]5296it [00:34, 137.36it/s]5313it [00:34, 145.56it/s]5329it [00:34, 148.51it/s]5346it [00:34, 153.78it/s]5362it [00:34, 131.82it/s]5376it [00:35, 132.85it/s]5390it [00:35, 134.60it/s]5406it [00:35, 140.10it/s]5421it [00:35, 132.80it/s]5439it [00:35, 143.78it/s]5459it [00:35, 159.19it/s]5476it [00:35, 147.78it/s]5495it [00:35, 158.93it/s]5512it [00:35, 151.46it/s]5533it [00:36, 166.62it/s]5551it [00:36, 161.19it/s]5571it [00:36, 171.08it/s]5589it [00:36, 153.55it/s]5605it [00:36, 149.41it/s]5622it [00:36, 150.45it/s]5638it [00:36, 121.36it/s]5652it [00:37, 112.17it/s]5664it [00:37, 107.21it/s]5685it [00:37, 130.02it/s]5699it [00:37, 113.57it/s]5712it [00:37, 102.87it/s]5727it [00:37, 113.37it/s]5748it [00:37, 136.21it/s]5764it [00:37, 141.99it/s]5780it [00:38, 145.54it/s]5796it [00:38, 127.83it/s]5810it [00:38, 112.59it/s]5823it [00:38, 113.51it/s]5838it [00:38, 122.09it/s]5858it [00:38, 140.56it/s]5873it [00:38, 142.63it/s]5890it [00:38, 150.10it/s]5906it [00:39, 130.85it/s]5920it [00:39, 125.40it/s]5934it [00:39, 121.96it/s]5947it [00:39, 108.24it/s]5959it [00:39, 108.97it/s]5971it [00:39, 105.82it/s]5984it [00:39, 109.48it/s]5996it [00:39, 103.30it/s]6013it [00:39, 119.80it/s]6033it [00:40, 140.89it/s]6051it [00:40, 149.97it/s]6067it [00:40, 152.03it/s]6088it [00:40, 168.25it/s]6106it [00:40, 164.28it/s]6123it [00:40, 163.98it/s]6141it [00:40, 167.68it/s]6162it [00:40, 178.83it/s]6180it [00:40, 178.82it/s]6198it [00:41, 165.84it/s]6216it [00:41, 168.87it/s]6237it [00:41, 178.80it/s]6256it [00:41, 181.57it/s]6275it [00:41, 176.42it/s]6293it [00:41, 176.13it/s]6312it [00:41, 178.41it/s]6330it [00:41, 170.37it/s]6351it [00:41, 181.43it/s]6373it [00:41, 189.26it/s]6393it [00:42, 175.43it/s]6411it [00:42, 170.80it/s]6432it [00:42, 179.53it/s]6451it [00:42, 174.05it/s]6472it [00:42, 183.68it/s]6491it [00:42, 174.26it/s]6513it [00:42, 184.62it/s]6532it [00:42, 185.42it/s]6552it [00:43, 179.75it/s]6571it [00:43, 175.06it/s]6589it [00:43, 172.90it/s]6607it [00:43, 168.61it/s]6624it [00:43, 163.63it/s]6641it [00:43, 162.96it/s]6662it [00:43, 174.26it/s]6680it [00:43, 163.37it/s]6699it [00:43, 168.73it/s]6717it [00:44, 133.97it/s]6735it [00:44, 143.49it/s]6755it [00:44, 156.91it/s]6772it [00:44, 155.73it/s]6794it [00:44, 171.10it/s]6812it [00:44, 159.54it/s]6829it [00:44, 140.65it/s]6845it [00:44, 145.32it/s]6866it [00:45, 160.37it/s]6886it [00:45, 170.19it/s]6906it [00:45, 177.10it/s]6927it [00:45, 185.72it/s]6946it [00:45, 182.21it/s]6966it [00:45, 175.39it/s]6986it [00:45, 176.96it/s]7004it [00:45, 164.08it/s]7024it [00:45, 172.57it/s]7042it [00:46, 134.63it/s]7057it [00:46, 126.72it/s]7075it [00:46, 138.01it/s]7090it [00:46, 121.22it/s]7104it [00:46, 125.47it/s]7120it [00:46, 133.71it/s]7141it [00:46, 153.03it/s]7158it [00:46, 135.18it/s]7173it [00:47, 128.85it/s]7187it [00:47, 109.48it/s]7199it [00:47, 108.45it/s]7216it [00:47, 122.33it/s]7238it [00:47, 146.08it/s]7257it [00:47, 157.50it/s]7274it [00:47, 145.71it/s]7290it [00:48, 129.72it/s]7308it [00:48, 141.63it/s]7330it [00:48, 160.81it/s]7352it [00:48, 175.27it/s]7371it [00:48, 143.84it/s]7387it [00:48, 139.32it/s]7407it [00:48, 154.07it/s]7427it [00:48, 163.95it/s]7449it [00:48, 177.63it/s]7471it [00:49, 188.01it/s]7493it [00:49, 196.41it/s]7515it [00:49, 201.49it/s]7537it [00:49, 204.78it/s]7558it [00:49, 205.90it/s]7580it [00:49, 207.82it/s]7602it [00:49, 209.98it/s]7624it [00:49, 211.93it/s]7646it [00:49, 212.94it/s]7668it [00:49, 213.08it/s]7690it [00:50, 207.85it/s]7711it [00:50, 191.22it/s]7731it [00:50, 186.97it/s]7752it [00:50, 191.57it/s]7757it [00:50, 153.70it/s]
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:505: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df['Hora'] = pd.to_numeric(df['Hora'])
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:506: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df['Cat Hora'] = pd.cut(
-Fontconfig warning: "/home/ipt/.config/fontconfig/fonts.conf", line 11: saw number, expected string
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:789: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
-  fig, ax = plt.subplots(figsize=(19, 9))
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1252: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df['SNR_P_cat'] = pd.Categorical(
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1293: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
-  plt.tight_layout()
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1321: RuntimeWarning: invalid value encountered in scalar divide
-  nb_sta = df[df['SNR_P_Q2_cat'] == r].shape[0]/f_a
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1452: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  sns.boxplot(
-CategoricalIndex(['<1', '[1-2[', '[2-3[', '>=3'], categories=['<1', '[1-2[', '[2-3[', '>=3'], ordered=True, dtype='category', name='Magnitude_cat')
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-posx and posy should be finite values
-
- -------------- Processo de criação de mapas iniciado ------------------
-
- ----------------- Iniciando o pdflatex .tex ---------------------------- 
-/home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-LaTeX file '/home/ipt/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/tex/relatorio_preditivo/tex/figures.tex' has been created successfully.
- -> Mapa '/home/ipt/projetos/ClassificadorSismologico/fonte/relatorio-sismologia/tex/relatorio_preditivo/tex/mapa.tex' gerado com sucesso!
-~/projetos/ClassificadorSismologico/fonte/relatorio-sismologia ~/projetos/ClassificadorSismologico ~/projetos/ClassificadorSismologico
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex)
- restricted \write18 enabled.
-entering extended mode
-(./relatorio_preditivo.tex
-LaTeX2e <2022-11-01> patch level 1
-L3 programming layer <2023-01-16> (./sismo_iptex.cls
-Document Class: sismo_iptex 2024/04/23 Classe Sismologia IPT
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)))
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/zref/zref-abspage.sty
-(/usr/share/texlive/texmf-dist/tex/latex/zref/zref-base.sty
-(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty))
-(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-0.mdf))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
-(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
-(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
-(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
-(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty)))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/mathabx/mathabx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/mathabx/mathabx.dcl))
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/helvet.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/fancyhdr.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/indentfirst.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/lastpage/lastpage.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def))
-(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/changepage/changepage.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tocloft/tocloft.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))
-(/usr/share/texlive/texmf-dist/tex/latex/sectsty/sectsty.sty
-
-LaTeX Warning: Command \underbar  has changed.
-               Check if current package is valid.
-
-
-LaTeX Warning: Command \underline  has changed.
-               Check if current package is valid.
-
-) (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/translations/translations.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/was/upgreek.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty
-
-! LaTeX Error: Command \captionof already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.30 ...nd\captionof[1]{\def\@captype{#1}\caption}
-                                                  
-? ) (/usr/share/texlive/texmf-dist/tex/latex/xargs/xargs.sty
-(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex))))
-(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjustbox.sty
-(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjcalc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/trimclip.sty
-(/usr/share/texlive/texmf-dist/tex/latex/collectbox/collectbox.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/tc-pdftex.def))
-(/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/pdfx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifpdf.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/everyshi/everyshi.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty){/var/lib/texmf/f
-onts/map/pdftex/updmap/pdftex.map}
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/l8u-penc.def)
-
-Package hyperref Warning: Option `pdftex' has already been used,
-(hyperref)                setting the option has no effect on input line 1461.
-
-
-Package hyperref Warning: Option `pdfa' has already been used,
-(hyperref)                setting the option has no effect on input line 1461.
-
-(/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc-greekbasic.def)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/psdextra.def)
-(/usr/share/texlive/texmf-dist/tex/generic/colorprofiles/colorprofiles.sty
-(/usr/share/texlive/texmf-dist/tex/generic/colorprofiles/colorprofiles.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/stringenc/se-pdfdoc.def)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/AdobeColorProfiles.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
-** pdfx: No file relatorio_preditivo.xmpdata . Metadata will be incomplete!
-<<sRGB.icc>> (/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
-(/usr/share/texlive/texmf-dist/tex/generic/pdftex/glyphtounicode.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/glyphtounicode-cmr.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/glyphtounicode-ntx.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/xmpincl/xmpincl.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def)
-Using XMP template file: pdfa.xmp
-<<pdfa.xmpi>>))
-(/usr/share/texlive/texmf-dist/tex/latex/mathastext/mathastext.sty
-** ! and ?
-** punctuation: , . : ; and \colon
-** + and =
-** adding = ; and + to \nfss@catcodes
-** parentheses ( ) [ ] and slash /
-** alldelims: < > \backslash \setminus | \vert \mid \{ and \}
-** \# \mathdollar \% \& 
-** \imath and \jmath 
-** Latin letters in the `normal' (resp. `bold') math versions are now
-** set up to use the fonts T1/phv/m(b)/it
-** Other characters (digits, ...) and \log-like names will be
-** typeset with the n shape.
-** \hbar
-** minus as endash
-** \Huge and \HUGE have been (re)-defined.
-** mathastext has declared larger sizes for subscripts.
-** To keep LaTeX defaults, use option `defaultmathsizes'.
-)
-! Undefined control sequence.
-l.13 \addto
-           \captionsbrazil{%
-? ! Undefined control sequence.
-l.13 \addto\captionsbrazil
-                          {%
-? ! Undefined control sequence.
-l.17 \addto
-           \captionsenglish{%
-? ! Undefined control sequence.
-l.17 \addto\captionsenglish
-                           {%
-? (/usr/share/texlive/texmf-dist/tex/latex/abntex2/abntex2cite.sty
-(/usr/share/texlive/texmf-dist/tex/latex/abntex2/abntex2abrev.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
-atorio_preditivo.aux)
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
-atorio_preditivo.out)
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
-atorio_preditivo.out)
-(/usr/share/texlive/texmf-dist/tex/latex/ragged2e/ragged2e.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictio
-nary-english.trsl)
-*geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
-(./tex/relatorio_preditivo/tex/capa.tex
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 12.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.12 \capa
-          
-? (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd)
-
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 12.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.12 \capa
-          
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[1]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 17.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.17 \tableofcontents
-                     
-? (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd)
-
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 17.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.17 \tableofcontents
-                     
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[1]
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
-atorio_preditivo.toc (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd))
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 20.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.20 \renewcommand
-                  {\thepage}{\arabic{page}}
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 20.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.20 \renewcommand
-                  {\thepage}{\arabic{page}}
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[2]) (./tex/relatorio_preditivo/tex/corpo.tex
-(./tex/relatorio_preditivo/tex/introducao.tex)
-(./tex/relatorio_preditivo/tex/atividades_resultados.tex
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 11.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.11 
-     
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 11.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.11 
-     
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.11 
-      [1]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 29.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.29 
-     
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 29.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.29 
-     
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[2] (./tex/relatorio_preditivo/tex/mapa.tex
-
-LaTeX Warning: File `/home/ipt/projetos/ClassificadorSismologico/arquivos/figur
-as/mapas/mapa.png' not found on input line 11.
-
-
-! Package pdftex.def Error: File `/home/ipt/projetos/ClassificadorSismologico/a
-rquivos/figuras/mapas/mapa.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.11 ...smologico/arquivos/figuras/mapas/mapa.png}
-                                                  
-? )
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 48.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.48 \par{A
-            validação destes resultados foi facilitada pela utilização d...
-
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 48.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.48 \par{A
-            validação destes resultados foi facilitada pela utilização d...
-
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[3] (./tex/relatorio_preditivo/tex/figures.tex
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 8.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.8 
-    
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 8.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.8 
-    
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[4
-pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.8 
-    ]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 24.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.24 
-     
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 24.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.24 
-     
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[5
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.24 
-     
-pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.24 
-      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-/8.04008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismol
-ogico/arquivos/figuras/pos_process/n_sta_recall_04008.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 40.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.40 
-     
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 40.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.40 
-     
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[6
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.40 
-     
-pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.40 
-      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-/n_sta_recall_1.254008.png> </home/ipt/projetos/ClassificadorSismologico/arquiv
-os/figuras/pos_process/0.54008_boxplot_ev_distance_event.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 56.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.56 
-     
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 56.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.56 
-     
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[7
-pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.56 
-     
-pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.56 
-      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-/n_sta_recall_1.04008.png> </home/ipt/projetos/ClassificadorSismologico/arquivo
-s/figuras/pos_process/5.04008_boxplot_ev_distance_event.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 72.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.72 
-     
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 72.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.72 
-     
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[8
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.72 
-     
-pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.72 
-      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-/n_sta_recall_1.754008.png> </home/ipt/projetos/ClassificadorSismologico/arquiv
-os/figuras/pos_process/04008_hist_ev_distance_event.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 88.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.88 
-     
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 88.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.88 
-     
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[9
-pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.88 
-     
-pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.88 
-      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-/n_sta_recall_2.04008.png> </home/ipt/projetos/ClassificadorSismologico/arquivo
-s/figuras/pos_process/04008_hist_ev_distance.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 104
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.104 
-      
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 104
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.104 
-      
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[10
-pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.104 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.104 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-s/04008_boxplot_ev_mag_event.png> </home/ipt/projetos/ClassificadorSismologico/
-arquivos/figuras/pos_process/n_sta_recall_0.54008.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 120
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.120 
-      
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 120
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.120 
-      
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[11
-pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.120 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.15}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.120 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-s/n_sta_recall_4.04008.png> </home/ipt/projetos/ClassificadorSismologico/arquiv
-os/figuras/pos_process/2.04008_boxplot_ev_distance_event.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 136
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.136 
-      
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 136
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.136 
-      
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[12
-pdfTeX warning (ext4): destination with the same identifier (name{figure.16}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.136 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.17}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.136 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-s/7.04008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismo
-logico/arquivos/figuras/pos_process/1.754008_boxplot_ev_distance_event.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 152
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.152 
-      
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 152
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.152 
-      
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[13
-pdfTeX warning (ext4): destination with the same identifier (name{figure.18}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.152 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.19}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.152 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-s/1.54008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismo
-logico/arquivos/figuras/pos_process/1.254008_boxplot_ev_distance_event.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 168
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.168 
-      
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 168
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.168 
-      
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[14
-pdfTeX warning (ext4): destination with the same identifier (name{figure.20}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.168 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.21}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.168 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-s/0.754008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSism
-ologico/arquivos/figuras/pos_process/n_sta_recall_1.54008.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 184
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.184 
-      
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 184
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.184 
-      
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[15
-pdfTeX warning (ext4): destination with the same identifier (name{figure.22}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.184 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.23}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.184 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-s/n_sta_recall_0.754008.png> </home/ipt/projetos/ClassificadorSismologico/arqui
-vos/figuras/pos_process/dist_snrs_recall.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 192
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.192 
-      
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 192
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.192 
-      
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[16
-pdfTeX warning (ext4): destination with the same identifier (name{figure.24}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.192 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-s/04008_boxplot_std_prob_nat.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 208
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.208 
-      
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 208
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.208 
-      
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[17
-pdfTeX warning (ext4): destination with the same identifier (name{figure.25}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.208 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.26}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.208 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-s/04008_dist_mean_snrs_recall.png> </home/ipt/projetos/ClassificadorSismologico
-/arquivos/figuras/pos_process/10.04008_boxplot_ev_distance_event.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 224
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.224 
-      
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 224
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.224 
-      
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[18
-pdfTeX warning (ext4): destination with the same identifier (name{figure.27}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.224 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.28}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.224 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-s/n_sta_recall_3.04008.png> </home/ipt/projetos/ClassificadorSismologico/arquiv
-os/figuras/pos_process/dist_ev_cat_mag_recall.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 240
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.240 
-      
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 240
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.240 
-      
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[19
-pdfTeX warning (ext4): destination with the same identifier (name{figure.29}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.240 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.30}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.240 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-s/n_sta_recall_0.254008.png> </home/ipt/projetos/ClassificadorSismologico/arqui
-vos/figuras/pos_process/3.04008_boxplot_ev_distance_event.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 256
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.256 
-      
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 256
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.256 
-      
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[20
-pdfTeX warning (ext4): destination with the same identifier (name{figure.31}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.256 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.32}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.256 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-s/9.04008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismo
-logico/arquivos/figuras/pos_process/region_corr.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 272
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.272 
-      
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 272
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.272 
-      
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[21
-pdfTeX warning (ext4): destination with the same identifier (name{figure.33}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.272 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.34}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.272 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-s/6.04008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismo
-logico/arquivos/figuras/pos_process/hist_ev_hour_recall_event.png>]
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 288
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.288 
-      
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 288
-.
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.288 
-      
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[22
-pdfTeX warning (ext4): destination with the same identifier (name{figure.35}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.288 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.36}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.288 
-       </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_proces
-s/0.254008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSism
-ologico/arquivos/figuras/pos_process/04008_boxplot_ev_distance_event.png>])
-Overfull \hbox (19.12613pt too wide) in paragraph at lines 57--58
-[]\T1/phv/m/n/12 Todos os c�di-gos e al-go-rit-mos de-sen-volvi-dos es-t�o de-v
--i-da-mente doc-u-men-ta-dos e dispon�veis
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 58.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.58 
-     
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 58.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.58 
-     
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[23
-pdfTeX warning (ext4): destination with the same identifier (name{figure.37}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.58 
-     
-pdfTeX warning (ext4): destination with the same identifier (name{figure.38}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.58 
-      </home/ipt/projetos/ClassificadorSismologico/arquivos/figuras/pos_process
-/1.04008_boxplot_ev_distance_event.png> </home/ipt/projetos/ClassificadorSismol
-ogico/arquivos/figuras/pos_process/4.04008_boxplot_ev_distance_event.png>])
-(./tex/relatorio_preditivo/tex/consideracoes_finais.tex
-Overfull \hbox (5.58174pt too wide) in paragraph at lines 8--9
-[]\T1/phv/m/n/12 Na �rea de in-flu�n-cia do em-preendi-mento foram reg-istra-do
-s sessenta e sete (67) desmontes
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 13.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.13 \end{itemize}
-                  
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 13.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.13 \end{itemize}
-                  
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[24])
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 14.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \clearpage
-               
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 14.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \clearpage
-               
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[25])
-No file relatorio_preditivo.bbl.
-
-AED: lastpage setting LastPage
-
-LaTeX Warning: File `tex/figuras_tex/headImage.pdf' not found on input line 39.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/headImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.39 \end{document}
-                   
-? 
-LaTeX Warning: File `tex/figuras_tex/footImage.pdf' not found on input line 39.
-
-
-
-! Package pdftex.def Error: File `tex/figuras_tex/footImage.pdf' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.39 \end{document}
-                   
-? 
-Package Fancyhdr Warning: \footskip is too small (71.13188pt): 
- Make it at least 72.26999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[26]
-(/home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/relatorios/rel
-atorio_preditivo.aux) ){/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.e
-nc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf
-/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/he
-lvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro
-8a.pfb>
-Output written on /home/ipt/projetos/ClassificadorSismologico/arquivos/resultad
-os/relatorios/relatorio_preditivo.pdf (29 pages, 3045222 bytes).
-Transcript written on /home/ipt/projetos/ClassificadorSismologico/arquivos/resu
-ltados/relatorios/relatorio_preditivo.log.

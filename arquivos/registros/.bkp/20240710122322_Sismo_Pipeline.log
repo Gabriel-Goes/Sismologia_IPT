@@ -1,107 +1,0 @@
-
-========================================================================
-                       Iniciando do Pipeline                         
-========================================================================
-
-
- -------------- INICIANDO O TRATAMENTO -------------------- 
- Tratando catalogo-moho.csv...
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:96: FutureWarning: The geopandas.dataset module is deprecated and will be removed in GeoPandas 1.0. You can get the original 'naturalearth_lowres' data from https://www.naturalearthdata.com/downloads/110m-cultural-vectors/.
-  world = gpd.read_file(get_path('naturalearth_lowres'))
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:171: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_yticklabels(['{:,.0%}'.format(x) for x in ax.get_yticks()], fontsize=8)
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:171: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_yticklabels(['{:,.0%}'.format(x) for x in ax.get_yticks()], fontsize=8)
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:216: UserWarning: The figure layout has changed to tight
-  plt.tight_layout()
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:216: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
-  plt.tight_layout()
-Tratando catalogo-moho.csv...
-Author
-JROBERTO                 2326
-MASSUMPCAO                140
-CLEUSA                    104
-BRUNO                      78
-JROBERTO@VITORIA           64
-UNB                        18
-UFRN                       15
-MBIANCHI                    5
-UNB;IAG                     5
-IAG                         5
-IAG;IPT                     3
-IAG;UNB                     3
-USGS                        2
-UFRN;UNB                    2
-BRUNO@MAVERICK.LOCAL        2
-IPT                         2
-IAG;UNB;UFRN;USGS           1
-JROBERTO@TUBARAO            1
-IAG;UNB;ESAR;UNESP-RC       1
-IAG;ESAR;UNESP-RC;IPT       1
-IAG;ESAR                    1
-UNB; IAG                    1
-UNB;ISC                     1
-UFRN;UNB;ISC                1
-Name: count, dtype: int64
-            count  ...        std
-Time         2782  ...        NaN
-Latitude   2782.0  ...   7.591672
-Longitude  2782.0  ...  10.953745
-Depth/km   2782.0  ...  85.505145
-Catalog       0.0  ...        NaN
-Magnitude  2780.0  ...   0.927095
-Hora       2782.0  ...   6.964219
-
-[7 rows x 8 columns]
-Plotando mapa...
-Salvando mapa...
-Salvando mapa...
- ----------------- INICIANDO O PREDICT.PY ---------------------------- 
-[{"success":true}]
-
- ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
-0it [00:00, ?it/s]1it [00:00,  3.79it/s]23it [00:00, 79.44it/s]45it [00:00, 125.32it/s]66it [00:00, 150.43it/s]88it [00:00, 170.14it/s]109it [00:00, 180.61it/s]131it [00:00, 191.39it/s]152it [00:00, 195.80it/s]173it [00:01, 194.13it/s]193it [00:01, 193.36it/s]214it [00:01, 197.19it/s]235it [00:01, 200.13it/s]256it [00:01, 200.85it/s]278it [00:01, 205.22it/s]299it [00:01, 204.73it/s]320it [00:01, 195.40it/s]340it [00:01, 185.94it/s]359it [00:02, 182.01it/s]378it [00:02, 178.72it/s]399it [00:02, 187.14it/s]418it [00:02, 186.68it/s]437it [00:02, 185.41it/s]456it [00:02, 186.50it/s]475it [00:02, 186.52it/s]496it [00:02, 191.10it/s]517it [00:02, 194.75it/s]537it [00:02, 194.81it/s]557it [00:03, 196.25it/s]577it [00:03, 196.18it/s]597it [00:03, 194.20it/s]617it [00:03, 195.54it/s]638it [00:03, 198.63it/s]659it [00:03, 201.21it/s]680it [00:03, 202.06it/s]702it [00:03, 204.85it/s]723it [00:03, 202.29it/s]745it [00:04, 205.60it/s]767it [00:04, 208.95it/s]788it [00:04, 204.30it/s]810it [00:04, 207.95it/s]831it [00:04, 208.21it/s]852it [00:04, 208.12it/s]874it [00:04, 210.79it/s]896it [00:04, 212.81it/s]918it [00:04, 212.78it/s]940it [00:04, 214.23it/s]962it [00:05, 214.99it/s]984it [00:05, 216.09it/s]1006it [00:05, 216.22it/s]1028it [00:05, 208.51it/s]1049it [00:05, 195.65it/s]1071it [00:05, 202.09it/s]1093it [00:05, 205.26it/s]1115it [00:05, 209.01it/s]1137it [00:05, 212.12it/s]1159it [00:05, 209.35it/s]1181it [00:06, 212.27it/s]1204it [00:06, 214.71it/s]1226it [00:06, 215.88it/s]1248it [00:06, 205.11it/s]1270it [00:06, 207.53it/s]1292it [00:06, 209.74it/s]1314it [00:06, 211.66it/s]1336it [00:06, 213.16it/s]1358it [00:06, 213.95it/s]1380it [00:07, 214.48it/s]1402it [00:07, 214.88it/s]1424it [00:07, 215.47it/s]1446it [00:07, 216.09it/s]1468it [00:07, 216.75it/s]1490it [00:07, 216.85it/s]1512it [00:07, 216.93it/s]1534it [00:07, 217.13it/s]1556it [00:07, 216.33it/s]1578it [00:07, 207.41it/s]1600it [00:08, 210.21it/s]1622it [00:08, 211.19it/s]1644it [00:08, 208.04it/s]1666it [00:08, 211.38it/s]1688it [00:08, 213.52it/s]1710it [00:08, 215.02it/s]1732it [00:08, 215.80it/s]1754it [00:08, 215.05it/s]1776it [00:08, 216.27it/s]1798it [00:08, 216.10it/s]1820it [00:09, 216.44it/s]1842it [00:09, 215.64it/s]1864it [00:09, 213.65it/s]1886it [00:09, 214.64it/s]1908it [00:09, 210.55it/s]1930it [00:09, 209.21it/s]1952it [00:09, 211.79it/s]1974it [00:09, 213.43it/s]1996it [00:09, 214.83it/s]2018it [00:10, 215.81it/s]2040it [00:10, 216.83it/s]2062it [00:10, 217.49it/s]2084it [00:10, 217.42it/s]2106it [00:10, 217.22it/s]2128it [00:10, 217.62it/s]2150it [00:10, 218.05it/s]2172it [00:10, 217.07it/s]2194it [00:10, 217.11it/s]2216it [00:10, 217.17it/s]2238it [00:11, 216.88it/s]2260it [00:11, 217.08it/s]2282it [00:11, 216.91it/s]2304it [00:11, 216.94it/s]2326it [00:11, 217.18it/s]2348it [00:11, 217.29it/s]2370it [00:11, 216.48it/s]2392it [00:11, 216.46it/s]2414it [00:11, 216.95it/s]2436it [00:11, 217.44it/s]2458it [00:12, 217.15it/s]2480it [00:12, 216.78it/s]2502it [00:12, 216.61it/s]2524it [00:12, 215.86it/s]2546it [00:12, 216.02it/s]2568it [00:12, 216.39it/s]2590it [00:12, 216.46it/s]2612it [00:12, 216.81it/s]2634it [00:12, 216.58it/s]2656it [00:12, 216.27it/s]2678it [00:13, 215.46it/s]2700it [00:13, 215.51it/s]2722it [00:13, 215.39it/s]2744it [00:13, 215.01it/s]2766it [00:13, 214.16it/s]2788it [00:13, 214.73it/s]2810it [00:13, 215.31it/s]2832it [00:13, 213.44it/s]2854it [00:13, 215.25it/s]2876it [00:13, 215.67it/s]2898it [00:14, 215.24it/s]2920it [00:14, 215.88it/s]2942it [00:14, 215.96it/s]2964it [00:14, 216.48it/s]2986it [00:14, 215.80it/s]3008it [00:14, 215.14it/s]3030it [00:14, 215.31it/s]3052it [00:14, 215.78it/s]3074it [00:14, 214.55it/s]3096it [00:14, 214.40it/s]3118it [00:15, 214.96it/s]3140it [00:15, 215.55it/s]3162it [00:15, 214.15it/s]3184it [00:15, 215.25it/s]3206it [00:15, 216.21it/s]3228it [00:15, 216.39it/s]3250it [00:15, 217.05it/s]3272it [00:15, 217.29it/s]3294it [00:15, 217.84it/s]3316it [00:16, 216.76it/s]3338it [00:16, 216.94it/s]3360it [00:16, 216.18it/s]3382it [00:16, 216.29it/s]3404it [00:16, 216.95it/s]3426it [00:16, 217.43it/s]3448it [00:16, 217.16it/s]3470it [00:16, 217.42it/s]3492it [00:16, 217.97it/s]3514it [00:16, 218.30it/s]3536it [00:17, 215.24it/s]3558it [00:17, 215.37it/s]3580it [00:17, 215.72it/s]3602it [00:17, 215.90it/s]3624it [00:17, 216.00it/s]3646it [00:17, 214.24it/s]3668it [00:17, 207.90it/s]3690it [00:17, 210.83it/s]3712it [00:17, 209.74it/s]3734it [00:17, 198.73it/s]3755it [00:18, 200.83it/s]3776it [00:18, 199.22it/s]3797it [00:18, 199.74it/s]3819it [00:18, 204.47it/s]3841it [00:18, 207.22it/s]3863it [00:18, 209.58it/s]3885it [00:18, 210.07it/s]3907it [00:18, 210.31it/s]3929it [00:18, 212.31it/s]3951it [00:19, 214.42it/s]3973it [00:19, 215.98it/s]3995it [00:19, 216.32it/s]4017it [00:19, 217.41it/s]4039it [00:19, 218.14it/s]4061it [00:19, 217.63it/s]4083it [00:19, 217.41it/s]4105it [00:19, 217.70it/s]4127it [00:19, 217.55it/s]4149it [00:19, 217.43it/s]4171it [00:20, 217.25it/s]4193it [00:20, 216.75it/s]4215it [00:20, 217.15it/s]4237it [00:20, 216.04it/s]4259it [00:20, 216.70it/s]4281it [00:20, 217.31it/s]4303it [00:20, 217.45it/s]4325it [00:20, 217.62it/s]4347it [00:20, 218.14it/s]4369it [00:20, 217.68it/s]4391it [00:21, 217.61it/s]4413it [00:21, 217.69it/s]4435it [00:21, 216.97it/s]4457it [00:21, 217.04it/s]4479it [00:21, 217.86it/s]4501it [00:21, 217.93it/s]4523it [00:21, 217.91it/s]4545it [00:21, 218.52it/s]4567it [00:21, 218.84it/s]4589it [00:21, 219.14it/s]4611it [00:22, 219.32it/s]4633it [00:22, 218.52it/s]4655it [00:22, 218.27it/s]4677it [00:22, 218.28it/s]4699it [00:22, 218.31it/s]4721it [00:22, 218.15it/s]4743it [00:22, 217.90it/s]4765it [00:22, 217.86it/s]4787it [00:22, 218.25it/s]4809it [00:22, 208.56it/s]4831it [00:23, 210.92it/s]4853it [00:23, 211.50it/s]4875it [00:23, 212.84it/s]4897it [00:23, 214.93it/s]4919it [00:23, 214.69it/s]4941it [00:23, 215.89it/s]4963it [00:23, 214.99it/s]4985it [00:23, 212.94it/s]5007it [00:23, 214.24it/s]5029it [00:23, 214.14it/s]5051it [00:24, 215.45it/s]5073it [00:24, 216.65it/s]5095it [00:24, 217.26it/s]5118it [00:24, 218.27it/s]5140it [00:24, 217.11it/s]5162it [00:24, 217.57it/s]5184it [00:24, 218.12it/s]5206it [00:24, 218.56it/s]5228it [00:24, 217.17it/s]5250it [00:25, 217.50it/s]5272it [00:25, 217.68it/s]5294it [00:25, 216.89it/s]5316it [00:25, 216.15it/s]5338it [00:25, 215.59it/s]5360it [00:25, 212.08it/s]5382it [00:25, 213.26it/s]5404it [00:25, 214.85it/s]5426it [00:25, 216.04it/s]5448it [00:25, 216.58it/s]5470it [00:26, 216.96it/s]5492it [00:26, 217.59it/s]5514it [00:26, 216.78it/s]5536it [00:26, 217.12it/s]5558it [00:26, 216.80it/s]5580it [00:26, 217.03it/s]5602it [00:26, 217.44it/s]5624it [00:26, 217.77it/s]5646it [00:26, 217.96it/s]5668it [00:26, 217.71it/s]5690it [00:27, 216.75it/s]5712it [00:27, 216.93it/s]5734it [00:27, 217.07it/s]5756it [00:27, 217.11it/s]5778it [00:27, 217.25it/s]5800it [00:27, 217.09it/s]5822it [00:27, 217.14it/s]5844it [00:27, 217.27it/s]5866it [00:27, 216.60it/s]5888it [00:27, 215.35it/s]5910it [00:28, 215.97it/s]5932it [00:28, 217.03it/s]5954it [00:28, 216.58it/s]5976it [00:28, 217.34it/s]5998it [00:28, 217.97it/s]6020it [00:28, 218.18it/s]6043it [00:28, 219.45it/s]6066it [00:28, 220.72it/s]6089it [00:28, 218.72it/s]6111it [00:29, 197.22it/s]6133it [00:29, 202.87it/s]6154it [00:29, 203.72it/s]6176it [00:29, 207.72it/s]6198it [00:29, 210.91it/s]6220it [00:29, 210.04it/s]6242it [00:29, 212.11it/s]6264it [00:29, 198.53it/s]6287it [00:29, 204.63it/s]6310it [00:29, 209.18it/s]6332it [00:30, 211.02it/s]6354it [00:30, 207.26it/s]6376it [00:30, 209.03it/s]6398it [00:30, 211.48it/s]6421it [00:30, 214.44it/s]6443it [00:30, 203.60it/s]6465it [00:30, 205.78it/s]6487it [00:30, 209.08it/s]6509it [00:30, 211.19it/s]6531it [00:31, 211.32it/s]6554it [00:31, 214.45it/s]6576it [00:31, 201.25it/s]6598it [00:31, 205.70it/s]6620it [00:31, 209.18it/s]6642it [00:31, 211.46it/s]6664it [00:31, 210.49it/s]6686it [00:31, 212.27it/s]6708it [00:31, 212.92it/s]6730it [00:31, 213.50it/s]6752it [00:32, 214.32it/s]6774it [00:32, 203.79it/s]6796it [00:32, 207.93it/s]6818it [00:32, 210.82it/s]6840it [00:32, 213.09it/s]6862it [00:32, 214.49it/s]6884it [00:32, 207.82it/s]6906it [00:32, 210.49it/s]6928it [00:32, 212.31it/s]6950it [00:32, 213.44it/s]6972it [00:33, 214.41it/s]6994it [00:33, 213.48it/s]7016it [00:33, 207.25it/s]7038it [00:33, 210.26it/s]7060it [00:33, 212.67it/s]7082it [00:33, 214.52it/s]7104it [00:33, 213.74it/s]7126it [00:33, 212.46it/s]7148it [00:33, 213.41it/s]7170it [00:34, 209.47it/s]7192it [00:34, 210.41it/s]7214it [00:34, 210.77it/s]7236it [00:34, 209.10it/s]7258it [00:34, 210.99it/s]7280it [00:34, 212.79it/s]7302it [00:34, 208.47it/s]7323it [00:34, 196.63it/s]7343it [00:34, 190.44it/s]7363it [00:35, 191.65it/s]7384it [00:35, 196.30it/s]7405it [00:35, 198.49it/s]7426it [00:35, 200.70it/s]7447it [00:35, 202.35it/s]7469it [00:35, 205.80it/s]7491it [00:35, 209.45it/s]7513it [00:35, 211.18it/s]7535it [00:35, 213.02it/s]7557it [00:35, 213.53it/s]7579it [00:36, 213.61it/s]7601it [00:36, 209.50it/s]7623it [00:36, 211.84it/s]7645it [00:36, 213.21it/s]7667it [00:36, 212.36it/s]7689it [00:36, 203.93it/s]7711it [00:36, 207.75it/s]7732it [00:36, 202.95it/s]7754it [00:36, 207.52it/s]7762it [00:36, 210.30it/s]
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:505: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df['Hora'] = pd.to_numeric(df['Hora'])
-/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:506: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df['Cat Hora'] = pd.cut(
-Traceback (most recent call last):
-  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1675, in <module>
-    df_nc, df = main()
-                ^^^^^^
-  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1665, in main
-    df_nc = ncomercial(df)
-            ^^^^^^^^^^^^^^
-  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1534, in ncomercial
-    hist_hour_recall_event(df_nc)
-  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 556, in hist_hour_recall_event
-    plt.savefig('arquivos/figuras/pos_process/hist_ev_hour_recall_event.png')
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/pyplot.py", line 1223, in savefig
-    res = fig.savefig(*args, **kwargs)  # type: ignore[func-returns-value]
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/figure.py", line 3388, in savefig
-    self.canvas.print_figure(fname, **kwargs)
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backend_bases.py", line 2218, in print_figure
-    result = print_method(
-             ^^^^^^^^^^^^^
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backend_bases.py", line 2068, in <lambda>
-    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
-                                                                 ^^^^^
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py", line 496, in print_png
-    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py", line 445, in _print_pil
-    mpl.image.imsave(
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/matplotlib/image.py", line 1676, in imsave
-    image.save(fname, **pil_kwargs)
-  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/PIL/Image.py", line 2435, in save
-    fp = builtins.open(filename, "w+b")
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'arquivos/figuras/pos_process/hist_ev_hour_recall_event.png'

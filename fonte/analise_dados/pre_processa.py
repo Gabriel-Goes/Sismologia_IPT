@@ -75,6 +75,7 @@ def data_catalogo(
     catalogo['Time'] = pd.to_datetime(catalogo['Time'])
     catalogo.sort_values(by='Time', ascending=ascending, inplace=True)
     catalogo = catalogo[catalogo['Time'] > data + '-01-01']
+    print(catalogo['Time'].min())
 
     return catalogo
 

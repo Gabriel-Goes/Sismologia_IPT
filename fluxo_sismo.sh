@@ -5,9 +5,9 @@
 # ./ClassificadorSismologico/fluxo_sismo.sh
 # Autor: Gabriel Góes Rocha de Lima
 # Modificado do código de Lucas Schirbel & Marcelo Bianchi
-# Versão: 0.3.0
+# Versão: 0.3.1
 # Data: 2024-03-05
-# Modificado: 2024-06-17
+# Modificado: 2024-07-31
 
 # ----------------------------  DESCRIÇÃO  -----------------------------------
 # Este código recebe uma lista de IDs eventos ou uma data de início e fim e com
@@ -17,22 +17,13 @@
 # para o passo de aquisição das formas de onda e classificação.
 
 # -------------------------------  USO -----------------------------------------
-# Existem duas formas de execução:
-#   - Passando uma lista de IDs de eventos sísmicos:
+# Passando uma lista de IDs de eventos sísmicos:
 #       Sismo_Pipeline.sh catalogo.csv
 #
-#   - Passando uma data de início e fim:
-#    Sismo_Pipeline.sh 2023-01-01 2023-01-10
-#
-#
-# Caso utilize datas para a execução, o script irá adquirir os eventos sísmicos
-# da rede do IAG e do RSBR e criará um arquivo eventos_$INICIO_$FIM.csv
-#
-# Caso utilize uma lista de IDs, o script irá adquirir os eventos sísmicos desta
-# mesma rede e criará um arquivo eventos.csv
+# Caso utilize uma lista de IDs, o script irá adquirir os eventos sísmicos da
+# rede seisarc e criará um arquivo eventos.csv
 
 # -----------------------------  VARIÁVEIS ------------------------------------
-CATALOG='catalogo-moho.csv'
 EVENTS=false
 TREATCATALOG=false
 PREDICT=false
@@ -44,7 +35,7 @@ TEST=false
 # ------------------------- PARSE ARGUMENTOS ----------------------------------
 if [ $# -eq 0 ]; then
     EVENTS=true
-              # Código para ajuda  TREATCATALOG=true
+    TREATCATALOG=true
     PREDICT=true
     POSPROCESS=true
     MAPS=true
@@ -165,6 +156,7 @@ if [ "$EVENTS" = true ]; then
         echo ''
         echo ' -> Executando fluxo_eventos.py...'
         CATALOG=$(echo $CATALOG | cut -d'.' -f1)
+        echo $CATALOG
         python fonte/nucleo/fluxo_eventos.py $CATALOG
         echo ''
     else

@@ -10596,7 +10596,7 @@ EventID usp2020jofx não encontrado.
 EventID usp2020joeo não encontrado.
  Catalogo USP não encontrado. Tentando no servidor da RSBR.
  ------------------------------ Sem dados ------------------------------ 
- 33%|███▎      | 3515/10529 [00:00<00:00, 33569.41it/s]EventID usp2020jmlu não encontrado.
+EventID usp2020jmlu não encontrado.
  Catalogo USP não encontrado. Tentando no servidor da RSBR.
  ------------------------------ Sem dados ------------------------------ 
 EventID usp2020jmdq não encontrado.
@@ -10881,7 +10881,7 @@ EventID usp2020hhtx não encontrado.
 EventID usp2020hhpy não encontrado.
  Catalogo USP não encontrado. Tentando no servidor da RSBR.
  ------------------------------ Sem dados ------------------------------ 
-EventID usp2020hhfe não encontrado.
+ 34%|███▍      | 3610/10529 [00:00<00:00, 36051.30it/s]EventID usp2020hhfe não encontrado.
  Catalogo USP não encontrado. Tentando no servidor da RSBR.
  ------------------------------ Sem dados ------------------------------ 
 EventID usp2020hgxv não encontrado.
@@ -20571,7 +20571,7 @@ EventID usp2016vlyc não encontrado.
 EventID usp2016vlhn não encontrado.
  Catalogo USP não encontrado. Tentando no servidor da RSBR.
  ------------------------------ Sem dados ------------------------------ 
- 65%|██████▌   | 6872/10529 [00:00<00:00, 23452.88it/s]EventID usp2016vlaq não encontrado.
+EventID usp2016vlaq não encontrado.
  Catalogo USP não encontrado. Tentando no servidor da RSBR.
  ------------------------------ Sem dados ------------------------------ 
 EventID usp2016vkab não encontrado.
@@ -21569,7 +21569,7 @@ EventID usp2016mjqc não encontrado.
  ------------------------------ Sem dados ------------------------------ 
 EventID usp2016mjmb não encontrado.
  Catalogo USP não encontrado. Tentando no servidor da RSBR.
- ------------------------------ Sem dados ------------------------------ 
+ 69%|██████▊   | 7216/10529 [00:00<00:00, 35465.51it/s] ------------------------------ Sem dados ------------------------------ 
 EventID usp2016mjjo não encontrado.
  Catalogo USP não encontrado. Tentando no servidor da RSBR.
  ------------------------------ Sem dados ------------------------------ 
@@ -28124,7 +28124,7 @@ EventID usp2014ojdg não encontrado.
  ------------------------------ Sem dados ------------------------------ 
 EventID usp2014oinz não encontrado.
  Catalogo USP não encontrado. Tentando no servidor da RSBR.
- 89%|████████▉ | 9385/10529 [00:00<00:00, 23847.62it/s] ------------------------------ Sem dados ------------------------------ 
+ ------------------------------ Sem dados ------------------------------ 
 EventID usp2014oims não encontrado.
  Catalogo USP não encontrado. Tentando no servidor da RSBR.
  ------------------------------ Sem dados ------------------------------ 
@@ -31544,7 +31544,7 @@ EventID usp2012noiv não encontrado.
  ------------------------------ Sem dados ------------------------------ 
 EventID bsb20120629121819 não encontrado.
  Catalogo USP não encontrado. Tentando no servidor da RSBR.
-100%|██████████| 10529/10529 [00:00<00:00, 23927.13it/s]
+100%|██████████| 10529/10529 [00:00<00:00, 35104.51it/s]
  ------------------------------ Sem dados ------------------------------ 
 EventID usp2012mbmm não encontrado.
  Catalogo USP não encontrado. Tentando no servidor da RSBR.
@@ -31641,10 +31641,10 @@ EventID usp2010xhoa não encontrado.
  ------------------------------ Sem dados ------------------------------ 
 EventID usp2013xhoa não encontrado.
 Traceback (most recent call last):
-  File "/home/ipt/projetos/ClassificadorSismologico/fonte/nucleo/fluxo_eventos.py", line 428, in <module>
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/nucleo/fluxo_eventos.py", line 421, in <module>
     catalogo, missin_ids = main(EventIDs)
                            ^^^^^^^^^^^^^^
-  File "/home/ipt/projetos/ClassificadorSismologico/fonte/nucleo/fluxo_eventos.py", line 407, in main
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/nucleo/fluxo_eventos.py", line 400, in main
     DATA_CLIENT,
     ^^^^^^^^^^^
 UnboundLocalError: cannot access local variable 'DATA_CLIENT' where it is not associated with a value
