@@ -1,0 +1,26 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: true
+  TREATCATALOG: false
+  PREDICT: false
+  POSPROCESS: false
+  MAPS: false
+  REPORT: false
+  TEST: false
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+
+ -> Executando fluxo_eventos.py...
+catalogo_jul
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/nucleo/fluxo_eventos.py", line 423, in <module>
+    if sys.argv[2] == 'True':
+       ~~~~~~~~^^^
+IndexError: list index out of range

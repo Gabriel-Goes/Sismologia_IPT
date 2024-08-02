@@ -152,18 +152,10 @@ if [ "$EVENTS" = true ]; then
         mv arquivos/registros/ids_faltantes.csv arquivos/registros/.bkp/ids_faltantes.csv.$(date +%Y%m%d%H%M%S)
     echo " Arquivos de backup criados com sucesso!"
     echo ''
-    if [ "$TEST" = false]; then
-        echo ''
-        echo ' -> Executando fluxo_eventos.py...'
-        CATALOG=$(echo $CATALOG | cut -d'.' -f1)
-        echo $CATALOG
-        python fonte/nucleo/fluxo_eventos.py $CATALOG
-        echo ''
-    else
-        echo " -> Executando fluxo_eventos.py..."
-        python fonte/nucleo/fluxo_eventos.py $CATALOG $TEST
-        echo ''            # Código para ajuda
-    fi
+    echo ' -> Executando fluxo_eventos.py...'
+    echo $CATALOG
+    python fonte/nucleo/fluxo_eventos.py $CATALOG $TEST
+    echo ''
 fi
 
 # ------------------------- ETAPA DE PREDIÇÃO  ----------------------------------
