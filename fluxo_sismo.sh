@@ -94,17 +94,13 @@ else
     done
 fi
 
-<<<<<<< HEAD
-=======
 # -----------------------------  VARIÁVEIS -------------------------------------
-CATALOG=${1:-"catalogo-moho-maio.csv"}
 EVENTS=${EVENTS:-false}
 TREATCATALOG=${TREATCATALOG:-true}
 PREDICT=${PREDICT:-false}
 POSPROCESS=${POSPROCESS:-false}
 MAPS=${MAPS:-false}
 REPORT=${REPORT:-false}
->>>>>>> 501e8c2cc7ac089fe5f79390717249926735621d
 
 # ----------------------------- CONSTANTES -------------------------------------
 set -e
