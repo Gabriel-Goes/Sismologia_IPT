@@ -1,0 +1,13 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando fluxo_eventos.py...
+
+Erro ao conectar com o servidor Seisarc.sismo.iag.usp.br: 'list' object has no attribute 'upper'
+
+Erro ao conectar com o servidor rsbr.on.br: 'Client' object has no attribute 'upper'
