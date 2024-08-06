@@ -1,0 +1,20 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: false
+  TREATCATALOG: false
+  PREDICT: false
+  POSPROCESS: false
+  MAPS: false
+  REPORT: false
+  TEST: false
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
+~/projetos/ClassificadorSismologico
