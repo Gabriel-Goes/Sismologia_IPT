@@ -360,8 +360,8 @@ def iterar_eventos(
 # ---------------------------- MAIN -------------------------------------------
 def fluxo_eventos(
         EventIDs: List,
-        DATA_CLIENT: str,
-        DATA_CLIENT_BKP: str) -> [Catalog, Dict, List]:
+        DATA_CLIENT: Client,
+        DATA_CLIENT_BKP: Client) -> [Catalog, Dict, List]:
 
     print(" --------- INICIANDO FLUXO DE EVENTOS  --------- ")
     print('')
@@ -408,33 +408,25 @@ def fluxo_eventos(
 
 
 # ---------------------------- MAIN -------------------------------------------
-def main(rand=False):
+def main(
+    EventIDs: List,
+):
     try:
-        # DATA_CLIENT = Client('http://seisarc.sismo.iag.usp.br/')
-        DATA_CLIENT = Client('USP')
+        DATA_CLIENT = Client('http://seisarc.sismo.iag.usp.br/')
+        # DATA_CLIENT = Client('USP')
     except Exception as e:
         print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
-        try:
-            DATA_CLIENT_BKP = Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
-        except Exception as e:
-            print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
-            sys.exit(1)
+        sys.exit(1)
+    try:
+        DATA_CLIENT_BKP = Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
+    except Exception as e:
+        print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
+        sys.exit(1)
 
-    if rand:
-        random.seed(42)
-        EventIDs = csv2list(sys.argv[1])
-        RandomIDs = random.sample(EventIDs, rand)
-        catalogo, missin_ids = fluxo_eventos(
-            RandomIDs,
-            DATA_CLIENT,
-            DATA_CLIENT_BKP)
-
-    else:
-        EventIDs = csv2list(sys.argv[1])
-        catalogo, missin_ids = fluxo_eventos(
-            EventIDs,
-            DATA_CLIENT,
-            DATA_CLIENT_BKP)
+    catalogo, missin_ids = fluxo_eventos(
+        EventIDs,
+        DATA_CLIENT,
+        DATA_CLIENT_BKP)
 
 
 if __name__ == "__main__":
