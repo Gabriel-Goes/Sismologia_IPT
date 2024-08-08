@@ -1,0 +1,22 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: true
+  TREATCATALOG: false
+  PREDICT: false
+  POSPROCESS: false
+  MAPS: false
+  REPORT: false
+  TEST: false
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando fluxo_eventos.py...
+catalogo_jul.csv
+
+Erro ao conectar com o servidor Seisarc.sismo.iag.usp.br: No FDSN services could be discovered at 'http://10.110.1.132:18003'. This could be due to a temporary service outage or an invalid FDSN service address.

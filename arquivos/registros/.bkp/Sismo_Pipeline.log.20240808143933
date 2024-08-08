@@ -1,0 +1,193 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: True
+  TREATCATALOG: False
+  PREDICT: False
+  POSPROCESS: False
+  MAPS: False
+  REPORT: False
+  TEST: True
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando fluxo_eventos.py...
+catalogo_jul.csv
+./fonte/nucleo/fluxo_eventos.py...
+ - Número de argumentos: 3
+ - Argumentos (Roteiro Python | Catálogo de Eventos | Modo de Teste):
+ fonte/nucleo/fluxo_eventos.py
+ catalogo_jul.csv
+ True
+True
+ --> Modo de teste ativado
+ - Número de EventIDs: 1
+ --------- INICIANDO FLUXO DE EVENTOS  --------- 
+
+ ------------------------------ ACESSANDO CATÁLOGO ------------------------------ 
+ - Catálogo: catalogo_jul.csv
+ - Primeiro EventID: usp2013aayl
+ - EventID mediano: usp2013aayl
+ - Último EventID: usp2013aayl
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00,  5.24it/s]100%|██████████| 1/1 [00:00<00:00,  5.23it/s]
+ --> Iterando sobre eventos
+ - Número de eventos: 1
+ --> Adquirindo Inventário de Estações
+ Inventario adquirido com sucesso
+['BL', 'BO', 'BR', 'BV', 'BX'] ... 
+['BL', 'BR', 'NB', 'ON']
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00, 1433.95it/s]
+############ Event 1: usp2013aayl ############
+
+--> Pick 1
+ - Seed EventID: ON.RIB01..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 2
+ - Seed EventID: BL.BSFB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 3
+ - Seed EventID: BL.SJMB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 4
+ - Seed EventID: ON.ALF01..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 5
+ - Seed EventID: BR.JANB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 6
+ - Seed EventID: BL.MCI7..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 7
+ - Seed EventID: BL.BSCB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 8
+ - Seed EventID: BL.PMNB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 9
+ - Seed EventID: BL.ESAR..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 10
+ - Seed EventID: BR.IPMB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 11
+ - Seed EventID: BL.RCLB.01.HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 12
+ - Seed EventID: BL.BB22B..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 13
+ - Seed EventID: BL.BB19B..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 14
+ - Seed EventID: BL.ITRB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 15
+ - Seed EventID: BR.SALB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 16
+ - Seed EventID: BL.FRTB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 17
+ - Seed EventID: ON.TIJ01..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 18
+ - Seed EventID: ON.TER01..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 19
+ - Seed EventID: BL.C2SB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 20
+ - Seed EventID: BL.CNLB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 21
+ - Seed EventID: BL.MARB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 22
+ - Seed EventID: BL.TRCB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 23
+ - Seed EventID: BL.PTGB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 24
+ - Seed EventID: BL.ITAB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 25
+ - Seed EventID: BL.PLTB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 26
+ - Seed EventID: BL.AQDB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+--> Pick 27
+ - Seed EventID: BL.CPSB..HHZ 
+ - channel: HHZ
+ - Erro ao adquirir metadata de canais: No matching channel metadata found.
+ - Fatal: nenhum metadado encontrado para canal No matching channel metadata found.
+ - Event: usp2013aayl
+ - Pwave Picks: 27
+#####################################################
+
+Dados salvos com sucesso em arquivos/eventos/eventos.csv
+Erros salvos com sucesso em arquivos/eventos/erros.csv
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
+~/projetos/ClassificadorSismologico

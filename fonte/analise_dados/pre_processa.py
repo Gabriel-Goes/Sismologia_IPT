@@ -86,7 +86,7 @@ def brasil_catalogo(catalogo: pd.DataFrame) -> pd.DataFrame:
         lambda x: shapely.geometry.Point(x['Longitude'], x['Latitude']), axis=1
     )
     df = gpd.GeoDataFrame(df, geometry='geometry')
-    world = gpd.read_file('/home/ipt/database/shp/ne_110m_admin_0_countries.shp')
+    world = gpd.read_file('arquivos/figuras/mapas/shp/ne_110m_admin_0_countries.shp')
     brasil = world[world['SOVEREIGNT'] == 'Brazil']
     brasil = brasil.to_crs(epsg=32723)
     brasil_buffer = brasil.buffer(400000)
