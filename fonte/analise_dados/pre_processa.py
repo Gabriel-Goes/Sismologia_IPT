@@ -5,9 +5,9 @@
 # ---------------------------  DESCRIPTION  -----------------------------------
 # Script para tratar dados anterior a classificação.
 # Autor: Gabriel Góes Rocha de Lima
-# Versão: 0.2.1
+# Versão: 0.2.2
 # Data: 2024-02-27
-# Modificação mais recente: 2024-07-29
+# Modificação mais recente: 2024-08-08
 # Descrição: Este script será chamado antes da aquisição dos dados e apóes a
 # aquisição dos dados. Ele será responsável por tratar os dados do catálogo.csv
 # e dos eventos.csv. O catalogo.csv será filtrado criando um
@@ -15,21 +15,25 @@
 
 # ----------------------------  IMPORTS   -------------------------------------
 import pandas as pd
-from obspy.core import UTCDateTime
 import shapely.geometry
 import geopandas as gpd
 import pygmt
 import random
 import matplotlib.pyplot as plt
 import numpy as np
-import locale
 import argparse
-import warnings
+import matplotlib
+# import locale
+# import warnings
 
-warnings.filterwarnings("ignore")
+from obspy.core import UTCDateTime
 
-# Configurações do Matplotlib para usar pgf
-locale.setlocale(locale.LC_ALL, 'pt_BR.utf8')
+matplotlib.use('Agg')
+# warnings.filterwarnings("ignore")
+# # Configurações do Matplotlib para usar pgf
+# locale.setlocale(locale.LC_ALL, 'pt_BR.utf8')
+
+
 ###############################################################################
 # ----------------------------  ARGUMENTS  ------------------------------------
 parser = argparse.ArgumentParser(description='Pre processamento dos dados')
@@ -91,7 +95,7 @@ def brasil_catalogo(catalogo: pd.DataFrame) -> pd.DataFrame:
     brasil = brasil.to_crs(epsg=32723)
     brasil_buffer = brasil.buffer(400000)
     brasil_buffer = brasil_buffer.to_crs(epsg=4326)
-    catalog_br = df[df.within(brasil_buffer.unary_union)]
+    catalog_br = df[df.within(brasil_buffer.union_all())]
 
     return catalog_br
 
@@ -172,7 +176,7 @@ def plot_distrib_hora(
     ax.set_xlabel('Hora (UTC)', fontsize=9)
     ax.set_ylabel('Frequência (%)', fontsize=9)
     ax.set_ylim(0, 0.07)
-    plt.savefig(f'arquivos/figuras/pre_processa/hist_hora_{title}.pgf', dpi=300)
+#     plt.savefig(f'arquivos/figuras/pre_processa/hist_hora_{title}.pgf', dpi=300)
     plt.savefig(f'arquivos/figuras/pre_processa/hist_hora_{title}.png', dpi=300)
     plt.close()
 
@@ -202,7 +206,7 @@ def profundidade_catalogo(
     plt.grid(True, linestyle='--', linewidth=0.7, alpha=0.7)
     plt.tight_layout()
     plt.savefig(f'arquivos/figuras/pre_processa/hist_profundidade_{title}.png')
-    plt.savefig(f'arquivos/figuras/pre_processa/hist_profundidade_{title}.pgf')
+#     # plt.savefig(f'arquivos/figuras/pre_processa/hist_profundidade_{title}.pgf')
     # plt.show()
 
 
@@ -215,7 +219,7 @@ def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
     catalog.crs = 'EPSG:4326'
     brasil = gpd.read_file('arquivos/figuras/mapas/macrorregioesBrasil.json')
     brasil.to_crs(epsg=4326, inplace=True)
-    brasil = brasil.geometry.unary_union
+    brasil = brasil.geometry.union_all()
     catalog['color'] = 'blue'
     catalog.loc[~catalog.geometry.within(brasil), 'color'] = 'red'
     fig, ax = plt.subplots()
@@ -259,7 +263,7 @@ def plot_prof_as_red(catalog: pd.DataFrame, title='completo') -> None:
     catalog.crs = 'EPSG:4326'
     brasil = gpd.read_file('arquivos/figuras/mapas/macrorregioesBrasil.json')
     brasil.to_crs(epsg=4326, inplace=True)
-    brasil = brasil.geometry.unary_union
+    brasil = brasil.geometry.union_all()
     fig = pygmt.Figure()
     pygmt.makecpt(
         cmap="jet",
@@ -357,7 +361,7 @@ def plot_by_macrorregioes(
         constrained_layout=True
     )
     axes = axes.flatten()
-    all_geometries = macro_br['geometry'].unary_union
+    all_geometries = macro_br['geometry'].union_all()
     for i, regiao in enumerate(regions):
         ax = axes[i]
         ax.set_title(regiao, fontsize=10)

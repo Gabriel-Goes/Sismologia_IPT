@@ -29,6 +29,15 @@ from nucleo.utils import DELIMT, DELIMT2
 from nucleo.utils import csv2list
 
 
+# Trocar prints por LOGGING
+# ---------------------------- LOGGING ----------------------------------------
+# logging.basicConfig(
+#     filename='registros/fluxo_eventos.log',
+#     level=logging.DEBUG,
+#     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+# )
+
+
 # ---------------------------- FUNÇÕES ----------------------------------------
 def iterar_eventos(
         eventos: List,
@@ -49,14 +58,9 @@ def iterar_eventos(
     except Exception as e:
         print(f'Erro ao adquirir inventário de estações: {e}')
         sys.exit(1)
-    try:
-        inventario_bkp = data_client_bkp.get_stations(level='channel')
-    except Exception as e:
-        print(f'Erro ao adquirir inventário de estações: {e}')
-        sys.exit(1)
     print(' Inventario adquirido com sucesso')
     print(f'{inventario.get_contents()['networks'][:5]} ... ')
-    print(inventario_bkp.get_contents()['networks'][:5])
+    # print(inventario_bkp.get_contents()['networks'][:5])
 
     for evento in tqdm(eventos):
         event_id = evento.resource_id.id.split("/")[-1]
@@ -271,7 +275,6 @@ def iterar_eventos(
             except Exception as e:
                 print(f" -> Erro ao obter magnitude: {e}")
                 error_to_save.append({
-                    'EventID': event_id,
                     'Event': dir_name,
                     'Pick': pick.phase_hint,
                     'Network': net,
@@ -449,7 +452,7 @@ if __name__ == "__main__":
     if sys.argv[2] == 'True':
         print(' --> Modo de teste ativado')
         random.seed(42)
-        EventIDs = random.sample(EventIDs, 100)
+        EventIDs = random.sample(EventIDs, 300)
         print(f' - Número de EventIDs: {len(EventIDs)}')
 
     catalogo, missin_ids = main(EventIDs)

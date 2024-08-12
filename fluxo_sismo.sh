@@ -148,6 +148,7 @@ if [ "$TREATCATALOG" = True ]; then
         echo ''
         echo " -------------- INICIANDO O TRATAMENTO -------------------- "
         echo " Tratando $CATALOG..."
+        echo " t0: $(date)"
         python fonte/analise_dados/pre_processa.py -c $CATALOG
 fi
 
@@ -171,7 +172,7 @@ if [ "$PREDICT" = True ]; then
     COMMAND='pushd /home/ipt/projetos/ClassificadorSismologico; \
         python fonte/rnc/run.py'
     echo " ----------------- INICIANDO O PREDICT.PY ---------------------------- "
-    i3-msg 'workspace 2'
+    # i3-msg 'workspace 2'
     alacritty -e bash -c "tmux new-session -d -s $NOME_TERM; \
     tmux send-keys -t $NOME_TERM \"$COMMAND\" C-m; \
     tmux attach -t $NOME_TERM"

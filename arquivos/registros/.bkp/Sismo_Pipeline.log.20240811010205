@@ -1,0 +1,33 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: True
+  TREATCATALOG: False
+  PREDICT: False
+  POSPROCESS: False
+  MAPS: False
+  REPORT: False
+  TEST: True
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando fluxo_eventos.py...
+catalogo_jul.csv
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/nucleo/fluxo_eventos.py", line 34, in <module>
+    logging.basicConfig(
+  File "/home/ggrl/.pyenv/versions/3.12.4/lib/python3.12/logging/__init__.py", line 2118, in basicConfig
+    h = FileHandler(filename, mode,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/3.12.4/lib/python3.12/logging/__init__.py", line 1231, in __init__
+    StreamHandler.__init__(self, self._open())
+                                 ^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/3.12.4/lib/python3.12/logging/__init__.py", line 1263, in _open
+    return open_func(self.baseFilename, self.mode,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/ggrl/projetos/ClassificadorSismologico/logs/fluxo_eventos.log'

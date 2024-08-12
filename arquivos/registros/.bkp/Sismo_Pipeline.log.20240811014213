@@ -1,0 +1,64 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: True
+  TREATCATALOG: True
+  PREDICT: True
+  POSPROCESS: True
+  MAPS: False
+  REPORT: True
+  TEST: True
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo_jul.csv...
+ t0: dom 11 ago 2024 01:40:25 -03
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:172: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_yticklabels(['{:,.0%}'.format(x) for x in ax.get_yticks()], fontsize=8)
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:172: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_yticklabels(['{:,.0%}'.format(x) for x in ax.get_yticks()], fontsize=8)
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:207: UserWarning: The figure layout has changed to tight
+  plt.tight_layout()
+Argumentos recebidos:
+ eventos.csv
+ catalogo_jul.csv
+ True
+ False
+2010-11-28 10:21:12.185973
+
+Plotando distribuição de eventos por hora...
+ Catálogo filtrado com 3031 eventos
+ Nov de 2010 à Jul de 2024
+
+Plotando distribuição de eventos por hora...
+ Catálogo completo com 10529 eventos
+ Nov de 2010 à Jul de 2024
+Plotando mapa...
+Salvando mapa...
+Salvando mapa...
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando fluxo_eventos.py...
+catalogo_jul.csv
+./fonte/nucleo/fluxo_eventos.py...
+ - Número de argumentos: 3
+ - Argumentos (Roteiro Python | Catálogo de Eventos | Modo de Teste):
+ fonte/nucleo/fluxo_eventos.py
+ catalogo_jul.csv
+ True
+True
+ --> Modo de teste ativado
+ - Número de EventIDs: 100
+ --------- INICIANDO FLUXO DE EVENTOS  --------- 
+
+ ------------------------------ ACESSANDO CATÁLOGO ------------------------------ 
+ - Catálogo: catalogo_jul.csv
+ - Primeiro EventID: usp2013aayl
+ - EventID mediano: usp2014wjko
+ - Último EventID: usp2015socw
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:00<00:19,  5.20it/s]  3%|▎         | 3/100 [00:00<00:13,  6.97it/s]  4%|▍         | 4/100 [00:00<00:12,  7.48it/s]  5%|▌         | 5/100 [00:00<00:15,  6.09it/s]  6%|▌         | 6/100 [00:00<00:13,  6.92it/s]  7%|▋         | 7/100 [00:01<00:12,  7.36it/s]  8%|▊         | 8/100 [00:01<00:13,  6.90it/s] 10%|█         | 10/100 [00:01<00:11,  7.75it/s] 11%|█         | 11/100 [00:01<00:11,  7.66it/s] 12%|█▏        | 12/100 [00:01<00:10,  8.04it/s] 13%|█▎        | 13/100 [00:01<00:11,  7.63it/s] 14%|█▍        | 14/100 [00:01<00:10,  8.03it/s] 16%|█▌        | 16/100 [00:02<00:09,  8.41it/s] 17%|█▋        | 17/100 [00:02<00:10,  7.57it/s] 19%|█▉        | 19/100 [00:02<00:10,  7.83it/s] 20%|██        | 20/100 [00:02<00:10,  7.69it/s] 21%|██        | 21/100 [00:02<00:09,  7.95it/s] 23%|██▎       | 23/100 [00:02<00:08,  9.23it/s] 25%|██▌       | 25/100 [00:03<00:06, 11.23it/s] 27%|██▋       | 27/100 [00:03<00:08,  8.57it/s] 29%|██▉       | 29/100 [00:03<00:08,  8.40it/s] 31%|███       | 31/100 [00:03<00:08,  8.10it/s] 33%|███▎      | 33/100 [00:04<00:07,  9.18it/s] 35%|███▌      | 35/100 [00:04<00:07,  8.23it/s] 36%|███▌      | 36/100 [00:04<00:09,  6.67it/s] 38%|███▊      | 38/100 [00:04<00:07,  7.88it/s] 39%|███▉      | 39/100 [00:04<00:08,  7.26it/s] 41%|████      | 41/100 [00:05<00:09,  6.55it/s] 42%|████▏     | 42/100 [00:05<00:09,  6.37it/s] 44%|████▍     | 44/100 [00:05<00:07,  7.36it/s] 46%|████▌     | 46/100 [00:05<00:06,  8.65it/s] 47%|████▋     | 47/100 [00:06<00:06,  8.21it/s] 49%|████▉     | 49/100 [00:06<00:05,  9.45it/s] 51%|█████     | 51/100 [00:06<00:05,  9.04it/s] 52%|█████▏    | 52/100 [00:06<00:05,  8.37it/s] 53%|█████▎    | 53/100 [00:06<00:05,  8.14it/s] 54%|█████▍    | 54/100 [00:06<00:05,  7.94it/s] 55%|█████▌    | 55/100 [00:07<00:08,  5.56it/s] 56%|█████▌    | 56/100 [00:07<00:07,  5.73it/s] 58%|█████▊    | 58/100 [00:07<00:05,  7.54it/s] 59%|█████▉    | 59/100 [00:07<00:05,  7.70it/s] 61%|██████    | 61/100 [00:07<00:04,  9.60it/s] 63%|██████▎   | 63/100 [00:07<00:03, 11.22it/s] 65%|██████▌   | 65/100 [00:08<00:02, 11.79it/s] 67%|██████▋   | 67/100 [00:08<00:02, 13.35it/s] 69%|██████▉   | 69/100 [00:08<00:03, 10.07it/s] 71%|███████   | 71/100 [00:08<00:03,  8.02it/s] 72%|███████▏  | 72/100 [00:09<00:03,  7.15it/s] 74%|███████▍  | 74/100 [00:09<00:03,  7.07it/s] 75%|███████▌  | 75/100 [00:09<00:03,  7.25it/s] 76%|███████▌  | 76/100 [00:09<00:03,  6.57it/s] 78%|███████▊  | 78/100 [00:09<00:02,  8.35it/s] 80%|████████  | 80/100 [00:09<00:02,  8.46it/s] 82%|████████▏ | 82/100 [00:10<00:01,  9.55it/s] 84%|████████▍ | 84/100 [00:10<00:01,  9.77it/s] 86%|████████▌ | 86/100 [00:10<00:01,  9.88it/s] 88%|████████▊ | 88/100 [00:10<00:01,  8.64it/s] 90%|█████████ | 90/100 [00:10<00:01,  9.80it/s] 92%|█████████▏| 92/100 [00:11<00:01,  7.82it/s] 93%|█████████▎| 93/100 [00:11<00:00,  7.01it/s] 94%|█████████▍| 94/100 [00:11<00:00,  7.17it/s]
