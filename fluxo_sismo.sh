@@ -24,23 +24,23 @@
 # rede seisarc e criará um arquivo eventos.csv
 
 # -----------------------------  VARIÁVEIS ------------------------------------
-EVENTS=false
-TREATCATALOG=false
-PREDICT=false
-POSPROCESS=false
-MAPS=false
-REPORT=false
-TEST=false
+EVENTS=False
+TREATCATALOG=False
+PREDICT=False
+POSPROCESS=False
+MAPS=False
+REPORT=False
+TEST=False
 
 # ------------------------- PARSE ARGUMENTOS ----------------------------------
-if [ $# -eq 0 ]; then
-    EVENTS=true
-    TREATCATALOG=true
-    PREDICT=true
-    POSPROCESS=true
-    MAPS=true
-    REPORT=true
-    TEST=false
+if [ $# -eq 0 ]; then # Não está funcionando. ## Deve configurar tudo como true caso não seja passado argumentos ao ./flusho_sismo.sh, porém, para rodar o bash, é necessário passar o nome do arquivo de catalogo_MÊS.csv, isso impede de funcionar.
+    EVENTS=True
+    TREATCATALOG=True
+    PREDICT=True
+    POSPROCESS=True
+    MAPS=True
+    REPORT=True
+    TEST=False
 else
     if [ -f  "./arquivos/catalogo/$1" ]; then
         CATALOG=$(basename "$1")
@@ -65,25 +65,25 @@ else
                 exit 0
                 ;;
             --eventos|-e)
-                EVENTS=true
+                EVENTS=True
                 ;;
             --pre|-pe)
-                TREATCATALOG=true
+                TREATCATALOG=True
                 ;;
             --predict|-pr)
-                PREDICT=true
+                PREDICT=True
                 ;;
             --pos|-po)
-                POSPROCESS=true
+                POSPROCESS=True
                 ;;
             --maps|-m)
-                MAPS=true
+                MAPS=True
                 ;;
             --test|-t)
-                TEST=true
+                TEST=True
                 ;;
             --report|-r)
-                REPORT=true
+                REPORT=True
                 ;;
             *)
                 echo "Opção inválida: $1"
@@ -95,12 +95,12 @@ else
 fi
 
 # -----------------------------  VARIÁVEIS -------------------------------------
-EVENTS=${EVENTS:-false}
-TREATCATALOG=${TREATCATALOG:-true}
-PREDICT=${PREDICT:-false}
-POSPROCESS=${POSPROCESS:-false}
-MAPS=${MAPS:-false}
-REPORT=${REPORT:-false}
+EVENTS=${EVENTS:-False}
+TREATCATALOG=${TREATCATALOG:-True}
+PREDICT=${PREDICT:-False}
+POSPROCESS=${POSPROCESS:-False}
+MAPS=${MAPS:-False}
+REPORT=${REPORT:-False}
 
 # ----------------------------- CONSTANTES -------------------------------------
 set -e
@@ -144,14 +144,15 @@ echo "  TEST: $TEST"
 echo ''
 
 # ------------------------- ETAPA DE AQUISIÇÃO DE DADOS  ----------------------
-if [ "$TREATCATALOG" = true ]; then
+if [ "$TREATCATALOG" = True ]; then
         echo ''
         echo " -------------- INICIANDO O TRATAMENTO -------------------- "
         echo " Tratando $CATALOG..."
+        echo " t0: $(date)"
         python fonte/analise_dados/pre_processa.py -c $CATALOG
 fi
 
-if [ "$EVENTS" = true ]; then
+if [ "$EVENTS" = True ]; then
     echo " Criando arquivos de backup..."
     [[ -f /eventos/eventos.csv ]] &&
         mv arquivos/eventos/eventos.csv arquivos/eventos/.bkp/eventos.csv.$(date +%Y%m%d%H%M%S)
@@ -166,12 +167,12 @@ if [ "$EVENTS" = true ]; then
 fi
 
 # ------------------------- ETAPA DE PREDIÇÃO  ----------------------------------
-if [ "$PREDICT" = true ]; then
+if [ "$PREDICT" = True ]; then
     NOME_TERM="Predict"
     COMMAND='pushd /home/ipt/projetos/ClassificadorSismologico; \
         python fonte/rnc/run.py'
     echo " ----------------- INICIANDO O PREDICT.PY ---------------------------- "
-    i3-msg 'workspace 2'
+    # i3-msg 'workspace 2'
     alacritty -e bash -c "tmux new-session -d -s $NOME_TERM; \
     tmux send-keys -t $NOME_TERM \"$COMMAND\" C-m; \
     tmux attach -t $NOME_TERM"
@@ -179,7 +180,7 @@ if [ "$PREDICT" = true ]; then
 fi
 
 # --------- ETAPA DE GERAR GRAFICOS E ANÁLISES -----------
-if [ "$POSPROCESS" = true ]; then
+if [ "$POSPROCESS" = True ]; then
     echo " ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- "
     python fonte/analise_dados/pos_processa.py
     echo ''
@@ -187,7 +188,7 @@ fi
 
 # ------------------------- ETAPA DE GERAR MAPAS  -----------------------------
 # Condicionalmente executa partes do script
-if [ "$MAPS" = true ]; then
+if [ "$MAPS" = True ]; then
     echo " -------------- Processo de criação de mapas iniciado ------------------"
     # Checa se o arquivo de eventos existe e se é vazio
     if [ -f "arquivos/output/no_commercial/df_nc_pos.csv" ]; then
@@ -198,7 +199,7 @@ if [ "$MAPS" = true ]; then
 fi
 
 # ----------------- ETAPA DE GERAR RELATORIOS ------------------------
-if [ "$REPORT" = true ]; then
+if [ "$REPORT" = True ]; then
     echo " ----------------- Iniciando o pdflatex .tex ---------------------------- "
     python fonte/relatorio-sismologia/pyscripts/figures.py --path 'pre_processa'
     python fonte/relatorio-sismologia/pyscripts/figures.py --path 'pos_processa'

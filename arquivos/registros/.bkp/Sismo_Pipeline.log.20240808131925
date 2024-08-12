@@ -1,0 +1,33 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: True
+  TREATCATALOG: False
+  PREDICT: False
+  POSPROCESS: False
+  MAPS: False
+  REPORT: False
+  TEST: True
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando fluxo_eventos.py...
+catalogo_jul.csv
+./fonte/nucleo/fluxo_eventos.py...
+ - Número de argumentos: 3
+ - Argumentos: fonte/nucleo/fluxo_eventos.py
+ - Argumentos: catalogo_jul.csv
+ - Argumentos: True
+ --------- INICIANDO FLUXO DE EVENTOS  --------- 
+
+ ------------------------------ ACESSANDO CATÁLOGO ------------------------------ 
+ - Catálogo: catalogo_jul.csv
+ - Primeiro EventID: usp2024ouyr
+ - EventID mediano: usp2018knsx
+ - Último EventID: usp2013xhoa
+  0%|          | 0/10529 [00:00<?, ?it/s]  0%|          | 1/10529 [00:00<20:45,  8.45it/s]  0%|          | 3/10529 [00:00<19:15,  9.11it/s]  0%|          | 5/10529 [00:00<15:02, 11.66it/s]  0%|          | 7/10529 [00:00<16:57, 10.34it/s]  0%|          | 9/10529 [00:00<14:47, 11.85it/s]  0%|          | 11/10529 [00:01<16:45, 10.46it/s]  0%|          | 13/10529 [00:01<19:14,  9.11it/s]  0%|          | 15/10529 [00:01<18:53,  9.27it/s]  0%|          | 17/10529 [00:01<19:37,  8.93it/s]  0%|          | 18/10529 [00:01<19:41,  8.90it/s]  0%|          | 19/10529 [00:01<19:42,  8.89it/s]  0%|          | 20/10529 [00:02<22:39,  7.73it/s]  0%|          | 22/10529 [00:02<18:19,  9.56it/s]

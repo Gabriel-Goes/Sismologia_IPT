@@ -1,0 +1,33 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: True
+  TREATCATALOG: False
+  PREDICT: False
+  POSPROCESS: False
+  MAPS: False
+  REPORT: False
+  TEST: True
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando fluxo_eventos.py...
+catalogo_jul.csv
+./fonte/nucleo/fluxo_eventos.py...
+ - Número de argumentos: 3
+ - Argumentos: fonte/nucleo/fluxo_eventos.py
+ - Argumentos: catalogo_jul.csv
+ - Argumentos: True
+ --------- INICIANDO FLUXO DE EVENTOS  --------- 
+
+ ------------------------------ ACESSANDO CATÁLOGO ------------------------------ 
+ - Catálogo: catalogo_jul.csv
+ - Primeiro EventID: usp2024ouyr
+ - EventID mediano: usp2018knsx
+ - Último EventID: usp2013xhoa
+  0%|          | 0/10529 [00:00<?, ?it/s]  0%|          | 1/10529 [00:00<19:05,  9.19it/s]  0%|          | 3/10529 [00:00<16:43, 10.49it/s]  0%|          | 5/10529 [00:00<13:24, 13.08it/s]  0%|          | 7/10529 [00:00<16:16, 10.77it/s]  0%|          | 9/10529 [00:00<14:31, 12.07it/s]  0%|          | 11/10529 [00:01<16:47, 10.44it/s]  0%|          | 13/10529 [00:01<19:55,  8.80it/s]  0%|          | 15/10529 [00:01<19:17,  9.09it/s]  0%|          | 17/10529 [00:01<19:31,  8.97it/s]  0%|          | 18/10529 [00:01<19:29,  8.99it/s]  0%|          | 20/10529 [00:02<20:37,  8.49it/s]  0%|          | 22/10529 [00:02<17:30, 10.01it/s]  0%|          | 24/10529 [00:02<20:58,  8.35it/s]  0%|          | 25/10529 [00:02<20:50,  8.40it/s]  0%|          | 26/10529 [00:02<20:20,  8.61it/s]  0%|          | 28/10529 [00:02<19:15,  9.09it/s]  0%|          | 30/10529 [00:03<17:01, 10.28it/s]  0%|          | 32/10529 [00:03<17:39,  9.91it/s]  0%|          | 34/10529 [00:03<26:58,  6.48it/s]  0%|          | 36/10529 [00:04<23:02,  7.59it/s]  0%|          | 38/10529 [00:04<20:02,  8.73it/s]

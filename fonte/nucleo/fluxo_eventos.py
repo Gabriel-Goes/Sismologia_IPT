@@ -29,6 +29,15 @@ from nucleo.utils import DELIMT, DELIMT2
 from nucleo.utils import csv2list
 
 
+# Trocar prints por LOGGING
+# ---------------------------- LOGGING ----------------------------------------
+# logging.basicConfig(
+#     filename='registros/fluxo_eventos.log',
+#     level=logging.DEBUG,
+#     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+# )
+
+
 # ---------------------------- FUNÇÕES ----------------------------------------
 def iterar_eventos(
         eventos: List,
@@ -42,16 +51,16 @@ def iterar_eventos(
     data_to_save = []
     error_to_save = []
     event_count = 0
-    print(' --> Adrquirindo Inventário de Estações')
+    print(' --> Adquirindo Inventário de Estações')
     try:
-        inventario = data_client.get_stations()
+        # IAG-USP
+        inventario = data_client.get_stations(level='channel')
     except Exception as e:
         print(f'Erro ao adquirir inventário de estações: {e}')
-        try:
-            inventario_bkp = data_client_bkp.get_stations()
-        except Exception as e:
-            print(f'Erro ao adquirir inventário de estações: {e}')
-            sys.exit(1)
+        sys.exit(1)
+    print(' Inventario adquirido com sucesso')
+    print(f'{inventario.get_contents()['networks'][:5]} ... ')
+    # print(inventario_bkp.get_contents()['networks'][:5])
 
     for evento in tqdm(eventos):
         event_id = evento.resource_id.id.split("/")[-1]
@@ -91,18 +100,19 @@ def iterar_eventos(
             print(f'--> Pick {pick_count}')
             net = pick.waveform_id.network_code
             sta = pick.waveform_id.station_code
-            chn = pick.waveform_id.channel_code
+            chn_ = pick.waveform_id.channel_code
             loc = pick.waveform_id.location_code
 
-            chn = chn[:-1] + 'Z'
+            chn = chn_[:-1] + 'Z'
             if loc is None:
                 loc = ''
             seed_id = f'{net}.{sta}.{loc}.{chn}'
             print(f' - Seed EventID: {seed_id} ')
+            print(f' - channel: {chn_}')
             try:
                 cha_meta = inventario.get_channel_metadata(seed_id)
             except Exception as e:
-                print(f' - Error getting channel metadata from SEISARC: {e}')
+                print(f' - Erro ao adquirir metadata de canais: {e}')
                 try:
                     cha_meta = inventario_bkp.get_channel_metadata(seed_id)
                 except Exception as e:
@@ -120,7 +130,7 @@ def iterar_eventos(
                         'Depth/km': origem_depth,
                         'Error': f'channel metadata: {e}'
                     })
-                    print(f' - Error getting channel metadata: {e}')
+                    print(f' - Fatal: nenhum metadado encontrado para canal {e}')
                     continue
 
             sta_lat = cha_meta['latitude']
@@ -265,7 +275,6 @@ def iterar_eventos(
             except Exception as e:
                 print(f" -> Erro ao obter magnitude: {e}")
                 error_to_save.append({
-                    'EventID': event_id,
                     'Event': dir_name,
                     'Pick': pick.phase_hint,
                     'Network': net,
@@ -412,13 +421,14 @@ def main(
     EventIDs: List,
 ):
     try:
-        DATA_CLIENT = Client('http://seisarc.sismo.iag.usp.br/')
+        # DATA_CLIENT = Client('http://seisarc.sismo.iag.usp.br/')
         # DATA_CLIENT = Client('USP')
+        DATA_CLIENT = Client("http://10.110.1.132:18003")
     except Exception as e:
         print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
         sys.exit(1)
     try:
-        DATA_CLIENT_BKP = Client('http://rsbr.on.br:8081/fdsnws/dataselect/1/')
+        DATA_CLIENT_BKP = Client('http://rsbr.on.br:8081')
     except Exception as e:
         print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
         sys.exit(1)
@@ -428,12 +438,21 @@ def main(
         DATA_CLIENT,
         DATA_CLIENT_BKP)
 
+    return catalogo, missin_ids
+
 
 if __name__ == "__main__":
+    print('./fonte/nucleo/fluxo_eventos.py...')
+    print(f' - Número de argumentos: {len(sys.argv)}')
+    print(' - Argumentos (Roteiro Python | Catálogo de Eventos | Modo de Teste):')
+    for n in range(len(sys.argv)):
+        print(f' {sys.argv[n]}')
     EventIDs = csv2list(sys.argv[1])
+    print(sys.argv[2])
     if sys.argv[2] == 'True':
         print(' --> Modo de teste ativado')
         random.seed(42)
-        EventIDs = random.sample(EventIDs, 500)
+        EventIDs = random.sample(EventIDs, 300)
+        print(f' - Número de EventIDs: {len(EventIDs)}')
 
     catalogo, missin_ids = main(EventIDs)

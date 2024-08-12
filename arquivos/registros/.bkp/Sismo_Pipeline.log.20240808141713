@@ -1,0 +1,179 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: True
+  TREATCATALOG: False
+  PREDICT: False
+  POSPROCESS: False
+  MAPS: False
+  REPORT: False
+  TEST: True
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando fluxo_eventos.py...
+catalogo_jul.csv
+./fonte/nucleo/fluxo_eventos.py...
+ - Número de argumentos: 3
+ - Argumentos: fonte/nucleo/fluxo_eventos.py
+ - Argumentos: catalogo_jul.csv
+ - Argumentos: True
+True
+ --> Modo de teste ativado
+ - Número de EventIDs: 2
+ --------- INICIANDO FLUXO DE EVENTOS  --------- 
+
+ ------------------------------ ACESSANDO CATÁLOGO ------------------------------ 
+ - Catálogo: catalogo_jul.csv
+ - Primeiro EventID: usp2013aayl
+ - EventID mediano: usp2022hilp
+ - Último EventID: usp2022hilp
+  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [00:00<00:00,  5.27it/s]100%|██████████| 2/2 [00:00<00:00,  8.36it/s]
+ --> Iterando sobre eventos
+ - Número de eventos: 2
+ --> Adrquirindo Inventário de Estações
+  0%|          | 0/2 [00:00<?, ?it/s]100%|██████████| 2/2 [00:00<00:00, 3154.80it/s]
+############ Event 1: usp2013aayl ############
+
+--> Pick 1
+ - Seed EventID: ON.RIB01..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 2
+ - Seed EventID: BL.BSFB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 3
+ - Seed EventID: BL.SJMB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 4
+ - Seed EventID: ON.ALF01..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 5
+ - Seed EventID: BR.JANB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 6
+ - Seed EventID: BL.MCI7..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 7
+ - Seed EventID: BL.BSCB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 8
+ - Seed EventID: BL.PMNB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 9
+ - Seed EventID: BL.ESAR..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 10
+ - Seed EventID: BR.IPMB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 11
+ - Seed EventID: BL.RCLB.01.HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 12
+ - Seed EventID: BL.BB22B..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 13
+ - Seed EventID: BL.BB19B..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 14
+ - Seed EventID: BL.ITRB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 15
+ - Seed EventID: BR.SALB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 16
+ - Seed EventID: BL.FRTB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 17
+ - Seed EventID: ON.TIJ01..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 18
+ - Seed EventID: ON.TER01..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 19
+ - Seed EventID: BL.C2SB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 20
+ - Seed EventID: BL.CNLB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 21
+ - Seed EventID: BL.MARB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 22
+ - Seed EventID: BL.TRCB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 23
+ - Seed EventID: BL.PTGB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 24
+ - Seed EventID: BL.ITAB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 25
+ - Seed EventID: BL.PLTB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 26
+ - Seed EventID: BL.AQDB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 27
+ - Seed EventID: BL.CPSB..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+ - Event: usp2013aayl
+ - Pwave Picks: 27
+#####################################################
+
+############ Event 2: usp2022hilp ############
+
+--> Pick 1
+ - Seed EventID: NB.NBMO..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 2
+ - Seed EventID: VL.SLBO..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+--> Pick 3
+ - Seed EventID: NB.NBMA..HHZ 
+ - Error getting channel metadata from SEISARC: No matching channel metadata found.
+ - Error getting channel metadata: cannot access local variable 'inventario_bkp' where it is not associated with a value
+ - Event: usp2022hilp
+ - Pwave Picks: 3
+#####################################################
+
+Dados salvos com sucesso em arquivos/eventos/eventos.csv
+Erros salvos com sucesso em arquivos/eventos/erros.csv
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/nucleo/fluxo_eventos.py", line 448, in <module>
+    catalogo, missin_ids = main(EventIDs)
+    ^^^^^^^^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
