@@ -95,7 +95,7 @@ def brasil_catalogo(catalogo: pd.DataFrame) -> pd.DataFrame:
     brasil = brasil.to_crs(epsg=32723)
     brasil_buffer = brasil.buffer(400000)
     brasil_buffer = brasil_buffer.to_crs(epsg=4326)
-    catalog_br = df[df.within(brasil_buffer.union_all())]
+    catalog_br = df[df.within(brasil_buffer.unary_union)]
 
     return catalog_br
 
@@ -169,7 +169,11 @@ def plot_distrib_hora(
     ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, _: '{:.0%}'.format(y)))
     ax.set_xticks(range(0, 24))
     ax.set_xticklabels(range(0, 24), fontsize=8)
-    ax.set_yticklabels(['{:,.0%}'.format(x) for x in ax.get_yticks()], fontsize=8)
+    ax.set_yticklabels(
+        ['{:,.0%}'.format(x) for x in ax.get_yticks()],
+        fontsize=8
+    )
+    # ax.set_yticklabels(['{:,.0%}'.format(x) for x in ax.get_yticks()], fontsize=8)
     ax.grid(axis='y', linestyle='--', linewidth=0.7)
     fig.suptitle('Distribuição de Eventos por Hora', fontsize=10)
     ax.set_title(f'Catálogo {title} com {catalog.shape[0]} eventos de {data_i} à {data_f}', fontsize=8)
@@ -219,7 +223,7 @@ def plot_out_of_brasil_as_red(catalog: pd.DataFrame) -> None:
     catalog.crs = 'EPSG:4326'
     brasil = gpd.read_file('arquivos/figuras/mapas/macrorregioesBrasil.json')
     brasil.to_crs(epsg=4326, inplace=True)
-    brasil = brasil.geometry.union_all()
+    brasil = brasil.geometry.unary_union
     catalog['color'] = 'blue'
     catalog.loc[~catalog.geometry.within(brasil), 'color'] = 'red'
     fig, ax = plt.subplots()
@@ -263,7 +267,7 @@ def plot_prof_as_red(catalog: pd.DataFrame, title='completo') -> None:
     catalog.crs = 'EPSG:4326'
     brasil = gpd.read_file('arquivos/figuras/mapas/macrorregioesBrasil.json')
     brasil.to_crs(epsg=4326, inplace=True)
-    brasil = brasil.geometry.union_all()
+    brasil = brasil.geometry.unary_union
     fig = pygmt.Figure()
     pygmt.makecpt(
         cmap="jet",
@@ -361,7 +365,7 @@ def plot_by_macrorregioes(
         constrained_layout=True
     )
     axes = axes.flatten()
-    all_geometries = macro_br['geometry'].union_all()
+    all_geometries = macro_br['geometry'].unary_union
     for i, regiao in enumerate(regions):
         ax = axes[i]
         ax.set_title(regiao, fontsize=10)

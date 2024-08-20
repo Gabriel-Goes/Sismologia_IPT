@@ -79,7 +79,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
     def __init__(self, parent=None):
         super(FarejadorDockWidget, self).__init__(parent)
         self.eventos = self.csv2dict(CSV_FILE)
-        # self.createLayerFromDF()
+        self.createLayerFromDF()
         self.setupUi(self)
         self.initUI()
         self.loadCSVFiles()
@@ -136,6 +136,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             event_layer_name = 'Eventos'
             existing_event_layer = QgsProject.instance().mapLayersByName(event_layer_name)
             if existing_event_layer:
+
                 QgsProject.instance().removeMapLayer(existing_event_layer[0].id())
 
             event_layer = QgsVectorLayer('Point?crs=EPSG:4326', event_layer_name, 'memory')

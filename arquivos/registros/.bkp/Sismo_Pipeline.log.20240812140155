@@ -1,0 +1,39 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: True
+  TREATCATALOG: True
+  PREDICT: True
+  POSPROCESS: True
+  MAPS: True
+  REPORT: True
+  TEST: False
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo_jul.csv...
+ t0: seg 12 ago 2024 14:00:41 -03
+Argumentos recebidos:
+ eventos.csv
+ catalogo_jul.csv
+ True
+ False
+2010-11-28 10:21:12.185973
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 456, in <module>
+    catalogo = main()
+               ^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 415, in main
+    catalogo = brasil_catalogo(catalogo)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 98, in brasil_catalogo
+    catalog_br = df[df.within(brasil_buffer.union_all())]
+                              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/core/generic.py", line 6204, in __getattr__
+    return object.__getattribute__(self, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'GeoSeries' object has no attribute 'union_all'
