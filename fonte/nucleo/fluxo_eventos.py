@@ -59,7 +59,7 @@ def iterar_eventos(
         print(f'Erro ao adquirir inventário de estações: {e}')
         sys.exit(1)
     print(' Inventario adquirido com sucesso')
-    print(f'{inventario.get_contents()['networks'][:5]} ... ')
+    print(f'{inventario.get_contents()["networks"][:5]} ... ')
     # print(inventario_bkp.get_contents()['networks'][:5])
 
     for evento in tqdm(eventos):
@@ -97,7 +97,7 @@ def iterar_eventos(
                 continue
 
             pick_count += 1
-            print(f'--> Pick {pick_count}')
+            # print(f'--> Pick {pick_count}')
             net = pick.waveform_id.network_code
             sta = pick.waveform_id.station_code
             chn_ = pick.waveform_id.channel_code
@@ -107,31 +107,26 @@ def iterar_eventos(
             if loc is None:
                 loc = ''
             seed_id = f'{net}.{sta}.{loc}.{chn}'
-            print(f' - Seed EventID: {seed_id} ')
-            print(f' - channel: {chn_}')
             try:
                 cha_meta = inventario.get_channel_metadata(seed_id)
             except Exception as e:
                 print(f' - Erro ao adquirir metadata de canais: {e}')
-                try:
-                    cha_meta = inventario_bkp.get_channel_metadata(seed_id)
-                except Exception as e:
-                    error_to_save.append({
-                        'EventID': event_id,
-                        'Event': dir_name,
-                        'Pick': pick.phase_hint,
-                        'Network': net,
-                        'Station': sta,
-                        'Channel': chn,
-                        'Location': loc,
-                        'Origin Time': origin_time,
-                        'Origem Latitude': origem_lat,
-                        'Origem Longitude': origem_lon,
-                        'Depth/km': origem_depth,
-                        'Error': f'channel metadata: {e}'
-                    })
-                    print(f' - Fatal: nenhum metadado encontrado para canal {e}')
-                    continue
+                error_to_save.append({
+                    'EventID': event_id,
+                    'Event': dir_name,
+                    'Pick': pick.phase_hint,
+                    'Network': net,
+                    'Station': sta,
+                    'Channel': chn,
+                    'Location': loc,
+                    'Origin Time': origin_time,
+                    'Origem Latitude': origem_lat,
+                    'Origem Longitude': origem_lon,
+                    'Depth/km': origem_depth,
+                    'Error': f'channel metadata: {e}'
+                })
+                print(f' - Fatal: nenhum metadado encontrado para canal {e}')
+                continue
 
             sta_lat = cha_meta['latitude']
             sta_lon = cha_meta['longitude']
@@ -155,16 +150,12 @@ def iterar_eventos(
                 print(' - sta_lat or sta_lon is None')
                 continue
 
-            print(f' - {net}.{sta} X,Y : {sta_lat}, {sta_lon}')
             dist, az, baz = gps2dist_azimuth(
                 origem_lat, origem_lon, sta_lat, sta_lon
             )
             dist_km = dist / 1000  # Converte de metros para quilômetros
-            print(f' - Distância até o epicentro: {dist_km} km')
 
             if dist_km > 400:
-                print("Estação a mais de 400 km do epicentro.")
-                print(DELIMT)
                 error_to_save.append({'EventID': event_id,
                                       'Event': dir_name,
                                       'Pick': pick.phase_hint,
@@ -193,6 +184,12 @@ def iterar_eventos(
                         net, sta, loc, 'HH*',
                         start_time, end_time
                     )
+                    print(f'--> Pick {pick_count}')
+                    print(f' - Seed EventID: {seed_id} ')
+                    print(f' - channel: {chn_}')
+                    print(f' - {net}.{sta} X,Y : {sta_lat}, {sta_lon}')
+                    print(f' - Distância até o epicentro: {dist_km} km')
+                    # print(DELIMT)
                     print(' Downloading ...')
                     print(f' Pick Time -> {pick.time}')
                     print(f' Origin Time -> {origin_time}')
@@ -452,7 +449,7 @@ if __name__ == "__main__":
     if sys.argv[2] == 'True':
         print(' --> Modo de teste ativado')
         random.seed(42)
-        EventIDs = random.sample(EventIDs, 300)
+        EventIDs = random.sample(EventIDs, 1500)
         print(f' - Número de EventIDs: {len(EventIDs)}')
 
     catalogo, missin_ids = main(EventIDs)

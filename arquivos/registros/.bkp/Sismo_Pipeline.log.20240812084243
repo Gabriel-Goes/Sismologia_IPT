@@ -1,0 +1,51 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: false
+  TREATCATALOG: true
+  PREDICT: true
+  POSPROCESS: true
+  MAPS: false
+  REPORT: false
+  TEST: false
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo_jul.csv...
+Argumentos recebidos:
+ eventos.csv
+ catalogo_jul.csv
+ True
+ False
+2010-11-28 10:21:12.185973
+
+Plotando distribuição de eventos por hora...
+ Catálogo filtrado com 3031 eventos
+ nov de 2010 à jul de 2024
+
+Plotando distribuição de eventos por hora...
+ Catálogo completo com 10529 eventos
+ nov de 2010 à jul de 2024
+Plotando mapa...
+Salvando mapa...
+Salvando mapa...
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+[{"success":true}]
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+Traceback (most recent call last):
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1807, in <module>
+    df_nc, df = main()
+                ^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1753, in main
+    df = carregar_dado()
+         ^^^^^^^^^^^^^^^
+  File "/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1595, in carregar_dado
+    df.dropna(subset=['Pick Prob_Nat'], inplace=True)
+  File "/home/ipt/.pyenv/versions/sismologia/lib/python3.11/site-packages/pandas/core/frame.py", line 6418, in dropna
+    raise KeyError(np.array(subset)[check].tolist())
+KeyError: ['Pick Prob_Nat']

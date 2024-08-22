@@ -1,0 +1,58 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: True
+  TREATCATALOG: True
+  PREDICT: False
+  POSPROCESS: False
+  MAPS: False
+  REPORT: False
+  TEST: True
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo_jul.csv...
+ t0: ter 20 ago 2024 09:22:11 -03
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:172: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_yticklabels(['{:,.0%}'.format(x) for x in ax.get_yticks()], fontsize=8)
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:172: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_yticklabels(['{:,.0%}'.format(x) for x in ax.get_yticks()], fontsize=8)
+/home/ipt/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:208: UserWarning: The figure layout has changed to tight
+  plt.tight_layout()
+Argumentos recebidos:
+ eventos.csv
+ catalogo_jul.csv
+ True
+ False
+2010-11-28 10:21:12.185973
+
+Plotando distribuição de eventos por hora...
+ Catálogo filtrado com 3031 eventos
+ Nov de 2010 à Jul de 2024
+
+Plotando distribuição de eventos por hora...
+ Catálogo completo com 10529 eventos
+ Nov de 2010 à Jul de 2024
+Plotando mapa...
+Salvando mapa...
+Salvando mapa...
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando fluxo_eventos.py...
+catalogo_jul.csv
+./fonte/nucleo/fluxo_eventos.py...
+ - Número de argumentos: 3
+ - Argumentos (Roteiro Python | Catálogo de Eventos | Modo de Teste):
+ fonte/nucleo/fluxo_eventos.py
+ catalogo_jul.csv
+ True
+True
+ --> Modo de teste ativado
+ - Número de EventIDs: 1000
+
+Erro ao conectar com o servidor Seisarc.sismo.iag.usp.br: No FDSN services could be discovered at 'http://10.110.1.132:18003'. This could be due to a temporary service outage or an invalid FDSN service address.

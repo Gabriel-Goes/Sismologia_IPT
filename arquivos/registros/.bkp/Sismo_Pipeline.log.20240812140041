@@ -1,0 +1,59 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: False
+  TREATCATALOG: True
+  PREDICT: True
+  POSPROCESS: True
+  MAPS: True
+  REPORT: True
+  TEST: True
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo_jul.csv...
+ t0: dom 11 ago 2024 02:14:44 -03
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:172: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_yticklabels(['{:,.0%}'.format(x) for x in ax.get_yticks()], fontsize=8)
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:172: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_yticklabels(['{:,.0%}'.format(x) for x in ax.get_yticks()], fontsize=8)
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:207: UserWarning: The figure layout has changed to tight
+  plt.tight_layout()
+Argumentos recebidos:
+ eventos.csv
+ catalogo_jul.csv
+ True
+ False
+2010-11-28 10:21:12.185973
+
+Plotando distribuição de eventos por hora...
+ Catálogo filtrado com 3031 eventos
+ Nov de 2010 à Jul de 2024
+
+Plotando distribuição de eventos por hora...
+ Catálogo completo com 10529 eventos
+ Nov de 2010 à Jul de 2024
+Plotando mapa...
+Salvando mapa...
+Salvando mapa...
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+0it [00:00, ?it/s]1it [00:00,  8.25it/s]16it [00:00, 84.53it/s]36it [00:00, 134.54it/s]60it [00:00, 172.90it/s]83it [00:00, 192.63it/s]103it [00:00, 151.68it/s]120it [00:00, 145.73it/s]140it [00:00, 159.71it/s]161it [00:01, 172.60it/s]180it [00:01, 169.54it/s]200it [00:01, 176.33it/s]208it [00:01, 158.11it/s]
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1807, in <module>
+    df_nc, df = main()
+                ^^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1777, in main
+    df.groupby('Event')['CFT'].std()
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/pandas/core/groupby/generic.py", line 1951, in __getitem__
+    return super().__getitem__(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/pandas/core/base.py", line 244, in __getitem__
+    raise KeyError(f"Column not found: {key}")
+KeyError: 'Column not found: CFT'
