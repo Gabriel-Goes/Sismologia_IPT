@@ -82,18 +82,6 @@ def iterar_eventos(
         pick_count = 0
         for pick in evento.picks:
             if pick.phase_hint not in ['P'] or pick.waveform_id.channel_code[:1] != 'H':
-                error_to_save.append({'EventID': event_id,
-                                      'Event': dir_name,
-                                      'Network': pick.waveform_id.network_code,
-                                      'Station': pick.waveform_id.station_code,
-                                      'Location': pick.waveform_id.location_code,
-                                      'Channel': pick.waveform_id.channel_code,
-                                      'Origin Time': origin_time,
-                                      'Origem Latitude': origem_lat,
-                                      'Origem Longitude': origem_lon,
-                                      'Depth/km': origem_depth,
-                                      'Pick': pick.phase_hint,
-                                      'Error': 'Pick diferente de P, Pg ou Pn ou Channel diferente de H'})
                 continue
 
             pick_count += 1
@@ -154,24 +142,7 @@ def iterar_eventos(
                 origem_lat, origem_lon, sta_lat, sta_lon
             )
             dist_km = dist / 1000  # Converte de metros para quilômetros
-
             if dist_km > 400:
-                error_to_save.append({'EventID': event_id,
-                                      'Event': dir_name,
-                                      'Pick': pick.phase_hint,
-                                      'Network': net,
-                                      'Station': sta,
-                                      'Latitude': sta_lat,
-                                      'Longitude': sta_lon,
-                                      'Channel': chn,
-                                      'Location': loc,
-                                      'Distance': dist_km,
-                                      'Depth/km': origem_depth,
-                                      'Origem Latitude': origem_lat,
-                                      'Origem Longitude': origem_lon,
-                                      'Origin Time': origin_time,
-                                      'Error': 'dist_km > 400 km'
-                                      })
                 continue
 
             if baixar:

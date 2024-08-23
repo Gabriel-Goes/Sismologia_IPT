@@ -8094,3 +8094,202 @@ deepness.common.errors.OperationFailedException: Please select and load a model 
 2024-08-20 14:29:14,781 - INFO - Evento 20190726T004436 selecionado
 2024-08-20 14:29:14,781 - INFO - Evento 20190726T004436 selecionado
 >>>>>>> 5a881c01c91f95dbe2a9a3627842e8d6ea7cbdf2
+2024-08-22 23:29:50,300 - INFO - /home/ggrl/projetos/ClassificadorSismologico/arquivos/resultados/analisado/nc_analisado_final.csv carregado com sucesso.
+2024-08-22 23:29:51,640 - INFO - Camada de eventos "Eventos" criada com sucesso.
+2024-08-22 23:29:52,060 - INFO - Camada de estações "Estacoes" criada com sucesso.
+2024-08-22 23:29:52,278 - INFO - Ordenando eventos por Hora.
+2024-08-22 23:29:52,751 - INFO - Interface iniciada...
+2024-08-22 23:29:52,779 - INFO - /home/ggrl/projetos/ClassificadorSismologico/arquivos/resultados/analisado/nc_analisado_final.csv carregado com sucesso.
+2024-08-22 23:29:54,168 - INFO - Camada de eventos "Eventos" criada com sucesso.
+2024-08-22 23:29:54,621 - INFO - Camada de estações "Estacoes" criada com sucesso.
+2024-08-22 23:29:54,860 - INFO - Ordenando eventos por Hora.
+2024-08-22 23:29:55,367 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:29:55,367 - INFO - 4 picks por 2 redes adquiridos.
+2024-08-22 23:29:55,375 - INFO - Seletores atualizados: 20240728T233117.
+2024-08-22 23:29:55,375 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:29:55,378 - INFO - 4 picks por 2 redes adquiridos.
+2024-08-22 23:29:55,387 - INFO - Seletores atualizados: 20240728T233117.
+2024-08-22 23:29:55,387 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:29:55,390 - INFO - 0 picks por 0 redes adquiridos.
+2024-08-22 23:29:55,392 - INFO - Seletores atualizados: .
+2024-08-22 23:29:55,392 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:29:55,393 - INFO - 4 picks por 2 redes adquiridos.
+2024-08-22 23:29:55,400 - INFO - Seletores atualizados: 20240728T233117.
+2024-08-22 23:29:55,400 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:29:55,404 - INFO - 4 picks por 2 redes adquiridos.
+2024-08-22 23:29:55,411 - INFO - Seletores atualizados: 20240728T233117.
+2024-08-22 23:33:40,279 - INFO - Ordenando eventos por CFT_std.
+2024-08-22 23:33:40,560 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:40,563 - INFO - 0 picks por 0 redes adquiridos.
+2024-08-22 23:33:40,564 - INFO - Seletores atualizados: .
+2024-08-22 23:33:40,565 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:40,565 - INFO - 2 picks por 2 redes adquiridos.
+2024-08-22 23:33:40,572 - INFO - Seletores atualizados: 20221103T075758.
+2024-08-22 23:33:44,682 - INFO - Log de eventos habilitado.
+2024-08-22 23:33:45,339 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:45,342 - INFO - 0 picks por 0 redes adquiridos.
+2024-08-22 23:33:45,344 - INFO - Seletores atualizados: .
+2024-08-22 23:33:45,344 - INFO - Evento  selecionado
+2024-08-22 23:33:45,353 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:45,354 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:45,361 - INFO - Seletores atualizados: 20190913T224641.
+2024-08-22 23:33:45,361 - INFO - Evento 20190913T224641 selecionado
+2024-08-22 23:33:48,968 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:48,974 - INFO - 5 picks por 2 redes adquiridos.
+2024-08-22 23:33:48,984 - INFO - Seletores atualizados: 20210330T222940.
+2024-08-22 23:33:48,984 - INFO - Evento 20210330T222940 selecionado
+2024-08-22 23:33:48,987 - INFO - Evento 20210330T222940 selecionado
+2024-08-22 23:33:50,115 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:50,119 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:50,126 - INFO - Seletores atualizados: 20220623T095222.
+2024-08-22 23:33:50,126 - INFO - Evento 20220623T095222 selecionado
+2024-08-22 23:33:50,128 - INFO - Evento 20220623T095222 selecionado
+2024-08-22 23:33:50,130 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:50,133 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:50,141 - INFO - Seletores atualizados: 20210303T102458.
+2024-08-22 23:33:50,141 - INFO - Evento 20210303T102458 selecionado
+2024-08-22 23:33:50,142 - INFO - Evento 20210303T102458 selecionado
+2024-08-22 23:33:50,145 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:50,149 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:50,157 - INFO - Seletores atualizados: 20210125T060751.
+2024-08-22 23:33:50,157 - INFO - Evento 20210125T060751 selecionado
+2024-08-22 23:33:50,158 - INFO - Evento 20210125T060751 selecionado
+2024-08-22 23:33:50,710 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:50,714 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:50,721 - INFO - Seletores atualizados: 20220508T074848.
+2024-08-22 23:33:50,721 - INFO - Evento 20220508T074848 selecionado
+2024-08-22 23:33:50,723 - INFO - Evento 20220508T074848 selecionado
+2024-08-22 23:33:50,735 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:50,738 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:50,746 - INFO - Seletores atualizados: 20210901T220211.
+2024-08-22 23:33:50,746 - INFO - Evento 20210901T220211 selecionado
+2024-08-22 23:33:50,748 - INFO - Evento 20210901T220211 selecionado
+2024-08-22 23:33:51,215 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:51,218 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:51,226 - INFO - Seletores atualizados: 20220508T074848.
+2024-08-22 23:33:51,226 - INFO - Evento 20220508T074848 selecionado
+2024-08-22 23:33:51,228 - INFO - Evento 20220508T074848 selecionado
+2024-08-22 23:33:51,230 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:51,233 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:51,240 - INFO - Seletores atualizados: 20210125T060751.
+2024-08-22 23:33:51,241 - INFO - Evento 20210125T060751 selecionado
+2024-08-22 23:33:51,242 - INFO - Evento 20210125T060751 selecionado
+2024-08-22 23:33:51,246 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:51,250 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:51,258 - INFO - Seletores atualizados: 20210303T102458.
+2024-08-22 23:33:51,258 - INFO - Evento 20210303T102458 selecionado
+2024-08-22 23:33:51,259 - INFO - Evento 20210303T102458 selecionado
+2024-08-22 23:33:51,270 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:51,273 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:51,280 - INFO - Seletores atualizados: 20220623T095222.
+2024-08-22 23:33:51,280 - INFO - Evento 20220623T095222 selecionado
+2024-08-22 23:33:51,282 - INFO - Evento 20220623T095222 selecionado
+2024-08-22 23:33:51,286 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:51,290 - INFO - 5 picks por 2 redes adquiridos.
+2024-08-22 23:33:51,297 - INFO - Seletores atualizados: 20210330T222940.
+2024-08-22 23:33:51,297 - INFO - Evento 20210330T222940 selecionado
+2024-08-22 23:33:51,299 - INFO - Evento 20210330T222940 selecionado
+2024-08-22 23:33:51,303 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:51,306 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:51,313 - INFO - Seletores atualizados: 20190913T224641.
+2024-08-22 23:33:51,313 - INFO - Evento 20190913T224641 selecionado
+2024-08-22 23:33:51,315 - INFO - Evento 20190913T224641 selecionado
+2024-08-22 23:33:51,728 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:51,733 - INFO - 5 picks por 2 redes adquiridos.
+2024-08-22 23:33:51,740 - INFO - Seletores atualizados: 20210330T222940.
+2024-08-22 23:33:51,741 - INFO - Evento 20210330T222940 selecionado
+2024-08-22 23:33:51,742 - INFO - Evento 20210330T222940 selecionado
+2024-08-22 23:33:51,745 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:51,748 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:51,756 - INFO - Seletores atualizados: 20220623T095222.
+2024-08-22 23:33:51,756 - INFO - Evento 20220623T095222 selecionado
+2024-08-22 23:33:51,758 - INFO - Evento 20220623T095222 selecionado
+2024-08-22 23:33:51,761 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:51,764 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:51,772 - INFO - Seletores atualizados: 20210303T102458.
+2024-08-22 23:33:51,772 - INFO - Evento 20210303T102458 selecionado
+2024-08-22 23:33:51,773 - INFO - Evento 20210303T102458 selecionado
+2024-08-22 23:33:51,777 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:51,780 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:51,788 - INFO - Seletores atualizados: 20210125T060751.
+2024-08-22 23:33:51,788 - INFO - Evento 20210125T060751 selecionado
+2024-08-22 23:33:51,789 - INFO - Evento 20210125T060751 selecionado
+2024-08-22 23:33:51,819 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:51,823 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:51,830 - INFO - Seletores atualizados: 20220508T074848.
+2024-08-22 23:33:51,830 - INFO - Evento 20220508T074848 selecionado
+2024-08-22 23:33:51,832 - INFO - Evento 20220508T074848 selecionado
+2024-08-22 23:33:51,836 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:51,840 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:51,847 - INFO - Seletores atualizados: 20210901T220211.
+2024-08-22 23:33:51,847 - INFO - Evento 20210901T220211 selecionado
+2024-08-22 23:33:51,849 - INFO - Evento 20210901T220211 selecionado
+2024-08-22 23:33:51,852 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:51,855 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:51,862 - INFO - Seletores atualizados: 20220409T024256.
+2024-08-22 23:33:51,862 - INFO - Evento 20220409T024256 selecionado
+2024-08-22 23:33:51,864 - INFO - Evento 20220409T024256 selecionado
+2024-08-22 23:33:53,211 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-22 23:33:53,215 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-22 23:33:53,223 - INFO - Seletores atualizados: 20230123T102042.
+2024-08-22 23:33:53,223 - INFO - Evento 20230123T102042 selecionado
+2024-08-22 23:33:53,224 - INFO - Evento 20230123T102042 selecionado
+2024-08-22 23:34:00,100 - ERROR - Erro ao iniciar o Espectrograma: [Errno 2] Arquivo ou diretório inexistente: '/home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20230123T102042/BL_BB19B_20230123T102042.npy'
