@@ -7,69 +7,22 @@ Argumentos recebidos:
   Catalogo: catalogo_jul.csv
   EVENTS: False
   TREATCATALOG: True
-  PREDICT: False
+  PREDICT: True
   POSPROCESS: True
   MAPS: True
   REPORT: True
-  TEST: False
+  TEST: True
 
 
  -------------- INICIANDO O TRATAMENTO -------------------- 
  Tratando catalogo_jul.csv...
- t0: sex 23 ago 2024 17:34:25 -03
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:98: DeprecationWarning: The 'unary_union' attribute is deprecated, use the 'union_all()' method instead.
-  catalog_br = df[df.within(brasil_buffer.unary_union)]
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:172: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_yticklabels(
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:172: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_yticklabels(
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:211: UserWarning: The figure layout has changed to tight
-  plt.tight_layout()
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:270: DeprecationWarning: The 'unary_union' attribute is deprecated, use the 'union_all()' method instead.
-  brasil = brasil.geometry.unary_union
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:270: DeprecationWarning: The 'unary_union' attribute is deprecated, use the 'union_all()' method instead.
-  brasil = brasil.geometry.unary_union
-Argumentos recebidos:
- eventos.csv
- catalogo_jul.csv
- True
- False
-2010-11-28 10:21:12.185973
-
-Plotando distribuição de eventos por hora...
- Catálogo filtrado com 3031 eventos
- Nov de 2010 à Jul de 2024
-
-Plotando distribuição de eventos por hora...
- Catálogo completo com 10529 eventos
- Nov de 2010 à Jul de 2024
-Plotando mapa...
-Salvando mapa...
-Salvando mapa...
- ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
-0it [00:00, ?it/s]1it [00:00,  6.44it/s]27it [00:00, 126.22it/s]51it [00:00, 170.43it/s]78it [00:00, 204.56it/s]103it [00:00, 218.91it/s]126it [00:00, 216.31it/s]150it [00:00, 223.30it/s]175it [00:00, 231.09it/s]199it [00:00, 230.27it/s]223it [00:01, 227.33it/s]247it [00:01, 229.57it/s]273it [00:01, 236.79it/s]299it [00:01, 241.11it/s]324it [00:01, 242.86it/s]350it [00:01, 246.98it/s]375it [00:01, 244.34it/s]401it [00:01, 248.10it/s]426it [00:01, 248.02it/s]451it [00:02, 248.12it/s]477it [00:02, 249.18it/s]502it [00:02, 245.63it/s]527it [00:02, 246.50it/s]552it [00:02, 246.80it/s]577it [00:02, 247.13it/s]602it [00:02, 246.67it/s]627it [00:02, 246.35it/s]653it [00:02, 248.79it/s]679it [00:02, 250.20it/s]705it [00:03, 245.83it/s]730it [00:03, 244.38it/s]755it [00:03, 244.25it/s]780it [00:03, 244.00it/s]806it [00:03, 246.43it/s]832it [00:03, 248.76it/s]857it [00:03, 248.99it/s]882it [00:03, 249.17it/s]907it [00:03, 246.86it/s]933it [00:03, 248.14it/s]958it [00:04, 247.05it/s]983it [00:04, 247.16it/s]1008it [00:04, 247.41it/s]1033it [00:04, 247.51it/s]1058it [00:04, 242.45it/s]1084it [00:04, 247.33it/s]1110it [00:04, 248.25it/s]1137it [00:04, 251.99it/s]1163it [00:04, 252.01it/s]1190it [00:04, 255.04it/s]1216it [00:05, 253.66it/s]1242it [00:05, 254.92it/s]1268it [00:05, 253.97it/s]1294it [00:05, 255.62it/s]1320it [00:05, 255.06it/s]1347it [00:05, 257.83it/s]1373it [00:05, 254.04it/s]1400it [00:05, 258.27it/s]1426it [00:05, 258.30it/s]1453it [00:06, 259.21it/s]1479it [00:06, 254.59it/s]1506it [00:06, 257.00it/s]1532it [00:06, 255.10it/s]1558it [00:06, 250.63it/s]1584it [00:06, 249.41it/s]1609it [00:06, 249.08it/s]1634it [00:06, 241.43it/s]1660it [00:06, 246.49it/s]1687it [00:06, 251.83it/s]1713it [00:07, 252.13it/s]1739it [00:07, 250.25it/s]1766it [00:07, 254.11it/s]1792it [00:07, 254.25it/s]1818it [00:07, 253.21it/s]1845it [00:07, 256.40it/s]1872it [00:07, 258.22it/s]1898it [00:07, 258.04it/s]1925it [00:07, 258.97it/s]1951it [00:07, 258.69it/s]1977it [00:08, 258.84it/s]2003it [00:08, 251.70it/s]2029it [00:08, 239.89it/s]2054it [00:08, 241.00it/s]2081it [00:08, 248.43it/s]2108it [00:08, 252.63it/s]2134it [00:08, 248.45it/s]2161it [00:08, 252.44it/s]2187it [00:08, 254.23it/s]2214it [00:09, 255.90it/s]2241it [00:09, 256.68it/s]2267it [00:09, 256.89it/s]2293it [00:09, 255.15it/s]2319it [00:09, 250.35it/s]2346it [00:09, 254.43it/s]2348it [00:09, 245.66it/s]
+ t0: sáb 24 ago 2024 16:04:18 -03
 Traceback (most recent call last):
-  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1807, in <module>
-    df_nc, df = main()
-                ^^^^^^
-  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1753, in main
-    df = carregar_dado()
-         ^^^^^^^^^^^^^^^
-  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1599, in carregar_dado
-    df = snr(df, w)
-         ^^^^^^^^^^
-  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1298, in snr
-    st = obspy.read(f"arquivos/mseed/{pick['Path']}")
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/decorator.py", line 232, in fun
-    return caller(func, *(extras + args), **kw)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/obspy/core/util/decorator.py", line 297, in _map_example_filename
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/obspy/core/stream.py", line 208, in read
-    st = _generic_reader(pathname_or_url, _read, **kwargs)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/obspy/core/util/base.py", line 656, in _generic_reader
-    raise IOError(2, "No such file or directory", pathname)
-FileNotFoundError: [Errno 2] No such file or directory: 'arquivos/mseed/20161225T135935/BR_PRPB_20161225T135935.mseed'
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 17, in <module>
+    import pandas as pd
+  File "/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/pandas/__init__.py", line 19, in <module>
+    raise ImportError(
+ImportError: Unable to import required dependencies:
+numpy: Error importing numpy: you should not try to import numpy from
+        its source directory; please exit the numpy source tree, and relaunch
+        your python interpreter from there.

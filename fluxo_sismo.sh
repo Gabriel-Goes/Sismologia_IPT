@@ -53,7 +53,7 @@ else
     while [[ $# -gt 0 ]]; do
         case $1 in
             --help|-h)
-                echo "Uso: $0 [opções] [catalogo.csv]"
+                echo "Uso: $0 [catalogo.csv] [opções]"
                 echo "Opções:"
                 echo "  --eventos, -e:    Executa a aquisição de eventos sísmicos"
                 echo "  --pre, -pe:       Executa o tratamento do catálogo"
