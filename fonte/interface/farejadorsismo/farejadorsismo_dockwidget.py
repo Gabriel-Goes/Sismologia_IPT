@@ -132,69 +132,91 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
                 if col not in self.df.columns:
                     raise ValueError(f'Coluna {col} não encontrada.')
 
-            # Camada de eventos
+            # Verificar e usar camada de eventos existente
             event_layer_name = 'Eventos'
-            existing_event_layer = QgsProject.instance().mapLayersByName(event_layer_name)
-            if existing_event_layer:
+            event_layer = QgsProject.instance().mapLayersByName(event_layer_name)
+            if event_layer:
+                self.layer = event_layer[0]  # Usar a camada existente
+                logging.info(f'Camada existente "{event_layer_name}" usada.')
+            else:
+                # Criar nova camada de eventos
+                event_layer = QgsVectorLayer('Point?crs=EPSG:4326', event_layer_name, 'memory')
+                event_provider = event_layer.dataProvider()
+                event_provider.addAttributes([
+                    QgsField('EventID', QVariant.String),
+                    QgsField('Origem Longitude', QVariant.Double),
+                    QgsField('Origem Latitude', QVariant.Double)
+                ])
+                event_layer.updateFields()
 
-                QgsProject.instance().removeMapLayer(existing_event_layer[0].id())
+                event_features = []
+                for event_id, group in self.df.groupby('Event'):
+                    event_row = group.iloc[0]
 
-            event_layer = QgsVectorLayer('Point?crs=EPSG:4326', event_layer_name, 'memory')
-            event_provider = event_layer.dataProvider()
-            event_provider.addAttributes([
-                QgsField('EventID', QVariant.String),
-                QgsField('Origem Longitude', QVariant.Double),
-                QgsField('Origem Latitude', QVariant.Double)
-            ])
-            event_layer.updateFields()
+                    # Validar os tipos dos valores
+                    try:
+                        origem_longitude = float(event_row['Origem Longitude'])
+                        origem_latitude = float(event_row['Origem Latitude'])
+                    except ValueError:
+                        logging.error(f"Valores inválidos para EventID {event_id}")
+                        continue
 
-            event_features = []
-            for event_id, group in self.df.groupby('Event'):
-                event_row = group.iloc[0]
-                feature = QgsFeature()
-                event_point = QgsPointXY(event_row['Origem Longitude'], event_row['Origem Latitude'])
-                feature.setGeometry(QgsGeometry.fromPointXY(event_point))
-                feature.setAttributes([event_id, event_row['Origem Longitude'], event_row['Origem Latitude']])
-                event_features.append(feature)
+                    feature = QgsFeature()
+                    event_point = QgsPointXY(origem_longitude, origem_latitude)
+                    feature.setGeometry(QgsGeometry.fromPointXY(event_point))
+                    feature.setAttributes([event_id, origem_longitude, origem_latitude])
+                    event_features.append(feature)
 
-            event_provider.addFeatures(event_features)
-            event_layer.updateExtents()
-            QgsProject.instance().addMapLayer(event_layer)
-            logging.info(f'Camada de eventos "{event_layer_name}" criada com sucesso.')
+                event_provider.addFeatures(event_features)
+                event_layer.updateExtents()
+                QgsProject.instance().addMapLayer(event_layer)
+                self.layer = event_layer  # Salvar a camada recém-criada
+                logging.info(f'Camada de eventos "{event_layer_name}" criada com sucesso.')
 
-            # Camada de estações
+            # Verificar e usar camada de estações existente
             station_layer_name = 'Estacoes'
-            existing_station_layer = QgsProject.instance().mapLayersByName(station_layer_name)
-            if existing_station_layer:
-                QgsProject.instance().removeMapLayer(existing_station_layer[0].id())
+            station_layer = QgsProject.instance().mapLayersByName(station_layer_name)
+            if station_layer:
+                self.station_layer = station_layer[0]  # Usar a camada existente
+                logging.info(f'Camada existente "{station_layer_name}" usada.')
+            else:
+                # Criar nova camada de estações
+                station_layer = QgsVectorLayer('Point?crs=EPSG:4326', station_layer_name, 'memory')
+                station_provider = station_layer.dataProvider()
+                station_provider.addAttributes([
+                    QgsField('Station', QVariant.String),
+                    QgsField('Network', QVariant.String),
+                    QgsField('Longitude', QVariant.Double),
+                    QgsField('Latitude', QVariant.Double),
+                    QgsField('EventID', QVariant.String)
+                ])
+                station_layer.updateFields()
 
-            station_layer = QgsVectorLayer('Point?crs=EPSG:4326', station_layer_name, 'memory')
-            station_provider = station_layer.dataProvider()
-            station_provider.addAttributes([
-                QgsField('Station', QVariant.String),
-                QgsField('Network', QVariant.String),
-                QgsField('Longitude', QVariant.Double),
-                QgsField('Latitude', QVariant.Double),
-                QgsField('EventID', QVariant.String)
-            ])
-            station_layer.updateFields()
+                station_features = []
+                for _, row in self.df.iterrows():
+                    # Validar os tipos dos valores
+                    try:
+                        longitude = float(row['Longitude'])
+                        latitude = float(row['Latitude'])
+                    except ValueError:
+                        logging.error(f"Valores inválidos para a estação {row['Station']}")
+                        continue
 
-            station_features = []
-            for _, row in self.df.iterrows():
-                feature = QgsFeature()
-                station_point = QgsPointXY(row['Longitude'], row['Latitude'])
-                feature.setGeometry(QgsGeometry.fromPointXY(station_point))
-                feature.setAttributes([row['Station'], row['Network'], row['Longitude'], row['Latitude'], row['Event']])
-                station_features.append(feature)
+                    feature = QgsFeature()
+                    station_point = QgsPointXY(longitude, latitude)
+                    feature.setGeometry(QgsGeometry.fromPointXY(station_point))
+                    feature.setAttributes([row['Station'], row['Network'], longitude, latitude, row['Event']])
+                    station_features.append(feature)
 
-            station_provider.addFeatures(station_features)
-            station_layer.updateExtents()
-            QgsProject.instance().addMapLayer(station_layer)
-            logging.info(f'Camada de estações "{station_layer_name}" criada com sucesso.')
+                station_provider.addFeatures(station_features)
+                station_layer.updateExtents()
+                QgsProject.instance().addMapLayer(station_layer)
+                self.station_layer = station_layer  # Salvar a camada recém-criada
+                logging.info(f'Camada de estações "{station_layer_name}" criada com sucesso.')
 
-            # Estilizando as camadas
-            self.setEventStyle(event_layer)
-            self.setStationStyle(station_layer)
+            # Estilizando as camadas (se necessário)
+            self.setEventStyle(self.layer)
+            self.setStationStyle(self.station_layer)
 
         except (KeyError, ValueError) as e:
             logging.error(f'Erro ao criar camadas: {e}')
