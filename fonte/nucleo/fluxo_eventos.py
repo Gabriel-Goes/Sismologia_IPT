@@ -40,11 +40,11 @@ from nucleo.utils import csv2list
 
 # ---------------------------- FUNÇÕES ----------------------------------------
 def iterar_eventos(
-        eventos: List,
-        data_client: Client,
-        data_client_bkp: Client,
-        baixar=True,
-        random=True
+    eventos: List,
+    data_client: Client,
+    data_client_bkp: Client,
+    baixar=True,
+    random=True
 ) -> None:
     print(' --> Iterando sobre eventos')
     print(f' - Número de eventos: {len(eventos)}')
@@ -53,13 +53,13 @@ def iterar_eventos(
     event_count = 0
     print(' --> Adquirindo Inventário de Estações')
     try:
-        # IAG-USP
         inventario = data_client.get_stations(level='channel')
     except Exception as e:
         print(f'Erro ao adquirir inventário de estações: {e}')
         sys.exit(1)
     print(' Inventario adquirido com sucesso')
     print(f'{inventario.get_contents()["networks"][:5]} ... ')
+    print(f' - Número de redes: {len(inventario.get_contents()["networks"])}')
     # print(inventario_bkp.get_contents()['networks'][:5])
 
     for evento in tqdm(eventos):
@@ -97,12 +97,11 @@ def iterar_eventos(
                 continue
 
             pick_count += 1
-            # print(f'--> Pick {pick_count}')
+            print(f'--> Pick {pick_count}')
             net = pick.waveform_id.network_code
             sta = pick.waveform_id.station_code
             chn_ = pick.waveform_id.channel_code
             loc = pick.waveform_id.location_code
-
             chn = chn_[:-1] + 'Z'
             if loc is None:
                 loc = ''
@@ -117,13 +116,13 @@ def iterar_eventos(
                     'Pick': pick.phase_hint,
                     'Network': net,
                     'Station': sta,
-                    'Channel': chn,
+                    'Channel': [chn, chn_],
                     'Location': loc,
                     'Origin Time': origin_time,
                     'Origem Latitude': origem_lat,
                     'Origem Longitude': origem_lon,
                     'Depth/km': origem_depth,
-                    'Error': f'channel metadata: {e}'
+                    'Error': 'channel metadata:'
                 })
                 print(f' - Fatal: nenhum metadado encontrado para canal {e}')
                 continue
@@ -179,20 +178,21 @@ def iterar_eventos(
                 random_offset = np.random.randint(5, 21)
                 start_time = pick.time - random_offset
                 end_time = start_time + 60
+
                 try:
                     st = data_client.get_waveforms(
                         net, sta, loc, 'HH*',
                         start_time, end_time
                     )
-                    print(f'--> Pick {pick_count}')
+                    # print(f'--> Pick {pick_count}')
                     print(f' - Seed EventID: {seed_id} ')
                     print(f' - channel: {chn_}')
-                    print(f' - {net}.{sta} X,Y : {sta_lat}, {sta_lon}')
+                    print(f' - {net}.{sta} Y,X : {sta_lat}, {sta_lon}')
                     print(f' - Distância até o epicentro: {dist_km} km')
                     # print(DELIMT)
                     print(' Downloading ...')
-                    print(f' Pick Time -> {pick.time}')
-                    print(f' Origin Time -> {origin_time}')
+                    print(f' Pick Time -> {pick.time.strftime("%Y-%m-%dT%H:%M:%S")}')
+                    print(f' Origin Time -> {origin_time.strftime("%Y-%m-%dT%H:%M:%S")}')
                     print(f' Channel -> {chn}')
                     print(
                         " - Waveform baixada para:\n",
@@ -203,7 +203,8 @@ def iterar_eventos(
                     try:
                         st = data_client_bkp.get_waveforms(
                             net, sta, loc, 'HH*',
-                            start_time, end_time)
+                            start_time, end_time
+                        )
                         print(' Downloading ...')
                         print(f' Pick Time -> {pick.time}')
                         print(f' Origin Time -> {origin_time}')

@@ -168,14 +168,8 @@ fi
 
 # ------------------------- ETAPA DE PREDIÇÃO  ----------------------------------
 if [ "$PREDICT" = True ]; then
-    NOME_TERM="Predict"
-    COMMAND='pushd /home/ipt/projetos/ClassificadorSismologico; \
-        python fonte/rnc/run.py'
     echo " ----------------- INICIANDO O PREDICT.PY ---------------------------- "
-    # i3-msg 'workspace 2'
-    alacritty -e bash -c "tmux new-session -d -s $NOME_TERM; \
-    tmux send-keys -t $NOME_TERM \"$COMMAND\" C-m; \
-    tmux attach -t $NOME_TERM"
+    python fonte/rnc/run.py
     echo ''
 fi
 

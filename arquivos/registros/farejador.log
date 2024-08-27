@@ -7957,3 +7957,1193 @@
 2024-08-20 14:53:47,698 - DEBUG - STREAM b'IDAT' 131 65536
 2024-08-20 14:53:47,705 - INFO - Espectrograma iniciado com /home/ipt/projetos/ClassificadorSismologico/arquivos/espectros/20200903T031250/NB_NBPV_20200903T031250.npy
 2024-08-20 14:53:47,746 - INFO - Spectrogram iniciado com /home/ipt/projetos/ClassificadorSismologico/arquivos/espectros/20200903T031250/NB_NBPV_20200903T031250.npy
+2024-08-27 10:17:38,971 - DEBUG - uiname is QmsServiceToolbox
+2024-08-27 10:17:38,972 - DEBUG - toplevel widget is QDockWidget
+2024-08-27 10:17:38,972 - DEBUG - setting property geometry
+2024-08-27 10:17:38,972 - DEBUG - setting property windowTitle
+2024-08-27 10:17:38,972 - DEBUG - push QDockWidget QmsServiceToolbox
+2024-08-27 10:17:38,972 - DEBUG - push QWidget dockWidgetContents
+2024-08-27 10:17:38,972 - DEBUG - setting property spacing
+2024-08-27 10:17:38,972 - DEBUG - setting property leftMargin
+2024-08-27 10:17:38,972 - DEBUG - setting property topMargin
+2024-08-27 10:17:38,972 - DEBUG - setting property rightMargin
+2024-08-27 10:17:38,973 - DEBUG - setting property bottomMargin
+2024-08-27 10:17:38,973 - DEBUG - setting property pyuicMargins
+2024-08-27 10:17:38,973 - DEBUG - setting property pyuicSpacing
+2024-08-27 10:17:38,973 - DEBUG - push QVBoxLayout verticalLayout
+2024-08-27 10:17:38,973 - DEBUG - setting property spacing
+2024-08-27 10:17:38,973 - DEBUG - setting property bottomMargin
+2024-08-27 10:17:38,973 - DEBUG - setting property pyuicMargins
+2024-08-27 10:17:38,973 - DEBUG - setting property pyuicSpacing
+2024-08-27 10:17:38,973 - DEBUG - push QVBoxLayout verticalLayout_2
+2024-08-27 10:17:38,973 - DEBUG - setting property toolTip
+2024-08-27 10:17:38,973 - DEBUG - push QgsFilterLineEdit txtSearch
+2024-08-27 10:17:38,973 - DEBUG - pop widget QgsFilterLineEdit txtSearch
+2024-08-27 10:17:38,973 - DEBUG - new topwidget self.dockWidgetContents
+2024-08-27 10:17:38,973 - DEBUG - setting property lineWidth
+2024-08-27 10:17:38,973 - DEBUG - push QFrame horizontalFrame
+2024-08-27 10:17:38,973 - DEBUG - setting property spacing
+2024-08-27 10:17:38,973 - DEBUG - setting property margin
+2024-08-27 10:17:38,973 - DEBUG - setting property pyuicMargins
+2024-08-27 10:17:38,973 - DEBUG - setting property pyuicSpacing
+2024-08-27 10:17:38,973 - DEBUG - push QHBoxLayout horizontalLayout
+2024-08-27 10:17:38,974 - DEBUG - setting property text
+2024-08-27 10:17:38,974 - DEBUG - setting property checkable
+2024-08-27 10:17:38,974 - DEBUG - setting property checked
+2024-08-27 10:17:38,974 - DEBUG - push QPushButton btnFilterByExtent
+2024-08-27 10:17:38,974 - DEBUG - pop widget QPushButton btnFilterByExtent
+2024-08-27 10:17:38,974 - DEBUG - new topwidget self.horizontalFrame
+2024-08-27 10:17:38,974 - DEBUG - push QComboBox cmbStatusFilter
+2024-08-27 10:17:38,974 - DEBUG - pop widget QComboBox cmbStatusFilter
+2024-08-27 10:17:38,974 - DEBUG - new topwidget self.horizontalFrame
+2024-08-27 10:17:38,974 - DEBUG - pop layout QHBoxLayout horizontalLayout
+2024-08-27 10:17:38,974 - DEBUG - pop widget QFrame horizontalFrame
+2024-08-27 10:17:38,974 - DEBUG - new topwidget self.dockWidgetContents
+2024-08-27 10:17:38,974 - DEBUG - setting property sizePolicy
+2024-08-27 10:17:38,974 - DEBUG - setting property alternatingRowColors
+2024-08-27 10:17:38,974 - DEBUG - setting property iconSize
+2024-08-27 10:17:38,974 - DEBUG - push QListWidget lstSearchResult
+2024-08-27 10:17:38,974 - DEBUG - pop widget QListWidget lstSearchResult
+2024-08-27 10:17:38,974 - DEBUG - new topwidget self.dockWidgetContents
+2024-08-27 10:17:38,975 - DEBUG - pop layout QVBoxLayout verticalLayout_2
+2024-08-27 10:17:38,975 - DEBUG - setting property styleSheet
+2024-08-27 10:17:38,975 - DEBUG - setting property frameShape
+2024-08-27 10:17:38,975 - DEBUG - setting property frameShadow
+2024-08-27 10:17:38,975 - DEBUG - push QFrame newsFrame
+2024-08-27 10:17:38,975 - DEBUG - setting property spacing
+2024-08-27 10:17:38,975 - DEBUG - setting property leftMargin
+2024-08-27 10:17:38,975 - DEBUG - setting property topMargin
+2024-08-27 10:17:38,975 - DEBUG - setting property rightMargin
+2024-08-27 10:17:38,975 - DEBUG - setting property bottomMargin
+2024-08-27 10:17:38,975 - DEBUG - setting property pyuicMargins
+2024-08-27 10:17:38,975 - DEBUG - setting property pyuicSpacing
+2024-08-27 10:17:38,975 - DEBUG - push QVBoxLayout verticalLayout_3
+2024-08-27 10:17:38,975 - DEBUG - setting property styleSheet
+2024-08-27 10:17:38,975 - DEBUG - setting property text
+2024-08-27 10:17:38,975 - DEBUG - setting property alignment
+2024-08-27 10:17:38,975 - DEBUG - setting property margin
+2024-08-27 10:17:38,975 - DEBUG - setting property openExternalLinks
+2024-08-27 10:17:38,975 - DEBUG - push QLabel newsLabel
+2024-08-27 10:17:38,975 - DEBUG - pop widget QLabel newsLabel
+2024-08-27 10:17:38,975 - DEBUG - new topwidget self.newsFrame
+2024-08-27 10:17:38,975 - DEBUG - pop layout QVBoxLayout verticalLayout_3
+2024-08-27 10:17:38,976 - DEBUG - pop widget QFrame newsFrame
+2024-08-27 10:17:38,976 - DEBUG - new topwidget self.dockWidgetContents
+2024-08-27 10:17:38,976 - DEBUG - pop layout QVBoxLayout verticalLayout
+2024-08-27 10:17:38,976 - DEBUG - pop widget QWidget dockWidgetContents
+2024-08-27 10:17:38,976 - DEBUG - new topwidget QmsServiceToolbox
+2024-08-27 10:17:38,976 - DEBUG - pop widget QDockWidget QmsServiceToolbox
+2024-08-27 10:17:38,976 - DEBUG - new topwidget None
+2024-08-27 10:17:38,980 - DEBUG - uiname is MapServicesDialogBase
+2024-08-27 10:17:38,980 - DEBUG - toplevel widget is QDialog
+2024-08-27 10:17:38,980 - DEBUG - setting property geometry
+2024-08-27 10:17:38,980 - DEBUG - setting property windowTitle
+2024-08-27 10:17:38,980 - DEBUG - push QDialog MapServicesDialogBase
+2024-08-27 10:17:38,981 - DEBUG - push QVBoxLayout verticalLayout
+2024-08-27 10:17:38,981 - DEBUG - setting property currentIndex
+2024-08-27 10:17:38,981 - DEBUG - push QTabWidget tabUserServices
+2024-08-27 10:17:38,981 - DEBUG - push QWidget tabCommon
+2024-08-27 10:17:38,981 - DEBUG - setting property fieldGrowthPolicy
+2024-08-27 10:17:38,981 - DEBUG - push QFormLayout formLayout_2
+2024-08-27 10:17:38,981 - DEBUG - setting property text
+2024-08-27 10:17:38,981 - DEBUG - push QLabel label_3
+2024-08-27 10:17:38,981 - DEBUG - pop widget QLabel label_3
+2024-08-27 10:17:38,981 - DEBUG - new topwidget self.tabCommon
+2024-08-27 10:17:38,981 - DEBUG - setting property text
+2024-08-27 10:17:38,981 - DEBUG - push QCheckBox chkEnableOTF3857
+2024-08-27 10:17:38,981 - DEBUG - pop widget QCheckBox chkEnableOTF3857
+2024-08-27 10:17:38,981 - DEBUG - new topwidget self.tabCommon
+2024-08-27 10:17:38,981 - DEBUG - setting property text
+2024-08-27 10:17:38,982 - DEBUG - push QLabel label_4
+2024-08-27 10:17:38,982 - DEBUG - pop widget QLabel label_4
+2024-08-27 10:17:38,982 - DEBUG - new topwidget self.tabCommon
+2024-08-27 10:17:38,982 - DEBUG - setting property text
+2024-08-27 10:17:38,982 - DEBUG - push QCheckBox chkShowMessagesInBar
+2024-08-27 10:17:38,982 - DEBUG - pop widget QCheckBox chkShowMessagesInBar
+2024-08-27 10:17:38,982 - DEBUG - new topwidget self.tabCommon
+2024-08-27 10:17:38,982 - DEBUG - pop layout QFormLayout formLayout_2
+2024-08-27 10:17:38,982 - DEBUG - pop widget QWidget tabCommon
+2024-08-27 10:17:38,982 - DEBUG - new topwidget self.tabUserServices
+2024-08-27 10:17:38,982 - DEBUG - push QWidget tabTiledLayers
+2024-08-27 10:17:38,982 - DEBUG - push QVBoxLayout verticalLayout_3
+2024-08-27 10:17:38,982 - DEBUG - setting property sizePolicy
+2024-08-27 10:17:38,982 - DEBUG - push QWidget formLayout
+2024-08-27 10:17:38,982 - DEBUG - setting property fieldGrowthPolicy
+2024-08-27 10:17:38,982 - DEBUG - push QFormLayout formLayout_3
+2024-08-27 10:17:38,983 - DEBUG - setting property text
+2024-08-27 10:17:38,983 - DEBUG - push QLabel label_5
+2024-08-27 10:17:38,983 - DEBUG - pop widget QLabel label_5
+2024-08-27 10:17:38,983 - DEBUG - new topwidget self.formLayout
+2024-08-27 10:17:38,983 - DEBUG - setting property minimum
+2024-08-27 10:17:38,983 - DEBUG - push QSpinBox spnConnCount
+2024-08-27 10:17:38,983 - DEBUG - pop widget QSpinBox spnConnCount
+2024-08-27 10:17:38,983 - DEBUG - new topwidget self.formLayout
+2024-08-27 10:17:38,983 - DEBUG - setting property text
+2024-08-27 10:17:38,983 - DEBUG - push QLabel label_6
+2024-08-27 10:17:38,983 - DEBUG - pop widget QLabel label_6
+2024-08-27 10:17:38,983 - DEBUG - new topwidget self.formLayout
+2024-08-27 10:17:38,983 - DEBUG - setting property maximum
+2024-08-27 10:17:38,983 - DEBUG - push QSpinBox spnCacheExp
+2024-08-27 10:17:38,983 - DEBUG - pop widget QSpinBox spnCacheExp
+2024-08-27 10:17:38,983 - DEBUG - new topwidget self.formLayout
+2024-08-27 10:17:38,983 - DEBUG - setting property text
+2024-08-27 10:17:38,983 - DEBUG - push QLabel label_8
+2024-08-27 10:17:38,983 - DEBUG - pop widget QLabel label_8
+2024-08-27 10:17:38,983 - DEBUG - new topwidget self.formLayout
+2024-08-27 10:17:38,984 - DEBUG - setting property minimum
+2024-08-27 10:17:38,984 - DEBUG - setting property maximum
+2024-08-27 10:17:38,984 - DEBUG - push QSpinBox spnNetworkTimeout
+2024-08-27 10:17:38,984 - DEBUG - pop widget QSpinBox spnNetworkTimeout
+2024-08-27 10:17:38,984 - DEBUG - new topwidget self.formLayout
+2024-08-27 10:17:38,984 - DEBUG - setting property text
+2024-08-27 10:17:38,984 - DEBUG - push QLabel useNativeRenderer2188AndHigherLabel
+2024-08-27 10:17:38,984 - DEBUG - pop widget QLabel useNativeRenderer2188AndHigherLabel
+2024-08-27 10:17:38,984 - DEBUG - new topwidget self.formLayout
+2024-08-27 10:17:38,984 - DEBUG - push QCheckBox chkUseNativeRenderer
+2024-08-27 10:17:38,984 - DEBUG - pop widget QCheckBox chkUseNativeRenderer
+2024-08-27 10:17:38,984 - DEBUG - new topwidget self.formLayout
+2024-08-27 10:17:38,984 - DEBUG - pop layout QFormLayout formLayout_3
+2024-08-27 10:17:38,984 - DEBUG - pop widget QWidget formLayout
+2024-08-27 10:17:38,984 - DEBUG - new topwidget self.tabTiledLayers
+2024-08-27 10:17:38,984 - DEBUG - setting property font
+2024-08-27 10:17:38,985 - DEBUG - setting property text
+2024-08-27 10:17:38,985 - DEBUG - push QLabel label_10
+2024-08-27 10:17:38,985 - DEBUG - pop widget QLabel label_10
+2024-08-27 10:17:38,985 - DEBUG - new topwidget self.tabTiledLayers
+2024-08-27 10:17:38,985 - DEBUG - setting property font
+2024-08-27 10:17:38,985 - DEBUG - setting property text
+2024-08-27 10:17:38,985 - DEBUG - setting property scaledContents
+2024-08-27 10:17:38,985 - DEBUG - push QLabel label_9
+2024-08-27 10:17:38,985 - DEBUG - pop widget QLabel label_9
+2024-08-27 10:17:38,985 - DEBUG - new topwidget self.tabTiledLayers
+2024-08-27 10:17:38,985 - DEBUG - pop layout QVBoxLayout verticalLayout_3
+2024-08-27 10:17:38,985 - DEBUG - pop widget QWidget tabTiledLayers
+2024-08-27 10:17:38,985 - DEBUG - new topwidget self.tabUserServices
+2024-08-27 10:17:38,985 - DEBUG - push QWidget tab
+2024-08-27 10:17:38,985 - DEBUG - push QVBoxLayout verticalLayout_4
+2024-08-27 10:17:38,985 - DEBUG - resolved baseclass of UserGroupsBox: QtWidgets.QGroupBox
+2024-08-27 10:17:38,986 - DEBUG - setting property title
+2024-08-27 10:17:38,986 - DEBUG - push UserGroupsBox groupBox
+2024-08-27 10:17:38,986 - DEBUG - pop widget UserGroupsBox groupBox
+2024-08-27 10:17:38,986 - DEBUG - new topwidget self.tab
+2024-08-27 10:17:38,986 - DEBUG - resolved baseclass of UserServicesBox: QtWidgets.QGroupBox
+2024-08-27 10:17:38,986 - DEBUG - setting property title
+2024-08-27 10:17:38,986 - DEBUG - push UserServicesBox groupBox_2
+2024-08-27 10:17:38,986 - DEBUG - pop widget UserServicesBox groupBox_2
+2024-08-27 10:17:38,986 - DEBUG - new topwidget self.tab
+2024-08-27 10:17:38,986 - DEBUG - pop layout QVBoxLayout verticalLayout_4
+2024-08-27 10:17:38,986 - DEBUG - pop widget QWidget tab
+2024-08-27 10:17:38,986 - DEBUG - new topwidget self.tabUserServices
+2024-08-27 10:17:38,986 - DEBUG - push QWidget tabServicesVisibility
+2024-08-27 10:17:38,986 - DEBUG - setting property spacing
+2024-08-27 10:17:38,986 - DEBUG - setting property margin
+2024-08-27 10:17:38,986 - DEBUG - setting property pyuicMargins
+2024-08-27 10:17:38,986 - DEBUG - setting property pyuicSpacing
+2024-08-27 10:17:38,986 - DEBUG - push QVBoxLayout vLayoutTabServicesVisibility
+2024-08-27 10:17:38,986 - DEBUG - setting property alternatingRowColors
+2024-08-27 10:17:38,986 - DEBUG - setting property selectionMode
+2024-08-27 10:17:38,986 - DEBUG - setting property sortingEnabled
+2024-08-27 10:17:38,987 - DEBUG - push QTreeView treeViewForDS
+2024-08-27 10:17:38,987 - DEBUG - pop widget QTreeView treeViewForDS
+2024-08-27 10:17:38,987 - DEBUG - new topwidget self.tabServicesVisibility
+2024-08-27 10:17:38,987 - DEBUG - setting property layoutDirection
+2024-08-27 10:17:38,987 - DEBUG - setting property iconSize
+2024-08-27 10:17:38,987 - DEBUG - setting property toolButtonStyle
+2024-08-27 10:17:38,987 - DEBUG - push QToolBar toolBarForDSTreeView
+2024-08-27 10:17:38,987 - DEBUG - pop widget QToolBar toolBarForDSTreeView
+2024-08-27 10:17:38,987 - DEBUG - new topwidget self.tabServicesVisibility
+2024-08-27 10:17:38,987 - DEBUG - pop layout QVBoxLayout vLayoutTabServicesVisibility
+2024-08-27 10:17:38,987 - DEBUG - pop widget QWidget tabServicesVisibility
+2024-08-27 10:17:38,987 - DEBUG - new topwidget self.tabUserServices
+2024-08-27 10:17:38,987 - DEBUG - setting property enabled
+2024-08-27 10:17:38,987 - DEBUG - push QWidget tabExtraServices
+2024-08-27 10:17:38,987 - DEBUG - push QVBoxLayout verticalLayout_2
+2024-08-27 10:17:38,987 - DEBUG - setting property palette
+2024-08-27 10:17:38,988 - DEBUG - setting property font
+2024-08-27 10:17:38,988 - DEBUG - setting property text
+2024-08-27 10:17:38,988 - DEBUG - setting property alignment
+2024-08-27 10:17:38,988 - DEBUG - push QLabel label
+2024-08-27 10:17:38,988 - DEBUG - pop widget QLabel label
+2024-08-27 10:17:38,988 - DEBUG - new topwidget self.tabExtraServices
+2024-08-27 10:17:38,988 - DEBUG - setting property text
+2024-08-27 10:17:38,988 - DEBUG - setting property textFormat
+2024-08-27 10:17:38,988 - DEBUG - setting property wordWrap
+2024-08-27 10:17:38,988 - DEBUG - setting property openExternalLinks
+2024-08-27 10:17:38,988 - DEBUG - push QLabel label_2
+2024-08-27 10:17:38,988 - DEBUG - pop widget QLabel label_2
+2024-08-27 10:17:38,988 - DEBUG - new topwidget self.tabExtraServices
+2024-08-27 10:17:38,988 - DEBUG - setting property text
+2024-08-27 10:17:38,989 - DEBUG - push QPushButton btnGetContribPack
+2024-08-27 10:17:38,989 - DEBUG - pop widget QPushButton btnGetContribPack
+2024-08-27 10:17:38,989 - DEBUG - new topwidget self.tabExtraServices
+2024-08-27 10:17:38,989 - DEBUG - pop layout QVBoxLayout verticalLayout_2
+2024-08-27 10:17:38,989 - DEBUG - pop widget QWidget tabExtraServices
+2024-08-27 10:17:38,989 - DEBUG - new topwidget self.tabUserServices
+2024-08-27 10:17:38,989 - DEBUG - pop widget QTabWidget tabUserServices
+2024-08-27 10:17:38,989 - DEBUG - new topwidget MapServicesDialogBase
+2024-08-27 10:17:38,989 - DEBUG - setting property orientation
+2024-08-27 10:17:38,989 - DEBUG - setting property standardButtons
+2024-08-27 10:17:38,989 - DEBUG - push QDialogButtonBox button_box
+2024-08-27 10:17:38,989 - DEBUG - pop widget QDialogButtonBox button_box
+2024-08-27 10:17:38,989 - DEBUG - new topwidget MapServicesDialogBase
+2024-08-27 10:17:38,989 - DEBUG - pop layout QVBoxLayout verticalLayout
+2024-08-27 10:17:38,989 - DEBUG - pop widget QDialog MapServicesDialogBase
+2024-08-27 10:17:38,989 - DEBUG - new topwidget None
+2024-08-27 10:17:38,993 - DEBUG - uiname is Dialog
+2024-08-27 10:17:38,993 - DEBUG - toplevel widget is QDialog
+2024-08-27 10:17:38,993 - DEBUG - setting property geometry
+2024-08-27 10:17:38,993 - DEBUG - setting property windowTitle
+2024-08-27 10:17:38,993 - DEBUG - push QDialog Dialog
+2024-08-27 10:17:38,993 - DEBUG - push QVBoxLayout verticalLayout
+2024-08-27 10:17:38,993 - DEBUG - setting property currentIndex
+2024-08-27 10:17:38,993 - DEBUG - push QTabWidget tabWidget
+2024-08-27 10:17:38,993 - DEBUG - push QWidget tabGeneral
+2024-08-27 10:17:38,993 - DEBUG - setting property fieldGrowthPolicy
+2024-08-27 10:17:38,994 - DEBUG - push QFormLayout formLayout
+2024-08-27 10:17:38,994 - DEBUG - setting property text
+2024-08-27 10:17:38,994 - DEBUG - push QLabel idLabel
+2024-08-27 10:17:38,994 - DEBUG - pop widget QLabel idLabel
+2024-08-27 10:17:38,994 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:38,994 - DEBUG - push QLineEdit txtId
+2024-08-27 10:17:38,994 - DEBUG - pop widget QLineEdit txtId
+2024-08-27 10:17:38,994 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:38,994 - DEBUG - setting property text
+2024-08-27 10:17:38,994 - DEBUG - push QLabel aliasLabel
+2024-08-27 10:17:38,994 - DEBUG - pop widget QLabel aliasLabel
+2024-08-27 10:17:38,994 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:38,994 - DEBUG - push QLineEdit txtAlias
+2024-08-27 10:17:38,994 - DEBUG - pop widget QLineEdit txtAlias
+2024-08-27 10:17:38,994 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:38,994 - DEBUG - setting property text
+2024-08-27 10:17:38,994 - DEBUG - push QLabel iconLabel
+2024-08-27 10:17:38,994 - DEBUG - pop widget QLabel iconLabel
+2024-08-27 10:17:38,994 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:38,995 - DEBUG - setting property spacing
+2024-08-27 10:17:38,995 - DEBUG - setting property sizeConstraint
+2024-08-27 10:17:38,995 - DEBUG - setting property rightMargin
+2024-08-27 10:17:38,995 - DEBUG - setting property pyuicMargins
+2024-08-27 10:17:38,995 - DEBUG - setting property pyuicSpacing
+2024-08-27 10:17:38,995 - DEBUG - push QHBoxLayout horizontalLayout
+2024-08-27 10:17:38,995 - DEBUG - setting property maximumSize
+2024-08-27 10:17:38,995 - DEBUG - setting property text
+2024-08-27 10:17:38,995 - DEBUG - setting property scaledContents
+2024-08-27 10:17:38,995 - DEBUG - push QLabel iconPreview
+2024-08-27 10:17:38,995 - DEBUG - pop widget QLabel iconPreview
+2024-08-27 10:17:38,995 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:38,995 - DEBUG - setting property sizePolicy
+2024-08-27 10:17:38,995 - DEBUG - setting property text
+2024-08-27 10:17:38,995 - DEBUG - push QPushButton iconChooseButton
+2024-08-27 10:17:38,995 - DEBUG - pop widget QPushButton iconChooseButton
+2024-08-27 10:17:38,996 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:38,996 - DEBUG - pop layout QHBoxLayout horizontalLayout
+2024-08-27 10:17:38,996 - DEBUG - pop layout QFormLayout formLayout
+2024-08-27 10:17:38,996 - DEBUG - pop widget QWidget tabGeneral
+2024-08-27 10:17:38,996 - DEBUG - new topwidget self.tabWidget
+2024-08-27 10:17:38,996 - DEBUG - pop widget QTabWidget tabWidget
+2024-08-27 10:17:38,996 - DEBUG - new topwidget Dialog
+2024-08-27 10:17:38,996 - DEBUG - setting property orientation
+2024-08-27 10:17:38,996 - DEBUG - setting property standardButtons
+2024-08-27 10:17:38,996 - DEBUG - push QDialogButtonBox buttonBox
+2024-08-27 10:17:38,996 - DEBUG - pop widget QDialogButtonBox buttonBox
+2024-08-27 10:17:38,996 - DEBUG - new topwidget Dialog
+2024-08-27 10:17:38,996 - DEBUG - pop layout QVBoxLayout verticalLayout
+2024-08-27 10:17:38,996 - DEBUG - pop widget QDialog Dialog
+2024-08-27 10:17:38,996 - DEBUG - new topwidget None
+2024-08-27 10:17:38,998 - DEBUG - uiname is UserGroupsBox
+2024-08-27 10:17:38,998 - DEBUG - toplevel widget is QGroupBox
+2024-08-27 10:17:38,998 - DEBUG - setting property geometry
+2024-08-27 10:17:38,998 - DEBUG - setting property windowTitle
+2024-08-27 10:17:38,998 - DEBUG - setting property title
+2024-08-27 10:17:38,998 - DEBUG - push QGroupBox UserGroupsBox
+2024-08-27 10:17:38,998 - DEBUG - push QHBoxLayout horizontalLayout
+2024-08-27 10:17:38,998 - DEBUG - push QListWidget lstGroups
+2024-08-27 10:17:38,998 - DEBUG - pop widget QListWidget lstGroups
+2024-08-27 10:17:38,998 - DEBUG - new topwidget UserGroupsBox
+2024-08-27 10:17:38,998 - DEBUG - push QVBoxLayout verticalLayout
+2024-08-27 10:17:38,998 - DEBUG - setting property toolTip
+2024-08-27 10:17:38,998 - DEBUG - setting property text
+2024-08-27 10:17:38,998 - DEBUG - push QToolButton btnCopy
+2024-08-27 10:17:38,998 - DEBUG - pop widget QToolButton btnCopy
+2024-08-27 10:17:38,998 - DEBUG - new topwidget UserGroupsBox
+2024-08-27 10:17:38,999 - DEBUG - setting property toolTip
+2024-08-27 10:17:38,999 - DEBUG - setting property text
+2024-08-27 10:17:38,999 - DEBUG - setting property iconSize
+2024-08-27 10:17:38,999 - DEBUG - setting property popupMode
+2024-08-27 10:17:38,999 - DEBUG - setting property toolButtonStyle
+2024-08-27 10:17:38,999 - DEBUG - push QToolButton btnAdd
+2024-08-27 10:17:38,999 - DEBUG - pop widget QToolButton btnAdd
+2024-08-27 10:17:38,999 - DEBUG - new topwidget UserGroupsBox
+2024-08-27 10:17:38,999 - DEBUG - setting property enabled
+2024-08-27 10:17:38,999 - DEBUG - setting property toolTip
+2024-08-27 10:17:38,999 - DEBUG - setting property text
+2024-08-27 10:17:38,999 - DEBUG - push QToolButton btnEdit
+2024-08-27 10:17:38,999 - DEBUG - pop widget QToolButton btnEdit
+2024-08-27 10:17:38,999 - DEBUG - new topwidget UserGroupsBox
+2024-08-27 10:17:38,999 - DEBUG - setting property enabled
+2024-08-27 10:17:38,999 - DEBUG - setting property toolTip
+2024-08-27 10:17:38,999 - DEBUG - setting property text
+2024-08-27 10:17:38,999 - DEBUG - push QToolButton btnDelete
+2024-08-27 10:17:38,999 - DEBUG - pop widget QToolButton btnDelete
+2024-08-27 10:17:38,999 - DEBUG - new topwidget UserGroupsBox
+2024-08-27 10:17:38,999 - DEBUG - pop layout QVBoxLayout verticalLayout
+2024-08-27 10:17:39,000 - DEBUG - pop layout QHBoxLayout horizontalLayout
+2024-08-27 10:17:39,000 - DEBUG - pop widget QGroupBox UserGroupsBox
+2024-08-27 10:17:39,000 - DEBUG - new topwidget None
+2024-08-27 10:17:39,001 - DEBUG - uiname is Form
+2024-08-27 10:17:39,002 - DEBUG - toplevel widget is QWidget
+2024-08-27 10:17:39,002 - DEBUG - setting property geometry
+2024-08-27 10:17:39,002 - DEBUG - setting property windowTitle
+2024-08-27 10:17:39,002 - DEBUG - push QWidget Form
+2024-08-27 10:17:39,002 - DEBUG - setting property fieldGrowthPolicy
+2024-08-27 10:17:39,002 - DEBUG - push QFormLayout formLayout
+2024-08-27 10:17:39,002 - DEBUG - setting property text
+2024-08-27 10:17:39,002 - DEBUG - push QLabel uRLLabel
+2024-08-27 10:17:39,002 - DEBUG - pop widget QLabel uRLLabel
+2024-08-27 10:17:39,002 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,002 - DEBUG - resolved baseclass of FileSelectionWidget: QtWidgets.QLineEdit
+2024-08-27 10:17:39,002 - DEBUG - push FileSelectionWidget txtGdalFile
+2024-08-27 10:17:39,002 - DEBUG - pop widget FileSelectionWidget txtGdalFile
+2024-08-27 10:17:39,002 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,002 - DEBUG - pop layout QFormLayout formLayout
+2024-08-27 10:17:39,002 - DEBUG - pop widget QWidget Form
+2024-08-27 10:17:39,002 - DEBUG - new topwidget None
+2024-08-27 10:17:39,004 - DEBUG - uiname is Form
+2024-08-27 10:17:39,004 - DEBUG - toplevel widget is QWidget
+2024-08-27 10:17:39,004 - DEBUG - setting property geometry
+2024-08-27 10:17:39,004 - DEBUG - setting property windowTitle
+2024-08-27 10:17:39,004 - DEBUG - push QWidget Form
+2024-08-27 10:17:39,004 - DEBUG - push QFormLayout formLayout
+2024-08-27 10:17:39,004 - DEBUG - setting property text
+2024-08-27 10:17:39,005 - DEBUG - push QLabel uRLLabel
+2024-08-27 10:17:39,005 - DEBUG - pop widget QLabel uRLLabel
+2024-08-27 10:17:39,005 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,005 - DEBUG - push QLineEdit txtUrl
+2024-08-27 10:17:39,005 - DEBUG - pop widget QLineEdit txtUrl
+2024-08-27 10:17:39,005 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,005 - DEBUG - setting property text
+2024-08-27 10:17:39,005 - DEBUG - push QLabel paramsLabel
+2024-08-27 10:17:39,005 - DEBUG - pop widget QLabel paramsLabel
+2024-08-27 10:17:39,005 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,005 - DEBUG - setting property maximum
+2024-08-27 10:17:39,005 - DEBUG - push QSpinBox spbZMin
+2024-08-27 10:17:39,005 - DEBUG - pop widget QSpinBox spbZMin
+2024-08-27 10:17:39,005 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,005 - DEBUG - setting property text
+2024-08-27 10:17:39,005 - DEBUG - push QLabel layersLabel
+2024-08-27 10:17:39,005 - DEBUG - pop widget QLabel layersLabel
+2024-08-27 10:17:39,005 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,005 - DEBUG - setting property maximum
+2024-08-27 10:17:39,005 - DEBUG - setting property value
+2024-08-27 10:17:39,006 - DEBUG - push QSpinBox spbZMax
+2024-08-27 10:17:39,006 - DEBUG - pop widget QSpinBox spbZMax
+2024-08-27 10:17:39,006 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,006 - DEBUG - setting property text
+2024-08-27 10:17:39,006 - DEBUG - push QLabel turnOverLabel
+2024-08-27 10:17:39,006 - DEBUG - pop widget QLabel turnOverLabel
+2024-08-27 10:17:39,006 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,006 - DEBUG - push QCheckBox chkOriginTop
+2024-08-27 10:17:39,006 - DEBUG - pop widget QCheckBox chkOriginTop
+2024-08-27 10:17:39,006 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,006 - DEBUG - setting property text
+2024-08-27 10:17:39,006 - DEBUG - push QLabel label
+2024-08-27 10:17:39,006 - DEBUG - pop widget QLabel label
+2024-08-27 10:17:39,006 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,006 - DEBUG - setting property frameShape
+2024-08-27 10:17:39,006 - DEBUG - setting property frameShadow
+2024-08-27 10:17:39,006 - DEBUG - push QFrame frame
+2024-08-27 10:17:39,006 - DEBUG - push QGridLayout gridLayout
+2024-08-27 10:17:39,006 - DEBUG - setting property text
+2024-08-27 10:17:39,007 - DEBUG - setting property checked
+2024-08-27 10:17:39,007 - DEBUG - push QRadioButton rbCrsId
+2024-08-27 10:17:39,007 - DEBUG - pop widget QRadioButton rbCrsId
+2024-08-27 10:17:39,007 - DEBUG - new topwidget self.frame
+2024-08-27 10:17:39,007 - DEBUG - setting property text
+2024-08-27 10:17:39,007 - DEBUG - push QRadioButton rbPostgisCrsId
+2024-08-27 10:17:39,007 - DEBUG - pop widget QRadioButton rbPostgisCrsId
+2024-08-27 10:17:39,007 - DEBUG - new topwidget self.frame
+2024-08-27 10:17:39,007 - DEBUG - setting property text
+2024-08-27 10:17:39,007 - DEBUG - push QRadioButton rbCustomProj
+2024-08-27 10:17:39,007 - DEBUG - pop widget QRadioButton rbCustomProj
+2024-08-27 10:17:39,007 - DEBUG - new topwidget self.frame
+2024-08-27 10:17:39,007 - DEBUG - push QLineEdit spnCustomProj
+2024-08-27 10:17:39,007 - DEBUG - pop widget QLineEdit spnCustomProj
+2024-08-27 10:17:39,007 - DEBUG - new topwidget self.frame
+2024-08-27 10:17:39,007 - DEBUG - setting property inputMask
+2024-08-27 10:17:39,007 - DEBUG - setting property text
+2024-08-27 10:17:39,007 - DEBUG - push QLineEdit txtCrsId
+2024-08-27 10:17:39,007 - DEBUG - pop widget QLineEdit txtCrsId
+2024-08-27 10:17:39,007 - DEBUG - new topwidget self.frame
+2024-08-27 10:17:39,007 - DEBUG - setting property inputMask
+2024-08-27 10:17:39,007 - DEBUG - push QLineEdit txtPostgisCrsId
+2024-08-27 10:17:39,008 - DEBUG - pop widget QLineEdit txtPostgisCrsId
+2024-08-27 10:17:39,008 - DEBUG - new topwidget self.frame
+2024-08-27 10:17:39,008 - DEBUG - pop layout QGridLayout gridLayout
+2024-08-27 10:17:39,008 - DEBUG - pop widget QFrame frame
+2024-08-27 10:17:39,008 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,008 - DEBUG - pop layout QFormLayout formLayout
+2024-08-27 10:17:39,008 - DEBUG - pop widget QWidget Form
+2024-08-27 10:17:39,008 - DEBUG - new topwidget None
+2024-08-27 10:17:39,009 - DEBUG - uiname is Form
+2024-08-27 10:17:39,010 - DEBUG - toplevel widget is QWidget
+2024-08-27 10:17:39,010 - DEBUG - setting property geometry
+2024-08-27 10:17:39,010 - DEBUG - setting property windowTitle
+2024-08-27 10:17:39,010 - DEBUG - push QWidget Form
+2024-08-27 10:17:39,010 - DEBUG - setting property fieldGrowthPolicy
+2024-08-27 10:17:39,010 - DEBUG - push QFormLayout formLayout
+2024-08-27 10:17:39,010 - DEBUG - setting property text
+2024-08-27 10:17:39,010 - DEBUG - push QLabel uRLLabel
+2024-08-27 10:17:39,010 - DEBUG - pop widget QLabel uRLLabel
+2024-08-27 10:17:39,010 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,010 - DEBUG - push QLineEdit txtUrl
+2024-08-27 10:17:39,010 - DEBUG - pop widget QLineEdit txtUrl
+2024-08-27 10:17:39,010 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,010 - DEBUG - setting property text
+2024-08-27 10:17:39,010 - DEBUG - push QLabel paramsLabel
+2024-08-27 10:17:39,010 - DEBUG - pop widget QLabel paramsLabel
+2024-08-27 10:17:39,010 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,010 - DEBUG - push QLineEdit txtParams
+2024-08-27 10:17:39,011 - DEBUG - pop widget QLineEdit txtParams
+2024-08-27 10:17:39,011 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,011 - DEBUG - setting property text
+2024-08-27 10:17:39,011 - DEBUG - push QLabel layersLabel
+2024-08-27 10:17:39,011 - DEBUG - pop widget QLabel layersLabel
+2024-08-27 10:17:39,011 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,011 - DEBUG - push QLineEdit txtLayers
+2024-08-27 10:17:39,011 - DEBUG - pop widget QLineEdit txtLayers
+2024-08-27 10:17:39,011 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,011 - DEBUG - setting property text
+2024-08-27 10:17:39,011 - DEBUG - push QLabel turnOverLabel
+2024-08-27 10:17:39,011 - DEBUG - pop widget QLabel turnOverLabel
+2024-08-27 10:17:39,011 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,011 - DEBUG - push QCheckBox chkTurnOver
+2024-08-27 10:17:39,011 - DEBUG - pop widget QCheckBox chkTurnOver
+2024-08-27 10:17:39,011 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,011 - DEBUG - pop layout QFormLayout formLayout
+2024-08-27 10:17:39,011 - DEBUG - pop widget QWidget Form
+2024-08-27 10:17:39,011 - DEBUG - new topwidget None
+2024-08-27 10:17:39,013 - DEBUG - uiname is Form
+2024-08-27 10:17:39,013 - DEBUG - toplevel widget is QWidget
+2024-08-27 10:17:39,013 - DEBUG - setting property geometry
+2024-08-27 10:17:39,013 - DEBUG - setting property windowTitle
+2024-08-27 10:17:39,013 - DEBUG - push QWidget Form
+2024-08-27 10:17:39,013 - DEBUG - setting property fieldGrowthPolicy
+2024-08-27 10:17:39,013 - DEBUG - push QFormLayout formLayout
+2024-08-27 10:17:39,013 - DEBUG - setting property text
+2024-08-27 10:17:39,013 - DEBUG - push QLabel uRLLabel
+2024-08-27 10:17:39,013 - DEBUG - pop widget QLabel uRLLabel
+2024-08-27 10:17:39,013 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,013 - DEBUG - push QLineEdit txtUrl
+2024-08-27 10:17:39,013 - DEBUG - pop widget QLineEdit txtUrl
+2024-08-27 10:17:39,013 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,014 - DEBUG - setting property enabled
+2024-08-27 10:17:39,014 - DEBUG - setting property text
+2024-08-27 10:17:39,014 - DEBUG - push QLabel paramsLabel
+2024-08-27 10:17:39,014 - DEBUG - pop widget QLabel paramsLabel
+2024-08-27 10:17:39,014 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,014 - DEBUG - setting property enabled
+2024-08-27 10:17:39,014 - DEBUG - push QLineEdit txtParams
+2024-08-27 10:17:39,014 - DEBUG - pop widget QLineEdit txtParams
+2024-08-27 10:17:39,014 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,014 - DEBUG - setting property enabled
+2024-08-27 10:17:39,014 - DEBUG - setting property text
+2024-08-27 10:17:39,014 - DEBUG - push QLabel layersLabel
+2024-08-27 10:17:39,014 - DEBUG - pop widget QLabel layersLabel
+2024-08-27 10:17:39,014 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,014 - DEBUG - setting property enabled
+2024-08-27 10:17:39,014 - DEBUG - push QLineEdit txtLayers
+2024-08-27 10:17:39,014 - DEBUG - pop widget QLineEdit txtLayers
+2024-08-27 10:17:39,014 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,015 - DEBUG - setting property enabled
+2024-08-27 10:17:39,015 - DEBUG - setting property text
+2024-08-27 10:17:39,015 - DEBUG - push QLabel turnOverLabel
+2024-08-27 10:17:39,015 - DEBUG - pop widget QLabel turnOverLabel
+2024-08-27 10:17:39,015 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,015 - DEBUG - setting property enabled
+2024-08-27 10:17:39,015 - DEBUG - push QCheckBox chkTurnOver
+2024-08-27 10:17:39,015 - DEBUG - pop widget QCheckBox chkTurnOver
+2024-08-27 10:17:39,015 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,015 - DEBUG - pop layout QFormLayout formLayout
+2024-08-27 10:17:39,015 - DEBUG - pop widget QWidget Form
+2024-08-27 10:17:39,015 - DEBUG - new topwidget None
+2024-08-27 10:17:39,016 - DEBUG - uiname is Form
+2024-08-27 10:17:39,016 - DEBUG - toplevel widget is QWidget
+2024-08-27 10:17:39,016 - DEBUG - setting property geometry
+2024-08-27 10:17:39,017 - DEBUG - setting property windowTitle
+2024-08-27 10:17:39,017 - DEBUG - push QWidget Form
+2024-08-27 10:17:39,017 - DEBUG - setting property fieldGrowthPolicy
+2024-08-27 10:17:39,017 - DEBUG - push QFormLayout formLayout
+2024-08-27 10:17:39,017 - DEBUG - setting property text
+2024-08-27 10:17:39,017 - DEBUG - push QLabel uRLLabel
+2024-08-27 10:17:39,017 - DEBUG - pop widget QLabel uRLLabel
+2024-08-27 10:17:39,017 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,017 - DEBUG - push QLineEdit txtUrl
+2024-08-27 10:17:39,017 - DEBUG - pop widget QLineEdit txtUrl
+2024-08-27 10:17:39,017 - DEBUG - new topwidget Form
+2024-08-27 10:17:39,017 - DEBUG - pop layout QFormLayout formLayout
+2024-08-27 10:17:39,017 - DEBUG - pop widget QWidget Form
+2024-08-27 10:17:39,017 - DEBUG - new topwidget None
+2024-08-27 10:17:39,018 - DEBUG - uiname is Dialog
+2024-08-27 10:17:39,018 - DEBUG - toplevel widget is QDialog
+2024-08-27 10:17:39,018 - DEBUG - setting property geometry
+2024-08-27 10:17:39,019 - DEBUG - setting property windowTitle
+2024-08-27 10:17:39,019 - DEBUG - push QDialog Dialog
+2024-08-27 10:17:39,019 - DEBUG - push QVBoxLayout verticalLayout
+2024-08-27 10:17:39,019 - DEBUG - setting property currentIndex
+2024-08-27 10:17:39,019 - DEBUG - push QTabWidget tabWidget
+2024-08-27 10:17:39,019 - DEBUG - push QWidget tabGeneral
+2024-08-27 10:17:39,019 - DEBUG - push QFormLayout formLayout
+2024-08-27 10:17:39,019 - DEBUG - setting property text
+2024-08-27 10:17:39,019 - DEBUG - push QLabel idLabel
+2024-08-27 10:17:39,019 - DEBUG - pop widget QLabel idLabel
+2024-08-27 10:17:39,019 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:39,019 - DEBUG - push QLineEdit txtId
+2024-08-27 10:17:39,019 - DEBUG - pop widget QLineEdit txtId
+2024-08-27 10:17:39,019 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:39,019 - DEBUG - setting property text
+2024-08-27 10:17:39,019 - DEBUG - push QLabel lblAlias
+2024-08-27 10:17:39,019 - DEBUG - pop widget QLabel lblAlias
+2024-08-27 10:17:39,019 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:39,020 - DEBUG - push QLineEdit txtAlias
+2024-08-27 10:17:39,020 - DEBUG - pop widget QLineEdit txtAlias
+2024-08-27 10:17:39,020 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:39,020 - DEBUG - setting property text
+2024-08-27 10:17:39,020 - DEBUG - push QLabel iconLabel
+2024-08-27 10:17:39,020 - DEBUG - pop widget QLabel iconLabel
+2024-08-27 10:17:39,020 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:39,020 - DEBUG - setting property text
+2024-08-27 10:17:39,020 - DEBUG - push QLabel groupLabel
+2024-08-27 10:17:39,020 - DEBUG - pop widget QLabel groupLabel
+2024-08-27 10:17:39,020 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:39,020 - DEBUG - push QComboBox cmbGroup
+2024-08-27 10:17:39,020 - DEBUG - pop widget QComboBox cmbGroup
+2024-08-27 10:17:39,020 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:39,020 - DEBUG - setting property text
+2024-08-27 10:17:39,020 - DEBUG - push QLabel typeLabel
+2024-08-27 10:17:39,020 - DEBUG - pop widget QLabel typeLabel
+2024-08-27 10:17:39,021 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:39,021 - DEBUG - push QComboBox cmbType
+2024-08-27 10:17:39,021 - DEBUG - pop widget QComboBox cmbType
+2024-08-27 10:17:39,021 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:39,021 - DEBUG - setting property spacing
+2024-08-27 10:17:39,021 - DEBUG - setting property pyuicSpacing
+2024-08-27 10:17:39,021 - DEBUG - push QHBoxLayout horizontalLayout
+2024-08-27 10:17:39,021 - DEBUG - setting property maximumSize
+2024-08-27 10:17:39,021 - DEBUG - setting property text
+2024-08-27 10:17:39,021 - DEBUG - setting property scaledContents
+2024-08-27 10:17:39,021 - DEBUG - push QLabel iconPreview
+2024-08-27 10:17:39,021 - DEBUG - pop widget QLabel iconPreview
+2024-08-27 10:17:39,021 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:39,021 - DEBUG - setting property text
+2024-08-27 10:17:39,021 - DEBUG - push QPushButton iconChooseButton
+2024-08-27 10:17:39,021 - DEBUG - pop widget QPushButton iconChooseButton
+2024-08-27 10:17:39,021 - DEBUG - new topwidget self.tabGeneral
+2024-08-27 10:17:39,021 - DEBUG - pop layout QHBoxLayout horizontalLayout
+2024-08-27 10:17:39,021 - DEBUG - pop layout QFormLayout formLayout
+2024-08-27 10:17:39,022 - DEBUG - pop widget QWidget tabGeneral
+2024-08-27 10:17:39,022 - DEBUG - new topwidget self.tabWidget
+2024-08-27 10:17:39,022 - DEBUG - push QWidget tabLicense
+2024-08-27 10:17:39,022 - DEBUG - setting property fieldGrowthPolicy
+2024-08-27 10:17:39,022 - DEBUG - push QFormLayout formLayout_2
+2024-08-27 10:17:39,022 - DEBUG - setting property text
+2024-08-27 10:17:39,022 - DEBUG - push QLabel licenseLabel
+2024-08-27 10:17:39,022 - DEBUG - pop widget QLabel licenseLabel
+2024-08-27 10:17:39,022 - DEBUG - new topwidget self.tabLicense
+2024-08-27 10:17:39,022 - DEBUG - push QLineEdit txtLicense
+2024-08-27 10:17:39,022 - DEBUG - pop widget QLineEdit txtLicense
+2024-08-27 10:17:39,022 - DEBUG - new topwidget self.tabLicense
+2024-08-27 10:17:39,022 - DEBUG - setting property text
+2024-08-27 10:17:39,022 - DEBUG - push QLabel licenseLinkLabel
+2024-08-27 10:17:39,022 - DEBUG - pop widget QLabel licenseLinkLabel
+2024-08-27 10:17:39,022 - DEBUG - new topwidget self.tabLicense
+2024-08-27 10:17:39,022 - DEBUG - push QLineEdit txtLicenseLink
+2024-08-27 10:17:39,022 - DEBUG - pop widget QLineEdit txtLicenseLink
+2024-08-27 10:17:39,022 - DEBUG - new topwidget self.tabLicense
+2024-08-27 10:17:39,023 - DEBUG - setting property text
+2024-08-27 10:17:39,023 - DEBUG - push QLabel copyrightLabel
+2024-08-27 10:17:39,023 - DEBUG - pop widget QLabel copyrightLabel
+2024-08-27 10:17:39,023 - DEBUG - new topwidget self.tabLicense
+2024-08-27 10:17:39,023 - DEBUG - push QLineEdit txtCopyrightText
+2024-08-27 10:17:39,023 - DEBUG - pop widget QLineEdit txtCopyrightText
+2024-08-27 10:17:39,023 - DEBUG - new topwidget self.tabLicense
+2024-08-27 10:17:39,023 - DEBUG - setting property text
+2024-08-27 10:17:39,023 - DEBUG - push QLabel copyrightLinkLabel
+2024-08-27 10:17:39,023 - DEBUG - pop widget QLabel copyrightLinkLabel
+2024-08-27 10:17:39,023 - DEBUG - new topwidget self.tabLicense
+2024-08-27 10:17:39,023 - DEBUG - push QLineEdit txtCopyrightLink
+2024-08-27 10:17:39,023 - DEBUG - pop widget QLineEdit txtCopyrightLink
+2024-08-27 10:17:39,023 - DEBUG - new topwidget self.tabLicense
+2024-08-27 10:17:39,023 - DEBUG - setting property text
+2024-08-27 10:17:39,023 - DEBUG - push QLabel termsOfUseLabel
+2024-08-27 10:17:39,023 - DEBUG - pop widget QLabel termsOfUseLabel
+2024-08-27 10:17:39,023 - DEBUG - new topwidget self.tabLicense
+2024-08-27 10:17:39,023 - DEBUG - push QLineEdit txtTermsOfUse
+2024-08-27 10:17:39,024 - DEBUG - pop widget QLineEdit txtTermsOfUse
+2024-08-27 10:17:39,024 - DEBUG - new topwidget self.tabLicense
+2024-08-27 10:17:39,024 - DEBUG - pop layout QFormLayout formLayout_2
+2024-08-27 10:17:39,024 - DEBUG - pop widget QWidget tabLicense
+2024-08-27 10:17:39,024 - DEBUG - new topwidget self.tabWidget
+2024-08-27 10:17:39,024 - DEBUG - pop widget QTabWidget tabWidget
+2024-08-27 10:17:39,024 - DEBUG - new topwidget Dialog
+2024-08-27 10:17:39,024 - DEBUG - setting property orientation
+2024-08-27 10:17:39,024 - DEBUG - setting property standardButtons
+2024-08-27 10:17:39,024 - DEBUG - push QDialogButtonBox buttonBox
+2024-08-27 10:17:39,024 - DEBUG - pop widget QDialogButtonBox buttonBox
+2024-08-27 10:17:39,024 - DEBUG - new topwidget Dialog
+2024-08-27 10:17:39,024 - DEBUG - pop layout QVBoxLayout verticalLayout
+2024-08-27 10:17:39,024 - DEBUG - pop widget QDialog Dialog
+2024-08-27 10:17:39,024 - DEBUG - new topwidget None
+2024-08-27 10:17:39,026 - DEBUG - uiname is UserServicesBox
+2024-08-27 10:17:39,026 - DEBUG - toplevel widget is QGroupBox
+2024-08-27 10:17:39,026 - DEBUG - setting property geometry
+2024-08-27 10:17:39,026 - DEBUG - setting property windowTitle
+2024-08-27 10:17:39,026 - DEBUG - setting property title
+2024-08-27 10:17:39,026 - DEBUG - push QGroupBox UserServicesBox
+2024-08-27 10:17:39,026 - DEBUG - push QHBoxLayout horizontalLayout
+2024-08-27 10:17:39,026 - DEBUG - push QListWidget lstServices
+2024-08-27 10:17:39,026 - DEBUG - pop widget QListWidget lstServices
+2024-08-27 10:17:39,026 - DEBUG - new topwidget UserServicesBox
+2024-08-27 10:17:39,027 - DEBUG - push QVBoxLayout verticalLayout
+2024-08-27 10:17:39,027 - DEBUG - setting property toolTip
+2024-08-27 10:17:39,027 - DEBUG - setting property text
+2024-08-27 10:17:39,027 - DEBUG - push QToolButton btnCopy
+2024-08-27 10:17:39,027 - DEBUG - pop widget QToolButton btnCopy
+2024-08-27 10:17:39,027 - DEBUG - new topwidget UserServicesBox
+2024-08-27 10:17:39,027 - DEBUG - setting property toolTip
+2024-08-27 10:17:39,027 - DEBUG - setting property text
+2024-08-27 10:17:39,027 - DEBUG - push QToolButton btnAdd
+2024-08-27 10:17:39,027 - DEBUG - pop widget QToolButton btnAdd
+2024-08-27 10:17:39,027 - DEBUG - new topwidget UserServicesBox
+2024-08-27 10:17:39,027 - DEBUG - setting property enabled
+2024-08-27 10:17:39,027 - DEBUG - setting property toolTip
+2024-08-27 10:17:39,027 - DEBUG - setting property text
+2024-08-27 10:17:39,027 - DEBUG - push QToolButton btnEdit
+2024-08-27 10:17:39,027 - DEBUG - pop widget QToolButton btnEdit
+2024-08-27 10:17:39,027 - DEBUG - new topwidget UserServicesBox
+2024-08-27 10:17:39,027 - DEBUG - setting property enabled
+2024-08-27 10:17:39,027 - DEBUG - setting property toolTip
+2024-08-27 10:17:39,027 - DEBUG - setting property text
+2024-08-27 10:17:39,027 - DEBUG - push QToolButton btnDelete
+2024-08-27 10:17:39,027 - DEBUG - pop widget QToolButton btnDelete
+2024-08-27 10:17:39,027 - DEBUG - new topwidget UserServicesBox
+2024-08-27 10:17:39,028 - DEBUG - pop layout QVBoxLayout verticalLayout
+2024-08-27 10:17:39,028 - DEBUG - pop layout QHBoxLayout horizontalLayout
+2024-08-27 10:17:39,028 - DEBUG - pop widget QGroupBox UserServicesBox
+2024-08-27 10:17:39,028 - DEBUG - new topwidget None
+2024-08-27 10:17:39,029 - DEBUG - uiname is Dialog
+2024-08-27 10:17:39,029 - DEBUG - toplevel widget is QDialog
+2024-08-27 10:17:39,029 - DEBUG - setting property geometry
+2024-08-27 10:17:39,029 - DEBUG - setting property windowTitle
+2024-08-27 10:17:39,029 - DEBUG - push QDialog Dialog
+2024-08-27 10:17:39,030 - DEBUG - push QGridLayout gridLayout
+2024-08-27 10:17:39,030 - DEBUG - setting property orientation
+2024-08-27 10:17:39,030 - DEBUG - setting property standardButtons
+2024-08-27 10:17:39,030 - DEBUG - push QDialogButtonBox buttonBox
+2024-08-27 10:17:39,030 - DEBUG - pop widget QDialogButtonBox buttonBox
+2024-08-27 10:17:39,030 - DEBUG - new topwidget Dialog
+2024-08-27 10:17:39,030 - DEBUG - setting property text
+2024-08-27 10:17:39,030 - DEBUG - setting property alignment
+2024-08-27 10:17:39,030 - DEBUG - push QLabel label
+2024-08-27 10:17:39,030 - DEBUG - pop widget QLabel label
+2024-08-27 10:17:39,030 - DEBUG - new topwidget Dialog
+2024-08-27 10:17:39,030 - DEBUG - setting property sizePolicy
+2024-08-27 10:17:39,030 - DEBUG - setting property text
+2024-08-27 10:17:39,030 - DEBUG - setting property alignment
+2024-08-27 10:17:39,030 - DEBUG - push QLabel lblLogo
+2024-08-27 10:17:39,031 - DEBUG - pop widget QLabel lblLogo
+2024-08-27 10:17:39,031 - DEBUG - new topwidget Dialog
+2024-08-27 10:17:39,031 - DEBUG - setting property currentIndex
+2024-08-27 10:17:39,031 - DEBUG - setting property movable
+2024-08-27 10:17:39,031 - DEBUG - push QTabWidget tabWidget
+2024-08-27 10:17:39,031 - DEBUG - push QWidget tabInfo
+2024-08-27 10:17:39,031 - DEBUG - push QVBoxLayout verticalLayout
+2024-08-27 10:17:39,031 - DEBUG - setting property readOnly
+2024-08-27 10:17:39,031 - DEBUG - setting property html
+2024-08-27 10:17:39,031 - DEBUG - setting property textInteractionFlags
+2024-08-27 10:17:39,031 - DEBUG - setting property openExternalLinks
+2024-08-27 10:17:39,031 - DEBUG - push QTextBrowser tbInfo
+2024-08-27 10:17:39,031 - DEBUG - pop widget QTextBrowser tbInfo
+2024-08-27 10:17:39,031 - DEBUG - new topwidget self.tabInfo
+2024-08-27 10:17:39,031 - DEBUG - pop layout QVBoxLayout verticalLayout
+2024-08-27 10:17:39,031 - DEBUG - pop widget QWidget tabInfo
+2024-08-27 10:17:39,031 - DEBUG - new topwidget self.tabWidget
+2024-08-27 10:17:39,031 - DEBUG - push QWidget tabLicense
+2024-08-27 10:17:39,032 - DEBUG - push QVBoxLayout verticalLayout_2
+2024-08-27 10:17:39,032 - DEBUG - setting property openExternalLinks
+2024-08-27 10:17:39,032 - DEBUG - push QTextBrowser tbLicense
+2024-08-27 10:17:39,032 - DEBUG - pop widget QTextBrowser tbLicense
+2024-08-27 10:17:39,032 - DEBUG - new topwidget self.tabLicense
+2024-08-27 10:17:39,032 - DEBUG - pop layout QVBoxLayout verticalLayout_2
+2024-08-27 10:17:39,032 - DEBUG - pop widget QWidget tabLicense
+2024-08-27 10:17:39,032 - DEBUG - new topwidget self.tabWidget
+2024-08-27 10:17:39,032 - DEBUG - push QWidget tab3rd
+2024-08-27 10:17:39,032 - DEBUG - push QVBoxLayout verticalLayout_3
+2024-08-27 10:17:39,032 - DEBUG - setting property openExternalLinks
+2024-08-27 10:17:39,032 - DEBUG - push QTextBrowser tb3rd
+2024-08-27 10:17:39,032 - DEBUG - pop widget QTextBrowser tb3rd
+2024-08-27 10:17:39,032 - DEBUG - new topwidget self.tab3rd
+2024-08-27 10:17:39,032 - DEBUG - pop layout QVBoxLayout verticalLayout_3
+2024-08-27 10:17:39,032 - DEBUG - pop widget QWidget tab3rd
+2024-08-27 10:17:39,032 - DEBUG - new topwidget self.tabWidget
+2024-08-27 10:17:39,032 - DEBUG - pop widget QTabWidget tabWidget
+2024-08-27 10:17:39,032 - DEBUG - new topwidget Dialog
+2024-08-27 10:17:39,032 - DEBUG - setting property text
+2024-08-27 10:17:39,033 - DEBUG - setting property alignment
+2024-08-27 10:17:39,033 - DEBUG - push QLabel lblVersion
+2024-08-27 10:17:39,033 - DEBUG - pop widget QLabel lblVersion
+2024-08-27 10:17:39,033 - DEBUG - new topwidget Dialog
+2024-08-27 10:17:39,033 - DEBUG - pop layout QGridLayout gridLayout
+2024-08-27 10:17:39,033 - DEBUG - pop widget QDialog Dialog
+2024-08-27 10:17:39,033 - DEBUG - new topwidget None
+2024-08-27 10:35:20,197 - INFO - /home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/analisado/nc_analisado_final.csv carregado com sucesso.
+2024-08-27 10:35:21,110 - INFO - Camada existente "Eventos" usada.
+2024-08-27 10:35:21,110 - INFO - Camada existente "Estacoes" usada.
+2024-08-27 10:35:21,325 - INFO - Ordenando eventos por Hora.
+2024-08-27 10:35:21,693 - INFO - Interface iniciada...
+2024-08-27 10:35:21,720 - INFO - /home/ipt/projetos/ClassificadorSismologico/arquivos/resultados/analisado/nc_analisado_final.csv carregado com sucesso.
+2024-08-27 10:35:22,527 - INFO - Camada existente "Eventos" usada.
+2024-08-27 10:35:22,528 - INFO - Camada existente "Estacoes" usada.
+2024-08-27 10:35:22,740 - INFO - Ordenando eventos por Hora.
+2024-08-27 10:35:23,104 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:35:23,105 - INFO - 4 picks por 2 redes adquiridos.
+2024-08-27 10:35:23,112 - INFO - Seletores atualizados: 20240728T233117.
+2024-08-27 10:35:23,112 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:35:23,115 - INFO - 4 picks por 2 redes adquiridos.
+2024-08-27 10:35:23,121 - INFO - Seletores atualizados: 20240728T233117.
+2024-08-27 10:35:23,121 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:35:23,123 - INFO - 0 picks por 0 redes adquiridos.
+2024-08-27 10:35:23,124 - INFO - Seletores atualizados: .
+2024-08-27 10:35:23,125 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:35:23,125 - INFO - 4 picks por 2 redes adquiridos.
+2024-08-27 10:35:23,131 - INFO - Seletores atualizados: 20240728T233117.
+2024-08-27 10:35:23,131 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:35:23,134 - INFO - 4 picks por 2 redes adquiridos.
+2024-08-27 10:35:23,140 - INFO - Seletores atualizados: 20240728T233117.
+2024-08-27 10:35:29,262 - INFO - Log de eventos habilitado.
+2024-08-27 10:35:30,055 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:35:30,060 - INFO - 0 picks por 0 redes adquiridos.
+2024-08-27 10:35:30,062 - INFO - Seletores atualizados: .
+2024-08-27 10:35:30,062 - INFO - Evento  selecionado
+2024-08-27 10:35:30,068 - INFO - Evento  não presente na camada.
+2024-08-27 10:35:30,068 - INFO - Adicionando  à camada...
+2024-08-27 10:35:30,071 - ERROR - single positional indexer is out-of-bounds
+2024-08-27 10:35:30,071 - INFO - Evento  adicionado à camada.
+2024-08-27 10:35:30,071 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:30,072 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:35:30,073 - INFO - 4 picks por 2 redes adquiridos.
+2024-08-27 10:35:30,086 - INFO - Seletores atualizados: 20240728T233117.
+2024-08-27 10:35:30,086 - INFO - Evento 20240728T233117 selecionado
+2024-08-27 10:35:30,087 - INFO - Evento 20240728T233117 não presente na camada.
+2024-08-27 10:35:30,087 - INFO - Adicionando 20240728T233117 à camada...
+2024-08-27 10:35:30,090 - INFO - Pick ARCA adicionado.
+2024-08-27 10:35:30,091 - INFO - Pick DIAM adicionado.
+2024-08-27 10:35:30,092 - INFO - Pick JANB adicionado.
+2024-08-27 10:35:30,093 - INFO - Pick SDBA adicionado.
+2024-08-27 10:35:30,118 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:35:30,118 - INFO - Evento 20240728T233117 adicionado à camada.
+2024-08-27 10:35:30,118 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:30,895 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:35:30,899 - INFO - 0 picks por 0 redes adquiridos.
+2024-08-27 10:35:30,900 - INFO - Seletores atualizados: .
+2024-08-27 10:35:30,900 - INFO - Evento  selecionado
+2024-08-27 10:35:30,900 - INFO - Evento  não presente na camada.
+2024-08-27 10:35:30,900 - INFO - Adicionando  à camada...
+2024-08-27 10:35:30,901 - ERROR - single positional indexer is out-of-bounds
+2024-08-27 10:35:30,901 - INFO - Evento  adicionado à camada.
+2024-08-27 10:35:30,901 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:30,901 - INFO - Evento  selecionado
+2024-08-27 10:35:30,901 - INFO - Evento  não presente na camada.
+2024-08-27 10:35:30,901 - INFO - Adicionando  à camada...
+2024-08-27 10:35:30,902 - ERROR - single positional indexer is out-of-bounds
+2024-08-27 10:35:30,902 - INFO - Evento  adicionado à camada.
+2024-08-27 10:35:30,902 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:30,903 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:35:30,903 - INFO - 12 picks por 2 redes adquiridos.
+2024-08-27 10:35:30,910 - INFO - Seletores atualizados: 20120506T000248.
+2024-08-27 10:35:30,910 - INFO - Evento 20120506T000248 selecionado
+2024-08-27 10:35:30,910 - INFO - Evento 20120506T000248 não presente na camada.
+2024-08-27 10:35:30,910 - INFO - Adicionando 20120506T000248 à camada...
+2024-08-27 10:35:30,911 - INFO - Pick CNLB adicionado.
+2024-08-27 10:35:30,911 - INFO - Pick FRTB adicionado.
+2024-08-27 10:35:30,911 - INFO - Pick IBTB adicionado.
+2024-08-27 10:35:30,912 - INFO - Pick ITAB adicionado.
+2024-08-27 10:35:30,912 - INFO - Pick JAC01 adicionado.
+2024-08-27 10:35:30,912 - INFO - Pick MAJ01 adicionado.
+2024-08-27 10:35:30,912 - INFO - Pick MARB adicionado.
+2024-08-27 10:35:30,912 - INFO - Pick PET01 adicionado.
+2024-08-27 10:35:30,912 - INFO - Pick PTGB adicionado.
+2024-08-27 10:35:30,913 - INFO - Pick ROIB adicionado.
+2024-08-27 10:35:30,913 - INFO - Pick SICB adicionado.
+2024-08-27 10:35:30,913 - INFO - Pick TIJ01 adicionado.
+2024-08-27 10:35:30,925 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:35:30,925 - INFO - Evento 20120506T000248 adicionado à camada.
+2024-08-27 10:35:30,925 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:30,925 - INFO - Evento 20120506T000248 selecionado
+2024-08-27 10:35:30,925 - INFO - Evento 20120506T000248 não presente na camada.
+2024-08-27 10:35:30,925 - INFO - Adicionando 20120506T000248 à camada...
+2024-08-27 10:35:30,926 - INFO - Pick CNLB adicionado.
+2024-08-27 10:35:30,926 - INFO - Pick FRTB adicionado.
+2024-08-27 10:35:30,927 - INFO - Pick IBTB adicionado.
+2024-08-27 10:35:30,927 - INFO - Pick ITAB adicionado.
+2024-08-27 10:35:30,927 - INFO - Pick JAC01 adicionado.
+2024-08-27 10:35:30,927 - INFO - Pick MAJ01 adicionado.
+2024-08-27 10:35:30,927 - INFO - Pick MARB adicionado.
+2024-08-27 10:35:30,928 - INFO - Pick PET01 adicionado.
+2024-08-27 10:35:30,928 - INFO - Pick PTGB adicionado.
+2024-08-27 10:35:30,928 - INFO - Pick ROIB adicionado.
+2024-08-27 10:35:30,928 - INFO - Pick SICB adicionado.
+2024-08-27 10:35:30,928 - INFO - Pick TIJ01 adicionado.
+2024-08-27 10:35:30,932 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:35:30,932 - INFO - Evento 20120506T000248 adicionado à camada.
+2024-08-27 10:35:30,932 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:32,431 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:35:32,440 - INFO - 0 picks por 0 redes adquiridos.
+2024-08-27 10:35:32,444 - INFO - Seletores atualizados: .
+2024-08-27 10:35:32,444 - INFO - Evento  selecionado
+2024-08-27 10:35:32,444 - INFO - Evento  não presente na camada.
+2024-08-27 10:35:32,444 - INFO - Adicionando  à camada...
+2024-08-27 10:35:32,446 - ERROR - single positional indexer is out-of-bounds
+2024-08-27 10:35:32,447 - INFO - Evento  adicionado à camada.
+2024-08-27 10:35:32,447 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:32,447 - INFO - Evento  selecionado
+2024-08-27 10:35:32,447 - INFO - Evento  não presente na camada.
+2024-08-27 10:35:32,447 - INFO - Adicionando  à camada...
+2024-08-27 10:35:32,449 - ERROR - single positional indexer is out-of-bounds
+2024-08-27 10:35:32,449 - INFO - Evento  adicionado à camada.
+2024-08-27 10:35:32,449 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:32,450 - INFO - Evento  selecionado
+2024-08-27 10:35:32,450 - INFO - Evento  não presente na camada.
+2024-08-27 10:35:32,450 - INFO - Adicionando  à camada...
+2024-08-27 10:35:32,452 - ERROR - single positional indexer is out-of-bounds
+2024-08-27 10:35:32,452 - INFO - Evento  adicionado à camada.
+2024-08-27 10:35:32,452 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:32,453 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:35:32,455 - INFO - 4 picks por 2 redes adquiridos.
+2024-08-27 10:35:32,474 - INFO - Seletores atualizados: 20240728T233117.
+2024-08-27 10:35:32,475 - INFO - Evento 20240728T233117 selecionado
+2024-08-27 10:35:32,475 - INFO - Evento 20240728T233117 não presente na camada.
+2024-08-27 10:35:32,475 - INFO - Adicionando 20240728T233117 à camada...
+2024-08-27 10:35:32,477 - INFO - Pick ARCA adicionado.
+2024-08-27 10:35:32,477 - INFO - Pick DIAM adicionado.
+2024-08-27 10:35:32,478 - INFO - Pick JANB adicionado.
+2024-08-27 10:35:32,478 - INFO - Pick SDBA adicionado.
+2024-08-27 10:35:32,485 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:35:32,485 - INFO - Evento 20240728T233117 adicionado à camada.
+2024-08-27 10:35:32,485 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:32,485 - INFO - Evento 20240728T233117 selecionado
+2024-08-27 10:35:32,486 - INFO - Evento 20240728T233117 não presente na camada.
+2024-08-27 10:35:32,486 - INFO - Adicionando 20240728T233117 à camada...
+2024-08-27 10:35:32,487 - INFO - Pick ARCA adicionado.
+2024-08-27 10:35:32,487 - INFO - Pick DIAM adicionado.
+2024-08-27 10:35:32,487 - INFO - Pick JANB adicionado.
+2024-08-27 10:35:32,487 - INFO - Pick SDBA adicionado.
+2024-08-27 10:35:32,490 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:35:32,490 - INFO - Evento 20240728T233117 adicionado à camada.
+2024-08-27 10:35:32,490 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:32,490 - INFO - Evento 20240728T233117 selecionado
+2024-08-27 10:35:32,491 - INFO - Evento 20240728T233117 não presente na camada.
+2024-08-27 10:35:32,491 - INFO - Adicionando 20240728T233117 à camada...
+2024-08-27 10:35:32,491 - INFO - Pick ARCA adicionado.
+2024-08-27 10:35:32,492 - INFO - Pick DIAM adicionado.
+2024-08-27 10:35:32,492 - INFO - Pick JANB adicionado.
+2024-08-27 10:35:32,492 - INFO - Pick SDBA adicionado.
+2024-08-27 10:35:32,495 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:35:32,495 - INFO - Evento 20240728T233117 adicionado à camada.
+2024-08-27 10:35:32,495 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:33,111 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:35:33,114 - INFO - 0 picks por 0 redes adquiridos.
+2024-08-27 10:35:33,115 - INFO - Seletores atualizados: .
+2024-08-27 10:35:33,115 - INFO - Evento  selecionado
+2024-08-27 10:35:33,116 - INFO - Evento  não presente na camada.
+2024-08-27 10:35:33,116 - INFO - Adicionando  à camada...
+2024-08-27 10:35:33,116 - ERROR - single positional indexer is out-of-bounds
+2024-08-27 10:35:33,116 - INFO - Evento  adicionado à camada.
+2024-08-27 10:35:33,116 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:33,117 - INFO - Evento  selecionado
+2024-08-27 10:35:33,117 - INFO - Evento  não presente na camada.
+2024-08-27 10:35:33,117 - INFO - Adicionando  à camada...
+2024-08-27 10:35:33,117 - ERROR - single positional indexer is out-of-bounds
+2024-08-27 10:35:33,117 - INFO - Evento  adicionado à camada.
+2024-08-27 10:35:33,117 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:33,117 - INFO - Evento  selecionado
+2024-08-27 10:35:33,117 - INFO - Evento  não presente na camada.
+2024-08-27 10:35:33,117 - INFO - Adicionando  à camada...
+2024-08-27 10:35:33,118 - ERROR - single positional indexer is out-of-bounds
+2024-08-27 10:35:33,118 - INFO - Evento  adicionado à camada.
+2024-08-27 10:35:33,118 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:33,118 - INFO - Evento  selecionado
+2024-08-27 10:35:33,118 - INFO - Evento  não presente na camada.
+2024-08-27 10:35:33,118 - INFO - Adicionando  à camada...
+2024-08-27 10:35:33,119 - ERROR - single positional indexer is out-of-bounds
+2024-08-27 10:35:33,119 - INFO - Evento  adicionado à camada.
+2024-08-27 10:35:33,119 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:33,119 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:35:33,120 - INFO - 12 picks por 2 redes adquiridos.
+2024-08-27 10:35:33,127 - INFO - Seletores atualizados: 20120506T000248.
+2024-08-27 10:35:33,127 - INFO - Evento 20120506T000248 selecionado
+2024-08-27 10:35:33,127 - INFO - Evento 20120506T000248 não presente na camada.
+2024-08-27 10:35:33,127 - INFO - Adicionando 20120506T000248 à camada...
+2024-08-27 10:35:33,128 - INFO - Pick CNLB adicionado.
+2024-08-27 10:35:33,128 - INFO - Pick FRTB adicionado.
+2024-08-27 10:35:33,128 - INFO - Pick IBTB adicionado.
+2024-08-27 10:35:33,128 - INFO - Pick ITAB adicionado.
+2024-08-27 10:35:33,129 - INFO - Pick JAC01 adicionado.
+2024-08-27 10:35:33,129 - INFO - Pick MAJ01 adicionado.
+2024-08-27 10:35:33,129 - INFO - Pick MARB adicionado.
+2024-08-27 10:35:33,129 - INFO - Pick PET01 adicionado.
+2024-08-27 10:35:33,129 - INFO - Pick PTGB adicionado.
+2024-08-27 10:35:33,130 - INFO - Pick ROIB adicionado.
+2024-08-27 10:35:33,130 - INFO - Pick SICB adicionado.
+2024-08-27 10:35:33,130 - INFO - Pick TIJ01 adicionado.
+2024-08-27 10:35:33,134 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:35:33,134 - INFO - Evento 20120506T000248 adicionado à camada.
+2024-08-27 10:35:33,134 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:33,134 - INFO - Evento 20120506T000248 selecionado
+2024-08-27 10:35:33,134 - INFO - Evento 20120506T000248 não presente na camada.
+2024-08-27 10:35:33,134 - INFO - Adicionando 20120506T000248 à camada...
+2024-08-27 10:35:33,135 - INFO - Pick CNLB adicionado.
+2024-08-27 10:35:33,135 - INFO - Pick FRTB adicionado.
+2024-08-27 10:35:33,135 - INFO - Pick IBTB adicionado.
+2024-08-27 10:35:33,135 - INFO - Pick ITAB adicionado.
+2024-08-27 10:35:33,135 - INFO - Pick JAC01 adicionado.
+2024-08-27 10:35:33,136 - INFO - Pick MAJ01 adicionado.
+2024-08-27 10:35:33,136 - INFO - Pick MARB adicionado.
+2024-08-27 10:35:33,136 - INFO - Pick PET01 adicionado.
+2024-08-27 10:35:33,136 - INFO - Pick PTGB adicionado.
+2024-08-27 10:35:33,136 - INFO - Pick ROIB adicionado.
+2024-08-27 10:35:33,136 - INFO - Pick SICB adicionado.
+2024-08-27 10:35:33,137 - INFO - Pick TIJ01 adicionado.
+2024-08-27 10:35:33,140 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:35:33,140 - INFO - Evento 20120506T000248 adicionado à camada.
+2024-08-27 10:35:33,140 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:33,140 - INFO - Evento 20120506T000248 selecionado
+2024-08-27 10:35:33,140 - INFO - Evento 20120506T000248 não presente na camada.
+2024-08-27 10:35:33,140 - INFO - Adicionando 20120506T000248 à camada...
+2024-08-27 10:35:33,141 - INFO - Pick CNLB adicionado.
+2024-08-27 10:35:33,141 - INFO - Pick FRTB adicionado.
+2024-08-27 10:35:33,141 - INFO - Pick IBTB adicionado.
+2024-08-27 10:35:33,141 - INFO - Pick ITAB adicionado.
+2024-08-27 10:35:33,142 - INFO - Pick JAC01 adicionado.
+2024-08-27 10:35:33,142 - INFO - Pick MAJ01 adicionado.
+2024-08-27 10:35:33,142 - INFO - Pick MARB adicionado.
+2024-08-27 10:35:33,142 - INFO - Pick PET01 adicionado.
+2024-08-27 10:35:33,142 - INFO - Pick PTGB adicionado.
+2024-08-27 10:35:33,143 - INFO - Pick ROIB adicionado.
+2024-08-27 10:35:33,143 - INFO - Pick SICB adicionado.
+2024-08-27 10:35:33,143 - INFO - Pick TIJ01 adicionado.
+2024-08-27 10:35:33,146 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:35:33,146 - INFO - Evento 20120506T000248 adicionado à camada.
+2024-08-27 10:35:33,147 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:33,147 - INFO - Evento 20120506T000248 selecionado
+2024-08-27 10:35:33,147 - INFO - Evento 20120506T000248 não presente na camada.
+2024-08-27 10:35:33,147 - INFO - Adicionando 20120506T000248 à camada...
+2024-08-27 10:35:33,148 - INFO - Pick CNLB adicionado.
+2024-08-27 10:35:33,148 - INFO - Pick FRTB adicionado.
+2024-08-27 10:35:33,148 - INFO - Pick IBTB adicionado.
+2024-08-27 10:35:33,148 - INFO - Pick ITAB adicionado.
+2024-08-27 10:35:33,148 - INFO - Pick JAC01 adicionado.
+2024-08-27 10:35:33,148 - INFO - Pick MAJ01 adicionado.
+2024-08-27 10:35:33,149 - INFO - Pick MARB adicionado.
+2024-08-27 10:35:33,149 - INFO - Pick PET01 adicionado.
+2024-08-27 10:35:33,149 - INFO - Pick PTGB adicionado.
+2024-08-27 10:35:33,149 - INFO - Pick ROIB adicionado.
+2024-08-27 10:35:33,149 - INFO - Pick SICB adicionado.
+2024-08-27 10:35:33,149 - INFO - Pick TIJ01 adicionado.
+2024-08-27 10:35:33,152 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:35:33,153 - INFO - Evento 20120506T000248 adicionado à camada.
+2024-08-27 10:35:33,153 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:58,094 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:35:58,100 - INFO - 2 picks por 1 redes adquiridos.
+2024-08-27 10:35:58,110 - INFO - Seletores atualizados: 20130118T001934.
+2024-08-27 10:35:58,110 - INFO - Evento 20130118T001934 selecionado
+2024-08-27 10:35:58,110 - INFO - Evento 20130118T001934 não presente na camada.
+2024-08-27 10:35:58,110 - INFO - Adicionando 20130118T001934 à camada...
+2024-08-27 10:35:58,112 - INFO - Pick IPMB adicionado.
+2024-08-27 10:35:58,112 - INFO - Pick JANB adicionado.
+2024-08-27 10:35:58,122 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:35:58,122 - INFO - Evento 20130118T001934 adicionado à camada.
+2024-08-27 10:35:58,122 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:58,122 - INFO - Evento 20130118T001934 selecionado
+2024-08-27 10:35:58,122 - INFO - Evento 20130118T001934 não presente na camada.
+2024-08-27 10:35:58,122 - INFO - Adicionando 20130118T001934 à camada...
+2024-08-27 10:35:58,123 - INFO - Pick IPMB adicionado.
+2024-08-27 10:35:58,123 - INFO - Pick JANB adicionado.
+2024-08-27 10:35:58,127 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:35:58,127 - INFO - Evento 20130118T001934 adicionado à camada.
+2024-08-27 10:35:58,127 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:58,127 - INFO - Evento 20130118T001934 selecionado
+2024-08-27 10:35:58,127 - INFO - Evento 20130118T001934 não presente na camada.
+2024-08-27 10:35:58,127 - INFO - Adicionando 20130118T001934 à camada...
+2024-08-27 10:35:58,128 - INFO - Pick IPMB adicionado.
+2024-08-27 10:35:58,128 - INFO - Pick JANB adicionado.
+2024-08-27 10:35:58,131 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:35:58,131 - INFO - Evento 20130118T001934 adicionado à camada.
+2024-08-27 10:35:58,131 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:58,131 - INFO - Evento 20130118T001934 selecionado
+2024-08-27 10:35:58,132 - INFO - Evento 20130118T001934 não presente na camada.
+2024-08-27 10:35:58,132 - INFO - Adicionando 20130118T001934 à camada...
+2024-08-27 10:35:58,132 - INFO - Pick IPMB adicionado.
+2024-08-27 10:35:58,133 - INFO - Pick JANB adicionado.
+2024-08-27 10:35:58,135 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:35:58,136 - INFO - Evento 20130118T001934 adicionado à camada.
+2024-08-27 10:35:58,136 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:35:58,136 - INFO - Evento 20130118T001934 selecionado
+2024-08-27 10:35:58,136 - INFO - Evento 20130118T001934 não presente na camada.
+2024-08-27 10:35:58,136 - INFO - Adicionando 20130118T001934 à camada...
+2024-08-27 10:35:58,137 - INFO - Pick IPMB adicionado.
+2024-08-27 10:35:58,137 - INFO - Pick JANB adicionado.
+2024-08-27 10:35:58,140 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:35:58,140 - INFO - Evento 20130118T001934 adicionado à camada.
+2024-08-27 10:35:58,140 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:36:00,838 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:36:00,847 - INFO - 2 picks por 2 redes adquiridos.
+2024-08-27 10:36:00,866 - INFO - Seletores atualizados: 20140603T004536.
+2024-08-27 10:36:00,866 - INFO - Evento 20140603T004536 selecionado
+2024-08-27 10:36:00,866 - INFO - Evento 20140603T004536 não presente na camada.
+2024-08-27 10:36:00,866 - INFO - Adicionando 20140603T004536 à camada...
+2024-08-27 10:36:00,868 - INFO - Pick CLDB adicionado.
+2024-08-27 10:36:00,869 - INFO - Pick NPGB adicionado.
+2024-08-27 10:36:00,881 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:36:00,881 - INFO - Evento 20140603T004536 adicionado à camada.
+2024-08-27 10:36:00,881 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:36:00,882 - INFO - Evento 20140603T004536 selecionado
+2024-08-27 10:36:00,882 - INFO - Evento 20140603T004536 não presente na camada.
+2024-08-27 10:36:00,882 - INFO - Adicionando 20140603T004536 à camada...
+2024-08-27 10:36:00,883 - INFO - Pick CLDB adicionado.
+2024-08-27 10:36:00,884 - INFO - Pick NPGB adicionado.
+2024-08-27 10:36:00,890 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:36:00,890 - INFO - Evento 20140603T004536 adicionado à camada.
+2024-08-27 10:36:00,890 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:36:00,890 - INFO - Evento 20140603T004536 selecionado
+2024-08-27 10:36:00,891 - INFO - Evento 20140603T004536 não presente na camada.
+2024-08-27 10:36:00,891 - INFO - Adicionando 20140603T004536 à camada...
+2024-08-27 10:36:00,892 - INFO - Pick CLDB adicionado.
+2024-08-27 10:36:00,893 - INFO - Pick NPGB adicionado.
+2024-08-27 10:36:00,898 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:36:00,899 - INFO - Evento 20140603T004536 adicionado à camada.
+2024-08-27 10:36:00,899 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:36:00,899 - INFO - Evento 20140603T004536 selecionado
+2024-08-27 10:36:00,899 - INFO - Evento 20140603T004536 não presente na camada.
+2024-08-27 10:36:00,899 - INFO - Adicionando 20140603T004536 à camada...
+2024-08-27 10:36:00,900 - INFO - Pick CLDB adicionado.
+2024-08-27 10:36:00,900 - INFO - Pick NPGB adicionado.
+2024-08-27 10:36:00,903 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:36:00,903 - INFO - Evento 20140603T004536 adicionado à camada.
+2024-08-27 10:36:00,903 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:36:00,903 - INFO - Evento 20140603T004536 selecionado
+2024-08-27 10:36:00,904 - INFO - Evento 20140603T004536 não presente na camada.
+2024-08-27 10:36:00,904 - INFO - Adicionando 20140603T004536 à camada...
+2024-08-27 10:36:00,904 - INFO - Pick CLDB adicionado.
+2024-08-27 10:36:00,905 - INFO - Pick NPGB adicionado.
+2024-08-27 10:36:00,908 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:36:00,908 - INFO - Evento 20140603T004536 adicionado à camada.
+2024-08-27 10:36:00,908 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:36:01,566 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:36:01,573 - INFO - 1 picks por 1 redes adquiridos.
+2024-08-27 10:36:01,588 - INFO - Seletores atualizados: 20140722T005303.
+2024-08-27 10:36:01,589 - INFO - Evento 20140722T005303 selecionado
+2024-08-27 10:36:01,589 - INFO - Evento 20140722T005303 não presente na camada.
+2024-08-27 10:36:01,589 - INFO - Adicionando 20140722T005303 à camada...
+2024-08-27 10:36:01,591 - INFO - Pick CZSB adicionado.
+2024-08-27 10:36:01,605 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:36:01,605 - INFO - Evento 20140722T005303 adicionado à camada.
+2024-08-27 10:36:01,606 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:36:01,606 - INFO - Evento 20140722T005303 selecionado
+2024-08-27 10:36:01,606 - INFO - Evento 20140722T005303 não presente na camada.
+2024-08-27 10:36:01,606 - INFO - Adicionando 20140722T005303 à camada...
+2024-08-27 10:36:01,608 - INFO - Pick CZSB adicionado.
+2024-08-27 10:36:01,616 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:36:01,616 - INFO - Evento 20140722T005303 adicionado à camada.
+2024-08-27 10:36:01,616 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:36:01,616 - INFO - Evento 20140722T005303 selecionado
+2024-08-27 10:36:01,616 - INFO - Evento 20140722T005303 não presente na camada.
+2024-08-27 10:36:01,616 - INFO - Adicionando 20140722T005303 à camada...
+2024-08-27 10:36:01,619 - INFO - Pick CZSB adicionado.
+2024-08-27 10:36:01,625 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:36:01,625 - INFO - Evento 20140722T005303 adicionado à camada.
+2024-08-27 10:36:01,625 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:36:01,625 - INFO - Evento 20140722T005303 selecionado
+2024-08-27 10:36:01,626 - INFO - Evento 20140722T005303 não presente na camada.
+2024-08-27 10:36:01,626 - INFO - Adicionando 20140722T005303 à camada...
+2024-08-27 10:36:01,627 - INFO - Pick CZSB adicionado.
+2024-08-27 10:36:01,632 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:36:01,632 - INFO - Evento 20140722T005303 adicionado à camada.
+2024-08-27 10:36:01,632 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:36:01,632 - INFO - Evento 20140722T005303 selecionado
+2024-08-27 10:36:01,632 - INFO - Evento 20140722T005303 não presente na camada.
+2024-08-27 10:36:01,632 - INFO - Adicionando 20140722T005303 à camada...
+2024-08-27 10:36:01,633 - INFO - Pick CZSB adicionado.
+2024-08-27 10:36:01,636 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:36:01,636 - INFO - Evento 20140722T005303 adicionado à camada.
+2024-08-27 10:36:01,636 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:36:02,198 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-27 10:36:02,211 - INFO - 1 picks por 1 redes adquiridos.
+2024-08-27 10:36:02,222 - INFO - Seletores atualizados: 20140806T002623.
+2024-08-27 10:36:02,222 - INFO - Evento 20140806T002623 selecionado
+2024-08-27 10:36:02,223 - INFO - Evento 20140806T002623 não presente na camada.
+2024-08-27 10:36:02,223 - INFO - Adicionando 20140806T002623 à camada...
+2024-08-27 10:36:02,224 - INFO - Pick CNLB adicionado.
+2024-08-27 10:36:02,235 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:36:02,235 - INFO - Evento 20140806T002623 adicionado à camada.
+2024-08-27 10:36:02,235 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:36:02,235 - INFO - Evento 20140806T002623 selecionado
+2024-08-27 10:36:02,235 - INFO - Evento 20140806T002623 não presente na camada.
+2024-08-27 10:36:02,235 - INFO - Adicionando 20140806T002623 à camada...
+2024-08-27 10:36:02,237 - INFO - Pick CNLB adicionado.
+2024-08-27 10:36:02,243 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:36:02,243 - INFO - Evento 20140806T002623 adicionado à camada.
+2024-08-27 10:36:02,243 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:36:02,244 - INFO - Evento 20140806T002623 selecionado
+2024-08-27 10:36:02,244 - INFO - Evento 20140806T002623 não presente na camada.
+2024-08-27 10:36:02,244 - INFO - Adicionando 20140806T002623 à camada...
+2024-08-27 10:36:02,245 - INFO - Pick CNLB adicionado.
+2024-08-27 10:36:02,251 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:36:02,251 - INFO - Evento 20140806T002623 adicionado à camada.
+2024-08-27 10:36:02,251 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:36:02,251 - INFO - Evento 20140806T002623 selecionado
+2024-08-27 10:36:02,251 - INFO - Evento 20140806T002623 não presente na camada.
+2024-08-27 10:36:02,251 - INFO - Adicionando 20140806T002623 à camada...
+2024-08-27 10:36:02,252 - INFO - Pick CNLB adicionado.
+2024-08-27 10:36:02,255 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:36:02,255 - INFO - Evento 20140806T002623 adicionado à camada.
+2024-08-27 10:36:02,255 - INFO - Camada Eventos adicionada ao projeto.
+2024-08-27 10:36:02,255 - INFO - Evento 20140806T002623 selecionado
+2024-08-27 10:36:02,255 - INFO - Evento 20140806T002623 não presente na camada.
+2024-08-27 10:36:02,255 - INFO - Adicionando 20140806T002623 à camada...
+2024-08-27 10:36:02,256 - INFO - Pick CNLB adicionado.
+2024-08-27 10:36:02,258 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
+2024-08-27 10:36:02,259 - INFO - Evento 20140806T002623 adicionado à camada.
+2024-08-27 10:36:02,259 - INFO - Camada Eventos adicionada ao projeto.
