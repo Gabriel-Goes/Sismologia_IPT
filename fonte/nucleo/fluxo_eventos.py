@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*-coding: utf-8 -*-
 # Python 3.11.8
 # ./Classificador_Sismologico/pyscripts/ProcessarDadosSismologicos.py
 
@@ -390,7 +390,6 @@ def main(
 ):
     try:
         # DATA_CLIENT = Client('http://seisarc.sismo.iag.usp.br/')
-        # DATA_CLIENT = Client('USP')
         DATA_CLIENT = Client("http://10.110.1.132:18003")
     except Exception as e:
         print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
@@ -399,7 +398,13 @@ def main(
         DATA_CLIENT_BKP = Client('http://rsbr.on.br:8081')
     except Exception as e:
         print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
-        sys.exit(1)
+        try:
+            DATA_CLIENT_BKP = Client('USP')
+            # sys.exit(1)
+        except Exception as e:
+            print(f'\nErro ao conectar com o servidor USP: {e}')
+            # sys.exit(1)
+            DATA_CLIENT_BKP = DATA_CLIENT
 
     catalogo, missin_ids = fluxo_eventos(
         EventIDs,
@@ -420,7 +425,7 @@ if __name__ == "__main__":
     if sys.argv[2] == 'True':
         print(' --> Modo de teste ativado')
         random.seed(42)
-        EventIDs = random.sample(EventIDs, 1500)
+        EventIDs = random.sample(EventIDs, 500)
         print(f' - Número de EventIDs: {len(EventIDs)}')
 
     catalogo, missin_ids = main(EventIDs)

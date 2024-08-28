@@ -168,6 +168,7 @@ def plot_distrib_hora(
         edgecolor="black").get_frame().set_linewidth(0.5)
     ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, _: '{:.0%}'.format(y)))
     ax.set_xticks(range(0, 24))
+    ax.set_yticks(np.arange(0, 0.08, 0.01))
     ax.set_xticklabels(range(0, 24), fontsize=8)
     ax.set_yticklabels(
         ['{:,.0%}'.format(x) for x in ax.get_yticks()],

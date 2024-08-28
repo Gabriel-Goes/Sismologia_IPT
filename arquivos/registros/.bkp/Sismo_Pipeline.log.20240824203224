@@ -1,0 +1,144 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: False
+  TREATCATALOG: True
+  PREDICT: True
+  POSPROCESS: True
+  MAPS: True
+  REPORT: True
+  TEST: True
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo_jul.csv...
+ t0: sáb 24 ago 2024 20:29:07 -03
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:98: DeprecationWarning: The 'unary_union' attribute is deprecated, use the 'union_all()' method instead.
+  catalog_br = df[df.within(brasil_buffer.unary_union)]
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:172: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_yticklabels(
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:172: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_yticklabels(
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:211: UserWarning: The figure layout has changed to tight
+  plt.tight_layout()
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:270: DeprecationWarning: The 'unary_union' attribute is deprecated, use the 'union_all()' method instead.
+  brasil = brasil.geometry.unary_union
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:270: DeprecationWarning: The 'unary_union' attribute is deprecated, use the 'union_all()' method instead.
+  brasil = brasil.geometry.unary_union
+Argumentos recebidos:
+ eventos.csv
+ catalogo_jul.csv
+ True
+ False
+2010-11-28 10:21:12.185973
+
+Plotando distribuição de eventos por hora...
+ Catálogo filtrado com 3031 eventos
+ Nov de 2010 à Jul de 2024
+
+Plotando distribuição de eventos por hora...
+ Catálogo completo com 10529 eventos
+ Nov de 2010 à Jul de 2024
+Plotando mapa...
+Salvando mapa...
+Salvando mapa...
+ ----------------- INICIANDO O PREDICTION.PY ---------------------------- 
+2024-08-24 20:29:13.816937: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/lib/:/usr/local/lib/
+2024-08-24 20:29:13.816966: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.1 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/rnc/prediction.py", line 5, in <module>
+    import tensorflow as tf
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/__init__.py", line 37, in <module>
+    from tensorflow.python.tools import module_util as _module_util
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/__init__.py", line 37, in <module>
+    from tensorflow.python.eager import context
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/eager/context.py", line 35, in <module>
+    from tensorflow.python.client import pywrap_tf_session
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/client/pywrap_tf_session.py", line 19, in <module>
+    from tensorflow.python.client._pywrap_tf_session import *
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.1 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/rnc/prediction.py", line 5, in <module>
+    import tensorflow as tf
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/__init__.py", line 37, in <module>
+    from tensorflow.python.tools import module_util as _module_util
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/__init__.py", line 42, in <module>
+    from tensorflow.python import data
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/data/__init__.py", line 21, in <module>
+    from tensorflow.python.data import experimental
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/data/experimental/__init__.py", line 95, in <module>
+    from tensorflow.python.data.experimental import service
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/data/experimental/service/__init__.py", line 387, in <module>
+    from tensorflow.python.data.experimental.ops.data_service_ops import distribute
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/data/experimental/ops/data_service_ops.py", line 23, in <module>
+    from tensorflow.python.data.experimental.ops import compression_ops
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/data/experimental/ops/compression_ops.py", line 16, in <module>
+    from tensorflow.python.data.util import structure
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/data/util/structure.py", line 22, in <module>
+    from tensorflow.python.data.util import nest
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/data/util/nest.py", line 36, in <module>
+    from tensorflow.python.framework import sparse_tensor as _sparse_tensor
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/framework/sparse_tensor.py", line 24, in <module>
+    from tensorflow.python.framework import constant_op
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/framework/constant_op.py", line 25, in <module>
+    from tensorflow.python.eager import execute
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/eager/execute.py", line 23, in <module>
+    from tensorflow.python.framework import dtypes
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/framework/dtypes.py", line 26, in <module>
+    from tensorflow.python.lib.core import _pywrap_bfloat16
+AttributeError: _ARRAY_API not found
+ImportError: numpy.core._multiarray_umath failed to import
+ImportError: numpy.core.umath failed to import
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/rnc/prediction.py", line 5, in <module>
+    import tensorflow as tf
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/__init__.py", line 37, in <module>
+    from tensorflow.python.tools import module_util as _module_util
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/__init__.py", line 42, in <module>
+    from tensorflow.python import data
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/data/__init__.py", line 21, in <module>
+    from tensorflow.python.data import experimental
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/data/experimental/__init__.py", line 95, in <module>
+    from tensorflow.python.data.experimental import service
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/data/experimental/service/__init__.py", line 387, in <module>
+    from tensorflow.python.data.experimental.ops.data_service_ops import distribute
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/data/experimental/ops/data_service_ops.py", line 23, in <module>
+    from tensorflow.python.data.experimental.ops import compression_ops
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/data/experimental/ops/compression_ops.py", line 16, in <module>
+    from tensorflow.python.data.util import structure
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/data/util/structure.py", line 22, in <module>
+    from tensorflow.python.data.util import nest
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/data/util/nest.py", line 36, in <module>
+    from tensorflow.python.framework import sparse_tensor as _sparse_tensor
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/framework/sparse_tensor.py", line 24, in <module>
+    from tensorflow.python.framework import constant_op
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/framework/constant_op.py", line 25, in <module>
+    from tensorflow.python.eager import execute
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/eager/execute.py", line 23, in <module>
+    from tensorflow.python.framework import dtypes
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/tensorflow/python/framework/dtypes.py", line 29, in <module>
+    _np_bfloat16 = _pywrap_bfloat16.TF_bfloat16_type()
+TypeError: Unable to convert function return value to a Python type! The signature was
+	() -> handle

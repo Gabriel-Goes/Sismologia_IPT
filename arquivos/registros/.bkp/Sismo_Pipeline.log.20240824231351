@@ -1,0 +1,49 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: False
+  TREATCATALOG: True
+  PREDICT: False
+  POSPROCESS: False
+  MAPS: False
+  REPORT: False
+  TEST: True
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo_jul.csv...
+ t0: sáb 24 ago 2024 23:13:40 -03
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:98: DeprecationWarning: The 'unary_union' attribute is deprecated, use the 'union_all()' method instead.
+  catalog_br = df[df.within(brasil_buffer.unary_union)]
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:212: UserWarning: The figure layout has changed to tight
+  plt.tight_layout()
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:271: DeprecationWarning: The 'unary_union' attribute is deprecated, use the 'union_all()' method instead.
+  brasil = brasil.geometry.unary_union
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py:271: DeprecationWarning: The 'unary_union' attribute is deprecated, use the 'union_all()' method instead.
+  brasil = brasil.geometry.unary_union
+Argumentos recebidos:
+ eventos.csv
+ catalogo_jul.csv
+ True
+ False
+2010-11-28 10:21:12.185973
+
+Plotando distribuição de eventos por hora...
+ Catálogo filtrado com 3031 eventos
+ Nov de 2010 à Jul de 2024
+
+Plotando distribuição de eventos por hora...
+ Catálogo completo com 10529 eventos
+ Nov de 2010 à Jul de 2024
+Plotando mapa...
+Salvando mapa...
+Salvando mapa...
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
+~/projetos/ClassificadorSismologico
