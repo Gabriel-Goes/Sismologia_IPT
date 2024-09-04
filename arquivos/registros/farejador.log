@@ -8409,3 +8409,50 @@ deepness.common.errors.OperationFailedException: Please select and load a model 
 2024-08-23 18:25:16,096 - INFO - 12 picks por 2 redes adquiridos.
 2024-08-23 18:25:16,103 - INFO - Seletores atualizados: 20120506T000248.
 2024-08-23 18:25:16,103 - INFO - Evento 20120506T000248 selecionado
+2024-08-28 13:00:59,330 - INFO - /home/ggrl/projetos/ClassificadorSismologico/arquivos/resultados/analisado/nc_analisado_final.csv carregado com sucesso.
+2024-08-28 13:01:00,557 - INFO - Camada de eventos "Eventos" criada com sucesso.
+2024-08-28 13:01:00,954 - INFO - Camada de estações "Estacoes" criada com sucesso.
+2024-08-28 13:01:01,158 - INFO - Ordenando eventos por Hora.
+2024-08-28 13:01:01,608 - INFO - Interface iniciada...
+2024-08-28 13:01:01,636 - INFO - /home/ggrl/projetos/ClassificadorSismologico/arquivos/resultados/analisado/nc_analisado_final.csv carregado com sucesso.
+2024-08-28 13:01:02,854 - INFO - Camada de eventos "Eventos" criada com sucesso.
+2024-08-28 13:01:03,233 - INFO - Camada de estações "Estacoes" criada com sucesso.
+2024-08-28 13:01:03,426 - INFO - Ordenando eventos por Hora.
+2024-08-28 13:01:03,881 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-28 13:01:03,882 - INFO - 4 picks por 2 redes adquiridos.
+2024-08-28 13:01:03,889 - INFO - Seletores atualizados: 20240728T233117.
+2024-08-28 13:01:03,889 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-28 13:01:03,892 - INFO - 4 picks por 2 redes adquiridos.
+2024-08-28 13:01:03,899 - INFO - Seletores atualizados: 20240728T233117.
+2024-08-28 13:01:03,899 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-28 13:01:03,902 - INFO - 0 picks por 0 redes adquiridos.
+2024-08-28 13:01:03,904 - INFO - Seletores atualizados: .
+2024-08-28 13:01:03,904 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-28 13:01:03,905 - INFO - 4 picks por 2 redes adquiridos.
+2024-08-28 13:01:03,911 - INFO - Seletores atualizados: 20240728T233117.
+2024-08-28 13:01:03,912 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-28 13:01:03,915 - INFO - 4 picks por 2 redes adquiridos.
+2024-08-28 13:01:03,922 - INFO - Seletores atualizados: 20240728T233117.
+2024-08-28 13:01:23,576 - INFO - Log de eventos habilitado.
+2024-08-28 13:01:24,168 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-28 13:01:24,175 - INFO - 0 picks por 0 redes adquiridos.
+2024-08-28 13:01:24,177 - INFO - Seletores atualizados: .
+2024-08-28 13:01:24,177 - INFO - Evento  selecionado
+2024-08-28 13:01:24,187 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-08-28 13:01:24,188 - INFO - 4 picks por 2 redes adquiridos.
+2024-08-28 13:01:24,200 - INFO - Seletores atualizados: 20240728T233117.
+2024-08-28 13:01:24,200 - INFO - Evento 20240728T233117 selecionado
