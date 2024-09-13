@@ -8456,3 +8456,885 @@ deepness.common.errors.OperationFailedException: Please select and load a model 
 2024-08-28 13:01:24,188 - INFO - 4 picks por 2 redes adquiridos.
 2024-08-28 13:01:24,200 - INFO - Seletores atualizados: 20240728T233117.
 2024-08-28 13:01:24,200 - INFO - Evento 20240728T233117 selecionado
+2024-09-04 23:18:06,423 - INFO - /home/ggrl/projetos/ClassificadorSismologico/arquivos/resultados/analisado/nc_analisado_final.csv carregado com sucesso.
+2024-09-04 23:18:07,923 - INFO - Camada de eventos "Eventos" criada com sucesso.
+2024-09-04 23:18:08,385 - INFO - Camada de estações "Estacoes" criada com sucesso.
+2024-09-04 23:18:08,667 - INFO - Ordenando eventos por Hora.
+2024-09-04 23:18:09,187 - INFO - Interface iniciada...
+2024-09-04 23:18:09,221 - INFO - /home/ggrl/projetos/ClassificadorSismologico/arquivos/resultados/analisado/nc_analisado_final.csv carregado com sucesso.
+2024-09-04 23:18:10,707 - INFO - Camada de eventos "Eventos" criada com sucesso.
+2024-09-04 23:18:11,140 - INFO - Camada de estações "Estacoes" criada com sucesso.
+2024-09-04 23:18:11,361 - INFO - Ordenando eventos por Hora.
+2024-09-04 23:18:11,881 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:11,881 - INFO - 4 picks por 2 redes adquiridos.
+2024-09-04 23:18:11,889 - INFO - Seletores atualizados: 20240728T233117.
+2024-09-04 23:18:11,890 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:11,893 - INFO - 4 picks por 2 redes adquiridos.
+2024-09-04 23:18:11,902 - INFO - Seletores atualizados: 20240728T233117.
+2024-09-04 23:18:11,903 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:11,906 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-04 23:18:11,907 - INFO - Seletores atualizados: .
+2024-09-04 23:18:11,908 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:11,909 - INFO - 4 picks por 2 redes adquiridos.
+2024-09-04 23:18:11,916 - INFO - Seletores atualizados: 20240728T233117.
+2024-09-04 23:18:11,916 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:11,920 - INFO - 4 picks por 2 redes adquiridos.
+2024-09-04 23:18:11,927 - INFO - Seletores atualizados: 20240728T233117.
+2024-09-04 23:18:21,732 - INFO - Log de eventos habilitado.
+2024-09-04 23:18:22,244 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:22,248 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-04 23:18:22,249 - INFO - Seletores atualizados: .
+2024-09-04 23:18:22,249 - INFO - Evento  selecionado
+2024-09-04 23:18:22,298 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:22,299 - INFO - 4 picks por 2 redes adquiridos.
+2024-09-04 23:18:22,307 - INFO - Seletores atualizados: 20240728T233117.
+2024-09-04 23:18:22,307 - INFO - Evento 20240728T233117 selecionado
+2024-09-04 23:18:26,984 - ERROR - Erro ao iniciar o Espectrograma: [Errno 2] Arquivo ou diretório inexistente: '/home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20240728T233117/BL_ARCA_20240728T233117.npy'
+2024-09-04 23:18:36,324 - INFO - Ordenando eventos por SNRP_std.
+2024-09-04 23:18:36,643 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:36,647 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-04 23:18:36,648 - INFO - Seletores atualizados: .
+2024-09-04 23:18:36,648 - INFO - Evento  selecionado
+2024-09-04 23:18:36,682 - INFO - Evento  selecionado
+2024-09-04 23:18:36,715 - ERROR - Erro ao iniciar o Espectrograma: 
+2024-09-04 23:18:36,716 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:36,717 - INFO - 2 picks por 1 redes adquiridos.
+2024-09-04 23:18:36,724 - INFO - Seletores atualizados: 20210802T035950.
+2024-09-04 23:18:36,724 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:18:36,755 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:18:36,792 - ERROR - Erro ao iniciar o Espectrograma: [Errno 2] Arquivo ou diretório inexistente: '/home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20210802T035950/NB_NBMA_20210802T035950.npy'
+2024-09-04 23:18:38,590 - INFO - Ordenando eventos por CFT_std.
+2024-09-04 23:18:38,906 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:38,910 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-04 23:18:38,911 - INFO - Seletores atualizados: .
+2024-09-04 23:18:38,911 - INFO - Evento  selecionado
+2024-09-04 23:18:38,939 - INFO - Evento  selecionado
+2024-09-04 23:18:38,968 - ERROR - Erro ao iniciar o Espectrograma: 
+2024-09-04 23:18:38,968 - INFO - Evento  selecionado
+2024-09-04 23:18:39,000 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:39,002 - INFO - 2 picks por 2 redes adquiridos.
+2024-09-04 23:18:39,010 - INFO - Seletores atualizados: 20221103T075758.
+2024-09-04 23:18:39,010 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:18:39,042 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:18:39,092 - DEBUG - Loaded backend Qt5Agg version 5.15.11.
+2024-09-04 23:18:39,102 - DEBUG - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0.
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymReg.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymBol.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmss10.ttf', name='cmss10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Oblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerifDisplay.ttf', name='DejaVu Serif Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymBol.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-BoldItalic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Bold.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymReg.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmtt10.ttf', name='cmtt10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFiveSymReg.ttf', name='STIXSizeFiveSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymBol.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansDisplay.ttf', name='DejaVu Sans Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmr10.ttf', name='cmr10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralItalic.ttf', name='STIXGeneral', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmex10.ttf', name='cmex10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUni.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymBol.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Oblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 1.05
+2024-09-04 23:18:39,103 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymReg.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Italic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Bold.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 0.05
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBol.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBolIta.ttf', name='STIXGeneral', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-BoldOblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneral.ttf', name='STIXGeneral', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBolIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmmi10.ttf', name='cmmi10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBol.ttf', name='STIXGeneral', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymReg.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 0.33499999999999996
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-BoldOblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 1.335
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmb10.ttf', name='cmb10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/cmsy10.ttf', name='cmsy10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMCtesiphon.otf', name='East Syriac Ctesiphon', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMono-BoldItalic.ttf', name='JetBrains Mono', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/C059-Roman.otf', name='C059', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/P052-Roman.otf', name='P052', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMonoNL-MediumItalic.ttf', name='JetBrains Mono NL', style='italic', variant='normal', weight=500, stretch='normal', size='scalable')) = 11.145
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicMNerdFontMono-Regular.otf', name='OpenDyslexicM Nerd Font Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyrebonum-regular.otf', name='TeX Gyre Bonum', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/OpenDyslexicAlta-Regular.ttf', name='OpenDyslexicAlta', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/P052-Bold.otf', name='P052', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/RobotoCondensed-BoldItalic.ttf', name='Roboto Condensed', style='italic', variant='normal', weight=700, stretch='condensed', size='scalable')) = 11.535
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyreheros-bold.otf', name='TeX Gyre Heros', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Ariali.TTF', name='Arial', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 7.413636363636363
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMonoNL-LightItalic.ttf', name='JetBrains Mono NL', style='italic', variant='normal', weight=300, stretch='normal', size='scalable')) = 11.145
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/OpenDyslexic3-Bold.ttf', name='OpenDyslexic3', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,104 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyreheros-bolditalic.otf', name='TeX Gyre Heros', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/NimbusRoman-BoldItalic.otf', name='Nimbus Roman', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMTurAbdin.otf', name='Estrangelo TurAbdin', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMUrhoyBold.otf', name='Serto Urhoy', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMono-Medium.ttf', name='JetBrains Mono', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/NimbusMonoPS-Italic.otf', name='Nimbus Mono PS', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyretermes-italic.otf', name='TeX Gyre Termes', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMono-SemiBold.ttf', name='JetBrains Mono', style='normal', variant='normal', weight=600, stretch='normal', size='scalable')) = 10.24
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/RobotoCondensed-Light.ttf', name='Roboto Condensed', style='normal', variant='normal', weight=300, stretch='condensed', size='scalable')) = 10.344999999999999
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyrepagella-bolditalic.otf', name='TeX Gyre Pagella', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/OpenDyslexicAlta-Bold.ttf', name='OpenDyslexicAlta', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMono-ExtraLightItalic.ttf', name='JetBrains Mono', style='italic', variant='normal', weight=200, stretch='normal', size='scalable')) = 11.24
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMBatnan.otf', name='Serto Batnan', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Verdanaz.TTF', name='Verdana', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 4.971363636363637
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Comic.TTF', name='Comic Sans MS', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gnu-free/FreeSerifBold.otf', name='FreeSerif', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Impact.TTF', name='Impact', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Verdana.TTF', name='Verdana', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 3.6863636363636365
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Verdanab.TTF', name='Verdana', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 3.9713636363636367
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMono-Regular.ttf', name='JetBrains Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyretermes-bolditalic.otf', name='TeX Gyre Termes', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/URWBookman-Demi.otf', name='URW Bookman', style='normal', variant='normal', weight=600, stretch='normal', size='scalable')) = 10.24
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFont-BoldItalic.otf', name='OpenDyslexic Nerd Font', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFontPropo-Bold.otf', name='OpenDyslexic Nerd Font Propo', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Roboto-LightItalic.ttf', name='Roboto', style='italic', variant='normal', weight=300, stretch='normal', size='scalable')) = 11.145
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/OpenDyslexicAlta-Italic.ttf', name='OpenDyslexicAlta', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyrepagella-bold.otf', name='TeX Gyre Pagella', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Verdanai.TTF', name='Verdana', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 4.6863636363636365
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyrebonum-bold.otf', name='TeX Gyre Bonum', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/adobe-source-code-pro/SourceCodePro-ExtraLight.otf', name='Source Code Pro', style='normal', variant='normal', weight=200, stretch='normal', size='scalable')) = 10.24
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/adobe-source-code-pro/SourceCodePro-Black.otf', name='Source Code Pro', style='normal', variant='normal', weight=900, stretch='normal', size='scalable')) = 10.525
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gnu-free/FreeSansOblique.otf', name='FreeSans', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Timesi.TTF', name='Times New Roman', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMJerusalemOutline.otf', name='Serto Jerusalem Outline', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/adobe-source-code-pro/SourceCodePro-It.otf', name='Source Code Pro', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/NimbusRoman-Italic.otf', name='Nimbus Roman', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,105 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMUrhoy.otf', name='Serto Urhoy', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Roboto-Thin.ttf', name='Roboto', style='normal', variant='normal', weight=250, stretch='normal', size='scalable')) = 10.1925
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMAdiabene.otf', name='East Syriac Adiabene', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyrebonum-bolditalic.otf', name='TeX Gyre Bonum', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMonoNL-ExtraLightItalic.ttf', name='JetBrains Mono NL', style='italic', variant='normal', weight=200, stretch='normal', size='scalable')) = 11.24
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/adobe-source-code-pro/SourceCodePro-SemiboldIt.otf', name='Source Code Pro', style='italic', variant='normal', weight=600, stretch='normal', size='scalable')) = 11.24
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMMardinBold.otf', name='Serto Mardin', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/OpenDyslexicMono-Regular.ttf', name='OpenDyslexicMono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMonoNL-ExtraLight.ttf', name='JetBrains Mono NL', style='normal', variant='normal', weight=200, stretch='normal', size='scalable')) = 10.24
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/NimbusSansNarrow-Regular.otf', name='Nimbus Sans Narrow', style='normal', variant='normal', weight=400, stretch='condensed', size='scalable')) = 10.25
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFont-Regular.otf', name='OpenDyslexicAlt Nerd Font', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFontPropo-Regular.otf', name='OpenDyslexicAlt Nerd Font Propo', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gnu-free/FreeSans.otf', name='FreeSans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMonoNL-BoldItalic.ttf', name='JetBrains Mono NL', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Georgiaz.TTF', name='Georgia', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyreheros-italic.otf', name='TeX Gyre Heros', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/AriBlk.TTF', name='Arial Black', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/D050000L.otf', name='D050000L', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMono-ThinItalic.ttf', name='JetBrains Mono', style='italic', variant='normal', weight=100, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Roboto-Black.ttf', name='Roboto', style='normal', variant='normal', weight=900, stretch='normal', size='scalable')) = 10.525
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMono-ExtraBoldItalic.ttf', name='JetBrains Mono', style='italic', variant='normal', weight=800, stretch='normal', size='scalable')) = 11.43
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyreschola-bolditalic.otf', name='TeX Gyre Schola', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyreheroscn-bolditalic.otf', name='TeX Gyre Heros Cn', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Roboto-Regular.ttf', name='Roboto', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyreadventor-bold.otf', name='TeX Gyre Adventor', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/OpenDyslexic3-Regular.ttf', name='OpenDyslexic3', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyretermes-bold.otf', name='TeX Gyre Termes', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/trebucit.ttf', name='Trebuchet MS', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFont-Regular.otf', name='OpenDyslexic Nerd Font', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Timesbi.TTF', name='Times New Roman', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Georgia.TTF', name='Georgia', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/URWGothic-DemiOblique.otf', name='URW Gothic', style='oblique', variant='normal', weight=600, stretch='normal', size='scalable')) = 11.24
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMonoNL-Medium.ttf', name='JetBrains Mono NL', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Trebucbd.ttf', name='Trebuchet MS', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyrecursor-bolditalic.otf', name='TeX Gyre Cursor', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,106 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMTalada.otf', name='Estrangelo Talada', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gnu-free/FreeSerif.otf', name='FreeSerif', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Roboto-ThinItalic.ttf', name='Roboto', style='italic', variant='normal', weight=250, stretch='normal', size='scalable')) = 11.1925
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/C059-Italic.otf', name='C059', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMMalankara.otf', name='Serto Malankara', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gnu-free/FreeSansBold.otf', name='FreeSans', style='normal', variant='normal', weight=600, stretch='normal', size='scalable')) = 10.24
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMono-ExtraBold.ttf', name='JetBrains Mono', style='normal', variant='normal', weight=800, stretch='normal', size='scalable')) = 10.43
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMono-MediumItalic.ttf', name='JetBrains Mono', style='italic', variant='normal', weight=500, stretch='normal', size='scalable')) = 11.145
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/OpenDyslexic-BoldItalic.ttf', name='OpenDyslexic', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gnu-free/FreeMono.otf', name='FreeMono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/trebuc.ttf', name='Trebuchet MS', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/trebucbi.ttf', name='Trebuchet MS', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/GohaTibebZemen.ttf', name='Goha-Tibeb Zemen', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMJerusalemItalic.otf', name='Serto Jerusalem', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFont-Bold.otf', name='OpenDyslexicAlt Nerd Font', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Webdings.TTF', name='Webdings', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/courbi.ttf', name='Courier New', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMonoNL-ThinItalic.ttf', name='JetBrains Mono NL', style='italic', variant='normal', weight=100, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFontPropo-Regular.otf', name='OpenDyslexic Nerd Font Propo', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMonoNL-SemiBold.ttf', name='JetBrains Mono NL', style='normal', variant='normal', weight=600, stretch='normal', size='scalable')) = 10.24
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gnu-free/FreeMonoOblique.otf', name='FreeMono', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyreschola-bold.otf', name='TeX Gyre Schola', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMNisibin.otf', name='Estrangelo Nisibin', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMJerusalem.otf', name='Serto Jerusalem', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/OpenDyslexicAlta-BoldItalic.ttf', name='OpenDyslexicAlta', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFontPropo-BoldItalic.otf', name='OpenDyslexic Nerd Font Propo', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/AndaleMo.TTF', name='Andale Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Times.TTF', name='Times New Roman', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMono-LightItalic.ttf', name='JetBrains Mono', style='italic', variant='normal', weight=300, stretch='normal', size='scalable')) = 11.145
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMAntioch.otf', name='Estrangelo Antioch', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Roboto-Light.ttf', name='Roboto', style='normal', variant='normal', weight=300, stretch='normal', size='scalable')) = 10.145
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/NimbusSans-Regular.otf', name='Nimbus Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/OpenDyslexic-Regular.ttf', name='OpenDyslexic', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/adobe-source-code-pro/SourceCodePro-ExtraLightIt.otf', name='Source Code Pro', style='italic', variant='normal', weight=200, stretch='normal', size='scalable')) = 11.24
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMMidyat.otf', name='Estrangelo Midyat', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/NimbusSansNarrow-BoldOblique.otf', name='Nimbus Sans Narrow', style='oblique', variant='normal', weight=700, stretch='condensed', size='scalable')) = 11.535
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Arialbd.TTF', name='Arial', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 6.698636363636363
+2024-09-04 23:18:39,107 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMonoNL-SemiBoldItalic.ttf', name='JetBrains Mono NL', style='italic', variant='normal', weight=600, stretch='normal', size='scalable')) = 11.24
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFont-Italic.otf', name='OpenDyslexicAlt Nerd Font', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyreadventor-italic.otf', name='TeX Gyre Adventor', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/couri.ttf', name='Courier New', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Timesbd.TTF', name='Times New Roman', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/URWGothic-Book.otf', name='URW Gothic', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMQenNeshrin.otf', name='Estrangelo Quenneshrin', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyreheroscn-italic.otf', name='TeX Gyre Heros Cn', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Roboto-BlackItalic.ttf', name='Roboto', style='italic', variant='normal', weight=900, stretch='normal', size='scalable')) = 11.525
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMono-Bold.ttf', name='JetBrains Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gnu-free/FreeMonoBold.otf', name='FreeMono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMonoNL-Italic.ttf', name='JetBrains Mono NL', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Georgiab.TTF', name='Georgia', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/adobe-source-code-pro/SourceCodePro-LightIt.otf', name='Source Code Pro', style='italic', variant='normal', weight=300, stretch='normal', size='scalable')) = 11.145
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/cour.ttf', name='Courier New', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/RobotoCondensed-LightItalic.ttf', name='Roboto Condensed', style='italic', variant='normal', weight=300, stretch='condensed', size='scalable')) = 11.344999999999999
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyrecursor-bold.otf', name='TeX Gyre Cursor', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyreadventor-regular.otf', name='TeX Gyre Adventor', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/NimbusSans-Italic.otf', name='Nimbus Sans', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gnu-free/FreeSansBoldOblique.otf', name='FreeSans', style='oblique', variant='normal', weight=600, stretch='normal', size='scalable')) = 11.24
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/NimbusSansNarrow-Bold.otf', name='Nimbus Sans Narrow', style='normal', variant='normal', weight=700, stretch='condensed', size='scalable')) = 10.535
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMMardin.otf', name='Serto Mardin', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMono-ExtraLight.ttf', name='JetBrains Mono', style='normal', variant='normal', weight=200, stretch='normal', size='scalable')) = 10.24
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/RobotoCondensed-Italic.ttf', name='Roboto Condensed', style='italic', variant='normal', weight=400, stretch='condensed', size='scalable')) = 11.25
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/P052-Italic.otf', name='P052', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/adobe-source-code-pro/SourceCodePro-BlackIt.otf', name='Source Code Pro', style='italic', variant='normal', weight=900, stretch='normal', size='scalable')) = 11.525
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/C059-Bold.otf', name='C059', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/NimbusMonoPS-Bold.otf', name='Nimbus Mono PS', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/URWGothic-Demi.otf', name='URW Gothic', style='normal', variant='normal', weight=600, stretch='normal', size='scalable')) = 10.24
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/adobe-source-code-pro/SourceCodePro-BoldIt.otf', name='Source Code Pro', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyreadventor-bolditalic.otf', name='TeX Gyre Adventor', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/courbd.ttf', name='Courier New', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/adobe-source-code-pro/SourceCodePro-Bold.otf', name='Source Code Pro', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMEdessa.otf', name='Estrangelo Edessa', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,108 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/NimbusMonoPS-BoldItalic.otf', name='Nimbus Mono PS', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/NimbusSans-Bold.otf', name='Nimbus Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/NimbusMonoPS-Regular.otf', name='Nimbus Mono PS', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Roboto-Italic.ttf', name='Roboto', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFontPropo-Italic.otf', name='OpenDyslexic Nerd Font Propo', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/URWBookman-LightItalic.otf', name='URW Bookman', style='italic', variant='normal', weight=300, stretch='normal', size='scalable')) = 11.145
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/C059-BdIta.otf', name='C059', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFontPropo-Italic.otf', name='OpenDyslexicAlt Nerd Font Propo', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Arialbi.TTF', name='Arial', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 7.698636363636363
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Roboto-BoldItalic.ttf', name='Roboto', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Roboto-MediumItalic.ttf', name='Roboto', style='italic', variant='normal', weight=500, stretch='normal', size='scalable')) = 11.145
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/adobe-source-code-pro/SourceCodePro-Medium.otf', name='Source Code Pro', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMKharput.otf', name='Serto Kharput', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyrecursor-regular.otf', name='TeX Gyre Cursor', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyreschola-regular.otf', name='TeX Gyre Schola', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyrepagella-regular.otf', name='TeX Gyre Pagella', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMNisibinOutline.otf', name='Estrangelo Nisibin Outline', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyrechorus-mediumitalic.otf', name='TeX Gyre Chorus', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/URWGothic-BookOblique.otf', name='URW Gothic', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/URWBookman-Light.otf', name='URW Bookman', style='normal', variant='normal', weight=300, stretch='normal', size='scalable')) = 10.145
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFontPropo-BoldItalic.otf', name='OpenDyslexicAlt Nerd Font Propo', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMonoNL-Regular.ttf', name='JetBrains Mono NL', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/RobotoCondensed-Regular.ttf', name='Roboto Condensed', style='normal', variant='normal', weight=400, stretch='condensed', size='scalable')) = 10.25
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Roboto-Bold.ttf', name='Roboto', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMonoNL-Bold.ttf', name='JetBrains Mono NL', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/NimbusRoman-Bold.otf', name='Nimbus Roman', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMonoNL-Light.ttf', name='JetBrains Mono NL', style='normal', variant='normal', weight=300, stretch='normal', size='scalable')) = 10.145
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/PowerlineSymbols.otf', name='PowerlineSymbols', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyreheros-regular.otf', name='TeX Gyre Heros', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMono-Thin.ttf', name='JetBrains Mono', style='normal', variant='normal', weight=100, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/NimbusSansNarrow-Oblique.otf', name='Nimbus Sans Narrow', style='oblique', variant='normal', weight=400, stretch='condensed', size='scalable')) = 11.25
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/URWBookman-DemiItalic.otf', name='URW Bookman', style='italic', variant='normal', weight=600, stretch='normal', size='scalable')) = 11.24
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/OpenDyslexic-Bold.ttf', name='OpenDyslexic', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,109 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/adobe-source-code-pro/SourceCodePro-Regular.otf', name='Source Code Pro', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMJerusalemBold.otf', name='Serto Jerusalem', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFontPropo-Bold.otf', name='OpenDyslexicAlt Nerd Font Propo', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gnu-free/FreeSerifBoldItalic.otf', name='FreeSerif', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Comicbd.TTF', name='Comic Sans MS', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gnu-free/FreeSerifItalic.otf', name='FreeSerif', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/StandardSymbolsPS.otf', name='Standard Symbols PS', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Roboto-Medium.ttf', name='Roboto', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicMNerdFont-Regular.otf', name='OpenDyslexicM Nerd Font', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMonoNL-ExtraBold.ttf', name='JetBrains Mono NL', style='normal', variant='normal', weight=800, stretch='normal', size='scalable')) = 10.43
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicMNerdFontPropo-Regular.otf', name='OpenDyslexicM Nerd Font Propo', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/GohaTibebZemen.otf', name='Goha-Tibeb Zemen', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OTF/SyrCOMBatnanBold.otf', name='Serto Batnan', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/P052-BoldItalic.otf', name='P052', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/NimbusSans-BoldItalic.otf', name='Nimbus Sans', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/OpenDyslexic-Italic.ttf', name='OpenDyslexic', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyreschola-italic.otf', name='TeX Gyre Schola', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/adobe-source-code-pro/SourceCodePro-MediumIt.otf', name='Source Code Pro', style='italic', variant='normal', weight=500, stretch='normal', size='scalable')) = 11.145
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyreheroscn-bold.otf', name='TeX Gyre Heros Cn', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Arial.TTF', name='Arial', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 6.413636363636363
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyrebonum-italic.otf', name='TeX Gyre Bonum', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyreheroscn-regular.otf', name='TeX Gyre Heros Cn', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyrepagella-italic.otf', name='TeX Gyre Pagella', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFont-Bold.otf', name='OpenDyslexic Nerd Font', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyrecursor-italic.otf', name='TeX Gyre Cursor', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/Z003-MediumItalic.otf', name='Z003', style='italic', variant='normal', weight=500, stretch='normal', size='scalable')) = 11.145
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gnu-free/FreeMonoBoldOblique.otf', name='FreeMono', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/Georgiai.TTF', name='Georgia', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/gsfonts/NimbusRoman-Regular.otf', name='Nimbus Roman', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/adobe-source-code-pro/SourceCodePro-Light.otf', name='Source Code Pro', style='normal', variant='normal', weight=300, stretch='normal', size='scalable')) = 10.145
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/tex-gyre/texgyretermes-regular.otf', name='TeX Gyre Termes', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicNerdFont-Italic.otf', name='OpenDyslexic Nerd Font', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMono-SemiBoldItalic.ttf', name='JetBrains Mono', style='italic', variant='normal', weight=600, stretch='normal', size='scalable')) = 11.24
+2024-09-04 23:18:39,110 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMono-Italic.ttf', name='JetBrains Mono', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2024-09-04 23:18:39,111 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/adobe-source-code-pro/SourceCodePro-Semibold.otf', name='Source Code Pro', style='normal', variant='normal', weight=600, stretch='normal', size='scalable')) = 10.24
+2024-09-04 23:18:39,111 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/OpenDyslexicAltNerdFont-BoldItalic.otf', name='OpenDyslexicAlt Nerd Font', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2024-09-04 23:18:39,111 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMonoNL-Thin.ttf', name='JetBrains Mono NL', style='normal', variant='normal', weight=100, stretch='normal', size='scalable')) = 10.335
+2024-09-04 23:18:39,111 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMono-Light.ttf', name='JetBrains Mono', style='normal', variant='normal', weight=300, stretch='normal', size='scalable')) = 10.145
+2024-09-04 23:18:39,111 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/JetBrainsMonoNL-ExtraBoldItalic.ttf', name='JetBrains Mono NL', style='italic', variant='normal', weight=800, stretch='normal', size='scalable')) = 11.43
+2024-09-04 23:18:39,111 - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/TTF/RobotoCondensed-Bold.ttf', name='Roboto Condensed', style='normal', variant='normal', weight=700, stretch='condensed', size='scalable')) = 10.535
+2024-09-04 23:18:39,111 - DEBUG - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+2024-09-04 23:18:39,155 - INFO - Pick                 Event Station  ...  Prob_Nat_std_cat Cat Hora
+3015  20221103T075758    PRPB  ...         [0.4-0.6[        7
+
+[1 rows x 57 columns]
+2024-09-04 23:18:39,681 - INFO - Stream carregada e Traço calculado BR_PRPB_20221103T075758
+2024-09-04 23:18:39,860 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-04 23:18:39,860 - DEBUG - STREAM b'tEXt' 41 57
+2024-09-04 23:18:39,860 - DEBUG - STREAM b'pHYs' 110 9
+2024-09-04 23:18:39,860 - DEBUG - STREAM b'IDAT' 131 65536
+2024-09-04 23:18:39,877 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20221103T075758/BR_PRPB_20221103T075758.npy
+2024-09-04 23:18:40,105 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20221103T075758/BR_PRPB_20221103T075758.npy
+2024-09-04 23:18:40,105 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:18:45,757 - INFO - Pick                 Event Station  ...  Prob_Nat_std_cat Cat Hora
+3015  20221103T075758    PRPB  ...         [0.4-0.6[        7
+
+[1 rows x 57 columns]
+2024-09-04 23:18:45,768 - INFO - Stream carregada e Traço calculado BR_PRPB_20221103T075758
+2024-09-04 23:18:45,935 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-04 23:18:45,935 - DEBUG - STREAM b'tEXt' 41 57
+2024-09-04 23:18:45,936 - DEBUG - STREAM b'pHYs' 110 9
+2024-09-04 23:18:45,936 - DEBUG - STREAM b'IDAT' 131 65536
+2024-09-04 23:18:45,943 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20221103T075758/BR_PRPB_20221103T075758.npy
+2024-09-04 23:18:45,984 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20221103T075758/BR_PRPB_20221103T075758.npy
+2024-09-04 23:18:57,575 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:57,580 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-04 23:18:57,581 - INFO - Seletores atualizados: .
+2024-09-04 23:18:57,582 - INFO - Evento  selecionado
+2024-09-04 23:18:57,610 - INFO - Evento  selecionado
+2024-09-04 23:18:57,640 - INFO - Evento  selecionado
+2024-09-04 23:18:57,673 - INFO - Evento  selecionado
+2024-09-04 23:18:57,702 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:57,703 - INFO - 2 picks por 2 redes adquiridos.
+2024-09-04 23:18:57,711 - INFO - Seletores atualizados: 20221103T075758.
+2024-09-04 23:18:57,711 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:18:57,739 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:18:57,768 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:18:57,796 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:18:57,826 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:57,829 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-04 23:18:57,831 - INFO - Seletores atualizados: .
+2024-09-04 23:18:57,831 - INFO - Evento  selecionado
+2024-09-04 23:18:57,860 - INFO - Evento  selecionado
+2024-09-04 23:18:57,894 - INFO - Evento  selecionado
+2024-09-04 23:18:57,921 - INFO - Evento  selecionado
+2024-09-04 23:18:57,952 - INFO - Evento  selecionado
+2024-09-04 23:18:57,983 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:57,984 - INFO - 2 picks por 1 redes adquiridos.
+2024-09-04 23:18:57,991 - INFO - Seletores atualizados: 20190913T224641.
+2024-09-04 23:18:57,991 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:18:58,020 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:18:58,047 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:18:58,076 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:18:58,104 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:18:59,053 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:59,057 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-04 23:18:59,059 - INFO - Seletores atualizados: .
+2024-09-04 23:18:59,059 - INFO - Evento  selecionado
+2024-09-04 23:18:59,088 - INFO - Evento  selecionado
+2024-09-04 23:18:59,120 - INFO - Evento  selecionado
+2024-09-04 23:18:59,148 - INFO - Evento  selecionado
+2024-09-04 23:18:59,181 - INFO - Evento  selecionado
+2024-09-04 23:18:59,214 - INFO - Evento  selecionado
+2024-09-04 23:18:59,243 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:18:59,244 - INFO - 2 picks por 2 redes adquiridos.
+2024-09-04 23:18:59,252 - INFO - Seletores atualizados: 20221103T075758.
+2024-09-04 23:18:59,252 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:18:59,285 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:18:59,315 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:18:59,345 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:18:59,377 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:18:59,405 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:01,342 - INFO - Pick                 Event Station  ...  Prob_Nat_std_cat Cat Hora
+3015  20221103T075758    PRPB  ...         [0.4-0.6[        7
+
+[1 rows x 57 columns]
+2024-09-04 23:19:01,349 - INFO - Stream carregada e Traço calculado BR_PRPB_20221103T075758
+2024-09-04 23:19:01,641 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-04 23:19:01,641 - DEBUG - STREAM b'tEXt' 41 57
+2024-09-04 23:19:01,641 - DEBUG - STREAM b'pHYs' 110 9
+2024-09-04 23:19:01,641 - DEBUG - STREAM b'IDAT' 131 65536
+2024-09-04 23:19:01,649 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20221103T075758/BR_PRPB_20221103T075758.npy
+2024-09-04 23:19:01,691 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20221103T075758/BR_PRPB_20221103T075758.npy
+2024-09-04 23:19:10,460 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:19:10,465 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-04 23:19:10,467 - INFO - Seletores atualizados: .
+2024-09-04 23:19:10,467 - INFO - Evento  selecionado
+2024-09-04 23:19:10,496 - INFO - Evento  selecionado
+2024-09-04 23:19:10,524 - INFO - Evento  selecionado
+2024-09-04 23:19:10,550 - INFO - Evento  selecionado
+2024-09-04 23:19:10,578 - INFO - Evento  selecionado
+2024-09-04 23:19:10,607 - INFO - Evento  selecionado
+2024-09-04 23:19:10,639 - INFO - Evento  selecionado
+2024-09-04 23:19:10,677 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:19:10,679 - INFO - 2 picks por 1 redes adquiridos.
+2024-09-04 23:19:10,689 - INFO - Seletores atualizados: 20190913T224641.
+2024-09-04 23:19:10,689 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:19:10,725 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:19:10,753 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:19:10,787 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:19:10,814 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:19:10,844 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:19:10,872 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:19:11,789 - ERROR - Erro ao iniciar o Espectrograma: [Errno 2] Arquivo ou diretório inexistente: '/home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20190913T224641/BR_ROSB_20190913T224641.npy'
+2024-09-04 23:19:16,615 - ERROR - Erro ao iniciar o Espectrograma: [Errno 2] Arquivo ou diretório inexistente: '/home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20190913T224641/BR_ROSB_20190913T224641.npy'
+2024-09-04 23:19:19,589 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:19:19,593 - INFO - 5 picks por 2 redes adquiridos.
+2024-09-04 23:19:19,600 - INFO - Seletores atualizados: 20210330T222940.
+2024-09-04 23:19:19,600 - INFO - Evento 20210330T222940 selecionado
+2024-09-04 23:19:19,629 - INFO - Evento 20210330T222940 selecionado
+2024-09-04 23:19:19,659 - INFO - Evento 20210330T222940 selecionado
+2024-09-04 23:19:19,687 - INFO - Evento 20210330T222940 selecionado
+2024-09-04 23:19:19,715 - INFO - Evento 20210330T222940 selecionado
+2024-09-04 23:19:19,742 - INFO - Evento 20210330T222940 selecionado
+2024-09-04 23:19:19,771 - INFO - Evento 20210330T222940 selecionado
+2024-09-04 23:19:19,799 - INFO - Evento 20210330T222940 selecionado
+2024-09-04 23:19:21,731 - INFO - Pick                 Event Station  ...  Prob_Nat_std_cat Cat Hora
+2328  20210330T222940    BOAV  ...         [0.4-0.6[       22
+
+[1 rows x 57 columns]
+2024-09-04 23:19:21,739 - INFO - Stream carregada e Traço calculado BR_BOAV_20210330T222940
+2024-09-04 23:19:21,904 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-04 23:19:21,904 - DEBUG - STREAM b'tEXt' 41 57
+2024-09-04 23:19:21,905 - DEBUG - STREAM b'pHYs' 110 9
+2024-09-04 23:19:21,905 - DEBUG - STREAM b'IDAT' 131 65536
+2024-09-04 23:19:21,912 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20210330T222940/BR_BOAV_20210330T222940.npy
+2024-09-04 23:19:21,957 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20210330T222940/BR_BOAV_20210330T222940.npy
+2024-09-04 23:19:28,157 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:19:28,162 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-04 23:19:28,163 - INFO - Seletores atualizados: .
+2024-09-04 23:19:28,164 - INFO - Evento  selecionado
+2024-09-04 23:19:28,201 - INFO - Evento  selecionado
+2024-09-04 23:19:28,234 - INFO - Evento  selecionado
+2024-09-04 23:19:28,267 - INFO - Evento  selecionado
+2024-09-04 23:19:28,297 - INFO - Evento  selecionado
+2024-09-04 23:19:28,326 - INFO - Evento  selecionado
+2024-09-04 23:19:28,356 - INFO - Evento  selecionado
+2024-09-04 23:19:28,385 - INFO - Evento  selecionado
+2024-09-04 23:19:28,414 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:19:28,415 - INFO - 2 picks por 2 redes adquiridos.
+2024-09-04 23:19:28,423 - INFO - Seletores atualizados: 20221103T075758.
+2024-09-04 23:19:28,423 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:28,456 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:28,485 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:28,513 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:28,542 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:28,570 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:28,599 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:28,629 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:28,932 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:19:28,936 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-04 23:19:28,937 - INFO - Seletores atualizados: .
+2024-09-04 23:19:28,937 - INFO - Evento  selecionado
+2024-09-04 23:19:28,968 - INFO - Evento  selecionado
+2024-09-04 23:19:28,995 - INFO - Evento  selecionado
+2024-09-04 23:19:29,026 - INFO - Evento  selecionado
+2024-09-04 23:19:29,056 - INFO - Evento  selecionado
+2024-09-04 23:19:29,083 - INFO - Evento  selecionado
+2024-09-04 23:19:29,110 - INFO - Evento  selecionado
+2024-09-04 23:19:29,139 - INFO - Evento  selecionado
+2024-09-04 23:19:29,167 - INFO - Evento  selecionado
+2024-09-04 23:19:29,195 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:19:29,196 - INFO - 2 picks por 1 redes adquiridos.
+2024-09-04 23:19:29,203 - INFO - Seletores atualizados: 20190913T224641.
+2024-09-04 23:19:29,203 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:19:29,230 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:19:29,257 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:19:29,285 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:19:29,312 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:19:29,339 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:19:29,368 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:19:29,397 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:19:29,430 - INFO - Evento 20190913T224641 selecionado
+2024-09-04 23:19:29,924 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:19:29,928 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-04 23:19:29,929 - INFO - Seletores atualizados: .
+2024-09-04 23:19:29,929 - INFO - Evento  selecionado
+2024-09-04 23:19:29,956 - INFO - Evento  selecionado
+2024-09-04 23:19:29,985 - INFO - Evento  selecionado
+2024-09-04 23:19:30,013 - INFO - Evento  selecionado
+2024-09-04 23:19:30,040 - INFO - Evento  selecionado
+2024-09-04 23:19:30,068 - INFO - Evento  selecionado
+2024-09-04 23:19:30,100 - INFO - Evento  selecionado
+2024-09-04 23:19:30,128 - INFO - Evento  selecionado
+2024-09-04 23:19:30,156 - INFO - Evento  selecionado
+2024-09-04 23:19:30,186 - INFO - Evento  selecionado
+2024-09-04 23:19:30,215 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:19:30,216 - INFO - 2 picks por 2 redes adquiridos.
+2024-09-04 23:19:30,223 - INFO - Seletores atualizados: 20221103T075758.
+2024-09-04 23:19:30,223 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:30,251 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:30,279 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:30,307 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:30,334 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:30,363 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:30,392 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:30,420 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:30,448 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:30,475 - INFO - Evento 20221103T075758 selecionado
+2024-09-04 23:19:32,728 - INFO - Pick                 Event Station  ...  Prob_Nat_std_cat Cat Hora
+3015  20221103T075758    PRPB  ...         [0.4-0.6[        7
+
+[1 rows x 57 columns]
+2024-09-04 23:19:32,735 - INFO - Stream carregada e Traço calculado BR_PRPB_20221103T075758
+2024-09-04 23:19:32,909 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-04 23:19:32,909 - DEBUG - STREAM b'tEXt' 41 57
+2024-09-04 23:19:32,910 - DEBUG - STREAM b'pHYs' 110 9
+2024-09-04 23:19:32,910 - DEBUG - STREAM b'IDAT' 131 65536
+2024-09-04 23:19:32,917 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20221103T075758/BR_PRPB_20221103T075758.npy
+2024-09-04 23:19:32,960 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20221103T075758/BR_PRPB_20221103T075758.npy
+2024-09-04 23:19:33,038 - INFO - Pick                 Event Station  ...  Prob_Nat_std_cat Cat Hora
+3015  20221103T075758    PRPB  ...         [0.4-0.6[        7
+
+[1 rows x 57 columns]
+2024-09-04 23:19:33,043 - INFO - Stream carregada e Traço calculado BR_PRPB_20221103T075758
+2024-09-04 23:19:33,225 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-04 23:19:33,225 - DEBUG - STREAM b'tEXt' 41 57
+2024-09-04 23:19:33,225 - DEBUG - STREAM b'pHYs' 110 9
+2024-09-04 23:19:33,225 - DEBUG - STREAM b'IDAT' 131 65536
+2024-09-04 23:19:33,235 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20221103T075758/BR_PRPB_20221103T075758.npy
+2024-09-04 23:19:33,276 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20221103T075758/BR_PRPB_20221103T075758.npy
+2024-09-04 23:20:03,094 - INFO - Ordenando eventos por SNRP_std.
+2024-09-04 23:20:03,389 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:20:03,392 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-04 23:20:03,393 - INFO - Seletores atualizados: .
+2024-09-04 23:20:03,393 - INFO - Evento  selecionado
+2024-09-04 23:20:03,421 - INFO - Evento  selecionado
+2024-09-04 23:20:03,448 - INFO - Evento  selecionado
+2024-09-04 23:20:03,476 - INFO - Evento  selecionado
+2024-09-04 23:20:03,504 - INFO - Evento  selecionado
+2024-09-04 23:20:03,533 - INFO - Evento  selecionado
+2024-09-04 23:20:03,562 - INFO - Evento  selecionado
+2024-09-04 23:20:03,590 - INFO - Evento  selecionado
+2024-09-04 23:20:03,618 - INFO - Evento  selecionado
+2024-09-04 23:20:03,646 - INFO - Evento  selecionado
+2024-09-04 23:20:03,675 - INFO - Evento  selecionado
+2024-09-04 23:20:03,705 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:20:03,706 - INFO - 2 picks por 1 redes adquiridos.
+2024-09-04 23:20:03,713 - INFO - Seletores atualizados: 20210802T035950.
+2024-09-04 23:20:03,713 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:20:03,741 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:20:03,773 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:20:03,800 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:20:03,828 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:20:03,856 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:20:03,886 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:20:03,918 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:20:03,952 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:20:03,981 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:20:04,010 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:20:04,935 - ERROR - Erro ao iniciar o Espectrograma: [Errno 2] Arquivo ou diretório inexistente: '/home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20210802T035950/NB_NBMA_20210802T035950.npy'
+2024-09-04 23:20:11,173 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:20:11,177 - INFO - 2 picks por 1 redes adquiridos.
+2024-09-04 23:20:11,184 - INFO - Seletores atualizados: 20160708T070029.
+2024-09-04 23:20:11,184 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:20:11,213 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:20:11,242 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:20:11,272 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:20:11,304 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:20:11,332 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:20:11,361 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:20:11,389 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:20:11,417 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:20:11,451 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:20:11,479 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:20:11,509 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:20:13,528 - INFO - Pick                Event Station  ...  Prob_Nat_std_cat Cat Hora
+892  20160708T070029    JANB  ...               NaN        7
+
+[1 rows x 57 columns]
+2024-09-04 23:20:13,534 - INFO - Stream carregada e Traço calculado BR_JANB_20160708T070029
+2024-09-04 23:20:13,712 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-04 23:20:13,712 - DEBUG - STREAM b'tEXt' 41 57
+2024-09-04 23:20:13,712 - DEBUG - STREAM b'pHYs' 110 9
+2024-09-04 23:20:13,712 - DEBUG - STREAM b'IDAT' 131 65536
+2024-09-04 23:20:13,719 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20160708T070029/BR_JANB_20160708T070029.npy
+2024-09-04 23:20:13,772 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20160708T070029/BR_JANB_20160708T070029.npy
+2024-09-04 23:21:25,235 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:21:25,239 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-04 23:21:25,241 - INFO - Seletores atualizados: .
+2024-09-04 23:21:25,241 - INFO - Evento  selecionado
+2024-09-04 23:21:25,275 - INFO - Evento  selecionado
+2024-09-04 23:21:25,302 - INFO - Evento  selecionado
+2024-09-04 23:21:25,330 - INFO - Evento  selecionado
+2024-09-04 23:21:25,359 - INFO - Evento  selecionado
+2024-09-04 23:21:25,386 - INFO - Evento  selecionado
+2024-09-04 23:21:25,414 - INFO - Evento  selecionado
+2024-09-04 23:21:25,444 - INFO - Evento  selecionado
+2024-09-04 23:21:25,474 - INFO - Evento  selecionado
+2024-09-04 23:21:25,506 - INFO - Evento  selecionado
+2024-09-04 23:21:25,534 - INFO - Evento  selecionado
+2024-09-04 23:21:25,562 - INFO - Evento  selecionado
+2024-09-04 23:21:25,591 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:21:25,592 - INFO - 2 picks por 2 redes adquiridos.
+2024-09-04 23:21:25,600 - INFO - Seletores atualizados: 20200117T075903.
+2024-09-04 23:21:25,600 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:25,627 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:25,655 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:25,682 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:25,709 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:25,737 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:25,766 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:25,795 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:25,824 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:25,853 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:25,884 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:25,912 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:25,957 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:21:25,960 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-04 23:21:25,962 - INFO - Seletores atualizados: .
+2024-09-04 23:21:25,962 - INFO - Evento  selecionado
+2024-09-04 23:21:25,993 - INFO - Evento  selecionado
+2024-09-04 23:21:26,021 - INFO - Evento  selecionado
+2024-09-04 23:21:26,049 - INFO - Evento  selecionado
+2024-09-04 23:21:26,081 - INFO - Evento  selecionado
+2024-09-04 23:21:26,108 - INFO - Evento  selecionado
+2024-09-04 23:21:26,136 - INFO - Evento  selecionado
+2024-09-04 23:21:26,165 - INFO - Evento  selecionado
+2024-09-04 23:21:26,194 - INFO - Evento  selecionado
+2024-09-04 23:21:26,222 - INFO - Evento  selecionado
+2024-09-04 23:21:26,250 - INFO - Evento  selecionado
+2024-09-04 23:21:26,277 - INFO - Evento  selecionado
+2024-09-04 23:21:26,305 - INFO - Evento  selecionado
+2024-09-04 23:21:26,333 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:21:26,334 - INFO - 2 picks por 1 redes adquiridos.
+2024-09-04 23:21:26,341 - INFO - Seletores atualizados: 20210802T035950.
+2024-09-04 23:21:26,341 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:21:26,370 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:21:26,397 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:21:26,426 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:21:26,454 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:21:26,485 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:21:26,516 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:21:26,544 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:21:26,572 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:21:26,601 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:21:26,629 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:21:26,659 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:21:26,688 - INFO - Evento 20210802T035950 selecionado
+2024-09-04 23:21:27,661 - ERROR - Erro ao iniciar o Espectrograma: [Errno 2] Arquivo ou diretório inexistente: '/home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20210802T035950/NB_NBMA_20210802T035950.npy'
+2024-09-04 23:21:30,756 - ERROR - Erro ao iniciar o Espectrograma: [Errno 2] Arquivo ou diretório inexistente: '/home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20210802T035950/NB_NBMA_20210802T035950.npy'
+2024-09-04 23:21:32,589 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:21:32,593 - INFO - 2 picks por 1 redes adquiridos.
+2024-09-04 23:21:32,602 - INFO - Seletores atualizados: 20160708T070029.
+2024-09-04 23:21:32,602 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:21:32,631 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:21:32,658 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:21:32,686 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:21:32,714 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:21:32,742 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:21:32,774 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:21:32,804 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:21:32,835 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:21:32,867 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:21:32,896 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:21:32,930 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:21:32,962 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:21:32,995 - INFO - Evento 20160708T070029 selecionado
+2024-09-04 23:21:33,838 - INFO - Pick                Event Station  ...  Prob_Nat_std_cat Cat Hora
+892  20160708T070029    JANB  ...               NaN        7
+
+[1 rows x 57 columns]
+2024-09-04 23:21:33,843 - INFO - Stream carregada e Traço calculado BR_JANB_20160708T070029
+2024-09-04 23:21:34,028 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-04 23:21:34,028 - DEBUG - STREAM b'tEXt' 41 57
+2024-09-04 23:21:34,028 - DEBUG - STREAM b'pHYs' 110 9
+2024-09-04 23:21:34,028 - DEBUG - STREAM b'IDAT' 131 65536
+2024-09-04 23:21:34,035 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20160708T070029/BR_JANB_20160708T070029.npy
+2024-09-04 23:21:34,086 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20160708T070029/BR_JANB_20160708T070029.npy
+2024-09-04 23:21:39,551 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:21:39,554 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-04 23:21:39,556 - INFO - Seletores atualizados: .
+2024-09-04 23:21:39,556 - INFO - Evento  selecionado
+2024-09-04 23:21:39,584 - INFO - Evento  selecionado
+2024-09-04 23:21:39,612 - INFO - Evento  selecionado
+2024-09-04 23:21:39,640 - INFO - Evento  selecionado
+2024-09-04 23:21:39,669 - INFO - Evento  selecionado
+2024-09-04 23:21:39,699 - INFO - Evento  selecionado
+2024-09-04 23:21:39,726 - INFO - Evento  selecionado
+2024-09-04 23:21:39,752 - INFO - Evento  selecionado
+2024-09-04 23:21:39,780 - INFO - Evento  selecionado
+2024-09-04 23:21:39,808 - INFO - Evento  selecionado
+2024-09-04 23:21:39,835 - INFO - Evento  selecionado
+2024-09-04 23:21:39,863 - INFO - Evento  selecionado
+2024-09-04 23:21:39,890 - INFO - Evento  selecionado
+2024-09-04 23:21:39,917 - INFO - Evento  selecionado
+2024-09-04 23:21:39,945 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-04 23:21:39,946 - INFO - 2 picks por 2 redes adquiridos.
+2024-09-04 23:21:39,953 - INFO - Seletores atualizados: 20200117T075903.
+2024-09-04 23:21:39,953 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:39,980 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:40,009 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:40,036 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:40,063 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:40,091 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:40,119 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:40,151 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:40,177 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:40,205 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:40,232 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:40,259 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:40,286 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:40,314 - INFO - Evento 20200117T075903 selecionado
+2024-09-04 23:21:41,735 - INFO - Pick                 Event Station  ...  Prob_Nat_std_cat Cat Hora
+1777  20200117T075903    CLDB  ...               NaN        7
+
+[1 rows x 57 columns]
+2024-09-04 23:21:41,743 - INFO - Stream carregada e Traço calculado BL_CLDB_20200117T075903
+2024-09-04 23:21:41,931 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-04 23:21:41,931 - DEBUG - STREAM b'tEXt' 41 57
+2024-09-04 23:21:41,931 - DEBUG - STREAM b'pHYs' 110 9
+2024-09-04 23:21:41,931 - DEBUG - STREAM b'IDAT' 131 65536
+2024-09-04 23:21:41,939 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20200117T075903/BL_CLDB_20200117T075903.npy
+2024-09-04 23:21:41,984 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20200117T075903/BL_CLDB_20200117T075903.npy
+2024-09-04 23:21:42,056 - INFO - Pick                 Event Station  ...  Prob_Nat_std_cat Cat Hora
+1777  20200117T075903    CLDB  ...               NaN        7
+
+[1 rows x 57 columns]
+2024-09-04 23:21:42,064 - INFO - Stream carregada e Traço calculado BL_CLDB_20200117T075903
+2024-09-04 23:21:42,248 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-04 23:21:42,248 - DEBUG - STREAM b'tEXt' 41 57
+2024-09-04 23:21:42,249 - DEBUG - STREAM b'pHYs' 110 9
+2024-09-04 23:21:42,249 - DEBUG - STREAM b'IDAT' 131 65536
+2024-09-04 23:21:42,255 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20200117T075903/BL_CLDB_20200117T075903.npy
+2024-09-04 23:21:42,296 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20200117T075903/BL_CLDB_20200117T075903.npy
+2024-09-04 23:22:22,963 - INFO - Pick                 Event Station  ...  Prob_Nat_std_cat Cat Hora
+1778  20200117T075903    PDRB  ...               NaN        7
+
+[1 rows x 57 columns]
+2024-09-04 23:22:22,969 - INFO - Stream carregada e Traço calculado BR_PDRB_20200117T075903
+2024-09-04 23:22:23,125 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-04 23:22:23,125 - DEBUG - STREAM b'tEXt' 41 57
+2024-09-04 23:22:23,125 - DEBUG - STREAM b'pHYs' 110 9
+2024-09-04 23:22:23,125 - DEBUG - STREAM b'IDAT' 131 35433
+2024-09-04 23:22:23,132 - INFO - Espectrograma iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20200117T075903/BR_PDRB_20200117T075903.npy
+2024-09-04 23:22:23,163 - INFO - Spectrogram iniciado com /home/ggrl/projetos/ClassificadorSismologico/arquivos/espectros/20200117T075903/BR_PDRB_20200117T075903.npy
+2024-09-11 13:59:39,876 - INFO - /home/ggrl/projetos/ClassificadorSismologico/arquivos/resultados/analisado/nc_analisado_final.csv carregado com sucesso.
+2024-09-11 13:59:40,957 - INFO - Camada de eventos "Eventos" criada com sucesso.
+2024-09-11 13:59:41,170 - INFO - Camada de estações "Estacoes" criada com sucesso.
+2024-09-11 13:59:41,186 - INFO - Ordenando eventos por Hora.
+2024-09-11 13:59:41,674 - INFO - Interface iniciada...
+2024-09-11 13:59:41,698 - INFO - /home/ggrl/projetos/ClassificadorSismologico/arquivos/resultados/analisado/nc_analisado_final.csv carregado com sucesso.
+2024-09-11 13:59:42,799 - INFO - Camada de eventos "Eventos" criada com sucesso.
+2024-09-11 13:59:43,015 - INFO - Camada de estações "Estacoes" criada com sucesso.
+2024-09-11 13:59:43,025 - INFO - Ordenando eventos por Hora.
+2024-09-11 13:59:43,497 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-11 13:59:43,498 - INFO - 4 picks por 2 redes adquiridos.
+2024-09-11 13:59:43,505 - INFO - Seletores atualizados: 20240728T233117.
+2024-09-11 13:59:43,505 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-11 13:59:43,508 - INFO - 4 picks por 2 redes adquiridos.
+2024-09-11 13:59:43,515 - INFO - Seletores atualizados: 20240728T233117.
+2024-09-11 13:59:43,516 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-11 13:59:43,518 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-11 13:59:43,520 - INFO - Seletores atualizados: .
+2024-09-11 13:59:43,520 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-11 13:59:43,521 - INFO - 4 picks por 2 redes adquiridos.
+2024-09-11 13:59:43,528 - INFO - Seletores atualizados: 20240728T233117.
+2024-09-11 13:59:43,528 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-11 13:59:43,531 - INFO - 4 picks por 2 redes adquiridos.
+2024-09-11 13:59:43,538 - INFO - Seletores atualizados: 20240728T233117.
+2024-09-11 13:59:49,298 - INFO - Ordenando eventos por CFT_std.
+2024-09-11 13:59:49,594 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-11 13:59:49,598 - INFO - 0 picks por 0 redes adquiridos.
+2024-09-11 13:59:49,599 - INFO - Seletores atualizados: .
+2024-09-11 13:59:49,599 - INFO - 
+ #### Atualizando seletores #### 
+
+2024-09-11 13:59:49,600 - INFO - 2 picks por 2 redes adquiridos.
+2024-09-11 13:59:49,609 - INFO - Seletores atualizados: 20221103T075758.
