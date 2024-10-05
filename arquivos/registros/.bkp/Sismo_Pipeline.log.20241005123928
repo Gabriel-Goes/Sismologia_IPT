@@ -1,0 +1,19 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: 
+  EVENTS: True
+  TREATCATALOG: True
+  PREDICT: True
+  POSPROCESS: True
+  MAPS: True
+  REPORT: True
+  TEST: False
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando ...
+ t0: sáb 05 out 2024 12:39:22 -03

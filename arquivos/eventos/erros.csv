@@ -1,9 +1,20 @@
 EventID,Event,Pick,Network,Station,Location,Channel,Latitude,Longitude,Distance,Origem Latitude,Origem Longitude,Depth/km,Pick Time,Origin Time,Start Time,End Time,Cat,MLv,Certainty,Path,Error
 usp2019tsbi,20191008T061803,P,BX,TQJ9A,,HHZ,,,,-18.01031876,-69.30541992,133099.6246,,2019-10-08T06:18:03.570432Z,,,,,,,channel metadata: No matching channel metadata found.
+usp2020jdiw,20200509T214259,P,VL,GNG6,,HHZ,,,,-18.98421288,-68.70757294,133000.0,,2020-05-09T21:42:59.861863Z,,,,,,,channel metadata: No matching channel metadata found.
+usp2018ekmc,20180304T153611,P,VL,GNG3,,HHZ,,,,-31.3589344,-71.72592163,10000.0,,2018-03-04T15:36:11.639687Z,,,,,,,channel metadata: No matching channel metadata found.
+usp2018ekmc,20180304T153611,P,VL,GNG2,,HHZ,,,,-31.3589344,-71.72592163,10000.0,,2018-03-04T15:36:11.639687Z,,,,,,,channel metadata: No matching channel metadata found.
+usp2018ekmc,20180304T153611,P,VL,GNG1,,HHZ,,,,-31.3589344,-71.72592163,10000.0,,2018-03-04T15:36:11.639687Z,,,,,,,channel metadata: No matching channel metadata found.
 usp2018ekmc,20180304T153611,P,BX,TQJ4A,,HHZ,,,,-31.3589344,-71.72592163,10000.0,,2018-03-04T15:36:11.639687Z,,,,,,,channel metadata: No matching channel metadata found.
 usp2017iybj,20170508T001445,P,BX,TQJ4A,,HHZ,,,,-21.37841988,-69.11077881,135000.0,,2017-05-08T00:14:45.137906Z,,,,,,,channel metadata: No matching channel metadata found.
+usp2017qmlj,20170823T115718,P,VL,GNG2,,HHZ,,,,-15.15612316,-74.06238556,10000.0,,2017-08-23T11:57:18.642026Z,,,,,,,channel metadata: No matching channel metadata found.
+usp2017qmlj,20170823T115718,P,VL,GNG1,,HHZ,,,,-15.15612316,-74.06238556,10000.0,,2017-08-23T11:57:18.642026Z,,,,,,,channel metadata: No matching channel metadata found.
 usp2017qmlj,20170823T115718,P,BX,TQJ4A,,HHZ,,,,-15.15612316,-74.06238556,10000.0,,2017-08-23T11:57:18.642026Z,,,,,,,channel metadata: No matching channel metadata found.
+usp2017pskt,20170812T125412,P,VL,GNG3,,HHZ,,,,-30.38576508,-72.17598724,10000.0,,2017-08-12T12:54:12.681219Z,,,,,,,channel metadata: No matching channel metadata found.
+usp2017pskt,20170812T125412,P,VL,GNG2,,HHZ,,,,-30.38576508,-72.17598724,10000.0,,2017-08-12T12:54:12.681219Z,,,,,,,channel metadata: No matching channel metadata found.
+usp2017pskt,20170812T125412,P,VL,GNG1,,HHZ,,,,-30.38576508,-72.17598724,10000.0,,2017-08-12T12:54:12.681219Z,,,,,,,channel metadata: No matching channel metadata found.
 usp2017pskt,20170812T125412,P,BX,TQJ4A,,HHZ,,,,-30.38576508,-72.17598724,10000.0,,2017-08-12T12:54:12.681219Z,,,,,,,channel metadata: No matching channel metadata found.
+usp2021gnfj,20210403T144101,P,VL,SAL2,,HHZ,,,,2.700666667,-59.523,0.0,,2021-04-03T14:41:01.080000Z,,,,,,,channel metadata: No matching channel metadata found.
+usp2021gnfj,20210403T144101,P,VL,SAL1,,HHZ,,,,2.700666667,-59.523,0.0,,2021-04-03T14:41:01.080000Z,,,,,,,channel metadata: No matching channel metadata found.
 usp2017mtzp,20170701T165646,P,BX,TQJ4A,,HHZ,,,,-10.7844944,-74.49279022,50000.0,,2017-07-01T16:56:46.201983Z,,,,,,,channel metadata: No matching channel metadata found.
 usp2017rzrm,20170913T232137,P,BX,TQJ4A,,HHZ,,,,-17.92637825,-69.03246307,118581.5964,,2017-09-13T23:21:37.516213Z,,,,,,,channel metadata: No matching channel metadata found.
 usp2019txhd,20191011T025542,P,BX,TQJ9A,,HHZ,,,,-29.37016678,-71.89366913,33563.47275,,2019-10-11T02:55:42.285994Z,,,,,,,channel metadata: No matching channel metadata found.
@@ -45,133 +56,3 @@ Detailed response of server:
 "
 usp2018jcwz,20180510T154245,P,BX,TQJ6A,10,HHZ,,,,-27.10759735,-67.1146698,157997.1313,,2018-05-10T15:42:45.437361Z,,,,,,,channel metadata: No matching channel metadata found.
 usp2018jcwz,20180510T154245,P,BX,TQJ4A,,HHZ,,,,-27.10759735,-67.1146698,157997.1313,,2018-05-10T15:42:45.437361Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2017prlb,20170811T235651,P,BX,TQJ4A,,HHZ,,,,-28.55060005,-68.82732391,47896.99173,,2017-08-11T23:56:51.001505Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2018boqa,20180123T053135,P,BX,TQJ4A,,HHZ,,,,8.104054451,-74.95036316,86859.19189,,2018-01-23T05:31:35.336331Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2020raza,20200830T104430,P,NB,NBLA,,HHZ,-10.99255,-37.788972,293.6139354435085,-13.05133333,-39.49083333,1000.0,2020-08-30T10:45:13.545356Z,2020-08-30T10:44:30.149999Z,2020-08-30T10:45:02.545356Z,2020-08-30T10:46:02.545356Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2020raza,20200830T104430,P,ON,GDU01,,HHZ,-13.72,-39.575278,74.54044484624593,-13.05133333,-39.49083333,1000.0,2020-08-30T10:44:42.520065Z,2020-08-30T10:44:30.149999Z,2020-08-30T10:44:31.520065Z,2020-08-30T10:45:31.520065Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2017lmhr,20170613T062402,P,BX,TQJ4A,,HHZ,,,,-21.76143456,-68.47009277,123000.0,,2017-06-13T06:24:02.241322Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2018jdqa,20180511T011945,P,BX,TQJ4A,,HHZ,,,,-24.06432343,-66.86227417,187212.8143,,2018-05-11T01:19:45.725361Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2019wgke,20191113T134405,P,BX,TQJ9A,,HHZ,,,,7.311241627,-35.50925446,0.0,,2019-11-13T13:44:05.030522Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2017lqfq,20170615T095433,P,BX,TQJ4A,,HHZ,,,,-21.38398361,-66.79016113,223550.0793,,2017-06-15T09:54:33.416396Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2018cxfx,20180211T041111,P,BX,TQJ4A,,HHZ,,,,-16.48808479,-73.90698242,10000.0,,2018-02-11T04:11:11.703860Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2019xvje,20191205T234836,P,BX,TQJ9A,,HHZ,,,,-18.994,-44.72966667,0.0,,2019-12-05T23:48:36.679999Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2019edof,20190228T204322,P,BX,TQJ4A,,HHZ,,,,-17.42956543,-69.45107269,151000.0,,2019-02-28T20:43:22.502425Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2017sjyy,20170919T142756,P,BX,TQJ4A,,HHZ,,,,-32.11763382,-72.55280304,10000.0,,2017-09-19T14:27:56.669921Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2017jkmz,20170514T194425,P,BX,TQJ4A,,HHZ,,,,-20.70943451,-68.41304016,110172.3633,,2017-05-14T19:44:25.540616Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2019tciy,20190929T155755,P,BX,TQJ9A,,HHZ,,,,-35.36267853,-72.69450378,10000.0,,2019-09-29T15:57:55.269688Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2020ojvc,20200723T142312,P,BX,RSZN,,HHZ,-23.4808,-46.6295,201.92945674807874,-24.68453598,-48.12096786,0.0,2020-07-23T14:23:44.268020Z,2020-07-23T14:23:12.016369Z,2020-07-23T14:23:33.268020Z,2020-07-23T14:24:33.268020Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2018mnxv,20180628T091416,P,BX,TQJ6A,10,HHZ,,,,-21.3193512,-66.72132874,224155.1514,,2018-06-28T09:14:16.448839Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2018mnxv,20180628T091416,P,BX,TQJ4A,,HHZ,,,,-21.3193512,-66.72132874,224155.1514,,2018-06-28T09:14:16.448839Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2013vjnc,20131101T010514,P,NB,NBPB,,HHZ,-5.543242,-39.583619,383.7286584475449,-5.440600872,-36.12224579,2000.0,2013-11-01T01:06:08.762223Z,2013-11-01T01:05:14.259611Z,2013-11-01T01:05:57.762223Z,2013-11-01T01:06:57.762223Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2013vjnc,20131101T010514,P,NB,NBRF,,HHZ,-8.679466,-35.127172,374.67736862196165,-5.440600872,-36.12224579,2000.0,2013-11-01T01:06:07.569978Z,2013-11-01T01:05:14.259611Z,2013-11-01T01:05:56.569978Z,2013-11-01T01:06:56.569978Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2013vjnc,20131101T010514,P,NB,NBMA,,HHZ,-7.365352,-38.764058,361.5470421017158,-5.440600872,-36.12224579,2000.0,2013-11-01T01:06:05.781609Z,2013-11-01T01:05:14.259611Z,2013-11-01T01:05:54.781609Z,2013-11-01T01:06:54.781609Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2013vjnc,20131101T010514,P,NB,NBCL,,HHZ,-4.224377,-38.291041,275.6141674860024,-5.440600872,-36.12224579,2000.0,2013-11-01T01:05:55.498490Z,2013-11-01T01:05:14.259611Z,2013-11-01T01:05:44.498490Z,2013-11-01T01:06:44.498490Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2013vjnc,20131101T010514,P,NB,NBLI,,HHZ,-7.364556,-36.949743,231.6236143062008,-5.440600872,-36.12224579,2000.0,2013-11-01T01:05:49.507455Z,2013-11-01T01:05:14.259611Z,2013-11-01T01:05:38.507455Z,2013-11-01T01:06:38.507455Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2013vjnc,20131101T010514,P,NB,NBPV,,HHZ,-6.417527,-35.290516,141.96078582088276,-5.440600872,-36.12224579,2000.0,2013-11-01T01:05:38.136414Z,2013-11-01T01:05:14.259611Z,2013-11-01T01:05:27.136414Z,2013-11-01T01:06:27.136414Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2017vmfs,20171102T124624,P,BX,TQJ4A,,HHZ,,,,-19.53140259,-69.16194916,121000.0,,2017-11-02T12:46:24.367427Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2017myua,20170704T074825,P,BX,TQJ4A,,HHZ,,,,-24.0483036,-66.74790955,210000.0,,2017-07-04T07:48:25.437773Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2021uafp,20211012T173216,P,NB,NBCL,,HHZ,-4.224377,-38.291041,312.99165236402195,-5.426810265,-35.73668289,0.0,2021-10-12T17:33:01.790810Z,2021-10-12T17:32:16.490501Z,2021-10-12T17:32:50.790810Z,2021-10-12T17:33:50.790810Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2021uafp,20211012T173216,P,NB,NBLV,,HHZ,-7.357693,-36.921745,250.56590808456593,-5.426810265,-35.73668289,0.0,2021-10-12T17:32:54.865707Z,2021-10-12T17:32:16.490501Z,2021-10-12T17:32:43.865707Z,2021-10-12T17:33:43.865707Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2021uafp,20211012T173216,P,NB,NBPV,,HHZ,-6.417527,-35.290516,120.18301851581079,-5.426810265,-35.73668289,0.0,2021-10-12T17:32:36.825152Z,2021-10-12T17:32:16.490501Z,2021-10-12T17:32:25.825152Z,2021-10-12T17:33:25.825152Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2019gzwt,20190410T130809,P,BX,TQJ7B,10,HHZ,,,,-16.01352882,-69.54508209,229948.0896,,2019-04-10T13:08:09.969481Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2017qwja,20170828T220828,P,BX,TQJ4A,,HHZ,,,,-32.98718262,-72.23605347,18000.0,,2017-08-28T22:08:28.744650Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2013vnza,20131103T113956,P,NB,NBPB,,HHZ,-5.543242,-39.583619,381.8502412740211,-5.4824543,-36.13809586,2000.0,2013-11-03T11:40:49.085056Z,2013-11-03T11:39:56.297825Z,2013-11-03T11:40:38.085056Z,2013-11-03T11:41:38.085056Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2013vnza,20131103T113956,P,NB,NBRF,,HHZ,-8.679466,-35.127172,370.77736485485315,-5.4824543,-36.13809586,2000.0,2013-11-03T11:40:48.934528Z,2013-11-03T11:39:56.297825Z,2013-11-03T11:40:37.934528Z,2013-11-03T11:41:37.934528Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2020zafl,20201221T210842,P,ON,CAR01,,HHZ,-17.06417,-41.35397,346.0909067657955,-15.99483333,-38.30716667,0.0,2020-12-21T21:09:33.285413Z,2020-12-21T21:08:42.200000Z,2020-12-21T21:09:22.285413Z,2020-12-21T21:10:22.285413Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2020zafl,20201221T210842,P,ON,ANA01,,HHZ,-14.531001,-40.74522,307.9242810682751,-15.99483333,-38.30716667,0.0,2020-12-21T21:09:28.352240Z,2020-12-21T21:08:42.200000Z,2020-12-21T21:09:17.352240Z,2020-12-21T21:10:17.352240Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2020zafl,20201221T210842,P,ON,GDU01,,HHZ,-13.72,-39.575278,286.3177210753612,-15.99483333,-38.30716667,0.0,2020-12-21T21:09:23.983242Z,2020-12-21T21:08:42.200000Z,2020-12-21T21:09:12.983242Z,2020-12-21T21:10:12.983242Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2019sepq,20190916T160447,P,BX,TQJ9A,,HHZ,,,,-22.25224113,-70.57948303,267978.0884,,2019-09-16T16:04:47.526847Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2017uyrz,20171026T030420,P,BX,TQJ4A,,HHZ,,,,-29.4421463,-68.23091888,43686.54633,,2017-10-26T03:04:20.922009Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2018hkup,20180416T123125,P,BX,TQJ4A,,HHZ,,,,-30.17025948,-72.35073853,10000.0,,2018-04-16T12:31:25.406376Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2019dttx,20190223T121439,P,BX,TQJ4A,,HHZ,,,,-23.09520912,-66.61672211,223000.0,,2019-02-23T12:14:39.988566Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2017uail,20171012T185907,P,BX,TQJ4A,,HHZ,,,,-31.04046631,-65.7765274,157000.0,,2017-10-12T18:59:07.542006Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2019lynq,20190619T230300,P,BX,TQJ9A,,HHZ,,,,-3.98643136,-75.86603546,117302.1088,,2019-06-19T23:03:00.875709Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2017xlwe,20171130T190129,P,BX,TQJ4A,,HHZ,,,,-16.83572578,-69.37316895,173000.0,,2017-11-30T19:01:29.226855Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2017hwvm,20170423T023605,P,BX,TQJ4A,,HHZ,,,,-33.01934433,-71.98922729,10000.0,,2017-04-23T02:36:05.050122Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2017oxny,20170801T024023,P,BX,TQJ4A,,HHZ,,,,-18.34016228,-69.4208374,100838.6841,,2017-08-01T02:40:23.451270Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2018gwoa,20180408T171742,P,BX,TQJ4A,,HHZ,,,,-22.88042068,-67.73318481,98371.30737,,2018-04-08T17:17:42.250885Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2018npmr,20180713T112450,P,NB,NBLV,,HHZ,-7.357693,-36.921745,244.53753540632508,-5.49330759,-35.73310852,0.0,2018-07-13T11:25:28.910307Z,2018-07-13T11:24:50.865847Z,2018-07-13T11:25:17.910307Z,2018-07-13T11:26:17.910307Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2018npmr,20180713T112450,P,NB,NBPA,,HHZ,-5.75028,-37.112047,155.38969131044735,-5.49330759,-35.73310852,0.0,2018-07-13T11:25:17.281863Z,2018-07-13T11:24:50.865847Z,2018-07-13T11:25:06.281863Z,2018-07-13T11:26:06.281863Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2018npmr,20180713T112450,P,NB,NBPV,,HHZ,-6.417527,-35.290516,113.34680442061995,-5.49330759,-35.73310852,0.0,2018-07-13T11:25:10.227126Z,2018-07-13T11:24:50.865847Z,2018-07-13T11:24:59.227126Z,2018-07-13T11:25:59.227126Z,,,,,"Download Error: No data available for request.
-HTTP Status code: 204
-Detailed response of server:
-
-"
-usp2018iecj,20180427T020106,P,BX,TQJ4A,,HHZ,,,,-24.23426056,-66.96665192,188000.0,,2018-04-27T02:01:06.347568Z,,,,,,,channel metadata: No matching channel metadata found.
-usp2017jjkx,20170514T053319,P,BX,TQJ4A,,HHZ,,,,-18.27926826,-71.17181396,10000.0,,2017-05-14T05:33:19.551729Z,,,,,,,channel metadata: No matching channel metadata found.

@@ -1,0 +1,22 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: 
+  EVENTS: True
+  TREATCATALOG: True
+  PREDICT: True
+  POSPROCESS: True
+  MAPS: True
+  REPORT: True
+  TEST: False
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando ...
+ t0: qui 19 set 2024 19:39:54 -03
+usage: pre_processa.py [-h] [--eventos EVENTOS] [--csv CSV] [--ascending]
+                       [--map MAP] [--test TEST]
+pre_processa.py: error: argument --csv/-c: expected one argument

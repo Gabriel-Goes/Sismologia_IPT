@@ -53,14 +53,12 @@ def iterar_eventos(
     event_count = 0
     print(' --> Adquirindo Inventário de Estações')
     try:
-        # IAG-USP
         inventario = data_client.get_stations(level='channel')
     except Exception as e:
         print(f'Erro ao adquirir inventário de estações: {e}')
         sys.exit(1)
     print(' Inventario adquirido com sucesso')
     print(f'{inventario.get_contents()["networks"][:5]} ... ')
-    # print(inventario_bkp.get_contents()['networks'][:5])
 
     for evento in tqdm(eventos):
         event_id = evento.resource_id.id.split("/")[-1]
@@ -400,10 +398,8 @@ def main(
         print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
         try:
             DATA_CLIENT_BKP = Client('USP')
-            # sys.exit(1)
         except Exception as e:
             print(f'\nErro ao conectar com o servidor USP: {e}')
-            # sys.exit(1)
             DATA_CLIENT_BKP = DATA_CLIENT
 
     catalogo, missin_ids = fluxo_eventos(
@@ -425,7 +421,7 @@ if __name__ == "__main__":
     if sys.argv[2] == 'True':
         print(' --> Modo de teste ativado')
         random.seed(42)
-        EventIDs = random.sample(EventIDs, 500)
+        EventIDs = random.sample(EventIDs, 100)
         print(f' - Número de EventIDs: {len(EventIDs)}')
 
     catalogo, missin_ids = main(EventIDs)

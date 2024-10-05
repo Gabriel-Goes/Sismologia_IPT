@@ -111,7 +111,7 @@ pushd $BASE_DIR
 # DEFINE O DIRETÓRIO DE LOGS
 LOG_DIR="arquivos/registros"
 LOG_FILE="$LOG_DIR/Sismo_Pipeline.log"
-mkdir -p arquivos/$LOG_DIR
+mkdir -p $LOG_DIR
 
 if [ -f $LOG_FILE ]; then
     mv $LOG_FILE $LOG_DIR/.bkp/Sismo_Pipeline.log.$(date +%Y%m%d%H%M%S)
