@@ -21,7 +21,7 @@ import random
 import numpy as np
 from tqdm import tqdm
 from typing import List, Dict
-import logging  # Utilizar o Logging
+import logging
 
 # ClassificadorSismologico
 from nucleo.utils import MSEED_DIR
@@ -97,7 +97,6 @@ def iterar_eventos(
                 continue
 
             pick_count += 1
-            print(f'--> Pick {pick_count}')
             net = pick.waveform_id.network_code
             sta = pick.waveform_id.station_code
             chn_ = pick.waveform_id.channel_code
@@ -105,10 +104,16 @@ def iterar_eventos(
             chn = chn_[:-1] + 'Z'
             if loc is None:
                 loc = ''
-            seed_id = f'{net}.{sta}.{loc}.{chn}'
+            if sta in ['TQJ4A', 'TQJ6A', 'TQJ9A', 'TQJ7B']:
+                chn = 'EHZ'
+            if sta == 'SOEA':
+                net = 'BO'
             try:
+                seed_id = f'{net}.{sta}.{loc}.{chn}'
+                print(f' Seed ID: {seed_id}')
                 cha_meta = inventario.get_channel_metadata(seed_id)
             except Exception as e:
+                print(f'--> Pick {pick_count}')
                 print(f' - Erro ao adquirir metadata de canais: {e}')
                 error_to_save.append({
                     'EventID': event_id,
@@ -184,7 +189,7 @@ def iterar_eventos(
                         net, sta, loc, 'HH*',
                         start_time, end_time
                     )
-                    # print(f'--> Pick {pick_count}')
+                    print(f'--> Pick {pick_count}')
                     print(f' - Seed EventID: {seed_id} ')
                     print(f' - channel: {chn_}')
                     print(f' - {net}.{sta} Y,X : {sta_lat}, {sta_lon}')
@@ -358,9 +363,7 @@ def iterar_eventos(
         writer.writeheader()
         for data in error_to_save:
             writer.writerow(data)
-
     print(f'Erros salvos com sucesso em {csv_error_path}')
-
     return
 
 
@@ -369,7 +372,6 @@ def fluxo_eventos(
         EventIDs: List,
         DATA_CLIENT: Client,
         DATA_CLIENT_BKP: Client) -> [Catalog, Dict, List]:
-
     print(" --------- INICIANDO FLUXO DE EVENTOS  --------- ")
     print('')
     print(' ------------------------------ ACESSANDO CATÁLOGO ------------------------------ ')
@@ -419,8 +421,6 @@ def main(
     EventIDs: List,
 ):
     try:
-        # DATA_CLIENT = Client('http://seisarc.sismo.iag.usp.br/')
-        # DATA_CLIENT = Client('USP')
         DATA_CLIENT = Client("http://10.110.1.132:18003")
     except Exception as e:
         print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
@@ -429,7 +429,7 @@ def main(
         DATA_CLIENT_BKP = Client('http://rsbr.on.br:8081')
     except Exception as e:
         print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
-        sys.exit(1)
+        DATA_CLIENT_BKP = DATA_CLIENT
 
     catalogo, missin_ids = fluxo_eventos(
         EventIDs,

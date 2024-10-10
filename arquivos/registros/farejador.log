@@ -9147,3 +9147,1545 @@
 2024-08-27 10:36:02,258 - ERROR - QgsSymbol.appendSymbolLayer(): argument 1 has unexpected type 'QgsLineSymbol'
 2024-08-27 10:36:02,259 - INFO - Evento 20140806T002623 adicionado à camada.
 2024-08-27 10:36:02,259 - INFO - Camada Eventos adicionada ao projeto.
+2024-10-09 09:31:34,713 - DEBUG - uiname is QFieldCloudLoginDialog
+2024-10-09 09:31:34,714 - DEBUG - toplevel widget is QDialog
+2024-10-09 09:31:34,714 - DEBUG - setting property geometry
+2024-10-09 09:31:34,714 - DEBUG - setting property windowTitle
+2024-10-09 09:31:34,714 - DEBUG - push QDialog QFieldCloudLoginDialog
+2024-10-09 09:31:34,714 - DEBUG - push QVBoxLayout verticalLayout
+2024-10-09 09:31:34,714 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,714 - DEBUG - setting property scaledContents
+2024-10-09 09:31:34,714 - DEBUG - push QLabel qfieldCloudIcon
+2024-10-09 09:31:34,714 - DEBUG - pop widget QLabel qfieldCloudIcon
+2024-10-09 09:31:34,714 - DEBUG - new topwidget QFieldCloudLoginDialog
+2024-10-09 09:31:34,714 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,714 - DEBUG - setting property text
+2024-10-09 09:31:34,715 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,715 - DEBUG - setting property openExternalLinks
+2024-10-09 09:31:34,715 - DEBUG - push QLabel qfieldCloudIntro
+2024-10-09 09:31:34,715 - DEBUG - pop widget QLabel qfieldCloudIntro
+2024-10-09 09:31:34,715 - DEBUG - new topwidget QFieldCloudLoginDialog
+2024-10-09 09:31:34,715 - DEBUG - push QWidget loginFormGroup
+2024-10-09 09:31:34,715 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,715 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,715 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,715 - DEBUG - push QFormLayout formLayout_3
+2024-10-09 09:31:34,715 - DEBUG - setting property text
+2024-10-09 09:31:34,715 - DEBUG - push QLabel serverUrlLabel
+2024-10-09 09:31:34,715 - DEBUG - pop widget QLabel serverUrlLabel
+2024-10-09 09:31:34,715 - DEBUG - new topwidget self.loginFormGroup
+2024-10-09 09:31:34,715 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,716 - DEBUG - setting property editable
+2024-10-09 09:31:34,716 - DEBUG - push QComboBox serverUrlCmb
+2024-10-09 09:31:34,716 - DEBUG - pop widget QComboBox serverUrlCmb
+2024-10-09 09:31:34,716 - DEBUG - new topwidget self.loginFormGroup
+2024-10-09 09:31:34,716 - DEBUG - setting property text
+2024-10-09 09:31:34,716 - DEBUG - push QLabel usernameLabel
+2024-10-09 09:31:34,716 - DEBUG - pop widget QLabel usernameLabel
+2024-10-09 09:31:34,716 - DEBUG - new topwidget self.loginFormGroup
+2024-10-09 09:31:34,716 - DEBUG - setting property text
+2024-10-09 09:31:34,716 - DEBUG - push QLineEdit usernameLineEdit
+2024-10-09 09:31:34,716 - DEBUG - pop widget QLineEdit usernameLineEdit
+2024-10-09 09:31:34,716 - DEBUG - new topwidget self.loginFormGroup
+2024-10-09 09:31:34,716 - DEBUG - setting property text
+2024-10-09 09:31:34,716 - DEBUG - push QLabel passwordLabel
+2024-10-09 09:31:34,716 - DEBUG - pop widget QLabel passwordLabel
+2024-10-09 09:31:34,716 - DEBUG - new topwidget self.loginFormGroup
+2024-10-09 09:31:34,717 - DEBUG - setting property text
+2024-10-09 09:31:34,717 - DEBUG - push QgsPasswordLineEdit passwordLineEdit
+2024-10-09 09:31:34,717 - DEBUG - pop widget QgsPasswordLineEdit passwordLineEdit
+2024-10-09 09:31:34,717 - DEBUG - new topwidget self.loginFormGroup
+2024-10-09 09:31:34,717 - DEBUG - pop layout QFormLayout formLayout_3
+2024-10-09 09:31:34,717 - DEBUG - pop widget QWidget loginFormGroup
+2024-10-09 09:31:34,717 - DEBUG - new topwidget QFieldCloudLoginDialog
+2024-10-09 09:31:34,717 - DEBUG - setting property visible
+2024-10-09 09:31:34,717 - DEBUG - setting property styleSheet
+2024-10-09 09:31:34,717 - DEBUG - setting property text
+2024-10-09 09:31:34,717 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,717 - DEBUG - setting property openExternalLinks
+2024-10-09 09:31:34,717 - DEBUG - setting property textInteractionFlags
+2024-10-09 09:31:34,717 - DEBUG - push QLabel loginFeedbackLabel
+2024-10-09 09:31:34,717 - DEBUG - pop widget QLabel loginFeedbackLabel
+2024-10-09 09:31:34,717 - DEBUG - new topwidget QFieldCloudLoginDialog
+2024-10-09 09:31:34,718 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,718 - DEBUG - setting property text
+2024-10-09 09:31:34,718 - DEBUG - push QCheckBox rememberMeCheckBox
+2024-10-09 09:31:34,718 - DEBUG - pop widget QCheckBox rememberMeCheckBox
+2024-10-09 09:31:34,718 - DEBUG - new topwidget QFieldCloudLoginDialog
+2024-10-09 09:31:34,718 - DEBUG - setting property text
+2024-10-09 09:31:34,718 - DEBUG - setting property textFormat
+2024-10-09 09:31:34,718 - DEBUG - setting property openExternalLinks
+2024-10-09 09:31:34,718 - DEBUG - setting property textInteractionFlags
+2024-10-09 09:31:34,718 - DEBUG - push QLabel registerLabel
+2024-10-09 09:31:34,718 - DEBUG - pop widget QLabel registerLabel
+2024-10-09 09:31:34,718 - DEBUG - new topwidget QFieldCloudLoginDialog
+2024-10-09 09:31:34,718 - DEBUG - setting property standardButtons
+2024-10-09 09:31:34,719 - DEBUG - push QDialogButtonBox buttonBox
+2024-10-09 09:31:34,719 - DEBUG - pop widget QDialogButtonBox buttonBox
+2024-10-09 09:31:34,719 - DEBUG - new topwidget QFieldCloudLoginDialog
+2024-10-09 09:31:34,719 - DEBUG - pop layout QVBoxLayout verticalLayout
+2024-10-09 09:31:34,719 - DEBUG - pop widget QDialog QFieldCloudLoginDialog
+2024-10-09 09:31:34,719 - DEBUG - new topwidget None
+2024-10-09 09:31:34,725 - DEBUG - uiname is CloudCreateProjectWidgetBase
+2024-10-09 09:31:34,725 - DEBUG - toplevel widget is QWidget
+2024-10-09 09:31:34,725 - DEBUG - setting property geometry
+2024-10-09 09:31:34,725 - DEBUG - setting property windowTitle
+2024-10-09 09:31:34,725 - DEBUG - push QWidget CloudCreateProjectWidgetBase
+2024-10-09 09:31:34,726 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,726 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,726 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,726 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,726 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,726 - DEBUG - push QVBoxLayout verticalLayout
+2024-10-09 09:31:34,726 - DEBUG - setting property currentIndex
+2024-10-09 09:31:34,726 - DEBUG - push QStackedWidget stackedWidget
+2024-10-09 09:31:34,726 - DEBUG - push QWidget selectTypePage
+2024-10-09 09:31:34,726 - DEBUG - push QVBoxLayout verticalLayout_2
+2024-10-09 09:31:34,726 - DEBUG - setting property title
+2024-10-09 09:31:34,726 - DEBUG - push QGroupBox groupBox
+2024-10-09 09:31:34,726 - DEBUG - push QVBoxLayout verticalLayout_5
+2024-10-09 09:31:34,726 - DEBUG - setting property font
+2024-10-09 09:31:34,726 - DEBUG - setting property text
+2024-10-09 09:31:34,726 - DEBUG - setting property checked
+2024-10-09 09:31:34,727 - DEBUG - push QRadioButton cloudifyRadioButton
+2024-10-09 09:31:34,727 - DEBUG - pop widget QRadioButton cloudifyRadioButton
+2024-10-09 09:31:34,727 - DEBUG - new topwidget self.groupBox
+2024-10-09 09:31:34,727 - DEBUG - setting property font
+2024-10-09 09:31:34,727 - DEBUG - setting property text
+2024-10-09 09:31:34,727 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,727 - DEBUG - push QLabel cloudifyInfoLabel
+2024-10-09 09:31:34,727 - DEBUG - pop widget QLabel cloudifyInfoLabel
+2024-10-09 09:31:34,727 - DEBUG - new topwidget self.groupBox
+2024-10-09 09:31:34,727 - DEBUG - setting property font
+2024-10-09 09:31:34,727 - DEBUG - setting property text
+2024-10-09 09:31:34,727 - DEBUG - push QRadioButton createCloudRadioButton
+2024-10-09 09:31:34,727 - DEBUG - pop widget QRadioButton createCloudRadioButton
+2024-10-09 09:31:34,727 - DEBUG - new topwidget self.groupBox
+2024-10-09 09:31:34,727 - DEBUG - setting property font
+2024-10-09 09:31:34,727 - DEBUG - setting property text
+2024-10-09 09:31:34,727 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,728 - DEBUG - push QLabel createCloudInfoLabel
+2024-10-09 09:31:34,728 - DEBUG - pop widget QLabel createCloudInfoLabel
+2024-10-09 09:31:34,728 - DEBUG - new topwidget self.groupBox
+2024-10-09 09:31:34,728 - DEBUG - pop layout QVBoxLayout verticalLayout_5
+2024-10-09 09:31:34,728 - DEBUG - pop widget QGroupBox groupBox
+2024-10-09 09:31:34,728 - DEBUG - new topwidget self.selectTypePage
+2024-10-09 09:31:34,728 - DEBUG - push QHBoxLayout horizontalLayout
+2024-10-09 09:31:34,728 - DEBUG - setting property text
+2024-10-09 09:31:34,728 - DEBUG - push QPushButton cancelButton
+2024-10-09 09:31:34,728 - DEBUG - pop widget QPushButton cancelButton
+2024-10-09 09:31:34,728 - DEBUG - new topwidget self.selectTypePage
+2024-10-09 09:31:34,728 - DEBUG - setting property text
+2024-10-09 09:31:34,728 - DEBUG - push QPushButton nextButton
+2024-10-09 09:31:34,728 - DEBUG - pop widget QPushButton nextButton
+2024-10-09 09:31:34,728 - DEBUG - new topwidget self.selectTypePage
+2024-10-09 09:31:34,728 - DEBUG - pop layout QHBoxLayout horizontalLayout
+2024-10-09 09:31:34,729 - DEBUG - pop layout QVBoxLayout verticalLayout_2
+2024-10-09 09:31:34,729 - DEBUG - pop widget QWidget selectTypePage
+2024-10-09 09:31:34,729 - DEBUG - new topwidget self.stackedWidget
+2024-10-09 09:31:34,729 - DEBUG - push QWidget projectDetailsPage
+2024-10-09 09:31:34,729 - DEBUG - push QVBoxLayout verticalLayout_4
+2024-10-09 09:31:34,729 - DEBUG - setting property title
+2024-10-09 09:31:34,729 - DEBUG - push QGroupBox projectDetailsGroupBox
+2024-10-09 09:31:34,729 - DEBUG - push QGridLayout gridLayout_4
+2024-10-09 09:31:34,729 - DEBUG - push QHBoxLayout projectOwnerHLayout
+2024-10-09 09:31:34,729 - DEBUG - push QComboBox projectOwnerComboBox
+2024-10-09 09:31:34,729 - DEBUG - pop widget QComboBox projectOwnerComboBox
+2024-10-09 09:31:34,729 - DEBUG - new topwidget self.projectDetailsGroupBox
+2024-10-09 09:31:34,729 - DEBUG - setting property text
+2024-10-09 09:31:34,730 - DEBUG - setting property icon
+2024-10-09 09:31:34,730 - DEBUG - push QToolButton projectOwnerRefreshButton
+2024-10-09 09:31:34,730 - DEBUG - pop widget QToolButton projectOwnerRefreshButton
+2024-10-09 09:31:34,730 - DEBUG - new topwidget self.projectDetailsGroupBox
+2024-10-09 09:31:34,730 - DEBUG - pop layout QHBoxLayout projectOwnerHLayout
+2024-10-09 09:31:34,730 - DEBUG - setting property text
+2024-10-09 09:31:34,730 - DEBUG - push QLabel projectNameLabel
+2024-10-09 09:31:34,730 - DEBUG - pop widget QLabel projectNameLabel
+2024-10-09 09:31:34,730 - DEBUG - new topwidget self.projectDetailsGroupBox
+2024-10-09 09:31:34,730 - DEBUG - setting property text
+2024-10-09 09:31:34,730 - DEBUG - push QLabel projectOwnerLabel
+2024-10-09 09:31:34,730 - DEBUG - pop widget QLabel projectOwnerLabel
+2024-10-09 09:31:34,730 - DEBUG - new topwidget self.projectDetailsGroupBox
+2024-10-09 09:31:34,730 - DEBUG - setting property text
+2024-10-09 09:31:34,730 - DEBUG - push QLabel projectDescriptionLabel
+2024-10-09 09:31:34,730 - DEBUG - pop widget QLabel projectDescriptionLabel
+2024-10-09 09:31:34,730 - DEBUG - new topwidget self.projectDetailsGroupBox
+2024-10-09 09:31:34,731 - DEBUG - push QTextEdit projectDescriptionTextEdit
+2024-10-09 09:31:34,731 - DEBUG - pop widget QTextEdit projectDescriptionTextEdit
+2024-10-09 09:31:34,731 - DEBUG - new topwidget self.projectDetailsGroupBox
+2024-10-09 09:31:34,731 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,731 - DEBUG - setting property text
+2024-10-09 09:31:34,731 - DEBUG - push QLineEdit projectNameLineEdit
+2024-10-09 09:31:34,731 - DEBUG - pop widget QLineEdit projectNameLineEdit
+2024-10-09 09:31:34,731 - DEBUG - new topwidget self.projectDetailsGroupBox
+2024-10-09 09:31:34,731 - DEBUG - setting property visible
+2024-10-09 09:31:34,731 - DEBUG - setting property styleSheet
+2024-10-09 09:31:34,731 - DEBUG - setting property text
+2024-10-09 09:31:34,731 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,731 - DEBUG - setting property textInteractionFlags
+2024-10-09 09:31:34,731 - DEBUG - push QLabel projectOwnerFeedbackLabel
+2024-10-09 09:31:34,731 - DEBUG - pop widget QLabel projectOwnerFeedbackLabel
+2024-10-09 09:31:34,731 - DEBUG - new topwidget self.projectDetailsGroupBox
+2024-10-09 09:31:34,732 - DEBUG - pop layout QGridLayout gridLayout_4
+2024-10-09 09:31:34,732 - DEBUG - pop widget QGroupBox projectDetailsGroupBox
+2024-10-09 09:31:34,732 - DEBUG - new topwidget self.projectDetailsPage
+2024-10-09 09:31:34,732 - DEBUG - setting property title
+2024-10-09 09:31:34,732 - DEBUG - push QGroupBox projectsOfflineSettingsGroupBox
+2024-10-09 09:31:34,732 - DEBUG - push QGridLayout gridLayout_2
+2024-10-09 09:31:34,732 - DEBUG - push QHBoxLayout localDirHBoxLayout_2
+2024-10-09 09:31:34,732 - DEBUG - push QLineEdit localDirLineEdit
+2024-10-09 09:31:34,732 - DEBUG - pop widget QLineEdit localDirLineEdit
+2024-10-09 09:31:34,732 - DEBUG - new topwidget self.projectsOfflineSettingsGroupBox
+2024-10-09 09:31:34,732 - DEBUG - setting property text
+2024-10-09 09:31:34,732 - DEBUG - push QToolButton localDirButton
+2024-10-09 09:31:34,732 - DEBUG - pop widget QToolButton localDirButton
+2024-10-09 09:31:34,732 - DEBUG - new topwidget self.projectsOfflineSettingsGroupBox
+2024-10-09 09:31:34,732 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,732 - DEBUG - setting property text
+2024-10-09 09:31:34,732 - DEBUG - setting property icon
+2024-10-09 09:31:34,733 - DEBUG - push QPushButton localDirOpenButton
+2024-10-09 09:31:34,733 - DEBUG - pop widget QPushButton localDirOpenButton
+2024-10-09 09:31:34,733 - DEBUG - new topwidget self.projectsOfflineSettingsGroupBox
+2024-10-09 09:31:34,733 - DEBUG - pop layout QHBoxLayout localDirHBoxLayout_2
+2024-10-09 09:31:34,733 - DEBUG - setting property text
+2024-10-09 09:31:34,733 - DEBUG - push QLabel localDirLabel
+2024-10-09 09:31:34,733 - DEBUG - pop widget QLabel localDirLabel
+2024-10-09 09:31:34,733 - DEBUG - new topwidget self.projectsOfflineSettingsGroupBox
+2024-10-09 09:31:34,733 - DEBUG - setting property visible
+2024-10-09 09:31:34,733 - DEBUG - setting property styleSheet
+2024-10-09 09:31:34,733 - DEBUG - setting property text
+2024-10-09 09:31:34,733 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,733 - DEBUG - setting property textInteractionFlags
+2024-10-09 09:31:34,733 - DEBUG - push QLabel localDirFeedbackLabel
+2024-10-09 09:31:34,733 - DEBUG - pop widget QLabel localDirFeedbackLabel
+2024-10-09 09:31:34,733 - DEBUG - new topwidget self.projectsOfflineSettingsGroupBox
+2024-10-09 09:31:34,733 - DEBUG - pop layout QGridLayout gridLayout_2
+2024-10-09 09:31:34,733 - DEBUG - pop widget QGroupBox projectsOfflineSettingsGroupBox
+2024-10-09 09:31:34,733 - DEBUG - new topwidget self.projectDetailsPage
+2024-10-09 09:31:34,734 - DEBUG - setting property title
+2024-10-09 09:31:34,734 - DEBUG - push QGroupBox infoGroupBox
+2024-10-09 09:31:34,734 - DEBUG - push QGridLayout gridLayout_8
+2024-10-09 09:31:34,734 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,734 - DEBUG - setting property text
+2024-10-09 09:31:34,734 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,734 - DEBUG - push QLabel infoLocalizedPresentLabel
+2024-10-09 09:31:34,734 - DEBUG - pop widget QLabel infoLocalizedPresentLabel
+2024-10-09 09:31:34,734 - DEBUG - new topwidget self.infoGroupBox
+2024-10-09 09:31:34,734 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,734 - DEBUG - setting property text
+2024-10-09 09:31:34,734 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,734 - DEBUG - push QLabel infoLocalizedLayersLabel
+2024-10-09 09:31:34,734 - DEBUG - pop widget QLabel infoLocalizedLayersLabel
+2024-10-09 09:31:34,734 - DEBUG - new topwidget self.infoGroupBox
+2024-10-09 09:31:34,734 - DEBUG - pop layout QGridLayout gridLayout_8
+2024-10-09 09:31:34,734 - DEBUG - pop widget QGroupBox infoGroupBox
+2024-10-09 09:31:34,735 - DEBUG - new topwidget self.projectDetailsPage
+2024-10-09 09:31:34,735 - DEBUG - push QHBoxLayout buttonsHBoxLayout
+2024-10-09 09:31:34,735 - DEBUG - setting property text
+2024-10-09 09:31:34,735 - DEBUG - push QPushButton backButton
+2024-10-09 09:31:34,735 - DEBUG - pop widget QPushButton backButton
+2024-10-09 09:31:34,735 - DEBUG - new topwidget self.projectDetailsPage
+2024-10-09 09:31:34,735 - DEBUG - setting property text
+2024-10-09 09:31:34,735 - DEBUG - push QPushButton createButton
+2024-10-09 09:31:34,735 - DEBUG - pop widget QPushButton createButton
+2024-10-09 09:31:34,735 - DEBUG - new topwidget self.projectDetailsPage
+2024-10-09 09:31:34,735 - DEBUG - pop layout QHBoxLayout buttonsHBoxLayout
+2024-10-09 09:31:34,735 - DEBUG - pop layout QVBoxLayout verticalLayout_4
+2024-10-09 09:31:34,735 - DEBUG - pop widget QWidget projectDetailsPage
+2024-10-09 09:31:34,736 - DEBUG - new topwidget self.stackedWidget
+2024-10-09 09:31:34,736 - DEBUG - push QWidget progressPage
+2024-10-09 09:31:34,736 - DEBUG - push QVBoxLayout verticalLayout_3
+2024-10-09 09:31:34,736 - DEBUG - setting property title
+2024-10-09 09:31:34,736 - DEBUG - push QGroupBox progressGroupBox
+2024-10-09 09:31:34,736 - DEBUG - push QVBoxLayout verticalLayout_6
+2024-10-09 09:31:34,736 - DEBUG - setting property text
+2024-10-09 09:31:34,736 - DEBUG - push QLabel convertLabel
+2024-10-09 09:31:34,736 - DEBUG - pop widget QLabel convertLabel
+2024-10-09 09:31:34,736 - DEBUG - new topwidget self.progressGroupBox
+2024-10-09 09:31:34,736 - DEBUG - setting property value
+2024-10-09 09:31:34,736 - DEBUG - push QProgressBar convertProgressBar
+2024-10-09 09:31:34,736 - DEBUG - pop widget QProgressBar convertProgressBar
+2024-10-09 09:31:34,736 - DEBUG - new topwidget self.progressGroupBox
+2024-10-09 09:31:34,736 - DEBUG - setting property text
+2024-10-09 09:31:34,737 - DEBUG - push QLabel uploadLabel
+2024-10-09 09:31:34,737 - DEBUG - pop widget QLabel uploadLabel
+2024-10-09 09:31:34,737 - DEBUG - new topwidget self.progressGroupBox
+2024-10-09 09:31:34,737 - DEBUG - setting property value
+2024-10-09 09:31:34,737 - DEBUG - push QProgressBar uploadProgressBar
+2024-10-09 09:31:34,737 - DEBUG - pop widget QProgressBar uploadProgressBar
+2024-10-09 09:31:34,737 - DEBUG - new topwidget self.progressGroupBox
+2024-10-09 09:31:34,737 - DEBUG - pop layout QVBoxLayout verticalLayout_6
+2024-10-09 09:31:34,737 - DEBUG - pop widget QGroupBox progressGroupBox
+2024-10-09 09:31:34,737 - DEBUG - new topwidget self.progressPage
+2024-10-09 09:31:34,737 - DEBUG - setting property text
+2024-10-09 09:31:34,737 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,737 - DEBUG - push QLabel infoLabel
+2024-10-09 09:31:34,737 - DEBUG - pop widget QLabel infoLabel
+2024-10-09 09:31:34,737 - DEBUG - new topwidget self.progressPage
+2024-10-09 09:31:34,737 - DEBUG - pop layout QVBoxLayout verticalLayout_3
+2024-10-09 09:31:34,737 - DEBUG - pop widget QWidget progressPage
+2024-10-09 09:31:34,737 - DEBUG - new topwidget self.stackedWidget
+2024-10-09 09:31:34,737 - DEBUG - pop widget QStackedWidget stackedWidget
+2024-10-09 09:31:34,738 - DEBUG - new topwidget CloudCreateProjectWidgetBase
+2024-10-09 09:31:34,738 - DEBUG - pop layout QVBoxLayout verticalLayout
+2024-10-09 09:31:34,738 - DEBUG - pop widget QWidget CloudCreateProjectWidgetBase
+2024-10-09 09:31:34,738 - DEBUG - new topwidget None
+2024-10-09 09:31:34,761 - DEBUG - uiname is CloudTransferDialog
+2024-10-09 09:31:34,762 - DEBUG - toplevel widget is QDialog
+2024-10-09 09:31:34,762 - DEBUG - setting property geometry
+2024-10-09 09:31:34,762 - DEBUG - setting property windowTitle
+2024-10-09 09:31:34,762 - DEBUG - push QDialog CloudTransferDialog
+2024-10-09 09:31:34,762 - DEBUG - push QVBoxLayout verticalLayout
+2024-10-09 09:31:34,762 - DEBUG - setting property currentIndex
+2024-10-09 09:31:34,762 - DEBUG - push QStackedWidget stackedWidget
+2024-10-09 09:31:34,762 - DEBUG - push QWidget projectLocalDirPage
+2024-10-09 09:31:34,762 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,762 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,762 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,762 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,762 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,762 - DEBUG - push QVBoxLayout verticalLayout_3
+2024-10-09 09:31:34,762 - DEBUG - setting property text
+2024-10-09 09:31:34,762 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,763 - DEBUG - push QLabel projectFilesLabel
+2024-10-09 09:31:34,763 - DEBUG - pop widget QLabel projectFilesLabel
+2024-10-09 09:31:34,763 - DEBUG - new topwidget self.projectLocalDirPage
+2024-10-09 09:31:34,763 - DEBUG - push QGridLayout gridLayout
+2024-10-09 09:31:34,763 - DEBUG - setting property text
+2024-10-09 09:31:34,763 - DEBUG - push QLabel localDirectoryLabel
+2024-10-09 09:31:34,763 - DEBUG - pop widget QLabel localDirectoryLabel
+2024-10-09 09:31:34,763 - DEBUG - new topwidget self.projectLocalDirPage
+2024-10-09 09:31:34,763 - DEBUG - push QLineEdit localDirectoryLineEdit
+2024-10-09 09:31:34,763 - DEBUG - pop widget QLineEdit localDirectoryLineEdit
+2024-10-09 09:31:34,763 - DEBUG - new topwidget self.projectLocalDirPage
+2024-10-09 09:31:34,763 - DEBUG - setting property text
+2024-10-09 09:31:34,763 - DEBUG - push QToolButton localDirectoryButton
+2024-10-09 09:31:34,763 - DEBUG - pop widget QToolButton localDirectoryButton
+2024-10-09 09:31:34,763 - DEBUG - new topwidget self.projectLocalDirPage
+2024-10-09 09:31:34,763 - DEBUG - pop layout QGridLayout gridLayout
+2024-10-09 09:31:34,763 - DEBUG - pop layout QVBoxLayout verticalLayout_3
+2024-10-09 09:31:34,764 - DEBUG - pop widget QWidget projectLocalDirPage
+2024-10-09 09:31:34,764 - DEBUG - new topwidget self.stackedWidget
+2024-10-09 09:31:34,764 - DEBUG - push QWidget projectCompatibilityPage
+2024-10-09 09:31:34,764 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,764 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,764 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,764 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,764 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,764 - DEBUG - push QVBoxLayout verticalLayout_4
+2024-10-09 09:31:34,764 - DEBUG - setting property text
+2024-10-09 09:31:34,764 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,764 - DEBUG - push QLabel feedbackLabel_2
+2024-10-09 09:31:34,764 - DEBUG - pop widget QLabel feedbackLabel_2
+2024-10-09 09:31:34,764 - DEBUG - new topwidget self.projectCompatibilityPage
+2024-10-09 09:31:34,764 - DEBUG - push QVBoxLayout feedbackTableWrapperLayout
+2024-10-09 09:31:34,764 - DEBUG - pop layout QVBoxLayout feedbackTableWrapperLayout
+2024-10-09 09:31:34,764 - DEBUG - pop layout QVBoxLayout verticalLayout_4
+2024-10-09 09:31:34,764 - DEBUG - pop widget QWidget projectCompatibilityPage
+2024-10-09 09:31:34,764 - DEBUG - new topwidget self.stackedWidget
+2024-10-09 09:31:34,765 - DEBUG - push QWidget getProjectFilesPage
+2024-10-09 09:31:34,765 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,765 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,765 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,765 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,765 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,765 - DEBUG - push QVBoxLayout verticalLayout_31
+2024-10-09 09:31:34,765 - DEBUG - setting property text
+2024-10-09 09:31:34,765 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,765 - DEBUG - push QLabel projectFilesLabel1
+2024-10-09 09:31:34,765 - DEBUG - pop widget QLabel projectFilesLabel1
+2024-10-09 09:31:34,765 - DEBUG - new topwidget self.getProjectFilesPage
+2024-10-09 09:31:34,765 - DEBUG - setting property minimum
+2024-10-09 09:31:34,765 - DEBUG - setting property maximum
+2024-10-09 09:31:34,765 - DEBUG - push QProgressBar projectFilesProgressBar
+2024-10-09 09:31:34,765 - DEBUG - pop widget QProgressBar projectFilesProgressBar
+2024-10-09 09:31:34,765 - DEBUG - new topwidget self.getProjectFilesPage
+2024-10-09 09:31:34,765 - DEBUG - pop layout QVBoxLayout verticalLayout_31
+2024-10-09 09:31:34,766 - DEBUG - pop widget QWidget getProjectFilesPage
+2024-10-09 09:31:34,766 - DEBUG - new topwidget self.stackedWidget
+2024-10-09 09:31:34,766 - DEBUG - push QWidget endPage
+2024-10-09 09:31:34,766 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,766 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,766 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,766 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,766 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,766 - DEBUG - push QVBoxLayout verticalLayout_2
+2024-10-09 09:31:34,766 - DEBUG - setting property text
+2024-10-09 09:31:34,766 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,766 - DEBUG - push QLabel feedbackLabel
+2024-10-09 09:31:34,766 - DEBUG - pop widget QLabel feedbackLabel
+2024-10-09 09:31:34,766 - DEBUG - new topwidget self.endPage
+2024-10-09 09:31:34,766 - DEBUG - setting property text
+2024-10-09 09:31:34,766 - DEBUG - setting property checked
+2024-10-09 09:31:34,766 - DEBUG - push QCheckBox openProjectCheck
+2024-10-09 09:31:34,766 - DEBUG - pop widget QCheckBox openProjectCheck
+2024-10-09 09:31:34,766 - DEBUG - new topwidget self.endPage
+2024-10-09 09:31:34,766 - DEBUG - setting property title
+2024-10-09 09:31:34,766 - DEBUG - setting property collapsed
+2024-10-09 09:31:34,767 - DEBUG - push QgsCollapsibleGroupBox detailedLogEndPageGroupBox
+2024-10-09 09:31:34,767 - DEBUG - push QVBoxLayout verticalLayout_6
+2024-10-09 09:31:34,767 - DEBUG - push QListView detailedLogEndPageListView
+2024-10-09 09:31:34,767 - DEBUG - pop widget QListView detailedLogEndPageListView
+2024-10-09 09:31:34,767 - DEBUG - new topwidget self.detailedLogEndPageGroupBox
+2024-10-09 09:31:34,767 - DEBUG - pop layout QVBoxLayout verticalLayout_6
+2024-10-09 09:31:34,767 - DEBUG - pop widget QgsCollapsibleGroupBox detailedLogEndPageGroupBox
+2024-10-09 09:31:34,767 - DEBUG - new topwidget self.endPage
+2024-10-09 09:31:34,767 - DEBUG - pop layout QVBoxLayout verticalLayout_2
+2024-10-09 09:31:34,767 - DEBUG - pop widget QWidget endPage
+2024-10-09 09:31:34,767 - DEBUG - new topwidget self.stackedWidget
+2024-10-09 09:31:34,767 - DEBUG - push QWidget progressPage
+2024-10-09 09:31:34,767 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,767 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,767 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,767 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,767 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,767 - DEBUG - push QVBoxLayout verticalLayout_21
+2024-10-09 09:31:34,768 - DEBUG - setting property text
+2024-10-09 09:31:34,768 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,768 - DEBUG - push QLabel messageLabel
+2024-10-09 09:31:34,768 - DEBUG - pop widget QLabel messageLabel
+2024-10-09 09:31:34,768 - DEBUG - new topwidget self.progressPage
+2024-10-09 09:31:34,768 - DEBUG - push QVBoxLayout verticalLayout_1
+2024-10-09 09:31:34,768 - DEBUG - setting property text
+2024-10-09 09:31:34,768 - DEBUG - push QLabel uploadLabel
+2024-10-09 09:31:34,768 - DEBUG - pop widget QLabel uploadLabel
+2024-10-09 09:31:34,768 - DEBUG - new topwidget self.progressPage
+2024-10-09 09:31:34,768 - DEBUG - setting property value
+2024-10-09 09:31:34,768 - DEBUG - push QProgressBar uploadProgressBar
+2024-10-09 09:31:34,768 - DEBUG - pop widget QProgressBar uploadProgressBar
+2024-10-09 09:31:34,768 - DEBUG - new topwidget self.progressPage
+2024-10-09 09:31:34,768 - DEBUG - setting property enabled
+2024-10-09 09:31:34,768 - DEBUG - setting property text
+2024-10-09 09:31:34,768 - DEBUG - push QLabel uploadProgressFeedbackLabel
+2024-10-09 09:31:34,768 - DEBUG - pop widget QLabel uploadProgressFeedbackLabel
+2024-10-09 09:31:34,768 - DEBUG - new topwidget self.progressPage
+2024-10-09 09:31:34,768 - DEBUG - setting property text
+2024-10-09 09:31:34,769 - DEBUG - push QLabel downloadLabel
+2024-10-09 09:31:34,769 - DEBUG - pop widget QLabel downloadLabel
+2024-10-09 09:31:34,769 - DEBUG - new topwidget self.progressPage
+2024-10-09 09:31:34,769 - DEBUG - setting property value
+2024-10-09 09:31:34,769 - DEBUG - push QProgressBar downloadProgressBar
+2024-10-09 09:31:34,769 - DEBUG - pop widget QProgressBar downloadProgressBar
+2024-10-09 09:31:34,769 - DEBUG - new topwidget self.progressPage
+2024-10-09 09:31:34,769 - DEBUG - setting property enabled
+2024-10-09 09:31:34,769 - DEBUG - setting property text
+2024-10-09 09:31:34,769 - DEBUG - push QLabel downloadProgressFeedbackLabel
+2024-10-09 09:31:34,769 - DEBUG - pop widget QLabel downloadProgressFeedbackLabel
+2024-10-09 09:31:34,769 - DEBUG - new topwidget self.progressPage
+2024-10-09 09:31:34,769 - DEBUG - pop layout QVBoxLayout verticalLayout_1
+2024-10-09 09:31:34,769 - DEBUG - setting property styleSheet
+2024-10-09 09:31:34,769 - DEBUG - setting property textFormat
+2024-10-09 09:31:34,769 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,769 - DEBUG - setting property openExternalLinks
+2024-10-09 09:31:34,770 - DEBUG - setting property textInteractionFlags
+2024-10-09 09:31:34,770 - DEBUG - push QLabel errorLabel
+2024-10-09 09:31:34,770 - DEBUG - pop widget QLabel errorLabel
+2024-10-09 09:31:34,770 - DEBUG - new topwidget self.progressPage
+2024-10-09 09:31:34,770 - DEBUG - setting property title
+2024-10-09 09:31:34,770 - DEBUG - setting property collapsed
+2024-10-09 09:31:34,770 - DEBUG - push QgsCollapsibleGroupBox detailedLogGroupBox
+2024-10-09 09:31:34,770 - DEBUG - push QVBoxLayout verticalLayout_5
+2024-10-09 09:31:34,770 - DEBUG - push QListView detailedLogListView
+2024-10-09 09:31:34,770 - DEBUG - pop widget QListView detailedLogListView
+2024-10-09 09:31:34,770 - DEBUG - new topwidget self.detailedLogGroupBox
+2024-10-09 09:31:34,770 - DEBUG - pop layout QVBoxLayout verticalLayout_5
+2024-10-09 09:31:34,770 - DEBUG - pop widget QgsCollapsibleGroupBox detailedLogGroupBox
+2024-10-09 09:31:34,770 - DEBUG - new topwidget self.progressPage
+2024-10-09 09:31:34,770 - DEBUG - pop layout QVBoxLayout verticalLayout_21
+2024-10-09 09:31:34,770 - DEBUG - pop widget QWidget progressPage
+2024-10-09 09:31:34,770 - DEBUG - new topwidget self.stackedWidget
+2024-10-09 09:31:34,771 - DEBUG - push QWidget filesPage
+2024-10-09 09:31:34,771 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,771 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,771 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,771 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,771 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,771 - DEBUG - push QVBoxLayout verticalLayout_32
+2024-10-09 09:31:34,771 - DEBUG - push QVBoxLayout verticalLayout_7
+2024-10-09 09:31:34,771 - DEBUG - push QFormLayout formLayout
+2024-10-09 09:31:34,771 - DEBUG - setting property font
+2024-10-09 09:31:34,771 - DEBUG - setting property text
+2024-10-09 09:31:34,771 - DEBUG - push QLabel cloudProjectNameLabel
+2024-10-09 09:31:34,771 - DEBUG - pop widget QLabel cloudProjectNameLabel
+2024-10-09 09:31:34,771 - DEBUG - new topwidget self.filesPage
+2024-10-09 09:31:34,771 - DEBUG - setting property text
+2024-10-09 09:31:34,771 - DEBUG - push QLabel cloudProjectNameValueLabel
+2024-10-09 09:31:34,771 - DEBUG - pop widget QLabel cloudProjectNameValueLabel
+2024-10-09 09:31:34,771 - DEBUG - new topwidget self.filesPage
+2024-10-09 09:31:34,772 - DEBUG - setting property font
+2024-10-09 09:31:34,772 - DEBUG - setting property text
+2024-10-09 09:31:34,772 - DEBUG - push QLabel projectLocalDirLabel
+2024-10-09 09:31:34,772 - DEBUG - pop widget QLabel projectLocalDirLabel
+2024-10-09 09:31:34,772 - DEBUG - new topwidget self.filesPage
+2024-10-09 09:31:34,772 - DEBUG - setting property styleSheet
+2024-10-09 09:31:34,772 - DEBUG - setting property readOnly
+2024-10-09 09:31:34,772 - DEBUG - push QLineEdit projectLocalDirValueLineEdit
+2024-10-09 09:31:34,772 - DEBUG - pop widget QLineEdit projectLocalDirValueLineEdit
+2024-10-09 09:31:34,772 - DEBUG - new topwidget self.filesPage
+2024-10-09 09:31:34,772 - DEBUG - pop layout QFormLayout formLayout
+2024-10-09 09:31:34,772 - DEBUG - pop layout QVBoxLayout verticalLayout_7
+2024-10-09 09:31:34,772 - DEBUG - setting property text
+2024-10-09 09:31:34,772 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,772 - DEBUG - setting property openExternalLinks
+2024-10-09 09:31:34,772 - DEBUG - setting property textInteractionFlags
+2024-10-09 09:31:34,773 - DEBUG - push QLabel explanationLabel
+2024-10-09 09:31:34,773 - DEBUG - pop widget QLabel explanationLabel
+2024-10-09 09:31:34,773 - DEBUG - new topwidget self.filesPage
+2024-10-09 09:31:34,773 - DEBUG - setting property text
+2024-10-09 09:31:34,773 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,773 - DEBUG - setting property textInteractionFlags
+2024-10-09 09:31:34,773 - DEBUG - push QLabel explanationStaticLabel
+2024-10-09 09:31:34,773 - DEBUG - pop widget QLabel explanationStaticLabel
+2024-10-09 09:31:34,773 - DEBUG - new topwidget self.filesPage
+2024-10-09 09:31:34,773 - DEBUG - push QTreeWidget filesTree
+2024-10-09 09:31:34,773 - DEBUG - pop widget QTreeWidget filesTree
+2024-10-09 09:31:34,774 - DEBUG - new topwidget self.filesPage
+2024-10-09 09:31:34,774 - DEBUG - push QHBoxLayout horizontalLayout
+2024-10-09 09:31:34,774 - DEBUG - setting property text
+2024-10-09 09:31:34,774 - DEBUG - push QPushButton preferNoneButton
+2024-10-09 09:31:34,774 - DEBUG - pop widget QPushButton preferNoneButton
+2024-10-09 09:31:34,774 - DEBUG - new topwidget self.filesPage
+2024-10-09 09:31:34,774 - DEBUG - setting property text
+2024-10-09 09:31:34,774 - DEBUG - push QPushButton preferLocalButton
+2024-10-09 09:31:34,774 - DEBUG - pop widget QPushButton preferLocalButton
+2024-10-09 09:31:34,774 - DEBUG - new topwidget self.filesPage
+2024-10-09 09:31:34,774 - DEBUG - setting property text
+2024-10-09 09:31:34,774 - DEBUG - push QPushButton preferCloudButton
+2024-10-09 09:31:34,774 - DEBUG - pop widget QPushButton preferCloudButton
+2024-10-09 09:31:34,774 - DEBUG - new topwidget self.filesPage
+2024-10-09 09:31:34,774 - DEBUG - pop layout QHBoxLayout horizontalLayout
+2024-10-09 09:31:34,774 - DEBUG - pop layout QVBoxLayout verticalLayout_32
+2024-10-09 09:31:34,774 - DEBUG - pop widget QWidget filesPage
+2024-10-09 09:31:34,774 - DEBUG - new topwidget self.stackedWidget
+2024-10-09 09:31:34,775 - DEBUG - pop widget QStackedWidget stackedWidget
+2024-10-09 09:31:34,775 - DEBUG - new topwidget CloudTransferDialog
+2024-10-09 09:31:34,775 - DEBUG - setting property orientation
+2024-10-09 09:31:34,775 - DEBUG - setting property standardButtons
+2024-10-09 09:31:34,775 - DEBUG - push QDialogButtonBox buttonBox
+2024-10-09 09:31:34,775 - DEBUG - pop widget QDialogButtonBox buttonBox
+2024-10-09 09:31:34,775 - DEBUG - new topwidget CloudTransferDialog
+2024-10-09 09:31:34,775 - DEBUG - pop layout QVBoxLayout verticalLayout
+2024-10-09 09:31:34,775 - DEBUG - pop widget QDialog CloudTransferDialog
+2024-10-09 09:31:34,775 - DEBUG - new topwidget None
+2024-10-09 09:31:34,781 - DEBUG - uiname is QFieldCloudDialog
+2024-10-09 09:31:34,781 - DEBUG - toplevel widget is QDialog
+2024-10-09 09:31:34,781 - DEBUG - setting property geometry
+2024-10-09 09:31:34,781 - DEBUG - setting property windowTitle
+2024-10-09 09:31:34,781 - DEBUG - push QDialog QFieldCloudDialog
+2024-10-09 09:31:34,781 - DEBUG - push QVBoxLayout verticalLayout
+2024-10-09 09:31:34,781 - DEBUG - push QHBoxLayout headerHLayout
+2024-10-09 09:31:34,781 - DEBUG - setting property text
+2024-10-09 09:31:34,781 - DEBUG - setting property openExternalLinks
+2024-10-09 09:31:34,781 - DEBUG - push QLabel welcomeLabel
+2024-10-09 09:31:34,781 - DEBUG - pop widget QLabel welcomeLabel
+2024-10-09 09:31:34,781 - DEBUG - new topwidget QFieldCloudDialog
+2024-10-09 09:31:34,781 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,782 - DEBUG - setting property minimumSize
+2024-10-09 09:31:34,782 - DEBUG - setting property maximumSize
+2024-10-09 09:31:34,782 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,782 - DEBUG - setting property iconSize
+2024-10-09 09:31:34,782 - DEBUG - setting property flat
+2024-10-09 09:31:34,782 - DEBUG - push QPushButton avatarButton
+2024-10-09 09:31:34,782 - DEBUG - pop widget QPushButton avatarButton
+2024-10-09 09:31:34,782 - DEBUG - new topwidget QFieldCloudDialog
+2024-10-09 09:31:34,782 - DEBUG - pop layout QHBoxLayout headerHLayout
+2024-10-09 09:31:34,782 - DEBUG - setting property visible
+2024-10-09 09:31:34,782 - DEBUG - setting property styleSheet
+2024-10-09 09:31:34,782 - DEBUG - setting property text
+2024-10-09 09:31:34,782 - DEBUG - setting property textFormat
+2024-10-09 09:31:34,782 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,782 - DEBUG - setting property textInteractionFlags
+2024-10-09 09:31:34,782 - DEBUG - push QLabel feedbackLabel
+2024-10-09 09:31:34,782 - DEBUG - pop widget QLabel feedbackLabel
+2024-10-09 09:31:34,782 - DEBUG - new topwidget QFieldCloudDialog
+2024-10-09 09:31:34,783 - DEBUG - setting property inputMethodHints
+2024-10-09 09:31:34,783 - DEBUG - setting property currentIndex
+2024-10-09 09:31:34,783 - DEBUG - push QStackedWidget projectsStack
+2024-10-09 09:31:34,783 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,783 - DEBUG - push QWidget projectsListPage
+2024-10-09 09:31:34,783 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,783 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,783 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,783 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,783 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,783 - DEBUG - push QVBoxLayout verticalLayout_2
+2024-10-09 09:31:34,783 - DEBUG - push QComboBox projectsType
+2024-10-09 09:31:34,783 - DEBUG - pop widget QComboBox projectsType
+2024-10-09 09:31:34,783 - DEBUG - new topwidget self.projectsListPage
+2024-10-09 09:31:34,783 - DEBUG - setting property enabled
+2024-10-09 09:31:34,783 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,783 - DEBUG - setting property editTriggers
+2024-10-09 09:31:34,784 - DEBUG - setting property selectionMode
+2024-10-09 09:31:34,784 - DEBUG - setting property selectionBehavior
+2024-10-09 09:31:34,784 - DEBUG - setting property sortingEnabled
+2024-10-09 09:31:34,784 - DEBUG - push QTableWidget projectsTable
+2024-10-09 09:31:34,784 - DEBUG - pop widget QTableWidget projectsTable
+2024-10-09 09:31:34,784 - DEBUG - new topwidget self.projectsListPage
+2024-10-09 09:31:34,784 - DEBUG - push QHBoxLayout projectsActionsHLayout
+2024-10-09 09:31:34,784 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,784 - DEBUG - setting property text
+2024-10-09 09:31:34,784 - DEBUG - setting property icon
+2024-10-09 09:31:34,784 - DEBUG - push QPushButton createButton
+2024-10-09 09:31:34,784 - DEBUG - pop widget QPushButton createButton
+2024-10-09 09:31:34,784 - DEBUG - new topwidget self.projectsListPage
+2024-10-09 09:31:34,785 - DEBUG - setting property orientation
+2024-10-09 09:31:34,785 - DEBUG - push QFrame line
+2024-10-09 09:31:34,785 - DEBUG - pop widget QFrame line
+2024-10-09 09:31:34,785 - DEBUG - new topwidget self.projectsListPage
+2024-10-09 09:31:34,785 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,785 - DEBUG - setting property text
+2024-10-09 09:31:34,785 - DEBUG - setting property icon
+2024-10-09 09:31:34,785 - DEBUG - push QPushButton synchronizeButton
+2024-10-09 09:31:34,785 - DEBUG - pop widget QPushButton synchronizeButton
+2024-10-09 09:31:34,785 - DEBUG - new topwidget self.projectsListPage
+2024-10-09 09:31:34,785 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,785 - DEBUG - setting property text
+2024-10-09 09:31:34,785 - DEBUG - setting property icon
+2024-10-09 09:31:34,785 - DEBUG - push QPushButton editButton
+2024-10-09 09:31:34,785 - DEBUG - pop widget QPushButton editButton
+2024-10-09 09:31:34,785 - DEBUG - new topwidget self.projectsListPage
+2024-10-09 09:31:34,786 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,786 - DEBUG - setting property text
+2024-10-09 09:31:34,786 - DEBUG - setting property icon
+2024-10-09 09:31:34,786 - DEBUG - push QPushButton openButton
+2024-10-09 09:31:34,786 - DEBUG - pop widget QPushButton openButton
+2024-10-09 09:31:34,786 - DEBUG - new topwidget self.projectsListPage
+2024-10-09 09:31:34,786 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,786 - DEBUG - setting property text
+2024-10-09 09:31:34,786 - DEBUG - setting property icon
+2024-10-09 09:31:34,786 - DEBUG - push QPushButton deleteButton
+2024-10-09 09:31:34,786 - DEBUG - pop widget QPushButton deleteButton
+2024-10-09 09:31:34,786 - DEBUG - new topwidget self.projectsListPage
+2024-10-09 09:31:34,786 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,786 - DEBUG - setting property text
+2024-10-09 09:31:34,786 - DEBUG - setting property icon
+2024-10-09 09:31:34,787 - DEBUG - push QPushButton refreshButton
+2024-10-09 09:31:34,787 - DEBUG - pop widget QPushButton refreshButton
+2024-10-09 09:31:34,787 - DEBUG - new topwidget self.projectsListPage
+2024-10-09 09:31:34,787 - DEBUG - pop layout QHBoxLayout projectsActionsHLayout
+2024-10-09 09:31:34,787 - DEBUG - pop layout QVBoxLayout verticalLayout_2
+2024-10-09 09:31:34,787 - DEBUG - pop widget QWidget projectsListPage
+2024-10-09 09:31:34,787 - DEBUG - new topwidget self.projectsStack
+2024-10-09 09:31:34,787 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,787 - DEBUG - push QWidget projectsFormPage
+2024-10-09 09:31:34,787 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,787 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,787 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,787 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,787 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,787 - DEBUG - push QVBoxLayout projectsSelectButtonLayout
+2024-10-09 09:31:34,787 - DEBUG - push QHBoxLayout horizontalLayout
+2024-10-09 09:31:34,787 - DEBUG - setting property text
+2024-10-09 09:31:34,787 - DEBUG - setting property icon
+2024-10-09 09:31:34,788 - DEBUG - push QToolButton backButton
+2024-10-09 09:31:34,788 - DEBUG - pop widget QToolButton backButton
+2024-10-09 09:31:34,788 - DEBUG - new topwidget self.projectsFormPage
+2024-10-09 09:31:34,788 - DEBUG - setting property font
+2024-10-09 09:31:34,788 - DEBUG - setting property text
+2024-10-09 09:31:34,788 - DEBUG - push QLabel projectPropertiesLabel
+2024-10-09 09:31:34,788 - DEBUG - pop widget QLabel projectPropertiesLabel
+2024-10-09 09:31:34,788 - DEBUG - new topwidget self.projectsFormPage
+2024-10-09 09:31:34,788 - DEBUG - pop layout QHBoxLayout horizontalLayout
+2024-10-09 09:31:34,788 - DEBUG - setting property currentIndex
+2024-10-09 09:31:34,788 - DEBUG - push QTabWidget projectTabs
+2024-10-09 09:31:34,788 - DEBUG - push QWidget projectFormTab
+2024-10-09 09:31:34,788 - DEBUG - push QVBoxLayout verticalLayout_3
+2024-10-09 09:31:34,788 - DEBUG - setting property title
+2024-10-09 09:31:34,788 - DEBUG - push QGroupBox projectsOnlineSettingsGroupBox
+2024-10-09 09:31:34,789 - DEBUG - push QGridLayout gridLayout
+2024-10-09 09:31:34,789 - DEBUG - setting property text
+2024-10-09 09:31:34,789 - DEBUG - push QLabel projectDescriptionLabel
+2024-10-09 09:31:34,789 - DEBUG - pop widget QLabel projectDescriptionLabel
+2024-10-09 09:31:34,789 - DEBUG - new topwidget self.projectsOnlineSettingsGroupBox
+2024-10-09 09:31:34,789 - DEBUG - setting property text
+2024-10-09 09:31:34,789 - DEBUG - push QLabel projectNameLabel
+2024-10-09 09:31:34,789 - DEBUG - pop widget QLabel projectNameLabel
+2024-10-09 09:31:34,789 - DEBUG - new topwidget self.projectsOnlineSettingsGroupBox
+2024-10-09 09:31:34,789 - DEBUG - setting property text
+2024-10-09 09:31:34,789 - DEBUG - push QLabel projectOwnerLabel
+2024-10-09 09:31:34,789 - DEBUG - pop widget QLabel projectOwnerLabel
+2024-10-09 09:31:34,789 - DEBUG - new topwidget self.projectsOnlineSettingsGroupBox
+2024-10-09 09:31:34,789 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,789 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,789 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,789 - DEBUG - push QHBoxLayout projectFormButtonLayout
+2024-10-09 09:31:34,789 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,789 - DEBUG - push QLineEdit projectNameLineEdit
+2024-10-09 09:31:34,789 - DEBUG - pop widget QLineEdit projectNameLineEdit
+2024-10-09 09:31:34,789 - DEBUG - new topwidget self.projectsOnlineSettingsGroupBox
+2024-10-09 09:31:34,789 - DEBUG - setting property enabled
+2024-10-09 09:31:34,789 - DEBUG - setting property text
+2024-10-09 09:31:34,790 - DEBUG - push QCheckBox projectIsPrivateCheckBox
+2024-10-09 09:31:34,790 - DEBUG - pop widget QCheckBox projectIsPrivateCheckBox
+2024-10-09 09:31:34,790 - DEBUG - new topwidget self.projectsOnlineSettingsGroupBox
+2024-10-09 09:31:34,790 - DEBUG - pop layout QHBoxLayout projectFormButtonLayout
+2024-10-09 09:31:34,790 - DEBUG - push QPlainTextEdit projectDescriptionTextEdit
+2024-10-09 09:31:34,790 - DEBUG - pop widget QPlainTextEdit projectDescriptionTextEdit
+2024-10-09 09:31:34,790 - DEBUG - new topwidget self.projectsOnlineSettingsGroupBox
+2024-10-09 09:31:34,790 - DEBUG - setting property enabled
+2024-10-09 09:31:34,790 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,790 - DEBUG - setting property readOnly
+2024-10-09 09:31:34,790 - DEBUG - push QLineEdit projectOwnerLineEdit
+2024-10-09 09:31:34,790 - DEBUG - pop widget QLineEdit projectOwnerLineEdit
+2024-10-09 09:31:34,790 - DEBUG - new topwidget self.projectsOnlineSettingsGroupBox
+2024-10-09 09:31:34,790 - DEBUG - pop layout QGridLayout gridLayout
+2024-10-09 09:31:34,790 - DEBUG - pop widget QGroupBox projectsOnlineSettingsGroupBox
+2024-10-09 09:31:34,790 - DEBUG - new topwidget self.projectFormTab
+2024-10-09 09:31:34,790 - DEBUG - setting property title
+2024-10-09 09:31:34,790 - DEBUG - push QGroupBox projectsOfflineSettingsGroupBox
+2024-10-09 09:31:34,790 - DEBUG - push QGridLayout gridLayout_2
+2024-10-09 09:31:34,790 - DEBUG - push QHBoxLayout localDirHBoxLayout
+2024-10-09 09:31:34,790 - DEBUG - push QLineEdit localDirLineEdit
+2024-10-09 09:31:34,790 - DEBUG - pop widget QLineEdit localDirLineEdit
+2024-10-09 09:31:34,790 - DEBUG - new topwidget self.projectsOfflineSettingsGroupBox
+2024-10-09 09:31:34,791 - DEBUG - setting property text
+2024-10-09 09:31:34,791 - DEBUG - push QToolButton localDirButton
+2024-10-09 09:31:34,791 - DEBUG - pop widget QToolButton localDirButton
+2024-10-09 09:31:34,791 - DEBUG - new topwidget self.projectsOfflineSettingsGroupBox
+2024-10-09 09:31:34,791 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,791 - DEBUG - setting property text
+2024-10-09 09:31:34,791 - DEBUG - setting property icon
+2024-10-09 09:31:34,791 - DEBUG - push QPushButton localDirOpenButton
+2024-10-09 09:31:34,791 - DEBUG - pop widget QPushButton localDirOpenButton
+2024-10-09 09:31:34,791 - DEBUG - new topwidget self.projectsOfflineSettingsGroupBox
+2024-10-09 09:31:34,791 - DEBUG - pop layout QHBoxLayout localDirHBoxLayout
+2024-10-09 09:31:34,791 - DEBUG - setting property text
+2024-10-09 09:31:34,791 - DEBUG - push QLabel localDirLabel
+2024-10-09 09:31:34,791 - DEBUG - pop widget QLabel localDirLabel
+2024-10-09 09:31:34,791 - DEBUG - new topwidget self.projectsOfflineSettingsGroupBox
+2024-10-09 09:31:34,791 - DEBUG - setting property text
+2024-10-09 09:31:34,791 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,791 - DEBUG - setting property textInteractionFlags
+2024-10-09 09:31:34,791 - DEBUG - push QLabel localDirFeedbackLabel
+2024-10-09 09:31:34,791 - DEBUG - pop widget QLabel localDirFeedbackLabel
+2024-10-09 09:31:34,791 - DEBUG - new topwidget self.projectsOfflineSettingsGroupBox
+2024-10-09 09:31:34,791 - DEBUG - pop layout QGridLayout gridLayout_2
+2024-10-09 09:31:34,791 - DEBUG - pop widget QGroupBox projectsOfflineSettingsGroupBox
+2024-10-09 09:31:34,791 - DEBUG - new topwidget self.projectFormTab
+2024-10-09 09:31:34,791 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,792 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,792 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,792 - DEBUG - push QHBoxLayout projectFormButtonLayout_2
+2024-10-09 09:31:34,792 - DEBUG - setting property text
+2024-10-09 09:31:34,792 - DEBUG - push QPushButton editOnlineButton
+2024-10-09 09:31:34,792 - DEBUG - pop widget QPushButton editOnlineButton
+2024-10-09 09:31:34,792 - DEBUG - new topwidget self.projectFormTab
+2024-10-09 09:31:34,792 - DEBUG - setting property text
+2024-10-09 09:31:34,792 - DEBUG - push QPushButton submitButton
+2024-10-09 09:31:34,792 - DEBUG - pop widget QPushButton submitButton
+2024-10-09 09:31:34,792 - DEBUG - new topwidget self.projectFormTab
+2024-10-09 09:31:34,792 - DEBUG - pop layout QHBoxLayout projectFormButtonLayout_2
+2024-10-09 09:31:34,792 - DEBUG - pop layout QVBoxLayout verticalLayout_3
+2024-10-09 09:31:34,792 - DEBUG - pop widget QWidget projectFormTab
+2024-10-09 09:31:34,792 - DEBUG - new topwidget self.projectTabs
+2024-10-09 09:31:34,792 - DEBUG - push QWidget projectMetaTab
+2024-10-09 09:31:34,792 - DEBUG - push QVBoxLayout verticalLayout_31
+2024-10-09 09:31:34,792 - DEBUG - push QFormLayout formLayout
+2024-10-09 09:31:34,792 - DEBUG - setting property text
+2024-10-09 09:31:34,792 - DEBUG - push QLabel projectUrlLabel
+2024-10-09 09:31:34,793 - DEBUG - pop widget QLabel projectUrlLabel
+2024-10-09 09:31:34,793 - DEBUG - new topwidget self.projectMetaTab
+2024-10-09 09:31:34,793 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,793 - DEBUG - setting property text
+2024-10-09 09:31:34,793 - DEBUG - setting property openExternalLinks
+2024-10-09 09:31:34,793 - DEBUG - setting property textInteractionFlags
+2024-10-09 09:31:34,793 - DEBUG - push QLabel projectUrlLabelValue
+2024-10-09 09:31:34,793 - DEBUG - pop widget QLabel projectUrlLabelValue
+2024-10-09 09:31:34,793 - DEBUG - new topwidget self.projectMetaTab
+2024-10-09 09:31:34,793 - DEBUG - setting property text
+2024-10-09 09:31:34,793 - DEBUG - push QLabel createdAtLabel
+2024-10-09 09:31:34,793 - DEBUG - pop widget QLabel createdAtLabel
+2024-10-09 09:31:34,793 - DEBUG - new topwidget self.projectMetaTab
+2024-10-09 09:31:34,793 - DEBUG - setting property text
+2024-10-09 09:31:34,793 - DEBUG - push QLabel updatedAtLabel
+2024-10-09 09:31:34,793 - DEBUG - pop widget QLabel updatedAtLabel
+2024-10-09 09:31:34,793 - DEBUG - new topwidget self.projectMetaTab
+2024-10-09 09:31:34,793 - DEBUG - setting property text
+2024-10-09 09:31:34,794 - DEBUG - push QLabel lastSyncedAtLabel
+2024-10-09 09:31:34,794 - DEBUG - pop widget QLabel lastSyncedAtLabel
+2024-10-09 09:31:34,794 - DEBUG - new topwidget self.projectMetaTab
+2024-10-09 09:31:34,794 - DEBUG - setting property text
+2024-10-09 09:31:34,794 - DEBUG - push QLabel createdAtLabelValue
+2024-10-09 09:31:34,794 - DEBUG - pop widget QLabel createdAtLabelValue
+2024-10-09 09:31:34,794 - DEBUG - new topwidget self.projectMetaTab
+2024-10-09 09:31:34,794 - DEBUG - setting property text
+2024-10-09 09:31:34,794 - DEBUG - push QLabel updatedAtLabelValue
+2024-10-09 09:31:34,794 - DEBUG - pop widget QLabel updatedAtLabelValue
+2024-10-09 09:31:34,794 - DEBUG - new topwidget self.projectMetaTab
+2024-10-09 09:31:34,794 - DEBUG - setting property text
+2024-10-09 09:31:34,794 - DEBUG - push QLabel lastSyncedAtLabelValue
+2024-10-09 09:31:34,794 - DEBUG - pop widget QLabel lastSyncedAtLabelValue
+2024-10-09 09:31:34,794 - DEBUG - new topwidget self.projectMetaTab
+2024-10-09 09:31:34,794 - DEBUG - pop layout QFormLayout formLayout
+2024-10-09 09:31:34,794 - DEBUG - pop layout QVBoxLayout verticalLayout_31
+2024-10-09 09:31:34,794 - DEBUG - pop widget QWidget projectMetaTab
+2024-10-09 09:31:34,794 - DEBUG - new topwidget self.projectTabs
+2024-10-09 09:31:34,794 - DEBUG - push QWidget projectFilesTab
+2024-10-09 09:31:34,794 - DEBUG - push QVBoxLayout verticalLayout_32
+2024-10-09 09:31:34,795 - DEBUG - setting property visible
+2024-10-09 09:31:34,795 - DEBUG - setting property styleSheet
+2024-10-09 09:31:34,795 - DEBUG - setting property text
+2024-10-09 09:31:34,795 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,795 - DEBUG - setting property textInteractionFlags
+2024-10-09 09:31:34,795 - DEBUG - push QLabel filesFeedbackLabel
+2024-10-09 09:31:34,795 - DEBUG - pop widget QLabel filesFeedbackLabel
+2024-10-09 09:31:34,795 - DEBUG - new topwidget self.projectFilesTab
+2024-10-09 09:31:34,795 - DEBUG - setting property editTriggers
+2024-10-09 09:31:34,795 - DEBUG - setting property tabKeyNavigation
+2024-10-09 09:31:34,795 - DEBUG - setting property showDropIndicator
+2024-10-09 09:31:34,795 - DEBUG - setting property columnCount
+2024-10-09 09:31:34,795 - DEBUG - push QTreeWidget projectFilesTree
+2024-10-09 09:31:34,795 - DEBUG - pop widget QTreeWidget projectFilesTree
+2024-10-09 09:31:34,795 - DEBUG - new topwidget self.projectFilesTab
+2024-10-09 09:31:34,795 - DEBUG - pop layout QVBoxLayout verticalLayout_32
+2024-10-09 09:31:34,795 - DEBUG - pop widget QWidget projectFilesTab
+2024-10-09 09:31:34,795 - DEBUG - new topwidget self.projectTabs
+2024-10-09 09:31:34,795 - DEBUG - pop widget QTabWidget projectTabs
+2024-10-09 09:31:34,795 - DEBUG - new topwidget self.projectsFormPage
+2024-10-09 09:31:34,795 - DEBUG - pop layout QVBoxLayout projectsSelectButtonLayout
+2024-10-09 09:31:34,795 - DEBUG - pop widget QWidget projectsFormPage
+2024-10-09 09:31:34,796 - DEBUG - new topwidget self.projectsStack
+2024-10-09 09:31:34,796 - DEBUG - push QWidget projectCreatePage
+2024-10-09 09:31:34,796 - DEBUG - setting property spacing
+2024-10-09 09:31:34,796 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,796 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,796 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,796 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,796 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,796 - DEBUG - setting property pyuicSpacing
+2024-10-09 09:31:34,796 - DEBUG - push QVBoxLayout verticalLayout_4
+2024-10-09 09:31:34,796 - DEBUG - pop layout QVBoxLayout verticalLayout_4
+2024-10-09 09:31:34,796 - DEBUG - pop widget QWidget projectCreatePage
+2024-10-09 09:31:34,796 - DEBUG - new topwidget self.projectsStack
+2024-10-09 09:31:34,796 - DEBUG - pop widget QStackedWidget projectsStack
+2024-10-09 09:31:34,796 - DEBUG - new topwidget QFieldCloudDialog
+2024-10-09 09:31:34,796 - DEBUG - setting property standardButtons
+2024-10-09 09:31:34,796 - DEBUG - push QDialogButtonBox buttonBox
+2024-10-09 09:31:34,796 - DEBUG - pop widget QDialogButtonBox buttonBox
+2024-10-09 09:31:34,796 - DEBUG - new topwidget QFieldCloudDialog
+2024-10-09 09:31:34,796 - DEBUG - pop layout QVBoxLayout verticalLayout
+2024-10-09 09:31:34,796 - DEBUG - pop widget QDialog QFieldCloudDialog
+2024-10-09 09:31:34,796 - DEBUG - new topwidget None
+2024-10-09 09:31:34,802 - DEBUG - uiname is QFieldLayerSettingsPage
+2024-10-09 09:31:34,802 - DEBUG - toplevel widget is QWidget
+2024-10-09 09:31:34,802 - DEBUG - setting property geometry
+2024-10-09 09:31:34,802 - DEBUG - setting property windowTitle
+2024-10-09 09:31:34,802 - DEBUG - push QWidget QFieldLayerSettingsPage
+2024-10-09 09:31:34,802 - DEBUG - push QVBoxLayout QFieldLayerSettingsPageLayout
+2024-10-09 09:31:34,802 - DEBUG - setting property title
+2024-10-09 09:31:34,802 - DEBUG - push QGroupBox generalSettingsGroupBox
+2024-10-09 09:31:34,802 - DEBUG - push QFormLayout generalSettingsLayout
+2024-10-09 09:31:34,802 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,803 - DEBUG - push QComboBox cloudLayerActionComboBox
+2024-10-09 09:31:34,803 - DEBUG - pop widget QComboBox cloudLayerActionComboBox
+2024-10-09 09:31:34,803 - DEBUG - new topwidget self.generalSettingsGroupBox
+2024-10-09 09:31:34,803 - DEBUG - setting property text
+2024-10-09 09:31:34,803 - DEBUG - push QLabel cloudLayerActionLabel
+2024-10-09 09:31:34,803 - DEBUG - pop widget QLabel cloudLayerActionLabel
+2024-10-09 09:31:34,803 - DEBUG - new topwidget self.generalSettingsGroupBox
+2024-10-09 09:31:34,803 - DEBUG - setting property text
+2024-10-09 09:31:34,803 - DEBUG - push QLabel cableLayerActionLabel
+2024-10-09 09:31:34,803 - DEBUG - pop widget QLabel cableLayerActionLabel
+2024-10-09 09:31:34,803 - DEBUG - new topwidget self.generalSettingsGroupBox
+2024-10-09 09:31:34,803 - DEBUG - push QHBoxLayout horizontalLayout
+2024-10-09 09:31:34,803 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,803 - DEBUG - setting property text
+2024-10-09 09:31:34,803 - DEBUG - push QCheckBox isGeometryLockedCheckBox
+2024-10-09 09:31:34,803 - DEBUG - pop widget QCheckBox isGeometryLockedCheckBox
+2024-10-09 09:31:34,803 - DEBUG - new topwidget self.generalSettingsGroupBox
+2024-10-09 09:31:34,803 - DEBUG - setting property text
+2024-10-09 09:31:34,803 - DEBUG - push QgsPropertyOverrideButton isGeometryLockedDDButton
+2024-10-09 09:31:34,803 - DEBUG - pop widget QgsPropertyOverrideButton isGeometryLockedDDButton
+2024-10-09 09:31:34,804 - DEBUG - new topwidget self.generalSettingsGroupBox
+2024-10-09 09:31:34,804 - DEBUG - pop layout QHBoxLayout horizontalLayout
+2024-10-09 09:31:34,804 - DEBUG - push QComboBox cableLayerActionComboBox
+2024-10-09 09:31:34,804 - DEBUG - pop widget QComboBox cableLayerActionComboBox
+2024-10-09 09:31:34,804 - DEBUG - new topwidget self.generalSettingsGroupBox
+2024-10-09 09:31:34,804 - DEBUG - pop layout QFormLayout generalSettingsLayout
+2024-10-09 09:31:34,804 - DEBUG - pop widget QGroupBox generalSettingsGroupBox
+2024-10-09 09:31:34,804 - DEBUG - new topwidget QFieldLayerSettingsPage
+2024-10-09 09:31:34,804 - DEBUG - setting property title
+2024-10-09 09:31:34,804 - DEBUG - push QGroupBox attachmentsRelationsGroupBox
+2024-10-09 09:31:34,804 - DEBUG - push QFormLayout attachmentsRelationsLayout
+2024-10-09 09:31:34,804 - DEBUG - push QHBoxLayout valueMapButtonInterfaceLayout
+2024-10-09 09:31:34,804 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,804 - DEBUG - setting property text
+2024-10-09 09:31:34,804 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,804 - DEBUG - push QLabel valueMapButtonInterfaceLabel
+2024-10-09 09:31:34,804 - DEBUG - pop widget QLabel valueMapButtonInterfaceLabel
+2024-10-09 09:31:34,804 - DEBUG - new topwidget self.attachmentsRelationsGroupBox
+2024-10-09 09:31:34,805 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,805 - DEBUG - setting property suffix
+2024-10-09 09:31:34,805 - DEBUG - setting property minimum
+2024-10-09 09:31:34,805 - DEBUG - setting property maximum
+2024-10-09 09:31:34,805 - DEBUG - setting property value
+2024-10-09 09:31:34,805 - DEBUG - setting property showClearButton
+2024-10-09 09:31:34,805 - DEBUG - setting property clearValue
+2024-10-09 09:31:34,805 - DEBUG - push QgsSpinBox valueMapButtonInterfaceSpinBox
+2024-10-09 09:31:34,805 - DEBUG - pop widget QgsSpinBox valueMapButtonInterfaceSpinBox
+2024-10-09 09:31:34,805 - DEBUG - new topwidget self.attachmentsRelationsGroupBox
+2024-10-09 09:31:34,805 - DEBUG - pop layout QHBoxLayout valueMapButtonInterfaceLayout
+2024-10-09 09:31:34,805 - DEBUG - pop layout QFormLayout attachmentsRelationsLayout
+2024-10-09 09:31:34,805 - DEBUG - pop widget QGroupBox attachmentsRelationsGroupBox
+2024-10-09 09:31:34,805 - DEBUG - new topwidget QFieldLayerSettingsPage
+2024-10-09 09:31:34,805 - DEBUG - setting property title
+2024-10-09 09:31:34,805 - DEBUG - setting property checkable
+2024-10-09 09:31:34,805 - DEBUG - setting property checked
+2024-10-09 09:31:34,805 - DEBUG - setting property collapsed
+2024-10-09 09:31:34,805 - DEBUG - push QgsCollapsibleGroupBox trackingSessionGroupBox
+2024-10-09 09:31:34,805 - DEBUG - push QVBoxLayout trackingSessionLayout
+2024-10-09 09:31:34,805 - DEBUG - setting property text
+2024-10-09 09:31:34,805 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,805 - DEBUG - push QLabel trackingSessionLabel
+2024-10-09 09:31:34,805 - DEBUG - pop widget QLabel trackingSessionLabel
+2024-10-09 09:31:34,806 - DEBUG - new topwidget self.trackingSessionGroupBox
+2024-10-09 09:31:34,806 - DEBUG - setting property title
+2024-10-09 09:31:34,806 - DEBUG - push QGroupBox trackingRequirementsGroupBox
+2024-10-09 09:31:34,806 - DEBUG - push QGridLayout trackingRequirementsLayout
+2024-10-09 09:31:34,806 - DEBUG - setting property text
+2024-10-09 09:31:34,806 - DEBUG - push QCheckBox timeRequirementCheckBox
+2024-10-09 09:31:34,806 - DEBUG - pop widget QCheckBox timeRequirementCheckBox
+2024-10-09 09:31:34,806 - DEBUG - new topwidget self.trackingRequirementsGroupBox
+2024-10-09 09:31:34,806 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,806 - DEBUG - setting property suffix
+2024-10-09 09:31:34,806 - DEBUG - setting property minimum
+2024-10-09 09:31:34,806 - DEBUG - setting property maximum
+2024-10-09 09:31:34,806 - DEBUG - setting property value
+2024-10-09 09:31:34,806 - DEBUG - setting property showClearButton
+2024-10-09 09:31:34,806 - DEBUG - setting property clearValue
+2024-10-09 09:31:34,806 - DEBUG - push QgsSpinBox timeRequirementIntervalSecondsSpinBox
+2024-10-09 09:31:34,806 - DEBUG - pop widget QgsSpinBox timeRequirementIntervalSecondsSpinBox
+2024-10-09 09:31:34,806 - DEBUG - new topwidget self.trackingRequirementsGroupBox
+2024-10-09 09:31:34,806 - DEBUG - setting property text
+2024-10-09 09:31:34,806 - DEBUG - push QCheckBox distanceRequirementCheckBox
+2024-10-09 09:31:34,806 - DEBUG - pop widget QCheckBox distanceRequirementCheckBox
+2024-10-09 09:31:34,806 - DEBUG - new topwidget self.trackingRequirementsGroupBox
+2024-10-09 09:31:34,807 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,807 - DEBUG - setting property suffix
+2024-10-09 09:31:34,807 - DEBUG - setting property minimum
+2024-10-09 09:31:34,807 - DEBUG - setting property maximum
+2024-10-09 09:31:34,807 - DEBUG - setting property value
+2024-10-09 09:31:34,807 - DEBUG - setting property showClearButton
+2024-10-09 09:31:34,807 - DEBUG - setting property clearValue
+2024-10-09 09:31:34,807 - DEBUG - push QgsSpinBox distanceRequirementMinimumMetersSpinBox
+2024-10-09 09:31:34,807 - DEBUG - pop widget QgsSpinBox distanceRequirementMinimumMetersSpinBox
+2024-10-09 09:31:34,807 - DEBUG - new topwidget self.trackingRequirementsGroupBox
+2024-10-09 09:31:34,807 - DEBUG - setting property text
+2024-10-09 09:31:34,807 - DEBUG - push QCheckBox sensorDataRequirementCheckBox
+2024-10-09 09:31:34,807 - DEBUG - pop widget QCheckBox sensorDataRequirementCheckBox
+2024-10-09 09:31:34,807 - DEBUG - new topwidget self.trackingRequirementsGroupBox
+2024-10-09 09:31:34,807 - DEBUG - setting property text
+2024-10-09 09:31:34,807 - DEBUG - push QCheckBox allRequirementsCheckBox
+2024-10-09 09:31:34,807 - DEBUG - pop widget QCheckBox allRequirementsCheckBox
+2024-10-09 09:31:34,807 - DEBUG - new topwidget self.trackingRequirementsGroupBox
+2024-10-09 09:31:34,807 - DEBUG - pop layout QGridLayout trackingRequirementsLayout
+2024-10-09 09:31:34,807 - DEBUG - pop widget QGroupBox trackingRequirementsGroupBox
+2024-10-09 09:31:34,807 - DEBUG - new topwidget self.trackingSessionGroupBox
+2024-10-09 09:31:34,807 - DEBUG - setting property title
+2024-10-09 09:31:34,807 - DEBUG - push QGroupBox trackingGeneralSettingsGroupBox
+2024-10-09 09:31:34,807 - DEBUG - push QGridLayout trackingGeneralSettingsLayout
+2024-10-09 09:31:34,808 - DEBUG - setting property text
+2024-10-09 09:31:34,808 - DEBUG - push QCheckBox erroneousDistanceSafeguardCheckBox
+2024-10-09 09:31:34,808 - DEBUG - pop widget QCheckBox erroneousDistanceSafeguardCheckBox
+2024-10-09 09:31:34,808 - DEBUG - new topwidget self.trackingGeneralSettingsGroupBox
+2024-10-09 09:31:34,808 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,808 - DEBUG - setting property suffix
+2024-10-09 09:31:34,808 - DEBUG - setting property minimum
+2024-10-09 09:31:34,808 - DEBUG - setting property maximum
+2024-10-09 09:31:34,808 - DEBUG - setting property value
+2024-10-09 09:31:34,808 - DEBUG - setting property showClearButton
+2024-10-09 09:31:34,808 - DEBUG - setting property clearValue
+2024-10-09 09:31:34,808 - DEBUG - push QgsSpinBox erroneousDistanceSafeguardMaximumMetersSpinBox
+2024-10-09 09:31:34,808 - DEBUG - pop widget QgsSpinBox erroneousDistanceSafeguardMaximumMetersSpinBox
+2024-10-09 09:31:34,808 - DEBUG - new topwidget self.trackingGeneralSettingsGroupBox
+2024-10-09 09:31:34,808 - DEBUG - setting property text
+2024-10-09 09:31:34,808 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,808 - DEBUG - push QLabel measurementTypeLabel
+2024-10-09 09:31:34,808 - DEBUG - pop widget QLabel measurementTypeLabel
+2024-10-09 09:31:34,808 - DEBUG - new topwidget self.trackingGeneralSettingsGroupBox
+2024-10-09 09:31:34,808 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,809 - DEBUG - setting property sizeAdjustPolicy
+2024-10-09 09:31:34,809 - DEBUG - push QComboBox measurementTypeComboBox
+2024-10-09 09:31:34,809 - DEBUG - pop widget QComboBox measurementTypeComboBox
+2024-10-09 09:31:34,809 - DEBUG - new topwidget self.trackingGeneralSettingsGroupBox
+2024-10-09 09:31:34,809 - DEBUG - pop layout QGridLayout trackingGeneralSettingsLayout
+2024-10-09 09:31:34,809 - DEBUG - pop widget QGroupBox trackingGeneralSettingsGroupBox
+2024-10-09 09:31:34,809 - DEBUG - new topwidget self.trackingSessionGroupBox
+2024-10-09 09:31:34,809 - DEBUG - pop layout QVBoxLayout trackingSessionLayout
+2024-10-09 09:31:34,809 - DEBUG - pop widget QgsCollapsibleGroupBox trackingSessionGroupBox
+2024-10-09 09:31:34,809 - DEBUG - new topwidget QFieldLayerSettingsPage
+2024-10-09 09:31:34,809 - DEBUG - pop layout QVBoxLayout QFieldLayerSettingsPageLayout
+2024-10-09 09:31:34,809 - DEBUG - pop widget QWidget QFieldLayerSettingsPage
+2024-10-09 09:31:34,809 - DEBUG - new topwidget None
+2024-10-09 09:31:34,812 - DEBUG - uiname is Form
+2024-10-09 09:31:34,812 - DEBUG - toplevel widget is QWidget
+2024-10-09 09:31:34,812 - DEBUG - setting property geometry
+2024-10-09 09:31:34,812 - DEBUG - setting property windowTitle
+2024-10-09 09:31:34,812 - DEBUG - push QWidget Form
+2024-10-09 09:31:34,812 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,812 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,812 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,812 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,812 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,812 - DEBUG - push QVBoxLayout layout
+2024-10-09 09:31:34,812 - DEBUG - setting property text
+2024-10-09 09:31:34,812 - DEBUG - push QLabel dirsToCopyLabel
+2024-10-09 09:31:34,812 - DEBUG - pop widget QLabel dirsToCopyLabel
+2024-10-09 09:31:34,812 - DEBUG - new topwidget Form
+2024-10-09 09:31:34,812 - DEBUG - push QTreeWidget dirsTreeWidget
+2024-10-09 09:31:34,813 - DEBUG - pop widget QTreeWidget dirsTreeWidget
+2024-10-09 09:31:34,813 - DEBUG - new topwidget Form
+2024-10-09 09:31:34,813 - DEBUG - push QHBoxLayout buttonsLayout
+2024-10-09 09:31:34,813 - DEBUG - setting property enabled
+2024-10-09 09:31:34,813 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,813 - DEBUG - setting property text
+2024-10-09 09:31:34,813 - DEBUG - setting property icon
+2024-10-09 09:31:34,813 - DEBUG - push QToolButton refreshButton
+2024-10-09 09:31:34,813 - DEBUG - pop widget QToolButton refreshButton
+2024-10-09 09:31:34,813 - DEBUG - new topwidget Form
+2024-10-09 09:31:34,813 - DEBUG - setting property text
+2024-10-09 09:31:34,813 - DEBUG - push QPushButton selectAllButton
+2024-10-09 09:31:34,813 - DEBUG - pop widget QPushButton selectAllButton
+2024-10-09 09:31:34,813 - DEBUG - new topwidget Form
+2024-10-09 09:31:34,813 - DEBUG - setting property text
+2024-10-09 09:31:34,813 - DEBUG - push QPushButton deselectAllButton
+2024-10-09 09:31:34,813 - DEBUG - pop widget QPushButton deselectAllButton
+2024-10-09 09:31:34,813 - DEBUG - new topwidget Form
+2024-10-09 09:31:34,813 - DEBUG - pop layout QHBoxLayout buttonsLayout
+2024-10-09 09:31:34,813 - DEBUG - pop layout QVBoxLayout layout
+2024-10-09 09:31:34,813 - DEBUG - pop widget QWidget Form
+2024-10-09 09:31:34,813 - DEBUG - new topwidget None
+2024-10-09 09:31:34,816 - DEBUG - uiname is Form
+2024-10-09 09:31:34,816 - DEBUG - toplevel widget is QWidget
+2024-10-09 09:31:34,816 - DEBUG - setting property geometry
+2024-10-09 09:31:34,816 - DEBUG - setting property windowTitle
+2024-10-09 09:31:34,816 - DEBUG - push QWidget Form
+2024-10-09 09:31:34,816 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,816 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,816 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,816 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,816 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,816 - DEBUG - push QGridLayout gridLayout
+2024-10-09 09:31:34,816 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,816 - DEBUG - setting property text
+2024-10-09 09:31:34,816 - DEBUG - setting property icon
+2024-10-09 09:31:34,816 - DEBUG - setting property popupMode
+2024-10-09 09:31:34,816 - DEBUG - setting property autoRaise
+2024-10-09 09:31:34,816 - DEBUG - push QToolButton multipleToggleButton
+2024-10-09 09:31:34,817 - DEBUG - pop widget QToolButton multipleToggleButton
+2024-10-09 09:31:34,817 - DEBUG - new topwidget Form
+2024-10-09 09:31:34,817 - DEBUG - setting property text
+2024-10-09 09:31:34,817 - DEBUG - push QLabel label
+2024-10-09 09:31:34,817 - DEBUG - pop widget QLabel label
+2024-10-09 09:31:34,817 - DEBUG - new topwidget Form
+2024-10-09 09:31:34,817 - DEBUG - push QTableWidget layersTable
+2024-10-09 09:31:34,817 - DEBUG - pop widget QTableWidget layersTable
+2024-10-09 09:31:34,817 - DEBUG - new topwidget Form
+2024-10-09 09:31:34,817 - DEBUG - setting property visible
+2024-10-09 09:31:34,817 - DEBUG - setting property text
+2024-10-09 09:31:34,817 - DEBUG - setting property textFormat
+2024-10-09 09:31:34,817 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,817 - DEBUG - push QLabel unsupportedLayersLabel
+2024-10-09 09:31:34,817 - DEBUG - pop widget QLabel unsupportedLayersLabel
+2024-10-09 09:31:34,817 - DEBUG - new topwidget Form
+2024-10-09 09:31:34,817 - DEBUG - pop layout QGridLayout gridLayout
+2024-10-09 09:31:34,817 - DEBUG - pop widget QWidget Form
+2024-10-09 09:31:34,817 - DEBUG - new topwidget None
+2024-10-09 09:31:34,820 - DEBUG - uiname is QField
+2024-10-09 09:31:34,820 - DEBUG - toplevel widget is QWidget
+2024-10-09 09:31:34,820 - DEBUG - setting property geometry
+2024-10-09 09:31:34,820 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,820 - DEBUG - setting property windowTitle
+2024-10-09 09:31:34,820 - DEBUG - push QWidget QField
+2024-10-09 09:31:34,820 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,820 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,820 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,820 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,820 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,820 - DEBUG - push QVBoxLayout verticalLayout
+2024-10-09 09:31:34,820 - DEBUG - setting property frameShape
+2024-10-09 09:31:34,820 - DEBUG - setting property widgetResizable
+2024-10-09 09:31:34,820 - DEBUG - push QScrollArea scrollArea
+2024-10-09 09:31:34,821 - DEBUG - setting property geometry
+2024-10-09 09:31:34,821 - DEBUG - push QWidget scrollAreaWidgetContents
+2024-10-09 09:31:34,821 - DEBUG - push QVBoxLayout verticalLayout1
+2024-10-09 09:31:34,821 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,821 - DEBUG - setting property currentIndex
+2024-10-09 09:31:34,821 - DEBUG - push QTabWidget exportTypeTabs
+2024-10-09 09:31:34,821 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,821 - DEBUG - push QWidget cloudExportTab
+2024-10-09 09:31:34,821 - DEBUG - push QGridLayout gridLayout_2
+2024-10-09 09:31:34,821 - DEBUG - setting property text
+2024-10-09 09:31:34,821 - DEBUG - setting property checked
+2024-10-09 09:31:34,821 - DEBUG - push QRadioButton preferOnlineLayersRadioButton
+2024-10-09 09:31:34,821 - DEBUG - pop widget QRadioButton preferOnlineLayersRadioButton
+2024-10-09 09:31:34,821 - DEBUG - new topwidget self.cloudExportTab
+2024-10-09 09:31:34,821 - DEBUG - setting property title
+2024-10-09 09:31:34,821 - DEBUG - setting property collapsed
+2024-10-09 09:31:34,821 - DEBUG - setting property saveCheckedState
+2024-10-09 09:31:34,821 - DEBUG - push QgsCollapsibleGroupBox cloudAdvancedSettings
+2024-10-09 09:31:34,822 - DEBUG - push QVBoxLayout verticalLayout_4
+2024-10-09 09:31:34,822 - DEBUG - pop layout QVBoxLayout verticalLayout_4
+2024-10-09 09:31:34,822 - DEBUG - pop widget QgsCollapsibleGroupBox cloudAdvancedSettings
+2024-10-09 09:31:34,822 - DEBUG - new topwidget self.cloudExportTab
+2024-10-09 09:31:34,822 - DEBUG - setting property text
+2024-10-09 09:31:34,822 - DEBUG - push QRadioButton preferOfflineLayersRadioButton
+2024-10-09 09:31:34,822 - DEBUG - pop widget QRadioButton preferOfflineLayersRadioButton
+2024-10-09 09:31:34,822 - DEBUG - new topwidget self.cloudExportTab
+2024-10-09 09:31:34,822 - DEBUG - push QHBoxLayout horizontalLayout
+2024-10-09 09:31:34,822 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,822 - DEBUG - setting property text
+2024-10-09 09:31:34,822 - DEBUG - push QCheckBox forceAutoPush
+2024-10-09 09:31:34,822 - DEBUG - pop widget QCheckBox forceAutoPush
+2024-10-09 09:31:34,822 - DEBUG - new topwidget self.cloudExportTab
+2024-10-09 09:31:34,822 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,822 - DEBUG - setting property suffix
+2024-10-09 09:31:34,822 - DEBUG - setting property minimum
+2024-10-09 09:31:34,822 - DEBUG - setting property maximum
+2024-10-09 09:31:34,823 - DEBUG - setting property value
+2024-10-09 09:31:34,823 - DEBUG - setting property showClearButton
+2024-10-09 09:31:34,823 - DEBUG - setting property clearValue
+2024-10-09 09:31:34,823 - DEBUG - push QgsSpinBox forceAutoPushInterval
+2024-10-09 09:31:34,823 - DEBUG - pop widget QgsSpinBox forceAutoPushInterval
+2024-10-09 09:31:34,823 - DEBUG - new topwidget self.cloudExportTab
+2024-10-09 09:31:34,823 - DEBUG - pop layout QHBoxLayout horizontalLayout
+2024-10-09 09:31:34,823 - DEBUG - pop layout QGridLayout gridLayout_2
+2024-10-09 09:31:34,823 - DEBUG - pop widget QWidget cloudExportTab
+2024-10-09 09:31:34,823 - DEBUG - new topwidget self.exportTypeTabs
+2024-10-09 09:31:34,823 - DEBUG - push QWidget cableExportTab
+2024-10-09 09:31:34,823 - DEBUG - push QGridLayout gridLayout_6
+2024-10-09 09:31:34,823 - DEBUG - pop layout QGridLayout gridLayout_6
+2024-10-09 09:31:34,823 - DEBUG - pop widget QWidget cableExportTab
+2024-10-09 09:31:34,823 - DEBUG - new topwidget self.exportTypeTabs
+2024-10-09 09:31:34,823 - DEBUG - pop widget QTabWidget exportTypeTabs
+2024-10-09 09:31:34,823 - DEBUG - new topwidget self.scrollAreaWidgetContents
+2024-10-09 09:31:34,823 - DEBUG - setting property title
+2024-10-09 09:31:34,823 - DEBUG - setting property checkable
+2024-10-09 09:31:34,823 - DEBUG - setting property saveCheckedState
+2024-10-09 09:31:34,823 - DEBUG - push QgsCollapsibleGroupBox createBaseMapGroupBox
+2024-10-09 09:31:34,824 - DEBUG - push QGridLayout gridLayout
+2024-10-09 09:31:34,824 - DEBUG - setting property text
+2024-10-09 09:31:34,824 - DEBUG - setting property alignment
+2024-10-09 09:31:34,824 - DEBUG - push QLabel mapUnitsPerPixelLabel
+2024-10-09 09:31:34,824 - DEBUG - pop widget QLabel mapUnitsPerPixelLabel
+2024-10-09 09:31:34,824 - DEBUG - new topwidget self.createBaseMapGroupBox
+2024-10-09 09:31:34,824 - DEBUG - setting property text
+2024-10-09 09:31:34,824 - DEBUG - push QRadioButton singleLayerRadioButton
+2024-10-09 09:31:34,824 - DEBUG - pop widget QRadioButton singleLayerRadioButton
+2024-10-09 09:31:34,824 - DEBUG - new topwidget self.createBaseMapGroupBox
+2024-10-09 09:31:34,824 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,824 - DEBUG - setting property inputMethodHints
+2024-10-09 09:31:34,824 - DEBUG - push QStackedWidget baseMapTypeStack
+2024-10-09 09:31:34,824 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,824 - DEBUG - push QWidget mapThemePage
+2024-10-09 09:31:34,824 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,824 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,824 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,825 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,825 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,825 - DEBUG - push QGridLayout gridLayout_4
+2024-10-09 09:31:34,825 - DEBUG - setting property text
+2024-10-09 09:31:34,825 - DEBUG - setting property alignment
+2024-10-09 09:31:34,825 - DEBUG - push QLabel label
+2024-10-09 09:31:34,825 - DEBUG - pop widget QLabel label
+2024-10-09 09:31:34,825 - DEBUG - new topwidget self.mapThemePage
+2024-10-09 09:31:34,825 - DEBUG - push QComboBox mapThemeComboBox
+2024-10-09 09:31:34,825 - DEBUG - pop widget QComboBox mapThemeComboBox
+2024-10-09 09:31:34,825 - DEBUG - new topwidget self.mapThemePage
+2024-10-09 09:31:34,825 - DEBUG - pop layout QGridLayout gridLayout_4
+2024-10-09 09:31:34,825 - DEBUG - pop widget QWidget mapThemePage
+2024-10-09 09:31:34,825 - DEBUG - new topwidget self.baseMapTypeStack
+2024-10-09 09:31:34,825 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,825 - DEBUG - push QWidget singleLayerPage
+2024-10-09 09:31:34,825 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,825 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,825 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,825 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,825 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,825 - DEBUG - push QGridLayout gridLayout_5
+2024-10-09 09:31:34,826 - DEBUG - setting property text
+2024-10-09 09:31:34,826 - DEBUG - setting property alignment
+2024-10-09 09:31:34,826 - DEBUG - push QLabel label_2
+2024-10-09 09:31:34,826 - DEBUG - pop widget QLabel label_2
+2024-10-09 09:31:34,826 - DEBUG - new topwidget self.singleLayerPage
+2024-10-09 09:31:34,826 - DEBUG - push QgsMapLayerComboBox layerComboBox
+2024-10-09 09:31:34,826 - DEBUG - pop widget QgsMapLayerComboBox layerComboBox
+2024-10-09 09:31:34,826 - DEBUG - new topwidget self.singleLayerPage
+2024-10-09 09:31:34,826 - DEBUG - pop layout QGridLayout gridLayout_5
+2024-10-09 09:31:34,826 - DEBUG - pop widget QWidget singleLayerPage
+2024-10-09 09:31:34,826 - DEBUG - new topwidget self.baseMapTypeStack
+2024-10-09 09:31:34,826 - DEBUG - pop widget QStackedWidget baseMapTypeStack
+2024-10-09 09:31:34,826 - DEBUG - new topwidget self.createBaseMapGroupBox
+2024-10-09 09:31:34,826 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,826 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,826 - DEBUG - setting property suffix
+2024-10-09 09:31:34,827 - DEBUG - setting property minimum
+2024-10-09 09:31:34,827 - DEBUG - setting property maximum
+2024-10-09 09:31:34,827 - DEBUG - setting property value
+2024-10-09 09:31:34,827 - DEBUG - push QgsSpinBox tileSize
+2024-10-09 09:31:34,827 - DEBUG - pop widget QgsSpinBox tileSize
+2024-10-09 09:31:34,827 - DEBUG - new topwidget self.createBaseMapGroupBox
+2024-10-09 09:31:34,827 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,827 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,827 - DEBUG - setting property suffix
+2024-10-09 09:31:34,827 - DEBUG - setting property value
+2024-10-09 09:31:34,827 - DEBUG - push QgsDoubleSpinBox mapUnitsPerPixel
+2024-10-09 09:31:34,827 - DEBUG - pop widget QgsDoubleSpinBox mapUnitsPerPixel
+2024-10-09 09:31:34,827 - DEBUG - new topwidget self.createBaseMapGroupBox
+2024-10-09 09:31:34,827 - DEBUG - setting property text
+2024-10-09 09:31:34,827 - DEBUG - push QRadioButton mapThemeRadioButton
+2024-10-09 09:31:34,827 - DEBUG - pop widget QRadioButton mapThemeRadioButton
+2024-10-09 09:31:34,827 - DEBUG - new topwidget self.createBaseMapGroupBox
+2024-10-09 09:31:34,827 - DEBUG - setting property text
+2024-10-09 09:31:34,827 - DEBUG - setting property alignment
+2024-10-09 09:31:34,827 - DEBUG - push QLabel tileSizeLabel
+2024-10-09 09:31:34,828 - DEBUG - pop widget QLabel tileSizeLabel
+2024-10-09 09:31:34,828 - DEBUG - new topwidget self.createBaseMapGroupBox
+2024-10-09 09:31:34,828 - DEBUG - pop layout QGridLayout gridLayout
+2024-10-09 09:31:34,828 - DEBUG - pop widget QgsCollapsibleGroupBox createBaseMapGroupBox
+2024-10-09 09:31:34,828 - DEBUG - new topwidget self.scrollAreaWidgetContents
+2024-10-09 09:31:34,828 - DEBUG - setting property title
+2024-10-09 09:31:34,828 - DEBUG - setting property checkable
+2024-10-09 09:31:34,828 - DEBUG - push QgsCollapsibleGroupBox geofencingGroupBox
+2024-10-09 09:31:34,828 - DEBUG - push QGridLayout geofencingGridLayout
+2024-10-09 09:31:34,828 - DEBUG - setting property text
+2024-10-09 09:31:34,828 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,828 - DEBUG - push QLabel geofencingIntroductionLabel
+2024-10-09 09:31:34,828 - DEBUG - pop widget QLabel geofencingIntroductionLabel
+2024-10-09 09:31:34,828 - DEBUG - new topwidget self.geofencingGroupBox
+2024-10-09 09:31:34,828 - DEBUG - setting property text
+2024-10-09 09:31:34,828 - DEBUG - push QLabel geofencingLayerLabel
+2024-10-09 09:31:34,828 - DEBUG - pop widget QLabel geofencingLayerLabel
+2024-10-09 09:31:34,828 - DEBUG - new topwidget self.geofencingGroupBox
+2024-10-09 09:31:34,828 - DEBUG - push QgsMapLayerComboBox geofencingLayerComboBox
+2024-10-09 09:31:34,829 - DEBUG - pop widget QgsMapLayerComboBox geofencingLayerComboBox
+2024-10-09 09:31:34,829 - DEBUG - new topwidget self.geofencingGroupBox
+2024-10-09 09:31:34,829 - DEBUG - setting property text
+2024-10-09 09:31:34,829 - DEBUG - push QLabel geofencingBehaviorLabel
+2024-10-09 09:31:34,829 - DEBUG - pop widget QLabel geofencingBehaviorLabel
+2024-10-09 09:31:34,829 - DEBUG - new topwidget self.geofencingGroupBox
+2024-10-09 09:31:34,829 - DEBUG - push QComboBox geofencingBehaviorComboBox
+2024-10-09 09:31:34,829 - DEBUG - pop widget QComboBox geofencingBehaviorComboBox
+2024-10-09 09:31:34,829 - DEBUG - new topwidget self.geofencingGroupBox
+2024-10-09 09:31:34,829 - DEBUG - setting property text
+2024-10-09 09:31:34,829 - DEBUG - push QCheckBox geofencingShouldPreventDigitizingCheckBox
+2024-10-09 09:31:34,829 - DEBUG - pop widget QCheckBox geofencingShouldPreventDigitizingCheckBox
+2024-10-09 09:31:34,829 - DEBUG - new topwidget self.geofencingGroupBox
+2024-10-09 09:31:34,829 - DEBUG - pop layout QGridLayout geofencingGridLayout
+2024-10-09 09:31:34,829 - DEBUG - pop widget QgsCollapsibleGroupBox geofencingGroupBox
+2024-10-09 09:31:34,829 - DEBUG - new topwidget self.scrollAreaWidgetContents
+2024-10-09 09:31:34,829 - DEBUG - setting property title
+2024-10-09 09:31:34,829 - DEBUG - setting property checkable
+2024-10-09 09:31:34,829 - DEBUG - setting property collapsed
+2024-10-09 09:31:34,829 - DEBUG - setting property saveCollapsedState
+2024-10-09 09:31:34,829 - DEBUG - push QgsCollapsibleGroupBox advancedSettingsGroupBox
+2024-10-09 09:31:34,829 - DEBUG - push QGridLayout gridLayout_8
+2024-10-09 09:31:34,829 - DEBUG - setting property title
+2024-10-09 09:31:34,830 - DEBUG - setting property checkable
+2024-10-09 09:31:34,830 - DEBUG - setting property collapsed
+2024-10-09 09:31:34,830 - DEBUG - setting property saveCollapsedState
+2024-10-09 09:31:34,830 - DEBUG - push QgsCollapsibleGroupBox mapThemesGroupBox
+2024-10-09 09:31:34,830 - DEBUG - push QVBoxLayout verticalLayout_8
+2024-10-09 09:31:34,830 - DEBUG - pop layout QVBoxLayout verticalLayout_8
+2024-10-09 09:31:34,830 - DEBUG - pop widget QgsCollapsibleGroupBox mapThemesGroupBox
+2024-10-09 09:31:34,830 - DEBUG - new topwidget self.advancedSettingsGroupBox
+2024-10-09 09:31:34,830 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,830 - DEBUG - setting property text
+2024-10-09 09:31:34,830 - DEBUG - setting property alignment
+2024-10-09 09:31:34,830 - DEBUG - push QLabel attachmentDirsLabel
+2024-10-09 09:31:34,830 - DEBUG - pop widget QLabel attachmentDirsLabel
+2024-10-09 09:31:34,830 - DEBUG - new topwidget self.advancedSettingsGroupBox
+2024-10-09 09:31:34,830 - DEBUG - push QListWidget attachmentDirsListWidget
+2024-10-09 09:31:34,830 - DEBUG - pop widget QListWidget attachmentDirsListWidget
+2024-10-09 09:31:34,830 - DEBUG - new topwidget self.advancedSettingsGroupBox
+2024-10-09 09:31:34,830 - DEBUG - setting property text
+2024-10-09 09:31:34,830 - DEBUG - setting property alignment
+2024-10-09 09:31:34,830 - DEBUG - push QLabel labelDigitizingLogsLayer
+2024-10-09 09:31:34,830 - DEBUG - pop widget QLabel labelDigitizingLogsLayer
+2024-10-09 09:31:34,830 - DEBUG - new topwidget self.advancedSettingsGroupBox
+2024-10-09 09:31:34,830 - DEBUG - setting property text
+2024-10-09 09:31:34,831 - DEBUG - push QCheckBox onlyOfflineCopyFeaturesInAoi
+2024-10-09 09:31:34,831 - DEBUG - pop widget QCheckBox onlyOfflineCopyFeaturesInAoi
+2024-10-09 09:31:34,831 - DEBUG - new topwidget self.advancedSettingsGroupBox
+2024-10-09 09:31:34,831 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,831 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,831 - DEBUG - setting property suffix
+2024-10-09 09:31:34,831 - DEBUG - setting property minimum
+2024-10-09 09:31:34,831 - DEBUG - setting property maximum
+2024-10-09 09:31:34,831 - DEBUG - setting property value
+2024-10-09 09:31:34,831 - DEBUG - setting property showClearButton
+2024-10-09 09:31:34,831 - DEBUG - setting property clearValue
+2024-10-09 09:31:34,831 - DEBUG - push QgsSpinBox maximumImageWidthHeight
+2024-10-09 09:31:34,831 - DEBUG - pop widget QgsSpinBox maximumImageWidthHeight
+2024-10-09 09:31:34,831 - DEBUG - new topwidget self.advancedSettingsGroupBox
+2024-10-09 09:31:34,831 - DEBUG - setting property text
+2024-10-09 09:31:34,831 - DEBUG - setting property alignment
+2024-10-09 09:31:34,831 - DEBUG - push QLabel maximumImageWidthHeightLabel
+2024-10-09 09:31:34,831 - DEBUG - pop widget QLabel maximumImageWidthHeightLabel
+2024-10-09 09:31:34,831 - DEBUG - new topwidget self.advancedSettingsGroupBox
+2024-10-09 09:31:34,831 - DEBUG - setting property text
+2024-10-09 09:31:34,831 - DEBUG - setting property alignment
+2024-10-09 09:31:34,832 - DEBUG - push QLabel areaOfInterestLabel
+2024-10-09 09:31:34,832 - DEBUG - pop widget QLabel areaOfInterestLabel
+2024-10-09 09:31:34,832 - DEBUG - new topwidget self.advancedSettingsGroupBox
+2024-10-09 09:31:34,832 - DEBUG - push QgsMapLayerComboBox digitizingLogsLayerComboBox
+2024-10-09 09:31:34,832 - DEBUG - pop widget QgsMapLayerComboBox digitizingLogsLayerComboBox
+2024-10-09 09:31:34,832 - DEBUG - new topwidget self.advancedSettingsGroupBox
+2024-10-09 09:31:34,832 - DEBUG - pop layout QGridLayout gridLayout_8
+2024-10-09 09:31:34,832 - DEBUG - pop widget QgsCollapsibleGroupBox advancedSettingsGroupBox
+2024-10-09 09:31:34,832 - DEBUG - new topwidget self.scrollAreaWidgetContents
+2024-10-09 09:31:34,832 - DEBUG - pop layout QVBoxLayout verticalLayout1
+2024-10-09 09:31:34,832 - DEBUG - pop widget QWidget scrollAreaWidgetContents
+2024-10-09 09:31:34,832 - DEBUG - new topwidget self.scrollArea
+2024-10-09 09:31:34,832 - DEBUG - pop widget QScrollArea scrollArea
+2024-10-09 09:31:34,832 - DEBUG - new topwidget QField
+2024-10-09 09:31:34,832 - DEBUG - pop layout QVBoxLayout verticalLayout
+2024-10-09 09:31:34,832 - DEBUG - pop widget QWidget QField
+2024-10-09 09:31:34,832 - DEBUG - new topwidget None
+2024-10-09 09:31:34,837 - DEBUG - uiname is QFieldPackageDialogBase
+2024-10-09 09:31:34,837 - DEBUG - toplevel widget is QDialog
+2024-10-09 09:31:34,837 - DEBUG - setting property geometry
+2024-10-09 09:31:34,837 - DEBUG - setting property windowTitle
+2024-10-09 09:31:34,837 - DEBUG - push QDialog QFieldPackageDialogBase
+2024-10-09 09:31:34,838 - DEBUG - push QVBoxLayout verticalLayout_3
+2024-10-09 09:31:34,838 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,838 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,838 - DEBUG - push QHBoxLayout horizontalLayout_2
+2024-10-09 09:31:34,838 - DEBUG - setting property text
+2024-10-09 09:31:34,838 - DEBUG - setting property textFormat
+2024-10-09 09:31:34,838 - DEBUG - push QLabel label_2
+2024-10-09 09:31:34,838 - DEBUG - pop widget QLabel label_2
+2024-10-09 09:31:34,838 - DEBUG - new topwidget QFieldPackageDialogBase
+2024-10-09 09:31:34,838 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,838 - DEBUG - setting property text
+2024-10-09 09:31:34,838 - DEBUG - push QLabel project_lbl
+2024-10-09 09:31:34,838 - DEBUG - pop widget QLabel project_lbl
+2024-10-09 09:31:34,838 - DEBUG - new topwidget QFieldPackageDialogBase
+2024-10-09 09:31:34,838 - DEBUG - pop layout QHBoxLayout horizontalLayout_2
+2024-10-09 09:31:34,838 - DEBUG - setting property currentIndex
+2024-10-09 09:31:34,839 - DEBUG - push QStackedWidget stackedWidget
+2024-10-09 09:31:34,839 - DEBUG - push QWidget projectCompatibilityPage
+2024-10-09 09:31:34,839 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,839 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,839 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,839 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,839 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,839 - DEBUG - push QVBoxLayout verticalLayout_2
+2024-10-09 09:31:34,839 - DEBUG - setting property text
+2024-10-09 09:31:34,839 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,839 - DEBUG - push QLabel feedbackLabel
+2024-10-09 09:31:34,839 - DEBUG - pop widget QLabel feedbackLabel
+2024-10-09 09:31:34,839 - DEBUG - new topwidget self.projectCompatibilityPage
+2024-10-09 09:31:34,839 - DEBUG - push QVBoxLayout feedbackTableWrapperLayout
+2024-10-09 09:31:34,840 - DEBUG - pop layout QVBoxLayout feedbackTableWrapperLayout
+2024-10-09 09:31:34,840 - DEBUG - pop layout QVBoxLayout verticalLayout_2
+2024-10-09 09:31:34,840 - DEBUG - pop widget QWidget projectCompatibilityPage
+2024-10-09 09:31:34,840 - DEBUG - new topwidget self.stackedWidget
+2024-10-09 09:31:34,840 - DEBUG - push QWidget packagePage
+2024-10-09 09:31:34,840 - DEBUG - setting property leftMargin
+2024-10-09 09:31:34,840 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,840 - DEBUG - setting property rightMargin
+2024-10-09 09:31:34,840 - DEBUG - setting property bottomMargin
+2024-10-09 09:31:34,840 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,840 - DEBUG - push QVBoxLayout verticalLayout
+2024-10-09 09:31:34,840 - DEBUG - setting property title
+2024-10-09 09:31:34,840 - DEBUG - push QGroupBox groupBox
+2024-10-09 09:31:34,840 - DEBUG - push QGridLayout gridLayout
+2024-10-09 09:31:34,840 - DEBUG - push QLineEdit manualDir
+2024-10-09 09:31:34,840 - DEBUG - pop widget QLineEdit manualDir
+2024-10-09 09:31:34,840 - DEBUG - new topwidget self.groupBox
+2024-10-09 09:31:34,841 - DEBUG - setting property text
+2024-10-09 09:31:34,841 - DEBUG - push QToolButton manualDir_btn
+2024-10-09 09:31:34,841 - DEBUG - pop widget QToolButton manualDir_btn
+2024-10-09 09:31:34,841 - DEBUG - new topwidget self.groupBox
+2024-10-09 09:31:34,841 - DEBUG - pop layout QGridLayout gridLayout
+2024-10-09 09:31:34,841 - DEBUG - pop widget QGroupBox groupBox
+2024-10-09 09:31:34,841 - DEBUG - new topwidget self.packagePage
+2024-10-09 09:31:34,841 - DEBUG - setting property title
+2024-10-09 09:31:34,841 - DEBUG - push QgsCollapsibleGroupBox advancedOptionsGroupBox
+2024-10-09 09:31:34,841 - DEBUG - push QVBoxLayout verticalLayout_5
+2024-10-09 09:31:34,841 - DEBUG - pop layout QVBoxLayout verticalLayout_5
+2024-10-09 09:31:34,841 - DEBUG - pop widget QgsCollapsibleGroupBox advancedOptionsGroupBox
+2024-10-09 09:31:34,841 - DEBUG - new topwidget self.packagePage
+2024-10-09 09:31:34,841 - DEBUG - setting property title
+2024-10-09 09:31:34,841 - DEBUG - push QGroupBox progress_group
+2024-10-09 09:31:34,841 - DEBUG - push QVBoxLayout verticalLayout_6
+2024-10-09 09:31:34,841 - DEBUG - setting property text
+2024-10-09 09:31:34,842 - DEBUG - push QLabel label_11
+2024-10-09 09:31:34,842 - DEBUG - pop widget QLabel label_11
+2024-10-09 09:31:34,842 - DEBUG - new topwidget self.progress_group
+2024-10-09 09:31:34,842 - DEBUG - setting property value
+2024-10-09 09:31:34,842 - DEBUG - push QProgressBar totalProgressBar
+2024-10-09 09:31:34,842 - DEBUG - pop widget QProgressBar totalProgressBar
+2024-10-09 09:31:34,842 - DEBUG - new topwidget self.progress_group
+2024-10-09 09:31:34,842 - DEBUG - setting property text
+2024-10-09 09:31:34,842 - DEBUG - push QLabel statusLabel
+2024-10-09 09:31:34,842 - DEBUG - pop widget QLabel statusLabel
+2024-10-09 09:31:34,842 - DEBUG - new topwidget self.progress_group
+2024-10-09 09:31:34,842 - DEBUG - setting property value
+2024-10-09 09:31:34,842 - DEBUG - push QProgressBar layerProgressBar
+2024-10-09 09:31:34,842 - DEBUG - pop widget QProgressBar layerProgressBar
+2024-10-09 09:31:34,842 - DEBUG - new topwidget self.progress_group
+2024-10-09 09:31:34,842 - DEBUG - setting property title
+2024-10-09 09:31:34,842 - DEBUG - push QGroupBox infoGroupBox
+2024-10-09 09:31:34,843 - DEBUG - push QGridLayout gridLayout_8
+2024-10-09 09:31:34,843 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,843 - DEBUG - setting property text
+2024-10-09 09:31:34,843 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,843 - DEBUG - push QLabel infoLocalizedPresentLabel
+2024-10-09 09:31:34,843 - DEBUG - pop widget QLabel infoLocalizedPresentLabel
+2024-10-09 09:31:34,843 - DEBUG - new topwidget self.infoGroupBox
+2024-10-09 09:31:34,843 - DEBUG - setting property sizePolicy
+2024-10-09 09:31:34,843 - DEBUG - setting property text
+2024-10-09 09:31:34,843 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,843 - DEBUG - push QLabel infoLocalizedLayersLabel
+2024-10-09 09:31:34,843 - DEBUG - pop widget QLabel infoLocalizedLayersLabel
+2024-10-09 09:31:34,843 - DEBUG - new topwidget self.infoGroupBox
+2024-10-09 09:31:34,843 - DEBUG - pop layout QGridLayout gridLayout_8
+2024-10-09 09:31:34,843 - DEBUG - pop widget QGroupBox infoGroupBox
+2024-10-09 09:31:34,843 - DEBUG - new topwidget self.progress_group
+2024-10-09 09:31:34,843 - DEBUG - pop layout QVBoxLayout verticalLayout_6
+2024-10-09 09:31:34,843 - DEBUG - pop widget QGroupBox progress_group
+2024-10-09 09:31:34,844 - DEBUG - new topwidget self.packagePage
+2024-10-09 09:31:34,844 - DEBUG - pop layout QVBoxLayout verticalLayout
+2024-10-09 09:31:34,844 - DEBUG - pop widget QWidget packagePage
+2024-10-09 09:31:34,844 - DEBUG - new topwidget self.stackedWidget
+2024-10-09 09:31:34,844 - DEBUG - pop widget QStackedWidget stackedWidget
+2024-10-09 09:31:34,844 - DEBUG - new topwidget QFieldPackageDialogBase
+2024-10-09 09:31:34,844 - DEBUG - setting property topMargin
+2024-10-09 09:31:34,844 - DEBUG - setting property pyuicMargins
+2024-10-09 09:31:34,844 - DEBUG - push QHBoxLayout horizontalLayout
+2024-10-09 09:31:34,844 - DEBUG - setting property text
+2024-10-09 09:31:34,844 - DEBUG - push QPushButton nextButton
+2024-10-09 09:31:34,844 - DEBUG - pop widget QPushButton nextButton
+2024-10-09 09:31:34,844 - DEBUG - new topwidget QFieldPackageDialogBase
+2024-10-09 09:31:34,844 - DEBUG - pop layout QHBoxLayout horizontalLayout
+2024-10-09 09:31:34,844 - DEBUG - setting property orientation
+2024-10-09 09:31:34,844 - DEBUG - setting property standardButtons
+2024-10-09 09:31:34,845 - DEBUG - push QDialogButtonBox button_box
+2024-10-09 09:31:34,845 - DEBUG - pop widget QDialogButtonBox button_box
+2024-10-09 09:31:34,845 - DEBUG - new topwidget QFieldPackageDialogBase
+2024-10-09 09:31:34,845 - DEBUG - pop layout QVBoxLayout verticalLayout_3
+2024-10-09 09:31:34,845 - DEBUG - pop widget QDialog QFieldPackageDialogBase
+2024-10-09 09:31:34,845 - DEBUG - new topwidget None
+2024-10-09 09:31:34,848 - DEBUG - uiname is QFieldPreferences
+2024-10-09 09:31:34,848 - DEBUG - toplevel widget is QWidget
+2024-10-09 09:31:34,848 - DEBUG - setting property geometry
+2024-10-09 09:31:34,848 - DEBUG - setting property windowTitle
+2024-10-09 09:31:34,848 - DEBUG - push QWidget QFieldPreferences
+2024-10-09 09:31:34,848 - DEBUG - push QVBoxLayout verticalLayout
+2024-10-09 09:31:34,848 - DEBUG - setting property title
+2024-10-09 09:31:34,848 - DEBUG - push QGroupBox cloudGroupBox
+2024-10-09 09:31:34,848 - DEBUG - push QGridLayout cloudGridLayout
+2024-10-09 09:31:34,849 - DEBUG - setting property text
+2024-10-09 09:31:34,849 - DEBUG - push QLabel cloudDirectoryLabel
+2024-10-09 09:31:34,849 - DEBUG - pop widget QLabel cloudDirectoryLabel
+2024-10-09 09:31:34,849 - DEBUG - new topwidget self.cloudGroupBox
+2024-10-09 09:31:34,849 - DEBUG - setting property text
+2024-10-09 09:31:34,849 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,849 - DEBUG - setting property openExternalLinks
+2024-10-09 09:31:34,849 - DEBUG - push QLabel cloudIntroLabel
+2024-10-09 09:31:34,849 - DEBUG - pop widget QLabel cloudIntroLabel
+2024-10-09 09:31:34,849 - DEBUG - new topwidget self.cloudGroupBox
+2024-10-09 09:31:34,849 - DEBUG - push QgsFileWidget cloudDirectory
+2024-10-09 09:31:34,849 - DEBUG - pop widget QgsFileWidget cloudDirectory
+2024-10-09 09:31:34,849 - DEBUG - new topwidget self.cloudGroupBox
+2024-10-09 09:31:34,849 - DEBUG - setting property text
+2024-10-09 09:31:34,849 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,849 - DEBUG - push QCheckBox qfieldCloudRememberMe
+2024-10-09 09:31:34,849 - DEBUG - pop widget QCheckBox qfieldCloudRememberMe
+2024-10-09 09:31:34,849 - DEBUG - new topwidget self.cloudGroupBox
+2024-10-09 09:31:34,849 - DEBUG - pop layout QGridLayout cloudGridLayout
+2024-10-09 09:31:34,850 - DEBUG - pop widget QGroupBox cloudGroupBox
+2024-10-09 09:31:34,850 - DEBUG - new topwidget QFieldPreferences
+2024-10-09 09:31:34,850 - DEBUG - setting property title
+2024-10-09 09:31:34,850 - DEBUG - push QGroupBox generalGroupBox
+2024-10-09 09:31:34,850 - DEBUG - push QGridLayout generalGridLayout
+2024-10-09 09:31:34,850 - DEBUG - setting property text
+2024-10-09 09:31:34,850 - DEBUG - setting property wordWrap
+2024-10-09 09:31:34,850 - DEBUG - setting property openExternalLinks
+2024-10-09 09:31:34,850 - DEBUG - push QLabel cloudIntroLabel1
+2024-10-09 09:31:34,850 - DEBUG - pop widget QLabel cloudIntroLabel1
+2024-10-09 09:31:34,850 - DEBUG - new topwidget self.generalGroupBox
+2024-10-09 09:31:34,850 - DEBUG - setting property text
+2024-10-09 09:31:34,850 - DEBUG - push QLabel importDirectoryLabel
+2024-10-09 09:31:34,850 - DEBUG - pop widget QLabel importDirectoryLabel
+2024-10-09 09:31:34,850 - DEBUG - new topwidget self.generalGroupBox
+2024-10-09 09:31:34,850 - DEBUG - push QgsFileWidget importDirectory
+2024-10-09 09:31:34,850 - DEBUG - pop widget QgsFileWidget importDirectory
+2024-10-09 09:31:34,850 - DEBUG - new topwidget self.generalGroupBox
+2024-10-09 09:31:34,851 - DEBUG - setting property text
+2024-10-09 09:31:34,851 - DEBUG - push QLabel exportDirectoryLabel
+2024-10-09 09:31:34,851 - DEBUG - pop widget QLabel exportDirectoryLabel
+2024-10-09 09:31:34,851 - DEBUG - new topwidget self.generalGroupBox
+2024-10-09 09:31:34,851 - DEBUG - push QgsFileWidget exportDirectory
+2024-10-09 09:31:34,851 - DEBUG - pop widget QgsFileWidget exportDirectory
+2024-10-09 09:31:34,851 - DEBUG - new topwidget self.generalGroupBox
+2024-10-09 09:31:34,851 - DEBUG - setting property text
+2024-10-09 09:31:34,851 - DEBUG - setting property toolTip
+2024-10-09 09:31:34,851 - DEBUG - push QCheckBox showPackagingActions
+2024-10-09 09:31:34,851 - DEBUG - pop widget QCheckBox showPackagingActions
+2024-10-09 09:31:34,851 - DEBUG - new topwidget self.generalGroupBox
+2024-10-09 09:31:34,851 - DEBUG - pop layout QGridLayout generalGridLayout
+2024-10-09 09:31:34,851 - DEBUG - pop widget QGroupBox generalGroupBox
+2024-10-09 09:31:34,851 - DEBUG - new topwidget QFieldPreferences
+2024-10-09 09:31:34,851 - DEBUG - pop layout QVBoxLayout verticalLayout
+2024-10-09 09:31:34,851 - DEBUG - pop widget QWidget QFieldPreferences
+2024-10-09 09:31:34,851 - DEBUG - new topwidget None
+2024-10-09 09:31:34,854 - DEBUG - uiname is QFieldSynchronizeBase
+2024-10-09 09:31:34,854 - DEBUG - toplevel widget is QDialog
+2024-10-09 09:31:34,854 - DEBUG - setting property geometry
+2024-10-09 09:31:34,854 - DEBUG - setting property windowTitle
+2024-10-09 09:31:34,854 - DEBUG - push QDialog QFieldSynchronizeBase
+2024-10-09 09:31:34,854 - DEBUG - push QVBoxLayout verticalLayout
+2024-10-09 09:31:34,854 - DEBUG - setting property text
+2024-10-09 09:31:34,854 - DEBUG - setting property textFormat
+2024-10-09 09:31:34,854 - DEBUG - push QLabel label
+2024-10-09 09:31:34,854 - DEBUG - pop widget QLabel label
+2024-10-09 09:31:34,854 - DEBUG - new topwidget QFieldSynchronizeBase
+2024-10-09 09:31:34,855 - DEBUG - push QHBoxLayout horizontalLayout
+2024-10-09 09:31:34,855 - DEBUG - push QLineEdit qfieldDir
+2024-10-09 09:31:34,855 - DEBUG - pop widget QLineEdit qfieldDir
+2024-10-09 09:31:34,855 - DEBUG - new topwidget QFieldSynchronizeBase
+2024-10-09 09:31:34,855 - DEBUG - setting property text
+2024-10-09 09:31:34,855 - DEBUG - push QToolButton qfieldDir_button
+2024-10-09 09:31:34,855 - DEBUG - pop widget QToolButton qfieldDir_button
+2024-10-09 09:31:34,855 - DEBUG - new topwidget QFieldSynchronizeBase
+2024-10-09 09:31:34,855 - DEBUG - pop layout QHBoxLayout horizontalLayout
+2024-10-09 09:31:34,855 - DEBUG - setting property title
+2024-10-09 09:31:34,855 - DEBUG - setting property saveCollapsedState
+2024-10-09 09:31:34,855 - DEBUG - push QgsCollapsibleGroupBox advancedOptionsGroupBox
+2024-10-09 09:31:34,856 - DEBUG - push QVBoxLayout verticalLayout_3
+2024-10-09 09:31:34,856 - DEBUG - pop layout QVBoxLayout verticalLayout_3
+2024-10-09 09:31:34,856 - DEBUG - pop widget QgsCollapsibleGroupBox advancedOptionsGroupBox
+2024-10-09 09:31:34,856 - DEBUG - new topwidget QFieldSynchronizeBase
+2024-10-09 09:31:34,856 - DEBUG - setting property title
+2024-10-09 09:31:34,856 - DEBUG - push QGroupBox progress_group
+2024-10-09 09:31:34,856 - DEBUG - push QVBoxLayout verticalLayout_2
+2024-10-09 09:31:34,856 - DEBUG - setting property text
+2024-10-09 09:31:34,856 - DEBUG - push QLabel label_2
+2024-10-09 09:31:34,856 - DEBUG - pop widget QLabel label_2
+2024-10-09 09:31:34,856 - DEBUG - new topwidget self.progress_group
+2024-10-09 09:31:34,856 - DEBUG - setting property value
+2024-10-09 09:31:34,856 - DEBUG - push QProgressBar totalProgressBar
+2024-10-09 09:31:34,856 - DEBUG - pop widget QProgressBar totalProgressBar
+2024-10-09 09:31:34,856 - DEBUG - new topwidget self.progress_group
+2024-10-09 09:31:34,856 - DEBUG - setting property text
+2024-10-09 09:31:34,856 - DEBUG - push QLabel label_3
+2024-10-09 09:31:34,856 - DEBUG - pop widget QLabel label_3
+2024-10-09 09:31:34,857 - DEBUG - new topwidget self.progress_group
+2024-10-09 09:31:34,857 - DEBUG - setting property value
+2024-10-09 09:31:34,857 - DEBUG - push QProgressBar layerProgressBar
+2024-10-09 09:31:34,857 - DEBUG - pop widget QProgressBar layerProgressBar
+2024-10-09 09:31:34,857 - DEBUG - new topwidget self.progress_group
+2024-10-09 09:31:34,857 - DEBUG - pop layout QVBoxLayout verticalLayout_2
+2024-10-09 09:31:34,857 - DEBUG - pop widget QGroupBox progress_group
+2024-10-09 09:31:34,857 - DEBUG - new topwidget QFieldSynchronizeBase
+2024-10-09 09:31:34,857 - DEBUG - setting property orientation
+2024-10-09 09:31:34,857 - DEBUG - setting property standardButtons
+2024-10-09 09:31:34,857 - DEBUG - push QDialogButtonBox button_box
+2024-10-09 09:31:34,857 - DEBUG - pop widget QDialogButtonBox button_box
+2024-10-09 09:31:34,857 - DEBUG - new topwidget QFieldSynchronizeBase
+2024-10-09 09:31:34,857 - DEBUG - pop layout QVBoxLayout verticalLayout
+2024-10-09 09:31:34,857 - DEBUG - pop widget QDialog QFieldSynchronizeBase
+2024-10-09 09:31:34,857 - DEBUG - new topwidget None
