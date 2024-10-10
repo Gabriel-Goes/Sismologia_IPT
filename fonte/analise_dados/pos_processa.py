@@ -1758,6 +1758,8 @@ def main():
     df = class_region(df)
     df = median_snrp_event(df)
     df = median_dist_event(df)
+    # Calculate the CFT column to use in CFT_std
+    # The column is calculated with
     df.loc[:, 'Num_Estacoes'] = df.index.get_level_values('Event').map(
         df.reset_index().groupby('Event').size()
     )
