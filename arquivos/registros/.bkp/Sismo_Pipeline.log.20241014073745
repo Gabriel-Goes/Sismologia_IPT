@@ -1,0 +1,40 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: False
+  TREATCATALOG: False
+  PREDICT: True
+  POSPROCESS: True
+  MAPS: True
+  REPORT: True
+  TEST: False
+
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+2024-10-14 07:28:04.905280: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-10-14 07:28:04.921769: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-10-14 07:28:04.926440: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-10-14 07:28:04.937618: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-10-14 07:28:05.698894: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Number of events: 2725
+*****************
+EVENT: 20120122T071034 (1 / 2725)
+ - Number of picks: 1
+PICK: PEXB (1 / 1)
+Event            Station
+20120122T071034  PEXB       []
+Name: Compo, dtype: object
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/rnc/run.py", line 71, in <module>
+    main(args)
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/rnc/run.py", line 48, in main
+    eventos = spectro_extract(
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/rnc/data_process.py", line 215, in spectro_extract
+    eventos.loc[(ev_index, pk_index), 'Compo'].append(compo)
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.9/site-packages/pandas/core/generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+AttributeError: 'Series' object has no attribute 'append'
