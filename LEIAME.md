@@ -2,13 +2,13 @@
 
 Utilizando redes neurais convolucionais para classificar espectrogramas de sismos
 entre eventos naturais e antropogênicos. Algoritmo desenvolvido em Python pelo
-Laboratório de Planetologia e Geociências da Universidade de Nantes, França 
+Laboratório de Planetologia e Geociências da Universidade de Nantes, França
 disponível no [GitLab](https://univ-nantes.io/E181658E/discrimination_eq_q).
 
-Este repositório armazena os códigos desenvolvidos por G.G., Rocha de Lima em 
+Este repositório armazena os códigos desenvolvidos por G.G., Rocha de Lima em
 conjunto com o setor de Sismologia do IPT comandado por L. A., Schirbel. Este
 código possibilita a automação do algoritmo de classificação de Houcard, dede
-a etapa de aquisição, armazenamento e pré-processamento até a análise das 
+a etapa de aquisição, armazenamento e pré-processamento até a análise das
 métricas de seu modelo.
 
 # Sumário
@@ -24,8 +24,8 @@ métricas de seu modelo.
 ## Primeiros-Passos
 
 ### Testando Algoritmo com Eventos Naturais
-A ideia inicial é utilizar o catálogo do MOHO ( IAG-USP ) para adquirir apenas 
-dados sismicos de eventos naturais para testar a eficiencia do algoritmo em 
+A ideia inicial é utilizar o catálogo do MOHO ( IAG-USP ) para adquirir apenas
+dados sismicos de eventos naturais para testar a eficiencia do algoritmo em
 discriminar eventos antrópicos dos naturais do território brasileiro.
 
 Além de adquirir apenas dados que foram rotulados por especialistas, nós
@@ -35,13 +35,13 @@ o território brasileiro abrange a zona do -3 UTC à -5 UTC.
 
 - [x] Adquirir [catálogo](https://github.com/Gabriel-Goes/sismologia_ipt/blob/main/files/catalogo/catalogo-moho.csv) de eventos naturais do IAG-USP;
 - [x] Seperar eventos entre comericias e não-comerciais;
-- [ ] Olhar forma de onde no Snuffler;
-- [ ] Desenvolvimento de [Snuffling](www.pyrocko.com). 
-- [ ] Plotar no mapa;
+- [x] Olhar forma de onde no Snuffler;
+- [x] Desenvolvimento de [Snuffling](www.pyrocko.com).
+- [x] Plotar no mapa;
 - [ ]  Adicionar mapas no plot visualizacao.py.
-- [ ] Localizações de pedreiras já conhecidas;
-- [ ] Utilizar shapefiles da ANM.
-- [ ] Segunda rodada com todos os eventos sem filtrar por horário.
+- [x] Localizações de pedreiras já conhecidas;
+- [x] Utilizar shapefiles da ANM.
+- [x] Segunda rodada com todos os eventos sem filtrar por horário.
 - [ ] Olhar se as formas de onda estão nos catálogos do IPT; [SC/RS/PR]
 
 ## Foco
@@ -53,7 +53,7 @@ o catálogo de sismos do IAG-USP e do IPT.
 
 ## Instalação
 
-Siga os tópicos abaixo copiando e colando os códigos em seu terminal. Este 
+Siga os tópicos abaixo copiando e colando os códigos em seu terminal. Este
 roteiro, tem compatibilidade testada para as distribuições GNU/Linux que utilizam
 os gerenciadores de pacotes APT (Debian e derivados) e PACMAN ( Arch Linux e
 derivados).
@@ -81,7 +81,7 @@ os passos a seguir.
 
 ### Adiquirindo Dados Sismológicos
 Primeiro vamos adquirir os dados dos eventos sismológicos. Para isso, foi
-construída uma pipeline que automatiza o processo de filtragem e armazenamento 
+construída uma pipeline que automatiza o processo de filtragem e armazenamento
 dos dados. Por enquanto, temos apenas uma forma de executar a (pipeline](https://github.com/Gabriel-Goes/sismologia_ipt/blob/main/)
 
 **Atenção:**
@@ -121,7 +121,7 @@ que cria o ambiente virtual contêinerizado e instala as dependências necessár
 ### Testando o Discriminador
 Dentro do contêiner, podemos testar o algoritmo com nossos dados sismológicos.
 
-```bash 
+```bash
 ./Sismo_Pipeline.sh
 ```
 

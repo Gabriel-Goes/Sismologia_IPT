@@ -7,10 +7,10 @@ then
     pkill qgis.bin
 fi
 
-cp -r $HOME/projetos/ClassificadorSismologico/fonte/interface/farejadorsismo $HOME/.local/share/QGIS/QGIS3/profiles/Gabriel/python/plugins
+cp -r $HOME/projetos/ClassificadorSismologico/fonte/interface/farejadorsismo $HOME/.local/share/QGIS/QGIS3/profiles/default/python/plugins
 
 pushd $HOME
-export PYTHONPATH=$HOME/.pyenv/versions/sismologia/lib/python3.11/site-packages:$HOME/.pyenv/versions/sismologia/bin/python:$PYTHONPATH
+export PYTHONPATH="$PYTHONPATH:/home/ggrl/.pyenv/versions/geologia/lib/python3.13/site-packages"
 exec qgis &
 popd
 

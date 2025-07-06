@@ -29,6 +29,8 @@ from tqdm import tqdm
 from analise_dados.testa_filtros import parsewindow, prepare
 
 from nucleo.utils import CAT_DIS, CAT_MAG, CAT_SNR, CAT_PROB
+import matplotlib
+matplotlib.use('Agg')
 
 
 # ----------------------------- PATHS --------------------------------------- #
@@ -1647,7 +1649,7 @@ def comercial(df):
     hist_snr_recall_pick(df_cm)
     # median_snr_recall_event(df_cm)
     # ----------------------------------
-    plot_box_dist(df_cm)
+    #plot_box_dist(df_cm)
     plot_box_by_network(df_cm)
     plot_box_by_station(df_cm)
     region_correlation(df_cm)
@@ -1758,8 +1760,6 @@ def main():
     df = class_region(df)
     df = median_snrp_event(df)
     df = median_dist_event(df)
-    # Calculate the CFT column to use in CFT_std
-    # The column is calculated with
     df.loc[:, 'Num_Estacoes'] = df.index.get_level_values('Event').map(
         df.reset_index().groupby('Event').size()
     )
@@ -1797,7 +1797,7 @@ def main():
     )
 
     df_nc = ncomercial(df)
-    # df_cm = comercial(df)
+    df_cm = comercial(df)
 
     df_nc.to_csv('arquivos/resultados/nc_analisado_final.csv')
     df.to_csv('arquivos/resultados/analisado_final.csv')

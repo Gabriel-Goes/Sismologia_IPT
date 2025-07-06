@@ -1,0 +1,549 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: False
+  TREATCATALOG: False
+  PREDICT: False
+  POSPROCESS: True
+  MAPS: False
+  REPORT: False
+  TEST: False
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+0it [00:00, ?it/s]1it [00:00,  5.04it/s]17it [00:00, 68.88it/s]33it [00:00, 100.24it/s]49it [00:00, 119.43it/s]66it [00:00, 134.39it/s]82it [00:00, 140.58it/s]98it [00:00, 145.32it/s]114it [00:00, 141.82it/s]129it [00:01, 129.61it/s]146it [00:01, 138.43it/s]162it [00:01, 142.52it/s]178it [00:01, 147.26it/s]194it [00:01, 149.12it/s]210it [00:01, 149.98it/s]227it [00:01, 153.66it/s]243it [00:01, 150.77it/s]259it [00:01, 153.32it/s]275it [00:02, 153.46it/s]292it [00:02, 157.02it/s]310it [00:02, 162.79it/s]328it [00:02, 167.48it/s]345it [00:02, 143.66it/s]360it [00:02, 132.17it/s]375it [00:02, 135.47it/s]391it [00:02, 141.47it/s]407it [00:02, 144.49it/s]422it [00:03, 144.14it/s]440it [00:03, 153.01it/s]456it [00:03, 152.22it/s]472it [00:03, 145.65it/s]487it [00:03, 138.65it/s]503it [00:03, 143.92it/s]519it [00:03, 146.23it/s]535it [00:03, 148.44it/s]551it [00:03, 150.91it/s]567it [00:04, 149.66it/s]585it [00:04, 155.16it/s]601it [00:04, 144.19it/s]617it [00:04, 146.70it/s]633it [00:04, 149.15it/s]649it [00:04, 150.55it/s]665it [00:04, 145.29it/s]680it [00:04, 145.71it/s]695it [00:04, 145.79it/s]710it [00:04, 146.79it/s]727it [00:05, 151.98it/s]743it [00:05, 151.90it/s]759it [00:05, 153.86it/s]776it [00:05, 157.95it/s]793it [00:05, 160.53it/s]810it [00:05, 158.88it/s]827it [00:05, 161.12it/s]844it [00:05, 154.78it/s]860it [00:05, 148.89it/s]875it [00:06, 145.16it/s]892it [00:06, 150.91it/s]910it [00:06, 156.71it/s]927it [00:06, 156.40it/s]944it [00:06, 158.69it/s]960it [00:06, 158.28it/s]977it [00:06, 159.70it/s]993it [00:06, 157.86it/s]1010it [00:06, 160.87it/s]1027it [00:06, 159.81it/s]1044it [00:07, 161.15it/s]1061it [00:07, 158.73it/s]1077it [00:07, 155.06it/s]1093it [00:07, 154.86it/s]1109it [00:07, 156.22it/s]1125it [00:07, 155.69it/s]1141it [00:07, 153.95it/s]1158it [00:07, 156.89it/s]1174it [00:07, 156.66it/s]1191it [00:08, 160.17it/s]1209it [00:08, 163.01it/s]1227it [00:08, 166.07it/s]1244it [00:08, 166.80it/s]1261it [00:08, 165.00it/s]1278it [00:08, 160.44it/s]1295it [00:08, 159.78it/s]1311it [00:08, 158.44it/s]1328it [00:08, 158.90it/s]1344it [00:08, 157.97it/s]1360it [00:09, 150.06it/s]1377it [00:09, 154.42it/s]1394it [00:09, 155.23it/s]1410it [00:09, 148.69it/s]1428it [00:09, 156.42it/s]1446it [00:09, 163.10it/s]1464it [00:09, 163.72it/s]1481it [00:09, 161.42it/s]1498it [00:09, 160.70it/s]1515it [00:10, 156.90it/s]1531it [00:10, 154.94it/s]1547it [00:10, 155.32it/s]1563it [00:10, 155.88it/s]1579it [00:10, 155.54it/s]1595it [00:10, 155.74it/s]1611it [00:10, 155.20it/s]1627it [00:10, 154.89it/s]1643it [00:10, 155.03it/s]1659it [00:11, 149.09it/s]1677it [00:11, 157.26it/s]1694it [00:11, 159.06it/s]1710it [00:11, 156.79it/s]1728it [00:11, 161.13it/s]1745it [00:11, 157.83it/s]1761it [00:11, 151.58it/s]1777it [00:11, 152.51it/s]1793it [00:11, 152.91it/s]1809it [00:11, 152.02it/s]1827it [00:12, 158.56it/s]1843it [00:12, 156.31it/s]1859it [00:12, 152.61it/s]1877it [00:12, 157.84it/s]1893it [00:12, 157.05it/s]1909it [00:12, 157.88it/s]1925it [00:12, 153.71it/s]1941it [00:12, 155.33it/s]1958it [00:12, 157.51it/s]1975it [00:13, 159.72it/s]1992it [00:13, 158.55it/s]2008it [00:13, 158.97it/s]2024it [00:13, 156.35it/s]2040it [00:13, 154.04it/s]2057it [00:13, 158.44it/s]2074it [00:13, 159.16it/s]2090it [00:13, 157.91it/s]2106it [00:13, 154.23it/s]2123it [00:13, 156.91it/s]2139it [00:14, 153.48it/s]2155it [00:14, 154.21it/s]2171it [00:14, 154.53it/s]2188it [00:14, 150.56it/s]2204it [00:14, 147.45it/s]2219it [00:14, 143.52it/s]2236it [00:14, 150.17it/s]2252it [00:14, 148.28it/s]2269it [00:14, 151.85it/s]2285it [00:15, 153.77it/s]2301it [00:15, 154.64it/s]2317it [00:15, 154.33it/s]2333it [00:15, 154.38it/s]2349it [00:15, 153.85it/s]2367it [00:15, 161.16it/s]2384it [00:15, 157.57it/s]2400it [00:15, 156.75it/s]2417it [00:15, 159.48it/s]2433it [00:15, 158.33it/s]2450it [00:16, 159.03it/s]2468it [00:16, 163.21it/s]2485it [00:16, 163.52it/s]2502it [00:16, 165.10it/s]2519it [00:16, 165.65it/s]2536it [00:16, 153.47it/s]2552it [00:16, 153.83it/s]2569it [00:16, 155.38it/s]2585it [00:16, 153.83it/s]2601it [00:17, 151.97it/s]2619it [00:17, 156.23it/s]2635it [00:17, 153.11it/s]2653it [00:17, 158.84it/s]2669it [00:17, 158.91it/s]2686it [00:17, 159.54it/s]2703it [00:17, 160.76it/s]2720it [00:17, 158.08it/s]2736it [00:17, 158.62it/s]2752it [00:18, 158.09it/s]2770it [00:18, 163.26it/s]2788it [00:18, 165.68it/s]2805it [00:18, 164.31it/s]2822it [00:18, 161.39it/s]2839it [00:18, 152.25it/s]2856it [00:18, 155.17it/s]2872it [00:18, 154.38it/s]2888it [00:18, 142.14it/s]2904it [00:19, 146.04it/s]2920it [00:19, 148.54it/s]2935it [00:19, 141.47it/s]2952it [00:19, 147.35it/s]2968it [00:19, 148.96it/s]2985it [00:19, 152.88it/s]3002it [00:19, 155.18it/s]3021it [00:19, 163.20it/s]3039it [00:19, 166.27it/s]3056it [00:19, 162.25it/s]3073it [00:20, 163.17it/s]3090it [00:20, 150.78it/s]3106it [00:20, 151.73it/s]3123it [00:20, 154.02it/s]3139it [00:20, 154.29it/s]3155it [00:20, 145.93it/s]3170it [00:20, 136.84it/s]3186it [00:20, 139.83it/s]3201it [00:20, 141.44it/s]3216it [00:21, 143.67it/s]3233it [00:21, 150.13it/s]3250it [00:21, 153.67it/s]3266it [00:21, 152.89it/s]3282it [00:21, 150.98it/s]3298it [00:21, 148.97it/s]3314it [00:21, 150.63it/s]3330it [00:21, 150.39it/s]3346it [00:21, 150.32it/s]3362it [00:22, 142.13it/s]3377it [00:22, 128.57it/s]3391it [00:22, 129.68it/s]3407it [00:22, 136.31it/s]3424it [00:22, 143.22it/s]3441it [00:22, 148.70it/s]3458it [00:22, 152.54it/s]3474it [00:22, 153.12it/s]3490it [00:22, 152.62it/s]3506it [00:23, 152.67it/s]3522it [00:23, 153.40it/s]3538it [00:23, 151.10it/s]3554it [00:23, 142.82it/s]3570it [00:23, 144.76it/s]3585it [00:23, 142.29it/s]3601it [00:23, 142.48it/s]3616it [00:23, 138.45it/s]3630it [00:23, 123.99it/s]3646it [00:24, 131.55it/s]3660it [00:24, 132.49it/s]3674it [00:24, 121.52it/s]3687it [00:24, 122.08it/s]3702it [00:24, 127.72it/s]3721it [00:24, 143.50it/s]3739it [00:24, 152.67it/s]3756it [00:24, 155.45it/s]3772it [00:24, 149.96it/s]3789it [00:25, 155.47it/s]3805it [00:25, 156.15it/s]3821it [00:25, 156.90it/s]3838it [00:25, 158.81it/s]3854it [00:25, 154.60it/s]3872it [00:25, 160.17it/s]3890it [00:25, 163.90it/s]3908it [00:25, 166.50it/s]3926it [00:25, 169.56it/s]3944it [00:25, 170.31it/s]3962it [00:26, 166.68it/s]3979it [00:26, 165.33it/s]3996it [00:26, 159.90it/s]4013it [00:26, 159.46it/s]4030it [00:26, 160.09it/s]4047it [00:26, 155.86it/s]4063it [00:26, 151.36it/s]4079it [00:26, 153.46it/s]4095it [00:26, 154.88it/s]4111it [00:27, 152.01it/s]4127it [00:27, 152.41it/s]4143it [00:27, 153.20it/s]4160it [00:27, 156.51it/s]4176it [00:27, 156.66it/s]4193it [00:27, 158.49it/s]4209it [00:27, 148.18it/s]4224it [00:27, 145.29it/s]4239it [00:27, 145.01it/s]4254it [00:28, 143.45it/s]4269it [00:28, 144.37it/s]4285it [00:28, 146.60it/s]4301it [00:28, 149.28it/s]4319it [00:28, 156.25it/s]4335it [00:28, 157.32it/s]4351it [00:28, 156.20it/s]4367it [00:28, 156.58it/s]4383it [00:28, 153.65it/s]4399it [00:28, 154.13it/s]4416it [00:29, 156.97it/s]4432it [00:29, 136.44it/s]4447it [00:29, 139.62it/s]4462it [00:29, 136.66it/s]4477it [00:29, 140.28it/s]4493it [00:29, 144.75it/s]4510it [00:29, 151.17it/s]4530it [00:29, 163.12it/s]4549it [00:29, 168.54it/s]4566it [00:30, 166.83it/s]4583it [00:30, 159.25it/s]4600it [00:30, 156.33it/s]4616it [00:30, 156.13it/s]4632it [00:30, 155.32it/s]4649it [00:30, 157.37it/s]4665it [00:30, 145.99it/s]4680it [00:30, 138.59it/s]4695it [00:30, 140.37it/s]4710it [00:31, 137.61it/s]4724it [00:31, 137.79it/s]4742it [00:31, 148.08it/s]4760it [00:31, 156.32it/s]4776it [00:31, 154.98it/s]4792it [00:31, 154.84it/s]4809it [00:31, 157.15it/s]4827it [00:31, 161.50it/s]4844it [00:31, 162.21it/s]4861it [00:32, 159.15it/s]4878it [00:32, 161.05it/s]4897it [00:32, 168.07it/s]4916it [00:32, 171.76it/s]4934it [00:32, 173.82it/s]4952it [00:32, 162.83it/s]4969it [00:32, 155.13it/s]4985it [00:32, 138.19it/s]5000it [00:32, 136.90it/s]5018it [00:33, 146.23it/s]5036it [00:33, 153.07it/s]5053it [00:33, 156.33it/s]5069it [00:33, 151.76it/s]5085it [00:33, 149.58it/s]5104it [00:33, 158.62it/s]5122it [00:33, 163.82it/s]5140it [00:33, 168.08it/s]5158it [00:33, 169.95it/s]5176it [00:33, 172.45it/s]5195it [00:34, 175.61it/s]5213it [00:34, 170.37it/s]5231it [00:34, 160.53it/s]5248it [00:34, 142.86it/s]5263it [00:34, 133.70it/s]5277it [00:34, 129.17it/s]5293it [00:34, 135.13it/s]5309it [00:34, 141.49it/s]5324it [00:35, 143.77it/s]5342it [00:35, 151.70it/s]5360it [00:35, 158.08it/s]5376it [00:35, 146.54it/s]5391it [00:35, 136.10it/s]5405it [00:35, 129.39it/s]5419it [00:35, 130.38it/s]5433it [00:35, 132.32it/s]5451it [00:35, 143.76it/s]5466it [00:36, 142.63it/s]5481it [00:36, 144.13it/s]5497it [00:36, 144.38it/s]5512it [00:36, 142.02it/s]5527it [00:36, 141.47it/s]5543it [00:36, 139.88it/s]5559it [00:36, 143.56it/s]5576it [00:36, 150.06it/s]5593it [00:36, 155.67it/s]5610it [00:37, 159.33it/s]5628it [00:37, 162.87it/s]5645it [00:37, 164.68it/s]5662it [00:37, 166.18it/s]5680it [00:37, 168.35it/s]5697it [00:37, 168.37it/s]5714it [00:37, 156.19it/s]5730it [00:37, 145.58it/s]5747it [00:37, 151.00it/s]5763it [00:37, 144.99it/s]5780it [00:38, 151.51it/s]5798it [00:38, 157.82it/s]5816it [00:38, 161.94it/s]5834it [00:38, 165.43it/s]5852it [00:38, 168.04it/s]5869it [00:38, 165.18it/s]5886it [00:38, 162.58it/s]5903it [00:38, 157.92it/s]5921it [00:38, 161.20it/s]5938it [00:39, 158.44it/s]5954it [00:39, 154.91it/s]5970it [00:39, 153.79it/s]5986it [00:39, 151.73it/s]6004it [00:39, 158.10it/s]6022it [00:39, 163.13it/s]6039it [00:39, 159.84it/s]6056it [00:39, 161.05it/s]6074it [00:39, 165.02it/s]6091it [00:40, 157.38it/s]6107it [00:40, 153.82it/s]6123it [00:40, 152.53it/s]6139it [00:40, 152.94it/s]6157it [00:40, 156.48it/s]6174it [00:40, 157.49it/s]6190it [00:40, 155.23it/s]6206it [00:40, 154.01it/s]6222it [00:40, 154.58it/s]6238it [00:40, 152.56it/s]6254it [00:41, 139.83it/s]6269it [00:41, 136.82it/s]6283it [00:41, 137.37it/s]6299it [00:41, 143.11it/s]6314it [00:41, 139.08it/s]6329it [00:41, 141.64it/s]6344it [00:41, 139.21it/s]6360it [00:41, 144.65it/s]6377it [00:41, 150.02it/s]6393it [00:42, 149.76it/s]6409it [00:42, 149.61it/s]6424it [00:42, 141.98it/s]6439it [00:42, 134.95it/s]6454it [00:42, 138.15it/s]6470it [00:42, 141.98it/s]6486it [00:42, 146.11it/s]6503it [00:42, 151.99it/s]6519it [00:42, 134.47it/s]6536it [00:43, 142.89it/s]6553it [00:43, 148.36it/s]6569it [00:43, 150.64it/s]6585it [00:43, 149.37it/s]6601it [00:43, 152.10it/s]6617it [00:43, 152.66it/s]6633it [00:43, 150.70it/s]6649it [00:43, 146.78it/s]6666it [00:43, 151.83it/s]6683it [00:44, 153.71it/s]6699it [00:44, 155.38it/s]6715it [00:44, 155.13it/s]6732it [00:44, 157.12it/s]6748it [00:44, 153.02it/s]6764it [00:44, 149.29it/s]6781it [00:44, 153.49it/s]6797it [00:44, 155.34it/s]6813it [00:44, 152.21it/s]6829it [00:45, 152.88it/s]6845it [00:45, 150.15it/s]6861it [00:45, 148.17it/s]6877it [00:45, 148.72it/s]6892it [00:45, 147.76it/s]6907it [00:45, 144.76it/s]6922it [00:45, 142.02it/s]6937it [00:45, 142.80it/s]6953it [00:45, 146.32it/s]6969it [00:45, 149.35it/s]6984it [00:46, 149.32it/s]7000it [00:46, 151.85it/s]7016it [00:46, 142.75it/s]7032it [00:46, 147.02it/s]7048it [00:46, 149.38it/s]7065it [00:46, 153.22it/s]7082it [00:46, 157.07it/s]7098it [00:46, 154.86it/s]7116it [00:46, 160.09it/s]7133it [00:47, 158.56it/s]7149it [00:47, 141.19it/s]7164it [00:47, 136.12it/s]7178it [00:47, 136.62it/s]7196it [00:47, 146.93it/s]7214it [00:47, 155.78it/s]7232it [00:47, 161.59it/s]7249it [00:47, 153.64it/s]7265it [00:47, 147.26it/s]7280it [00:48, 142.55it/s]7295it [00:48, 138.90it/s]7312it [00:48, 145.98it/s]7330it [00:48, 154.80it/s]7346it [00:48, 155.44it/s]7362it [00:48, 155.06it/s]7378it [00:48, 152.61it/s]7394it [00:48, 153.61it/s]7410it [00:48, 154.16it/s]7426it [00:49, 149.90it/s]7442it [00:49, 149.51it/s]7458it [00:49, 150.22it/s]7474it [00:49, 150.18it/s]7490it [00:49, 151.89it/s]7507it [00:49, 154.83it/s]7523it [00:49, 152.34it/s]7539it [00:49, 151.53it/s]7555it [00:49, 143.23it/s]7571it [00:49, 146.54it/s]7586it [00:50, 139.84it/s]7601it [00:50, 140.23it/s]7616it [00:50, 142.92it/s]7631it [00:50, 143.10it/s]7647it [00:50, 143.80it/s]7663it [00:50, 144.64it/s]7678it [00:50, 137.66it/s]7692it [00:50, 124.55it/s]7705it [00:51, 124.38it/s]7718it [00:51, 123.39it/s]7731it [00:51, 114.41it/s]7743it [00:51, 114.72it/s]7758it [00:51, 123.52it/s]7771it [00:51, 123.25it/s]7784it [00:51, 119.81it/s]7797it [00:51, 120.94it/s]7810it [00:51, 121.33it/s]7825it [00:51, 128.05it/s]7840it [00:52, 134.31it/s]7843it [00:52, 150.52it/s]
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:613: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.loc[:, 'Cat Hora'] = cat_hora
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:894: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  fig, ax = plt.subplots(figsize=(19, 9))
+ pos: 0
+ media_getydata: [68.5 68.5]
+ pos: 1
+ media_getydata: [88.8 88.8]
+ pos: 2
+ media_getydata: [91.2 91.2]
+ pos: 3
+ media_getydata: [88.1 88.1]
+ pos: 4
+ media_getydata: [92.35 92.35]
+ pos: 5
+ media_getydata: [95.05 95.05]
+ pos: 6
+ media_getydata: [85.5 85.5]
+ pos: 7
+ media_getydata: [93.1 93.1]
+ pos: 8
+ media_getydata: [87.2 87.2]
+ pos: 9
+ media_getydata: [90.6 90.6]
+ pos: 10
+ media_getydata: [96.9 96.9]
+ pos: 11
+ media_getydata: [94.8 94.8]
+ pos: 12
+ media_getydata: [82.8 82.8]
+ pos: 13
+ media_getydata: [85.6 85.6]
+ pos: 14
+ media_getydata: [87.5 87.5]
+ pos: 0
+ media_getydata: [68.5 68.5]
+ pos: 1
+ media_getydata: [88.8 88.8]
+ pos: 2
+ media_getydata: [91.4 91.4]
+ pos: 3
+ media_getydata: [88.1 88.1]
+ pos: 4
+ media_getydata: [92.35 92.35]
+ pos: 5
+ media_getydata: [95.05 95.05]
+ pos: 6
+ media_getydata: [85.5 85.5]
+ pos: 7
+ media_getydata: [93.1 93.1]
+ pos: 8
+ media_getydata: [87.2 87.2]
+ pos: 9
+ media_getydata: [90.6 90.6]
+ pos: 10
+ media_getydata: [96.9 96.9]
+ pos: 11
+ media_getydata: [94.8 94.8]
+ pos: 12
+ media_getydata: [82.8 82.8]
+ pos: 13
+ media_getydata: [85.6 85.6]
+ pos: 14
+ media_getydata: [87.25 87.25]
+ pos: 0
+ media_getydata: [68.5 68.5]
+ pos: 1
+ media_getydata: [88.8 88.8]
+ pos: 2
+ media_getydata: [91.4 91.4]
+ pos: 3
+ media_getydata: [88.1 88.1]
+ pos: 4
+ media_getydata: [92.35 92.35]
+ pos: 5
+ media_getydata: [95.05 95.05]
+ pos: 6
+ media_getydata: [85.5 85.5]
+ pos: 7
+ media_getydata: [93.1 93.1]
+ pos: 8
+ media_getydata: [87.2 87.2]
+ pos: 9
+ media_getydata: [91.25 91.25]
+ pos: 10
+ media_getydata: [96.9 96.9]
+ pos: 11
+ media_getydata: [94.8 94.8]
+ pos: 12
+ media_getydata: [82.8 82.8]
+ pos: 13
+ media_getydata: [85.6 85.6]
+ pos: 14
+ media_getydata: [87.25 87.25]
+ pos: 0
+ media_getydata: [68.5 68.5]
+ pos: 1
+ media_getydata: [88.8 88.8]
+ pos: 2
+ media_getydata: [91.4 91.4]
+ pos: 3
+ media_getydata: [88.1 88.1]
+ pos: 4
+ media_getydata: [92.35 92.35]
+ pos: 5
+ media_getydata: [95.05 95.05]
+ pos: 6
+ media_getydata: [85.5 85.5]
+ pos: 7
+ media_getydata: [93.1 93.1]
+ pos: 8
+ media_getydata: [87.2 87.2]
+ pos: 9
+ media_getydata: [91.25 91.25]
+ pos: 10
+ media_getydata: [96.9 96.9]
+ pos: 11
+ media_getydata: [94.8 94.8]
+ pos: 12
+ media_getydata: [82.8 82.8]
+ pos: 13
+ media_getydata: [89.3 89.3]
+ pos: 14
+ media_getydata: [87.25 87.25]
+ pos: 0
+ media_getydata: [68.5 68.5]
+ pos: 1
+ media_getydata: [89. 89.]
+ pos: 2
+ media_getydata: [91.4 91.4]
+ pos: 3
+ media_getydata: [87.9 87.9]
+ pos: 4
+ media_getydata: [92.7 92.7]
+ pos: 5
+ media_getydata: [95.05 95.05]
+ pos: 6
+ media_getydata: [87.25 87.25]
+ pos: 7
+ media_getydata: [93.65 93.65]
+ pos: 8
+ media_getydata: [87.35 87.35]
+ pos: 9
+ media_getydata: [94.1 94.1]
+ pos: 10
+ media_getydata: [96.9 96.9]
+ pos: 11
+ media_getydata: [95.2 95.2]
+ pos: 12
+ media_getydata: [82.8 82.8]
+ pos: 13
+ media_getydata: [78.8 78.8]
+ pos: 14
+ media_getydata: [87.25 87.25]
+ pos: 0
+ media_getydata: [69.05 69.05]
+ pos: 1
+ media_getydata: [89. 89.]
+ pos: 2
+ media_getydata: [91.2 91.2]
+ pos: 3
+ media_getydata: [89.95 89.95]
+ pos: 4
+ media_getydata: [94.05 94.05]
+ pos: 5
+ media_getydata: [95.3 95.3]
+ pos: 6
+ media_getydata: [83.25 83.25]
+ pos: 7
+ media_getydata: [94. 94.]
+ pos: 8
+ media_getydata: [93.95 93.95]
+ pos: 9
+ media_getydata: [94.2 94.2]
+ pos: 10
+ media_getydata: [97.1 97.1]
+ pos: 11
+ media_getydata: [95.6 95.6]
+ pos: 12
+ media_getydata: [82.8 82.8]
+ pos: 13
+ media_getydata: [78.8 78.8]
+ pos: 14
+ media_getydata: [92.1 92.1]
+ pos: 0
+ media_getydata: [69.05 69.05]
+ pos: 1
+ media_getydata: [89.2 89.2]
+ pos: 2
+ media_getydata: [91.2 91.2]
+ pos: 3
+ media_getydata: [89.3 89.3]
+ pos: 4
+ media_getydata: [94.4 94.4]
+ pos: 5
+ media_getydata: [95.25 95.25]
+ pos: 6
+ media_getydata: [86. 86.]
+ pos: 7
+ media_getydata: [94.55 94.55]
+ pos: 8
+ media_getydata: [93.4 93.4]
+ pos: 9
+ media_getydata: [95.1 95.1]
+ pos: 10
+ media_getydata: [97.4 97.4]
+ pos: 11
+ media_getydata: [96.6 96.6]
+ pos: 12
+ media_getydata: [83.5 83.5]
+ pos: 13
+ media_getydata: [89.6 89.6]
+ pos: 14
+ media_getydata: [92.15 92.15]
+ pos: 0
+ media_getydata: [69.6 69.6]
+ pos: 1
+ media_getydata: [89.2 89.2]
+ pos: 2
+ media_getydata: [91.75 91.75]
+ pos: 3
+ media_getydata: [92. 92.]
+ pos: 4
+ media_getydata: [93.7 93.7]
+ pos: 5
+ media_getydata: [95.2 95.2]
+ pos: 6
+ media_getydata: [86. 86.]
+ pos: 7
+ media_getydata: [94. 94.]
+ pos: 8
+ media_getydata: [93.3 93.3]
+ pos: 9
+ media_getydata: [95.1 95.1]
+ pos: 10
+ media_getydata: [97.6 97.6]
+ pos: 11
+ media_getydata: [96.6 96.6]
+ pos: 12
+ media_getydata: [83.5 83.5]
+ pos: 13
+ media_getydata: [89.6 89.6]
+ pos: 14
+ media_getydata: [92.65 92.65]
+ pos: 0
+ media_getydata: [69.6 69.6]
+ pos: 1
+ media_getydata: [89.7 89.7]
+ pos: 2
+ media_getydata: [91.9 91.9]
+ pos: 3
+ media_getydata: [90.6 90.6]
+ pos: 4
+ media_getydata: [93.2 93.2]
+ pos: 5
+ media_getydata: [95.3 95.3]
+ pos: 6
+ media_getydata: [90.15 90.15]
+ pos: 7
+ media_getydata: [95.2 95.2]
+ pos: 8
+ media_getydata: [91.95 91.95]
+ pos: 9
+ media_getydata: [94.1 94.1]
+ pos: 10
+ media_getydata: [97.55 97.55]
+ pos: 11
+ media_getydata: [96.6 96.6]
+ pos: 12
+ media_getydata: [83.5 83.5]
+ pos: 13
+ media_getydata: [93.6 93.6]
+ pos: 14
+ media_getydata: [93.05 93.05]
+ pos: 0
+ media_getydata: [70. 70.]
+ pos: 1
+ media_getydata: [90.85 90.85]
+ pos: 2
+ media_getydata: [92.6 92.6]
+ pos: 3
+ media_getydata: [88.15 88.15]
+ pos: 4
+ media_getydata: [95.45 95.45]
+ pos: 5
+ media_getydata: [95.85 95.85]
+ pos: 6
+ media_getydata: [90.4 90.4]
+ pos: 7
+ media_getydata: [93.55 93.55]
+ pos: 8
+ media_getydata: [95.35 95.35]
+ pos: 9
+ media_getydata: [95.1 95.1]
+ pos: 10
+ media_getydata: [97.65 97.65]
+ pos: 11
+ media_getydata: [96.6 96.6]
+ pos: 12
+ media_getydata: [84.75 84.75]
+ pos: 13
+ media_getydata: [93.85 93.85]
+ pos: 14
+ media_getydata: [94.15 94.15]
+ pos: 0
+ media_getydata: [70.4 70.4]
+ pos: 1
+ media_getydata: [91.4 91.4]
+ pos: 2
+ media_getydata: [92.95 92.95]
+ pos: 3
+ media_getydata: [88.75 88.75]
+ pos: 4
+ media_getydata: [95.9 95.9]
+ pos: 5
+ media_getydata: [96.3 96.3]
+ pos: 6
+ media_getydata: [88.35 88.35]
+ pos: 7
+ media_getydata: [95.2 95.2]
+ pos: 8
+ media_getydata: [95.65 95.65]
+ pos: 9
+ media_getydata: [95.55 95.55]
+ pos: 10
+ media_getydata: [98.6 98.6]
+ pos: 11
+ media_getydata: [96.85 96.85]
+ pos: 12
+ media_getydata: [83.5 83.5]
+ pos: 13
+ media_getydata: [93.85 93.85]
+ pos: 14
+ media_getydata: [94.9 94.9]
+ pos: 0
+ media_getydata: [71.8 71.8]
+ pos: 1
+ media_getydata: [91.25 91.25]
+ pos: 2
+ media_getydata: [93.95 93.95]
+ pos: 3
+ media_getydata: [89.3 89.3]
+ pos: 4
+ media_getydata: [96.5 96.5]
+ pos: 5
+ media_getydata: [97.15 97.15]
+ pos: 6
+ media_getydata: [90.4 90.4]
+ pos: 7
+ media_getydata: [96.5 96.5]
+ pos: 8
+ media_getydata: [93.95 93.95]
+ pos: 9
+ media_getydata: [94.1 94.1]
+ pos: 10
+ media_getydata: [98.7 98.7]
+ pos: 11
+ media_getydata: [97.2 97.2]
+ pos: 12
+ media_getydata: [83.5 83.5]
+ pos: 13
+ media_getydata: [94.1 94.1]
+ pos: 14
+ media_getydata: [95.4 95.4]
+ pos: 0
+ media_getydata: [71.9 71.9]
+ pos: 1
+ media_getydata: [91.25 91.25]
+ pos: 2
+ media_getydata: [94.2 94.2]
+ pos: 3
+ media_getydata: [89.95 89.95]
+ pos: 4
+ media_getydata: [96.85 96.85]
+ pos: 5
+ media_getydata: [97.35 97.35]
+ pos: 6
+ media_getydata: [91.15 91.15]
+ pos: 7
+ media_getydata: [96.8 96.8]
+ pos: 8
+ media_getydata: [95.6 95.6]
+ pos: 9
+ media_getydata: [94.1 94.1]
+ pos: 10
+ media_getydata: [99. 99.]
+ pos: 11
+ media_getydata: [97.1 97.1]
+ pos: 12
+ media_getydata: [83.5 83.5]
+ pos: 13
+ media_getydata: [94.5 94.5]
+ pos: 14
+ media_getydata: [95.6 95.6]
+ pos: 0
+ media_getydata: [72. 72.]
+ pos: 1
+ media_getydata: [91.4 91.4]
+ pos: 2
+ media_getydata: [93.95 93.95]
+ pos: 3
+ media_getydata: [87.95 87.95]
+ pos: 4
+ media_getydata: [97.1 97.1]
+ pos: 5
+ media_getydata: [98.1 98.1]
+ pos: 6
+ media_getydata: [92.4 92.4]
+ pos: 7
+ media_getydata: [96.2 96.2]
+ pos: 8
+ media_getydata: [95.8 95.8]
+ pos: 9
+ media_getydata: [94.25 94.25]
+ pos: 10
+ media_getydata: [99. 99.]
+ pos: 11
+ media_getydata: [97.1 97.1]
+ pos: 12
+ media_getydata: [83.5 83.5]
+ pos: 13
+ media_getydata: [94.5 94.5]
+ pos: 14
+ media_getydata: [95.6 95.6]
+ pos: 0
+ media_getydata: [71.9 71.9]
+ pos: 1
+ media_getydata: [91.8 91.8]
+ pos: 2
+ media_getydata: [94.2 94.2]
+ pos: 3
+ media_getydata: [87.6 87.6]
+ pos: 4
+ media_getydata: [97.1 97.1]
+ pos: 5
+ media_getydata: [97.2 97.2]
+ pos: 6
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1403: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout()
+/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1562: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.boxplot(
+ media_getydata: [92.65 92.65]
+ pos: 7
+ media_getydata: [96.8 96.8]
+ pos: 8
+ media_getydata: [96.7 96.7]
+ pos: 9
+ media_getydata: [94.1 94.1]
+ pos: 10
+ media_getydata: [99. 99.]
+ pos: 11
+ media_getydata: [97.1 97.1]
+ pos: 12
+ media_getydata: [83.5 83.5]
+ pos: 13
+ media_getydata: [93.6 93.6]
+ pos: 14
+ media_getydata: [95.6 95.6]
+ pos: 0
+ media_getydata: [71.8 71.8]
+ pos: 1
+ media_getydata: [91.6 91.6]
+ pos: 2
+ media_getydata: [94.2 94.2]
+ pos: 3
+ media_getydata: [87.95 87.95]
+ pos: 4
+ media_getydata: [97.1 97.1]
+ pos: 5
+ media_getydata: [98.4 98.4]
+ pos: 6
+ media_getydata: [91.15 91.15]
+ pos: 7
+ media_getydata: [96.8 96.8]
+ pos: 8
+ media_getydata: [95.1 95.1]
+ pos: 9
+ media_getydata: [94.6 94.6]
+ pos: 10
+ media_getydata: [99. 99.]
+ pos: 11
+ media_getydata: [97.1 97.1]
+ pos: 12
+ media_getydata: [83.5 83.5]
+ pos: 13
+ media_getydata: [93.6 93.6]
+ pos: 14
+ media_getydata: [95.6 95.6]
+ pos: 0
+ media_getydata: [71.7 71.7]
+ pos: 1
+ media_getydata: [91.8 91.8]
+ pos: 2
+ media_getydata: [94.2 94.2]
+ pos: 3
+ media_getydata: [87.7 87.7]
+ pos: 4
+ media_getydata: [97.4 97.4]
+ pos: 5
+ media_getydata: [98.4 98.4]
+ pos: 6
+ media_getydata: [91.15 91.15]
+ pos: 7
+ media_getydata: [96.85 96.85]
+ pos: 8
+ media_getydata: [94.4 94.4]
+ pos: 9
+ media_getydata: [94.1 94.1]
+ pos: 10
+ media_getydata: [98.85 98.85]
+ pos: 11
+ media_getydata: [97.1 97.1]
+ pos: 12
+ media_getydata: [86. 86.]
+ pos: 13
+ media_getydata: [93.6 93.6]
+ pos: 14
+ media_getydata: [97.15 97.15]
+CategoricalIndex(['<1', '[1-2[', '[2-3[', '>=3'], categories=['<1', '[1-2[', '[2-3[', '>=3'], ordered=True, dtype='category', name='Magnitude_cat')
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
+~/projetos/ClassificadorSismologico

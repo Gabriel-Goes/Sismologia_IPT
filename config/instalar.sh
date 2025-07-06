@@ -1,173 +1,174 @@
 #!/bin/bash
 #
-# Author: Gabriel Góes Rocha de Lima
-# Date: 2024-03-28
-# Version: 0.1
+# Autor: Gabriel Góes Rocha de Lima
+# Data: 2024-04-28
+# Versão: 0.1
 #
-# Description: This script installs the necessary dependencies to run the project.
-# Usage: source ./install.sh
+# Descrição: Este script instala as dependências necessárias para rodar o projeto Preditor Terra.
+#            Ele instala o pyenv, o pyenv-virtualenv, cria um ambiente virtual com a versão do Python desejada
+#            e instala os pacotes listados em dotfiles/requirements.txt.
+#
+# Uso: source ./install.sh
 #
 
 # ---------------------------------------------------------------------------- #
-# Função para instalar pyenv
+# Função para instalar o pyenv e as dependências necessárias
 install_pyenv() {
-    echo ''
-    echo ' ---------- Atualizando pacotes necessários ------------ '
+    echo ""
+    echo "---------- Atualizando pacotes necessários ----------"
     if [[ "$(uname -s)" == "Linux" ]]; then
         # Define comandos de instalação baseado na distribuição
         declare -A OS_INSTALL_CMD=(
-            ["/etc/arch-release"]="sudo pacman -Syu && sudo pacman -S docker base-devel openssl zlib bzip2 readline sqlite curl llvm wget ncurses xz tk libffi python-pyopenssl git --needed"
-            ["/etc/debian_version"]="sudo apt update && sudo apt upgrade -y && sudo apt install -y docker docker.io build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev git"
+            ["/etc/arch-release"]="sudo pacman -Syu && sudo pacman -S base-devel curl git openssl zlib bzip2 readline sqlite llvm wget ncurses xz tk libffi python-pyopenssl --needed"
+            ["/etc/debian_version"]="sudo apt update && sudo apt upgrade -y && sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl llvm libncurses5-dev xz-utils tk-dev libffi-dev git"
         )
 
         for file in "${!OS_INSTALL_CMD[@]}"; do
             if [[ -f $file ]]; then
+                echo "Instalando dependências com o gerenciador encontrado..."
                 eval "${OS_INSTALL_CMD[$file]}"
                 break
             fi
         done
-        
-        echo ''
-        echo ' -----------  Instalando pyenv ------------ '
+
+        echo ""
+        echo "----------- Instalando pyenv -----------"
         curl https://pyenv.run | bash
-        echo ''
-        echo '              pyenv instalado               '
-        echo ' -------------------------------------------'
+        echo ""
+        echo "pyenv instalado com sucesso."
+        echo "-----------------------------------------"
     else
-        echo ''
-        echo 'Script suportado apenas em sistemas Linux.'
+        echo ""
+        echo "Script suportado apenas em sistemas Linux."
         return 1
     fi
 }
 
+# ---------------------------------------------------------------------------- #
+# Função para instalar o pyenv-virtualenv, se necessário
 install_pyenv_virtualenv() {
-    echo ''
-    echo ' -------- Verificando pyenv-virtualenv ------------'
+    echo ""
+    echo "------ Verificando pyenv-virtualenv ------"
     if [[ ! -d "$(pyenv root)/plugins/pyenv-virtualenv" ]]; then
-        echo ''
-        echo ' ---------- Instalando pyenv-virtualenv ------------'
+        echo ""
+        echo "-------- Instalando pyenv-virtualenv --------"
         git clone https://github.com/pyenv/pyenv-virtualenv.git "$(pyenv root)/plugins/pyenv-virtualenv"
-        echo ''
-        echo 'pyenv-virtualenv instalado.'
+        echo ""
+        echo "pyenv-virtualenv instalado."
     else
-        echo ''
-        echo 'pyenv-virtualenv já está instalado.'
-        echo ' --------------------------------------- '
+        echo ""
+        echo "pyenv-virtualenv já está instalado."
+        echo "---------------------------------------"
     fi
 }
 
+# ---------------------------------------------------------------------------- #
+# Função que configura o pyenv e pyenv-virtualenv e adiciona a configuração ao .bash_paths
 check_and_setup_pyenv_virtualenv() {
     install_pyenv
     install_pyenv_virtualenv
-    # Adiciona configuração do pyenv e pyenv-virtualenv ao .bash_paths, se necessário
-    if ! grep -q 'pyenv init' $HOME/.bash_paths; then
-        echo ''
-        echo ' Configurando pyenv...'
+    # Adiciona configuração do pyenv e pyenv-virtualenv no .bash_paths, se necessário
+    if ! grep -q 'pyenv init' "$HOME/.bash_paths"; then
+        echo ""
+        echo "Configurando pyenv..."
         {
             echo 'export PATH="$HOME/.pyenv/bin:$PATH"'
             echo 'eval "$(pyenv init --path)"'
             echo 'eval "$(pyenv virtualenv-init -)"'
-        } >> $HOME/.bash_paths
-        echo ''
-        echo 'Configuração do pyenv adicionada ao .bash_paths.'
-        source $HOME/.bash_paths
+        } >> "$HOME/.bash_paths"
+        echo ""
+        echo "Configuração do pyenv adicionada ao .bash_paths."
+        # Carrega as novas configurações
+        source "$HOME/.bash_paths"
     fi
-
 }
 
-# Principal: executa a configuração
+# ---------------------------------------------------------------------------- #
+# Execução principal: configura pyenv e pyenv-virtualenv
 check_and_setup_pyenv_virtualenv
-# Definindo Versão do python e nome do ambiente virtual
+
+# ---------------------------------------------------------------------------- #
+# Define o nome do ambiente virtual e a versão do Python (opções padrões: "preditor" e "3.11")
 if [ $# -eq 0 ]; then
-    echo ''
+    echo ""
     echo "Escolha um nome para o ambiente virtual."
-    read -p "Nome do ambiente virtual [default: sismologia]: " VENV_NAME
-    VENV_NAME=${VENV_NAME:-"sismologia"}
-    echo ''
+    read -p "Nome do ambiente virtual [default: preditor]: " VENV_NAME
+    VENV_NAME=${VENV_NAME:-"preditor"}
+    echo ""
     echo "Escolha uma versão do Python."
     read -p "Versão do Python [default: 3.11]: " PYTHON_VERSION
     PYTHON_VERSION=${PYTHON_VERSION:-"3.11"}
 else
-    VENV_NAME=${1:-"sismologia"}
+    VENV_NAME=${1:-"preditor"}
     PYTHON_VERSION=${2:-"3.11"}
 fi
-echo ''
+
+echo ""
 echo "Configurando ambiente virtual '$VENV_NAME' com Python $PYTHON_VERSION..."
 
-# Instalando Python $PYTHON_VERSION
-echo ''
-echo " -> Verificando se  Python $PYTHON_VERSION existe..."
+# ---------------------------------------------------------------------------- #
+# Verifica e instala a versão desejada do Python via pyenv, se não existir
+echo ""
+echo "-> Verificando se Python $PYTHON_VERSION está instalado..."
 if ! pyenv versions | grep -q "$PYTHON_VERSION"; then
-    echo ''
-    echo " ! $PYTHON_VERSION não existe..."
-    echo ''
-    echo " ------ Instalando Python $PYTHON_VERSION... ------"
-    pyenv install $PYTHON_VERSION
-    echo ''
-    echo " ------------ Python $PYTHON_VERSION instalado ------------"
+    echo ""
+    echo "! Python $PYTHON_VERSION não encontrado..."
+    echo "------ Instalando Python $PYTHON_VERSION... ------"
+    pyenv install "$PYTHON_VERSION"
+    echo ""
+    echo "------------ Python $PYTHON_VERSION instalado ------------"
 else
-    echo ''
+    echo ""
     echo "Python $PYTHON_VERSION já está instalado."
-    echo '-----------------------------------------'
+    echo "--------------------------------------------"
 fi
 
-# Criando ambiente virtual $VENV_NAME
-echo ''
-echo " -> Verificando se virtualenv com Python$PYTHON_VERSION existe..."
+# ---------------------------------------------------------------------------- #
+# Verifica e cria o ambiente virtual, se ainda não existir
+echo ""
+echo "-> Verificando se o virtualenv '$VENV_NAME' existe..."
 if ! pyenv virtualenvs | grep -q "$VENV_NAME"; then
-    echo " ! virtualenv $VENV_NAME não existe..."
-    echo ''
-    echo " ------ Criando virtualenv $VENV_NAME com Python$PYTHON_VERSION... ------"
-    pyenv virtualenv $PYTHON_VERSION $VENV_NAME
-    echo ' -------------- Virtualenv criado --------------'
-    echo ''
+    echo "! Virtualenv '$VENV_NAME' não encontrado..."
+    echo ""
+    echo "------ Criando virtualenv '$VENV_NAME' com Python $PYTHON_VERSION... ------"
+    pyenv virtualenv "$PYTHON_VERSION" "$VENV_NAME"
+    echo "-------------- Virtualenv criado --------------"
+    echo ""
 else
-    echo "Virtualenv $VENV_NAME com Python$PYTHON_VERSION já existe."
-    echo '--------------------------'
-    echo ''
+    echo "Virtualenv '$VENV_NAME' com Python $PYTHON_VERSION já existe."
+    echo "---------------------------------------------"
 fi
 
-# Adicionando variáveis de ambiente ao .bashrc
-echo ' -> Adicionando .bash_paths ao .bash_profile...'
-# Verifica se é .profile ou .bash_profile
-find $HOME -maxdepth 1 -name '.*profile' | while read -r file; do
-    if ! grep -q '.bash_paths' $file; then
-        echo 'Adicionando .bash_paths ao '$file'...'
-        echo 'source $HOME/.bash_paths' >> $file
+# ---------------------------------------------------------------------------- #
+# Configuração do ambiente local para o repositório
+echo "-> Configurando ambiente local para o repositório com pyenv..."
+pyenv local "$VENV_NAME"
+
+# ---------------------------------------------------------------------------- #
+# Adiciona a configuração do .bash_paths ao .bash_profile ou .profile, se necessário
+echo "-> Adicionando .bash_paths à configuração do shell..."
+for file in "$HOME/.bash_profile" "$HOME/.profile"; do
+    if [[ -f "$file" ]]; then
+        if ! grep -q '\.bash_paths' "$file"; then
+            echo "source \$HOME/.bash_paths" >> "$file"
+            echo "Configuração adicionada a $file."
+        fi
+        source "$file"
     fi
-    source $file
 done
-echo ' ------------------------------------ '
 
-echo ' Instalação concluída com sucesso!'
-echo ' Para efetivar as mudanças reinicie o terminal:'
-echo ' ! AVISO ! Variáveis de ambiente definidas neste Shell serão perdidas.'
-echo ' ! será executado source $HOME/.bash_profile.'
-echo ' Caso não deseje, utilize <C-C>'
-read -p 'Pressione enter para continuar...'
+# ---------------------------------------------------------------------------- #
+# Instalação das dependências Python
+echo ""
+echo "Instalando dependências Python..."
+pip install -r "./dotfiles/requirements.txt"
 
-source $HOME/.bash_profile
-echo 'Ambiente virtual configurado com sucesso!'
-echo 'Navegue até o diretório do projeto e execute:'
-echo '!`pyenv local $VENV_NAME` para configurar a versão do ambiente virtual
-deste repositório.'
-
-pyenv local sismologia
-pip install -r ./dotfiles/requirements.txt
+# Caso queira instalar o projeto como pacote editável, se aplicável:
 pip install -e .
 
-# INICIANDO SUBMODULES
-echo ' ---------- Iniciando Submodules ------------ '
-git submodule update --init --recursive
-
-
-# INICIANDO DOCKER  
-echo ' ---------- Iniciando Docker ------------ '
-sudo systemctl enable docker
-sudo systemctl start docker
-sudo usermod -aG docker $USER
-
-sudo login $USER
-cd ~/projetos/ClassificadorSismologico
-DOCKER_BUILDKIT=1 docker build -t discrim:0.1.0 ./dotfiles
-# ---------------------------------------------------------------------------- #
+echo ""
+echo "Instalação concluída com sucesso!"
+echo ""
+echo "Para efetivar as mudanças, reinicie o terminal ou execute: source \$HOME/.bash_profile"
+echo "Em seguida, navegue até o diretório do projeto e verifique o ambiente virtual com:"
+echo "   pyenv local $VENV_NAME"

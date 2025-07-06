@@ -1,0 +1,23 @@
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: 
+  EVENTS: True
+  TREATCATALOG: True
+  PREDICT: True
+  POSPROCESS: True
+  MAPS: True
+  REPORT: True
+  TEST: False
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando ...
+ t0: ter 01 jul 2025 20:48:25 -03
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 20, in <module>
+    import pygmt
+ModuleNotFoundError: No module named 'pygmt'

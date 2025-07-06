@@ -33,7 +33,10 @@ REPORT=False
 TEST=False
 
 # ------------------------- PARSE ARGUMENTOS ----------------------------------
-if [ $# -eq 0 ]; then # Não está funcionando. ## Deve configurar tudo como true caso não seja passado argumentos ao ./flusho_sismo.sh, porém, para rodar o bash, é necessário passar o nome do arquivo de catalogo_MÊS.csv, isso impede de funcionar.
+if [ $# -eq 0 ]; then # Não está funcionando.
+    ## Deve configurar tudo como true caso não seja passado argumentos ao ./flusho_sismo.sh.
+    ## Porém, para rodar o bash, é necessário passar o nome do arquivo de
+    ## catalogo_MÊS.csv.
     EVENTS=True
     TREATCATALOG=True
     PREDICT=True
