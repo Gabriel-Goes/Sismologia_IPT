@@ -58,11 +58,12 @@ from .farejadorsismo_dockwidget_base import Ui_FarejadorDockWidgetBase
 
 
 # ----------------------------- CONSTANTES ---------------------------------- #
-PROJ_DIR = os.path.expanduser("~/projetos/ClassificadorSismologico/")
-FILES_DIR = os.path.join(PROJ_DIR, "arquivos/")
-FIGURE_DIR = os.path.join(FILES_DIR, "figuras/")
-LOG_FILE = os.path.join(FILES_DIR, "registros/farejador.log")
-CSV_DIR = os.path.join(FILES_DIR, "resultados/analisado/")
+PLUGIN_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJ_DIR = os.path.abspath(os.path.join(PLUGIN_DIR, os.pardir, os.pardir, os.pardir))
+FILES_DIR = os.path.join(PROJ_DIR, "arquivos")
+FIGURE_DIR = os.path.join(FILES_DIR, "figuras")
+LOG_FILE = os.path.join(FILES_DIR, "registros", "farejador.log")
+CSV_DIR = os.path.join(FILES_DIR, "resultados", "analisado")
 CSV_FILE = os.path.join(CSV_DIR, "nc_analisado_final.csv")
 
 logging.basicConfig(
@@ -523,7 +524,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         self.mseedText.setText(f'Arquivo: {mseed}')
         self.eventText.setText(f'Evento: {ev}')
         self.mseed_file_path = os.path.join(
-            PROJ_DIR, 'arquivos/mseed', ev, f'{net}_{sta}_{ev}.mseed'
+            FILES_DIR, 'mseed', ev, f'{net}_{sta}_{ev}.mseed'
         )
         try:
             filtered_df = self.df[(self.df['Event'] == ev) & (self.df['Station'] == sta)]
@@ -587,7 +588,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
         pick = self.ev_data[self.ev_data.Station == sta]
         logging.info(f"Pick {pick}")
         mseed = f'{net}_{sta}_{ev}'
-        st = read(f'{PROJ_DIR}arquivos/mseed/{ev}/{mseed}.mseed')
+        st = read(os.path.join(FILES_DIR, 'mseed', ev, f'{mseed}.mseed'))
         st.detrend('linear').taper(0.05).filter(
             'highpass',
             freq=2,
@@ -641,7 +642,7 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             self.ev_data = self.df[self.df.Event == ev]
 
             npy = f'{net}_{sta}_{ev}.npy'
-            path = os.path.join(PROJ_DIR, 'arquivos/espectros', ev, npy)
+            path = os.path.join(FILES_DIR, 'espectros', ev, npy)
             spectrogram = np.load(path, allow_pickle=True)
             spectrogram = np.moveaxis(spectrogram, 0, 2)
 
