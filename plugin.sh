@@ -10,7 +10,7 @@ fi
 cp -r $HOME/projetos/ClassificadorSismologico/fonte/interface/farejadorsismo $HOME/.local/share/QGIS/QGIS3/profiles/default/python/plugins
 
 pushd $HOME
-export PYTHONPATH="$PYTHONPATH:/home/ggrl/.pyenv/versions/geologia/lib/python3.13/site-packages"
+export PYTHONPATH="$PYTHONPATH:/home/ggrl/.pyenv/versions/geologia/lib/python3.13/site-packages::/home/ggrl/.pyenv/versions/geologia/bin/python:"
 exec qgis &
 popd
 
