@@ -58,7 +58,7 @@ from .farejadorsismo_dockwidget_base import Ui_FarejadorDockWidgetBase
 
 
 # ----------------------------- CONSTANTES ---------------------------------- #
-PROJ_DIR = os.path.expanduser("~/projetos/ClassificadorSismologico/")
+PROJ_DIR = os.path.expanduser(os.getenv("PROJ_DIR", "~/projetos/ClassificadorSismologico/"))
 FILES_DIR = os.path.join(PROJ_DIR, "arquivos/")
 FIGURE_DIR = os.path.join(FILES_DIR, "figuras/")
 LOG_FILE = os.path.join(FILES_DIR, "registros/farejador.log")

@@ -125,5 +125,27 @@ Dentro do contêiner, podemos testar o algoritmo com nossos dados sismológicos.
 ./Sismo_Pipeline.sh
 ```
 
+### Executando o Plugin QGIS
+O script `plugin.sh` instala a interface *Farejador de Sismos* no QGIS. Ele copia
+os arquivos do plugin do diretório definido em `PROJ_DIR` (por padrão
+`~/projetos/ClassificadorSismologico`) para a pasta de plugins do QGIS e então
+inicia o programa.
+
+```bash
+./plugin.sh
+```
+
+Você pode sobrescrever os caminhos passando variáveis de ambiente:
+
+```bash
+PROJ_DIR=/caminho/do/projeto VENV_DIR=~/venvs/geologia ./plugin.sh
+```
+
+Para abrir somente a interface, utilize `farejador.sh`:
+
+```bash
+./farejador.sh
+```
+
 ## Referências
 - [Laboratório de Planetologia e Geociências da Universidade de Nantes](https://univ-nantes.io/E181658E/discrimination_eq_q)

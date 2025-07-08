@@ -7,11 +7,16 @@ then
     pkill qgis.bin
 fi
 
-cp -r $HOME/projetos/ClassificadorSismologico/fonte/interface/farejadorsismo $HOME/.local/share/QGIS/QGIS3/profiles/default/python/plugins
+PROJ_DIR=${PROJ_DIR:-"$HOME/projetos/ClassificadorSismologico"}
+PLUGIN_DIR=${PLUGIN_DIR:-"$HOME/.local/share/QGIS/QGIS3/profiles/default/python/plugins"}
+VENV_DIR=${VENV_DIR:-"$HOME/.pyenv/versions/geologia"}
 
-pushd $HOME
-export PYTHONPATH="$PYTHONPATH:/home/ggrl/.pyenv/versions/geologia/lib/python3.13/site-packages::/home/ggrl/.pyenv/versions/geologia/bin/python:"
-exec qgis &
+cp -r "$PROJ_DIR/fonte/interface/farejadorsismo" "$PLUGIN_DIR"
+
+pushd "$HOME"
+export PYTHONPATH="$PYTHONPATH:$VENV_DIR/lib/python3.13/site-packages:$VENV_DIR/bin/python"
 popd
+
+qgis &
 
 echo "Farejador de Sismos instalado com sucesso!"
