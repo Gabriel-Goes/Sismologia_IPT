@@ -14,6 +14,7 @@ about=Aplicação que servirá para listar todos os eventos que passaram pela fl
 
 tracker=http://bugs
 repository=http://repo
+license=GPLv3
 # End of mandatory metadata
 
 # Recommended items:
