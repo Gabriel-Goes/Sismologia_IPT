@@ -108,8 +108,8 @@ REPORT=${REPORT:-False}
 # ----------------------------- CONSTANTES -------------------------------------
 set -e
 # DEFINE OS DIRETÓRIOS DE TRABALHO
-BASE_DIR=$HOME/projetos/ClassificadorSismologico/
-pushd $BASE_DIR
+BASE_DIR=${BASE_DIR:-"$HOME/projetos/ClassificadorSismologico"}
+pushd "$BASE_DIR"
 
 # DEFINE O DIRETÓRIO DE LOGS
 LOG_DIR="arquivos/registros"
@@ -202,7 +202,8 @@ if [ "$REPORT" = True ]; then
     python fonte/relatorio-sismologia/pyscripts/figures.py --path 'pos_processa'
     python fonte/relatorio-sismologia/pyscripts/mapa.py
     pushd fonte/relatorio-sismologia
-    pdflatex -output-directory=$HOME/projetos/ClassificadorSismologico/arquivos/resultados/relatorios relatorio_preditivo.tex
+    RESULT_DIR=${RESULT_DIR:-"$BASE_DIR/arquivos/resultados/relatorios"}
+    pdflatex -output-directory="$RESULT_DIR" relatorio_preditivo.tex
     popd
 fi
 

@@ -1,5 +1,7 @@
 #!/bin/bash
 #
-pushd $HOME/projetos/ClassificadorSismologico/
-exec python3 fonte/interface/farejador.py
+PROJ_DIR=${PROJ_DIR:-"$HOME/projetos/ClassificadorSismologico"}
+
+pushd "$PROJ_DIR"
+python3 fonte/interface/farejador.py
 popd
