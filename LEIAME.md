@@ -149,3 +149,6 @@ Para abrir somente a interface, utilize `farejador.sh`:
 
 ## Referências
 - [Laboratório de Planetologia e Geociências da Universidade de Nantes](https://univ-nantes.io/E181658E/discrimination_eq_q)
+
+## Licença
+Este projeto está licenciado sob a [GPLv3](LICENSE).
