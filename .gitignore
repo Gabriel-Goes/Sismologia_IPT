@@ -3,7 +3,8 @@
 *.pyc
 *.jpeg
 *.mseed
-
+*.png
+*.tar
 __pycache__/
 fonte/ClassificadorSismologico.egg-info
 arquivos/figuras/mapas/BRASIL.zip
