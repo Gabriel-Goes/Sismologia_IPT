@@ -635,14 +635,18 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
     def loadSpectre(self):
         try:
             if not os.path.isfile(self.mseed_file_path):
-                raise FileNotFoundError
+                raise FileNotFoundError(f"mseed não encontrado: {self.mseed_file_path}")
+
             ev = self.eventSelector.currentText()
             net = self.networkSelector.currentText()
             sta = self.stationSelector.currentText()
             self.ev_data = self.df[self.df.Event == ev]
 
             npy = f'{net}_{sta}_{ev}.npy'
-            path = os.path.join(FILES_DIR, 'espectros', ev, npy)
+            path = os.path.join(PROJ_DIR, 'arquivos/espectros', ev, npy)
+            if not os.path.isfile(path):
+                raise FileNotFoundError(f"espectrograma não encontrado: {path}")
+
             spectrogram = np.load(path, allow_pickle=True)
             spectrogram = np.moveaxis(spectrogram, 0, 2)
 
@@ -651,32 +655,55 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             psd_mat = np.array(spectrogram[:, :, 0])
 
             if psd_mat.shape != (len(time), len(freqs)):
-                logging.error(f"Dimensões inválidas: {psd_mat.shape}")
+                logging.error(f"Dimensões inválidas: {psd_mat.shape} (esperado {(len(time), len(freqs))})")
                 return
 
-            psd_mat_normalized = (
-                psd_mat - psd_mat.min()) / (psd_mat.max() - psd_mat.min())
-            psd_mat_normalized = (psd_mat_normalized * 255).astype(np.uint8)
+            # Normalização robusta (evita divisão por zero)
+            psd_min = float(np.nanmin(psd_mat))
+            psd_max = float(np.nanmax(psd_mat))
+            psd_ptp = psd_max - psd_min
+            if not np.isfinite(psd_ptp) or psd_ptp <= 0:
+                logging.error("PSD constante/ inválido: não é possível normalizar.")
+                return
+            psd_norm = (psd_mat - psd_min) / psd_ptp  # float [0,1]
 
             cmap = plt.get_cmap('magma')
-            color_img = cmap(psd_mat_normalized.T)
-            color_img = (color_img[:, :, :3] * 255).astype(np.uint8)
+            rgba = cmap(psd_norm.T)  # (freq, time, 4) float [0,1]
+            color_img = (rgba[:, :, :3] * 255).astype(np.uint8)
 
-            img_spectro = Image.fromarray(color_img)
-            img_spectro = img_spectro.transpose(Image.FLIP_TOP_BOTTOM)
+            img_spectro = Image.fromarray(color_img).transpose(Image.FLIP_TOP_BOTTOM)
+
             try:
                 img_waveform, pick = self.plot_waveform()
             except Exception as e:
-                logging.error(f"img_waveform Error: {e}")
+                logging.error(f"plot_waveform error: {e}")
                 return
 
-            total_height = img_spectro.height + img_waveform.height
-            combined_img = Image.new('RGB', (img_waveform.width, total_height))
-            combined_img.paste(img_spectro, (0, 0))
-            combined_img.paste(img_waveform, (0, img_spectro.height))
+            # --- REDIMENSIONAR SEM DISTORCER (mantém aspect ratio) ---
+            target_w = img_waveform.width
+            scale = target_w / img_spectro.width
+            target_h = int(round(img_spectro.height * scale))
 
+            try:
+                resample = Image.Resampling.BICUBIC  # Pillow novo
+            except AttributeError:
+                resample = Image.BICUBIC             # Pillow antigo
+
+            img_spectro = img_spectro.resize((target_w, target_h), resample=resample)
+
+            # --- COMBINAR: 3 CANAIS EM CIMA, ESPECTROGRAMA EMBAIXO ---
+            total_height = img_waveform.height + img_spectro.height
+            combined_img = Image.new('RGB', (target_w, total_height), color=(255, 255, 255))
+            combined_img.paste(img_waveform, (0, 0))
+            combined_img.paste(img_spectro, (0, img_waveform.height))
+
+            # --- ANOTAÇÕES (sobre o espectrograma, com faixa de fundo) ---
             draw = ImageDraw.Draw(combined_img)
-            draw.text((255, 5), f'{ev}_{net}_{sta}', fill='white')
+
+            y0 = img_waveform.height
+            banner_h = 50
+            draw.rectangle([0, y0, target_w, y0 + banner_h], fill=(0, 0, 0))
+
             prob = pick['Pick Prob_Nat'].values[0]
             prob_e = pick['Event Prob_Nat'].values[0]
             distance = pick['Distance'].values[0]
@@ -687,21 +714,26 @@ class FarejadorDockWidget(QtWidgets.QDockWidget, Ui_FarejadorDockWidgetBase):
             pick_std = pick['Pick Prob_Nat_std'].values[0]
             cft_std = pick['CFT_std'].values[0]
             cft = pick['CFT'].values[0]
-            draw.text((255, 20), f'Pick: {prob:.2f}/({pick_std:.2f})', fill='white')
-            draw.text((395, 20), f'Event: {prob_e:.2f}', fill='white')
-            draw.text((495, 20), f'CFT: {cft:.1f}/({cft_std:.1f})', fill='white')
-            draw.text((255, 35), f'Distance: {distance:.0f} ({dist_std:.0f}) km', fill='white')
-            draw.text((395, 35), f'SNR: {snrp:.1f}', fill='white')
-            draw.text((495, 35), f'SNR Q2: {snrp_q:.1f}/({snrp_std:.1f})', fill='white')
-            logging.info(f"Espectrograma iniciado com {path}")
 
-            combined_img.save(f'{FIGURE_DIR}/espectros/{ev}_{net}_{sta}.png')
+            draw.text((10, y0 + 5),  f'{ev}_{net}_{sta}', fill='white')
+            draw.text((10, y0 + 20), f'Pick: {prob:.2f}/({pick_std:.2f})', fill='white')
+            draw.text((150, y0 + 20), f'Event: {prob_e:.2f}', fill='white')
+            draw.text((260, y0 + 20), f'CFT: {cft:.1f}/({cft_std:.1f})', fill='white')
+            draw.text((10, y0 + 35), f'Distance: {distance:.0f} ({dist_std:.0f}) km', fill='white')
+            draw.text((150, y0 + 35), f'SNR: {snrp:.1f}', fill='white')
+            draw.text((260, y0 + 35), f'SNR Q2: {snrp_q:.1f}/({snrp_std:.1f})', fill='white')
+
+            os.makedirs(os.path.join(FIGURE_DIR, "espectros"), exist_ok=True)
+            out_png = os.path.join(FIGURE_DIR, "espectros", f"{ev}_{net}_{sta}.png")
+            combined_img.save(out_png)
+
             combined_img.show()
-            logging.info(f"Spectrogram iniciado com {path}")
+            logging.info(f"Spectrogram salvo em: {out_png}")
+
+        except FileNotFoundError as e:
+            logging.error(f"FileNotFoundError: {e}")
         except Exception as e:
             logging.error(f"Erro ao iniciar o Espectrograma: {e}")
-            if e == FileNotFoundError:
-                logging.error(f"FileNootFoundError: {e}")
 
     def closeEvent(self, event):
         self.closingPlugin.emit()
