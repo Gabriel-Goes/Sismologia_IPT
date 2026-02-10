@@ -9,6 +9,13 @@ Escopo atual: modulos que permitem import seguro no build de documentacao.
 Scripts com parse de argumentos em tempo de importacao permanecem em
 :doc:`/artefatos/index` ate serem refatorados.
 
+Fluxo De Navegacao
+------------------
+
+- Voltar para contexto de leitura: :doc:`/guia/index`
+- Seguir para scripts e arquivos texto: :doc:`/artefatos/index`
+- Consultar historico de mudancas: :doc:`/operacoes/index`
+
 Nucleo
 ------
 

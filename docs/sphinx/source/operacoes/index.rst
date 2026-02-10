@@ -3,6 +3,12 @@ Operacoes
 
 Historico incremental das operacoes executadas durante a refatoracao.
 
+Fluxo De Navegacao
+------------------
+
+- Voltar para inicio: :doc:`/index`
+- Voltar para contexto do projeto: :doc:`/visao_geral`
+
 .. toctree::
    :maxdepth: 1
 

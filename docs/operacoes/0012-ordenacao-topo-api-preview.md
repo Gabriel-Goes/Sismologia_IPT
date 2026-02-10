@@ -60,6 +60,23 @@ Arquivos da skill:
 - `skills/operation-journal-consolidator/SKILL.md`
 - `skills/operation-journal-consolidator/references/relatedness-rules.md`
 
+## Incremento 2 (fluxo de navegacao)
+
+Foi adicionada uma trilha de leitura simples e continua no Sphinx para reduzir
+friccao de navegacao:
+
+`index -> visao_geral -> guia -> api -> artefatos -> operacoes`
+
+Arquivos ajustados:
+
+- `docs/sphinx/source/index.rst`
+- `docs/sphinx/source/visao_geral.rst`
+- `docs/sphinx/source/guia/index.rst`
+- `docs/sphinx/source/guia/fluxo-e-referencias.rst`
+- `docs/sphinx/source/api/index.rst`
+- `docs/sphinx/source/artefatos/index.rst`
+- `docs/sphinx/source/operacoes/index.rst`
+
 ## Publicacao sem commit em `main`
 
 Esta operacao foi feita em branch separada para evitar gatilho de notificacoes

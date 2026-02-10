@@ -14,6 +14,7 @@ Efeito principal
 - preserva texto explicativo logo abaixo da assinatura;
 - usa modo hibrido de autosummary (gera faltantes sem sobrescrever manuais).
 - inclui skill para decidir consolidacao vs nova operacao no diario.
+- adiciona fluxo de navegacao continuo entre as secoes principais do site.
 
 Arquivos de interesse
 ---------------------
@@ -21,6 +22,12 @@ Arquivos de interesse
 - ``docs/sphinx/source/api/generated/*.rst``
 - ``docs/sphinx/source/conf.py``
 - ``skills/operation-journal-consolidator/``
+- ``docs/sphinx/source/index.rst``
+- ``docs/sphinx/source/visao_geral.rst``
+- ``docs/sphinx/source/guia/``
+- ``docs/sphinx/source/api/index.rst``
+- ``docs/sphinx/source/artefatos/index.rst``
+- ``docs/sphinx/source/operacoes/index.rst``
 
 Documento detalhado
 -------------------
