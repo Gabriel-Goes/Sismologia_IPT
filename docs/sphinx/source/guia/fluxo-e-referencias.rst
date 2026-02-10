@@ -64,12 +64,12 @@ Artefatos nao-Python
 --------------------
 
 Para scripts Bash e arquivos ``.txt``, use as paginas em :doc:`/artefatos/index`.
-Nelas, o conteudo e renderizado no site e cada pagina aponta para o arquivo
-fonte no GitHub.
+Para CSV/TSV/LOG citados nas operacoes, use :doc:`/anexos/index`.
 
 Proximo Passo
 -------------
 
+- :doc:`Padrao de links da documentacao </guia/padrao-de-links>`
 - :doc:`Execucoes de teste do fluxo legado </guia/execucoes-de-teste-fluxo-legado>`
 - :doc:`API Reference </api/index>`
 - :doc:`Artefatos </artefatos/index>`

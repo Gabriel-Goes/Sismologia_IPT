@@ -23,9 +23,9 @@ scripts/dev/run_fluxo_test_matrix_archived.sh --test-limit 10
 ## Evidencias geradas
 
 1. Sumario da matriz:
-   - `docs/operacoes/anexos/0018-matriz-testes-fluxo-sismo-10.tsv`
+   - [0018-matriz-testes-fluxo-sismo-10.tsv](/anexos/anexo-0018-matriz-testes-fluxo-sismo-10-tsv)
 2. Log da falha de pos-processamento:
-   - `docs/operacoes/anexos/0018-falha-pos-pick-prob-nat.log`
+   - [0018-falha-pos-pick-prob-nat.log](/anexos/anexo-0018-falha-pos-pick-prob-nat-log)
 3. Diretorio de arquivamento bruto:
    - `.specs/codebase/arquivos/registros/test_matrix/20260210_170316/`
 

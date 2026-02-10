@@ -26,6 +26,14 @@ Este diretorio complementa a estrategia de dois trilhos:
 - **Legado:** `.specs/codebase/*` + `docs/sphinx/source/guia|api|artefatos`
 - **Refatoracao:** `.specs/project/*` + `docs/operacoes/*`
 
+## Padrao De Links (Obrigatorio)
+
+1. Toda mencao a arquivo deve ter link para pagina da documentacao (Artefatos
+   ou Anexos).
+2. Toda mencao a modulo/classe/funcao Python deve ter link para a API.
+3. Nao usar links de download para anexos de operacao; sempre usar paginas web
+   renderizadas no Sphinx.
+
 ## Observacao
 
 Os arquivos `estado_atual_sistema.md` e `inventario_arquivos.md` permanecem

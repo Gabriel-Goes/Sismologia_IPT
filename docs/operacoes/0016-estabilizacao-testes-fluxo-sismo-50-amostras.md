@@ -66,7 +66,7 @@ Exemplo de pasta de evidencia final:
 
 Arquivo consolidado (trazido de `/tmp` para o repositorio):
 
-- `docs/operacoes/anexos/0016-matriz-testes-fluxo-sismo-50.tsv`
+- [0016-matriz-testes-fluxo-sismo-50.tsv](/anexos/anexo-0016-matriz-testes-fluxo-sismo-50-tsv)
 
 Resumo:
 
@@ -120,13 +120,13 @@ Resumo:
 ## Evidencias
 
 1. Matriz final local:
-   - `docs/operacoes/anexos/0016-matriz-testes-fluxo-sismo-50.tsv`
+   - [0016-matriz-testes-fluxo-sismo-50.tsv](/anexos/anexo-0016-matriz-testes-fluxo-sismo-50-tsv)
 2. Pasta de execucao isolada da matriz final:
    - `/tmp/matrix-after-pr-fixes-20260210_155406`
 3. Reteste de `-pr -t` com 50 eventos e retorno `rc=0`:
    - `/tmp/retest-pr-limit2-20260210_155231`
 4. Reteste de conectividade FDSN em `-e -t` com 10 eventos:
-   - `docs/operacoes/anexos/0016-teste-e-t-10.log`
+   - [0016-teste-e-t-10.log](/anexos/anexo-0016-reteste-e-t-10-log)
 
 ## Proximo passo
 

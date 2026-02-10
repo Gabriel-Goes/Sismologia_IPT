@@ -18,13 +18,12 @@ Efeito principal
 Arquivos de interesse
 ---------------------
 
-- ``scripts/dev/run_fluxo_test_matrix_archived.sh``
-- ``docs/sphinx/source/guia/execucoes-de-teste-fluxo-legado.rst``
-- ``docs/sphinx/source/guia/index.rst``
-- ``docs/sphinx/source/guia/fluxo-e-referencias.rst``
-- ``documentação/memoria_ambiente_pyenv_virtualenv.md``
-- ``documentação/README.md``
-- ``.python-version``
+- :doc:`Runner de matriz </artefatos/run-fluxo-test-matrix-archived-sh>`
+- :doc:`Guia de execucoes de teste </guia/execucoes-de-teste-fluxo-legado>`
+- :doc:`Indice do User Guide </guia/index>`
+- :doc:`Fluxo e referencias </guia/fluxo-e-referencias>`
+- :doc:`Memoria de ambiente pyenv </artefatos/memoria-ambiente-pyenv-virtualenv-md>`
+- :doc:`Arquivo .python-version </artefatos/python-version>`
 
 Documento detalhado
 -------------------

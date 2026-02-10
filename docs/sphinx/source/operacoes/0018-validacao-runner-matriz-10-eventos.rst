@@ -17,13 +17,12 @@ Efeito principal
 Arquivos de interesse
 ---------------------
 
-- ``docs/operacoes/anexos/0018-matriz-testes-fluxo-sismo-10.tsv``
-- ``docs/operacoes/anexos/0018-falha-pos-pick-prob-nat.log``
-- ``.specs/codebase/arquivos/registros/test_matrix/20260210_170316/``
+- :doc:`Matriz 10 eventos (anexo renderizado) </anexos/anexo-0018-matriz-testes-fluxo-sismo-10-tsv>`
+- :doc:`Falha pos_processa (anexo renderizado) </anexos/anexo-0018-falha-pos-pick-prob-nat-log>`
 
 Documento detalhado
 -------------------
 
 - :doc:`Documento detalhado </detalhes/0018-validacao-runner-matriz-10-eventos>`
-- :download:`Matriz 10 eventos (TSV) <../../../operacoes/anexos/0018-matriz-testes-fluxo-sismo-10.tsv>`
-- :download:`Falha pos_processa (log) <../../../operacoes/anexos/0018-falha-pos-pick-prob-nat.log>`
+- :doc:`Matriz 10 eventos (TSV) </anexos/anexo-0018-matriz-testes-fluxo-sismo-10-tsv>`
+- :doc:`Falha pos_processa (log) </anexos/anexo-0018-falha-pos-pick-prob-nat-log>`
