@@ -25,5 +25,5 @@ Arquivos/diretorios de interesse
 Documento detalhado
 -------------------
 
-- :download:`Documento detalhado (Markdown) <../../../operacoes/0006-organizacao-documentacao-e-runner-isolado.md>`
-- :download:`Outline do paper (Markdown) <../../../../documentação/Possible_Paper_OutLine.md>`
+- :doc:`Documento detalhado </detalhes/0006-organizacao-documentacao-e-runner-isolado>`
+- :doc:`Outline do paper </detalhes/possible-paper-outline>`

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documento detalhado: 0005-analise-historica-logs-pipeline &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="documento-detalhado-0005-analise-historica-logs-pipeline">
+<h1>Documento detalhado: 0005-analise-historica-logs-pipeline<a class="headerlink" href="#documento-detalhado-0005-analise-historica-logs-pipeline" title="Link to this heading">¶</a></h1>
+</section>
+<section id="operacao-0005-analise-historica-dos-logs-do-pipeline">
+<h1>Operacao 0005 - Analise historica dos logs do pipeline<a class="headerlink" href="#operacao-0005-analise-historica-dos-logs-do-pipeline" title="Link to this heading">¶</a></h1>
+<p><strong>Data:</strong> 2026-02-10<br />
+<strong>Branch:</strong> <code class="docutils literal notranslate"><span class="pre">refactor/fluxo-v2-documentado</span></code></p>
+<section id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">¶</a></h2>
+<p>Documentar o comportamento real do pipeline legado a partir dos logs de
+execucao em <code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/.bkp/</span></code>, antes da reescrita do
+fluxo v2.</p>
+</section>
+<section id="escopo-desta-leitura">
+<h2>Escopo desta leitura<a class="headerlink" href="#escopo-desta-leitura" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>inventario temporal completo dos logs <code class="docutils literal notranslate"><span class="pre">Sismo_Pipeline.log.*</span></code> pelo timestamp;</p></li>
+<li><p>leitura integral dos logs pequenos e medios;</p></li>
+<li><p>leitura orientada por amostragem + metricas nos logs gigantes;</p></li>
+<li><p>correlacao de cada log com o commit imediatamente anterior no historico Git.</p></li>
+</ul>
+<p>Anexo gerado nesta operacao:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/operacoes/anexos/0005-resumo-logs.csv</span></code> (210 linhas, um registro por log).</p></li>
+</ul>
+</section>
+<section id="metodo-aplicado">
+<h2>Metodo aplicado<a class="headerlink" href="#metodo-aplicado" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Ordenacao temporal por timestamp do nome do arquivo.</p></li>
+<li><p>Classificacao por tamanho:</p>
+<ul class="simple">
+<li><p>pequenos: <code class="docutils literal notranslate"><span class="pre">&lt;=</span> <span class="pre">120</span> <span class="pre">KB</span></code>;</p></li>
+<li><p>medios: <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">120</span> <span class="pre">KB</span></code> e <code class="docutils literal notranslate"><span class="pre">&lt;=</span> <span class="pre">2.2</span> <span class="pre">MB</span></code>;</p></li>
+<li><p>gigantes: <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">2.2</span> <span class="pre">MB</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Extração de metricas por log:</p>
+<ul class="simple">
+<li><p>combinacao de etapas executadas (<code class="docutils literal notranslate"><span class="pre">P/E/R/O/M/T</span></code>);</p></li>
+<li><p>status final (<code class="docutils literal notranslate"><span class="pre">ok</span></code>, <code class="docutils literal notranslate"><span class="pre">trace</span></code>, <code class="docutils literal notranslate"><span class="pre">partial</span></code>);</p></li>
+<li><p>contagens de mensagens recorrentes;</p></li>
+<li><p>excecao final (quando existente);</p></li>
+<li><p>commit anterior por data.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="cobertura">
+<h2>Cobertura<a class="headerlink" href="#cobertura" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>logs analisados: <strong>210</strong></p></li>
+<li><p>pequenos (leitura integral): <strong>179</strong></p></li>
+<li><p>medios (leitura integral): <strong>21</strong></p></li>
+<li><p>gigantes (leitura integral para metricas + inspeção por amostragem): <strong>10</strong></p></li>
+</ul>
+</section>
+<section id="resultado-macro">
+<h2>Resultado macro<a class="headerlink" href="#resultado-macro" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>status final:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">trace</span></code>: <strong>98</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">partial</span></code>: <strong>91</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ok</span></code>: <strong>21</strong></p></li>
+</ul>
+</li>
+<li><p>combinacoes de etapas mais comuns:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">P</span></code>: <strong>78</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code> (sem etapa de processamento): <strong>43</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E</span></code>: <strong>37</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">O</span></code>: <strong>11</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PE</span></code>: <strong>10</strong></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="evidencias-representativas">
+<h2>Evidencias representativas<a class="headerlink" href="#evidencias-representativas" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>sucesso completo com aquisicao de eventos e fechamento do pipeline:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/.bkp/Sismo_Pipeline.log.20240805141037:1895823</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/.bkp/Sismo_Pipeline.log.20240805141037:1895827</span></code></p></li>
+</ul>
+</li>
+<li><p>erro de retorno no fim do fluxo de eventos:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/.bkp/Sismo_Pipeline.log.20240806150022:1087936</span></code></p></li>
+</ul>
+</li>
+<li><p>erro de metadado com variavel nao inicializada:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/.bkp/Sismo_Pipeline.log.20240808141859:492</span></code></p></li>
+</ul>
+</li>
+<li><p>erro de pos-processamento por coluna ausente:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/.bkp/Sismo_Pipeline.log.20241008170339:520569</span></code></p></li>
+</ul>
+</li>
+<li><p>erro de inferencia no <code class="docutils literal notranslate"><span class="pre">rnc</span></code>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/.bkp/Sismo_Pipeline.log.20241010183245:70</span></code></p></li>
+</ul>
+</li>
+<li><p>erro headless no backend do matplotlib:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/.bkp/Sismo_Pipeline.log.20240808174630:54</span></code></p></li>
+</ul>
+</li>
+<li><p>artefato de conflito de merge dentro de log historico:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/.bkp/Sismo_Pipeline.log.20240805141037:6</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/.bkp/Sismo_Pipeline.log.20240805141037:1895831</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="padroes-temporais-observados">
+<h2>Padroes temporais observados<a class="headerlink" href="#padroes-temporais-observados" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>2024-07-31 a 2024-08-03</strong><br />
+Predominio de execucoes curtas de pre-processamento (<code class="docutils literal notranslate"><span class="pre">P</span></code>) e falhas de
+inicializacao/parametrizacao.</p></li>
+<li><p><strong>2024-08-05</strong><br />
+Execucao <code class="docutils literal notranslate"><span class="pre">PE</span></code> de longa duracao conclui com <code class="docutils literal notranslate"><span class="pre">ok</span></code>, salva <code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code> e
+<code class="docutils literal notranslate"><span class="pre">erros.csv</span></code>.</p></li>
+<li><p><strong>2024-08-06 a 2024-08-08 (janela de aquisicao intensa)</strong><br />
+Logs gigantes de <code class="docutils literal notranslate"><span class="pre">E</span></code> mostram repeticao de mensagens de metadado de canal e
+erros de finalizacao.</p></li>
+<li><p><strong>2024-08-26 a 2024-10-10</strong><br />
+Cresce o uso de fluxo completo (<code class="docutils literal notranslate"><span class="pre">PERO</span></code>, <code class="docutils literal notranslate"><span class="pre">PEROMT</span></code>), com recorrencia de
+falha em <code class="docutils literal notranslate"><span class="pre">pos_processa.py</span></code> por ausencia da coluna <code class="docutils literal notranslate"><span class="pre">CFT</span></code>.</p></li>
+<li><p><strong>2024-10-14 em diante</strong><br />
+Aparecem falhas no <code class="docutils literal notranslate"><span class="pre">rnc</span></code> (<code class="docutils literal notranslate"><span class="pre">Series.append</span></code>) e, em execucoes headless, falha
+de backend <code class="docutils literal notranslate"><span class="pre">Qt5Agg</span></code>.</p></li>
+</ol>
+</section>
+<section id="correlacao-log-x-estado-de-codigo-git">
+<h2>Correlacao log x estado de codigo (git)<a class="headerlink" href="#correlacao-log-x-estado-de-codigo-git" title="Link to this heading">¶</a></h2>
+<p>Correlacao feita por <code class="docutils literal notranslate"><span class="pre">prev_commit</span></code> (ultimo commit com data anterior ao timestamp
+do log). Destaques:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Sismo_Pipeline.log.20240805141037</span></code><br />
+commit anterior <code class="docutils literal notranslate"><span class="pre">5b3ee71</span></code> (altera <code class="docutils literal notranslate"><span class="pre">fluxo_sismo.sh</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Sismo_Pipeline.log.20240806150022</span></code><br />
+commit anterior <code class="docutils literal notranslate"><span class="pre">922e674</span></code> (alteracoes em <code class="docutils literal notranslate"><span class="pre">fonte/nucleo/fluxo_eventos.py</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Sismo_Pipeline.log.20240808123655</span></code><br />
+commit anterior <code class="docutils literal notranslate"><span class="pre">d65a262</span></code> (janela de repeticao de testes do pipeline).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Sismo_Pipeline.log.20241008170339</span></code><br />
+commit anterior <code class="docutils literal notranslate"><span class="pre">44d4d65</span></code> (estado estavel longo entre 2024-08-27 e
+2024-10-10).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Sismo_Pipeline.log.20241014090430</span></code><br />
+commit anterior <code class="docutils literal notranslate"><span class="pre">2c6e2ac</span></code> (mudancas em <code class="docutils literal notranslate"><span class="pre">pos_processa.py</span></code> e
+<code class="docutils literal notranslate"><span class="pre">fluxo_eventos.py</span></code>).</p></li>
+</ol>
+</section>
+<section id="excecoes-finais-mais-frequentes">
+<h2>Excecoes finais mais frequentes<a class="headerlink" href="#excecoes-finais-mais-frequentes" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TypeError:</span> <span class="pre">cannot</span> <span class="pre">unpack</span> <span class="pre">non-iterable</span> <span class="pre">NoneType</span> <span class="pre">object</span></code> (16)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KeyError:</span> <span class="pre">'Column</span> <span class="pre">not</span> <span class="pre">found:</span> <span class="pre">CFT'</span></code> (12)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ImportError:</span> <span class="pre">...</span> <span class="pre">backend</span> <span class="pre">'Qt5Agg'</span> <span class="pre">...</span> <span class="pre">headless</span></code> (8)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AttributeError:</span> <span class="pre">'Series'</span> <span class="pre">object</span> <span class="pre">has</span> <span class="pre">no</span> <span class="pre">attribute</span> <span class="pre">'append'</span></code> (7)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UnboundLocalError:</span> <span class="pre">...</span> <span class="pre">DATA_CLIENT</span> <span class="pre">...</span></code> (6)</p></li>
+</ol>
+</section>
+<section id="conclusao-para-a-reescrita-v2">
+<h2>Conclusao para a reescrita v2<a class="headerlink" href="#conclusao-para-a-reescrita-v2" title="Link to this heading">¶</a></h2>
+<p>O historico de logs confirma que o <code class="docutils literal notranslate"><span class="pre">fluxo_sismo.sh</span></code> funciona como orquestrador
+de etapas heterogeneas (aquisicao, inferencia, pos-processamento, mapas e
+relatorio), com falhas recorrentes concentradas em:</p>
+<ul class="simple">
+<li><p>contrato de dados entre etapas (ex.: coluna <code class="docutils literal notranslate"><span class="pre">CFT</span></code>);</p></li>
+<li><p>tratamento de fallback de cliente/metadados;</p></li>
+<li><p>dependencias de ambiente (GUI/headless e bibliotecas locais);</p></li>
+<li><p>baixa padronizacao de encerramento (<code class="docutils literal notranslate"><span class="pre">ok</span></code> vs <code class="docutils literal notranslate"><span class="pre">trace</span></code> vs <code class="docutils literal notranslate"><span class="pre">partial</span></code>).</p></li>
+</ul>
+<p>Este documento e o anexo CSV formam a base de evidencia para a especificacao da
+proxima etapa de refatoracao.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/detalhes/0005-analise-historica-logs-pipeline.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

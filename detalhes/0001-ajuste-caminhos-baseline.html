@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documento detalhado: 0001-ajuste-caminhos-baseline &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="documento-detalhado-0001-ajuste-caminhos-baseline">
+<h1>Documento detalhado: 0001-ajuste-caminhos-baseline<a class="headerlink" href="#documento-detalhado-0001-ajuste-caminhos-baseline" title="Link to this heading">¶</a></h1>
+</section>
+<section id="operacao-0001-ajuste-de-caminhos-do-baseline-em-specs-codebase">
+<h1>Operacao 0001 - Ajuste de caminhos do baseline em <code class="docutils literal notranslate"><span class="pre">.specs/codebase</span></code><a class="headerlink" href="#operacao-0001-ajuste-de-caminhos-do-baseline-em-specs-codebase" title="Link to this heading">¶</a></h1>
+<p><strong>Data:</strong> 2026-02-09<br />
+<strong>Branch:</strong> <code class="docutils literal notranslate"><span class="pre">refactor/fluxo-v2-documentado</span></code><br />
+<strong>Objetivo:</strong> Corrigir paths hardcoded que apontavam para a raiz antiga do repositório, agora que o baseline foi movido para <code class="docutils literal notranslate"><span class="pre">.specs/codebase/</span></code>.</p>
+<section id="contexto">
+<h2>Contexto<a class="headerlink" href="#contexto" title="Link to this heading">¶</a></h2>
+<p>O baseline legado foi realocado para <code class="docutils literal notranslate"><span class="pre">.specs/codebase/</span></code> para servir como referência de leitura durante a reescrita do fluxo v2.</p>
+<p>Com isso, scripts de entrada e módulos utilitários que assumiam <code class="docutils literal notranslate"><span class="pre">~/projetos/ClassificadorSismologico</span></code> deixaram de resolver corretamente quando executados no novo layout.</p>
+</section>
+<section id="arquivos-ajustados">
+<h2>Arquivos ajustados<a class="headerlink" href="#arquivos-ajustados" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/fluxo_sismo.sh</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/farejador.sh</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/plugin.sh</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/nucleo/utils.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/relatorio-sismologia/pyscripts/figures.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/relatorio-sismologia/pyscripts/mapa.py</span></code></p></li>
+</ol>
+</section>
+<section id="o-que-foi-alterado">
+<h2>O que foi alterado<a class="headerlink" href="#o-que-foi-alterado" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Entrada por shell:</p>
+<ul>
+<li><p>scripts passam a resolver diretório base via <code class="docutils literal notranslate"><span class="pre">SCRIPT_DIR</span></code> (diretório do próprio arquivo), em vez de caminho absoluto.</p></li>
+</ul>
+</li>
+<li><p>Baseline pipeline:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">BASE_DIR</span></code> agora aponta por padrão para o local real do baseline.</p></li>
+<li><p>ajuste de verificação de catálogo para <code class="docutils literal notranslate"><span class="pre">&quot;$BASE_DIR/arquivos/catalogo/$1&quot;</span></code>.</p></li>
+<li><p>correção de paths de backup/log para estrutura atual.</p></li>
+</ul>
+</li>
+<li><p>Utilitário de núcleo:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">PROJETO_DIR</span></code> e <code class="docutils literal notranslate"><span class="pre">MSEED_DIR</span></code> derivados dinamicamente de <code class="docutils literal notranslate"><span class="pre">__file__</span></code> (Pathlib).</p></li>
+</ul>
+</li>
+<li><p>Scripts de relatório:</p>
+<ul>
+<li><p>remoção de dependência de <code class="docutils literal notranslate"><span class="pre">HOME</span> <span class="pre">+</span> <span class="pre">/projetos/ClassificadorSismologico</span></code>.</p></li>
+<li><p>uso de <code class="docutils literal notranslate"><span class="pre">Path(__file__).resolve()</span></code> para localizar baseline e saídas.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="resultado-esperado">
+<h2>Resultado esperado<a class="headerlink" href="#resultado-esperado" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Baseline antigo permanece utilizável como referência operacional.</p></li>
+<li><p>Reescrita do fluxo v2 pode começar sem depender da antiga raiz do projeto.</p></li>
+<li><p>Menor acoplamento a ambiente local específico.</p></li>
+</ul>
+</section>
+<section id="observacoes">
+<h2>Observações<a class="headerlink" href="#observacoes" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Esta operação não altera lógica científica do pipeline.</p></li>
+<li><p>Foco exclusivo em compatibilidade de caminho e portabilidade do baseline.</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/detalhes/0001-ajuste-caminhos-baseline.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

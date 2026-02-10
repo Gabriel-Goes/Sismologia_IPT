@@ -26,4 +26,4 @@ Pontos observados
 Documento detalhado
 -------------------
 
-- :download:`Documento detalhado (Markdown) <../../../operacoes/0007-compreensao-comportamento-fluxo-sismo.md>`
+- :doc:`Documento detalhado </detalhes/0007-compreensao-comportamento-fluxo-sismo>`

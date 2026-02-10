@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documento detalhado: 0006-organizacao-documentacao-e-runner-isolado &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="documento-detalhado-0006-organizacao-documentacao-e-runner-isolado">
+<h1>Documento detalhado: 0006-organizacao-documentacao-e-runner-isolado<a class="headerlink" href="#documento-detalhado-0006-organizacao-documentacao-e-runner-isolado" title="Link to this heading">¶</a></h1>
+</section>
+<section id="operacao-0006-organizacao-da-documentacao-e-runner-isolado">
+<h1>Operacao 0006 - Organizacao da documentacao e runner isolado<a class="headerlink" href="#operacao-0006-organizacao-da-documentacao-e-runner-isolado" title="Link to this heading">¶</a></h1>
+<p><strong>Data:</strong> 2026-02-10<br />
+<strong>Branch:</strong> <code class="docutils literal notranslate"><span class="pre">refactor/fluxo-v2-documentado</span></code></p>
+<section id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">¶</a></h2>
+<p>Consolidar a documentacao da iteracao v2 na raiz do repositorio e reduzir
+ruido operacional durante testes do baseline legado, preservando a rastreabilidade
+por commit.</p>
+</section>
+<section id="commits-vinculados">
+<h2>Commits vinculados<a class="headerlink" href="#commits-vinculados" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">7af9b70</span></code> - <code class="docutils literal notranslate"><span class="pre">docs(repo):</span> <span class="pre">mover</span> <span class="pre">documentação</span> <span class="pre">v2</span> <span class="pre">para</span> <span class="pre">a</span> <span class="pre">raiz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">9e8cf72</span></code> - <code class="docutils literal notranslate"><span class="pre">chore(dev):</span> <span class="pre">adicionar</span> <span class="pre">runner</span> <span class="pre">isolado</span> <span class="pre">do</span> <span class="pre">fluxo_sismo</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d5eac5b</span></code> - <code class="docutils literal notranslate"><span class="pre">docs(article):</span> <span class="pre">adicionar</span> <span class="pre">outline</span> <span class="pre">inicial</span> <span class="pre">do</span> <span class="pre">paper</span></code></p></li>
+</ol>
+</section>
+<section id="escopo-executado">
+<h2>Escopo executado<a class="headerlink" href="#escopo-executado" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Movimentacao da documentacao da iteracao atual:</p>
+<ul class="simple">
+<li><p>de <code class="docutils literal notranslate"><span class="pre">.specs/codebase/documentação/</span></code></p></li>
+<li><p>para <code class="docutils literal notranslate"><span class="pre">documentação/</span></code></p></li>
+</ul>
+</li>
+<li><p>Inclusao de runner de desenvolvimento em <code class="docutils literal notranslate"><span class="pre">scripts/dev/run_fluxo_isolated.sh</span></code>:</p>
+<ul class="simple">
+<li><p>executa <code class="docutils literal notranslate"><span class="pre">.specs/codebase/fluxo_sismo.sh</span></code> em worktree temporaria;</p></li>
+<li><p>evita sujar a worktree principal com logs e artefatos gerados;</p></li>
+<li><p>permite manter o repositorio limpo entre operacoes documentais.</p></li>
+</ul>
+</li>
+<li><p>Inclusao de diretrizes para o artigo em:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">documentação/Possible_Paper_OutLine.md</span></code></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="motivacao-tecnica">
+<h2>Motivacao tecnica<a class="headerlink" href="#motivacao-tecnica" title="Link to this heading">¶</a></h2>
+<p>Durante a leitura e reproducao do fluxo legado, a execucao do shell pipeline
+gera alteracoes em arquivos versionados (logs, relatorios e arquivos auxiliares).
+Isso atrapalha a separacao por operacao e aumenta risco de commit acidental de
+artefatos.</p>
+<p>O runner isolado resolve esse problema sem alterar a logica cientifica do fluxo:
+os testes seguem executaveis, mas em um espaco descartavel.</p>
+</section>
+<section id="impacto-no-projeto">
+<h2>Impacto no projeto<a class="headerlink" href="#impacto-no-projeto" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>melhora da higiene do repositório para ciclos de analise/refatoracao;</p></li>
+<li><p>documentacao da branch v2 separada do baseline legado;</p></li>
+<li><p>diretriz inicial consolidada para redacao do paper.</p></li>
+</ul>
+</section>
+<section id="fora-de-escopo">
+<h2>Fora de escopo<a class="headerlink" href="#fora-de-escopo" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>nao houve mudanca na logica de classificacao sismica;</p></li>
+<li><p>nao houve alteracao de algoritmos de aquisicao, inferencia ou pos-processamento.</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/detalhes/0006-organizacao-documentacao-e-runner-isolado.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

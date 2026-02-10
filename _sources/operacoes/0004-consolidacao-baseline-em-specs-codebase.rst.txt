@@ -16,6 +16,4 @@ Efeito principal
 Documento detalhado
 -------------------
 
-Ver ``docs/operacoes/0004-consolidacao-baseline-em-specs-codebase.md`` no
-repositorio.
-
+- :doc:`Documento detalhado </detalhes/0004-consolidacao-baseline-em-specs-codebase>`

@@ -20,5 +20,4 @@ Arquivos
 Documento detalhado
 -------------------
 
-Ver ``docs/operacoes/0003-inicializacao-specs-project.md`` no repositorio.
-
+- :doc:`Documento detalhado </detalhes/0003-inicializacao-specs-project>`

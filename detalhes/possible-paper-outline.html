@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documento detalhado: possible-paper-outline &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="documento-detalhado-possible-paper-outline">
+<h1>Documento detalhado: possible-paper-outline<a class="headerlink" href="#documento-detalhado-possible-paper-outline" title="Link to this heading">¶</a></h1>
+</section>
+<section id="possible-paper-outline">
+<h1>Possible Paper Outline<a class="headerlink" href="#possible-paper-outline" title="Link to this heading">¶</a></h1>
+<section id="why-is-catalog-completeness-important">
+<h2>Why is catalog completeness important?<a class="headerlink" href="#why-is-catalog-completeness-important" title="Link to this heading">¶</a></h2>
+<p>Because it informs Gutenberg-Richter relationships, which in turn inform seismic hazard analysis.
+The b parameter is used to estimate the recurrence time of larger events;
+(Cite some papers here. Mention more reasons why it is important).</p>
+<p>In intraplate regions like Brazil, small magnitude earthquakes exert a large control on the slope of the GR distribution, since larger events are much harder to come by.</p>
+<p><strong>Small earthquakes in the past might have triggered catastrophic tailings dam failures in Brazil, making seismic hazard studies with a clean catalog important in areas with a large concentration of critical structures.</strong>
+<strong>I would say this is the main justification for this study.</strong></p>
+</section>
+<section id="why-does-the-model-work">
+<h2>Why does the model work?<a class="headerlink" href="#why-does-the-model-work" title="Link to this heading">¶</a></h2>
+<p>Because high frequencies in quarry blasts cancel-out due to line blasts.
+However, after traveling for a certain distance, natural attenuation of high frequencies makes natural and anthropogenic events indistinguishable when using this approach, rendering the method unreliable.
+Can this be remedied in some way by employing other methods in addition to the classifier?</p>
+<p>Retraining the model seems like a very good idea given the Korea results
+(see attached poster).</p>
+<section id="how-to-get-reliable-blasts-for-training">
+<h3>How to get reliable blasts for training?<a class="headerlink" href="#how-to-get-reliable-blasts-for-training" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Cross correlation of waveforms with known blasts.</p></li>
+<li><p>Known blasts from Salles Catalog.</p></li>
+<li><p>Spatial analysis of events (SIGEmine).</p></li>
+<li><p>Temporal filtering (Both for blasts and Natural Earthquakes).</p></li>
+</ul>
+<p>Attenuation is going to be different in different parts of Brazil (Korea is tiny).
+This retraining can probably only be carried out in areas with relatively high station density, and even then tentatively (Brazilian Southeast and Northeast).</p>
+<section id="along-the-coast-how-to-get-this-data">
+<h4>Along the coast? How to get this data?<a class="headerlink" href="#along-the-coast-how-to-get-this-data" title="Link to this heading">¶</a></h4>
+<p>For sparse station coverage, different approaches might be needed.
+<strong>Brian (NU undergrad) is interested in doing some work here with new neural models.</strong>
+(This would take more time).</p>
+</section>
+</section>
+</section>
+<section id="proximos-passos">
+<h2>Proximos passos:<a class="headerlink" href="#proximos-passos" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Documentar os processos que foram feitos para chegar em nossos resultados;</p></li>
+<li><p>Remover eventos Magnitude &gt; 4 e profundidade &gt; 10km;</p></li>
+<li><p>Utilizar sismos do Sudeste (MG) selecionar melhor estações;</p></li>
+<li><p>Utilizar JupyterNotebook para processamento dos dados destrinchando o passo a passo;</p></li>
+<li><p>Utilizar a seisapp;</p></li>
+</ul>
+</section>
+<section id="futuro">
+<h2>Futuro:<a class="headerlink" href="#futuro" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Identificar motivos de eventos antropogênicos durante a madrugada</p></li>
+<li><p>Buscar catálogo do Boletim</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/detalhes/possible-paper-outline.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
