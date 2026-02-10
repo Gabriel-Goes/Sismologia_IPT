@@ -1,6 +1,10 @@
 analise\_dados.gera\_mapas.plot\_macroregions
 =============================================
 
+.. currentmodule:: analise_dados.gera_mapas
+
+.. autofunction:: plot_macroregions
+
 Resumo
 ------
 
@@ -27,6 +31,3 @@ Efeitos colaterais
 - Salva um PNG por macroregiao em ``arquivos/figuras/mapas/``.
 - Cria e remove arquivo temporario para legenda durante a plotagem.
 
-.. currentmodule:: analise_dados.gera_mapas
-
-.. autofunction:: plot_macroregions

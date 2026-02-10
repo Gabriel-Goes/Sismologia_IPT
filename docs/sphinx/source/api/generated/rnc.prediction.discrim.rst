@@ -1,6 +1,10 @@
 rnc.prediction.discrim
 ======================
 
+.. currentmodule:: rnc.prediction
+
+.. autofunction:: discrim
+
 Resumo
 ------
 
@@ -26,6 +30,3 @@ Efeitos colaterais
 - Atualiza colunas de predicao por pick e por evento no ``DataFrame``.
 - Salva ``{output_dir}/predito.csv``.
 
-.. currentmodule:: rnc.prediction
-
-.. autofunction:: discrim
