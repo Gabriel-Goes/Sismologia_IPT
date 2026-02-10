@@ -13,3 +13,4 @@ Historico incremental das operacoes executadas durante a refatoracao.
    0005-analise-historica-logs-pipeline
    0006-organizacao-documentacao-e-runner-isolado
    0007-compreensao-comportamento-fluxo-sismo
+   0008-preparacao-ambiente-pyenv-duplo

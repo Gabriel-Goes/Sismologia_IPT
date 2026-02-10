@@ -1,0 +1,10 @@
+pandas
+obspy
+tqdm
+utm
+ipython
+seaborn
+pyrocko
+shapely
+geopandas
+matplotlib
