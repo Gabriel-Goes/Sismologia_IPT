@@ -40,11 +40,39 @@
             
   <section id="nucleo-fluxo-eventos-iterar-eventos">
 <h1>nucleo.fluxo_eventos.iterar_eventos<a class="headerlink" href="#nucleo-fluxo-eventos-iterar-eventos" title="Link to this heading">¶</a></h1>
+<section id="resumo">
+<h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
+<p>Percorre eventos do catalogo, filtra picks de fase <code class="docutils literal notranslate"><span class="pre">P</span></code>, consulta metadados de
+estacao, baixa formas de onda e grava os CSVs de eventos validos e erros.</p>
+</section>
+<section id="parametros">
+<h2>Parametros<a class="headerlink" href="#parametros" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">eventos</span></code>: lista de eventos ObsPy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_client</span></code>: cliente FDSN primario.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_client_bkp</span></code>: cliente FDSN de backup.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">baixar</span></code>: se <code class="docutils literal notranslate"><span class="pre">True</span></code>, tenta baixar forma de onda e salvar <code class="docutils literal notranslate"><span class="pre">.mseed</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">random</span></code>: parametro legado; nao controla a aleatoriedade atual do offset.</p></li>
+</ul>
+</section>
+<section id="retorno">
+<h2>Retorno<a class="headerlink" href="#retorno" title="Link to this heading">¶</a></h2>
+<p>Nao retorna valor.</p>
+</section>
+<section id="efeitos-colaterais">
+<h2>Efeitos colaterais<a class="headerlink" href="#efeitos-colaterais" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Salva <code class="docutils literal notranslate"><span class="pre">.mseed</span></code> em <code class="docutils literal notranslate"><span class="pre">arquivos/mseed/{EVENT}/</span></code>.</p></li>
+<li><p>Gera <code class="docutils literal notranslate"><span class="pre">arquivos/eventos/eventos.csv</span></code>.</p></li>
+<li><p>Gera <code class="docutils literal notranslate"><span class="pre">arquivos/eventos/erros.csv</span></code>.</p></li>
+<li><p>Emite logs extensos de progresso e erro no stdout.</p></li>
+</ul>
 <dl class="py function">
 <dt class="sig sig-object py" id="nucleo.fluxo_eventos.iterar_eventos">
 <span class="sig-prename descclassname"><span class="pre">nucleo.fluxo_eventos.</span></span><span class="sig-name descname"><span class="pre">iterar_eventos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eventos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">obspy.clients.fdsn.Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_client_bkp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">obspy.clients.fdsn.Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baixar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/nucleo/fluxo_eventos.html#iterar_eventos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleo.fluxo_eventos.iterar_eventos" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</section>
 </section>
 
 

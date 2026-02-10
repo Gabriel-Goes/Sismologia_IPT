@@ -40,11 +40,43 @@
             
   <section id="rnc-data-process-spectro-extract">
 <h1>rnc.data_process.spectro_extract<a class="headerlink" href="#rnc-data-process-spectro-extract" title="Link to this heading">¶</a></h1>
+<section id="resumo">
+<h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
+<p>Pre-processa picks de <code class="docutils literal notranslate"><span class="pre">.mseed</span></code> para gerar espectrogramas <code class="docutils literal notranslate"><span class="pre">.npy</span></code> e metadados
+auxiliares (CFT, warnings e erros) para a etapa de classificacao da RNC.</p>
+</section>
+<section id="parametros">
+<h2>Parametros<a class="headerlink" href="#parametros" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mseed_dir</span></code>: diretorio de entrada (parametro legado; o caminho efetivo de
+leitura usa <code class="docutils literal notranslate"><span class="pre">arquivos/mseed/{Path}</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spectro_dir</span></code>: diretorio de saida dos espectrogramas.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eventos</span></code>: <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> com colunas como <code class="docutils literal notranslate"><span class="pre">Event</span></code>, <code class="docutils literal notranslate"><span class="pre">Station</span></code> e
+<code class="docutils literal notranslate"><span class="pre">Path</span></code>.</p></li>
+</ul>
+</section>
+<section id="retorno">
+<h2>Retorno<a class="headerlink" href="#retorno" title="Link to this heading">¶</a></h2>
+<p>Retorna <code class="docutils literal notranslate"><span class="pre">eventos</span></code> com colunas adicionais, incluindo <code class="docutils literal notranslate"><span class="pre">Compo</span></code>, <code class="docutils literal notranslate"><span class="pre">CFT</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Error</span></code> e <code class="docutils literal notranslate"><span class="pre">Warning</span></code>.</p>
+</section>
+<section id="efeitos-colaterais">
+<h2>Efeitos colaterais<a class="headerlink" href="#efeitos-colaterais" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Salva arquivos <code class="docutils literal notranslate"><span class="pre">.npy</span></code> em <code class="docutils literal notranslate"><span class="pre">{spectro_dir}/{Event}/</span></code>.</p></li>
+<li><p>Registra erros de consistencia (componentes, shape esperado, arquivo ausente).</p></li>
+</ul>
+</section>
+<section id="observacao">
+<h2>Observacao<a class="headerlink" href="#observacao" title="Link to this heading">¶</a></h2>
+<p>A funcao espera shape de espectrograma <code class="docutils literal notranslate"><span class="pre">(237,</span> <span class="pre">50)</span></code> por componente e exige 3
+componentes para salvar o evento.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="rnc.data_process.spectro_extract">
 <span class="sig-prename descclassname"><span class="pre">rnc.data_process.</span></span><span class="sig-name descname"><span class="pre">spectro_extract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mseed_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectro_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eventos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/rnc/data_process.html#spectro_extract"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rnc.data_process.spectro_extract" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</section>
 </section>
 
 

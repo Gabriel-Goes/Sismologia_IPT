@@ -16,3 +16,4 @@ Historico incremental das operacoes executadas durante a refatoracao.
    0008-preparacao-ambiente-pyenv-duplo
    0009-estrutura-sphinx-api-source-e-artefatos
    0010-correcao-autosummary-dependencias-ci
+   0011-preenchimento-docs-api-metodos

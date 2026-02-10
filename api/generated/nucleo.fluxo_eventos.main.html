@@ -40,11 +40,34 @@
             
   <section id="nucleo-fluxo-eventos-main">
 <h1>nucleo.fluxo_eventos.main<a class="headerlink" href="#nucleo-fluxo-eventos-main" title="Link to this heading">¶</a></h1>
+<section id="resumo">
+<h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
+<p>Ponto de entrada programatico do modulo de fluxo: cria clientes FDSN,
+configura fallback e executa <code class="docutils literal notranslate"><span class="pre">fluxo_eventos</span></code>.</p>
+</section>
+<section id="parametros">
+<h2>Parametros<a class="headerlink" href="#parametros" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EventIDs</span></code>: lista de identificadores de evento.</p></li>
+</ul>
+</section>
+<section id="retorno">
+<h2>Retorno<a class="headerlink" href="#retorno" title="Link to this heading">¶</a></h2>
+<p>Retorna <code class="docutils literal notranslate"><span class="pre">(catalogo,</span> <span class="pre">missin_ids)</span></code> vindo de <code class="docutils literal notranslate"><span class="pre">fluxo_eventos</span></code>.</p>
+</section>
+<section id="observacao">
+<h2>Observacao<a class="headerlink" href="#observacao" title="Link to this heading">¶</a></h2>
+<p>Os endpoints sao fixos no codigo legado:</p>
+<ul class="simple">
+<li><p>primario: <code class="docutils literal notranslate"><span class="pre">http://10.110.1.132:18003</span></code></p></li>
+<li><p>backup: <code class="docutils literal notranslate"><span class="pre">http://rsbr.on.br:8081</span></code></p></li>
+</ul>
 <dl class="py function">
 <dt class="sig sig-object py" id="nucleo.fluxo_eventos.main">
 <span class="sig-prename descclassname"><span class="pre">nucleo.fluxo_eventos.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">EventIDs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleo/fluxo_eventos.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleo.fluxo_eventos.main" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</section>
 </section>
 
 

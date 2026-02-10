@@ -40,11 +40,39 @@
             
   <section id="nucleo-fluxo-eventos-fluxo-eventos">
 <h1>nucleo.fluxo_eventos.fluxo_eventos<a class="headerlink" href="#nucleo-fluxo-eventos-fluxo-eventos" title="Link to this heading">¶</a></h1>
+<section id="resumo">
+<h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
+<p>Orquestra a aquisicao de eventos por <code class="docutils literal notranslate"><span class="pre">EventID</span></code> em cliente primario/backup,
+chama <code class="docutils literal notranslate"><span class="pre">iterar_eventos</span></code> para processar picks e registra IDs ausentes.</p>
+</section>
+<section id="parametros">
+<h2>Parametros<a class="headerlink" href="#parametros" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EventIDs</span></code>: lista de identificadores de evento.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATA_CLIENT</span></code>: cliente FDSN primario.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATA_CLIENT_BKP</span></code>: cliente FDSN secundario.</p></li>
+</ul>
+</section>
+<section id="retorno">
+<h2>Retorno<a class="headerlink" href="#retorno" title="Link to this heading">¶</a></h2>
+<p>Retorna uma tupla <code class="docutils literal notranslate"><span class="pre">(catalogo,</span> <span class="pre">ids_faltantes)</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">catalogo</span></code>: <code class="docutils literal notranslate"><span class="pre">obspy.core.event.Catalog</span></code> com eventos encontrados.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ids_faltantes</span></code>: lista de IDs nao encontrados nos servidores consultados.</p></li>
+</ul>
+</section>
+<section id="efeitos-colaterais">
+<h2>Efeitos colaterais<a class="headerlink" href="#efeitos-colaterais" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Dispara o processamento completo de picks via <code class="docutils literal notranslate"><span class="pre">iterar_eventos</span></code>.</p></li>
+<li><p>Salva <code class="docutils literal notranslate"><span class="pre">arquivos/registros/id_faltantes.csv</span></code>.</p></li>
+</ul>
 <dl class="py function">
 <dt class="sig sig-object py" id="nucleo.fluxo_eventos.fluxo_eventos">
 <span class="sig-prename descclassname"><span class="pre">nucleo.fluxo_eventos.</span></span><span class="sig-name descname"><span class="pre">fluxo_eventos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">EventIDs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DATA_CLIENT</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">obspy.clients.fdsn.Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DATA_CLIENT_BKP</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">obspy.clients.fdsn.Client</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="p"><span class="pre">[</span></span><span class="pre">obspy.core.event.catalog.Catalog</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/nucleo/fluxo_eventos.html#fluxo_eventos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleo.fluxo_eventos.fluxo_eventos" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</section>
 </section>
 
 

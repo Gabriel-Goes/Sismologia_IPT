@@ -40,11 +40,40 @@
             
   <section id="analise-dados-pos-processa-recall-event">
 <h1>analise_dados.pos_processa.recall_event<a class="headerlink" href="#analise-dados-pos-processa-recall-event" title="Link to this heading">¶</a></h1>
+<section id="resumo">
+<h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
+<p>Calcula e plota a variacao do recall por evento conforme um limiar minimo de
+<code class="docutils literal notranslate"><span class="pre">SNR_P</span></code>, com filtros de distancia e magnitude.</p>
+</section>
+<section id="parametros">
+<h2>Parametros<a class="headerlink" href="#parametros" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df</span></code>: <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> com colunas como <code class="docutils literal notranslate"><span class="pre">Distance</span></code>, <code class="docutils literal notranslate"><span class="pre">MLv</span></code>,
+<code class="docutils literal notranslate"><span class="pre">SNR_P</span></code>, <code class="docutils literal notranslate"><span class="pre">Event</span> <span class="pre">Prob_Nat</span></code> e <code class="docutils literal notranslate"><span class="pre">Label</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code>: limite maximo de distancia (km). Padrao: <code class="docutils literal notranslate"><span class="pre">400</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: limite maximo de magnitude. Padrao: <code class="docutils literal notranslate"><span class="pre">8</span></code>.</p></li>
+</ul>
+</section>
+<section id="retorno">
+<h2>Retorno<a class="headerlink" href="#retorno" title="Link to this heading">¶</a></h2>
+<p>Nao retorna valor.</p>
+</section>
+<section id="efeitos-colaterais">
+<h2>Efeitos colaterais<a class="headerlink" href="#efeitos-colaterais" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Gera grafico de recall em <code class="docutils literal notranslate"><span class="pre">arquivos/figuras/pos_processa/{d}{m}_recall_event.png</span></code>.</p></li>
+</ul>
+</section>
+<section id="observacao">
+<h2>Observacao<a class="headerlink" href="#observacao" title="Link to this heading">¶</a></h2>
+<p>O filtro por <code class="docutils literal notranslate"><span class="pre">SNR_P</span></code> e aplicado de forma acumulativa dentro do loop de limiar,
+o que reduz progressivamente o conjunto usado nas iteracoes seguintes.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="analise_dados.pos_processa.recall_event">
 <span class="sig-prename descclassname"><span class="pre">analise_dados.pos_processa.</span></span><span class="sig-name descname"><span class="pre">recall_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/analise_dados/pos_processa.html#recall_event"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analise_dados.pos_processa.recall_event" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</section>
 </section>
 
 

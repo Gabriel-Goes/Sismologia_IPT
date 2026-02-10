@@ -40,11 +40,39 @@
             
   <section id="rnc-run-main">
 <h1>rnc.run.main<a class="headerlink" href="#rnc-run-main" title="Link to this heading">¶</a></h1>
+<section id="resumo">
+<h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
+<p>Executa o fluxo principal da RNC legado:</p>
+<ol class="arabic simple">
+<li><p>le eventos de <code class="docutils literal notranslate"><span class="pre">arquivos/eventos/eventos.csv</span></code>;</p></li>
+<li><p>extrai espectrogramas com <code class="docutils literal notranslate"><span class="pre">spectro_extract</span></code>;</p></li>
+<li><p>separa erros e dados limpos;</p></li>
+<li><p>roda inferencia com <code class="docutils literal notranslate"><span class="pre">discrim</span></code>.</p></li>
+</ol>
+</section>
+<section id="parametros">
+<h2>Parametros<a class="headerlink" href="#parametros" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">args</span></code>: <code class="docutils literal notranslate"><span class="pre">argparse.Namespace</span></code> retornado por <code class="docutils literal notranslate"><span class="pre">read_args</span></code>.</p></li>
+</ul>
+</section>
+<section id="retorno">
+<h2>Retorno<a class="headerlink" href="#retorno" title="Link to this heading">¶</a></h2>
+<p>Nao retorna valor.</p>
+</section>
+<section id="efeitos-colaterais">
+<h2>Efeitos colaterais<a class="headerlink" href="#efeitos-colaterais" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Salva <code class="docutils literal notranslate"><span class="pre">arquivos/resultados/erros.csv</span></code>.</p></li>
+<li><p>Salva <code class="docutils literal notranslate"><span class="pre">arquivos/resultados/pre_processado.csv</span></code>.</p></li>
+<li><p>Aciona escrita de <code class="docutils literal notranslate"><span class="pre">predito.csv</span></code> via <code class="docutils literal notranslate"><span class="pre">discrim</span></code>.</p></li>
+</ul>
 <dl class="py function">
 <dt class="sig sig-object py" id="rnc.run.main">
 <span class="sig-prename descclassname"><span class="pre">rnc.run.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Namespace</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/rnc/run.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rnc.run.main" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</section>
 </section>
 
 

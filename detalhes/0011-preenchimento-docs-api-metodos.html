@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documento detalhado: 0011-preenchimento-docs-api-metodos &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="documento-detalhado-0011-preenchimento-docs-api-metodos">
+<h1>Documento detalhado: 0011-preenchimento-docs-api-metodos<a class="headerlink" href="#documento-detalhado-0011-preenchimento-docs-api-metodos" title="Link to this heading">¶</a></h1>
+</section>
+<section id="operacao-0011-preenchimento-dos-docs-de-metodos-da-api">
+<h1>Operacao 0011 - Preenchimento dos docs de metodos da API<a class="headerlink" href="#operacao-0011-preenchimento-dos-docs-de-metodos-da-api" title="Link to this heading">¶</a></h1>
+<p><strong>Data:</strong> 2026-02-10<br />
+<strong>Branch:</strong> <code class="docutils literal notranslate"><span class="pre">main</span></code></p>
+<section id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">¶</a></h2>
+<p>Preencher as paginas de API que estavam com conteudo minimo (apenas titulo e
+assinatura), adicionando explicacao clara do que cada metodo/classe faz.</p>
+</section>
+<section id="problema-identificado">
+<h2>Problema identificado<a class="headerlink" href="#problema-identificado" title="Link to this heading">¶</a></h2>
+<p>As paginas em <code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/api/generated/*.rst</span></code> estavam praticamente
+vazias para leitura humana, dificultando:</p>
+<ul class="simple">
+<li><p>entendimento rapido do fluxo;</p></li>
+<li><p>revisao por orientadores;</p></li>
+<li><p>uso da navegacao <code class="docutils literal notranslate"><span class="pre">[docs]</span> <span class="pre">&lt;-&gt;</span> <span class="pre">[source]</span></code>.</p></li>
+</ul>
+</section>
+<section id="ajuste-estrutural">
+<h2>Ajuste estrutural<a class="headerlink" href="#ajuste-estrutural" title="Link to this heading">¶</a></h2>
+<p>Arquivo alterado:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/conf.py</span></code></p></li>
+</ul>
+<p>Mudanca:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">autosummary_generate</span> <span class="pre">=</span> <span class="pre">False</span></code></p></li>
+</ul>
+<p>Motivo:</p>
+<ul class="simple">
+<li><p>evitar que o Sphinx reescreva as paginas <code class="docutils literal notranslate"><span class="pre">api/generated/*.rst</span></code> a cada build;</p></li>
+<li><p>manter as descricoes manuais persistentes no GitHub Pages.</p></li>
+</ul>
+</section>
+<section id="conteudo-adicionado">
+<h2>Conteudo adicionado<a class="headerlink" href="#conteudo-adicionado" title="Link to this heading">¶</a></h2>
+<p>Foram reescritas as 14 paginas de API com secoes padronizadas:</p>
+<ol class="arabic simple">
+<li><p><strong>Resumo</strong></p></li>
+<li><p><strong>Parametros</strong></p></li>
+<li><p><strong>Retorno</strong></p></li>
+<li><p><strong>Efeitos colaterais</strong> (quando aplicavel)</p></li>
+<li><p><strong>Observacao</strong> (quando aplicavel)</p></li>
+</ol>
+<p>Objetos cobertos:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">analise_dados.gera_mapas.plot_pred_map</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">analise_dados.gera_mapas.plot_macroregions</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">analise_dados.pos_processa.clean_data</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">analise_dados.pos_processa.recall_event</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nucleo.fluxo_eventos.iterar_eventos</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nucleo.fluxo_eventos.fluxo_eventos</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nucleo.fluxo_eventos.main</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nucleo.utils.DualOutput</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nucleo.utils.csv2list</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rnc.data_process.get_fft</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rnc.data_process.spectro_extract</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rnc.prediction.discrim</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rnc.run.read_args</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rnc.run.main</span></code></p></li>
+</ul>
+</section>
+<section id="preservacao-de-rastreabilidade">
+<h2>Preservacao de rastreabilidade<a class="headerlink" href="#preservacao-de-rastreabilidade" title="Link to this heading">¶</a></h2>
+<p>As paginas mantiveram diretivas <code class="docutils literal notranslate"><span class="pre">autofunction</span></code>/<code class="docutils literal notranslate"><span class="pre">autoclass</span></code>, entao:</p>
+<ul class="simple">
+<li><p>assinatura e docstring continuam aparecendo;</p></li>
+<li><p>link <code class="docutils literal notranslate"><span class="pre">[source]</span></code> continua funcional;</p></li>
+<li><p>pagina de codigo em <code class="docutils literal notranslate"><span class="pre">_modules</span></code> continua com link <code class="docutils literal notranslate"><span class="pre">[docs]</span></code>.</p></li>
+</ul>
+</section>
+<section id="validacao-local">
+<h2>Validacao local<a class="headerlink" href="#validacao-local" title="Link to this heading">¶</a></h2>
+<p>Comando:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PYENV_VERSION</span><span class="o">=</span>sismologia<span class="w"> </span>sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>docs/sphinx/source<span class="w"> </span>docs/sphinx/build/html
+</pre></div>
+</div>
+<p>Resultado:</p>
+<ul class="simple">
+<li><p>build concluido com sucesso;</p></li>
+<li><p>paginas renderizam texto explicativo dos metodos;</p></li>
+<li><p>conteudo manual nao foi sobrescrito no build.</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/detalhes/0011-preenchimento-docs-api-metodos.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

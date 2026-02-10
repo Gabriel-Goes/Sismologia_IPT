@@ -40,11 +40,35 @@
             
   <section id="analise-dados-pos-processa-clean-data">
 <h1>analise_dados.pos_processa.clean_data<a class="headerlink" href="#analise-dados-pos-processa-clean-data" title="Link to this heading">¶</a></h1>
+<section id="resumo">
+<h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
+<p>Filtra e organiza eventos classificados como antropogenicos, criando subconjuntos
+por faixas de probabilidade <code class="docutils literal notranslate"><span class="pre">Event</span> <span class="pre">Prob_Ant</span></code> para analise posterior.</p>
+</section>
+<section id="parametros">
+<h2>Parametros<a class="headerlink" href="#parametros" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df</span></code>: <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> indexado por evento/pick com colunas de
+probabilidade e atributos de evento.</p></li>
+</ul>
+</section>
+<section id="retorno">
+<h2>Retorno<a class="headerlink" href="#retorno" title="Link to this heading">¶</a></h2>
+<p>Retorna 6 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> nesta ordem:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">events_Ant</span></code>: todos os eventos com <code class="docutils literal notranslate"><span class="pre">Event</span> <span class="pre">Prob_Nat</span> <span class="pre">&lt;</span> <span class="pre">0.5</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">events_Ant_90</span></code>: <code class="docutils literal notranslate"><span class="pre">Event</span> <span class="pre">Prob_Ant</span> <span class="pre">&gt;=</span> <span class="pre">0.9</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">events_Ant_80</span></code>: <code class="docutils literal notranslate"><span class="pre">0.8</span> <span class="pre">&lt;=</span> <span class="pre">Event</span> <span class="pre">Prob_Ant</span> <span class="pre">&lt;</span> <span class="pre">0.9</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">events_Ant_70</span></code>: <code class="docutils literal notranslate"><span class="pre">0.7</span> <span class="pre">&lt;=</span> <span class="pre">Event</span> <span class="pre">Prob_Ant</span> <span class="pre">&lt;</span> <span class="pre">0.8</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">events_Ant_65</span></code>: <code class="docutils literal notranslate"><span class="pre">0.65</span> <span class="pre">&lt;=</span> <span class="pre">Event</span> <span class="pre">Prob_Ant</span> <span class="pre">&lt;</span> <span class="pre">0.7</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">events_Ant_60</span></code>: <code class="docutils literal notranslate"><span class="pre">0.6</span> <span class="pre">&lt;=</span> <span class="pre">Event</span> <span class="pre">Prob_Ant</span> <span class="pre">&lt;</span> <span class="pre">0.65</span></code>.</p></li>
+</ul>
 <dl class="py function">
 <dt class="sig sig-object py" id="analise_dados.pos_processa.clean_data">
 <span class="sig-prename descclassname"><span class="pre">analise_dados.pos_processa.</span></span><span class="sig-name descname"><span class="pre">clean_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/analise_dados/pos_processa.html#clean_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analise_dados.pos_processa.clean_data" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</section>
 </section>
 
 

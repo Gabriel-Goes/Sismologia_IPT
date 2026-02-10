@@ -40,11 +40,32 @@
             
   <section id="nucleo-utils-csv2list">
 <h1>nucleo.utils.csv2list<a class="headerlink" href="#nucleo-utils-csv2list" title="Link to this heading">¶</a></h1>
+<section id="resumo">
+<h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
+<p>Le um catalogo em <code class="docutils literal notranslate"><span class="pre">arquivos/catalogo/</span></code> e extrai a lista de <code class="docutils literal notranslate"><span class="pre">EventID</span></code>
+(primeira coluna separada por <code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</section>
+<section id="parametros">
+<h2>Parametros<a class="headerlink" href="#parametros" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">csv_file</span></code>: nome do arquivo de catalogo.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: filtro opcional por ano (comparacao com trecho do <code class="docutils literal notranslate"><span class="pre">EventID</span></code>).</p></li>
+</ul>
+</section>
+<section id="retorno">
+<h2>Retorno<a class="headerlink" href="#retorno" title="Link to this heading">¶</a></h2>
+<p>Lista de <code class="docutils literal notranslate"><span class="pre">EventID</span></code>.</p>
+</section>
+<section id="observacao">
+<h2>Observacao<a class="headerlink" href="#observacao" title="Link to this heading">¶</a></h2>
+<p>Quando <code class="docutils literal notranslate"><span class="pre">data</span></code> e informado, o filtro usa <code class="docutils literal notranslate"><span class="pre">evid[3:7]</span></code> para comparacao
+numerica com o valor passado.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="nucleo.utils.csv2list">
 <span class="sig-prename descclassname"><span class="pre">nucleo.utils.</span></span><span class="sig-name descname"><span class="pre">csv2list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csv_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../../_modules/nucleo/utils.html#csv2list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleo.utils.csv2list" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</section>
 </section>
 
 

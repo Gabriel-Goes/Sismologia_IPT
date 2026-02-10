@@ -40,11 +40,33 @@
             
   <section id="rnc-data-process-get-fft">
 <h1>rnc.data_process.get_fft<a class="headerlink" href="#rnc-data-process-get-fft" title="Link to this heading">¶</a></h1>
+<section id="resumo">
+<h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
+<p>Calcula espectro de frequencia para uma <code class="docutils literal notranslate"><span class="pre">Trace</span></code> usando janelas deslizantes,
+remocao de tendencia, taper e FFT.</p>
+</section>
+<section id="parametros">
+<h2>Parametros<a class="headerlink" href="#parametros" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">trace</span></code>: <code class="docutils literal notranslate"><span class="pre">obspy.Trace</span></code> com serie temporal do sinal.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WINDOW_LENGTH</span></code>: tamanho da janela (segundos).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OVERLAP</span></code>: fracao de sobreposicao entre janelas.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nb_pts</span></code>: parametro legado; o valor efetivo e recalculado pela funcao.</p></li>
+</ul>
+</section>
+<section id="retorno">
+<h2>Retorno<a class="headerlink" href="#retorno" title="Link to this heading">¶</a></h2>
+<p>Tupla <code class="docutils literal notranslate"><span class="pre">(result,</span> <span class="pre">freqs)</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>: amplitudes normalizadas e achatadas.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">freqs</span></code>: vetor de frequencias correspondente (sem componente DC).</p></li>
+</ul>
 <dl class="py function">
 <dt class="sig sig-object py" id="rnc.data_process.get_fft">
 <span class="sig-prename descclassname"><span class="pre">rnc.data_process.</span></span><span class="sig-name descname"><span class="pre">get_fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">obspy.core.trace.Trace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WINDOW_LENGTH</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">OVERLAP</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nb_pts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="../../_modules/rnc/data_process.html#get_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rnc.data_process.get_fft" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</section>
 </section>
 
 

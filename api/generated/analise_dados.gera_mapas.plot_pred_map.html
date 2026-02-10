@@ -40,11 +40,37 @@
             
   <section id="analise-dados-gera-mapas-plot-pred-map">
 <h1>analise_dados.gera_mapas.plot_pred_map<a class="headerlink" href="#analise-dados-gera-mapas-plot-pred-map" title="Link to this heading">¶</a></h1>
+<section id="resumo">
+<h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
+<p>Gera um mapa de eventos com PyGMT usando as colunas de latitude/longitude e
+colore cada ponto pela probabilidade de evento natural (<code class="docutils literal notranslate"><span class="pre">Event</span> <span class="pre">Prob_Nat</span></code>).</p>
+</section>
+<section id="parametros">
+<h2>Parametros<a class="headerlink" href="#parametros" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> com, no minimo, <code class="docutils literal notranslate"><span class="pre">Latitude</span></code>, <code class="docutils literal notranslate"><span class="pre">Longitude</span></code> e
+<code class="docutils literal notranslate"><span class="pre">Event</span> <span class="pre">Prob_Nat</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: nome do arquivo de saida (salvo em
+<code class="docutils literal notranslate"><span class="pre">arquivos/figuras/mapas/</span></code>).</p></li>
+</ul>
+</section>
+<section id="retorno">
+<h2>Retorno<a class="headerlink" href="#retorno" title="Link to this heading">¶</a></h2>
+<p>Nao retorna valor.</p>
+</section>
+<section id="efeitos-colaterais">
+<h2>Efeitos colaterais<a class="headerlink" href="#efeitos-colaterais" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Adiciona as colunas <code class="docutils literal notranslate"><span class="pre">Longitude_jitter</span></code> e <code class="docutils literal notranslate"><span class="pre">Latitude_jitter</span></code> em <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p></li>
+<li><p>Salva figura em <code class="docutils literal notranslate"><span class="pre">arquivos/figuras/mapas/{filename}</span></code>.</p></li>
+<li><p>Exibe a figura com <code class="docutils literal notranslate"><span class="pre">fig.show()</span></code>.</p></li>
+</ul>
 <dl class="py function">
 <dt class="sig sig-object py" id="analise_dados.gera_mapas.plot_pred_map">
 <span class="sig-prename descclassname"><span class="pre">analise_dados.gera_mapas.</span></span><span class="sig-name descname"><span class="pre">plot_pred_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/analise_dados/gera_mapas.html#plot_pred_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analise_dados.gera_mapas.plot_pred_map" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</section>
 </section>
 
 

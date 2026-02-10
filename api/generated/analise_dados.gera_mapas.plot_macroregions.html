@@ -40,11 +40,37 @@
             
   <section id="analise-dados-gera-mapas-plot-macroregions">
 <h1>analise_dados.gera_mapas.plot_macroregions<a class="headerlink" href="#analise-dados-gera-mapas-plot-macroregions" title="Link to this heading">¶</a></h1>
+<section id="resumo">
+<h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
+<p>Itera sobre as macroregioes de um <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> e gera um mapa por regiao,
+plotando os eventos sobre cada recorte geografico.</p>
+</section>
+<section id="parametros">
+<h2>Parametros<a class="headerlink" href="#parametros" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gdf</span></code>: <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code> com geometria e coluna <code class="docutils literal notranslate"><span class="pre">nome</span></code> da
+macroregiao.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> com coordenadas de eventos (<code class="docutils literal notranslate"><span class="pre">Latitude</span></code> e
+<code class="docutils literal notranslate"><span class="pre">Longitude</span></code>).</p></li>
+</ul>
+</section>
+<section id="retorno">
+<h2>Retorno<a class="headerlink" href="#retorno" title="Link to this heading">¶</a></h2>
+<p>Nao retorna valor.</p>
+</section>
+<section id="efeitos-colaterais">
+<h2>Efeitos colaterais<a class="headerlink" href="#efeitos-colaterais" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Adiciona <code class="docutils literal notranslate"><span class="pre">Longitude_jitter</span></code> e <code class="docutils literal notranslate"><span class="pre">Latitude_jitter</span></code> em <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p></li>
+<li><p>Salva um PNG por macroregiao em <code class="docutils literal notranslate"><span class="pre">arquivos/figuras/mapas/</span></code>.</p></li>
+<li><p>Cria e remove arquivo temporario para legenda durante a plotagem.</p></li>
+</ul>
 <dl class="py function">
 <dt class="sig sig-object py" id="analise_dados.gera_mapas.plot_macroregions">
 <span class="sig-prename descclassname"><span class="pre">analise_dados.gera_mapas.</span></span><span class="sig-name descname"><span class="pre">plot_macroregions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/analise_dados/gera_mapas.html#plot_macroregions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analise_dados.gera_mapas.plot_macroregions" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</section>
 </section>
 
 

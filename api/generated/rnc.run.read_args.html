@@ -40,11 +40,34 @@
             
   <section id="rnc-run-read-args">
 <h1>rnc.run.read_args<a class="headerlink" href="#rnc-run-read-args" title="Link to this heading">¶</a></h1>
+<section id="resumo">
+<h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
+<p>Define e parseia argumentos de linha de comando do pipeline legado da RNC.</p>
+</section>
+<section id="parametros">
+<h2>Parametros<a class="headerlink" href="#parametros" title="Link to this heading">¶</a></h2>
+<p>Nao recebe parametros diretamente; le <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>.</p>
+</section>
+<section id="retorno">
+<h2>Retorno<a class="headerlink" href="#retorno" title="Link to this heading">¶</a></h2>
+<p>Retorna <code class="docutils literal notranslate"><span class="pre">argparse.Namespace</span></code> com:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mseed_dir</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spectro_dir</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_dir</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">valid</span></code></p></li>
+</ul>
+</section>
+<section id="observacao">
+<h2>Observacao<a class="headerlink" href="#observacao" title="Link to this heading">¶</a></h2>
+<p>A flag <code class="docutils literal notranslate"><span class="pre">--valid</span></code> e declarada, mas nao e usada no fluxo principal atual.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="rnc.run.read_args">
 <span class="sig-prename descclassname"><span class="pre">rnc.run.</span></span><span class="sig-name descname"><span class="pre">read_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Namespace</span></span></span><a class="reference internal" href="../../_modules/rnc/run.html#read_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rnc.run.read_args" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</section>
 </section>
 
 
