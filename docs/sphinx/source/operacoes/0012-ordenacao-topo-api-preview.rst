@@ -15,6 +15,7 @@ Efeito principal
 - usa modo hibrido de autosummary (gera faltantes sem sobrescrever manuais).
 - inclui skill para decidir consolidacao vs nova operacao no diario.
 - adiciona fluxo de navegacao continuo entre as secoes principais do site.
+- formaliza separacao entre objetivo da refatoracao e objetivo do legado.
 
 Arquivos de interesse
 ---------------------
@@ -28,6 +29,11 @@ Arquivos de interesse
 - ``docs/sphinx/source/api/index.rst``
 - ``docs/sphinx/source/artefatos/index.rst``
 - ``docs/sphinx/source/operacoes/index.rst``
+- ``docs/sphinx/source/dois_objetivos.rst``
+- ``.specs/project/PROJECT.md``
+- ``.specs/project/ROADMAP.md``
+- ``.specs/project/STATE.md``
+- ``documentação/README.md``
 
 Documento detalhado
 -------------------

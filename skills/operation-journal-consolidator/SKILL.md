@@ -11,19 +11,25 @@ Use this skill to choose between consolidating changes into the latest operation
 
 ## Workflow
 
-1. Inspect the current goal and changed files.
-2. Compare with the latest operation scope.
-3. Apply the decision rules in `references/relatedness-rules.md`.
-4. Execute one mode only: consolidate or create new operation.
-5. Report the decision with short, concrete reasons.
+1. Classify context first: `refatoracao` or `legado`.
+2. Inspect the current goal and changed files.
+3. Compare with the latest operation scope and latest operation context.
+4. Apply the decision rules in `references/relatedness-rules.md`.
+5. Execute one mode only: consolidate or create new operation.
+6. Report the decision with short, concrete reasons.
 
 ## Consolidate Last Operation
 
 Use this mode when changes are clearly incremental to the latest operation.
 
+Precondition:
+
+- Current context must match the latest operation context.
+
 1. Update `docs/operacoes/<last>.md`:
 - Add an `## Incremento` section with date and what changed.
 - Keep one coherent narrative for the same objective.
+- Keep or add explicit line: `Contexto: refatoracao` or `Contexto: legado`.
 
 2. Update `docs/sphinx/source/operacoes/<last>.rst`:
 - Adjust `Resumo`, `Efeito principal`, and `Arquivos de interesse`.
@@ -42,9 +48,12 @@ Use this mode when scope or intent diverges from the latest operation.
 - `docs/sphinx/source/operacoes/<next>.rst`
 - `docs/sphinx/source/detalhes/<next>.md`
 
-2. Update `docs/sphinx/source/operacoes/index.rst`.
+2. Add explicit context in the new operation:
+- `Contexto: refatoracao` or `Contexto: legado`
 
-3. Preserve previous operation files as historical records.
+3. Update `docs/sphinx/source/operacoes/index.rst`.
+
+4. Preserve previous operation files as historical records.
 
 ## Hard Stops
 
@@ -53,11 +62,13 @@ Never consolidate when any of the following is true:
 - A new subsystem or domain is introduced (for example: docs-only to runtime/test infra).
 - The change introduces a different objective than the latest operation.
 - The previous operation is finalized and this step requires separate auditability.
+- The context differs from the latest operation (`refatoracao` vs `legado`).
 
 ## Output Contract
 
 Always provide:
 
 - Decision: `consolidate-last-operation` or `create-new-operation`.
+- Context: `refatoracao` or `legado`.
 - 2-3 reasons tied to files/objective.
 - Exact files updated.

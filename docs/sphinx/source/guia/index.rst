@@ -7,7 +7,7 @@ ponte direta para a referencia de API e para os arquivos fonte.
 Fluxo De Navegacao
 ------------------
 
-Se voce veio de :doc:`/visao_geral`, siga nesta ordem:
+Se voce veio de :doc:`/dois_objetivos`, siga nesta ordem:
 
 1. :doc:`Fluxo e Referencias </guia/fluxo-e-referencias>`
 2. :doc:`API Reference </api/index>`

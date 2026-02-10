@@ -2,6 +2,7 @@
 
 **Data:** 2026-02-10  
 **Branch:** `docs/api-topo-preview`
+**Contexto:** `refatoracao`
 
 ## Objetivo
 
@@ -76,6 +77,28 @@ Arquivos ajustados:
 - `docs/sphinx/source/api/index.rst`
 - `docs/sphinx/source/artefatos/index.rst`
 - `docs/sphinx/source/operacoes/index.rst`
+
+## Incremento 3 (dois objetivos documentais)
+
+Foi formalizada a separacao explicita entre:
+
+- objetivo da refatoracao (como executar a reescrita v2);
+- objetivo do legado (o que o sistema atual faz).
+
+Ajustes aplicados:
+
+- nova pagina Sphinx: `docs/sphinx/source/dois_objetivos.rst`
+- fluxo de leitura atualizado para incluir "Dois Objetivos"
+- alinhamento de projeto em:
+  - `.specs/project/PROJECT.md`
+  - `.specs/project/ROADMAP.md`
+  - `.specs/project/STATE.md`
+- skill de consolidacao atualizada para exigir contexto:
+  - `skills/operation-journal-consolidator/SKILL.md`
+  - `skills/operation-journal-consolidator/references/relatedness-rules.md`
+- documentacao narrativa alinhada:
+  - `documentação/README.md`
+  - `documentação/estado_atual_sistema.md`
 
 ## Publicacao sem commit em `main`
 

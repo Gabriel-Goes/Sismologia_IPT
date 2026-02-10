@@ -1,5 +1,9 @@
 # Estado atual do sistema (commit `9c3c01b`)
 
+> Nota de contexto: este documento e um snapshot historico da etapa inicial de
+> leitura do legado. A referencia canonicamente atualizada do legado esta em
+> `.specs/codebase/*` e no Sphinx (`guia`, `api` e `artefatos`).
+
 ## 1) Objetivo desta etapa
 
 Este documento registra o estado tecnico atual do projeto para iniciar a
@@ -196,4 +200,3 @@ Observacoes tecnicas:
 4. Separar scripts gerados/legados em area de arquivo historico.
 5. Introduzir testes de regressao para garantir equivalencia de resultados
    antes de alterar algoritmos.
-

@@ -8,6 +8,16 @@ Reescrever o fluxo do projeto de classificacao sismologica com arquitetura mais
 limpa, modular e auditavel, mantendo rastreabilidade tecnica para avaliacao
 academica.
 
+Dois Trilhos
+------------
+
+Esta documentacao trabalha com dois objetivos em paralelo:
+
+1. **Refatoracao:** como o v2 sera planejado, implementado e validado.
+2. **Legado:** o que a codebase atual executa e como executa.
+
+Detalhamento: :doc:`/dois_objetivos`
+
 Estrutura de trabalho
 ---------------------
 
@@ -107,9 +117,10 @@ Continue A Leitura
 
 Proximo passo recomendado:
 
-- :doc:`User Guide </guia/index>`
+- :doc:`Dois Objetivos </dois_objetivos>`
 
 Atalhos:
 
+- :doc:`User Guide </guia/index>`
 - :doc:`API Reference </api/index>`
 - :doc:`Operacoes </operacoes/index>`
