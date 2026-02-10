@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documento detalhado: 0016-estabilizacao-testes-fluxo-sismo-50-amostras &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="documento-detalhado-0016-estabilizacao-testes-fluxo-sismo-50-amostras">
+<h1>Documento detalhado: 0016-estabilizacao-testes-fluxo-sismo-50-amostras<a class="headerlink" href="#documento-detalhado-0016-estabilizacao-testes-fluxo-sismo-50-amostras" title="Link to this heading">¶</a></h1>
+</section>
+<section id="operacao-0016-estabilizacao-dos-testes-do-fluxo-sismo-sh-com-test-50-amostras">
+<h1>Operacao 0016 - Estabilizacao dos testes do <code class="docutils literal notranslate"><span class="pre">fluxo_sismo.sh</span></code> com <code class="docutils literal notranslate"><span class="pre">--test</span></code> (50 amostras)<a class="headerlink" href="#operacao-0016-estabilizacao-dos-testes-do-fluxo-sismo-sh-com-test-50-amostras" title="Link to this heading">¶</a></h1>
+<p><strong>Data:</strong> 2026-02-10<br />
+<strong>Branch:</strong> <code class="docutils literal notranslate"><span class="pre">refactor/fluxo-v2-documentado</span></code><br />
+<strong>Contexto:</strong> <code class="docutils literal notranslate"><span class="pre">refatoracao</span></code><br />
+<strong>Status:</strong> <code class="docutils literal notranslate"><span class="pre">concluida</span></code></p>
+<section id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">¶</a></h2>
+<p>Documentar, de forma rastreavel, os passos executados para estabilizar o
+comportamento do pipeline legado em modo de teste (<code class="docutils literal notranslate"><span class="pre">--test</span></code>) com amostragem de
+50 eventos, antes do ciclo presencial no ambiente do IAG/SEISAPP.</p>
+</section>
+<section id="entendimento-consolidado-do-fluxo-o-que-precisava-ficar-claro">
+<h2>Entendimento consolidado do fluxo (o que precisava ficar claro)<a class="headerlink" href="#entendimento-consolidado-do-fluxo-o-que-precisava-ficar-claro" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-pr</span></code> (RNC) <strong>nao precisa</strong> obrigatoriamente de <code class="docutils literal notranslate"><span class="pre">-e</span></code> na mesma execucao.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-pr</span></code> precisa de insumos preexistentes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">arquivos/eventos/eventos.csv</span></code></p></li>
+<li><p>arquivos em <code class="docutils literal notranslate"><span class="pre">arquivos/mseed/*</span></code></p></li>
+</ul>
+</li>
+<li><p>Como existem artefatos legados locais (execucoes antigas), etapas como
+<code class="docutils literal notranslate"><span class="pre">-po</span></code>, <code class="docutils literal notranslate"><span class="pre">-m</span></code>, <code class="docutils literal notranslate"><span class="pre">-r</span></code> e o proprio <code class="docutils literal notranslate"><span class="pre">-pr</span></code> podem funcionar mesmo sem <code class="docutils literal notranslate"><span class="pre">-e</span></code> no mesmo
+comando.</p></li>
+<li><p>O que estava confundindo os testes era o efeito colateral de <code class="docutils literal notranslate"><span class="pre">-e</span></code>:
+o script movia <code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code> para <code class="docutils literal notranslate"><span class="pre">.bkp</span></code> antes do download; com FDSN offline,
+o arquivo nao era recriado e o <code class="docutils literal notranslate"><span class="pre">-pr</span></code> seguinte quebrava.</p></li>
+</ol>
+</section>
+<section id="metodo-aplicado">
+<h2>Metodo aplicado<a class="headerlink" href="#metodo-aplicado" title="Link to this heading">¶</a></h2>
+<p>Todos os testes de validacao foram executados em copias isoladas em <code class="docutils literal notranslate"><span class="pre">/tmp</span></code>,
+mantendo a arvore do repositorio limpa de artefatos de execucao.</p>
+<p>Exemplo de pasta de evidencia final:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/tmp/matrix-after-pr-fixes-20260210_155406</span></code></p></li>
+</ul>
+</section>
+<section id="passos-executados-ordem-real">
+<h2>Passos executados (ordem real)<a class="headerlink" href="#passos-executados-ordem-real" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Reproducao inicial do problema com matriz de flags (<code class="docutils literal notranslate"><span class="pre">-pe</span></code>, <code class="docutils literal notranslate"><span class="pre">-e</span></code>, <code class="docutils literal notranslate"><span class="pre">-pr</span></code>,
+<code class="docutils literal notranslate"><span class="pre">-po</span></code>, <code class="docutils literal notranslate"><span class="pre">-m</span></code>, <code class="docutils literal notranslate"><span class="pre">-r</span></code>, <code class="docutils literal notranslate"><span class="pre">todos</span></code>) em <code class="docutils literal notranslate"><span class="pre">--test</span></code>.</p></li>
+<li><p>Confirmacao de que <code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code> esta versionado no Git e disponivel na
+codebase legado, descartando hipotese de <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> como causa principal.</p></li>
+<li><p>Correcao de robustez GMT/PyGMT para <code class="docutils literal notranslate"><span class="pre">coast</span></code>:</p>
+<ul class="simple">
+<li><p>configuracao de <code class="docutils literal notranslate"><span class="pre">GMT_USERDIR</span></code> gravavel;</p></li>
+<li><p>vinculacao dos datasets locais <code class="docutils literal notranslate"><span class="pre">gshhg/dcw</span></code> em <code class="docutils literal notranslate"><span class="pre">~/.gmt/geography</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Correcao da etapa de relatorio para nao travar interativamente:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pdflatex</span> <span class="pre">-interaction=nonstopmode</span> <span class="pre">-halt-on-error</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Correcao LaTeX de idioma no relatorio preditivo:</p>
+<ul class="simple">
+<li><p>reativacao de <code class="docutils literal notranslate"><span class="pre">babel</span></code> em <code class="docutils literal notranslate"><span class="pre">relatorio_preditivo.tex</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Correcao de recurso grafico ausente no <code class="docutils literal notranslate"><span class="pre">sismo_iptex.cls</span></code>:</p>
+<ul class="simple">
+<li><p>fallback de <code class="docutils literal notranslate"><span class="pre">footImage.pdf</span></code> para <code class="docutils literal notranslate"><span class="pre">footer_IPT.png</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Correcao de fallback FDSN em <code class="docutils literal notranslate"><span class="pre">fluxo_eventos.py</span></code>:</p>
+<ul class="simple">
+<li><p>tentativa de cliente principal e backup antes de abortar.</p></li>
+</ul>
+</li>
+<li><p>Ajuste de amostragem de teste do fluxo de eventos:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TEST_EVENT_LIMIT</span></code> (default <code class="docutils literal notranslate"><span class="pre">50</span></code>) em <code class="docutils literal notranslate"><span class="pre">fluxo_eventos.py</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Ajuste de amostragem de teste da RNC:</p>
+<ul class="simple">
+<li><p>novo argumento <code class="docutils literal notranslate"><span class="pre">--test-limit</span></code> em <code class="docutils literal notranslate"><span class="pre">fonte/rnc/run.py</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fluxo_sismo.sh</span></code> passa <code class="docutils literal notranslate"><span class="pre">--test-limit</span></code> para <code class="docutils literal notranslate"><span class="pre">-pr</span> <span class="pre">-t</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Correcao de bug legado da RNC em <code class="docutils literal notranslate"><span class="pre">data_process.py</span></code>:</p>
+<ul class="simple">
+<li><p>escrita robusta em colunas lista (<code class="docutils literal notranslate"><span class="pre">Error</span></code>, <code class="docutils literal notranslate"><span class="pre">Warning</span></code>, <code class="docutils literal notranslate"><span class="pre">Compo</span></code>) sem
+indexacao frágil (<code class="docutils literal notranslate"><span class="pre">[0].append(...)</span></code>);</p></li>
+<li><p>leitura de mseed respeitando parametro <code class="docutils literal notranslate"><span class="pre">mseed_dir</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Correcao do backup de <code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code> em <code class="docutils literal notranslate"><span class="pre">-e</span></code>:</p>
+<ul class="simple">
+<li><p>trocado <code class="docutils literal notranslate"><span class="pre">mv</span></code> por <code class="docutils literal notranslate"><span class="pre">cp</span></code> para preservar insumo legado quando FDSN falha.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="resultado-final-da-matriz-50-amostras">
+<h2>Resultado final da matriz (50 amostras)<a class="headerlink" href="#resultado-final-da-matriz-50-amostras" title="Link to this heading">¶</a></h2>
+<p>Arquivo consolidado (trazido de <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> para o repositorio):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/operacoes/anexos/0016-matriz-testes-fluxo-sismo-50.tsv</span></code></p></li>
+</ul>
+<p>Resumo:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pre</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">rc=0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eventos</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">rc=1</span></code> (sem acesso aos servidores FDSN no ambiente atual)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">predict</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">rc=0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pos</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">rc=0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">maps</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">rc=0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">report</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">rc=0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">todos</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">rc=1</span></code> (falha herdada de <code class="docutils literal notranslate"><span class="pre">-e</span></code> por indisponibilidade FDSN)</p></li>
+</ol>
+</section>
+<section id="atualizacao-complementar-fdsn-e-t-com-10-eventos">
+<h2>Atualizacao complementar: FDSN (<code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">-t</span></code>) com 10 eventos<a class="headerlink" href="#atualizacao-complementar-fdsn-e-t-com-10-eventos" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Foi adicionado novo endpoint de backup no <code class="docutils literal notranslate"><span class="pre">fluxo_eventos.py</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">http://seisrequest.iag.usp.br</span></code></p></li>
+</ul>
+</li>
+<li><p>A logica de conexao FDSN foi reforcada para listar os servicos expostos
+por cada cliente e validar explicitamente a existencia do servico <code class="docutils literal notranslate"><span class="pre">event</span></code>.</p></li>
+<li><p>Endpoints sem <code class="docutils literal notranslate"><span class="pre">event</span></code> agora sao ignorados para a etapa <code class="docutils literal notranslate"><span class="pre">-e</span></code>, com mensagem
+explicita no log.</p></li>
+<li><p>Se nenhum endpoint com <code class="docutils literal notranslate"><span class="pre">event</span></code> estiver disponivel, o fluxo falha cedo com
+mensagem clara indicando a dependencia de acesso ao ambiente IAG/SeisComP.</p></li>
+<li><p>Reteste executado com <code class="docutils literal notranslate"><span class="pre">TEST_EVENT_LIMIT=10</span></code> para <code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">-t</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">seisrequest</span></code> respondeu apenas com <code class="docutils literal notranslate"><span class="pre">dataselect</span></code> e <code class="docutils literal notranslate"><span class="pre">station</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rsbr</span></code> respondeu com <code class="docutils literal notranslate"><span class="pre">event</span></code>, mas os <code class="docutils literal notranslate"><span class="pre">EventID</span></code> amostrados (<code class="docutils literal notranslate"><span class="pre">usp...</span></code>) nao
+foram encontrados no catalogo remoto;</p></li>
+<li><p>o teste concluiu sem download de eventos, confirmando o bloqueio de
+rede/catalogo fora do ambiente IAG.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="interpretacao-tecnica">
+<h2>Interpretacao tecnica<a class="headerlink" href="#interpretacao-tecnica" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>A estabilizacao local foi alcancada para o fluxo que depende de artefatos
+ja existentes (<code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">mseed</span></code>, resultados legados).</p></li>
+<li><p>O unico bloqueio funcional restante para <code class="docutils literal notranslate"><span class="pre">eventos</span></code>/<code class="docutils literal notranslate"><span class="pre">todos</span></code> e conectividade
+com os endpoints FDSN no ambiente de teste atual.</p></li>
+<li><p>O comportamento observado nos logs passa a ser coerente com o desenho do
+pipeline legado: etapas sao parcialmente desacopladas quando os artefatos
+de entrada ja existem.</p></li>
+<li><p>O endpoint <code class="docutils literal notranslate"><span class="pre">seisrequest</span></code> e util para <code class="docutils literal notranslate"><span class="pre">station</span></code> e <code class="docutils literal notranslate"><span class="pre">dataselect</span></code>, mas nao
+substitui o acesso ao servico <code class="docutils literal notranslate"><span class="pre">event</span></code> do SeisComP/USP para aquisicao
+completa via <code class="docutils literal notranslate"><span class="pre">-e</span></code>.</p></li>
+</ol>
+</section>
+<section id="arquivos-alterados-nesta-etapa">
+<h2>Arquivos alterados nesta etapa<a class="headerlink" href="#arquivos-alterados-nesta-etapa" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/fluxo_sismo.sh</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/nucleo/fluxo_eventos.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/rnc/run.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/rnc/data_process.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/relatorio-sismologia/relatorio_preditivo.tex</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/relatorio-sismologia/sismo_iptex.cls</span></code></p></li>
+</ol>
+</section>
+<section id="evidencias">
+<h2>Evidencias<a class="headerlink" href="#evidencias" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Matriz final local:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/operacoes/anexos/0016-matriz-testes-fluxo-sismo-50.tsv</span></code></p></li>
+</ul>
+</li>
+<li><p>Pasta de execucao isolada da matriz final:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/tmp/matrix-after-pr-fixes-20260210_155406</span></code></p></li>
+</ul>
+</li>
+<li><p>Reteste de <code class="docutils literal notranslate"><span class="pre">-pr</span> <span class="pre">-t</span></code> com 50 eventos e retorno <code class="docutils literal notranslate"><span class="pre">rc=0</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/tmp/retest-pr-limit2-20260210_155231</span></code></p></li>
+</ul>
+</li>
+<li><p>Reteste de conectividade FDSN em <code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">-t</span></code> com 10 eventos:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/operacoes/anexos/0016-teste-e-t-10.log</span></code></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="proximo-passo">
+<h2>Proximo passo<a class="headerlink" href="#proximo-passo" title="Link to this heading">¶</a></h2>
+<p>Executar a mesma bateria no ambiente com acesso de rede ao IAG/SEISAPP para
+validar <code class="docutils literal notranslate"><span class="pre">-e</span></code> e, por consequencia, <code class="docutils literal notranslate"><span class="pre">todos</span></code> com download real via FDSN.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/detalhes/0016-estabilizacao-testes-fluxo-sismo-50-amostras.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Operacao 0016 - Estabilizacao dos testes do fluxo_sismo.sh com 50 amostras &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Operacao 0015 - Correcao do deploy gh-pages para workspace sujo" href="0015-correcao-deploy-gh-pages-workspace-sujo.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="operacao-0016-estabilizacao-dos-testes-do-fluxo-sismo-sh-com-50-amostras">
+<h1>Operacao 0016 - Estabilizacao dos testes do fluxo_sismo.sh com 50 amostras<a class="headerlink" href="#operacao-0016-estabilizacao-dos-testes-do-fluxo-sismo-sh-com-50-amostras" title="Link to this heading">¶</a></h1>
+<section id="resumo">
+<h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
+<p>Consolidacao dos ajustes tecnicos para tornar reproduzivel a bateria de testes
+do legado com <code class="docutils literal notranslate"><span class="pre">--test</span></code> e 50 amostras, separando:</p>
+<ul class="simple">
+<li><p>problemas de ambiente/conectividade (FDSN);</p></li>
+<li><p>problemas de robustez do proprio pipeline legado.</p></li>
+</ul>
+</section>
+<section id="efeito-principal">
+<h2>Efeito principal<a class="headerlink" href="#efeito-principal" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pre</span></code>, <code class="docutils literal notranslate"><span class="pre">predict</span></code>, <code class="docutils literal notranslate"><span class="pre">pos</span></code>, <code class="docutils literal notranslate"><span class="pre">maps</span></code> e <code class="docutils literal notranslate"><span class="pre">report</span></code> passaram em ambiente
+local com artefatos legados disponiveis;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eventos</span></code> e <code class="docutils literal notranslate"><span class="pre">todos</span></code> continuam dependentes de acesso FDSN no host.</p></li>
+<li><p>fallback FDSN reforcado com verificacao de servico <code class="docutils literal notranslate"><span class="pre">event</span></code> por endpoint;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">seisrequest</span></code> passou a ser fallback util para <code class="docutils literal notranslate"><span class="pre">station/dataselect</span></code>, mas
+nao substitui o servico <code class="docutils literal notranslate"><span class="pre">event</span></code> do SeisComP/USP.</p></li>
+</ul>
+</section>
+<section id="arquivos-de-interesse">
+<h2>Arquivos de interesse<a class="headerlink" href="#arquivos-de-interesse" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/fluxo_sismo.sh</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/nucleo/fluxo_eventos.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/rnc/run.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/rnc/data_process.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/relatorio-sismologia/relatorio_preditivo.tex</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/relatorio-sismologia/sismo_iptex.cls</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/operacoes/anexos/0016-matriz-testes-fluxo-sismo-50.tsv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/operacoes/anexos/0016-teste-e-t-10.log</span></code></p></li>
+</ul>
+</section>
+<section id="documento-detalhado">
+<h2>Documento detalhado<a class="headerlink" href="#documento-detalhado" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../detalhes/0016-estabilizacao-testes-fluxo-sismo-50-amostras.html"><span class="doc">Documento detalhado</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/8ca67ad71612fba869ac7f52b6bb6f31/0016-matriz-testes-fluxo-sismo-50.tsv"><code class="xref download docutils literal notranslate"><span class="pre">Matriz</span> <span class="pre">final</span> <span class="pre">(TSV)</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/100e3f475614c9a296f496995556661f/0016-teste-e-t-10.log"><code class="xref download docutils literal notranslate"><span class="pre">Reteste</span> <span class="pre">-e</span> <span class="pre">-t</span> <span class="pre">(10</span> <span class="pre">eventos)</span></code></a></p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Operacoes</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#fluxo-de-navegacao">Fluxo De Navegacao</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Operacoes</a><ul>
+      <li>Previous: <a href="0015-correcao-deploy-gh-pages-workspace-sujo.html" title="previous chapter">Operacao 0015 - Correcao do deploy gh-pages para workspace sujo</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/operacoes/0016-estabilizacao-testes-fluxo-sismo-50-amostras.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

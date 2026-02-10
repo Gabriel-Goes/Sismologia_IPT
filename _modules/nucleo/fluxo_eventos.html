@@ -454,16 +454,44 @@
 <span class="k">def</span> <span class="nf">main</span><span class="p">(</span>
     <span class="n">EventIDs</span><span class="p">:</span> <span class="n">List</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">DATA_CLIENT</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s2">&quot;http://10.110.1.132:18003&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Erro ao conectar com o servidor Seisarc.sismo.iag.usp.br: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">fdsn_endpoints</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;http://10.110.1.132:18003&quot;</span><span class="p">,</span> <span class="s2">&quot;Seisarc.sismo.iag.usp.br (principal)&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;http://rsbr.on.br:8081&quot;</span><span class="p">,</span> <span class="s2">&quot;rsbr.on.br (backup 1)&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;http://seisrequest.iag.usp.br&quot;</span><span class="p">,</span> <span class="s2">&quot;seisrequest.iag.usp.br (backup 2)&quot;</span><span class="p">),</span>
+    <span class="p">]</span>
+    <span class="n">available_clients</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">url</span><span class="p">,</span> <span class="n">nome</span> <span class="ow">in</span> <span class="n">fdsn_endpoints</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+            <span class="n">services</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">services</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="n">available_clients</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">client</span><span class="p">,</span> <span class="n">nome</span><span class="p">,</span> <span class="n">services</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Servidor conectado: </span><span class="si">{</span><span class="n">nome</span><span class="si">}</span><span class="s2"> | serviços: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">services</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Erro ao conectar com o servidor </span><span class="si">{</span><span class="n">nome</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">available_clients</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Erro: nenhum cliente FDSN disponivel (principal e backups).&#39;</span><span class="p">)</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">DATA_CLIENT_BKP</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s1">&#39;http://rsbr.on.br:8081&#39;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Erro ao conectar com o servidor rsbr.on.br: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="n">DATA_CLIENT_BKP</span> <span class="o">=</span> <span class="n">DATA_CLIENT</span>
+
+    <span class="n">event_clients</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">client</span><span class="p">,</span> <span class="n">nome</span><span class="p">,</span> <span class="n">services</span> <span class="ow">in</span> <span class="n">available_clients</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;event&#39;</span> <span class="ow">in</span> <span class="n">services</span><span class="p">:</span>
+            <span class="n">event_clients</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Servidor sem serviço event (ignorado para aquisição de eventos): </span><span class="si">{</span><span class="n">nome</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">event_clients</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Erro: nenhum endpoint FDSN com serviço event disponível.&quot;</span>
+            <span class="s2">&quot; A etapa -e requer acesso ao SeisComP/USP (rede IAG).&quot;</span>
+        <span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">DATA_CLIENT</span> <span class="o">=</span> <span class="n">event_clients</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">DATA_CLIENT_BKP</span> <span class="o">=</span> <span class="n">event_clients</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">event_clients</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">DATA_CLIENT</span>
 
     <span class="n">catalogo</span><span class="p">,</span> <span class="n">missin_ids</span> <span class="o">=</span> <span class="n">fluxo_eventos</span><span class="p">(</span>
         <span class="n">EventIDs</span><span class="p">,</span>
@@ -484,8 +512,10 @@
     <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
     <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;True&#39;</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; --&gt; Modo de teste ativado&#39;</span><span class="p">)</span>
+        <span class="n">sample_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;TEST_EVENT_LIMIT&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">))</span>
+        <span class="n">sample_size</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">EventIDs</span><span class="p">))</span>
         <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-        <span class="n">EventIDs</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">EventIDs</span><span class="p">,</span> <span class="mi">1500</span><span class="p">)</span>
+        <span class="n">EventIDs</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">EventIDs</span><span class="p">,</span> <span class="n">sample_size</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; - Número de EventIDs: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">EventIDs</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
     <span class="n">catalogo</span><span class="p">,</span> <span class="n">missin_ids</span> <span class="o">=</span> <span class="n">main</span><span class="p">(</span><span class="n">EventIDs</span><span class="p">)</span>
