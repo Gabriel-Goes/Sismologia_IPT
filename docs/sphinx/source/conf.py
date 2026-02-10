@@ -62,11 +62,17 @@ autodoc_mock_imports = [
 
 ROOT_DIR = Path(__file__).resolve().parents[3]
 CODEBASE_FONTE = ROOT_DIR / '.specs' / 'codebase' / 'fonte'
+
+# Some legacy modules parse CLI arguments at import time.
+# Keep only argv[0] during docs import to avoid parser failures in autodoc.
+sys.argv = sys.argv[:1]
+
 for path in [
     CODEBASE_FONTE,
     CODEBASE_FONTE / 'nucleo',
     CODEBASE_FONTE / 'analise_dados',
     CODEBASE_FONTE / 'rnc',
+    CODEBASE_FONTE / 'relatorio-sismologia' / 'pyscripts',
 ]:
     path_str = str(path)
     if path_str not in sys.path:

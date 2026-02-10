@@ -60,12 +60,15 @@ Ordem de execucao e scripts chamados
 
 1. **Tratamento do catalogo** (``--pre``)
 
-   - **Script:** :doc:`pre_processa.py </artefatos/pre-processa-py>`
+   - **Script (source):**
+     `analise_dados/pre_processa.py <_modules/analise_dados/pre_processa.html#main>`_
+   - **Docs:** :doc:`analise_dados.pre_processa.main </api/generated/analise_dados.pre_processa.main>`
    - **Objetivo:** filtrar/tratar catalogo de entrada.
 
 2. **Aquisicao de eventos** (``--eventos``)
 
-   - **Script:** :doc:`fluxo_eventos.py </artefatos/fluxo-eventos-py>`
+   - **Script (source):**
+     `nucleo/fluxo_eventos.py <_modules/nucleo/fluxo_eventos.html#fluxo_eventos>`_
    - **Funcoes documentadas:**
      :doc:`nucleo.fluxo_eventos.fluxo_eventos </api/generated/nucleo.fluxo_eventos.fluxo_eventos>`,
      :doc:`nucleo.fluxo_eventos.iterar_eventos </api/generated/nucleo.fluxo_eventos.iterar_eventos>`,
@@ -74,16 +77,18 @@ Ordem de execucao e scripts chamados
 
 3. **Predicao** (``--predict``)
 
-   - **Script:** :doc:`run.py (RNC) </artefatos/rnc-run-py>`
+   - **Script (source):** `rnc/run.py <_modules/rnc/run.html#main>`_
+   - **Docs:** :doc:`rnc.run.main </api/generated/rnc.run.main>`
    - **Funcoes documentadas:**
-     :doc:`rnc.run.main </api/generated/rnc.run.main>`,
      :doc:`rnc.data_process.spectro_extract </api/generated/rnc.data_process.spectro_extract>`,
      :doc:`rnc.prediction.discrim </api/generated/rnc.prediction.discrim>`.
    - **Objetivo:** extrair espectrogramas e classificar picks/eventos.
 
 4. **Pos-processamento** (``--pos``)
 
-   - **Script:** :doc:`pos_processa.py </artefatos/pos-processa-py>`
+   - **Script (source):**
+     `analise_dados/pos_processa.py <_modules/analise_dados/pos_processa.html#main>`_
+   - **Docs:** :doc:`analise_dados.pos_processa.main </api/generated/analise_dados.pos_processa.main>`
    - **Funcoes documentadas:**
      :doc:`analise_dados.pos_processa.clean_data </api/generated/analise_dados.pos_processa.clean_data>`,
      :doc:`analise_dados.pos_processa.recall_event </api/generated/analise_dados.pos_processa.recall_event>`.
@@ -91,7 +96,9 @@ Ordem de execucao e scripts chamados
 
 5. **Mapas** (``--maps``)
 
-   - **Script:** :doc:`gera_mapas.py </artefatos/gera-mapas-py>`
+   - **Script (source):**
+     `analise_dados/gera_mapas.py <_modules/analise_dados/gera_mapas.html#main>`_
+   - **Docs:** :doc:`analise_dados.gera_mapas.main </api/generated/analise_dados.gera_mapas.main>`
    - **Funcoes documentadas:**
      :doc:`analise_dados.gera_mapas.plot_pred_map </api/generated/analise_dados.gera_mapas.plot_pred_map>`,
      :doc:`analise_dados.gera_mapas.plot_macroregions </api/generated/analise_dados.gera_mapas.plot_macroregions>`.
@@ -99,8 +106,11 @@ Ordem de execucao e scripts chamados
 
 6. **Relatorio** (``--report``)
 
-   - **Scripts:** :doc:`figures.py </artefatos/relatorio-figures-py>` e
-     :doc:`mapa.py </artefatos/relatorio-mapa-py>`.
+   - **Scripts (source):**
+     `figures.py <_modules/figures.html#generate_latex_for_figures>`_ e
+     `mapa.py <_modules/mapa.html#generate_map_latex>`_.
+   - **Docs:** :doc:`figures.generate_latex_for_figures </api/generated/figures.generate_latex_for_figures>`
+     e :doc:`mapa.generate_map_latex </api/generated/mapa.generate_map_latex>`.
    - **Template final:** :doc:`relatorio_preditivo.tex </artefatos/relatorio-preditivo-tex>`.
    - **Objetivo:** gerar artefatos graficos e compilar PDF com ``pdflatex``.
 

@@ -16,6 +16,20 @@ Fluxo De Navegacao
 - Seguir para scripts e arquivos texto: :doc:`/artefatos/index`
 - Consultar historico de mudancas: :doc:`/operacoes/index`
 
+Entrypoints Do Fluxo Legado
+---------------------------
+
+.. autosummary::
+   :toctree: generated/
+
+   analise_dados.pre_processa.main
+   nucleo.fluxo_eventos.fluxo_eventos
+   rnc.run.main
+   analise_dados.pos_processa.main
+   analise_dados.gera_mapas.main
+   figures.generate_latex_for_figures
+   mapa.generate_map_latex
+
 Nucleo
 ------
 
@@ -23,7 +37,6 @@ Nucleo
    :toctree: generated/
 
    nucleo.fluxo_eventos.iterar_eventos
-   nucleo.fluxo_eventos.fluxo_eventos
    nucleo.fluxo_eventos.main
    nucleo.utils.DualOutput
    nucleo.utils.csv2list
@@ -38,7 +51,6 @@ RNC
    rnc.data_process.spectro_extract
    rnc.prediction.discrim
    rnc.run.read_args
-   rnc.run.main
 
 Analise De Dados
 ----------------
