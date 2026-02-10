@@ -1,6 +1,10 @@
 rnc.run.main
 ============
 
+.. currentmodule:: rnc.run
+
+.. autofunction:: main
+
 Resumo
 ------
 
@@ -28,6 +32,3 @@ Efeitos colaterais
 - Salva ``arquivos/resultados/pre_processado.csv``.
 - Aciona escrita de ``predito.csv`` via ``discrim``.
 
-.. currentmodule:: rnc.run
-
-.. autofunction:: main

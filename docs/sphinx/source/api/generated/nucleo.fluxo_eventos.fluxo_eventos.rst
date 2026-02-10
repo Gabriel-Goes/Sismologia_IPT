@@ -1,6 +1,10 @@
 nucleo.fluxo\_eventos.fluxo\_eventos
 ====================================
 
+.. currentmodule:: nucleo.fluxo_eventos
+
+.. autofunction:: fluxo_eventos
+
 Resumo
 ------
 
@@ -28,6 +32,3 @@ Efeitos colaterais
 - Dispara o processamento completo de picks via ``iterar_eventos``.
 - Salva ``arquivos/registros/id_faltantes.csv``.
 
-.. currentmodule:: nucleo.fluxo_eventos
-
-.. autofunction:: fluxo_eventos

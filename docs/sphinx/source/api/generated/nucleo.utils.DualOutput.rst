@@ -1,6 +1,11 @@
 nucleo.utils.DualOutput
 =======================
 
+.. currentmodule:: nucleo.utils
+
+.. autoclass:: DualOutput
+   :members: __init__, write, flush
+
 Resumo
 ------
 
@@ -15,7 +20,3 @@ Uso tipico
 Substituir ``sys.stdout`` por uma instancia de ``DualOutput`` para gravar logs
 sem perder a visualizacao no terminal.
 
-.. currentmodule:: nucleo.utils
-
-.. autoclass:: DualOutput
-   :members: __init__, write, flush

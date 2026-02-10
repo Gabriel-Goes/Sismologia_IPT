@@ -1,6 +1,10 @@
 rnc.data\_process.get\_fft
 ==========================
 
+.. currentmodule:: rnc.data_process
+
+.. autofunction:: get_fft
+
 Resumo
 ------
 
@@ -23,6 +27,3 @@ Tupla ``(result, freqs)``:
 - ``result``: amplitudes normalizadas e achatadas.
 - ``freqs``: vetor de frequencias correspondente (sem componente DC).
 
-.. currentmodule:: rnc.data_process
-
-.. autofunction:: get_fft
