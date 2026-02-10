@@ -11,3 +11,4 @@ Historico incremental das operacoes executadas durante a refatoracao.
    0003-inicializacao-specs-project
    0004-consolidacao-baseline-em-specs-codebase
    0005-analise-historica-logs-pipeline
+   0006-organizacao-documentacao-e-runner-isolado
