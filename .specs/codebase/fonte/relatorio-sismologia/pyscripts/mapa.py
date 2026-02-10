@@ -1,0 +1,33 @@
+from pathlib import Path
+
+PROJ = Path(__file__).resolve().parents[3]
+
+
+def generate_map_latex(base_path, output_filename):
+    map_image_path = base_path / "arquivos" / "figuras" / "mapas" / "mapa.png"
+    latex_code = rf"""
+\begin{{figure}}[ht!]
+	\captionsetup{{justification=justified, singlelinecheck=false, width=1\textwidth}}
+    \caption{{Mapa do Brasil mostrando pontos de interesse e os epicentros dos eventos classificados como detonações e sismos. Foram detectados um total de sessenta e sete (67) eventos associados a detonações no período, classificados a partir do horário de ocorrência e da forma de onda, além do plano de fogo fornecido, com magnitudes mínima e máxima de 0.4 e 3.0 MLv, respectivamente.}}
+    \begin{{mdframed}}[
+        linecolor=black,
+        linewidth=1pt,
+        roundcorner=10pt,
+    ]
+    \begin{{center}}
+    \includegraphics[width=0.8\textwidth]{{{map_image_path.as_posix()}}}
+    \end{{center}}
+    \end{{mdframed}}
+    \caption*{{Fonte: IPT}}
+\end{{figure}}
+"""
+    with open(output_filename, "w") as output_file:
+        output_file.write(latex_code)
+    print(f" -> Mapa '{output_filename}' gerado com sucesso!")
+
+
+base_path = PROJ.resolve()
+generate_map_latex(
+    base_path,
+    base_path / "fonte" / "relatorio-sismologia" / "tex" / "relatorio_preditivo" / "tex" / "mapa.tex"
+)
