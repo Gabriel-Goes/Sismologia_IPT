@@ -5,9 +5,8 @@ Referencia de funcoes e classes usadas no fluxo legado. Cada objeto abaixo
 aponta para pagina dedicada com explicacao de comportamento, assinatura,
 docstring e botao ``[source]``.
 
-Escopo atual: modulos que permitem import seguro no build de documentacao.
-Scripts com parse de argumentos em tempo de importacao permanecem em
-:doc:`/artefatos/index` ate serem refatorados.
+Escopo atual: objetos Python usados no pipeline legado, incluindo entrypoints
+de scripts principais. Arquivos nao-Python permanecem em :doc:`/artefatos/index`.
 
 Fluxo De Navegacao
 ------------------
