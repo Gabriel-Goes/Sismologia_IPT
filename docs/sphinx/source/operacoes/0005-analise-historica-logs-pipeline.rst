@@ -18,5 +18,5 @@ Efeito principal
 Documento detalhado
 -------------------
 
-Ver ``docs/operacoes/0005-analise-historica-logs-pipeline.md`` e o anexo
-``docs/operacoes/anexos/0005-resumo-logs.csv``.
+- :download:`Documento detalhado (Markdown) <../../../operacoes/0005-analise-historica-logs-pipeline.md>`
+- :download:`Anexo consolidado (CSV) <../../../operacoes/anexos/0005-resumo-logs.csv>`
