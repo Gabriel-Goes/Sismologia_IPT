@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Operacoes &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <title>Operacao 0005 - Analise historica dos logs do pipeline &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
@@ -14,8 +14,8 @@
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Operacao 0001 - Ajuste de caminhos do baseline" href="0001-ajuste-caminhos-baseline.html" />
-    <link rel="prev" title="Visao Geral" href="../visao_geral.html" />
+    <link rel="next" title="Operacao 0006 - Organizacao da documentacao e runner isolado" href="0006-organizacao-documentacao-e-runner-isolado.html" />
+    <link rel="prev" title="Operacao 0004 - Consolidacao do baseline em .specs/codebase" href="0004-consolidacao-baseline-em-specs-codebase.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -33,21 +33,29 @@
 
           <div class="body" role="main">
             
-  <section id="operacoes">
-<h1>Operacoes<a class="headerlink" href="#operacoes" title="Link to this heading">¶</a></h1>
-<p>Historico incremental das operacoes executadas durante a refatoracao.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="0001-ajuste-caminhos-baseline.html">Operacao 0001 - Ajuste de caminhos do baseline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0002-inicializacao-sphinx-github-pages.html">Operacao 0002 - Inicializacao Sphinx + GitHub Pages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0003-inicializacao-specs-project.html">Operacao 0003 - Inicializacao da base .specs/project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0004-consolidacao-baseline-em-specs-codebase.html">Operacao 0004 - Consolidacao do baseline em .specs/codebase</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0005-analise-historica-logs-pipeline.html">Operacao 0005 - Analise historica dos logs do pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0006-organizacao-documentacao-e-runner-isolado.html">Operacao 0006 - Organizacao da documentacao e runner isolado</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0007-compreensao-comportamento-fluxo-sismo.html">Operacao 0007 - Compreensao comportamental do fluxo_sismo.sh</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0008-preparacao-ambiente-pyenv-duplo.html">Operacao 0008 - Preparacao de ambiente com pyenv duplo</a></li>
+  <section id="operacao-0005-analise-historica-dos-logs-do-pipeline">
+<h1>Operacao 0005 - Analise historica dos logs do pipeline<a class="headerlink" href="#operacao-0005-analise-historica-dos-logs-do-pipeline" title="Link to this heading">¶</a></h1>
+<section id="resumo">
+<h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
+<p>Leitura estruturada dos logs historicos em <code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/.bkp</span></code>
+para reconstruir o comportamento real do pipeline legado e mapear recorrencia de
+falhas por etapa.</p>
+</section>
+<section id="efeito-principal">
+<h2>Efeito principal<a class="headerlink" href="#efeito-principal" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>consolidacao de evidencia operacional em dados rastreaveis;</p></li>
+<li><p>correlacao temporal entre execucoes e estado de codigo no Git;</p></li>
+<li><p>base objetiva para a especificacao de refatoracao do fluxo v2.</p></li>
 </ul>
-</div>
+</section>
+<section id="documento-detalhado">
+<h2>Documento detalhado<a class="headerlink" href="#documento-detalhado" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/3c15d2e4cbd669d676f15cf9325b2687/0005-analise-historica-logs-pipeline.md"><code class="xref download docutils literal notranslate"><span class="pre">Documento</span> <span class="pre">detalhado</span> <span class="pre">(Markdown)</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/00de301651c68b13695e6cadd2cf17c5/0005-resumo-logs.csv"><code class="xref download docutils literal notranslate"><span class="pre">Anexo</span> <span class="pre">consolidado</span> <span class="pre">(CSV)</span></code></a></p></li>
+</ul>
+</section>
 </section>
 
 
@@ -79,12 +87,12 @@
 <p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Operacoes</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Operacoes</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="0001-ajuste-caminhos-baseline.html">Operacao 0001 - Ajuste de caminhos do baseline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="0002-inicializacao-sphinx-github-pages.html">Operacao 0002 - Inicializacao Sphinx + GitHub Pages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="0003-inicializacao-specs-project.html">Operacao 0003 - Inicializacao da base .specs/project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="0004-consolidacao-baseline-em-specs-codebase.html">Operacao 0004 - Consolidacao do baseline em .specs/codebase</a></li>
-<li class="toctree-l2"><a class="reference internal" href="0005-analise-historica-logs-pipeline.html">Operacao 0005 - Analise historica dos logs do pipeline</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Operacao 0005 - Analise historica dos logs do pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="0006-organizacao-documentacao-e-runner-isolado.html">Operacao 0006 - Organizacao da documentacao e runner isolado</a></li>
 <li class="toctree-l2"><a class="reference internal" href="0007-compreensao-comportamento-fluxo-sismo.html">Operacao 0007 - Compreensao comportamental do fluxo_sismo.sh</a></li>
 <li class="toctree-l2"><a class="reference internal" href="0008-preparacao-ambiente-pyenv-duplo.html">Operacao 0008 - Preparacao de ambiente com pyenv duplo</a></li>
@@ -96,8 +104,10 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../visao_geral.html" title="previous chapter">Visao Geral</a></li>
-      <li>Next: <a href="0001-ajuste-caminhos-baseline.html" title="next chapter">Operacao 0001 - Ajuste de caminhos do baseline</a></li>
+  <li><a href="index.html">Operacoes</a><ul>
+      <li>Previous: <a href="0004-consolidacao-baseline-em-specs-codebase.html" title="previous chapter">Operacao 0004 - Consolidacao do baseline em .specs/codebase</a></li>
+      <li>Next: <a href="0006-organizacao-documentacao-e-runner-isolado.html" title="next chapter">Operacao 0006 - Organizacao da documentacao e runner isolado</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>
@@ -121,7 +131,7 @@
       &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
-      <a href="../_sources/operacoes/index.rst.txt"
+      <a href="../_sources/operacoes/0005-analise-historica-logs-pipeline.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
