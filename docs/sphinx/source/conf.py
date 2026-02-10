@@ -46,6 +46,8 @@ autodoc_default_options = {
     'undoc-members': True,
 }
 autodoc_mock_imports = [
+    'pandas',
+    'numpy',
     'obspy',
     'tensorflow',
     'pygmt',

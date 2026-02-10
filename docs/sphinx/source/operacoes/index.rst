@@ -15,4 +15,5 @@ Historico incremental das operacoes executadas durante a refatoracao.
    0007-compreensao-comportamento-fluxo-sismo
    0008-preparacao-ambiente-pyenv-duplo
    0009-estrutura-sphinx-api-source-e-artefatos
+   0010-correcao-autosummary-dependencias-ci
    0013-fluxo-legado-fluxo-sismo-em-visao-geral
