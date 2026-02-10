@@ -30,3 +30,4 @@ Fluxo De Navegacao
    0015-correcao-deploy-gh-pages-workspace-sujo
    0016-estabilizacao-testes-fluxo-sismo-50-amostras
    0017-runner-matriz-testes-e-guia-operacional
+   0018-validacao-runner-matriz-10-eventos

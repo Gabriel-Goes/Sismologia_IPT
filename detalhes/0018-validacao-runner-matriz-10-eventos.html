@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documento detalhado: 0018-validacao-runner-matriz-10-eventos &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="documento-detalhado-0018-validacao-runner-matriz-10-eventos">
+<h1>Documento detalhado: 0018-validacao-runner-matriz-10-eventos<a class="headerlink" href="#documento-detalhado-0018-validacao-runner-matriz-10-eventos" title="Link to this heading">¶</a></h1>
+</section>
+<section id="operacao-0018-validacao-do-runner-de-matriz-com-10-eventos">
+<h1>Operacao 0018 - Validacao do runner de matriz com 10 eventos<a class="headerlink" href="#operacao-0018-validacao-do-runner-de-matriz-com-10-eventos" title="Link to this heading">¶</a></h1>
+<p><strong>Data:</strong> 2026-02-10<br />
+<strong>Branch:</strong> <code class="docutils literal notranslate"><span class="pre">refactor/fluxo-v2-documentado</span></code><br />
+<strong>Contexto:</strong> <code class="docutils literal notranslate"><span class="pre">refatoracao</span></code><br />
+<strong>Status:</strong> <code class="docutils literal notranslate"><span class="pre">concluida</span></code></p>
+<section id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">¶</a></h2>
+<p>Validar em execucao real o runner da operacao 0017 com <code class="docutils literal notranslate"><span class="pre">--test-limit</span> <span class="pre">10</span></code>,
+confirmando:</p>
+<ol class="arabic simple">
+<li><p>arquivamento correto dos artefatos;</p></li>
+<li><p>ausencia de contaminacao por logs antigos;</p></li>
+<li><p>comportamento atual das etapas do fluxo legado.</p></li>
+</ol>
+</section>
+<section id="comando-executado">
+<h2>Comando executado<a class="headerlink" href="#comando-executado" title="Link to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scripts/dev/run_fluxo_test_matrix_archived.sh<span class="w"> </span>--test-limit<span class="w"> </span><span class="m">10</span>
+</pre></div>
+</div>
+</section>
+<section id="evidencias-geradas">
+<h2>Evidencias geradas<a class="headerlink" href="#evidencias-geradas" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Sumario da matriz:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/operacoes/anexos/0018-matriz-testes-fluxo-sismo-10.tsv</span></code></p></li>
+</ul>
+</li>
+<li><p>Log da falha de pos-processamento:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/operacoes/anexos/0018-falha-pos-pick-prob-nat.log</span></code></p></li>
+</ul>
+</li>
+<li><p>Diretorio de arquivamento bruto:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/test_matrix/20260210_170316/</span></code></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="resultado-da-matriz">
+<h2>Resultado da matriz<a class="headerlink" href="#resultado-da-matriz" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pre</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">rc=0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eventos</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">rc=1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">predict</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">rc=0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pos</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">rc=1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">maps</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">rc=0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">report</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">rc=0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">todos</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">rc=1</span></code></p></li>
+</ol>
+</section>
+<section id="diagnostico">
+<h2>Diagnostico<a class="headerlink" href="#diagnostico" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Correcao da operacao 0017 validada:</p>
+<ul class="simple">
+<li><p>o arquivo de arquivamento <code class="docutils literal notranslate"><span class="pre">20260210_170316</span></code> nao trouxe subpastas antigas
+de execucoes anteriores.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eventos</span></code>/<code class="docutils literal notranslate"><span class="pre">todos</span></code> continuam falhando fora do contexto de rede IAG,
+comportamento esperado para dependencia de FDSN/event.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pos</span></code> falhou com <code class="docutils literal notranslate"><span class="pre">KeyError:</span> <span class="pre">['Pick</span> <span class="pre">Prob_Nat']</span></code>, indicando dependencia de
+formato/colunas de entrada que nao foi satisfeita no estado gerado por
+<code class="docutils literal notranslate"><span class="pre">predict</span></code> nesta execucao.</p></li>
+</ol>
+</section>
+<section id="decisao">
+<h2>Decisao<a class="headerlink" href="#decisao" title="Link to this heading">¶</a></h2>
+<p>Nao corrigir o comportamento de <code class="docutils literal notranslate"><span class="pre">pos</span></code> nesta operacao. O objetivo aqui foi
+validar o runner e registrar o estado real do legado. A correcao funcional de
+contratos entre <code class="docutils literal notranslate"><span class="pre">-pr</span></code> e <code class="docutils literal notranslate"><span class="pre">-po</span></code> fica para operacao dedicada.</p>
+</section>
+<section id="proximo-passo">
+<h2>Proximo passo<a class="headerlink" href="#proximo-passo" title="Link to this heading">¶</a></h2>
+<p>Abrir operacao especifica para contrato de dados entre predicao e
+pos-processamento (colunas minimas esperadas por <code class="docutils literal notranslate"><span class="pre">pos_processa.py</span></code>).</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/detalhes/0018-validacao-runner-matriz-10-eventos.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Operacao 0017 - Runner de matriz de testes e guia operacional &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <title>Operacao 0018 - Validacao do runner de matriz com 10 eventos &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
@@ -19,8 +19,7 @@
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Operacao 0018 - Validacao do runner de matriz com 10 eventos" href="0018-validacao-runner-matriz-10-eventos.html" />
-    <link rel="prev" title="Operacao 0016 - Estabilizacao dos testes do fluxo_sismo.sh com 50 amostras" href="0016-estabilizacao-testes-fluxo-sismo-50-amostras.html" />
+    <link rel="prev" title="Operacao 0017 - Runner de matriz de testes e guia operacional" href="0017-runner-matriz-testes-e-guia-operacional.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -38,38 +37,35 @@
 
           <div class="body" role="main">
             
-  <section id="operacao-0017-runner-de-matriz-de-testes-e-guia-operacional">
-<h1>Operacao 0017 - Runner de matriz de testes e guia operacional<a class="headerlink" href="#operacao-0017-runner-de-matriz-de-testes-e-guia-operacional" title="Link to this heading">¶</a></h1>
+  <section id="operacao-0018-validacao-do-runner-de-matriz-com-10-eventos">
+<h1>Operacao 0018 - Validacao do runner de matriz com 10 eventos<a class="headerlink" href="#operacao-0018-validacao-do-runner-de-matriz-com-10-eventos" title="Link to this heading">¶</a></h1>
 <section id="resumo">
 <h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
-<p>Consolidacao de um runner dedicado para matriz de testes com arquivamento de
-artefatos e documentacao operacional no User Guide.</p>
+<p>Validacao pratica do runner de matriz introduzido na operacao 0017, com
+execucao real em <code class="docutils literal notranslate"><span class="pre">--test-limit</span> <span class="pre">10</span></code> e arquivamento de evidencias.</p>
 </section>
 <section id="efeito-principal">
 <h2>Efeito principal<a class="headerlink" href="#efeito-principal" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>execucao padronizada da matriz com arquivamento no repositorio;</p></li>
-<li><p>isolamento entre execucoes para evitar copia de logs antigos;</p></li>
-<li><p>trilha de navegacao do User Guide atualizada com pagina de testes;</p></li>
-<li><p>memoria de ambiente <cite>pyenv</cite> registrada para reproducao local.</p></li>
+<li><p>confirmacao de que nao ha mais copia de logs antigos no novo <code class="docutils literal notranslate"><span class="pre">archive_id</span></code>;</p></li>
+<li><p>consolidacao do estado atual das etapas do legado fora do ambiente IAG;</p></li>
+<li><p>registro formal da falha atual de <code class="docutils literal notranslate"><span class="pre">-po</span></code> por ausencia de <code class="docutils literal notranslate"><span class="pre">Pick</span> <span class="pre">Prob_Nat</span></code>.</p></li>
 </ul>
 </section>
 <section id="arquivos-de-interesse">
 <h2>Arquivos de interesse<a class="headerlink" href="#arquivos-de-interesse" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scripts/dev/run_fluxo_test_matrix_archived.sh</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/guia/execucoes-de-teste-fluxo-legado.rst</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/guia/index.rst</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/guia/fluxo-e-referencias.rst</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">documentação/memoria_ambiente_pyenv_virtualenv.md</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">documentação/README.md</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.python-version</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/operacoes/anexos/0018-matriz-testes-fluxo-sismo-10.tsv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/operacoes/anexos/0018-falha-pos-pick-prob-nat.log</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/test_matrix/20260210_170316/</span></code></p></li>
 </ul>
 </section>
 <section id="documento-detalhado">
 <h2>Documento detalhado<a class="headerlink" href="#documento-detalhado" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="../detalhes/0017-runner-matriz-testes-e-guia-operacional.html"><span class="doc">Documento detalhado</span></a></p></li>
+<li><p><a class="reference internal" href="../detalhes/0018-validacao-runner-matriz-10-eventos.html"><span class="doc">Documento detalhado</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/779cdb9b855ac0058c1b2f21a57f33f7/0018-matriz-testes-fluxo-sismo-10.tsv"><code class="xref download docutils literal notranslate"><span class="pre">Matriz</span> <span class="pre">10</span> <span class="pre">eventos</span> <span class="pre">(TSV)</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/3091525f95d08842d3a0f0cd42bbb573/0018-falha-pos-pick-prob-nat.log"><code class="xref download docutils literal notranslate"><span class="pre">Falha</span> <span class="pre">pos_processa</span> <span class="pre">(log)</span></code></a></p></li>
 </ul>
 </section>
 </section>
@@ -118,8 +114,7 @@ artefatos e documentacao operacional no User Guide.</p>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="index.html">Operacoes</a><ul>
-      <li>Previous: <a href="0016-estabilizacao-testes-fluxo-sismo-50-amostras.html" title="previous chapter">Operacao 0016 - Estabilizacao dos testes do fluxo_sismo.sh com 50 amostras</a></li>
-      <li>Next: <a href="0018-validacao-runner-matriz-10-eventos.html" title="next chapter">Operacao 0018 - Validacao do runner de matriz com 10 eventos</a></li>
+      <li>Previous: <a href="0017-runner-matriz-testes-e-guia-operacional.html" title="previous chapter">Operacao 0017 - Runner de matriz de testes e guia operacional</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -144,7 +139,7 @@ artefatos e documentacao operacional no User Guide.</p>
       &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
-      <a href="../_sources/operacoes/0017-runner-matriz-testes-e-guia-operacional.rst.txt"
+      <a href="../_sources/operacoes/0018-validacao-runner-matriz-10-eventos.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
