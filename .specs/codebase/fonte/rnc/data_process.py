@@ -118,6 +118,17 @@ def spectro_extract(
     eventos.set_index(['Event', 'Station'], inplace=True)
     eventos.sort_index(inplace=True)
 
+    def append_cell(idx, col, value):
+        current = eventos.at[idx, col]
+        if isinstance(current, list):
+            bucket = current
+        elif current in ('', None):
+            bucket = []
+        else:
+            bucket = [current]
+        bucket.append(value)
+        eventos.at[idx, col] = bucket
+
     n_ev = eventos.groupby(level=0).size().shape[0]
     print(f'Number of events: {n_ev}')
 
@@ -130,19 +141,22 @@ def spectro_extract(
             print(f'PICK: {pk_index} ({j} / {evento.shape[0]})')
             if pick.shape[0] != 1:
                 err = f' - Error! pick.shape[0] != 1 ({pick.shape[0]})'
-                eventos.loc[(ev_index, pk_index), 'Error'] = err
+                append_cell((ev_index, pk_index), 'Error', err)
                 print(err)
                 continue
             p_path = pick.Path.values[0]
-            st = op.read(f'arquivos/mseed/{p_path}', dtype=float)
+            try:
+                st = op.read(f'{mseed_dir}/{p_path}', dtype=float)
+            except Exception as e:
+                err = f' - Error! read mseed ({p_path}): {e}'
+                append_cell((ev_index, pk_index), 'Error', err)
+                print(err)
+                continue
 
             compo = [tr.stats.component for tr in st]
             if len(compo) != 3:
                 err = f' - Error! len(compo) != 3 ({compo})'
-                eventos.loc[
-                    (ev_index, pk_index),
-                    'Error'
-                ].loc[ev_index, pk_index].append(err)
+                append_cell((ev_index, pk_index), 'Error', err)
                 print(err)
                 continue
 
@@ -167,7 +181,7 @@ def spectro_extract(
                 cft_max = cft.max() if cft.max() > cft_max else cft_max
             eventos.loc[(ev_index, pk_index), 'CFT'] = cft_max
             if cft_max < 1.5:
-                eventos.loc[(ev_index, pk_index), 'Warning'].append(f'Low CFT: {cft_max}')
+                append_cell((ev_index, pk_index), 'Warning', f'Low CFT: {cft_max}')
                 print(f' - Warning! Low CFT: {cft.max()}')
                 continue
 
@@ -203,7 +217,7 @@ def spectro_extract(
                     find = True
                 else:
                     err = f'fft_list.shape != (237,50) ({fft_list.shape})'
-                    eventos.loc[(ev_index, pk_index), 'Error'].loc[ev_index, pk_index].append(err)
+                    append_cell((ev_index, pk_index), 'Error', err)
                     print(f' - Error! {err}')
 
             if find is True and len(spectro) == 3:
@@ -211,8 +225,8 @@ def spectro_extract(
                 os.makedirs(f'{spectro_dir}/{ev_index}', exist_ok=True)
                 stream_name = (p_path.split('/')[-1]).split('.mseed')[0]
                 np.save(f'{spectro_dir}/{ev_index}/{stream_name}.npy', spectro)
-                eventos.loc[(ev_index, pk_index), 'Compo'][0].append(compo)
+                append_cell((ev_index, pk_index), 'Compo', compo)
             else:
                 err = f'find is {find} and len(spectro) == {len(spectro)}'
-                eventos.loc[(ev_index, pk_index), 'Error'][0].append(err)
+                append_cell((ev_index, pk_index), 'Error', err)
     return eventos

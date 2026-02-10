@@ -28,3 +28,4 @@ Fluxo De Navegacao
    0013-fluxo-legado-fluxo-sismo-em-visao-geral
    0014-padrao-verde-api-source-legado
    0015-correcao-deploy-gh-pages-workspace-sujo
+   0016-estabilizacao-testes-fluxo-sismo-50-amostras

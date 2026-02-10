@@ -408,16 +408,44 @@ def fluxo_eventos(
 def main(
     EventIDs: List,
 ):
-    try:
-        DATA_CLIENT = Client("http://10.110.1.132:18003")
-    except Exception as e:
-        print(f'\nErro ao conectar com o servidor Seisarc.sismo.iag.usp.br: {e}')
+    fdsn_endpoints = [
+        ("http://10.110.1.132:18003", "Seisarc.sismo.iag.usp.br (principal)"),
+        ("http://rsbr.on.br:8081", "rsbr.on.br (backup 1)"),
+        ("http://seisrequest.iag.usp.br", "seisrequest.iag.usp.br (backup 2)"),
+    ]
+    available_clients = []
+
+    for url, nome in fdsn_endpoints:
+        try:
+            client = Client(url)
+            services = set(client.services.keys())
+            available_clients.append((client, nome, services))
+            print(f"Servidor conectado: {nome} | serviços: {sorted(services)}")
+        except Exception as e:
+            print(f'\nErro ao conectar com o servidor {nome}: {e}')
+
+    if not available_clients:
+        print('\nErro: nenhum cliente FDSN disponivel (principal e backups).')
         sys.exit(1)
-    try:
-        DATA_CLIENT_BKP = Client('http://rsbr.on.br:8081')
-    except Exception as e:
-        print(f'\nErro ao conectar com o servidor rsbr.on.br: {e}')
-        DATA_CLIENT_BKP = DATA_CLIENT
+
+    event_clients = []
+    for client, nome, services in available_clients:
+        if 'event' in services:
+            event_clients.append(client)
+        else:
+            print(
+                f"Servidor sem serviço event (ignorado para aquisição de eventos): {nome}"
+            )
+
+    if not event_clients:
+        print(
+            "\nErro: nenhum endpoint FDSN com serviço event disponível."
+            " A etapa -e requer acesso ao SeisComP/USP (rede IAG)."
+        )
+        sys.exit(1)
+
+    DATA_CLIENT = event_clients[0]
+    DATA_CLIENT_BKP = event_clients[1] if len(event_clients) > 1 else DATA_CLIENT
 
     catalogo, missin_ids = fluxo_eventos(
         EventIDs,
@@ -437,8 +465,10 @@ if __name__ == "__main__":
     print(sys.argv[2])
     if sys.argv[2] == 'True':
         print(' --> Modo de teste ativado')
+        sample_size = int(os.getenv('TEST_EVENT_LIMIT', '50'))
+        sample_size = min(sample_size, len(EventIDs))
         random.seed(42)
-        EventIDs = random.sample(EventIDs, 1500)
+        EventIDs = random.sample(EventIDs, sample_size)
         print(f' - Número de EventIDs: {len(EventIDs)}')
 
     catalogo, missin_ids = main(EventIDs)

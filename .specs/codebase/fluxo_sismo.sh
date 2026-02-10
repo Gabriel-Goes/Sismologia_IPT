@@ -31,6 +31,7 @@ POSPROCESS=False
 MAPS=False
 REPORT=False
 TEST=False
+RNC_PYENV_VERSION=${RNC_PYENV_VERSION:-sismo-rnc-379}
 
 # Resolve diretório base automaticamente para o baseline movido em .specs/codebase.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -114,6 +115,31 @@ set -e
 # DEFINE OS DIRETÓRIOS DE TRABALHO
 pushd "$BASE_DIR"
 
+# Garante imports locais dos modulos em fonte/*.
+export PYTHONPATH="$BASE_DIR/fonte${PYTHONPATH:+:$PYTHONPATH}"
+
+# Em ambientes restritos, ~/.gmt pode nao ser gravavel para sessoes.
+# Mantemos userdir em /tmp e reaproveitamos a base local de geografia quando existir.
+export GMT_USERDIR="${GMT_USERDIR:-/tmp/gmt-${USER:-user}}"
+mkdir -p "$GMT_USERDIR"
+mkdir -p "$GMT_USERDIR/geography"
+
+# Em alguns hosts/sandboxes, GMT_USERDIR pode conter pastas vazias de tentativas anteriores.
+# Garantimos links para datasets locais de geografia quando disponiveis no HOME.
+for _dataset in gshhg dcw; do
+    _src="${HOME}/.gmt/geography/${_dataset}"
+    _dst="${GMT_USERDIR}/geography/${_dataset}"
+    if [ -d "$_src" ]; then
+        if [ "$_dataset" = "gshhg" ] && [ -f "$_dst/binned_GSHHS_i.nc" ]; then
+            continue
+        fi
+        if [ ! -L "$_dst" ]; then
+            rm -rf "$_dst" 2>/dev/null || true
+            ln -s "$_src" "$_dst" 2>/dev/null || cp -a "$_src" "$_dst"
+        fi
+    fi
+done
+
 # DEFINE O DIRETÓRIO DE LOGS
 LOG_DIR="arquivos/registros"
 LOG_FILE="$LOG_DIR/Sismo_Pipeline.log"
@@ -160,10 +186,11 @@ fi
 
 if [ "$EVENTS" = True ]; then
     echo " Criando arquivos de backup..."
+    mkdir -p arquivos/eventos/.bkp arquivos/registros/.bkp
     [[ -f arquivos/eventos/eventos.csv ]] &&
-        mv arquivos/eventos/eventos.csv arquivos/eventos/.bkp/eventos.csv.$(date +%Y%m%d%H%M%S)
+        cp arquivos/eventos/eventos.csv arquivos/eventos/.bkp/eventos.csv.$(date +%Y%m%d%H%M%S)
     [[ -f arquivos/registros/ids_faltantes.csv ]] &&
-        mv arquivos/registros/ids_faltantes.csv arquivos/registros/.bkp/ids_faltantes.csv.$(date +%Y%m%d%H%M%S)
+        cp arquivos/registros/ids_faltantes.csv arquivos/registros/.bkp/ids_faltantes.csv.$(date +%Y%m%d%H%M%S)
     echo " Arquivos de backup criados com sucesso!"
     echo ''
     echo ' -> Executando fluxo_eventos.py...'
@@ -175,7 +202,14 @@ fi
 # ------------------------- ETAPA DE PREDIÇÃO  ----------------------------------
 if [ "$PREDICT" = True ]; then
     echo " ----------------- INICIANDO O PREDICT.PY ---------------------------- "
-    python fonte/rnc/run.py
+    echo " Ambiente RNC (somente predição): PYENV_VERSION=$RNC_PYENV_VERSION"
+    if [ "$TEST" = True ]; then
+        TEST_EVENT_LIMIT=${TEST_EVENT_LIMIT:-50}
+        echo " Modo de teste RNC: limite de $TEST_EVENT_LIMIT eventos"
+        env PYENV_VERSION="$RNC_PYENV_VERSION" python fonte/rnc/run.py --test-limit "$TEST_EVENT_LIMIT"
+    else
+        env PYENV_VERSION="$RNC_PYENV_VERSION" python fonte/rnc/run.py
+    fi
     echo ''
 fi
 
@@ -206,7 +240,8 @@ if [ "$REPORT" = True ]; then
     python fonte/relatorio-sismologia/pyscripts/mapa.py
     pushd fonte/relatorio-sismologia
     RESULT_DIR=${RESULT_DIR:-"$BASE_DIR/arquivos/resultados/relatorios"}
-    pdflatex -output-directory="$RESULT_DIR" relatorio_preditivo.tex
+    pdflatex -interaction=nonstopmode -halt-on-error \
+        -output-directory="$RESULT_DIR" relatorio_preditivo.tex
     popd
 fi
 
