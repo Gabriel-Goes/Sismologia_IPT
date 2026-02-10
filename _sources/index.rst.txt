@@ -10,4 +10,7 @@ operacoes, decisoes tecnicas e rastreabilidade por commit.
    :caption: Conteudo
 
    visao_geral
+   guia/index
+   api/index
+   artefatos/index
    operacoes/index

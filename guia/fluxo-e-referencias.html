@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Fluxo E Referencias &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API Reference" href="../api/index.html" />
+    <link rel="prev" title="User Guide" href="index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="fluxo-e-referencias">
+<h1>Fluxo E Referencias<a class="headerlink" href="#fluxo-e-referencias" title="Link to this heading">¶</a></h1>
+<p>Esta pagina segue a logica:</p>
+<ul class="simple">
+<li><p>User Guide -&gt; API (objetos Python)</p></li>
+<li><p>API -&gt; [source] (codigo-fonte em <code class="docutils literal notranslate"><span class="pre">_modules</span></code>)</p></li>
+<li><p>Source -&gt; [docs] (retorno para a pagina de API)</p></li>
+</ul>
+<section id="aquisicao-e-normalizacao-de-eventos">
+<h2>Aquisicao e normalizacao de eventos<a class="headerlink" href="#aquisicao-e-normalizacao-de-eventos" title="Link to this heading">¶</a></h2>
+<p>A etapa de aquisicao usa
+<a class="reference external" href="../api/generated/nucleo.fluxo_eventos.fluxo_eventos.html#nucleo.fluxo_eventos.fluxo_eventos">nucleo.fluxo_eventos.fluxo_eventos</a>,
+que internamente itera picks com
+<a class="reference external" href="../api/generated/nucleo.fluxo_eventos.iterar_eventos.html#nucleo.fluxo_eventos.iterar_eventos">nucleo.fluxo_eventos.iterar_eventos</a>.
+Rotinas auxiliares como
+<a class="reference external" href="../api/generated/nucleo.utils.csv2list.html#nucleo.utils.csv2list">nucleo.utils.csv2list</a>
+e
+<a class="reference external" href="../api/generated/nucleo.utils.DualOutput.html#nucleo.utils.DualOutput">nucleo.utils.DualOutput</a>
+suportam parse de catalogo e log.</p>
+</section>
+<section id="classificacao-rnc">
+<h2>Classificacao (RNC)<a class="headerlink" href="#classificacao-rnc" title="Link to this heading">¶</a></h2>
+<p>A extracao de espectros e realizada por
+<a class="reference external" href="../api/generated/rnc.data_process.spectro_extract.html#rnc.data_process.spectro_extract">rnc.data_process.spectro_extract</a>
+(com FFT em
+<a class="reference external" href="../api/generated/rnc.data_process.get_fft.html#rnc.data_process.get_fft">rnc.data_process.get_fft</a>)
+e a inferencia por
+<a class="reference external" href="../api/generated/rnc.prediction.discrim.html#rnc.prediction.discrim">rnc.prediction.discrim</a>,
+orquestrada por
+<a class="reference external" href="../api/generated/rnc.run.main.html#rnc.run.main">rnc.run.main</a>.</p>
+</section>
+<section id="pos-processamento-e-mapas">
+<h2>Pos-processamento e mapas<a class="headerlink" href="#pos-processamento-e-mapas" title="Link to this heading">¶</a></h2>
+<p>A consolidacao de metricas pode ser lida em
+<a class="reference external" href="../api/generated/analise_dados.pos_processa.clean_data.html#analise_dados.pos_processa.clean_data">analise_dados.pos_processa.clean_data</a>
+e
+<a class="reference external" href="../api/generated/analise_dados.pos_processa.recall_event.html#analise_dados.pos_processa.recall_event">analise_dados.pos_processa.recall_event</a>.
+A geracao de mapas e feita por
+<a class="reference external" href="../api/generated/analise_dados.gera_mapas.plot_pred_map.html#analise_dados.gera_mapas.plot_pred_map">analise_dados.gera_mapas.plot_pred_map</a>
+e
+<a class="reference external" href="../api/generated/analise_dados.gera_mapas.plot_macroregions.html#analise_dados.gera_mapas.plot_macroregions">analise_dados.gera_mapas.plot_macroregions</a>.</p>
+</section>
+<section id="artefatos-nao-python">
+<h2>Artefatos nao-Python<a class="headerlink" href="#artefatos-nao-python" title="Link to this heading">¶</a></h2>
+<p>Para scripts Bash e arquivos <code class="docutils literal notranslate"><span class="pre">.txt</span></code>, use as paginas em <a class="reference internal" href="../artefatos/index.html"><span class="doc">Artefatos</span></a>.
+Nelas, o conteudo e renderizado no site e cada pagina aponta para o arquivo fonte
+no GitHub.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Fluxo E Referencias</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">User Guide</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">User Guide</a></li>
+      <li>Next: <a href="../api/index.html" title="next chapter">API Reference</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/guia/fluxo-e-referencias.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

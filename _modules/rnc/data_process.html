@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rnc.data_process &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for rnc.data_process</h1><div class="highlight"><pre>
+<span></span><span class="c1"># #!/home/ipt/.pyenv/versions/sismologia/bin/python</span>
+<span class="c1"># coding: utf-8</span>
+<span class="c1"># Author: Gabriel Góes Rocha de Lima</span>
+<span class="c1"># CoAuthor: Lucas Schirbel</span>
+<span class="c1"># Date: 2021-07-01</span>
+<span class="c1"># Version: 0.1.0</span>
+
+<span class="c1"># Description: This script contains the functions used to process the data</span>
+
+<span class="c1"># ---------------------------- IMPORT LIBRARIES ----------------------------- #</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">matplotlib.mlab</span> <span class="k">as</span> <span class="nn">mlab</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">obspy</span> <span class="k">as</span> <span class="nn">op</span>
+<span class="kn">from</span> <span class="nn">obspy.signal.invsim</span> <span class="kn">import</span> <span class="n">cosine_taper</span>
+<span class="kn">from</span> <span class="nn">obspy.signal.trigger</span> <span class="kn">import</span> <span class="n">classic_sta_lta</span>
+<span class="c1"># import matplotlib.pyplot as plt</span>
+<span class="c1"># from obspy.core import read</span>
+<span class="c1"># from obspy.signal.trigger import plot_trigger</span>
+
+
+<span class="c1"># ---------------------------- FUNCTION DEFINITIONS ------------------------- #</span>
+<span class="k">def</span> <span class="nf">stride_windows</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">noverlap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">noverlap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">noverlap</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="n">noverlap</span> <span class="o">&gt;=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;noverlap must be less than n&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;n cannot be less than 1&#39;</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;only 1-dimensional arrays can be used&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">noverlap</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;n cannot be greater than the length of x&#39;</span><span class="p">)</span>
+
+    <span class="c1"># np.lib.stride_tricks.as_strided easily leads to memory corruption for</span>
+    <span class="c1"># non integer shape and strides, i.e. noverlap or n. See #3845.</span>
+    <span class="n">noverlap</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">noverlap</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="n">step</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">noverlap</span>
+    <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">noverlap</span><span class="p">)</span><span class="o">//</span><span class="n">step</span><span class="p">)</span>
+        <span class="n">strides</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">strides</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">step</span><span class="o">*</span><span class="n">x</span><span class="o">.</span><span class="n">strides</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">noverlap</span><span class="p">)</span><span class="o">//</span><span class="n">step</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="n">strides</span> <span class="o">=</span> <span class="p">(</span><span class="n">step</span><span class="o">*</span><span class="n">x</span><span class="o">.</span><span class="n">strides</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="o">.</span><span class="n">strides</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">stride_tricks</span><span class="o">.</span><span class="n">as_strided</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="n">strides</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">fft_taper</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">data</span> <span class="o">*</span> <span class="n">cosine_taper</span><span class="p">(</span><span class="n">npts</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_fft">
+<a class="viewcode-back" href="../../api/generated/rnc.data_process.get_fft.html#rnc.data_process.get_fft">[docs]</a>
+<span class="k">def</span> <span class="nf">get_fft</span><span class="p">(</span>
+        <span class="n">trace</span><span class="p">:</span> <span class="n">op</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">trace</span><span class="o">.</span><span class="n">Trace</span><span class="p">,</span>
+        <span class="n">WINDOW_LENGTH</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">OVERLAP</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">nb_pts</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+    <span class="n">s_rate</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">sampling_rate</span>
+    <span class="n">nb_pts</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">WINDOW_LENGTH</span> <span class="o">*</span> <span class="n">s_rate</span><span class="p">)</span>
+    <span class="n">nb_overlap</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">OVERLAP</span> <span class="o">*</span> <span class="n">nb_pts</span><span class="p">)</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">fft_taper</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nb_pts</span><span class="p">,</span> <span class="n">trace</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">stride_windows</span><span class="p">(</span><span class="n">trace</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">nb_pts</span><span class="p">,</span> <span class="n">nb_overlap</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">detrend</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">mlab</span><span class="o">.</span><span class="n">detrend_linear</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="n">window</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">numFreqs</span> <span class="o">=</span> <span class="n">nb_pts</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">nb_pts</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[:</span><span class="n">numFreqs</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">freqs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">nb_pts</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">s_rate</span><span class="p">)[:</span><span class="n">numFreqs</span><span class="p">]</span>
+    <span class="n">freqs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">freqs</span> <span class="o">=</span> <span class="n">freqs</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">/</span> <span class="n">trace</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="n">freqs</span></div>
+
+
+
+
+<span class="k">def</span> <span class="nf">decimate_to_100hz</span><span class="p">(</span><span class="n">tr</span><span class="p">):</span>
+    <span class="n">tr_hz</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">sampling_rate</span>
+    <span class="n">target_hz</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="k">if</span> <span class="n">tr_hz</span> <span class="o">==</span> <span class="n">target_hz</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tr</span>
+    <span class="k">elif</span> <span class="n">tr_hz</span> <span class="o">&gt;</span> <span class="n">target_hz</span><span class="p">:</span>
+        <span class="n">factor</span> <span class="o">=</span> <span class="n">tr_hz</span> <span class="o">/</span> <span class="n">target_hz</span>
+        <span class="k">while</span> <span class="n">factor</span> <span class="o">%</span> <span class="mi">1</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">factor</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">factor</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">tr</span><span class="o">.</span><span class="n">decimate</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">tr</span><span class="o">.</span><span class="n">decimate</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">factor</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; - Warning! Decimated </span><span class="si">{</span><span class="n">factor</span><span class="si">}</span><span class="s1">x to achieve 100 Hz&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; - Error! Cannot decimate from </span><span class="si">{</span><span class="n">tr_hz</span><span class="si">}</span><span class="s1"> Hz to </span><span class="si">{</span><span class="n">target_hz</span><span class="si">}</span><span class="s1"> Hz directly&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Sampling rate is not compatible for decimation: </span><span class="si">{</span><span class="n">tr_hz</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tr</span>
+
+
+<div class="viewcode-block" id="spectro_extract">
+<a class="viewcode-back" href="../../api/generated/rnc.data_process.spectro_extract.html#rnc.data_process.spectro_extract">[docs]</a>
+<span class="k">def</span> <span class="nf">spectro_extract</span><span class="p">(</span>
+        <span class="n">mseed_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">spectro_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">eventos</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">WINDOW_LENGTH</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">OVERLAP</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.75</span><span class="p">)</span>
+    <span class="n">eventos</span><span class="p">[</span><span class="s1">&#39;Compo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">eventos</span><span class="p">))]</span>
+    <span class="n">eventos</span><span class="p">[</span><span class="s1">&#39;CFT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">eventos</span><span class="p">))]</span>
+    <span class="n">eventos</span><span class="p">[</span><span class="s1">&#39;Error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">eventos</span><span class="p">))]</span>
+    <span class="n">eventos</span><span class="p">[</span><span class="s1">&#39;Warning&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">eventos</span><span class="p">))]</span>
+    <span class="n">eventos</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">eventos</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Event&#39;</span><span class="p">,</span> <span class="s1">&#39;Station&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">eventos</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">n_ev</span> <span class="o">=</span> <span class="n">eventos</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of events: </span><span class="si">{</span><span class="n">n_ev</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">ev_index</span><span class="p">,</span> <span class="n">evento</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">eventos</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*****************&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;EVENT: </span><span class="si">{</span><span class="n">ev_index</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> / </span><span class="si">{</span><span class="n">n_ev</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; - Number of picks: </span><span class="si">{</span><span class="n">evento</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="n">pk_index</span><span class="p">,</span> <span class="n">pick</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">evento</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;PICK: </span><span class="si">{</span><span class="n">pk_index</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s1"> / </span><span class="si">{</span><span class="n">evento</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">pick</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">err</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39; - Error! pick.shape[0] != 1 (</span><span class="si">{</span><span class="n">pick</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">)&#39;</span>
+                <span class="n">eventos</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">ev_index</span><span class="p">,</span> <span class="n">pk_index</span><span class="p">),</span> <span class="s1">&#39;Error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">err</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="n">p_path</span> <span class="o">=</span> <span class="n">pick</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">st</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;arquivos/mseed/</span><span class="si">{</span><span class="n">p_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+            <span class="n">compo</span> <span class="o">=</span> <span class="p">[</span><span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">component</span> <span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">st</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">compo</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">err</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39; - Error! len(compo) != 3 (</span><span class="si">{</span><span class="n">compo</span><span class="si">}</span><span class="s1">)&#39;</span>
+                <span class="n">eventos</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+                    <span class="p">(</span><span class="n">ev_index</span><span class="p">,</span> <span class="n">pk_index</span><span class="p">),</span>
+                    <span class="s1">&#39;Error&#39;</span>
+                <span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev_index</span><span class="p">,</span> <span class="n">pk_index</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                <span class="k">continue</span>
+
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">tr</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">st</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">st</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">decimate_to_100hz</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                    <span class="k">continue</span>
+
+            <span class="n">st</span><span class="o">.</span><span class="n">detrend</span><span class="p">(</span><span class="s1">&#39;demean&#39;</span><span class="p">)</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">taper</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+            <span class="n">st</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;highpass&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">corners</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">zerophase</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="n">cft_max</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">st</span><span class="p">:</span>
+                <span class="n">cft</span> <span class="o">=</span> <span class="n">classic_sta_lta</span><span class="p">(</span>
+                    <span class="n">tr</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                    <span class="nb">int</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">sampling_rate</span><span class="p">),</span>
+                    <span class="nb">int</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">sampling_rate</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">cft_max</span> <span class="o">=</span> <span class="n">cft</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">if</span> <span class="n">cft</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">cft_max</span> <span class="k">else</span> <span class="n">cft_max</span>
+            <span class="n">eventos</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">ev_index</span><span class="p">,</span> <span class="n">pk_index</span><span class="p">),</span> <span class="s1">&#39;CFT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cft_max</span>
+            <span class="k">if</span> <span class="n">cft_max</span> <span class="o">&lt;</span> <span class="mf">1.5</span><span class="p">:</span>
+                <span class="n">eventos</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">ev_index</span><span class="p">,</span> <span class="n">pk_index</span><span class="p">),</span> <span class="s1">&#39;Warning&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Low CFT: </span><span class="si">{</span><span class="n">cft_max</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; - Warning! Low CFT: </span><span class="si">{</span><span class="n">cft</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="k">continue</span>
+
+            <span class="n">spectro</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">find</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">compo</span><span class="p">:</span>
+                <span class="n">trace</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">component</span><span class="o">=</span><span class="n">c</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">s_rate</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">sampling_rate</span>
+                <span class="n">nb_pts</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">WINDOW_LENGTH</span> <span class="o">*</span> <span class="n">s_rate</span><span class="p">)</span>
+
+                <span class="n">fft_list</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">time_used</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">start</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">starttime</span>
+                <span class="n">END</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">endtime</span>
+
+                <span class="k">while</span> <span class="n">start</span> <span class="o">+</span> <span class="n">WINDOW_LENGTH</span> <span class="o">&lt;=</span> <span class="n">END</span><span class="p">:</span>
+                    <span class="n">tr</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">starttime</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+                                     <span class="n">endtime</span><span class="o">=</span><span class="n">start</span> <span class="o">+</span> <span class="n">WINDOW_LENGTH</span><span class="p">)</span>
+
+                    <span class="n">mean_time</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">starttime</span> <span class="o">+</span> <span class="p">(</span><span class="n">WINDOW_LENGTH</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+                    <span class="n">time_used</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_time</span> <span class="o">-</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">starttime</span><span class="p">)</span>
+                    <span class="n">start</span> <span class="o">+=</span> <span class="p">(</span><span class="n">WINDOW_LENGTH</span> <span class="o">*</span> <span class="n">OVERLAP</span><span class="p">)</span>
+
+                    <span class="n">fft</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_fft</span><span class="p">(</span><span class="n">tr</span><span class="p">,</span> <span class="n">WINDOW_LENGTH</span><span class="p">,</span> <span class="n">OVERLAP</span><span class="p">,</span> <span class="n">nb_pts</span><span class="p">)</span>
+
+                    <span class="n">fft</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fft</span><span class="p">)</span>
+                    <span class="n">fft_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fft</span><span class="p">)</span>
+
+                <span class="n">fft_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fft_list</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">fft_list</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">237</span><span class="p">,</span> <span class="mi">50</span><span class="p">):</span>  <span class="c1"># OVERLAP 75% : (237,50)</span>
+                    <span class="n">fft_list</span> <span class="o">/=</span> <span class="n">fft_list</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+                    <span class="n">spectro</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fft_list</span><span class="p">)</span>
+                    <span class="n">find</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">err</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;fft_list.shape != (237,50) (</span><span class="si">{</span><span class="n">fft_list</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">)&#39;</span>
+                    <span class="n">eventos</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">ev_index</span><span class="p">,</span> <span class="n">pk_index</span><span class="p">),</span> <span class="s1">&#39;Error&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ev_index</span><span class="p">,</span> <span class="n">pk_index</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; - Error! </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">find</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">spectro</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">spectro</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">spectro</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">spectro_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">ev_index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">stream_name</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.mseed&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">spectro_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">ev_index</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">stream_name</span><span class="si">}</span><span class="s1">.npy&#39;</span><span class="p">,</span> <span class="n">spectro</span><span class="p">)</span>
+                <span class="n">eventos</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">ev_index</span><span class="p">,</span> <span class="n">pk_index</span><span class="p">),</span> <span class="s1">&#39;Compo&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compo</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">err</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;find is </span><span class="si">{</span><span class="n">find</span><span class="si">}</span><span class="s1"> and len(spectro) == </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">spectro</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">eventos</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">ev_index</span><span class="p">,</span> <span class="n">pk_index</span><span class="p">),</span> <span class="s1">&#39;Error&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">eventos</span></div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guia/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -15,6 +15,9 @@ Estrutura de trabalho
 - ``.specs/project/``: planejamento e memoria de execucao.
 - ``docs/operacoes/``: diario de operacoes por commit.
 - ``docs/sphinx/``: publicacao da documentacao via GitHub Pages.
+- ``docs/sphinx/source/guia/``: user guide com links para API.
+- ``docs/sphinx/source/api/``: referencia de funcoes e classes.
+- ``docs/sphinx/source/artefatos/``: scripts e arquivos txt renderizados.
 
 Diretriz de execucao
 --------------------
@@ -30,4 +33,3 @@ Publicacao
 
 A documentacao HTML e gerada com Sphinx e publicada no GitHub Pages por
 workflow automatizado.
-
