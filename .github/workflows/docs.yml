@@ -34,7 +34,7 @@ jobs:
           set -euo pipefail
           cd repo
           python3 -m pip install --upgrade pip
-          python3 -m pip install sphinx
+          python3 -m pip install sphinx myst-parser
           sphinx-build -b html docs/sphinx/source docs/sphinx/build/html
           touch docs/sphinx/build/html/.nojekyll
 

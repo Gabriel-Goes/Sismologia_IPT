@@ -20,5 +20,4 @@ Arquivos alterados
 Documento detalhado
 -------------------
 
-Ver ``docs/operacoes/0001-ajuste-caminhos-baseline.md`` no repositorio.
-
+- :doc:`Documento detalhado </detalhes/0001-ajuste-caminhos-baseline>`
