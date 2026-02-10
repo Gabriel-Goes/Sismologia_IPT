@@ -1,18 +1,30 @@
-# Documentacao do estado atual
+# Documentacao
 
-Este diretorio concentra a documentacao inicial para apoiar a refatoracao do
-projeto `ClassificadorSismologico`, sem alterar o codigo fonte.
+Este diretorio complementa a estrategia de dois trilhos:
 
-Arquivos desta etapa:
+1. **Refatoracao:** como vamos reescrever e validar o v2.
+2. **Legado:** o que o sistema atual faz e como executa.
 
-- `documentação/estado_atual_sistema.md`: fotografia tecnica do commit atual,
-  arquitetura, fluxo do pipeline, modulos e riscos de manutencao.
-- `documentação/inventario_arquivos.md`: inventario dos arquivos `.py`, `.sh`,
-  `.md` e `.txt` lidos nesta etapa.
+## Trilho Refatoracao
 
-Referencia de commit analisado:
+- `documentação/guia_skill_tlc_spec_driven.md`: processo operacional para
+  conduzir planejamento e execucao em modo spec-driven.
+- `documentação/Possible_Paper_OutLine.md`: direcao tecnica/cientifica para
+  narrativa academica e justificativas do trabalho.
 
-- Branch: `ipt` (rastreamento de `origin/ipt`)
-- HEAD: `9c3c01be31b67e7711d9a46ce762782d629e2ea6`
-- Data do commit: `2026-02-09 20:47:58 -0300`
+## Trilho Legado
 
+- `documentação/estado_atual_sistema.md`: snapshot tecnico inicial do legado
+  (baseline historico da fase de leitura inicial).
+- `documentação/inventario_arquivos.md`: inventario de arquivos lidos no
+  levantamento inicial.
+
+## Fontes Canonicas Por Trilha
+
+- **Refatoracao:** `.specs/project/*` + `docs/operacoes/*`
+- **Legado:** `.specs/codebase/*` + `docs/sphinx/source/guia|api|artefatos`
+
+## Observacao
+
+Os arquivos `estado_atual_sistema.md` e `inventario_arquivos.md` permanecem
+como registro historico da primeira etapa de entendimento do legado.

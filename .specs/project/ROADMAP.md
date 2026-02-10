@@ -3,6 +3,10 @@
 **Current Milestone:** M1 - Base da Refatoracao  
 **Status:** In Progress
 
+**Dual Track:** Este roadmap considera dois trilhos continuos:
+- trilho de refatoracao (execucao v2);
+- trilho de compreensao do legado (mapeamento e documentacao comportamental).
+
 ---
 
 ## M1 - Base da Refatoracao
@@ -24,6 +28,12 @@
 **Plano de Refatoracao por Frentes** - IN PROGRESS
 
 - Dividir reescrita em frentes pequenas (pipeline core, configuracao, validacao, relatorio).
+
+**Arquitetura De Documentacao Em Dois Trilhos** - IN PROGRESS
+
+- Separar explicitamente o que e objetivo da refatoracao vs objetivo do legado.
+- Garantir navegacao continua no Sphinx para ambos os trilhos.
+- Aplicar regra de contexto em operacoes (`refatoracao`/`legado`).
 
 ---
 
@@ -48,6 +58,12 @@
 
 - Encapsular clientes e politicas de fallback.
 - Melhorar rastreabilidade de falhas.
+
+**Documentar Fluxo Legado Em Detalhe Operacional** - PLANNED
+
+- Explicitar sequencia de execucao do `fluxo_sismo.sh`.
+- Relacionar modulos chamados, dependencias e artefatos por etapa.
+- Consolidar contratos de dados do legado para comparacao com v2.
 
 ---
 
@@ -79,4 +95,3 @@
 - Automatizar validacoes em CI.
 - Evoluir estrategia de testes para modulos de aquisicao e inferencia.
 - Planejar evolucao futura de GUI/QGIS apos estabilizacao do pipeline.
-
