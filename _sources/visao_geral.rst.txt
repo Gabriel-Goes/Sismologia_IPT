@@ -33,3 +33,15 @@ Publicacao
 
 A documentacao HTML e gerada com Sphinx e publicada no GitHub Pages por
 workflow automatizado.
+
+Continue A Leitura
+------------------
+
+Proximo passo recomendado:
+
+- :doc:`User Guide </guia/index>`
+
+Atalhos:
+
+- :doc:`API Reference </api/index>`
+- :doc:`Operacoes </operacoes/index>`

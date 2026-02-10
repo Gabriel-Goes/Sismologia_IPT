@@ -41,6 +41,15 @@
 <h1>ClassificadorSismologico Refatoracao documentation<a class="headerlink" href="#classificadorsismologico-refatoracao-documentation" title="Link to this heading">¶</a></h1>
 <p>Documentacao viva da reescrita do fluxo sismologico (v2), com historico de
 operacoes, decisoes tecnicas e rastreabilidade por commit.</p>
+<section id="fluxo-de-leitura-recomendado">
+<h2>Fluxo De Leitura Recomendado<a class="headerlink" href="#fluxo-de-leitura-recomendado" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="visao_geral.html"><span class="doc">Visao Geral</span></a></p></li>
+<li><p><a class="reference internal" href="guia/index.html"><span class="doc">User Guide</span></a></p></li>
+<li><p><a class="reference internal" href="api/index.html"><span class="doc">API Reference</span></a></p></li>
+<li><p><a class="reference internal" href="artefatos/index.html"><span class="doc">Artefatos</span></a></p></li>
+<li><p><a class="reference internal" href="operacoes/index.html"><span class="doc">Operacoes</span></a></p></li>
+</ol>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
 <ul>
@@ -49,42 +58,31 @@ operacoes, decisoes tecnicas e rastreabilidade por commit.</p>
 <li class="toctree-l2"><a class="reference internal" href="visao_geral.html#estrutura-de-trabalho">Estrutura de trabalho</a></li>
 <li class="toctree-l2"><a class="reference internal" href="visao_geral.html#diretriz-de-execucao">Diretriz de execucao</a></li>
 <li class="toctree-l2"><a class="reference internal" href="visao_geral.html#publicacao">Publicacao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visao_geral.html#continue-a-leitura">Continue A Leitura</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="guia/index.html">User Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="guia/fluxo-e-referencias.html">Fluxo E Referencias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guia/index.html#fluxo-de-navegacao">Fluxo De Navegacao</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#fluxo-de-navegacao">Fluxo De Navegacao</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/index.html#nucleo">Nucleo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/index.html#rnc">RNC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/index.html#analise-de-dados">Analise De Dados</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="artefatos/index.html">Artefatos</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="artefatos/fluxo-sismo-sh.html">Artefato: fluxo_sismo.sh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="artefatos/setup-pyenv-dual-envs-sh.html">Artefato: setup_pyenv_dual_envs.sh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="artefatos/requirements-core-pipeline-txt.html">Artefato: requirements-core-pipeline.txt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="artefatos/requirements-rnc-legacy-txt.html">Artefato: requirements-rnc-legacy.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="artefatos/index.html#fluxo-de-navegacao">Fluxo De Navegacao</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="operacoes/index.html">Operacoes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="operacoes/0001-ajuste-caminhos-baseline.html">Operacao 0001 - Ajuste de caminhos do baseline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="operacoes/0002-inicializacao-sphinx-github-pages.html">Operacao 0002 - Inicializacao Sphinx + GitHub Pages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="operacoes/0003-inicializacao-specs-project.html">Operacao 0003 - Inicializacao da base .specs/project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="operacoes/0004-consolidacao-baseline-em-specs-codebase.html">Operacao 0004 - Consolidacao do baseline em .specs/codebase</a></li>
-<li class="toctree-l2"><a class="reference internal" href="operacoes/0005-analise-historica-logs-pipeline.html">Operacao 0005 - Analise historica dos logs do pipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="operacoes/0006-organizacao-documentacao-e-runner-isolado.html">Operacao 0006 - Organizacao da documentacao e runner isolado</a></li>
-<li class="toctree-l2"><a class="reference internal" href="operacoes/0007-compreensao-comportamento-fluxo-sismo.html">Operacao 0007 - Compreensao comportamental do fluxo_sismo.sh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="operacoes/0008-preparacao-ambiente-pyenv-duplo.html">Operacao 0008 - Preparacao de ambiente com pyenv duplo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="operacoes/0009-estrutura-sphinx-api-source-e-artefatos.html">Operacao 0009 - Estrutura Sphinx API/source e artefatos renderizados</a></li>
-<li class="toctree-l2"><a class="reference internal" href="operacoes/0010-correcao-autosummary-dependencias-ci.html">Operacao 0010 - Correcao do autosummary no CI de documentacao</a></li>
-<li class="toctree-l2"><a class="reference internal" href="operacoes/0011-preenchimento-docs-api-metodos.html">Operacao 0011 - Preenchimento dos docs de metodos da API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="operacoes/0012-ordenacao-topo-api-preview.html">Operacao 0012 - Ordenacao de metodos no topo da API (preview)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operacoes/index.html#fluxo-de-navegacao">Fluxo De Navegacao</a></li>
 </ul>
 </li>
 </ul>
 </div>
+</section>
 </section>
 
 
