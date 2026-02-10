@@ -3,22 +3,7 @@ Dois Objetivos
 
 Esta documentacao passa a operar com dois trilhos explicitos e complementares.
 
-Trilho 1: Objetivo Da Refatoracao
----------------------------------
-
-Pergunta central:
-
-- Como a refatoracao v2 sera planejada, executada e validada?
-
-Fontes principais:
-
-- ``.specs/project/PROJECT.md``
-- ``.specs/project/ROADMAP.md``
-- ``.specs/project/STATE.md``
-- ``docs/operacoes/*.md``
-- ``docs/sphinx/source/operacoes/*.rst``
-
-Trilho 2: Objetivo Da Codebase Legado
+Trilho 1: Objetivo Da Codebase Legado
 -------------------------------------
 
 Pergunta central:
@@ -32,6 +17,21 @@ Fontes principais:
 - ``docs/sphinx/source/api/*``
 - ``docs/sphinx/source/artefatos/*``
 - ``documentação/estado_atual_sistema.md``
+
+Trilho 2: Objetivo Da Refatoracao
+---------------------------------
+
+Pergunta central:
+
+- Como a refatoracao v2 sera planejada, executada e validada?
+
+Fontes principais:
+
+- ``.specs/project/PROJECT.md``
+- ``.specs/project/ROADMAP.md``
+- ``.specs/project/STATE.md``
+- ``docs/operacoes/*.md``
+- ``docs/sphinx/source/operacoes/*.rst``
 
 Regra Editorial
 ---------------

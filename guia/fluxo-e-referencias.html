@@ -48,43 +48,43 @@
 </ul>
 <section id="aquisicao-e-normalizacao-de-eventos">
 <h2>Aquisicao e normalizacao de eventos<a class="headerlink" href="#aquisicao-e-normalizacao-de-eventos" title="Link to this heading">¶</a></h2>
-<p>A etapa de aquisicao usa
-<a class="reference external" href="../api/generated/nucleo.fluxo_eventos.fluxo_eventos.html#nucleo.fluxo_eventos.fluxo_eventos">nucleo.fluxo_eventos.fluxo_eventos</a>,
-que internamente itera picks com
-<a class="reference external" href="../api/generated/nucleo.fluxo_eventos.iterar_eventos.html#nucleo.fluxo_eventos.iterar_eventos">nucleo.fluxo_eventos.iterar_eventos</a>.
-Rotinas auxiliares como
-<a class="reference external" href="../api/generated/nucleo.utils.csv2list.html#nucleo.utils.csv2list">nucleo.utils.csv2list</a>
-e
-<a class="reference external" href="../api/generated/nucleo.utils.DualOutput.html#nucleo.utils.DualOutput">nucleo.utils.DualOutput</a>
-suportam parse de catalogo e log.</p>
+<p>A etapa de aquisicao usa:</p>
+<ul class="simple">
+<li><p>script: <a class="reference internal" href="../artefatos/fluxo-eventos-py.html"><span class="doc">fluxo_eventos.py</span></a>;</p></li>
+<li><p>funcao principal: <a class="reference internal" href="../api/generated/nucleo.fluxo_eventos.fluxo_eventos.html"><span class="doc">nucleo.fluxo_eventos.fluxo_eventos</span></a>;</p></li>
+<li><p>iteracao de picks: <a class="reference internal" href="../api/generated/nucleo.fluxo_eventos.iterar_eventos.html"><span class="doc">nucleo.fluxo_eventos.iterar_eventos</span></a>;</p></li>
+<li><p>utilitarios: <a class="reference internal" href="../api/generated/nucleo.utils.csv2list.html"><span class="doc">nucleo.utils.csv2list</span></a>
+e <a class="reference internal" href="../api/generated/nucleo.utils.DualOutput.html"><span class="doc">nucleo.utils.DualOutput</span></a>.</p></li>
+</ul>
 </section>
 <section id="classificacao-rnc">
 <h2>Classificacao (RNC)<a class="headerlink" href="#classificacao-rnc" title="Link to this heading">¶</a></h2>
-<p>A extracao de espectros e realizada por
-<a class="reference external" href="../api/generated/rnc.data_process.spectro_extract.html#rnc.data_process.spectro_extract">rnc.data_process.spectro_extract</a>
-(com FFT em
-<a class="reference external" href="../api/generated/rnc.data_process.get_fft.html#rnc.data_process.get_fft">rnc.data_process.get_fft</a>)
-e a inferencia por
-<a class="reference external" href="../api/generated/rnc.prediction.discrim.html#rnc.prediction.discrim">rnc.prediction.discrim</a>,
-orquestrada por
-<a class="reference external" href="../api/generated/rnc.run.main.html#rnc.run.main">rnc.run.main</a>.</p>
+<p>A classificacao na RNC usa:</p>
+<ul class="simple">
+<li><p>script: <a class="reference internal" href="../artefatos/rnc-run-py.html"><span class="doc">rnc/run.py</span></a>;</p></li>
+<li><p>entrada do fluxo: <a class="reference internal" href="../api/generated/rnc.run.main.html"><span class="doc">rnc.run.main</span></a>;</p></li>
+<li><p>extracao de espectros: <a class="reference internal" href="../api/generated/rnc.data_process.spectro_extract.html"><span class="doc">rnc.data_process.spectro_extract</span></a>;</p></li>
+<li><p>FFT: <a class="reference internal" href="../api/generated/rnc.data_process.get_fft.html"><span class="doc">rnc.data_process.get_fft</span></a>;</p></li>
+<li><p>inferencia: <a class="reference internal" href="../api/generated/rnc.prediction.discrim.html"><span class="doc">rnc.prediction.discrim</span></a>.</p></li>
+</ul>
 </section>
 <section id="pos-processamento-e-mapas">
 <h2>Pos-processamento e mapas<a class="headerlink" href="#pos-processamento-e-mapas" title="Link to this heading">¶</a></h2>
-<p>A consolidacao de metricas pode ser lida em
-<a class="reference external" href="../api/generated/analise_dados.pos_processa.clean_data.html#analise_dados.pos_processa.clean_data">analise_dados.pos_processa.clean_data</a>
-e
-<a class="reference external" href="../api/generated/analise_dados.pos_processa.recall_event.html#analise_dados.pos_processa.recall_event">analise_dados.pos_processa.recall_event</a>.
-A geracao de mapas e feita por
-<a class="reference external" href="../api/generated/analise_dados.gera_mapas.plot_pred_map.html#analise_dados.gera_mapas.plot_pred_map">analise_dados.gera_mapas.plot_pred_map</a>
-e
-<a class="reference external" href="../api/generated/analise_dados.gera_mapas.plot_macroregions.html#analise_dados.gera_mapas.plot_macroregions">analise_dados.gera_mapas.plot_macroregions</a>.</p>
+<p>As etapas finais usam:</p>
+<ul class="simple">
+<li><p>pos-processamento (script): <a class="reference internal" href="../artefatos/pos-processa-py.html"><span class="doc">pos_processa.py</span></a>;</p></li>
+<li><p>limpeza/consolidacao: <a class="reference internal" href="../api/generated/analise_dados.pos_processa.clean_data.html"><span class="doc">analise_dados.pos_processa.clean_data</span></a>;</p></li>
+<li><p>consolidacao por evento: <a class="reference internal" href="../api/generated/analise_dados.pos_processa.recall_event.html"><span class="doc">analise_dados.pos_processa.recall_event</span></a>;</p></li>
+<li><p>mapas (script): <a class="reference internal" href="../artefatos/gera-mapas-py.html"><span class="doc">gera_mapas.py</span></a>;</p></li>
+<li><p>mapa de predicoes: <a class="reference internal" href="../api/generated/analise_dados.gera_mapas.plot_pred_map.html"><span class="doc">analise_dados.gera_mapas.plot_pred_map</span></a>;</p></li>
+<li><p>macro-regioes: <a class="reference internal" href="../api/generated/analise_dados.gera_mapas.plot_macroregions.html"><span class="doc">analise_dados.gera_mapas.plot_macroregions</span></a>.</p></li>
+</ul>
 </section>
 <section id="artefatos-nao-python">
 <h2>Artefatos nao-Python<a class="headerlink" href="#artefatos-nao-python" title="Link to this heading">¶</a></h2>
 <p>Para scripts Bash e arquivos <code class="docutils literal notranslate"><span class="pre">.txt</span></code>, use as paginas em <a class="reference internal" href="../artefatos/index.html"><span class="doc">Artefatos</span></a>.
-Nelas, o conteudo e renderizado no site e cada pagina aponta para o arquivo fonte
-no GitHub.</p>
+Nelas, o conteudo e renderizado no site e cada pagina aponta para o arquivo
+fonte no GitHub.</p>
 </section>
 <section id="proximo-passo">
 <h2>Proximo Passo<a class="headerlink" href="#proximo-passo" title="Link to this heading">¶</a></h2>
