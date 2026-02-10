@@ -1,6 +1,10 @@
 nucleo.fluxo\_eventos.iterar\_eventos
 =====================================
 
+.. currentmodule:: nucleo.fluxo_eventos
+
+.. autofunction:: iterar_eventos
+
 Resumo
 ------
 
@@ -29,6 +33,3 @@ Efeitos colaterais
 - Gera ``arquivos/eventos/erros.csv``.
 - Emite logs extensos de progresso e erro no stdout.
 
-.. currentmodule:: nucleo.fluxo_eventos
-
-.. autofunction:: iterar_eventos

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Docs Verde Style"
+  short_description: "Padrao Verde: User Guide -> API <-> source"
+  default_prompt: "Use $docs-verde-style para manter a documentacao no padrao Verde com links bidirecionais entre User Guide, API e source (_modules)."

@@ -1,6 +1,10 @@
 rnc.data\_process.spectro\_extract
 ==================================
 
+.. currentmodule:: rnc.data_process
+
+.. autofunction:: spectro_extract
+
 Resumo
 ------
 
@@ -34,6 +38,3 @@ Observacao
 A funcao espera shape de espectrograma ``(237, 50)`` por componente e exige 3
 componentes para salvar o evento.
 
-.. currentmodule:: rnc.data_process
-
-.. autofunction:: spectro_extract

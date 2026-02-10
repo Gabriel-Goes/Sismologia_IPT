@@ -1,0 +1,4 @@
+interface:
+  display_name: "Consolidador De Operacoes"
+  short_description: "Decidir nova operacao vs consolidacao no diario"
+  default_prompt: "Use $operation-journal-consolidator para decidir entre criar uma nova operacao ou consolidar no diario mais recente."

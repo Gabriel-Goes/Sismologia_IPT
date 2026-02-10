@@ -1,6 +1,10 @@
 analise\_dados.gera\_mapas.plot\_pred\_map
 ==========================================
 
+.. currentmodule:: analise_dados.gera_mapas
+
+.. autofunction:: plot_pred_map
+
 Resumo
 ------
 
@@ -27,6 +31,3 @@ Efeitos colaterais
 - Salva figura em ``arquivos/figuras/mapas/{filename}``.
 - Exibe a figura com ``fig.show()``.
 
-.. currentmodule:: analise_dados.gera_mapas
-
-.. autofunction:: plot_pred_map

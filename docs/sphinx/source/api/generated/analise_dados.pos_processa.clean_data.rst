@@ -1,6 +1,10 @@
 analise\_dados.pos\_processa.clean\_data
 ========================================
 
+.. currentmodule:: analise_dados.pos_processa
+
+.. autofunction:: clean_data
+
 Resumo
 ------
 
@@ -25,6 +29,3 @@ Retorna 6 ``DataFrame`` nesta ordem:
 - ``events_Ant_65``: ``0.65 <= Event Prob_Ant < 0.7``.
 - ``events_Ant_60``: ``0.6 <= Event Prob_Ant < 0.65``.
 
-.. currentmodule:: analise_dados.pos_processa
-
-.. autofunction:: clean_data

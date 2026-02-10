@@ -2,6 +2,13 @@ Operacoes
 =========
 
 Historico incremental das operacoes executadas durante a refatoracao.
+Cada operacao deve registrar contexto explicito: ``refatoracao`` ou ``legado``.
+
+Fluxo De Navegacao
+------------------
+
+- Voltar para inicio: :doc:`/index`
+- Voltar para contexto do projeto: :doc:`/visao_geral`
 
 .. toctree::
    :maxdepth: 1
@@ -17,3 +24,7 @@ Historico incremental das operacoes executadas durante a refatoracao.
    0009-estrutura-sphinx-api-source-e-artefatos
    0010-correcao-autosummary-dependencias-ci
    0011-preenchimento-docs-api-metodos
+   0012-ordenacao-topo-api-preview
+   0013-fluxo-legado-fluxo-sismo-em-visao-geral
+   0014-padrao-verde-api-source-legado
+   0015-correcao-deploy-gh-pages-workspace-sujo

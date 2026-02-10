@@ -3,10 +3,7 @@ name: docs
 on:
   push:
     branches:
-      - main
-    paths:
-      - "docs/**"
-      - ".github/workflows/docs.yml"
+      - "refactor/**"
   workflow_dispatch:
 
 permissions:
@@ -52,6 +49,11 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Legacy modules imported by autodoc can rewrite tracked files
+          # (for example mapa.tex). Clean tree before switching branch.
+          git reset --hard HEAD
+          git clean -fd
 
           if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
             git fetch origin gh-pages

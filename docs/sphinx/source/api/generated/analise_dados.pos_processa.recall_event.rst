@@ -1,6 +1,10 @@
 analise\_dados.pos\_processa.recall\_event
 ==========================================
 
+.. currentmodule:: analise_dados.pos_processa
+
+.. autofunction:: recall_event
+
 Resumo
 ------
 
@@ -31,6 +35,3 @@ Observacao
 O filtro por ``SNR_P`` e aplicado de forma acumulativa dentro do loop de limiar,
 o que reduz progressivamente o conjunto usado nas iteracoes seguintes.
 
-.. currentmodule:: analise_dados.pos_processa
-
-.. autofunction:: recall_event
