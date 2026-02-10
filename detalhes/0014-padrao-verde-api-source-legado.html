@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documento detalhado: 0014-padrao-verde-api-source-legado &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="documento-detalhado-0014-padrao-verde-api-source-legado">
+<h1>Documento detalhado: 0014-padrao-verde-api-source-legado<a class="headerlink" href="#documento-detalhado-0014-padrao-verde-api-source-legado" title="Link to this heading">¶</a></h1>
+</section>
+<section id="operacao-0014-padrao-verde-para-api-e-source-do-fluxo-legado">
+<h1>Operacao 0014 - Padrao Verde para API e Source do fluxo legado<a class="headerlink" href="#operacao-0014-padrao-verde-para-api-e-source-do-fluxo-legado" title="Link to this heading">¶</a></h1>
+<p><strong>Data:</strong> 2026-02-10<br />
+<strong>Branch:</strong> <code class="docutils literal notranslate"><span class="pre">refactor/fluxo-v2-documentado</span></code><br />
+<strong>Contexto:</strong> <code class="docutils literal notranslate"><span class="pre">legado</span></code></p>
+<section id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">¶</a></h2>
+<p>Alinhar a documentacao do legado ao padrao usado no projeto Verde:</p>
+<ul class="simple">
+<li><p>User Guide -&gt; API docs;</p></li>
+<li><p>API docs -&gt; <code class="docutils literal notranslate"><span class="pre">[source]</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">_modules</span></code>;</p></li>
+<li><p>remover scripts Python da secao de artefatos.</p></li>
+</ul>
+</section>
+<section id="escopo-executado">
+<h2>Escopo executado<a class="headerlink" href="#escopo-executado" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Migracao da navegacao de scripts Python para API/source:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/visao_geral.rst</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/guia/fluxo-e-referencias.rst</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/api/index.rst</span></code></p></li>
+</ul>
+</li>
+<li><p>Criacao de docs de entrypoints legados na API:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/api/generated/analise_dados.pre_processa.main.rst</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/api/generated/analise_dados.pos_processa.main.rst</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/api/generated/analise_dados.gera_mapas.main.rst</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/api/generated/figures.generate_latex_for_figures.rst</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/api/generated/mapa.generate_map_latex.rst</span></code></p></li>
+</ul>
+</li>
+<li><p>Ajuste de importacao para gerar <code class="docutils literal notranslate"><span class="pre">_modules</span></code> dos entrypoints:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/conf.py</span></code></p></li>
+</ul>
+</li>
+<li><p>Remocao de Python da trilha de artefatos:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/artefatos/index.rst</span></code></p></li>
+<li><p>remocao de <code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/artefatos/*-py.rst</span></code></p></li>
+</ul>
+</li>
+<li><p>Skill de governanca do padrao:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">skills/docs-verde-style/SKILL.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skills/docs-verde-style/agents/openai.yaml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skills/docs-verde-style/references/style-rules.md</span></code></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="resultado">
+<h2>Resultado<a class="headerlink" href="#resultado" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Visao</span> <span class="pre">Geral</span></code> e <code class="docutils literal notranslate"><span class="pre">User</span> <span class="pre">Guide</span></code> agora apontam para paginas de docs e source
+interno (<code class="docutils literal notranslate"><span class="pre">_modules</span></code>) em vez de tratar Python como artefato.</p></li>
+<li><p>API passou a conter os entrypoints principais do fluxo legado com pagina de
+docs e botao <code class="docutils literal notranslate"><span class="pre">[source]</span></code>.</p></li>
+<li><p>Artefatos ficaram restritos a nao-Python (Bash/TXT/TEX).</p></li>
+</ul>
+</section>
+<section id="validacao">
+<h2>Validacao<a class="headerlink" href="#validacao" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Build local:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">PYENV_VERSION=sismologia</span> <span class="pre">sphinx-build</span> <span class="pre">-b</span> <span class="pre">html</span> <span class="pre">docs/sphinx/source</span> <span class="pre">docs/sphinx/build/html</span></code></p></li>
+</ul>
+</li>
+<li><p>Resultado: build concluido com sucesso.</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/detalhes/0014-padrao-verde-api-source-legado.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

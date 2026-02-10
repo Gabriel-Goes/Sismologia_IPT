@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documento detalhado: 0015-correcao-deploy-gh-pages-workspace-sujo &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="documento-detalhado-0015-correcao-deploy-gh-pages-workspace-sujo">
+<h1>Documento detalhado: 0015-correcao-deploy-gh-pages-workspace-sujo<a class="headerlink" href="#documento-detalhado-0015-correcao-deploy-gh-pages-workspace-sujo" title="Link to this heading">¶</a></h1>
+</section>
+<section id="operacao-0015-correcao-do-deploy-gh-pages-para-workspace-sujo">
+<h1>Operacao 0015 - Correcao do deploy gh-pages para workspace sujo<a class="headerlink" href="#operacao-0015-correcao-do-deploy-gh-pages-para-workspace-sujo" title="Link to this heading">¶</a></h1>
+<p><strong>Data:</strong> 2026-02-10<br />
+<strong>Branch:</strong> <code class="docutils literal notranslate"><span class="pre">refactor/fluxo-v2-documentado</span></code><br />
+<strong>Contexto:</strong> <code class="docutils literal notranslate"><span class="pre">refatoracao</span></code></p>
+<section id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">¶</a></h2>
+<p>Corrigir falha de deploy no workflow de docs quando o build do Sphinx altera
+arquivos rastreados (ex.: <code class="docutils literal notranslate"><span class="pre">mapa.tex</span></code>) antes do checkout da branch <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>.</p>
+</section>
+<section id="escopo-executado">
+<h2>Escopo executado<a class="headerlink" href="#escopo-executado" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Ajuste no workflow:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/docs.yml</span></code></p></li>
+</ul>
+</li>
+<li><p>Medida aplicada antes de trocar para <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--hard</span> <span class="pre">HEAD</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clean</span> <span class="pre">-fd</span></code></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="resultado">
+<h2>Resultado<a class="headerlink" href="#resultado" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>O job de publicacao deixa de falhar com erro:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Your</span> <span class="pre">local</span> <span class="pre">changes</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">following</span> <span class="pre">files</span> <span class="pre">would</span> <span class="pre">be</span> <span class="pre">overwritten</span> <span class="pre">by</span> <span class="pre">checkout</span></code></p></li>
+</ul>
+</li>
+<li><p>O fluxo passa a publicar a partir de um workspace limpo.</p></li>
+</ul>
+</section>
+<section id="validacao">
+<h2>Validacao<a class="headerlink" href="#validacao" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Reproducao do erro original via log de Actions.</p></li>
+<li><p>Correcao aplicada no passo <code class="docutils literal notranslate"><span class="pre">Publish</span> <span class="pre">to</span> <span class="pre">gh-pages</span></code>.</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/detalhes/0015-correcao-deploy-gh-pages-workspace-sujo.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
