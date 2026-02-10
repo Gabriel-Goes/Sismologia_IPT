@@ -1,0 +1,3 @@
+case	rc	duration_s	timeout_s	log
+predict	0	3	300	arquivos/registros/test_matrix/predict_20260210_171443.log
+pos	0	1	240	arquivos/registros/test_matrix/pos_20260210_171443.log
