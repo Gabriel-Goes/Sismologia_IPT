@@ -40,7 +40,8 @@ source_suffix = {
 }
 autosectionlabel_prefix_document = True
 
-autosummary_generate = True
+# Keep manually curated API pages stable; avoid rewrites of api/generated/*.rst
+autosummary_generate = False
 autodoc_default_options = {
     'members': True,
     'undoc-members': True,
