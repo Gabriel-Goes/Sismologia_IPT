@@ -1,0 +1,72 @@
+Catalogo: catalogo_jul_filtrado.csv
+/tmp/classificador-matrix-i7oyHM ~/projetos/ClassificadorSismologico
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul_filtrado.csv
+  EVENTS: True
+  TREATCATALOG: True
+  PREDICT: True
+  POSPROCESS: True
+  MAPS: True
+  REPORT: True
+  TEST: True
+
+
+ -------------- INICIANDO O TRATAMENTO -------------------- 
+ Tratando catalogo_jul_filtrado.csv...
+ t0: Tue Feb 10 17:20:21 -03 2026
+/tmp/classificador-matrix-i7oyHM/fonte/analise_dados/pre_processa.py:98: DeprecationWarning: The 'unary_union' attribute is deprecated, use the 'union_all()' method instead.
+  catalog_br = df[df.within(brasil_buffer.unary_union)]
+/tmp/classificador-matrix-i7oyHM/fonte/analise_dados/pre_processa.py:172: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_yticklabels(
+/tmp/classificador-matrix-i7oyHM/fonte/analise_dados/pre_processa.py:172: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_yticklabels(
+/tmp/classificador-matrix-i7oyHM/fonte/analise_dados/pre_processa.py:211: UserWarning: The figure layout has changed to tight
+  plt.tight_layout()
+/tmp/classificador-matrix-i7oyHM/fonte/analise_dados/pre_processa.py:270: DeprecationWarning: The 'unary_union' attribute is deprecated, use the 'union_all()' method instead.
+  brasil = brasil.geometry.unary_union
+/tmp/classificador-matrix-i7oyHM/fonte/analise_dados/pre_processa.py:270: DeprecationWarning: The 'unary_union' attribute is deprecated, use the 'union_all()' method instead.
+  brasil = brasil.geometry.unary_union
+Argumentos recebidos:
+ eventos.csv
+ catalogo_jul_filtrado.csv
+ True
+ False
+2010-11-28 10:21:12.185973
+
+Plotando distribuição de eventos por hora...
+ Catálogo filtrado com 3031 eventos
+ Nov de 2010 à Jul de 2024
+
+Plotando distribuição de eventos por hora...
+ Catálogo completo com 3031 eventos
+ Nov de 2010 à Jul de 2024
+Plotando mapa...
+Salvando mapa...
+Salvando mapa...
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando fluxo_eventos.py...
+catalogo_jul_filtrado.csv
+./fonte/nucleo/fluxo_eventos.py...
+ - Número de argumentos: 3
+ - Argumentos (Roteiro Python | Catálogo de Eventos | Modo de Teste):
+ fonte/nucleo/fluxo_eventos.py
+ catalogo_jul_filtrado.csv
+ True
+True
+ --> Modo de teste ativado
+ - Número de EventIDs: 10
+
+Erro ao conectar com o servidor Seisarc.sismo.iag.usp.br (principal): No FDSN services could be discovered at 'http://10.110.1.132:18003'. This could be due to a temporary service outage or an invalid FDSN service address.
+
+Erro ao conectar com o servidor rsbr.on.br (backup 1): No FDSN services could be discovered at 'http://rsbr.on.br:8081'. This could be due to a temporary service outage or an invalid FDSN service address.
+
+Erro ao conectar com o servidor seisrequest.iag.usp.br (backup 2): No FDSN services could be discovered at 'http://seisrequest.iag.usp.br'. This could be due to a temporary service outage or an invalid FDSN service address.
+
+Erro: nenhum cliente FDSN disponivel (principal e backups).
