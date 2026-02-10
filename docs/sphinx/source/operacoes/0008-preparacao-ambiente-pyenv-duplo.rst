@@ -25,6 +25,6 @@ Documento detalhado
 -------------------
 
 - :doc:`Documento detalhado </detalhes/0008-preparacao-ambiente-pyenv-duplo>`
-- :download:`Script de bootstrap pyenv duplo <../../../../scripts/dev/setup_pyenv_dual_envs.sh>`
-- :download:`Requirements core <../../../../scripts/dev/requirements-core-pipeline.txt>`
-- :download:`Requirements RNC legado <../../../../scripts/dev/requirements-rnc-legacy.txt>`
+- :doc:`Script de bootstrap pyenv duplo </artefatos/setup-pyenv-dual-envs-sh>`
+- :doc:`Requirements core </artefatos/requirements-core-pipeline-txt>`
+- :doc:`Requirements RNC legado </artefatos/requirements-rnc-legacy-txt>`

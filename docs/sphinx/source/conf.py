@@ -3,6 +3,8 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 import os
+import sys
+from pathlib import Path
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -18,11 +20,16 @@ release = '0.1'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
+    'myst_parser',
+    'sphinx_copybutton',
+    'sphinx_design',
     'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
+    'sphinx.ext.autosectionlabel',
+    'sphinx.ext.extlinks',
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
     'sphinx.ext.napoleon',
-    'myst_parser',
 ]
 
 templates_path = ['_templates']
@@ -30,6 +37,42 @@ exclude_patterns = []
 source_suffix = {
     '.rst': 'restructuredtext',
     '.md': 'markdown',
+}
+autosectionlabel_prefix_document = True
+
+autosummary_generate = True
+autodoc_default_options = {
+    'members': True,
+    'undoc-members': True,
+}
+autodoc_mock_imports = [
+    'obspy',
+    'tensorflow',
+    'pygmt',
+    'geopandas',
+    'shapely',
+    'matplotlib',
+    'seaborn',
+    'tqdm',
+]
+
+ROOT_DIR = Path(__file__).resolve().parents[3]
+CODEBASE_FONTE = ROOT_DIR / '.specs' / 'codebase' / 'fonte'
+for path in [
+    CODEBASE_FONTE,
+    CODEBASE_FONTE / 'nucleo',
+    CODEBASE_FONTE / 'analise_dados',
+    CODEBASE_FONTE / 'rnc',
+]:
+    path_str = str(path)
+    if path_str not in sys.path:
+        sys.path.insert(0, path_str)
+
+extlinks = {
+    'ghblob': (
+        'https://github.com/Gabriel-Goes/Sismologia_IPT/blob/main/%s',
+        '%s',
+    ),
 }
 
 

@@ -14,3 +14,4 @@ Historico incremental das operacoes executadas durante a refatoracao.
    0006-organizacao-documentacao-e-runner-isolado
    0007-compreensao-comportamento-fluxo-sismo
    0008-preparacao-ambiente-pyenv-duplo
+   0009-estrutura-sphinx-api-source-e-artefatos
