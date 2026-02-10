@@ -50,3 +50,9 @@ Artefatos nao-Python
 Para scripts Bash e arquivos ``.txt``, use as paginas em :doc:`/artefatos/index`.
 Nelas, o conteudo e renderizado no site e cada pagina aponta para o arquivo fonte
 no GitHub.
+
+Proximo Passo
+-------------
+
+- :doc:`API Reference </api/index>`
+- :doc:`Artefatos </artefatos/index>`
