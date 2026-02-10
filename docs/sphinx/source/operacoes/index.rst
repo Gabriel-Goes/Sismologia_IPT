@@ -28,3 +28,9 @@ Fluxo De Navegacao
    0013-fluxo-legado-fluxo-sismo-em-visao-geral
    0014-padrao-verde-api-source-legado
    0015-correcao-deploy-gh-pages-workspace-sujo
+   0016-estabilizacao-testes-fluxo-sismo-50-amostras
+   0017-runner-matriz-testes-e-guia-operacional
+   0018-validacao-runner-matriz-10-eventos
+   0019-padrao-links-e-anexos-renderizados
+   0020-contrato-pr-po-sem-dados
+   0021-matriz-completa-pos-0020

@@ -18,7 +18,7 @@ fluxo v2.
 
 Anexo gerado nesta operacao:
 
-- `docs/operacoes/anexos/0005-resumo-logs.csv` (210 linhas, um registro por log).
+- [0005-resumo-logs.csv](/anexos/anexo-0005-resumo-logs-csv) (210 linhas, um registro por log).
 
 ## Metodo aplicado
 

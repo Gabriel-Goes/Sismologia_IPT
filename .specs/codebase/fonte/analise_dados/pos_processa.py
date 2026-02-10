@@ -1592,11 +1592,27 @@ def region_correlation(df):
 # --------------------------- CRIAR ARQUIVOS
 def carregar_dado(w=3, n=0, d=400, m=8):
     df = pd.read_csv('arquivos/resultados/predito.csv')
+    required_cols = [
+        'MLv',
+        'Distance',
+        'Cat',
+        'Event Pred',
+        'Pick Prob_Nat',
+        'SNR_P',
+        'SNR_S',
+        'Noise',
+        'p',
+    ]
+    missing_cols = [col for col in required_cols if col not in df.columns]
+    if missing_cols:
+        print(f'Warning: colunas ausentes em predito.csv: {missing_cols}')
+        for col in missing_cols:
+            df[col] = np.nan
     df = df[df['MLv'] < m]
     df = df[df['Distance'] < d]
     df.dropna(subset=['Pick Prob_Nat'], inplace=True)
     df['Label'] = df['Cat'].apply(lambda x: 0 if x == 'earthquake' else 1)
-    df['Event Pred'] = df['Event Pred'].astype(int)
+    df['Event Pred'] = pd.to_numeric(df['Event Pred'], errors='coerce')
     df.set_index(['Event', 'Station'], inplace=True)
     df = snr(df, w)
     df = df[df['SNR_P'] > n]
@@ -1753,6 +1769,11 @@ def clean_data(df):
 # -------------------------------- MAIN ------------------------------------- #
 def main():
     df = carregar_dado()
+    if df.empty:
+        print('Sem picks validos para pos-processamento; gerando saida vazia.')
+        df.to_csv('arquivos/resultados/nc_analisado_final.csv')
+        df.to_csv('arquivos/resultados/analisado_final.csv')
+        return df, df
     # print(df.columns)
     # df = pd.read_csv('arquivos/resultados/304008_analisado.csv', sep=',')
     df.loc[:, 'Hora'] = df['Origin Time'].apply(lambda x: UTCDateTime(x).hour)

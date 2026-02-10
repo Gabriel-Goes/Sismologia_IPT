@@ -137,9 +137,15 @@
         \def\@currentlabel{#2}
         \label{#1}
     }
-    \newcommand{\periodo}[2]{
+	\newcommand{\periodo}[2]{
         \gdef\inserirInicio{#1}
         \gdef\inserirFim{#2}
+    }
+    \newcommand{\iptFootImagePath}{tex/figuras_tex/footImage.pdf}
+    \IfFileExists{tex/figuras_tex/footImage.pdf}{}{
+        \IfFileExists{tex/figuras_tex/footer_IPT.png}{
+            \renewcommand{\iptFootImagePath}{tex/figuras_tex/footer_IPT.png}
+        }{}
     }
 	\newcommand\firstup[1]{\firstupaux#1\relax}
 	\def\firstupaux#1#2\relax{
@@ -185,7 +191,7 @@
     \rhead{{\footnotesize \thepage}}
 	\lfoot{}
 	\cfoot{}
-	\rfoot{\includegraphics[scale=1.0]{tex/figuras_tex/footImage.pdf}}
+	\rfoot{\includegraphics[scale=1.0]{\iptFootImagePath}}
 	\pagestyle{fancy}
 	\fancypagestyle{geral}{
     		\rhead{{\footnotesize \thepage /\pageref{LastPage}}}
@@ -212,7 +218,7 @@
 			\end{tabular}
 		}
 		\rfoot{
-            \includegraphics[scale=1.2]{tex/figuras_tex/footImage.pdf}}
+            \includegraphics[scale=1.2]{\iptFootImagePath}}
 	}
 	\fancypagestyle{calibr_doc}{
 		\lhead{
@@ -235,7 +241,7 @@
             \end{tabular}
 		}
 		\rfoot{
-            \includegraphics[scale=1.2]{tex/figuras_tex/footImage.pdf}}
+            \includegraphics[scale=1.2]{\iptFootImagePath}}
 	}
 
 % Capa
@@ -739,7 +745,7 @@
 			 	\footnotesize \textbf{Anexo #1 do~\footnotesize\inserirTipo~n\textordmasculine~\inserirDocNum}
 			\end{tabular}
 		}
-		\rfoot{\includegraphics[scale=1.2]{tex/figuras_tex/footImage.pdf}}
+		\rfoot{\includegraphics[scale=1.2]{\iptFootImagePath}}
 	}
 	\pagestyle{anexo_sfr}
 	\begin{center}

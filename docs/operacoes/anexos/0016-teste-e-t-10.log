@@ -1,0 +1,86 @@
+Catalogo: catalogo_jul_filtrado.csv
+~/projetos/ClassificadorSismologico/.specs/codebase ~/projetos/ClassificadorSismologico/.specs/codebase
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul_filtrado.csv
+  EVENTS: True
+  TREATCATALOG: False
+  PREDICT: False
+  POSPROCESS: False
+  MAPS: False
+  REPORT: False
+  TEST: True
+
+ Criando arquivos de backup...
+ Arquivos de backup criados com sucesso!
+
+ -> Executando fluxo_eventos.py...
+catalogo_jul_filtrado.csv
+./fonte/nucleo/fluxo_eventos.py...
+ - Número de argumentos: 3
+ - Argumentos (Roteiro Python | Catálogo de Eventos | Modo de Teste):
+ fonte/nucleo/fluxo_eventos.py
+ catalogo_jul_filtrado.csv
+ True
+True
+ --> Modo de teste ativado
+ - Número de EventIDs: 10
+
+Erro ao conectar com o servidor Seisarc.sismo.iag.usp.br (principal): No FDSN services could be discovered at 'http://10.110.1.132:18003'. This could be due to a temporary service outage or an invalid FDSN service address.
+ --------- INICIANDO FLUXO DE EVENTOS  --------- 
+
+ ------------------------------ ACESSANDO CATÁLOGO ------------------------------ 
+ - Catálogo: catalogo_jul_filtrado.csv
+ - Primeiro EventID: usp2015cmnp
+ - EventID mediano: usp2021izxd
+ - Último EventID: usp2014njaa
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:00<00:01,  5.35it/s] 50%|█████     | 5/10 [00:00<00:00, 18.99it/s] 90%|█████████ | 9/10 [00:00<00:00, 25.84it/s]100%|██████████| 10/10 [00:00<00:00, 22.64it/s]
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+EventID usp2015cmnp não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+EventID usp2022xitw não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+EventID usp2024gddh não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+EventID usp2020sskt não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+EventID usp2021djzr não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+EventID usp2021izxd não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+EventID usp2022kmiw não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+EventID usp2012geua não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+EventID usp2023bkzx não encontrado.
+ Catalogo USP não encontrado. Tentando no servidor da RSBR.
+ ------------------------------ Sem dados ------------------------------ 
+EventID usp2014njaa não encontrado.
+ --> Iterando sobre eventos
+ - Número de eventos: 0
+ --> Adquirindo Inventário de Estações
+ Inventario adquirido com sucesso
+['BL', 'BR', 'NB', 'ON'] ... 
+ - Número de redes: 4
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+Dados salvos com sucesso em arquivos/eventos/eventos.csv
+Erros salvos com sucesso em arquivos/eventos/erros.csv
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
+~/projetos/ClassificadorSismologico/.specs/codebase

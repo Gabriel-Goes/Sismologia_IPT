@@ -18,11 +18,21 @@ Este diretorio complementa a estrategia de dois trilhos:
   conduzir planejamento e execucao em modo spec-driven.
 - `documentação/Possible_Paper_OutLine.md`: direcao tecnica/cientifica para
   narrativa academica e justificativas do trabalho.
+- `documentação/memoria_ambiente_pyenv_virtualenv.md`: memoria operacional do
+  setup de ambiente com `pyenv` + `pyenv-virtualenv` (core + RNC).
 
 ## Fontes Canonicas Por Trilha
 
 - **Legado:** `.specs/codebase/*` + `docs/sphinx/source/guia|api|artefatos`
 - **Refatoracao:** `.specs/project/*` + `docs/operacoes/*`
+
+## Padrao De Links (Obrigatorio)
+
+1. Toda mencao a arquivo deve ter link para pagina da documentacao (Artefatos
+   ou Anexos).
+2. Toda mencao a modulo/classe/funcao Python deve ter link para a API.
+3. Nao usar links de download para anexos de operacao; sempre usar paginas web
+   renderizadas no Sphinx.
 
 ## Observacao
 

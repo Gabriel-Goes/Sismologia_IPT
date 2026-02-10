@@ -26,6 +26,20 @@ def discrim(
     except KeyError:
         pass
 
+    # Keep prediction schema stable even when there are no picks to infer.
+    for col, default in [
+        ('Pick Pred', np.nan),
+        ('Pick Prob_Nat', np.nan),
+        ('Pick Prob_Ant', np.nan),
+        ('Pick Pred_final', ''),
+        ('Event Pred', np.nan),
+        ('Event Prob_Nat', np.nan),
+        ('Event Prob_Ant', np.nan),
+        ('Event Pred_final', ''),
+    ]:
+        if col not in eventos.columns:
+            eventos[col] = default
+
     model = tf.keras.models.load_model(model)
     optimizer = Adam(learning_rate=0.001)
     model.compile(

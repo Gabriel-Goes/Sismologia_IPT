@@ -14,7 +14,11 @@ Fluxo De Navegacao
    :maxdepth: 1
 
    fluxo-sismo-sh
+   run-fluxo-test-matrix-archived-sh
    relatorio-preditivo-tex
+   sismo-iptex-cls
    setup-pyenv-dual-envs-sh
+   python-version
+   memoria-ambiente-pyenv-virtualenv-md
    requirements-core-pipeline-txt
    requirements-rnc-legacy-txt

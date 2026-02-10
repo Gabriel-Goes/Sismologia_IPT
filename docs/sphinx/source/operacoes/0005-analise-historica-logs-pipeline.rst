@@ -19,4 +19,4 @@ Documento detalhado
 -------------------
 
 - :doc:`Documento detalhado </detalhes/0005-analise-historica-logs-pipeline>`
-- :download:`Anexo consolidado (CSV) <../../../operacoes/anexos/0005-resumo-logs.csv>`
+- :doc:`Anexo consolidado (CSV) </anexos/anexo-0005-resumo-logs-csv>`
