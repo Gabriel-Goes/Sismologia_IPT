@@ -1,30 +1,0 @@
-
-========================================================================
-                       Iniciando do Pipeline                         
-========================================================================
-
-Argumentos recebidos:
-  Catalogo: catalogo_jul.csv
-  EVENTS: False
-  TREATCATALOG: False
-  PREDICT: False
-  POSPROCESS: True
-  MAPS: True
-  REPORT: True
-  TEST: False
-
- ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
-0it [00:00, ?it/s]1it [00:00,  5.97it/s]20it [00:00, 89.12it/s]44it [00:00, 145.22it/s]63it [00:00, 159.91it/s]83it [00:00, 170.55it/s]104it [00:00, 179.45it/s]123it [00:00, 181.01it/s]143it [00:00, 184.79it/s]163it [00:00, 188.39it/s]187it [00:01, 202.95it/s]211it [00:01, 212.53it/s]235it [00:01, 218.09it/s]257it [00:01, 213.50it/s]279it [00:01, 203.27it/s]301it [00:01, 206.24it/s]322it [00:01, 203.99it/s]343it [00:01, 205.28it/s]357it [00:01, 187.55it/s]
-Traceback (most recent call last):
-  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1807, in <module>
-    df_nc, df = main()
-                ^^^^^^
-  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py", line 1777, in main
-    df.groupby('Event')['CFT'].std()
-    ~~~~~~~~~~~~~~~~~~~^^^^^^^
-  File "/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/pandas/core/groupby/generic.py", line 1951, in __getitem__
-    return super().__getitem__(key)
-           ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ggrl/.pyenv/versions/geologia/lib/python3.12/site-packages/pandas/core/base.py", line 244, in __getitem__
-    raise KeyError(f"Column not found: {key}")
-KeyError: 'Column not found: CFT'

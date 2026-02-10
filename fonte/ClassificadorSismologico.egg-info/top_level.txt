@@ -1,4 +1,0 @@
-analise_dados
-nucleo
-relatorio-sismologia
-rnc

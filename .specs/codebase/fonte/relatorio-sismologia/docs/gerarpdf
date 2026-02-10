@@ -1,0 +1,243 @@
+#!/bin/bash
+#
+
+# DIR_PROJETO
+IPTL=$HOME/projetos/ipt-latex
+
+# Use o caminho $meu_dir conforme necessário no seu script
+echo "Eu estou aqui: $(pwd)"
+echo "Diretório do projeto: $IPTL"
+echo "" 
+
+# Solicita ao usuário que selecione uma opção
+echo "Selecione o documento desejado:"
+echo "1 - Modelo de Boletim Principal"
+echo "2 - Boletim Baesa"
+echo "3 - Relatório Técnico"
+echo "4 - Relatório Preditivo"
+echo ""
+read opcao
+
+
+# Verifica a opção escolhida e executa o arquivo correspondente
+if [ "$opcao" == "1" ]; then
+     # Verifica se o arquivo existe antes de executá-lo
+    echo "Selecione o Reservatório Desejado:"
+    echo "1 - Itá"
+    echo "2 - Machadinho"
+    echo "3 - Salto Pilão"
+    echo ""
+    read opcao2
+
+    # ---------   BOLETIM DE MACHADINHO    -----------------------------------------------------------------------------
+    if [ "$opcao2" == "1" ];then
+        logs=$IPTL/tex/ita/logs/
+        tabela=$IPTL/python/tabela_tex.py
+        input_tex=$IPTL/tex/ita_boletim.tex
+        echo " Modelo Itá Selecionado"
+        echo " "
+        if [ -f "$tabela" ];then
+            echo " ---> Iniciando Python scripts"
+            echo "Executando $tabela"
+            python3 "$tabela"
+        else
+            echo ""$tabela""
+            echo "Script python não encontrado"
+            exit 1
+        fi
+        
+        if [ -f "$input_tex" ]; then 
+            # Gera o arquivo PDF a partir do arquivo LaTeX
+            echo ""
+            echo " ---> Iniciando pdflatex "$input_tex""
+            pdflatex -output-directory=$IPTL/final_boletins/ -jobname=Boletim_Itá "$input_tex" > ""$logs"log_normal.txt" 2> ""$logs"log_erros.txt" 
+            echo " -> Primeiro print"
+            pdflatex -output-directory=$IPTL/final_boletins/ -jobname=Boletim_Itá "$input_tex" > ""$logs"log_normal.txt" 2> ""$logs"log_erros.txt" 
+            echo " -> Segundo print"
+            echo " "
+            # Remove arquivos temporários gerados pelo pdflatex
+            rm -f $IPTL/final_boletins/*.aux $IPTL/final_boletins/*.log $IPTL/final_boletins/*.out $IPTL/final_boletins/*.xmpi $IPTL/final_boletins/.toc
+            echo "Arquivo PDF gerado"
+
+        else
+            echo "Script "$input_tex"  não encontrado"re ar
+            exit 1
+        fi
+
+    # -------------  BOLETIM DE ITÁ   ----------------------------------------------------------------------------------
+    elif [ "$opcao2" == "2" ];then
+        logs=$IPTL/text/machadinho/logs/
+        tabela=$IPTL/text/machadinho/python/tabela_machadinho.py
+        input_tex=$IPTL/text/machadinho_boletim.tex
+        echo " Modelo Machadinho Selecionado"
+        echo ""
+        if [ -f "$tabela" ];then
+            echo " ---> Iniciando Python scripts"
+            echo "Executando $tabela"
+            python3 "$tabela"
+            echo ""
+        else
+            echo ""$tabela""
+            echo "Script python não encontrado"
+            exit 1
+        fi
+        
+        if [ -f "$input_tex" ]; then 
+            # Gera o arquivo PDF a partir do arquivo LaTeX
+            echo " ---> Iniciando pdflatex "$input_tex""
+            pdflatex -output-directory=final_boletins/ -jobname=Boletim_Machadinho "$input_tex" > ""$logs"log_normal.txt" 2> ""$logs"log_erros.txt" 
+            echo "-> Primeiro print"
+            pdflatex -output-directory=final_boletins/ -jobname=Boletim_Machadinho "$input_tex" > ""$logs"log_normal.txt" 2> ""$logs"log_erros.txt" 
+            echo "-> Segundo print"
+            echo " "
+            # Remove arquivos temporários gerados pelo pdflatex
+            rm -f $IPTL/final_boletins/*.aux $IPTL/final_boletins/*.log $IPTL/final_boletins/*.out $IPTL/final_boletins/*.xmpi $IPTL/final_boletins/.toc
+            echo "Arquivo PDF gerado"
+
+        else
+            echo "Script "$input_tex"  não encontrado"
+            exit 1
+        fi
+        # ---------   BOLETIM DE SALTO PILÃO    -----------------------------------------------------------------------------
+    elif [ "$opcao2" == "3" ];then
+        logs=$IPTL/text/salto_pilao/logs/
+        tabela=$IPTL/text/salto_pilao/python/tabela_salto.py
+        input_tex=$IPTL/text/salto_pilao_boletim.tex
+        echo " Modelo Salto Pilão Selecionado"
+        echo ""
+        if [ -f "$tabela" ] && [ -f "$mapa" ];then
+            echo " ---> Iniciando Python scripts"
+            echo "Executando $tabela"
+            python3 "$tabela"
+            echo ""
+        else
+            echo ""$tabela""
+            echo "Script python não encontrado"
+            exit 1
+        fi
+        
+        if [ -f "$input_tex" ]; then 
+            # Gera o arquivo PDF a partir do arquivo LaTeX
+            echo " ---> Iniciando pdflatex "$input_tex""
+            pdflatex -output-directory=final_boletins/ -jobname=Boletim_Salto_Pilão "$input_tex" > ""$logs"log_normal.txt" 2> ""$logs"log_erros.txt" 
+            echo "-> Primeiro print"
+            pdflatex -output-directory=final_boletins/ -jobname=Boletim_Salto_Pilão "$input_tex" > ""$logs"log_normal.txt" 2> ""$logs"log_erros.txt" 
+            echo "-> Segundo print"
+            echo " "
+            # Remove arquivos temporários gerados pelo pdflatex
+            rm -f $IPTL/final_boletins/*.aux $IPTL/final_boletins/*.log $IPTL/final_boletins/*.out $IPTL/final_boletins/*.xmpi $IPTL/final_boletins/.toc
+            echo "Arquivo PDF gerado: ${input_tex%.tex}.pdf"
+
+        else
+            echo "Script "$input_tex"  não encontrado"
+            exit 1
+        fi
+    # ERRO NA ESCOLHA DE OPÇÃO RETORNANDO OPÇÃO INVÁLIDA
+    else
+        echo "Opção '$opcao2' inválida"
+        exit 1
+    fi
+
+# ---------------- TEMPLATE BOLETIM BAESA -------------------------------------------------------------------------------------
+elif [ "$opcao" == "2" ]; then
+input_tex=$IPTL/tex/baesa_boletim.tex
+logs=$IPTL/tex/baesa/logs/
+tabela=$IPTL/tex/baesa/python/tabela_baesa.py
+completude=$IPTL/tex/baesa/python/completude_baesa.py
+    if [ -f "$input_tex" ] && [ -f "$tabela" ] && [ -f "$completude" ];then
+        echo " Modelo Baesa Selecionado"
+        echo ""
+        echo "Executando $tabela"
+        python3 "$tabela"
+        echo "Executando $completude"
+        python3 "$completude"
+        echo ""
+        
+        # Gera o arquivo PDF a partir do arquivo LaTeX
+        echo "---> Iniciando pdflatex "$input_tex""
+        pdflatex -output-directory=final_boletins/ -jobname=Boletim_Baesa "$input_tex" > ""$logs"log_normal.txt" 2> ""$logs"log_erros.txt" 
+        echo "-> Primeiro print"
+        pdflatex -output-directory=final_boletins/ -jobname=Boletim_Baesa "$input_tex" > ""$logs"log_normal.txt" 2> ""$logs"log_erros.txt" 
+        echo "-> Segundo print"
+        echo " "
+
+        # Remove arquivos temporários gerados pelo pdflatex
+        rm -f $IPTL/final_boletins/*.aux $IPTL/final_boletins/*.log $IPTL/final_boletins/*.out $IPTL/final_boletins/*.xmpi $IPTL/final_boletins/.toc
+        echo "Arquivo PDF gerado: ${input_tex%.tex}.pdf"
+    else
+        echo "Script "$input_tex" não encontrado"
+        exit 1
+    fi
+
+# ---------------- RELATÓRIO TÉCNICO -------------------------------------------------------------------------------------
+elif [ "$opcao" == "3" ]; then
+input_tex=$IPTL/tex/relatorios_tecnicos.tex
+logs=$IPTL/tex/relatorio_tecnico/logs/
+tabela=$IPTL/tex/relatorio_tecnico/python/tabela.py
+regional=$IPTL/tex/relatorio_tecnico/python/regional.py
+completude=$IPTL/tex/relatorio_tecnico/python/completude.py
+ 
+    if [ -f "$input_tex" ] && [ -f "$completude" ] && [ -f "$regional" ] && [ -f "$tabela" ];then
+        echo " ---> Iniciando Python scripts"
+        echo "Executando $tablea"
+        python3 "$tabela"
+        echo "Executando $completude"
+        python3 "$completude"
+        echo "Executando $regional"
+        python3 "$regional"
+        echo ""
+        
+        # Gera o arquivo PDF a partir do arquivo LaTeX
+        echo " ---> Iniciando pdflatex"
+        pdflatex -output-directory=final_relatorios/tecnicos -jobname=Relatóiro_Técnico "$input_tex" > ""$logs"log_normal.txt" 2> ""$logs"log_erros.txt" 
+        echo "-> Primeiro print"
+        pdflatex -output-directory=final_relatorios/tecnicos -jobname=Relatóiro_Técnico "$input_tex" > ""$logs"log_normal.txt" 2> ""$logs"log_erros.txt" 
+        echo "-> Segundo print"
+        echo " "
+
+        # Remove arquivos temporários gerados pelo pdflatex
+        rm -f $IPTL/final_relatorios/tecnicos/*.aux $IPTL/final_relatorios/tecnicos/*.log $IPTL/final_relatorios/tecnicos/*.out $IPTL/final_relatorios/tecnicos/*.xmpi $IPTL/final_relatorios/tecnicos/.toc
+        echo "Arquivo PDF gerado."
+    else
+        echo "Script "$input_tex" não encontrado"
+        exit 1
+    fi
+
+# ---------------- RELATÓRIO PREDITIVO -------------------------------------------------------------------------------------
+elif [ "$opcao" == "4" ]; then
+input_tex=$IPTL/relatorio_preditivo.tex
+logs=$IPTL/tex/relatorio_preditivo/logs/
+tabela=$IPTL/tex/relatorio_preditivo/python/tabela.py
+regional=$IPTL/tex/relatorio_preditivo/python/regional.py
+completude=$IPTL/tex/relatorio_preditivo/python/completude.py
+ 
+    if [ -f "$input_tex" ] && [ -f "$completude" ] && [ -f "$regional" ] && [ -f "$tabela" ];then
+        echo " ---> Iniciando Python scripts"
+        echo "Executando $tablea"
+        python3 "$tabela"
+        echo "Executando $completude"
+        python3 "$completude"
+        echo "Executando $regional"
+        python3 "$regional"
+        echo ""
+        
+        # Gera o arquivo PDF a partir do arquivo LaTeX
+        echo " ---> Iniciando pdflatex"
+        pdflatex -output-directory=final_relatorios/preditivos -jobname=Relatóiro_Preditivo "$input_tex" > ""$logs"log_normal.txt" 2> ""$logs"log_erros.txt" 
+        echo "-> Primeiro print"
+        pdflatex -output-directory=final_relatorios/preditivos -jobname=Relatóiro_Preditivo "$input_tex" > ""$logs"log_normal.txt" 2> ""$logs"log_erros.txt" 
+        echo "-> Segundo print"
+        echo " "
+
+        # Remove arquivos temporários gerados pelo pdflatex
+        rm -f $IPTL/final_relatorios/preditivos/*.aux $IPTL/final_relatorios/preditivos/*.log $IPTL/final_relatorios/preditivos/*.out $IPTL/final_relatorios/preditivos/*.xmpi $IPTL/final_relatorios/preditivos/.toc
+        echo "Arquivo PDF gerado."
+    else
+        echo "Script "$input_tex" não encontrado"
+        exit 1
+    fi
+# --------------------- ERRO NA ESCOLHA DE OPÇÃO RETORNANDO OPÇÃO INVÁLIDA --------------------------------------------
+else
+    echo "Opção '$opcao' inválida!"
+    exit 1
+fi

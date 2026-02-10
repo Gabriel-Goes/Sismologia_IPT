@@ -1,647 +1,0 @@
-
-========================================================================
-                       Iniciando do Pipeline                         
-========================================================================
-
-Argumentos recebidos:
-  Catalogo: catalogo_jul.csv
-  EVENTS: False
-  TREATCATALOG: False
-  PREDICT: False
-  POSPROCESS: True
-  MAPS: True
-  REPORT: False
-  TEST: False
-
- ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
-0it [00:00, ?it/s]1it [00:00,  4.72it/s]15it [00:00, 56.32it/s]28it [00:00, 81.16it/s]44it [00:00, 106.64it/s]62it [00:00, 128.40it/s]80it [00:00, 143.79it/s]98it [00:00, 153.45it/s]116it [00:00, 160.90it/s]133it [00:01, 143.84it/s]151it [00:01, 151.97it/s]169it [00:01, 159.35it/s]186it [00:01, 150.61it/s]202it [00:01, 140.94it/s]217it [00:01, 137.55it/s]231it [00:01, 134.84it/s]245it [00:01, 136.17it/s]259it [00:01, 133.79it/s]274it [00:02, 136.09it/s]291it [00:02, 143.58it/s]307it [00:02, 145.88it/s]323it [00:02, 147.06it/s]338it [00:02, 147.38it/s]353it [00:02, 147.79it/s]369it [00:02, 149.96it/s]385it [00:02, 152.33it/s]401it [00:02, 151.61it/s]417it [00:03, 151.93it/s]433it [00:03, 153.16it/s]449it [00:03, 148.54it/s]465it [00:03, 150.04it/s]481it [00:03, 152.36it/s]498it [00:03, 156.19it/s]515it [00:03, 157.51it/s]531it [00:03, 153.78it/s]547it [00:03, 153.31it/s]563it [00:03, 150.21it/s]579it [00:04, 150.56it/s]595it [00:04, 147.80it/s]611it [00:04, 148.97it/s]626it [00:04, 146.90it/s]641it [00:04, 145.37it/s]657it [00:04, 149.13it/s]673it [00:04, 150.47it/s]690it [00:04, 153.48it/s]706it [00:04, 154.26it/s]722it [00:05, 153.24it/s]739it [00:05, 157.96it/s]756it [00:05, 159.34it/s]772it [00:05, 157.09it/s]788it [00:05, 157.14it/s]804it [00:05, 157.76it/s]820it [00:05, 151.88it/s]836it [00:05, 144.72it/s]851it [00:05, 143.78it/s]867it [00:06, 146.44it/s]882it [00:06, 136.18it/s]900it [00:06, 147.86it/s]918it [00:06, 156.36it/s]935it [00:06, 158.75it/s]952it [00:06, 157.24it/s]968it [00:06, 152.73it/s]985it [00:06, 155.85it/s]1001it [00:06, 156.55it/s]1017it [00:06, 154.84it/s]1033it [00:07, 155.34it/s]1052it [00:07, 162.82it/s]1071it [00:07, 168.02it/s]1088it [00:07, 165.62it/s]1106it [00:07, 167.31it/s]1123it [00:07, 165.35it/s]1140it [00:07, 157.85it/s]1156it [00:07, 151.52it/s]1172it [00:07, 151.77it/s]1188it [00:08, 150.25it/s]1204it [00:08, 151.70it/s]1220it [00:08, 153.01it/s]1237it [00:08, 155.56it/s]1253it [00:08, 147.38it/s]1269it [00:08, 149.35it/s]1285it [00:08, 151.67it/s]1301it [00:08, 151.97it/s]1317it [00:08, 151.43it/s]1334it [00:09, 154.13it/s]1351it [00:09, 157.78it/s]1367it [00:09, 142.45it/s]1382it [00:09, 143.71it/s]1399it [00:09, 149.10it/s]1416it [00:09, 151.45it/s]1432it [00:09, 150.32it/s]1448it [00:09, 149.51it/s]1464it [00:09, 151.75it/s]1480it [00:09, 151.24it/s]1496it [00:10, 152.31it/s]1513it [00:10, 155.38it/s]1529it [00:10, 155.34it/s]1547it [00:10, 161.38it/s]1565it [00:10, 162.16it/s]1582it [00:10, 157.58it/s]1600it [00:10, 163.81it/s]1617it [00:10, 159.38it/s]1633it [00:10, 156.02it/s]1649it [00:11, 155.57it/s]1665it [00:11, 155.96it/s]1681it [00:11, 153.67it/s]1698it [00:11, 155.89it/s]1714it [00:11, 155.29it/s]1731it [00:11, 158.34it/s]1747it [00:11, 155.59it/s]1763it [00:11, 152.65it/s]1779it [00:11, 152.50it/s]1796it [00:11, 156.34it/s]1812it [00:12, 154.42it/s]1828it [00:12, 153.19it/s]1844it [00:12, 154.71it/s]1860it [00:12, 155.45it/s]1876it [00:12, 156.26it/s]1892it [00:12, 154.83it/s]1908it [00:12, 154.15it/s]1926it [00:12, 160.21it/s]1943it [00:12, 154.14it/s]1959it [00:13, 143.75it/s]1974it [00:13, 144.81it/s]1990it [00:13, 146.94it/s]2007it [00:13, 151.80it/s]2023it [00:13, 152.93it/s]2039it [00:13, 154.23it/s]2055it [00:13, 155.72it/s]2071it [00:13, 156.27it/s]2087it [00:13, 155.31it/s]2103it [00:14, 154.35it/s]2119it [00:14, 155.12it/s]2136it [00:14, 158.95it/s]2152it [00:14, 154.58it/s]2168it [00:14, 144.16it/s]2184it [00:14, 146.47it/s]2201it [00:14, 151.16it/s]2217it [00:14, 131.11it/s]2233it [00:14, 137.36it/s]2248it [00:15, 137.33it/s]2265it [00:15, 145.34it/s]2280it [00:15, 144.73it/s]2295it [00:15, 145.59it/s]2310it [00:15, 145.46it/s]2326it [00:15, 148.16it/s]2343it [00:15, 152.54it/s]2359it [00:15, 152.70it/s]2375it [00:15, 154.42it/s]2391it [00:15, 153.06it/s]2407it [00:16, 154.03it/s]2424it [00:16, 156.17it/s]2442it [00:16, 160.57it/s]2459it [00:16, 160.86it/s]2476it [00:16, 159.67it/s]2492it [00:16, 158.28it/s]2508it [00:16, 157.24it/s]2524it [00:16, 154.47it/s]2541it [00:16, 156.91it/s]2558it [00:17, 158.86it/s]2574it [00:17, 156.16it/s]2590it [00:17, 154.77it/s]2606it [00:17, 154.15it/s]2622it [00:17, 153.40it/s]2638it [00:17, 143.18it/s]2653it [00:17, 144.88it/s]2671it [00:17, 154.47it/s]2689it [00:17, 160.14it/s]2706it [00:17, 155.49it/s]2722it [00:18, 155.65it/s]2738it [00:18, 148.03it/s]2753it [00:18, 147.27it/s]2772it [00:18, 156.52it/s]2788it [00:18, 157.30it/s]2804it [00:18, 156.44it/s]2820it [00:18, 151.82it/s]2836it [00:18, 152.68it/s]2852it [00:18, 152.01it/s]2868it [00:19, 149.88it/s]2885it [00:19, 152.72it/s]2903it [00:19, 158.12it/s]2921it [00:19, 162.03it/s]2938it [00:19, 160.31it/s]2955it [00:19, 157.81it/s]2971it [00:19, 157.71it/s]2987it [00:19, 155.11it/s]3003it [00:19, 153.09it/s]3019it [00:20, 149.52it/s]3034it [00:20, 146.00it/s]3050it [00:20, 147.09it/s]3065it [00:20, 145.50it/s]3080it [00:20, 145.75it/s]3095it [00:20, 130.72it/s]3109it [00:20, 131.23it/s]3127it [00:20, 144.54it/s]3142it [00:20, 136.91it/s]3156it [00:21, 132.04it/s]3170it [00:21, 128.38it/s]3187it [00:21, 138.51it/s]3205it [00:21, 149.01it/s]3223it [00:21, 155.34it/s]3239it [00:21, 155.36it/s]3255it [00:21, 154.89it/s]3271it [00:21, 154.11it/s]3287it [00:21, 151.26it/s]3303it [00:21, 152.31it/s]3319it [00:22, 148.84it/s]3335it [00:22, 150.34it/s]3351it [00:22, 146.80it/s]3369it [00:22, 154.98it/s]3385it [00:22, 155.52it/s]3401it [00:22, 151.10it/s]3417it [00:22, 152.79it/s]3433it [00:22, 138.71it/s]3448it [00:22, 136.30it/s]3464it [00:23, 140.41it/s]3480it [00:23, 143.81it/s]3496it [00:23, 147.83it/s]3512it [00:23, 150.61it/s]3529it [00:23, 153.74it/s]3545it [00:23, 152.63it/s]3561it [00:23, 153.71it/s]3577it [00:23, 152.34it/s]3593it [00:23, 154.35it/s]3609it [00:24, 155.47it/s]3625it [00:24, 155.83it/s]3641it [00:24, 148.57it/s]3658it [00:24, 152.32it/s]3674it [00:24, 152.26it/s]3690it [00:24, 151.26it/s]3706it [00:24, 152.18it/s]3723it [00:24, 155.76it/s]3739it [00:24, 153.59it/s]3755it [00:24, 154.92it/s]3773it [00:25, 161.56it/s]3791it [00:25, 166.57it/s]3808it [00:25, 149.33it/s]3824it [00:25, 147.65it/s]3840it [00:25, 147.12it/s]3855it [00:25, 141.93it/s]3870it [00:25, 140.14it/s]3887it [00:25, 146.97it/s]3903it [00:25, 148.08it/s]3918it [00:26, 148.22it/s]3935it [00:26, 153.25it/s]3951it [00:26, 147.31it/s]3968it [00:26, 151.94it/s]3984it [00:26, 151.30it/s]4000it [00:26, 149.19it/s]4017it [00:26, 152.63it/s]4033it [00:26, 148.97it/s]4049it [00:26, 149.10it/s]4066it [00:27, 152.72it/s]4082it [00:27, 151.52it/s]4100it [00:27, 156.67it/s]4116it [00:27, 154.84it/s]4132it [00:27, 154.46it/s]4149it [00:27, 158.90it/s]4166it [00:27, 159.21it/s]4182it [00:27, 155.01it/s]4199it [00:27, 157.83it/s]4215it [00:28, 155.74it/s]4232it [00:28, 159.57it/s]4249it [00:28, 159.47it/s]4265it [00:28, 145.14it/s]4280it [00:28, 137.80it/s]4294it [00:28, 134.32it/s]4308it [00:28, 135.07it/s]4325it [00:28, 143.46it/s]4340it [00:28, 144.32it/s]4355it [00:29, 138.43it/s]4369it [00:29, 136.96it/s]4386it [00:29, 144.61it/s]4403it [00:29, 151.02it/s]4419it [00:29, 151.16it/s]4437it [00:29, 157.06it/s]4453it [00:29, 133.27it/s]4468it [00:29, 137.59it/s]4484it [00:29, 141.60it/s]4499it [00:30, 137.71it/s]4514it [00:30, 136.58it/s]4531it [00:30, 142.42it/s]4546it [00:30, 143.36it/s]4561it [00:30, 143.17it/s]4576it [00:30, 144.59it/s]4591it [00:30, 143.14it/s]4607it [00:30, 146.41it/s]4623it [00:30, 147.65it/s]4638it [00:30, 148.22it/s]4655it [00:31, 153.15it/s]4671it [00:31, 150.05it/s]4687it [00:31, 150.50it/s]4703it [00:31, 137.81it/s]4720it [00:31, 145.39it/s]4736it [00:31, 147.76it/s]4751it [00:31, 148.30it/s]4766it [00:31, 147.56it/s]4781it [00:31, 143.23it/s]4796it [00:32, 144.02it/s]4812it [00:32, 146.92it/s]4828it [00:32, 148.88it/s]4845it [00:32, 153.51it/s]4861it [00:32, 146.13it/s]4879it [00:32, 153.37it/s]4895it [00:32, 152.63it/s]4911it [00:32, 154.19it/s]4927it [00:32, 153.75it/s]4944it [00:33, 156.40it/s]4960it [00:33, 156.97it/s]4976it [00:33, 157.47it/s]4992it [00:33, 155.19it/s]5008it [00:33, 154.11it/s]5024it [00:33, 154.16it/s]5042it [00:33, 161.16it/s]5059it [00:33, 158.72it/s]5075it [00:33, 154.47it/s]5091it [00:33, 139.08it/s]5106it [00:34, 130.32it/s]5120it [00:34, 130.06it/s]5134it [00:34, 132.06it/s]5148it [00:34, 133.74it/s]5164it [00:34, 140.14it/s]5179it [00:34, 140.46it/s]5194it [00:34, 138.03it/s]5208it [00:34, 132.40it/s]5224it [00:34, 138.66it/s]5239it [00:35, 141.86it/s]5254it [00:35, 144.16it/s]5271it [00:35, 150.33it/s]5287it [00:35, 152.24it/s]5303it [00:35, 150.95it/s]5319it [00:35, 151.11it/s]5336it [00:35, 154.14it/s]5352it [00:35, 155.20it/s]5369it [00:35, 158.86it/s]5385it [00:36, 156.32it/s]5401it [00:36, 154.48it/s]5418it [00:36, 157.40it/s]5434it [00:36, 155.83it/s]5450it [00:36, 154.57it/s]5466it [00:36, 155.96it/s]5482it [00:36, 156.62it/s]5498it [00:36, 151.51it/s]5514it [00:36, 152.09it/s]5530it [00:36, 152.41it/s]5546it [00:37, 150.85it/s]5562it [00:37, 149.76it/s]5579it [00:37, 155.07it/s]5596it [00:37, 154.68it/s]5612it [00:37, 145.97it/s]5629it [00:37, 152.41it/s]5645it [00:37, 153.85it/s]5661it [00:37, 149.96it/s]5677it [00:37, 148.83it/s]5693it [00:38, 150.97it/s]5709it [00:38, 148.95it/s]5724it [00:38, 137.27it/s]5739it [00:38, 140.20it/s]5756it [00:38, 146.78it/s]5771it [00:38, 147.19it/s]5786it [00:38, 146.37it/s]5802it [00:38, 149.55it/s]5818it [00:38, 143.11it/s]5834it [00:39, 147.14it/s]5850it [00:39, 148.06it/s]5866it [00:39, 148.68it/s]5882it [00:39, 150.47it/s]5899it [00:39, 154.37it/s]5915it [00:39, 144.80it/s]5930it [00:39, 135.64it/s]5944it [00:39, 135.17it/s]5959it [00:39, 137.18it/s]5973it [00:40, 137.40it/s]5990it [00:40, 144.99it/s]6006it [00:40, 149.24it/s]6021it [00:40, 148.51it/s]6036it [00:40, 144.19it/s]6051it [00:40, 143.08it/s]6066it [00:40, 144.75it/s]6081it [00:40, 144.37it/s]6096it [00:40, 143.41it/s]6111it [00:40, 144.48it/s]6126it [00:41, 143.43it/s]6141it [00:41, 144.48it/s]6157it [00:41, 147.99it/s]6173it [00:41, 149.51it/s]6188it [00:41, 147.73it/s]6203it [00:41, 147.47it/s]6218it [00:41, 138.78it/s]6234it [00:41, 142.48it/s]6249it [00:41, 144.42it/s]6267it [00:41, 152.25it/s]6283it [00:42, 152.82it/s]6301it [00:42, 159.53it/s]6319it [00:42, 162.73it/s]6337it [00:42, 166.10it/s]6354it [00:42, 164.27it/s]6372it [00:42, 167.35it/s]6390it [00:42, 170.03it/s]6408it [00:42, 172.83it/s]6427it [00:42, 174.44it/s]6445it [00:43, 173.81it/s]6463it [00:43, 173.87it/s]6481it [00:43, 172.26it/s]6499it [00:43, 172.08it/s]6517it [00:43, 172.56it/s]6535it [00:43, 172.40it/s]6553it [00:43, 172.20it/s]6571it [00:43, 172.74it/s]6589it [00:43, 164.90it/s]6606it [00:43, 163.13it/s]6623it [00:44, 163.46it/s]6640it [00:44, 164.01it/s]6658it [00:44, 166.90it/s]6675it [00:44, 162.14it/s]6692it [00:44, 161.28it/s]6709it [00:44, 158.40it/s]6725it [00:44, 147.78it/s]6741it [00:44, 150.79it/s]6757it [00:44, 151.00it/s]6773it [00:45, 150.68it/s]6790it [00:45, 153.72it/s]6806it [00:45, 150.12it/s]6824it [00:45, 155.70it/s]6840it [00:45, 144.81it/s]6855it [00:45, 146.04it/s]6870it [00:45, 145.98it/s]6885it [00:45, 143.14it/s]6900it [00:45, 143.62it/s]6915it [00:46, 141.90it/s]6933it [00:46, 151.20it/s]6949it [00:46, 152.01it/s]6965it [00:46, 149.17it/s]6982it [00:46, 152.78it/s]6999it [00:46, 156.90it/s]7016it [00:46, 159.04it/s]7032it [00:46, 154.99it/s]7048it [00:46, 156.04it/s]7064it [00:47, 144.41it/s]7079it [00:47, 144.51it/s]7096it [00:47, 147.65it/s]7111it [00:47, 147.00it/s]7127it [00:47, 147.44it/s]7142it [00:47, 146.52it/s]7158it [00:47, 149.54it/s]7173it [00:47, 148.06it/s]7188it [00:47, 143.90it/s]7204it [00:47, 147.66it/s]7219it [00:48, 148.05it/s]7234it [00:48, 144.89it/s]7250it [00:48, 147.39it/s]7265it [00:48, 141.50it/s]7280it [00:48, 140.51it/s]7295it [00:48, 131.79it/s]7309it [00:48, 124.83it/s]7323it [00:48, 125.28it/s]7338it [00:48, 131.19it/s]7355it [00:49, 141.04it/s]7371it [00:49, 144.72it/s]7388it [00:49, 151.73it/s]7405it [00:49, 154.42it/s]7421it [00:49, 152.65it/s]7438it [00:49, 152.00it/s]7454it [00:49, 151.80it/s]7472it [00:49, 157.52it/s]7488it [00:49, 156.05it/s]7505it [00:50, 158.65it/s]7523it [00:50, 162.99it/s]7541it [00:50, 166.78it/s]7558it [00:50, 165.91it/s]7575it [00:50, 155.19it/s]7591it [00:50, 153.47it/s]7609it [00:50, 158.83it/s]7625it [00:50, 156.38it/s]7641it [00:50, 149.11it/s]7657it [00:51, 149.07it/s]7672it [00:51, 147.80it/s]7689it [00:51, 152.63it/s]7705it [00:51, 153.49it/s]7721it [00:51, 151.02it/s]7737it [00:51, 150.39it/s]7753it [00:51, 152.74it/s]7769it [00:51, 149.28it/s]7784it [00:51, 146.37it/s]7799it [00:51, 144.71it/s]7815it [00:52, 148.00it/s]7830it [00:52, 141.11it/s]7843it [00:52, 149.99it/s]
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:613: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df.loc[:, 'Cat Hora'] = cat_hora
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:894: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
-  fig, ax = plt.subplots(figsize=(19, 9))
- pos: 0
- media_getydata: [68.5 68.5]
- pos: 1
- media_getydata: [88.8 88.8]
- pos: 2
- media_getydata: [91.2 91.2]
- pos: 3
- media_getydata: [88.1 88.1]
- pos: 4
- media_getydata: [92.35 92.35]
- pos: 5
- media_getydata: [95.05 95.05]
- pos: 6
- media_getydata: [85.5 85.5]
- pos: 7
- media_getydata: [93.1 93.1]
- pos: 8
- media_getydata: [87.2 87.2]
- pos: 9
- media_getydata: [90.6 90.6]
- pos: 10
- media_getydata: [96.9 96.9]
- pos: 11
- media_getydata: [94.8 94.8]
- pos: 12
- media_getydata: [82.8 82.8]
- pos: 13
- media_getydata: [85.6 85.6]
- pos: 14
- media_getydata: [87.5 87.5]
- pos: 0
- media_getydata: [68.5 68.5]
- pos: 1
- media_getydata: [88.8 88.8]
- pos: 2
- media_getydata: [91.4 91.4]
- pos: 3
- media_getydata: [88.1 88.1]
- pos: 4
- media_getydata: [92.35 92.35]
- pos: 5
- media_getydata: [95.05 95.05]
- pos: 6
- media_getydata: [85.5 85.5]
- pos: 7
- media_getydata: [93.1 93.1]
- pos: 8
- media_getydata: [87.2 87.2]
- pos: 9
- media_getydata: [90.6 90.6]
- pos: 10
- media_getydata: [96.9 96.9]
- pos: 11
- media_getydata: [94.8 94.8]
- pos: 12
- media_getydata: [82.8 82.8]
- pos: 13
- media_getydata: [85.6 85.6]
- pos: 14
- media_getydata: [87.25 87.25]
- pos: 0
- media_getydata: [68.5 68.5]
- pos: 1
- media_getydata: [88.8 88.8]
- pos: 2
- media_getydata: [91.4 91.4]
- pos: 3
- media_getydata: [88.1 88.1]
- pos: 4
- media_getydata: [92.35 92.35]
- pos: 5
- media_getydata: [95.05 95.05]
- pos: 6
- media_getydata: [85.5 85.5]
- pos: 7
- media_getydata: [93.1 93.1]
- pos: 8
- media_getydata: [87.2 87.2]
- pos: 9
- media_getydata: [91.25 91.25]
- pos: 10
- media_getydata: [96.9 96.9]
- pos: 11
- media_getydata: [94.8 94.8]
- pos: 12
- media_getydata: [82.8 82.8]
- pos: 13
- media_getydata: [85.6 85.6]
- pos: 14
- media_getydata: [87.25 87.25]
- pos: 0
- media_getydata: [68.5 68.5]
- pos: 1
- media_getydata: [88.8 88.8]
- pos: 2
- media_getydata: [91.4 91.4]
- pos: 3
- media_getydata: [88.1 88.1]
- pos: 4
- media_getydata: [92.35 92.35]
- pos: 5
- media_getydata: [95.05 95.05]
- pos: 6
- media_getydata: [85.5 85.5]
- pos: 7
- media_getydata: [93.1 93.1]
- pos: 8
- media_getydata: [87.2 87.2]
- pos: 9
- media_getydata: [91.25 91.25]
- pos: 10
- media_getydata: [96.9 96.9]
- pos: 11
- media_getydata: [94.8 94.8]
- pos: 12
- media_getydata: [82.8 82.8]
- pos: 13
- media_getydata: [89.3 89.3]
- pos: 14
- media_getydata: [87.25 87.25]
- pos: 0
- media_getydata: [68.5 68.5]
- pos: 1
- media_getydata: [89. 89.]
- pos: 2
- media_getydata: [91.4 91.4]
- pos: 3
- media_getydata: [87.9 87.9]
- pos: 4
- media_getydata: [92.7 92.7]
- pos: 5
- media_getydata: [95.05 95.05]
- pos: 6
- media_getydata: [87.25 87.25]
- pos: 7
- media_getydata: [93.65 93.65]
- pos: 8
- media_getydata: [87.35 87.35]
- pos: 9
- media_getydata: [94.1 94.1]
- pos: 10
- media_getydata: [96.9 96.9]
- pos: 11
- media_getydata: [95.2 95.2]
- pos: 12
- media_getydata: [82.8 82.8]
- pos: 13
- media_getydata: [78.8 78.8]
- pos: 14
- media_getydata: [87.25 87.25]
- pos: 0
- media_getydata: [69.05 69.05]
- pos: 1
- media_getydata: [89. 89.]
- pos: 2
- media_getydata: [91.2 91.2]
- pos: 3
- media_getydata: [89.95 89.95]
- pos: 4
- media_getydata: [94.05 94.05]
- pos: 5
- media_getydata: [95.3 95.3]
- pos: 6
- media_getydata: [83.25 83.25]
- pos: 7
- media_getydata: [94. 94.]
- pos: 8
- media_getydata: [93.95 93.95]
- pos: 9
- media_getydata: [94.2 94.2]
- pos: 10
- media_getydata: [97.1 97.1]
- pos: 11
- media_getydata: [95.6 95.6]
- pos: 12
- media_getydata: [82.8 82.8]
- pos: 13
- media_getydata: [78.8 78.8]
- pos: 14
- media_getydata: [92.1 92.1]
- pos: 0
- media_getydata: [69.05 69.05]
- pos: 1
- media_getydata: [89.2 89.2]
- pos: 2
- media_getydata: [91.2 91.2]
- pos: 3
- media_getydata: [89.3 89.3]
- pos: 4
- media_getydata: [94.4 94.4]
- pos: 5
- media_getydata: [95.25 95.25]
- pos: 6
- media_getydata: [86. 86.]
- pos: 7
- media_getydata: [94.55 94.55]
- pos: 8
- media_getydata: [93.4 93.4]
- pos: 9
- media_getydata: [95.1 95.1]
- pos: 10
- media_getydata: [97.4 97.4]
- pos: 11
- media_getydata: [96.6 96.6]
- pos: 12
- media_getydata: [83.5 83.5]
- pos: 13
- media_getydata: [89.6 89.6]
- pos: 14
- media_getydata: [92.15 92.15]
- pos: 0
- media_getydata: [69.6 69.6]
- pos: 1
- media_getydata: [89.2 89.2]
- pos: 2
- media_getydata: [91.75 91.75]
- pos: 3
- media_getydata: [92. 92.]
- pos: 4
- media_getydata: [93.7 93.7]
- pos: 5
- media_getydata: [95.2 95.2]
- pos: 6
- media_getydata: [86. 86.]
- pos: 7
- media_getydata: [94. 94.]
- pos: 8
- media_getydata: [93.3 93.3]
- pos: 9
- media_getydata: [95.1 95.1]
- pos: 10
- media_getydata: [97.6 97.6]
- pos: 11
- media_getydata: [96.6 96.6]
- pos: 12
- media_getydata: [83.5 83.5]
- pos: 13
- media_getydata: [89.6 89.6]
- pos: 14
- media_getydata: [92.65 92.65]
- pos: 0
- media_getydata: [69.6 69.6]
- pos: 1
- media_getydata: [89.7 89.7]
- pos: 2
- media_getydata: [91.9 91.9]
- pos: 3
- media_getydata: [90.6 90.6]
- pos: 4
- media_getydata: [93.2 93.2]
- pos: 5
- media_getydata: [95.3 95.3]
- pos: 6
- media_getydata: [90.15 90.15]
- pos: 7
- media_getydata: [95.2 95.2]
- pos: 8
- media_getydata: [91.95 91.95]
- pos: 9
- media_getydata: [94.1 94.1]
- pos: 10
- media_getydata: [97.55 97.55]
- pos: 11
- media_getydata: [96.6 96.6]
- pos: 12
- media_getydata: [83.5 83.5]
- pos: 13
- media_getydata: [93.6 93.6]
- pos: 14
- media_getydata: [93.05 93.05]
- pos: 0
- media_getydata: [70. 70.]
- pos: 1
- media_getydata: [90.85 90.85]
- pos: 2
- media_getydata: [92.6 92.6]
- pos: 3
- media_getydata: [88.15 88.15]
- pos: 4
- media_getydata: [95.45 95.45]
- pos: 5
- media_getydata: [95.85 95.85]
- pos: 6
- media_getydata: [90.4 90.4]
- pos: 7
- media_getydata: [93.55 93.55]
- pos: 8
- media_getydata: [95.35 95.35]
- pos: 9
- media_getydata: [95.1 95.1]
- pos: 10
- media_getydata: [97.65 97.65]
- pos: 11
- media_getydata: [96.6 96.6]
- pos: 12
- media_getydata: [84.75 84.75]
- pos: 13
- media_getydata: [93.85 93.85]
- pos: 14
- media_getydata: [94.15 94.15]
- pos: 0
- media_getydata: [70.4 70.4]
- pos: 1
- media_getydata: [91.4 91.4]
- pos: 2
- media_getydata: [92.95 92.95]
- pos: 3
- media_getydata: [88.75 88.75]
- pos: 4
- media_getydata: [95.9 95.9]
- pos: 5
- media_getydata: [96.3 96.3]
- pos: 6
- media_getydata: [88.35 88.35]
- pos: 7
- media_getydata: [95.2 95.2]
- pos: 8
- media_getydata: [95.65 95.65]
- pos: 9
- media_getydata: [95.55 95.55]
- pos: 10
- media_getydata: [98.6 98.6]
- pos: 11
- media_getydata: [96.85 96.85]
- pos: 12
- media_getydata: [83.5 83.5]
- pos: 13
- media_getydata: [93.85 93.85]
- pos: 14
- media_getydata: [94.9 94.9]
- pos: 0
- media_getydata: [71.8 71.8]
- pos: 1
- media_getydata: [91.25 91.25]
- pos: 2
- media_getydata: [93.95 93.95]
- pos: 3
- media_getydata: [89.3 89.3]
- pos: 4
- media_getydata: [96.5 96.5]
- pos: 5
- media_getydata: [97.15 97.15]
- pos: 6
- media_getydata: [90.4 90.4]
- pos: 7
- media_getydata: [96.5 96.5]
- pos: 8
- media_getydata: [93.95 93.95]
- pos: 9
- media_getydata: [94.1 94.1]
- pos: 10
- media_getydata: [98.7 98.7]
- pos: 11
- media_getydata: [97.2 97.2]
- pos: 12
- media_getydata: [83.5 83.5]
- pos: 13
- media_getydata: [94.1 94.1]
- pos: 14
- media_getydata: [95.4 95.4]
- pos: 0
- media_getydata: [71.9 71.9]
- pos: 1
- media_getydata: [91.25 91.25]
- pos: 2
- media_getydata: [94.2 94.2]
- pos: 3
- media_getydata: [89.95 89.95]
- pos: 4
- media_getydata: [96.85 96.85]
- pos: 5
- media_getydata: [97.35 97.35]
- pos: 6
- media_getydata: [91.15 91.15]
- pos: 7
- media_getydata: [96.8 96.8]
- pos: 8
- media_getydata: [95.6 95.6]
- pos: 9
- media_getydata: [94.1 94.1]
- pos: 10
- media_getydata: [99. 99.]
- pos: 11
- media_getydata: [97.1 97.1]
- pos: 12
- media_getydata: [83.5 83.5]
- pos: 13
- media_getydata: [94.5 94.5]
- pos: 14
- media_getydata: [95.6 95.6]
- pos: 0
- media_getydata: [72. 72.]
- pos: 1
- media_getydata: [91.4 91.4]
- pos: 2
- media_getydata: [93.95 93.95]
- pos: 3
- media_getydata: [87.95 87.95]
- pos: 4
- media_getydata: [97.1 97.1]
- pos: 5
- media_getydata: [98.1 98.1]
- pos: 6
- media_getydata: [92.4 92.4]
- pos: 7
- media_getydata: [96.2 96.2]
- pos: 8
- media_getydata: [95.8 95.8]
- pos: 9
- media_getydata: [94.25 94.25]
- pos: 10
- media_getydata: [99. 99.]
- pos: 11
- media_getydata: [97.1 97.1]
- pos: 12
- media_getydata: [83.5 83.5]
- pos: 13
- media_getydata: [94.5 94.5]
- pos: 14
- media_getydata: [95.6 95.6]
- pos: 0
- media_getydata: [71.9 71.9]
- pos: 1
- media_getydata: [91.8 91.8]
- pos: 2
- media_getydata: [94.2 94.2]
- pos: 3
- media_getydata: [87.6 87.6]
- pos: 4
- media_getydata: [97.1 97.1]
- pos: 5
- media_getydata: [97.2 97.2]
- pos: 6
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1403: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
-  plt.tight_layout()
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1562: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  sns.boxplot(
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:84: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  sns.boxplot(x='Network', y='Pick Prob_Nat', data=df, palette=station_colors, showfliers=False, ax=ax)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:90: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:117: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  ax = sns.boxplot(x='Station', y='Pick Prob_Nat', data=network_data, palette=station_colors, showfliers=False)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:122: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:117: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  ax = sns.boxplot(x='Station', y='Pick Prob_Nat', data=network_data, palette=station_colors, showfliers=False)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:122: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:117: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  ax = sns.boxplot(x='Station', y='Pick Prob_Nat', data=network_data, palette=station_colors, showfliers=False)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:122: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:117: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  ax = sns.boxplot(x='Station', y='Pick Prob_Nat', data=network_data, palette=station_colors, showfliers=False)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:122: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:117: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  ax = sns.boxplot(x='Station', y='Pick Prob_Nat', data=network_data, palette=station_colors, showfliers=False)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:122: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:117: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  ax = sns.boxplot(x='Station', y='Pick Prob_Nat', data=network_data, palette=station_colors, showfliers=False)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:122: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:117: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  ax = sns.boxplot(x='Station', y='Pick Prob_Nat', data=network_data, palette=station_colors, showfliers=False)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:122: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:117: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  ax = sns.boxplot(x='Station', y='Pick Prob_Nat', data=network_data, palette=station_colors, showfliers=False)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:122: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:117: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  ax = sns.boxplot(x='Station', y='Pick Prob_Nat', data=network_data, palette=station_colors, showfliers=False)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:122: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:117: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  ax = sns.boxplot(x='Station', y='Pick Prob_Nat', data=network_data, palette=station_colors, showfliers=False)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:122: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:117: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  ax = sns.boxplot(x='Station', y='Pick Prob_Nat', data=network_data, palette=station_colors, showfliers=False)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:122: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:117: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  ax = sns.boxplot(x='Station', y='Pick Prob_Nat', data=network_data, palette=station_colors, showfliers=False)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:122: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
-/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pos_processa.py:1562: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  sns.boxplot(
- media_getydata: [92.65 92.65]
- pos: 7
- media_getydata: [96.8 96.8]
- pos: 8
- media_getydata: [96.7 96.7]
- pos: 9
- media_getydata: [94.1 94.1]
- pos: 10
- media_getydata: [99. 99.]
- pos: 11
- media_getydata: [97.1 97.1]
- pos: 12
- media_getydata: [83.5 83.5]
- pos: 13
- media_getydata: [93.6 93.6]
- pos: 14
- media_getydata: [95.6 95.6]
- pos: 0
- media_getydata: [71.8 71.8]
- pos: 1
- media_getydata: [91.6 91.6]
- pos: 2
- media_getydata: [94.2 94.2]
- pos: 3
- media_getydata: [87.95 87.95]
- pos: 4
- media_getydata: [97.1 97.1]
- pos: 5
- media_getydata: [98.4 98.4]
- pos: 6
- media_getydata: [91.15 91.15]
- pos: 7
- media_getydata: [96.8 96.8]
- pos: 8
- media_getydata: [95.1 95.1]
- pos: 9
- media_getydata: [94.6 94.6]
- pos: 10
- media_getydata: [99. 99.]
- pos: 11
- media_getydata: [97.1 97.1]
- pos: 12
- media_getydata: [83.5 83.5]
- pos: 13
- media_getydata: [93.6 93.6]
- pos: 14
- media_getydata: [95.6 95.6]
- pos: 0
- media_getydata: [71.7 71.7]
- pos: 1
- media_getydata: [91.8 91.8]
- pos: 2
- media_getydata: [94.2 94.2]
- pos: 3
- media_getydata: [87.7 87.7]
- pos: 4
- media_getydata: [97.4 97.4]
- pos: 5
- media_getydata: [98.4 98.4]
- pos: 6
- media_getydata: [91.15 91.15]
- pos: 7
- media_getydata: [96.85 96.85]
- pos: 8
- media_getydata: [94.4 94.4]
- pos: 9
- media_getydata: [94.1 94.1]
- pos: 10
- media_getydata: [98.85 98.85]
- pos: 11
- media_getydata: [97.1 97.1]
- pos: 12
- media_getydata: [86. 86.]
- pos: 13
- media_getydata: [93.6 93.6]
- pos: 14
- media_getydata: [97.15 97.15]
-CategoricalIndex(['<1', '[1-2[', '[2-3[', '>=3'], categories=['<1', '[1-2[', '[2-3[', '>=3'], ordered=True, dtype='category', name='Magnitude_cat')
-
- -------------- Processo de criação de mapas iniciado ------------------
-
-========================================================================
-                        Fim do Pipeline                                 
-========================================================================
-
-~/projetos/ClassificadorSismologico

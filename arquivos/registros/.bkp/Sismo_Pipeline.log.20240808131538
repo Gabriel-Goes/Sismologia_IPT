@@ -1,33 +1,0 @@
-
-========================================================================
-                       Iniciando do Pipeline                         
-========================================================================
-
-Argumentos recebidos:
-  Catalogo: catalogo_jul.csv
-  EVENTS: true
-  TREATCATALOG: false
-  PREDICT: false
-  POSPROCESS: false
-  MAPS: false
-  REPORT: false
-  TEST: true
-
- Criando arquivos de backup...
- Arquivos de backup criados com sucesso!
-
- -> Executando fluxo_eventos.py...
-catalogo_jul.csv
-./fonte/nucleo/fluxo_eventos.py...
- - Número de argumentos: 3
- - Argumentos: fonte/nucleo/fluxo_eventos.py
- - Argumentos: catalogo_jul.csv
- - Argumentos: true
- --------- INICIANDO FLUXO DE EVENTOS  --------- 
-
- ------------------------------ ACESSANDO CATÁLOGO ------------------------------ 
- - Catálogo: catalogo_jul.csv
- - Primeiro EventID: usp2024ouyr
- - EventID mediano: usp2018knsx
- - Último EventID: usp2013xhoa
-  0%|          | 0/10529 [00:00<?, ?it/s]  0%|          | 1/10529 [00:00<23:36,  7.43it/s]  0%|          | 2/10529 [00:00<20:18,  8.64it/s]  0%|          | 4/10529 [00:00<16:32, 10.60it/s]  0%|          | 6/10529 [00:00<14:30, 12.09it/s]  0%|          | 8/10529 [00:00<17:56,  9.78it/s]  0%|          | 10/10529 [00:00<16:02, 10.93it/s]  0%|          | 12/10529 [00:01<21:09,  8.28it/s]  0%|          | 14/10529 [00:01<19:31,  8.98it/s]  0%|          | 15/10529 [00:01<21:07,  8.30it/s]  0%|          | 16/10529 [00:01<21:00,  8.34it/s]  0%|          | 17/10529 [00:01<22:28,  7.79it/s]  0%|          | 18/10529 [00:02<22:25,  7.81it/s]  0%|          | 19/10529 [00:02<21:54,  8.00it/s]  0%|          | 20/10529 [00:02<25:47,  6.79it/s]  0%|          | 22/10529 [00:02<20:14,  8.65it/s]  0%|          | 23/10529 [00:02<22:20,  7.84it/s]  0%|          | 24/10529 [00:02<24:19,  7.20it/s]  0%|          | 25/10529 [00:02<24:17,  7.21it/s]  0%|          | 26/10529 [00:03<24:18,  7.20it/s]  0%|          | 27/10529 [00:03<27:43,  6.31it/s]  0%|          | 28/10529 [00:03<30:31,  5.73it/s]  0%|          | 29/10529 [00:03<28:53,  6.06it/s]

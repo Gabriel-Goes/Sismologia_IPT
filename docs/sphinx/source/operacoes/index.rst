@@ -9,3 +9,4 @@ Historico incremental das operacoes executadas durante a refatoracao.
    0001-ajuste-caminhos-baseline
    0002-inicializacao-sphinx-github-pages
    0003-inicializacao-specs-project
+   0004-consolidacao-baseline-em-specs-codebase

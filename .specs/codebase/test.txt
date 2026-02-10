@@ -1,0 +1,90 @@
+
+(sismologia) ggrl@GeoServer ~/projetos/ClassificadorSismologico  dev
+> ./fluxo_sismo.sh catalogo_jul.csv -e -po -pe -pr -t -r
+Catalogo: catalogo_jul.csv
+~/projetos/ClassificadorSismologico ~/projetos/ClassificadorSismologico
+
+========================================================================
+                       Iniciando do Pipeline
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul.csv
+  EVENTS: True
+  TREATCATALOG: True
+  PREDICT: True
+  POSPROCESS: True
+  MAPS: False
+  REPORT: True
+  TEST: True
+
+
+ -------------- INICIANDO O TRATAMENTO --------------------
+ Tratando catalogo_jul.csv...
+ t0: dom 11 ago 2024 01:22:54 -03
+Argumentos recebidos:
+ eventos.csv
+ catalogo_jul.csv
+ True
+ False
+2010-11-28 10:21:12.185973
+
+Plotando distribuição de eventos por hora...
+ Catálogo filtrado com 3031 eventos
+ Nov de 2010 à Jul de 2024
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 454, in <module>
+    catalogo = main()
+               ^^^^^^
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 425, in main
+    plot_distrib_hora(catalogo, title='filtrado')
+  File "/home/ggrl/projetos/ClassificadorSismologico/fonte/analise_dados/pre_processa.py", line 142, in plot_distrib_hora
+    fig, ax = plt.subplots(figsize=(width, height), constrained_layout=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/pyplot.py", line 1759, in subplots
+    fig = figure(**fig_kw)
+          ^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/pyplot.py", line 1027, in figure
+    manager = new_figure_manager(
+              ^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/pyplot.py", line 549, in new_figure_manager
+    _warn_if_gui_out_of_main_thread()
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/pyplot.py", line 526, in _warn_if_gui_out_of_main_thread
+    canvas_class = cast(type[FigureCanvasBase], _get_backend_mod().FigureCanvas)
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/pyplot.py", line 358, in _get_backend_mod
+    switch_backend(rcParams._get("backend"))
+  File "/home/ggrl/.pyenv/versions/sismologia/lib/python3.12/site-packages/matplotlib/pyplot.py", line 423, in switch_backend
+    raise ImportError(
+ImportError: Cannot load backend 'Qt5Agg' which requires the 'qt' interactive framework, as 'headless' is currently running
+
+
+
+
+Vamos detalhar o que aconteceu nos últimos dois prompts:
+Primeiro Prompt: Erro ao Executar fluxo_sismo.sh
+
+No primeiro prompt, você executou o script fluxo_sismo.sh e encontrou um erro relacionado à inicialização de plugins do Qt. O erro ocorreu porque o sistema estava tentando carregar o plugin gráfico "xcb", que é necessário para exibir interfaces gráficas usando a biblioteca Qt, mas falhou devido a problemas de compatibilidade ou configuração.
+
+Aqui está o que aconteceu:
+
+    Qt Plugin Falhou: O script, ou algum componente utilizado por ele, tentou inicializar uma interface gráfica usando o plugin "xcb" do Qt.
+    Falha na Inicialização: O plugin "xcb" não pôde ser carregado devido a um problema com as bibliotecas associadas (em particular, a falta de um símbolo necessário chamado _ZT23QPlatformVulkanInstance), resultando na interrupção do processo.
+    Abortado: Como o Qt não conseguiu inicializar corretamente o backend gráfico, o processo foi abortado, interrompendo a execução do pipeline.
+
+Eu sugeri verificar se os plugins e bibliotecas do Qt estavam corretamente instalados e recomendados desabilitar o uso de gráficos, se possível, para evitar o problema.
+Segundo Prompt: Erro ao Executar em TTY
+
+No segundo prompt, você executou novamente o script fluxo_sismo.sh, mas desta vez em um terminal TTY (um ambiente sem interface gráfica), e encontrou um erro diferente. Desta vez, o erro estava relacionado ao Matplotlib, uma biblioteca usada para criar gráficos em Python.
+
+Aqui está o que aconteceu:
+
+    Erro de Backend do Matplotlib: O script pre_processa.py, que foi chamado pelo fluxo_sismo.sh, tentou criar um gráfico usando o Matplotlib. O Matplotlib, por padrão, tenta usar o backend Qt5Agg, que requer uma interface gráfica para exibir os gráficos.
+    Execução em Ambiente Headless: Como você estava rodando o script em um TTY (um ambiente "headless" sem interface gráfica), o backend Qt5Agg não pôde ser carregado, resultando em um erro.
+    Erro de Importação: O erro final ocorreu porque o Matplotlib não conseguiu importar o backend necessário (Qt5Agg), já que o ambiente em que você estava rodando não suporta interfaces gráficas.
+
+Minha Solução Sugerida:
+
+    Troca de Backend: Sugeri que você alterasse o backend do Matplotlib para Agg, um backend que não requer interface gráfica e é usado para renderizar gráficos em arquivos. Isso permite que o script seja executado em ambientes sem suporte gráfico, como um terminal TTY ou um servidor remoto.
+
+Essa modificação no código permitiria que o script continuasse sua execução sem tentar abrir janelas gráficas, salvando os gráficos diretamente em arquivos, o que é adequado para ambientes sem GUI (Graphical User Interface).
