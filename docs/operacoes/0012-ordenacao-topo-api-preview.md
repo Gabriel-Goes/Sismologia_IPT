@@ -26,9 +26,13 @@ Efeito:
 
 ## Decisao de estrategia
 
-- **mantido**: `autosummary_generate = False` (evita sobrescrever paginas)
+- **ajustado**: `autosummary_generate = True`
+- **ajustado**: `autosummary_generate_overwrite = False` (modo hibrido)
 - **mantido**: descricao manual detalhada por metodo
 - **ajustado**: ordem de apresentacao para priorizar assinatura no topo
+
+Com esse modo hibrido, novas paginas podem ser geradas automaticamente quando
+necessario, sem sobrescrever as paginas ja editadas manualmente.
 
 ## Validacao local
 
@@ -42,6 +46,19 @@ Resultado:
 
 - build concluido com sucesso;
 - paginas renderizadas com assinatura no topo e descricao abaixo.
+
+## Incremento (mesmo contexto)
+
+Foi criada a skill `operation-journal-consolidator` para padronizar a decisao
+entre:
+
+- consolidar mudancas na ultima operacao;
+- abrir uma nova operacao numerada.
+
+Arquivos da skill:
+
+- `skills/operation-journal-consolidator/SKILL.md`
+- `skills/operation-journal-consolidator/references/relatedness-rules.md`
 
 ## Publicacao sem commit em `main`
 

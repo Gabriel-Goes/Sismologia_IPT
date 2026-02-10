@@ -40,8 +40,9 @@ source_suffix = {
 }
 autosectionlabel_prefix_document = True
 
-# Keep manually curated API pages stable; avoid rewrites of api/generated/*.rst
-autosummary_generate = False
+# Hybrid mode: generate missing API pages but preserve manually edited ones.
+autosummary_generate = True
+autosummary_generate_overwrite = False
 autodoc_default_options = {
     'members': True,
     'undoc-members': True,
