@@ -29,3 +29,4 @@ Fluxo De Navegacao
    0014-padrao-verde-api-source-legado
    0015-correcao-deploy-gh-pages-workspace-sujo
    0016-estabilizacao-testes-fluxo-sismo-50-amostras
+   0017-runner-matriz-testes-e-guia-operacional

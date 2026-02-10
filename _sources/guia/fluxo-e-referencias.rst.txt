@@ -70,5 +70,6 @@ fonte no GitHub.
 Proximo Passo
 -------------
 
+- :doc:`Execucoes de teste do fluxo legado </guia/execucoes-de-teste-fluxo-legado>`
 - :doc:`API Reference </api/index>`
 - :doc:`Artefatos </artefatos/index>`

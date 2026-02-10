@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Execucoes De Teste Do Fluxo Legado &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API Reference" href="../api/index.html" />
+    <link rel="prev" title="Fluxo E Referencias" href="fluxo-e-referencias.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="execucoes-de-teste-do-fluxo-legado">
+<h1>Execucoes De Teste Do Fluxo Legado<a class="headerlink" href="#execucoes-de-teste-do-fluxo-legado" title="Link to this heading">¶</a></h1>
+<section id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">¶</a></h2>
+<p>Consolidar um roteiro reproduzivel para testar o <code class="docutils literal notranslate"><span class="pre">fluxo_sismo.sh</span></code> sem alterar
+o legado, usando as evidencias ja levantadas nas operacoes:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../operacoes/0007-compreensao-comportamento-fluxo-sismo.html"><span class="doc">Operacao 0007 - Compreensao comportamental do fluxo_sismo.sh</span></a></p></li>
+<li><p><a class="reference internal" href="../operacoes/0008-preparacao-ambiente-pyenv-duplo.html"><span class="doc">Operacao 0008 - Preparacao de ambiente com pyenv duplo</span></a></p></li>
+</ul>
+</section>
+<section id="escopo-do-teste">
+<h2>Escopo do teste<a class="headerlink" href="#escopo-do-teste" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Script orquestrador: <a class="reference internal" href="../artefatos/fluxo-sismo-sh.html"><span class="doc">Artefato: fluxo_sismo.sh</span></a></p></li>
+<li><p>Baseline testado: <code class="docutils literal notranslate"><span class="pre">.specs/codebase/</span></code></p></li>
+<li><p>Estrategia: execucao isolada por etapa (flags), nunca fluxo completo na
+primeira rodada.</p></li>
+</ul>
+</section>
+<section id="preflight-minimo">
+<h2>Preflight minimo<a class="headerlink" href="#preflight-minimo" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Confirmar catalogo de entrada em <code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/catalogo/</span></code>.</p></li>
+<li><p>Confirmar ambiente Python ativo conforme etapa:
+- pipeline geral: <code class="docutils literal notranslate"><span class="pre">PYENV_VERSION=sismo-core-311</span></code>
+- RNC legado: <code class="docutils literal notranslate"><span class="pre">PYENV_VERSION=sismo-rnc-379</span></code></p></li>
+<li><p>Executar via runner isolado para evitar sujeira na branch:
+<code class="docutils literal notranslate"><span class="pre">scripts/dev/run_fluxo_isolated.sh</span></code>.</p></li>
+<li><p>Para matriz completa com arquivamento automatico de logs/resultados:
+<code class="docutils literal notranslate"><span class="pre">scripts/dev/run_fluxo_test_matrix_archived.sh</span></code>.</p></li>
+</ol>
+</section>
+<section id="comandos-base">
+<h2>Comandos base<a class="headerlink" href="#comandos-base" title="Link to this heading">¶</a></h2>
+<p>Ajuda do runner:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scripts/dev/run_fluxo_isolated.sh<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>Ajuda do runner de matriz com arquivamento:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scripts/dev/run_fluxo_test_matrix_archived.sh<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>Teste de ajuda do pipeline (com catalogo):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PYENV_VERSION</span><span class="o">=</span>sismo-core-311<span class="w"> </span><span class="se">\</span>
+scripts/dev/run_fluxo_isolated.sh<span class="w"> </span>--<span class="w"> </span>catalogo_jul_filtrado.csv<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>Teste por etapa (exemplos):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PYENV_VERSION</span><span class="o">=</span>sismo-core-311<span class="w"> </span><span class="se">\</span>
+scripts/dev/run_fluxo_isolated.sh<span class="w"> </span>--<span class="w"> </span>catalogo_jul_filtrado.csv<span class="w"> </span>-pe
+
+<span class="nv">PYENV_VERSION</span><span class="o">=</span>sismo-core-311<span class="w"> </span><span class="se">\</span>
+scripts/dev/run_fluxo_isolated.sh<span class="w"> </span>--<span class="w"> </span>catalogo_jul_filtrado.csv<span class="w"> </span>-e<span class="w"> </span>-t
+
+<span class="nv">PYENV_VERSION</span><span class="o">=</span>sismo-rnc-379<span class="w"> </span><span class="se">\</span>
+scripts/dev/run_fluxo_isolated.sh<span class="w"> </span>--<span class="w"> </span>catalogo_jul_filtrado.csv<span class="w"> </span>-pr
+
+<span class="nv">PYENV_VERSION</span><span class="o">=</span>sismo-core-311<span class="w"> </span><span class="se">\</span>
+scripts/dev/run_fluxo_isolated.sh<span class="w"> </span>--<span class="w"> </span>catalogo_jul_filtrado.csv<span class="w"> </span>-po
+
+<span class="nv">PYENV_VERSION</span><span class="o">=</span>sismo-core-311<span class="w"> </span><span class="se">\</span>
+scripts/dev/run_fluxo_isolated.sh<span class="w"> </span>--<span class="w"> </span>catalogo_jul_filtrado.csv<span class="w"> </span>-m
+
+<span class="nv">PYENV_VERSION</span><span class="o">=</span>sismo-core-311<span class="w"> </span><span class="se">\</span>
+scripts/dev/run_fluxo_isolated.sh<span class="w"> </span>--<span class="w"> </span>catalogo_jul_filtrado.csv<span class="w"> </span>-r
+</pre></div>
+</div>
+<p>Matriz automatica (arquivada no repositorio):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scripts/dev/run_fluxo_test_matrix_archived.sh<span class="w"> </span>--test-limit<span class="w"> </span><span class="m">10</span>
+</pre></div>
+</div>
+<p>Por padrao, este comando arquiva logs e sumario em:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/test_matrix/&lt;timestamp&gt;/</span></code></p></li>
+</ul>
+</section>
+<section id="matriz-de-leitura-dos-resultados">
+<h2>Matriz de leitura dos resultados<a class="headerlink" href="#matriz-de-leitura-dos-resultados" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Etapa</p></th>
+<th class="head"><p>Flag</p></th>
+<th class="head"><p>Resultado observado nas execucoes</p></th>
+<th class="head"><p>Leitura tecnica</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ajuda</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--help</span></code></p></td>
+<td><p>Sem catalogo falha; com catalogo exibe ajuda.</p></td>
+<td><p>Parse atual exige catalogo antes de opcoes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pre-processamento</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-pe</span></code></p></td>
+<td><p>Falha tipica por dependencia ausente (ex.: <code class="docutils literal notranslate"><span class="pre">shapely</span></code>).</p></td>
+<td><p>Contrato da etapa depende de stack geo completa.</p></td>
+</tr>
+<tr class="row-even"><td><p>Aquisicao</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">-t</span></code></p></td>
+<td><p>Pode falhar por pasta de backup ausente e por libs (ex.: <code class="docutils literal notranslate"><span class="pre">tqdm</span></code>).</p></td>
+<td><p>Etapa sensivel a estrutura de diretorios + ambiente.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Predicao (RNC)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-pr</span></code></p></td>
+<td><p>Falha tipica por TensorFlow ausente/incompativel.</p></td>
+<td><p>Deve usar ambiente dedicado da RNC legado.</p></td>
+</tr>
+<tr class="row-even"><td><p>Pos-processamento</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-po</span></code></p></td>
+<td><p>Falha tipica por libs de analise (ex.: <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>).</p></td>
+<td><p>Etapa de consolidacao depende do stack core completo.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mapas</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-m</span></code></p></td>
+<td><p>Pode encerrar sem erro e sem gerar mapa.</p></td>
+<td><p>Comportamento esperado quando <code class="docutils literal notranslate"><span class="pre">df_nc_pos.csv</span></code> nao existe.</p></td>
+</tr>
+<tr class="row-even"><td><p>Relatorio</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-r</span></code></p></td>
+<td><p>Scripts Python executam; <code class="docutils literal notranslate"><span class="pre">pdflatex</span></code> pode falhar.</p></td>
+<td><p>Problemas aqui costumam ser de ambiente TeX/template.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="onde-ler-logs">
+<h2>Onde ler logs<a class="headerlink" href="#onde-ler-logs" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Log principal: <code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/Sismo_Pipeline.log</span></code></p></li>
+<li><p>Backups: <code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/.bkp/</span></code></p></li>
+</ul>
+<p>Use este padrao para triagem rapida:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">120</span><span class="w"> </span>.specs/codebase/arquivos/registros/Sismo_Pipeline.log
+</pre></div>
+</div>
+</section>
+<section id="criterio-de-sucesso-desta-fase">
+<h2>Critério de sucesso desta fase<a class="headerlink" href="#criterio-de-sucesso-desta-fase" title="Link to this heading">¶</a></h2>
+<p>Nesta fase, sucesso nao significa “pipeline completo verde”. Sucesso significa:</p>
+<ol class="arabic simple">
+<li><p>reproduzir comportamento por etapa;</p></li>
+<li><p>identificar dependencias/contratos de cada fase;</p></li>
+<li><p>transformar isso em insumo para a reescrita v2.</p></li>
+</ol>
+</section>
+<section id="proximo-passo">
+<h2>Proximo passo<a class="headerlink" href="#proximo-passo" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="fluxo-e-referencias.html"><span class="doc">Fluxo E Referencias</span></a></p></li>
+<li><p><a class="reference internal" href="../api/index.html"><span class="doc">API Reference</span></a></p></li>
+<li><p><a class="reference internal" href="../operacoes/0007-compreensao-comportamento-fluxo-sismo.html"><span class="doc">Operacao 0007 - Compreensao comportamental do fluxo_sismo.sh</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#fluxo-de-navegacao">Fluxo De Navegacao</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">User Guide</a><ul>
+      <li>Previous: <a href="fluxo-e-referencias.html" title="previous chapter">Fluxo E Referencias</a></li>
+      <li>Next: <a href="../api/index.html" title="next chapter">API Reference</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/guia/execucoes-de-teste-fluxo-legado.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

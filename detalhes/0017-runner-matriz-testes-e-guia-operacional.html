@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documento detalhado: 0017-runner-matriz-testes-e-guia-operacional &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="documento-detalhado-0017-runner-matriz-testes-e-guia-operacional">
+<h1>Documento detalhado: 0017-runner-matriz-testes-e-guia-operacional<a class="headerlink" href="#documento-detalhado-0017-runner-matriz-testes-e-guia-operacional" title="Link to this heading">¶</a></h1>
+</section>
+<section id="operacao-0017-runner-de-matriz-de-testes-e-guia-operacional">
+<h1>Operacao 0017 - Runner de matriz de testes e guia operacional<a class="headerlink" href="#operacao-0017-runner-de-matriz-de-testes-e-guia-operacional" title="Link to this heading">¶</a></h1>
+<p><strong>Data:</strong> 2026-02-10<br />
+<strong>Branch:</strong> <code class="docutils literal notranslate"><span class="pre">refactor/fluxo-v2-documentado</span></code><br />
+<strong>Contexto:</strong> <code class="docutils literal notranslate"><span class="pre">refatoracao</span></code><br />
+<strong>Status:</strong> <code class="docutils literal notranslate"><span class="pre">concluida</span></code></p>
+<section id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">¶</a></h2>
+<p>Padronizar a execucao de testes do legado com arquivamento de evidencias no
+repositorio e registrar o fluxo operacional no User Guide.</p>
+</section>
+<section id="escopo-executado">
+<h2>Escopo executado<a class="headerlink" href="#escopo-executado" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Criacao do runner dedicado de matriz com arquivamento:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/dev/run_fluxo_test_matrix_archived.sh</span></code></p></li>
+</ul>
+</li>
+<li><p>Correcao do runner para evitar copiar logs antigos para novos arquivos de
+arquivamento:</p>
+<ul class="simple">
+<li><p>limpeza de <code class="docutils literal notranslate"><span class="pre">arquivos/registros/test_matrix</span></code> no <code class="docutils literal notranslate"><span class="pre">run_dir</span></code> antes da execucao.</p></li>
+</ul>
+</li>
+<li><p>Inclusao de guia de testes no Sphinx:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/guia/execucoes-de-teste-fluxo-legado.rst</span></code></p></li>
+<li><p>navegacao atualizada em:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/guia/index.rst</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/guia/fluxo-e-referencias.rst</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Registro de memoria de ambiente pyenv/virtualenv para operacao local:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">documentação/memoria_ambiente_pyenv_virtualenv.md</span></code></p></li>
+<li><p>referencia adicionada em <code class="docutils literal notranslate"><span class="pre">documentação/README.md</span></code></p></li>
+</ul>
+</li>
+<li><p>Definicao do Python padrao do repositorio:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.python-version</span></code> com <code class="docutils literal notranslate"><span class="pre">sismo-core-311</span></code></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="resultado">
+<h2>Resultado<a class="headerlink" href="#resultado" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>A matriz de testes pode ser executada e arquivada com um comando:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/dev/run_fluxo_test_matrix_archived.sh</span> <span class="pre">--test-limit</span> <span class="pre">10</span></code></p></li>
+</ul>
+</li>
+<li><p>O risco de poluicao entre execucoes sucessivas foi reduzido.</p></li>
+<li><p>O User Guide passou a ter uma pagina dedicada para execucao de testes do
+legado, com comandos e leitura de resultados.</p></li>
+<li><p>A ativacao do ambiente Python core ficou explicita na raiz do projeto.</p></li>
+</ol>
+</section>
+<section id="observacoes">
+<h2>Observacoes<a class="headerlink" href="#observacoes" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Esta operacao nao comita artefatos runtime de <code class="docutils literal notranslate"><span class="pre">arquivos/eventos/*</span></code> e
+<code class="docutils literal notranslate"><span class="pre">arquivos/registros/*</span></code> alterados por execucoes locais.</p></li>
+<li><p>Evidencias de teste devem ser mantidas preferencialmente em <code class="docutils literal notranslate"><span class="pre">docs/operacoes/anexos/</span></code>
+ou em pastas de arquivamento deliberadas.</p></li>
+</ol>
+</section>
+<section id="proximo-passo">
+<h2>Proximo passo<a class="headerlink" href="#proximo-passo" title="Link to this heading">¶</a></h2>
+<p>Executar a matriz com <code class="docutils literal notranslate"><span class="pre">--test-limit</span> <span class="pre">10</span></code> no ambiente-alvo (IAG/SEISAPP) e
+registrar os resultados como nova operacao.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/detalhes/0017-runner-matriz-testes-e-guia-operacional.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
