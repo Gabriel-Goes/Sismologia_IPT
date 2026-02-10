@@ -19,7 +19,7 @@
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="nucleo.fluxo_eventos.iterar_eventos" href="generated/nucleo.fluxo_eventos.iterar_eventos.html" />
+    <link rel="next" title="analise_dados.pre_processa.main" href="generated/analise_dados.pre_processa.main.html" />
     <link rel="prev" title="Fluxo E Referencias" href="../guia/fluxo-e-referencias.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -43,9 +43,8 @@
 <p>Referencia de funcoes e classes usadas no fluxo legado. Cada objeto abaixo
 aponta para pagina dedicada com explicacao de comportamento, assinatura,
 docstring e botao <code class="docutils literal notranslate"><span class="pre">[source]</span></code>.</p>
-<p>Escopo atual: modulos que permitem import seguro no build de documentacao.
-Scripts com parse de argumentos em tempo de importacao permanecem em
-<a class="reference internal" href="../artefatos/index.html"><span class="doc">Artefatos</span></a> ate serem refatorados.</p>
+<p>Escopo atual: objetos Python usados no pipeline legado, incluindo entrypoints
+de scripts principais. Arquivos nao-Python permanecem em <a class="reference internal" href="../artefatos/index.html"><span class="doc">Artefatos</span></a>.</p>
 <section id="fluxo-de-navegacao">
 <h2>Fluxo De Navegacao<a class="headerlink" href="#fluxo-de-navegacao" title="Link to this heading">¶</a></h2>
 <ul class="simple">
@@ -54,6 +53,34 @@ Scripts com parse de argumentos em tempo de importacao permanecem em
 <li><p>Consultar historico de mudancas: <a class="reference internal" href="../operacoes/index.html"><span class="doc">Operacoes</span></a></p></li>
 </ul>
 </section>
+<section id="entrypoints-do-fluxo-legado">
+<h2>Entrypoints Do Fluxo Legado<a class="headerlink" href="#entrypoints-do-fluxo-legado" title="Link to this heading">¶</a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/analise_dados.pre_processa.main.html#analise_dados.pre_processa.main" title="analise_dados.pre_processa.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">analise_dados.pre_processa.main</span></code></a>([args])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/nucleo.fluxo_eventos.fluxo_eventos.html#nucleo.fluxo_eventos.fluxo_eventos" title="nucleo.fluxo_eventos.fluxo_eventos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nucleo.fluxo_eventos.fluxo_eventos</span></code></a>(EventIDs, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnc.run.main.html#rnc.run.main" title="rnc.run.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rnc.run.main</span></code></a>(args)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/analise_dados.pos_processa.main.html#analise_dados.pos_processa.main" title="analise_dados.pos_processa.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">analise_dados.pos_processa.main</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/analise_dados.gera_mapas.main.html#analise_dados.gera_mapas.main" title="analise_dados.gera_mapas.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">analise_dados.gera_mapas.main</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/figures.generate_latex_for_figures.html#figures.generate_latex_for_figures" title="figures.generate_latex_for_figures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">figures.generate_latex_for_figures</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/mapa.generate_map_latex.html#mapa.generate_map_latex" title="mapa.generate_map_latex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapa.generate_map_latex</span></code></a>(base_path, ...)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="nucleo">
 <h2>Nucleo<a class="headerlink" href="#nucleo" title="Link to this heading">¶</a></h2>
 <table class="autosummary longtable docutils align-default">
@@ -61,16 +88,13 @@ Scripts com parse de argumentos em tempo de importacao permanecem em
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/nucleo.fluxo_eventos.iterar_eventos.html#nucleo.fluxo_eventos.iterar_eventos" title="nucleo.fluxo_eventos.iterar_eventos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nucleo.fluxo_eventos.iterar_eventos</span></code></a>(eventos, ...)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/nucleo.fluxo_eventos.fluxo_eventos.html#nucleo.fluxo_eventos.fluxo_eventos" title="nucleo.fluxo_eventos.fluxo_eventos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nucleo.fluxo_eventos.fluxo_eventos</span></code></a>(EventIDs, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/nucleo.fluxo_eventos.main.html#nucleo.fluxo_eventos.main" title="nucleo.fluxo_eventos.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nucleo.fluxo_eventos.main</span></code></a>(EventIDs)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/nucleo.fluxo_eventos.main.html#nucleo.fluxo_eventos.main" title="nucleo.fluxo_eventos.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nucleo.fluxo_eventos.main</span></code></a>(EventIDs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/nucleo.utils.DualOutput.html#nucleo.utils.DualOutput" title="nucleo.utils.DualOutput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nucleo.utils.DualOutput</span></code></a>(filename)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/nucleo.utils.DualOutput.html#nucleo.utils.DualOutput" title="nucleo.utils.DualOutput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nucleo.utils.DualOutput</span></code></a>(filename)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/nucleo.utils.csv2list.html#nucleo.utils.csv2list" title="nucleo.utils.csv2list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nucleo.utils.csv2list</span></code></a>(csv_file[, data])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/nucleo.utils.csv2list.html#nucleo.utils.csv2list" title="nucleo.utils.csv2list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nucleo.utils.csv2list</span></code></a>(csv_file[, data])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -90,9 +114,6 @@ Scripts com parse de argumentos em tempo de importacao permanecem em
 <td><p>Event class prediction.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/rnc.run.read_args.html#rnc.run.read_args" title="rnc.run.read_args"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rnc.run.read_args</span></code></a>()</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnc.run.main.html#rnc.run.main" title="rnc.run.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rnc.run.main</span></code></a>(args)</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -152,6 +173,7 @@ Scripts com parse de argumentos em tempo de importacao permanecem em
 <li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#fluxo-de-navegacao">Fluxo De Navegacao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#entrypoints-do-fluxo-legado">Entrypoints Do Fluxo Legado</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nucleo">Nucleo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rnc">RNC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#analise-de-dados">Analise De Dados</a></li>
@@ -166,7 +188,7 @@ Scripts com parse de argumentos em tempo de importacao permanecem em
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="../guia/fluxo-e-referencias.html" title="previous chapter">Fluxo E Referencias</a></li>
-      <li>Next: <a href="generated/nucleo.fluxo_eventos.iterar_eventos.html" title="next chapter">nucleo.fluxo_eventos.iterar_eventos</a></li>
+      <li>Next: <a href="generated/analise_dados.pre_processa.main.html" title="next chapter">analise_dados.pre_processa.main</a></li>
   </ul></li>
 </ul>
 </div>

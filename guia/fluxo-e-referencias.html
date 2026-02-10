@@ -48,9 +48,15 @@
 </ul>
 <section id="aquisicao-e-normalizacao-de-eventos">
 <h2>Aquisicao e normalizacao de eventos<a class="headerlink" href="#aquisicao-e-normalizacao-de-eventos" title="Link to this heading">¶</a></h2>
-<p>A etapa de aquisicao usa:</p>
+<p>O fluxo de entrada usa:</p>
 <ul class="simple">
-<li><p>script: <a class="reference internal" href="../artefatos/fluxo-eventos-py.html"><span class="doc">fluxo_eventos.py</span></a>;</p></li>
+<li><p>pre-processamento (source):
+<a class="reference external" href="../_modules/analise_dados/pre_processa.html#main">analise_dados/pre_processa.py</a>;</p></li>
+<li><p>entrypoint: <a class="reference internal" href="../api/generated/analise_dados.pre_processa.main.html"><span class="doc">analise_dados.pre_processa.main</span></a>.</p></li>
+</ul>
+<p>Depois, a aquisicao usa:</p>
+<ul class="simple">
+<li><p>script (source): <a class="reference external" href="../_modules/nucleo/fluxo_eventos.html#fluxo_eventos">nucleo/fluxo_eventos.py</a>;</p></li>
 <li><p>funcao principal: <a class="reference internal" href="../api/generated/nucleo.fluxo_eventos.fluxo_eventos.html"><span class="doc">nucleo.fluxo_eventos.fluxo_eventos</span></a>;</p></li>
 <li><p>iteracao de picks: <a class="reference internal" href="../api/generated/nucleo.fluxo_eventos.iterar_eventos.html"><span class="doc">nucleo.fluxo_eventos.iterar_eventos</span></a>;</p></li>
 <li><p>utilitarios: <a class="reference internal" href="../api/generated/nucleo.utils.csv2list.html"><span class="doc">nucleo.utils.csv2list</span></a>
@@ -61,7 +67,7 @@ e <a class="reference internal" href="../api/generated/nucleo.utils.DualOutput.h
 <h2>Classificacao (RNC)<a class="headerlink" href="#classificacao-rnc" title="Link to this heading">¶</a></h2>
 <p>A classificacao na RNC usa:</p>
 <ul class="simple">
-<li><p>script: <a class="reference internal" href="../artefatos/rnc-run-py.html"><span class="doc">rnc/run.py</span></a>;</p></li>
+<li><p>script (source): <a class="reference external" href="../_modules/rnc/run.html#main">rnc/run.py</a>;</p></li>
 <li><p>entrada do fluxo: <a class="reference internal" href="../api/generated/rnc.run.main.html"><span class="doc">rnc.run.main</span></a>;</p></li>
 <li><p>extracao de espectros: <a class="reference internal" href="../api/generated/rnc.data_process.spectro_extract.html"><span class="doc">rnc.data_process.spectro_extract</span></a>;</p></li>
 <li><p>FFT: <a class="reference internal" href="../api/generated/rnc.data_process.get_fft.html"><span class="doc">rnc.data_process.get_fft</span></a>;</p></li>
@@ -72,12 +78,25 @@ e <a class="reference internal" href="../api/generated/nucleo.utils.DualOutput.h
 <h2>Pos-processamento e mapas<a class="headerlink" href="#pos-processamento-e-mapas" title="Link to this heading">¶</a></h2>
 <p>As etapas finais usam:</p>
 <ul class="simple">
-<li><p>pos-processamento (script): <a class="reference internal" href="../artefatos/pos-processa-py.html"><span class="doc">pos_processa.py</span></a>;</p></li>
+<li><p>pos-processamento (source):
+<a class="reference external" href="../_modules/analise_dados/pos_processa.html#main">analise_dados/pos_processa.py</a>;</p></li>
 <li><p>limpeza/consolidacao: <a class="reference internal" href="../api/generated/analise_dados.pos_processa.clean_data.html"><span class="doc">analise_dados.pos_processa.clean_data</span></a>;</p></li>
 <li><p>consolidacao por evento: <a class="reference internal" href="../api/generated/analise_dados.pos_processa.recall_event.html"><span class="doc">analise_dados.pos_processa.recall_event</span></a>;</p></li>
-<li><p>mapas (script): <a class="reference internal" href="../artefatos/gera-mapas-py.html"><span class="doc">gera_mapas.py</span></a>;</p></li>
+<li><p>mapas (source):
+<a class="reference external" href="../_modules/analise_dados/gera_mapas.html#main">analise_dados/gera_mapas.py</a>;</p></li>
+<li><p>entrypoint de mapas: <a class="reference internal" href="../api/generated/analise_dados.gera_mapas.main.html"><span class="doc">analise_dados.gera_mapas.main</span></a>;</p></li>
 <li><p>mapa de predicoes: <a class="reference internal" href="../api/generated/analise_dados.gera_mapas.plot_pred_map.html"><span class="doc">analise_dados.gera_mapas.plot_pred_map</span></a>;</p></li>
 <li><p>macro-regioes: <a class="reference internal" href="../api/generated/analise_dados.gera_mapas.plot_macroregions.html"><span class="doc">analise_dados.gera_mapas.plot_macroregions</span></a>.</p></li>
+</ul>
+</section>
+<section id="relatorio">
+<h2>Relatorio<a class="headerlink" href="#relatorio" title="Link to this heading">¶</a></h2>
+<p>Para fechamento do pipeline:</p>
+<ul class="simple">
+<li><p>script (source): <a class="reference external" href="../_modules/figures.html#generate_latex_for_figures">figures.py</a>;</p></li>
+<li><p>docs: <a class="reference internal" href="../api/generated/figures.generate_latex_for_figures.html"><span class="doc">figures.generate_latex_for_figures</span></a>;</p></li>
+<li><p>script (source): <a class="reference external" href="../_modules/mapa.html#generate_map_latex">mapa.py</a>;</p></li>
+<li><p>docs: <a class="reference internal" href="../api/generated/mapa.generate_map_latex.html"><span class="doc">mapa.generate_map_latex</span></a>.</p></li>
 </ul>
 </section>
 <section id="artefatos-nao-python">

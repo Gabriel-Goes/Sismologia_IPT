@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>nucleo.utils.DualOutput &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <title>analise_dados.pos_processa.main &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=b08954a9" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
@@ -19,8 +19,8 @@
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="nucleo.utils.csv2list" href="nucleo.utils.csv2list.html" />
-    <link rel="prev" title="nucleo.fluxo_eventos.main" href="nucleo.fluxo_eventos.main.html" />
+    <link rel="next" title="analise_dados.gera_mapas.main" href="analise_dados.gera_mapas.main.html" />
+    <link rel="prev" title="rnc.run.main" href="rnc.run.main.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -38,35 +38,33 @@
 
           <div class="body" role="main">
             
-  <section id="nucleo-utils-dualoutput">
-<h1>nucleo.utils.DualOutput<a class="headerlink" href="#nucleo-utils-dualoutput" title="Link to this heading">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="nucleo.utils.DualOutput">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">nucleo.utils.</span></span><span class="sig-name descname"><span class="pre">DualOutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleo/utils.html#DualOutput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleo.utils.DualOutput" title="Link to this definition">¶</a></dt>
-<dd><dl class="py method">
-<dt class="sig sig-object py" id="nucleo.utils.DualOutput.flush">
-<span class="sig-name descname"><span class="pre">flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/nucleo/utils.html#DualOutput.flush"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleo.utils.DualOutput.flush" title="Link to this definition">¶</a></dt>
+  <section id="analise-dados-pos-processa-main">
+<h1>analise_dados.pos_processa.main<a class="headerlink" href="#analise-dados-pos-processa-main" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="analise_dados.pos_processa.main">
+<span class="sig-prename descclassname"><span class="pre">analise_dados.pos_processa.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/analise_dados/pos_processa.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analise_dados.pos_processa.main" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="nucleo.utils.DualOutput.write">
-<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/nucleo/utils.html#DualOutput.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleo.utils.DualOutput.write" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
 
 <section id="resumo">
 <h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
-<p>Classe utilitaria para duplicar escrita de saida em dois destinos:</p>
-<ul class="simple">
-<li><p>terminal (stdout atual);</p></li>
-<li><p>arquivo de log em modo append.</p></li>
-</ul>
+<p>Entrypoint do pos-processamento legado. Consolida resultados de classificacao,
+calcula metricas por evento/periodo e produz tabelas/graficos para analise
+final e para o relatorio.</p>
 </section>
-<section id="uso-tipico">
-<h2>Uso tipico<a class="headerlink" href="#uso-tipico" title="Link to this heading">¶</a></h2>
-<p>Substituir <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code> por uma instancia de <code class="docutils literal notranslate"><span class="pre">DualOutput</span></code> para gravar logs
-sem perder a visualizacao no terminal.</p>
+<section id="parametros">
+<h2>Parametros<a class="headerlink" href="#parametros" title="Link to this heading">¶</a></h2>
+<p>Esta funcao nao recebe argumentos explicitos; usa caminhos padrao do pipeline.</p>
+</section>
+<section id="retorno">
+<h2>Retorno<a class="headerlink" href="#retorno" title="Link to this heading">¶</a></h2>
+<p>Retorna dataframes consolidados do fluxo pos-processado.</p>
+</section>
+<section id="efeitos-colaterais">
+<h2>Efeitos colaterais<a class="headerlink" href="#efeitos-colaterais" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Atualiza artefatos em <code class="docutils literal notranslate"><span class="pre">arquivos/resultados/</span></code>.</p></li>
+<li><p>Gera figuras em <code class="docutils literal notranslate"><span class="pre">arquivos/figuras/pos_process/</span></code>.</p></li>
+</ul>
 </section>
 </section>
 
@@ -103,8 +101,8 @@ sem perder a visualizacao no terminal.</p>
 <li class="toctree-l1"><a class="reference internal" href="../../guia/index.html">User Guide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../index.html#fluxo-de-navegacao">Fluxo De Navegacao</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#entrypoints-do-fluxo-legado">Entrypoints Do Fluxo Legado</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html#nucleo">Nucleo</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#entrypoints-do-fluxo-legado">Entrypoints Do Fluxo Legado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#nucleo">Nucleo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#rnc">RNC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#analise-de-dados">Analise De Dados</a></li>
 </ul>
@@ -118,8 +116,8 @@ sem perder a visualizacao no terminal.</p>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../index.html">API Reference</a><ul>
-      <li>Previous: <a href="nucleo.fluxo_eventos.main.html" title="previous chapter">nucleo.fluxo_eventos.main</a></li>
-      <li>Next: <a href="nucleo.utils.csv2list.html" title="next chapter">nucleo.utils.csv2list</a></li>
+      <li>Previous: <a href="rnc.run.main.html" title="previous chapter">rnc.run.main</a></li>
+      <li>Next: <a href="analise_dados.gera_mapas.main.html" title="next chapter">analise_dados.gera_mapas.main</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -144,7 +142,7 @@ sem perder a visualizacao no terminal.</p>
       &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
-      <a href="../../_sources/api/generated/nucleo.utils.DualOutput.rst.txt"
+      <a href="../../_sources/api/generated/analise_dados.pos_processa.main.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
