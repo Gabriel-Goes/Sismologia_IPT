@@ -42,7 +42,8 @@
 <section id="operacao-0012-ordenacao-de-metodos-no-topo-da-api-branch-de-preview">
 <h1>Operacao 0012 - Ordenacao de metodos no topo da API (branch de preview)<a class="headerlink" href="#operacao-0012-ordenacao-de-metodos-no-topo-da-api-branch-de-preview" title="Link to this heading">¶</a></h1>
 <p><strong>Data:</strong> 2026-02-10<br />
-<strong>Branch:</strong> <code class="docutils literal notranslate"><span class="pre">docs/api-topo-preview</span></code></p>
+<strong>Branch:</strong> <code class="docutils literal notranslate"><span class="pre">docs/api-topo-preview</span></code>
+<strong>Contexto:</strong> <code class="docutils literal notranslate"><span class="pre">refatoracao</span></code></p>
 <section id="objetivo">
 <h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">¶</a></h2>
 <p>Manter as paginas de API com assinatura/metodo no topo, no estilo visual do
@@ -118,6 +119,38 @@ friccao de navegacao:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/operacoes/index.rst</span></code></p></li>
 </ul>
 </section>
+<section id="incremento-3-dois-objetivos-documentais">
+<h2>Incremento 3 (dois objetivos documentais)<a class="headerlink" href="#incremento-3-dois-objetivos-documentais" title="Link to this heading">¶</a></h2>
+<p>Foi formalizada a separacao explicita entre:</p>
+<ul class="simple">
+<li><p>objetivo da refatoracao (como executar a reescrita v2);</p></li>
+<li><p>objetivo do legado (o que o sistema atual faz).</p></li>
+</ul>
+<p>Ajustes aplicados:</p>
+<ul class="simple">
+<li><p>nova pagina Sphinx: <code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/dois_objetivos.rst</span></code></p></li>
+<li><p>fluxo de leitura atualizado para incluir “Dois Objetivos”</p></li>
+<li><p>alinhamento de projeto em:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/project/PROJECT.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/project/ROADMAP.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.specs/project/STATE.md</span></code></p></li>
+</ul>
+</li>
+<li><p>skill de consolidacao atualizada para exigir contexto:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">skills/operation-journal-consolidator/SKILL.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skills/operation-journal-consolidator/references/relatedness-rules.md</span></code></p></li>
+</ul>
+</li>
+<li><p>documentacao narrativa alinhada:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">documentação/README.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">documentação/estado_atual_sistema.md</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="publicacao-sem-commit-em-main">
 <h2>Publicacao sem commit em <code class="docutils literal notranslate"><span class="pre">main</span></code><a class="headerlink" href="#publicacao-sem-commit-em-main" title="Link to this heading">¶</a></h2>
 <p>Esta operacao foi feita em branch separada para evitar gatilho de notificacoes
@@ -155,6 +188,7 @@ apontando para esta branch, e o merge para <code class="docutils literal notrans
 <p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>

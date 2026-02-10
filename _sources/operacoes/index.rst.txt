@@ -2,6 +2,7 @@ Operacoes
 =========
 
 Historico incremental das operacoes executadas durante a refatoracao.
+Cada operacao deve registrar contexto explicito: ``refatoracao`` ou ``legado``.
 
 Fluxo De Navegacao
 ------------------
