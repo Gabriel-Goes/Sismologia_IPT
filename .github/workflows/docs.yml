@@ -25,6 +25,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -36,6 +40,8 @@ jobs:
           pip install sphinx
 
       - name: Build HTML
+        env:
+          SPHINX_HTML_BASEURL: ${{ steps.pages.outputs.base_url }}/
         run: sphinx-build -b html docs/sphinx/source docs/sphinx/build/html
 
       - name: Upload Pages Artifact
@@ -53,4 +59,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
