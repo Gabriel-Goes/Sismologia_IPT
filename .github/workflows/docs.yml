@@ -55,7 +55,7 @@ jobs:
 
           if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
             git fetch origin gh-pages
-            git switch -C gh-pages origin/gh-pages
+            git switch -C gh-pages FETCH_HEAD
           else
             git switch --orphan gh-pages
           fi
