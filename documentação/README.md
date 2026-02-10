@@ -18,6 +18,8 @@ Este diretorio complementa a estrategia de dois trilhos:
   conduzir planejamento e execucao em modo spec-driven.
 - `documentação/Possible_Paper_OutLine.md`: direcao tecnica/cientifica para
   narrativa academica e justificativas do trabalho.
+- `documentação/memoria_ambiente_pyenv_virtualenv.md`: memoria operacional do
+  setup de ambiente com `pyenv` + `pyenv-virtualenv` (core + RNC).
 
 ## Fontes Canonicas Por Trilha
 
