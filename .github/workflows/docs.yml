@@ -10,52 +10,65 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install Sphinx
-        run: |
-          python -m pip install --upgrade pip
-          pip install sphinx
-
-      - name: Build HTML
-        env:
-          SPHINX_HTML_BASEURL: ${{ steps.pages.outputs.base_url }}/
-        run: sphinx-build -b html docs/sphinx/source docs/sphinx/build/html
-
-      - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs/sphinx/build/html
-
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Clone repository
+        env:
+          REPO: ${{ github.repository }}
+          REF: ${{ github.ref_name }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git clone --depth=1 --branch "$REF" "https://x-access-token:${TOKEN}@github.com/${REPO}.git" repo
+
+      - name: Build Sphinx HTML
+        run: |
+          set -euo pipefail
+          cd repo
+          python3 -m pip install --upgrade pip
+          python3 -m pip install sphinx
+          sphinx-build -b html docs/sphinx/source docs/sphinx/build/html
+          touch docs/sphinx/build/html/.nojekyll
+
+      - name: Publish to gh-pages
+        env:
+          REPO: ${{ github.repository }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          cd repo
+
+          BUILD_DIR="$(mktemp -d)"
+          cp -a docs/sphinx/build/html/. "$BUILD_DIR"/
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
+            git fetch origin gh-pages
+            git switch -C gh-pages origin/gh-pages
+          else
+            git switch --orphan gh-pages
+          fi
+
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -a "$BUILD_DIR"/. .
+          rm -rf "$BUILD_DIR"
+
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No documentation changes to publish."
+            exit 0
+          fi
+
+          git commit -m "docs: publish from ${SHA}"
+          git push "https://x-access-token:${TOKEN}@github.com/${REPO}.git" gh-pages:gh-pages
