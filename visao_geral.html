@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Visao Geral &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -65,6 +65,72 @@ academica.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/guia/</span></code>: user guide com links para API.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/api/</span></code>: referencia de funcoes e classes.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/artefatos/</span></code>: scripts e arquivos txt renderizados.</p></li>
+</ul>
+</section>
+<section id="fluxo-legado-fluxo-sismo-sh">
+<h2>Fluxo Legado (fluxo_sismo.sh)<a class="headerlink" href="#fluxo-legado-fluxo-sismo-sh" title="Link to this heading">¶</a></h2>
+<p>O orquestrador do legado e <code class="docutils literal notranslate"><span class="pre">.specs/codebase/fluxo_sismo.sh</span></code>. Ele conecta
+todo o ciclo: catalogo -&gt; aquisicao -&gt; classificacao -&gt; analise -&gt; mapas -&gt;
+relatorio.</p>
+</section>
+<section id="entrada-e-controle">
+<h2>Entrada e controle<a class="headerlink" href="#entrada-e-controle" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Entrada principal: arquivo de catalogo em <code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/catalogo/</span></code>.</p></li>
+<li><p>Flags de controle:
+- <code class="docutils literal notranslate"><span class="pre">--pre</span></code>: tratamento de catalogo
+- <code class="docutils literal notranslate"><span class="pre">--eventos</span></code>: aquisicao de eventos e formas de onda
+- <code class="docutils literal notranslate"><span class="pre">--predict</span></code>: inferencia da RNC
+- <code class="docutils literal notranslate"><span class="pre">--pos</span></code>: pos-processamento e metricas
+- <code class="docutils literal notranslate"><span class="pre">--maps</span></code>: geracao de mapas
+- <code class="docutils literal notranslate"><span class="pre">--report</span></code>: geracao de relatorio PDF
+- <code class="docutils literal notranslate"><span class="pre">--test</span></code>: modo de teste para aquisicao</p></li>
+<li><p>Log central: <code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/Sismo_Pipeline.log</span></code> (com backup automatico).</p></li>
+</ul>
+</section>
+<section id="ordem-de-execucao-e-scripts-chamados">
+<h2>Ordem de execucao e scripts chamados<a class="headerlink" href="#ordem-de-execucao-e-scripts-chamados" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Tratamento do catalogo (<cite>–pre</cite>)
+Script: <code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/analise_dados/pre_processa.py</span></code>
+Objetivo: filtrar/tratar catalogo de entrada.</p></li>
+<li><p>Aquisicao de eventos (<cite>–eventos</cite>)
+Script: <code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/nucleo/fluxo_eventos.py</span></code>
+Objetivo: consultar FDSN, baixar formas de onda e gerar <code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code>.</p></li>
+<li><p>Predicao (<cite>–predict</cite>)
+Script: <code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/rnc/run.py</span></code>
+Cadeia interna: <code class="docutils literal notranslate"><span class="pre">data_process.py</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">prediction.py</span></code>
+Objetivo: extrair espectrogramas e classificar picks/eventos.</p></li>
+<li><p>Pos-processamento (<cite>–pos</cite>)
+Script: <code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/analise_dados/pos_processa.py</span></code>
+Objetivo: consolidar metricas, filtros e graficos.</p></li>
+<li><p>Mapas (<cite>–maps</cite>)
+Script: <code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/analise_dados/gera_mapas.py</span></code>
+Objetivo: produzir mapas de distribuicao/probabilidade.</p></li>
+<li><p>Relatorio (<cite>–report</cite>)
+Scripts: <code class="docutils literal notranslate"><span class="pre">figures.py</span></code> e <code class="docutils literal notranslate"><span class="pre">mapa.py</span></code> em
+<code class="docutils literal notranslate"><span class="pre">.specs/codebase/fonte/relatorio-sismologia/pyscripts/</span></code>
+Finalizacao: <code class="docutils literal notranslate"><span class="pre">pdflatex</span></code> em <code class="docutils literal notranslate"><span class="pre">relatorio_preditivo.tex</span></code>.</p></li>
+</ol>
+</section>
+<section id="artefatos-principais-por-etapa">
+<h2>Artefatos principais por etapa<a class="headerlink" href="#artefatos-principais-por-etapa" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Eventos: <code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/eventos/eventos.csv</span></code></p></li>
+<li><p>Erros de aquisicao/pipeline: <code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/eventos/erros.csv</span></code></p></li>
+<li><p>Predicao: <code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/resultados/predito.csv</span></code></p></li>
+<li><p>Pos-processamento: <code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/resultados/*analisado*.csv</span></code></p></li>
+<li><p>Relatorio final: <code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/resultados/relatorios/*.pdf</span></code></p></li>
+</ul>
+</section>
+<section id="dependencias-chave-do-fluxo">
+<h2>Dependencias-chave do fluxo<a class="headerlink" href="#dependencias-chave-do-fluxo" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Aquisicao sismologica: <code class="docutils literal notranslate"><span class="pre">obspy</span></code></p></li>
+<li><p>Inferencia CNN: <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></li>
+<li><p>Analise/plots: <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">seaborn</span></code></p></li>
+<li><p>Geo/mapas: <code class="docutils literal notranslate"><span class="pre">geopandas</span></code>, <code class="docutils literal notranslate"><span class="pre">shapely</span></code>, <code class="docutils literal notranslate"><span class="pre">pygmt</span></code></p></li>
+<li><p>Relatorio: <code class="docutils literal notranslate"><span class="pre">pdflatex</span></code></p></li>
 </ul>
 </section>
 <section id="diretriz-de-execucao">
@@ -128,6 +194,11 @@ workflow automatizado.</p>
 <li class="toctree-l2"><a class="reference internal" href="#objetivo">Objetivo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dois-trilhos">Dois Trilhos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#estrutura-de-trabalho">Estrutura de trabalho</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fluxo-legado-fluxo-sismo-sh">Fluxo Legado (fluxo_sismo.sh)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#entrada-e-controle">Entrada e controle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ordem-de-execucao-e-scripts-chamados">Ordem de execucao e scripts chamados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artefatos-principais-por-etapa">Artefatos principais por etapa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dependencias-chave-do-fluxo">Dependencias-chave do fluxo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diretriz-de-execucao">Diretriz de execucao</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#publicacao">Publicacao</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#continue-a-leitura">Continue A Leitura</a></li>
