@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Anexo: 0020-pos-sem-dados.log &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <title>Anexo: 0021-falha-eventos-fdsn.log &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
@@ -19,8 +19,8 @@
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Anexo: 0021-matriz-completa-10.tsv" href="anexo-0021-matriz-completa-10-tsv.html" />
-    <link rel="prev" title="Anexo: 0020-matriz-predict-pos-10.tsv" href="anexo-0020-matriz-predict-pos-10-tsv.html" />
+    <link rel="next" title="Anexo: 0021-falha-todos-fdsn.log" href="anexo-0021-falha-todos-fdsn-log.html" />
+    <link rel="prev" title="Anexo: 0021-matriz-completa-10.tsv" href="anexo-0021-matriz-completa-10-tsv.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -38,16 +38,16 @@
 
           <div class="body" role="main">
             
-  <section id="anexo-0020-pos-sem-dados-log">
-<h1>Anexo: 0020-pos-sem-dados.log<a class="headerlink" href="#anexo-0020-pos-sem-dados-log" title="Link to this heading">¶</a></h1>
+  <section id="anexo-0021-falha-eventos-fdsn-log">
+<h1>Anexo: 0021-falha-eventos-fdsn.log<a class="headerlink" href="#anexo-0021-falha-eventos-fdsn-log" title="Link to this heading">¶</a></h1>
 <p>Arquivo de origem:</p>
 <ul class="simple">
-<li><p><a class="extlink-ghblob reference external" href="https://github.com/Gabriel-Goes/Sismologia_IPT/blob/main/docs/operacoes/anexos/0020-pos-sem-dados.log">docs/operacoes/anexos/0020-pos-sem-dados.log</a></p></li>
+<li><p><a class="extlink-ghblob reference external" href="https://github.com/Gabriel-Goes/Sismologia_IPT/blob/main/docs/operacoes/anexos/0021-falha-eventos-fdsn.log">docs/operacoes/anexos/0021-falha-eventos-fdsn.log</a></p></li>
 </ul>
 <section id="conteudo">
 <h2>Conteudo<a class="headerlink" href="#conteudo" title="Link to this heading">¶</a></h2>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>Catalogo: catalogo_jul_filtrado.csv
-<span class="linenos"> 2</span>/tmp/classificador-matrix-PYJVIQ ~/projetos/ClassificadorSismologico
+<span class="linenos"> 2</span>/tmp/classificador-matrix-i7oyHM ~/projetos/ClassificadorSismologico
 <span class="linenos"> 3</span>
 <span class="linenos"> 4</span>========================================================================
 <span class="linenos"> 5</span>                       Iniciando do Pipeline                         
@@ -55,26 +55,36 @@
 <span class="linenos"> 7</span>
 <span class="linenos"> 8</span>Argumentos recebidos:
 <span class="linenos"> 9</span>  Catalogo: catalogo_jul_filtrado.csv
-<span class="linenos">10</span>  EVENTS: False
+<span class="linenos">10</span>  EVENTS: True
 <span class="linenos">11</span>  TREATCATALOG: False
 <span class="linenos">12</span>  PREDICT: False
-<span class="linenos">13</span>  POSPROCESS: True
+<span class="linenos">13</span>  POSPROCESS: False
 <span class="linenos">14</span>  MAPS: False
 <span class="linenos">15</span>  REPORT: False
 <span class="linenos">16</span>  TEST: True
 <span class="linenos">17</span>
-<span class="linenos">18</span> ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
-<span class="linenos">19</span>Warning: colunas ausentes em predito.csv: [&#39;SNR_P&#39;, &#39;SNR_S&#39;, &#39;Noise&#39;, &#39;p&#39;]
+<span class="linenos">18</span> Criando arquivos de backup...
+<span class="linenos">19</span> Arquivos de backup criados com sucesso!
 <span class="linenos">20</span>
-<span class="linenos">21</span>0it [00:00, ?it/s]
-<span class="linenos">22</span>0it [00:00, ?it/s]
-<span class="linenos">23</span>Sem picks validos para pos-processamento; gerando saida vazia.
-<span class="linenos">24</span>
-<span class="linenos">25</span>========================================================================
-<span class="linenos">26</span>                        Fim do Pipeline                                 
-<span class="linenos">27</span>========================================================================
-<span class="linenos">28</span>
-<span class="linenos">29</span>~/projetos/ClassificadorSismologico
+<span class="linenos">21</span> -&gt; Executando fluxo_eventos.py...
+<span class="linenos">22</span>catalogo_jul_filtrado.csv
+<span class="linenos">23</span>./fonte/nucleo/fluxo_eventos.py...
+<span class="linenos">24</span> - Número de argumentos: 3
+<span class="linenos">25</span> - Argumentos (Roteiro Python | Catálogo de Eventos | Modo de Teste):
+<span class="linenos">26</span> fonte/nucleo/fluxo_eventos.py
+<span class="linenos">27</span> catalogo_jul_filtrado.csv
+<span class="linenos">28</span> True
+<span class="linenos">29</span>True
+<span class="linenos">30</span> --&gt; Modo de teste ativado
+<span class="linenos">31</span> - Número de EventIDs: 10
+<span class="linenos">32</span>
+<span class="linenos">33</span>Erro ao conectar com o servidor Seisarc.sismo.iag.usp.br (principal): No FDSN services could be discovered at &#39;http://10.110.1.132:18003&#39;. This could be due to a temporary service outage or an invalid FDSN service address.
+<span class="linenos">34</span>
+<span class="linenos">35</span>Erro ao conectar com o servidor rsbr.on.br (backup 1): No FDSN services could be discovered at &#39;http://rsbr.on.br:8081&#39;. This could be due to a temporary service outage or an invalid FDSN service address.
+<span class="linenos">36</span>
+<span class="linenos">37</span>Erro ao conectar com o servidor seisrequest.iag.usp.br (backup 2): No FDSN services could be discovered at &#39;http://seisrequest.iag.usp.br&#39;. This could be due to a temporary service outage or an invalid FDSN service address.
+<span class="linenos">38</span>
+<span class="linenos">39</span>Erro: nenhum cliente FDSN disponivel (principal e backups).
 </pre></div>
 </div>
 </section>
@@ -125,8 +135,8 @@
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="index.html">Anexos</a><ul>
-      <li>Previous: <a href="anexo-0020-matriz-predict-pos-10-tsv.html" title="previous chapter">Anexo: 0020-matriz-predict-pos-10.tsv</a></li>
-      <li>Next: <a href="anexo-0021-matriz-completa-10-tsv.html" title="next chapter">Anexo: 0021-matriz-completa-10.tsv</a></li>
+      <li>Previous: <a href="anexo-0021-matriz-completa-10-tsv.html" title="previous chapter">Anexo: 0021-matriz-completa-10.tsv</a></li>
+      <li>Next: <a href="anexo-0021-falha-todos-fdsn-log.html" title="next chapter">Anexo: 0021-falha-todos-fdsn.log</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -151,7 +161,7 @@
       &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
-      <a href="../_sources/anexos/anexo-0020-pos-sem-dados-log.rst.txt"
+      <a href="../_sources/anexos/anexo-0021-falha-eventos-fdsn-log.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

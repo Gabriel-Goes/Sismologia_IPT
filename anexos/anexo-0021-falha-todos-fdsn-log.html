@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Anexo: 0021-falha-todos-fdsn.log &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Operacoes" href="../operacoes/index.html" />
+    <link rel="prev" title="Anexo: 0021-falha-eventos-fdsn.log" href="anexo-0021-falha-eventos-fdsn-log.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="anexo-0021-falha-todos-fdsn-log">
+<h1>Anexo: 0021-falha-todos-fdsn.log<a class="headerlink" href="#anexo-0021-falha-todos-fdsn-log" title="Link to this heading">¶</a></h1>
+<p>Arquivo de origem:</p>
+<ul class="simple">
+<li><p><a class="extlink-ghblob reference external" href="https://github.com/Gabriel-Goes/Sismologia_IPT/blob/main/docs/operacoes/anexos/0021-falha-todos-fdsn.log">docs/operacoes/anexos/0021-falha-todos-fdsn.log</a></p></li>
+</ul>
+<section id="conteudo">
+<h2>Conteudo<a class="headerlink" href="#conteudo" title="Link to this heading">¶</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>Catalogo: catalogo_jul_filtrado.csv
+<span class="linenos"> 2</span>/tmp/classificador-matrix-i7oyHM ~/projetos/ClassificadorSismologico
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>========================================================================
+<span class="linenos"> 5</span>                       Iniciando do Pipeline                         
+<span class="linenos"> 6</span>========================================================================
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>Argumentos recebidos:
+<span class="linenos"> 9</span>  Catalogo: catalogo_jul_filtrado.csv
+<span class="linenos">10</span>  EVENTS: True
+<span class="linenos">11</span>  TREATCATALOG: True
+<span class="linenos">12</span>  PREDICT: True
+<span class="linenos">13</span>  POSPROCESS: True
+<span class="linenos">14</span>  MAPS: True
+<span class="linenos">15</span>  REPORT: True
+<span class="linenos">16</span>  TEST: True
+<span class="linenos">17</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span> -------------- INICIANDO O TRATAMENTO -------------------- 
+<span class="linenos">20</span> Tratando catalogo_jul_filtrado.csv...
+<span class="linenos">21</span> t0: Tue Feb 10 17:20:21 -03 2026
+<span class="linenos">22</span>/tmp/classificador-matrix-i7oyHM/fonte/analise_dados/pre_processa.py:98: DeprecationWarning: The &#39;unary_union&#39; attribute is deprecated, use the &#39;union_all()&#39; method instead.
+<span class="linenos">23</span>  catalog_br = df[df.within(brasil_buffer.unary_union)]
+<span class="linenos">24</span>/tmp/classificador-matrix-i7oyHM/fonte/analise_dados/pre_processa.py:172: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+<span class="linenos">25</span>  ax.set_yticklabels(
+<span class="linenos">26</span>/tmp/classificador-matrix-i7oyHM/fonte/analise_dados/pre_processa.py:172: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+<span class="linenos">27</span>  ax.set_yticklabels(
+<span class="linenos">28</span>/tmp/classificador-matrix-i7oyHM/fonte/analise_dados/pre_processa.py:211: UserWarning: The figure layout has changed to tight
+<span class="linenos">29</span>  plt.tight_layout()
+<span class="linenos">30</span>/tmp/classificador-matrix-i7oyHM/fonte/analise_dados/pre_processa.py:270: DeprecationWarning: The &#39;unary_union&#39; attribute is deprecated, use the &#39;union_all()&#39; method instead.
+<span class="linenos">31</span>  brasil = brasil.geometry.unary_union
+<span class="linenos">32</span>/tmp/classificador-matrix-i7oyHM/fonte/analise_dados/pre_processa.py:270: DeprecationWarning: The &#39;unary_union&#39; attribute is deprecated, use the &#39;union_all()&#39; method instead.
+<span class="linenos">33</span>  brasil = brasil.geometry.unary_union
+<span class="linenos">34</span>Argumentos recebidos:
+<span class="linenos">35</span> eventos.csv
+<span class="linenos">36</span> catalogo_jul_filtrado.csv
+<span class="linenos">37</span> True
+<span class="linenos">38</span> False
+<span class="linenos">39</span>2010-11-28 10:21:12.185973
+<span class="linenos">40</span>
+<span class="linenos">41</span>Plotando distribuição de eventos por hora...
+<span class="linenos">42</span> Catálogo filtrado com 3031 eventos
+<span class="linenos">43</span> Nov de 2010 à Jul de 2024
+<span class="linenos">44</span>
+<span class="linenos">45</span>Plotando distribuição de eventos por hora...
+<span class="linenos">46</span> Catálogo completo com 3031 eventos
+<span class="linenos">47</span> Nov de 2010 à Jul de 2024
+<span class="linenos">48</span>Plotando mapa...
+<span class="linenos">49</span>Salvando mapa...
+<span class="linenos">50</span>Salvando mapa...
+<span class="linenos">51</span> Criando arquivos de backup...
+<span class="linenos">52</span> Arquivos de backup criados com sucesso!
+<span class="linenos">53</span>
+<span class="linenos">54</span> -&gt; Executando fluxo_eventos.py...
+<span class="linenos">55</span>catalogo_jul_filtrado.csv
+<span class="linenos">56</span>./fonte/nucleo/fluxo_eventos.py...
+<span class="linenos">57</span> - Número de argumentos: 3
+<span class="linenos">58</span> - Argumentos (Roteiro Python | Catálogo de Eventos | Modo de Teste):
+<span class="linenos">59</span> fonte/nucleo/fluxo_eventos.py
+<span class="linenos">60</span> catalogo_jul_filtrado.csv
+<span class="linenos">61</span> True
+<span class="linenos">62</span>True
+<span class="linenos">63</span> --&gt; Modo de teste ativado
+<span class="linenos">64</span> - Número de EventIDs: 10
+<span class="linenos">65</span>
+<span class="linenos">66</span>Erro ao conectar com o servidor Seisarc.sismo.iag.usp.br (principal): No FDSN services could be discovered at &#39;http://10.110.1.132:18003&#39;. This could be due to a temporary service outage or an invalid FDSN service address.
+<span class="linenos">67</span>
+<span class="linenos">68</span>Erro ao conectar com o servidor rsbr.on.br (backup 1): No FDSN services could be discovered at &#39;http://rsbr.on.br:8081&#39;. This could be due to a temporary service outage or an invalid FDSN service address.
+<span class="linenos">69</span>
+<span class="linenos">70</span>Erro ao conectar com o servidor seisrequest.iag.usp.br (backup 2): No FDSN services could be discovered at &#39;http://seisrequest.iag.usp.br&#39;. This could be due to a temporary service outage or an invalid FDSN service address.
+<span class="linenos">71</span>
+<span class="linenos">72</span>Erro: nenhum cliente FDSN disponivel (principal e backups).
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Anexos</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#fluxo-de-navegacao">Fluxo De Navegacao</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Anexos</a><ul>
+      <li>Previous: <a href="anexo-0021-falha-eventos-fdsn-log.html" title="previous chapter">Anexo: 0021-falha-eventos-fdsn.log</a></li>
+      <li>Next: <a href="../operacoes/index.html" title="next chapter">Operacoes</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/anexos/anexo-0021-falha-todos-fdsn-log.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

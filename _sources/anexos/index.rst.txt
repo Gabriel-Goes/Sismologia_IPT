@@ -20,3 +20,6 @@ Fluxo De Navegacao
    anexo-0018-falha-pos-pick-prob-nat-log
    anexo-0020-matriz-predict-pos-10-tsv
    anexo-0020-pos-sem-dados-log
+   anexo-0021-matriz-completa-10-tsv
+   anexo-0021-falha-eventos-fdsn-log
+   anexo-0021-falha-todos-fdsn-log
