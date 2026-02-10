@@ -2,15 +2,8 @@
 
 Este diretorio complementa a estrategia de dois trilhos:
 
-1. **Refatoracao:** como vamos reescrever e validar o v2.
-2. **Legado:** o que o sistema atual faz e como executa.
-
-## Trilho Refatoracao
-
-- `documentação/guia_skill_tlc_spec_driven.md`: processo operacional para
-  conduzir planejamento e execucao em modo spec-driven.
-- `documentação/Possible_Paper_OutLine.md`: direcao tecnica/cientifica para
-  narrativa academica e justificativas do trabalho.
+1. **Legado:** o que o sistema atual faz e como executa.
+2. **Refatoracao:** como vamos reescrever e validar o v2.
 
 ## Trilho Legado
 
@@ -19,10 +12,17 @@ Este diretorio complementa a estrategia de dois trilhos:
 - `documentação/inventario_arquivos.md`: inventario de arquivos lidos no
   levantamento inicial.
 
+## Trilho Refatoracao
+
+- `documentação/guia_skill_tlc_spec_driven.md`: processo operacional para
+  conduzir planejamento e execucao em modo spec-driven.
+- `documentação/Possible_Paper_OutLine.md`: direcao tecnica/cientifica para
+  narrativa academica e justificativas do trabalho.
+
 ## Fontes Canonicas Por Trilha
 
-- **Refatoracao:** `.specs/project/*` + `docs/operacoes/*`
 - **Legado:** `.specs/codebase/*` + `docs/sphinx/source/guia|api|artefatos`
+- **Refatoracao:** `.specs/project/*` + `docs/operacoes/*`
 
 ## Observacao
 
