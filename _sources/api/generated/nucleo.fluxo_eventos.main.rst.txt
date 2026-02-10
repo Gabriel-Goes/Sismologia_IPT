@@ -1,6 +1,10 @@
 nucleo.fluxo\_eventos.main
 ==========================
 
+.. currentmodule:: nucleo.fluxo_eventos
+
+.. autofunction:: main
+
 Resumo
 ------
 
@@ -25,6 +29,3 @@ Os endpoints sao fixos no codigo legado:
 - primario: ``http://10.110.1.132:18003``
 - backup: ``http://rsbr.on.br:8081``
 
-.. currentmodule:: nucleo.fluxo_eventos
-
-.. autofunction:: main

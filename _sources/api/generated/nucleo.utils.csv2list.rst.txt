@@ -1,6 +1,10 @@
 nucleo.utils.csv2list
 =====================
 
+.. currentmodule:: nucleo.utils
+
+.. autofunction:: csv2list
+
 Resumo
 ------
 
@@ -24,6 +28,3 @@ Observacao
 Quando ``data`` e informado, o filtro usa ``evid[3:7]`` para comparacao
 numerica com o valor passado.
 
-.. currentmodule:: nucleo.utils
-
-.. autofunction:: csv2list

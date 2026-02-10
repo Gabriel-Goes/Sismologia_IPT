@@ -1,6 +1,10 @@
 rnc.run.read\_args
 ==================
 
+.. currentmodule:: rnc.run
+
+.. autofunction:: read_args
+
 Resumo
 ------
 
@@ -27,6 +31,3 @@ Observacao
 
 A flag ``--valid`` e declarada, mas nao e usada no fluxo principal atual.
 
-.. currentmodule:: rnc.run
-
-.. autofunction:: read_args
