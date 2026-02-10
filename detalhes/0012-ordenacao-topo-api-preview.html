@@ -68,10 +68,13 @@ o topo da pagina, logo abaixo do titulo.</p></li>
 <section id="decisao-de-estrategia">
 <h2>Decisao de estrategia<a class="headerlink" href="#decisao-de-estrategia" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><strong>mantido</strong>: <code class="docutils literal notranslate"><span class="pre">autosummary_generate</span> <span class="pre">=</span> <span class="pre">False</span></code> (evita sobrescrever paginas)</p></li>
+<li><p><strong>ajustado</strong>: <code class="docutils literal notranslate"><span class="pre">autosummary_generate</span> <span class="pre">=</span> <span class="pre">True</span></code></p></li>
+<li><p><strong>ajustado</strong>: <code class="docutils literal notranslate"><span class="pre">autosummary_generate_overwrite</span> <span class="pre">=</span> <span class="pre">False</span></code> (modo hibrido)</p></li>
 <li><p><strong>mantido</strong>: descricao manual detalhada por metodo</p></li>
 <li><p><strong>ajustado</strong>: ordem de apresentacao para priorizar assinatura no topo</p></li>
 </ul>
+<p>Com esse modo hibrido, novas paginas podem ser geradas automaticamente quando
+necessario, sem sobrescrever as paginas ja editadas manualmente.</p>
 </section>
 <section id="validacao-local">
 <h2>Validacao local<a class="headerlink" href="#validacao-local" title="Link to this heading">¶</a></h2>
@@ -83,6 +86,20 @@ o topo da pagina, logo abaixo do titulo.</p></li>
 <ul class="simple">
 <li><p>build concluido com sucesso;</p></li>
 <li><p>paginas renderizadas com assinatura no topo e descricao abaixo.</p></li>
+</ul>
+</section>
+<section id="incremento-mesmo-contexto">
+<h2>Incremento (mesmo contexto)<a class="headerlink" href="#incremento-mesmo-contexto" title="Link to this heading">¶</a></h2>
+<p>Foi criada a skill <code class="docutils literal notranslate"><span class="pre">operation-journal-consolidator</span></code> para padronizar a decisao
+entre:</p>
+<ul class="simple">
+<li><p>consolidar mudancas na ultima operacao;</p></li>
+<li><p>abrir uma nova operacao numerada.</p></li>
+</ul>
+<p>Arquivos da skill:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">skills/operation-journal-consolidator/SKILL.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skills/operation-journal-consolidator/references/relatedness-rules.md</span></code></p></li>
 </ul>
 </section>
 <section id="publicacao-sem-commit-em-main">
