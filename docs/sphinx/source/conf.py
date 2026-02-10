@@ -22,10 +22,15 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
     'sphinx.ext.napoleon',
+    'myst_parser',
 ]
 
 templates_path = ['_templates']
 exclude_patterns = []
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
 
 
 

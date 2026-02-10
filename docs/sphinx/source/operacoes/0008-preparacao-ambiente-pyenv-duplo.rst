@@ -24,7 +24,7 @@ Artefatos
 Documento detalhado
 -------------------
 
-- :download:`Documento detalhado (Markdown) <../../../operacoes/0008-preparacao-ambiente-pyenv-duplo.md>`
+- :doc:`Documento detalhado </detalhes/0008-preparacao-ambiente-pyenv-duplo>`
 - :download:`Script de bootstrap pyenv duplo <../../../../scripts/dev/setup_pyenv_dual_envs.sh>`
 - :download:`Requirements core <../../../../scripts/dev/requirements-core-pipeline.txt>`
 - :download:`Requirements RNC legado <../../../../scripts/dev/requirements-rnc-legacy.txt>`

@@ -30,6 +30,4 @@ Comandos:
 Documento detalhado
 -------------------
 
-Ver ``docs/operacoes/0002-inicializacao-sphinx-github-pages.md`` no
-repositorio.
-
+- :doc:`Documento detalhado </detalhes/0002-inicializacao-sphinx-github-pages>`
