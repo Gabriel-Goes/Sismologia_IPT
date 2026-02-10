@@ -12,7 +12,8 @@ Fluxo De Leitura Recomendado
 3. :doc:`User Guide </guia/index>`
 4. :doc:`API Reference </api/index>`
 5. :doc:`Artefatos </artefatos/index>`
-6. :doc:`Operacoes </operacoes/index>`
+6. :doc:`Anexos </anexos/index>`
+7. :doc:`Operacoes </operacoes/index>`
 
 
 .. toctree::
@@ -24,4 +25,5 @@ Fluxo De Leitura Recomendado
    guia/index
    api/index
    artefatos/index
+   anexos/index
    operacoes/index

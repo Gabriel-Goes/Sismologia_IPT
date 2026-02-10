@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documento detalhado: 0019-padrao-links-e-anexos-renderizados &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="documento-detalhado-0019-padrao-links-e-anexos-renderizados">
+<h1>Documento detalhado: 0019-padrao-links-e-anexos-renderizados<a class="headerlink" href="#documento-detalhado-0019-padrao-links-e-anexos-renderizados" title="Link to this heading">¶</a></h1>
+</section>
+<section id="operacao-0019-padrao-de-links-e-anexos-renderizados-no-sphinx">
+<h1>Operacao 0019 - Padrao de links e anexos renderizados no Sphinx<a class="headerlink" href="#operacao-0019-padrao-de-links-e-anexos-renderizados-no-sphinx" title="Link to this heading">¶</a></h1>
+<p><strong>Data:</strong> 2026-02-10<br />
+<strong>Branch:</strong> <code class="docutils literal notranslate"><span class="pre">refactor/fluxo-v2-documentado</span></code><br />
+<strong>Contexto:</strong> <code class="docutils literal notranslate"><span class="pre">refatoracao</span></code><br />
+<strong>Status:</strong> <code class="docutils literal notranslate"><span class="pre">concluida</span></code></p>
+<section id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">¶</a></h2>
+<p>Aplicar a regra de navegacao da documentacao:</p>
+<ol class="arabic simple">
+<li><p>mencao a arquivo/modulo/classe/funcao deve ter link navegavel;</p></li>
+<li><p>anexos de operacao (<code class="docutils literal notranslate"><span class="pre">csv/tsv/log</span></code>) devem abrir em pagina web da doc;</p></li>
+<li><p>remover uso de links de download para anexos.</p></li>
+</ol>
+</section>
+<section id="escopo-executado">
+<h2>Escopo executado<a class="headerlink" href="#escopo-executado" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Criacao da secao <code class="docutils literal notranslate"><span class="pre">Anexos</span></code> no Sphinx:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/anexos/index.rst</span></code></p></li>
+<li><p>paginas renderizadas para anexos das operacoes 0005, 0016 e 0018.</p></li>
+</ul>
+</li>
+<li><p>Substituicao de <code class="docutils literal notranslate"><span class="pre">:download:</span></code> por <code class="docutils literal notranslate"><span class="pre">:doc:</span></code> nas paginas de operacao:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0005</span></code>, <code class="docutils literal notranslate"><span class="pre">0016</span></code>, <code class="docutils literal notranslate"><span class="pre">0018</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Registro do padrao de links no User Guide:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/guia/padrao-de-links.rst</span></code></p></li>
+<li><p>navegacao atualizada em <code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/guia/index.rst</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Expansao de paginas de <code class="docutils literal notranslate"><span class="pre">Artefatos</span></code> para suportar novos alvos de link:</p>
+<ul class="simple">
+<li><p>runner de matriz;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.python-version</span></code>;</p></li>
+<li><p>memoria de ambiente pyenv;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sismo_iptex.cls</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Ajustes de navegacao global:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/index.rst</span></code> inclui <code class="docutils literal notranslate"><span class="pre">Anexos</span></code>.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="resultado">
+<h2>Resultado<a class="headerlink" href="#resultado" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Os anexos citados em operacoes agora abrem em paginas web renderizadas.</p></li>
+<li><p>As paginas de operacao passaram a apontar para doc pages, nao para download.</p></li>
+<li><p>O padrao de links virou regra explicita da documentacao.</p></li>
+</ol>
+</section>
+<section id="observacoes">
+<h2>Observacoes<a class="headerlink" href="#observacoes" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Links para GitHub continuam como complemento dentro das paginas de artefato/anexo.</p></li>
+<li><p>A navegacao principal permanece dentro do GitHub Pages/Sphinx.</p></li>
+</ol>
+</section>
+<section id="proximo-passo">
+<h2>Proximo passo<a class="headerlink" href="#proximo-passo" title="Link to this heading">¶</a></h2>
+<p>Aplicar a correcao tecnica do contrato de dados entre <code class="docutils literal notranslate"><span class="pre">-pr</span></code> e <code class="docutils literal notranslate"><span class="pre">-po</span></code> para evitar
+quebras quando <code class="docutils literal notranslate"><span class="pre">predito.csv</span></code> vier vazio ou com schema parcial.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../anexos/index.html">Anexos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/detalhes/0019-padrao-links-e-anexos-renderizados.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

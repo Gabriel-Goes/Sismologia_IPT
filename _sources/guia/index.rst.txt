@@ -9,13 +9,16 @@ Fluxo De Navegacao
 
 Se voce veio de :doc:`/dois_objetivos`, siga nesta ordem:
 
-1. :doc:`Fluxo e Referencias </guia/fluxo-e-referencias>`
-2. :doc:`Execucoes de teste do fluxo legado </guia/execucoes-de-teste-fluxo-legado>`
-3. :doc:`API Reference </api/index>`
-4. :doc:`Artefatos </artefatos/index>`
+1. :doc:`Padrao de links </guia/padrao-de-links>`
+2. :doc:`Fluxo e Referencias </guia/fluxo-e-referencias>`
+3. :doc:`Execucoes de teste do fluxo legado </guia/execucoes-de-teste-fluxo-legado>`
+4. :doc:`API Reference </api/index>`
+5. :doc:`Artefatos </artefatos/index>`
+6. :doc:`Anexos </anexos/index>`
 
 .. toctree::
    :maxdepth: 1
 
+   padrao-de-links
    fluxo-e-referencias
    execucoes-de-teste-fluxo-legado

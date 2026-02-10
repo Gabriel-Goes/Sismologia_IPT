@@ -23,18 +23,19 @@ Efeito principal
 Arquivos de interesse
 ---------------------
 
-- ``.specs/codebase/fluxo_sismo.sh``
-- ``.specs/codebase/fonte/nucleo/fluxo_eventos.py``
-- ``.specs/codebase/fonte/rnc/run.py``
-- ``.specs/codebase/fonte/rnc/data_process.py``
-- ``.specs/codebase/fonte/relatorio-sismologia/relatorio_preditivo.tex``
-- ``.specs/codebase/fonte/relatorio-sismologia/sismo_iptex.cls``
-- ``docs/operacoes/anexos/0016-matriz-testes-fluxo-sismo-50.tsv``
-- ``docs/operacoes/anexos/0016-teste-e-t-10.log``
+- :doc:`fluxo_sismo.sh </artefatos/fluxo-sismo-sh>`
+- :doc:`nucleo.fluxo_eventos.main </api/generated/nucleo.fluxo_eventos.main>`
+- :doc:`nucleo.fluxo_eventos.fluxo_eventos </api/generated/nucleo.fluxo_eventos.fluxo_eventos>`
+- :doc:`rnc.run.main </api/generated/rnc.run.main>`
+- :doc:`rnc.data_process.spectro_extract </api/generated/rnc.data_process.spectro_extract>`
+- :doc:`relatorio_preditivo.tex </artefatos/relatorio-preditivo-tex>`
+- :doc:`sismo_iptex.cls </artefatos/sismo-iptex-cls>`
+- :doc:`Anexo matriz 0016 (TSV) </anexos/anexo-0016-matriz-testes-fluxo-sismo-50-tsv>`
+- :doc:`Anexo reteste 0016 (LOG) </anexos/anexo-0016-reteste-e-t-10-log>`
 
 Documento detalhado
 -------------------
 
 - :doc:`Documento detalhado </detalhes/0016-estabilizacao-testes-fluxo-sismo-50-amostras>`
-- :download:`Matriz final (TSV) <../../../operacoes/anexos/0016-matriz-testes-fluxo-sismo-50.tsv>`
-- :download:`Reteste -e -t (10 eventos) <../../../operacoes/anexos/0016-teste-e-t-10.log>`
+- :doc:`Matriz final (TSV) </anexos/anexo-0016-matriz-testes-fluxo-sismo-50-tsv>`
+- :doc:`Reteste -e -t (10 eventos) </anexos/anexo-0016-reteste-e-t-10-log>`

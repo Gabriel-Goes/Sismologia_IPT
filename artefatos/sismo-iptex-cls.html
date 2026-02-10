@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Artefato: sismo_iptex.cls &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Artefato: setup_pyenv_dual_envs.sh" href="setup-pyenv-dual-envs-sh.html" />
+    <link rel="prev" title="Artefato: relatorio_preditivo.tex" href="relatorio-preditivo-tex.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="artefato-sismo-iptex-cls">
+<h1>Artefato: sismo_iptex.cls<a class="headerlink" href="#artefato-sismo-iptex-cls" title="Link to this heading">¶</a></h1>
+<p>Arquivo de origem:</p>
+<ul class="simple">
+<li><p><a class="extlink-ghblob reference external" href="https://github.com/Gabriel-Goes/Sismologia_IPT/blob/main/.specs/codebase/fonte/relatorio-sismologia/sismo_iptex.cls">.specs/codebase/fonte/relatorio-sismologia/sismo_iptex.cls</a></p></li>
+</ul>
+<section id="conteudo">
+<h2>Conteudo<a class="headerlink" href="#conteudo" title="Link to this heading">¶</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span>% Classe IPT Sismologia
+<span class="linenos">  2</span>%
+<span class="linenos">  3</span>% --------------------------------------------------------------------------------------
+<span class="linenos">  4</span>% Instituto de Pesquisas Tecnológicas
+<span class="linenos">  5</span>% Sessão de Obras Civis
+<span class="linenos">  6</span>% Setor de Sismologia
+<span class="linenos">  7</span>%
+<span class="linenos">  8</span>% Autor: Gabriel Góes Rocha de Lima
+<span class="linenos">  9</span>% Supervisor: Lucas Alexandre Schirbel
+<span class="linenos"> 10</span>%
+<span class="linenos"> 11</span>% Modelo originariamente baseado no modelo de Relatório Técnico criado para o túnel de
+<span class="linenos"> 12</span>% vento pelo Pesquisador Paulo Jabardo. E adaptado de IPT Document Class.
+<span class="linenos"> 13</span>%
+<span class="linenos"> 14</span>% --------------------------------------------------------------------------------------
+<span class="linenos"> 15</span>\NeedsTeXFormat{LaTeX2e}
+<span class="linenos"> 16</span>\ProvidesClass{sismo_iptex}[2024/04/23 Classe Sismologia IPT]
+<span class="linenos"> 17</span>\DeclareOption{10pt}{\def\@@ptsize{10pt}}
+<span class="linenos"> 18</span>\DeclareOption{11pt}{\def\@@ptsize{11pt}}
+<span class="linenos"> 19</span>\DeclareOption{12pt}{\def\@@ptsize{12pt}}
+<span class="linenos"> 20</span>\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+<span class="linenos"> 21</span>\ProcessOptions\relax
+<span class="linenos"> 22</span>\LoadClass[a4paper, oneside, onecolumn, final,\@@ptsize]{article}
+<span class="linenos"> 23</span>
+<span class="linenos"> 24</span>% Incluindo pacotes
+<span class="linenos"> 25</span>\RequirePackage{mdframed}
+<span class="linenos"> 26</span>\RequirePackage[hidelinks]{hyperref}
+<span class="linenos"> 27</span>\RequirePackage[utf8]{inputenc}
+<span class="linenos"> 28</span>\RequirePackage[T1]{fontenc}
+<span class="linenos"> 29</span>\RequirePackage{mathtools}
+<span class="linenos"> 30</span>\RequirePackage{amsmath}
+<span class="linenos"> 31</span>\RequirePackage{amsthm}
+<span class="linenos"> 32</span>\RequirePackage{amsbsy}
+<span class="linenos"> 33</span>\RequirePackage{amsfonts}
+<span class="linenos"> 34</span>\RequirePackage{amssymb}
+<span class="linenos"> 35</span>\RequirePackage{latexsym}
+<span class="linenos"> 36</span>\RequirePackage{mathabx}
+<span class="linenos"> 37</span>\RequirePackage{graphicx}
+<span class="linenos"> 38</span>\RequirePackage[scaled]{helvet} % Mudar de &quot;helvet&quot; para &quot;uarial&quot; caso fonte arial esteja instalada
+<span class="linenos"> 39</span>\RequirePackage{url}
+<span class="linenos"> 40</span>\RequirePackage{fancyhdr}
+<span class="linenos"> 41</span>\RequirePackage{indentfirst}
+<span class="linenos"> 42</span>\RequirePackage{color}
+<span class="linenos"> 43</span>\RequirePackage{float}
+<span class="linenos"> 44</span>\RequirePackage{multirow}
+<span class="linenos"> 45</span>\RequirePackage{lscape}
+<span class="linenos"> 46</span>\RequirePackage{lastpage}
+<span class="linenos"> 47</span>\RequirePackage[margin=15pt, font=small, labelfont=bf, labelsep=endash, centerlast]{caption}
+<span class="linenos"> 48</span>\RequirePackage{subfig}
+<span class="linenos"> 49</span>\RequirePackage[final]{pdfpages}
+<span class="linenos"> 50</span>\RequirePackage{setspace}
+<span class="linenos"> 51</span>\RequirePackage{changepage}
+<span class="linenos"> 52</span>\RequirePackage[titles, subfigure]{tocloft}
+<span class="linenos"> 53</span>\RequirePackage{ifthen}
+<span class="linenos"> 54</span>\RequirePackage{lipsum} % Apenas para gerar Lorem Ipsum dummy text
+<span class="linenos"> 55</span>\RequirePackage{sectsty}
+<span class="linenos"> 56</span>\RequirePackage{textcomp}
+<span class="linenos"> 57</span>\RequirePackage{booktabs}
+<span class="linenos"> 58</span>\RequirePackage{stmaryrd}
+<span class="linenos"> 59</span>\RequirePackage{siunitx}
+<span class="linenos"> 60</span>\RequirePackage{upgreek} % Para letras gregas não itálicas no texto
+<span class="linenos"> 61</span>\RequirePackage[table]{xcolor}
+<span class="linenos"> 62</span>\RequirePackage{tabularx}
+<span class="linenos"> 63</span>\RequirePackage{enumitem}
+<span class="linenos"> 64</span>\RequirePackage{geometry}
+<span class="linenos"> 65</span>\RequirePackage{capt-of}
+<span class="linenos"> 66</span>\RequirePackage{xargs}
+<span class="linenos"> 67</span>% Tabelas longas
+<span class="linenos"> 68</span>\RequirePackage{longtable}
+<span class="linenos"> 69</span>\RequirePackage{makecell}
+<span class="linenos"> 70</span>\RequirePackage{adjustbox}
+<span class="linenos"> 71</span>% Página no modo paisagem
+<span class="linenos"> 72</span>\RequirePackage{pdflscape}
+<span class="linenos"> 73</span>\RequirePackage[a-1b]{pdfx}
+<span class="linenos"> 74</span>\RequirePackage{array}
+<span class="linenos"> 75</span>	\setlist{nolistsep}
+<span class="linenos"> 76</span>	\definecolor{green}{HTML}{66FF66}
+<span class="linenos"> 77</span>	\definecolor{myGreen}{HTML}{009900}
+<span class="linenos"> 78</span>	\newcolumntype{L}[1]{&gt;{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+<span class="linenos"> 79</span>	\newcolumntype{C}[1]{&gt;{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+<span class="linenos"> 80</span>	\newcolumntype{R}[1]{&gt;{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+<span class="linenos"> 81</span>	\renewcommand{\familydefault}{\sfdefault}
+<span class="linenos"> 82</span>	\renewcommand{\arraystretch}{1.5}
+<span class="linenos"> 83</span>% Tamanhos de fonte das seções e subseções e alterações no TOC
+<span class="linenos"> 84</span>\sectionfont{\bfseries\large\MakeUppercase}
+<span class="linenos"> 85</span>\renewcommand{\cftsecfont}{\bfseries}
+<span class="linenos"> 86</span>\renewcommand{\cftsecpagefont}{\bfseries}
+<span class="linenos"> 87</span>\subsectionfont{\bfseries\large}
+<span class="linenos"> 88</span>\renewcommand{\cftsubsecfont}{\bfseries}
+<span class="linenos"> 89</span>\renewcommand{\cftsubsecpagefont}{\bfseries}
+<span class="linenos"> 90</span>\subsubsectionfont{\bfseries\normalsize}
+<span class="linenos"> 91</span>\renewcommand{\cftsubsubsecfont}{\bfseries\normalsize}
+<span class="linenos"> 92</span>\renewcommand{\cftsubsubsecpagefont}{\bfseries}
+<span class="linenos"> 93</span>\setcounter{tocdepth}{4}
+<span class="linenos"> 94</span>\setcounter{secnumdepth}{4}
+<span class="linenos"> 95</span>\paragraphfont{\normalsize\normalfont}
+<span class="linenos"> 96</span>\renewcommand\@pnumwidth{3.2em}
+<span class="linenos"> 97</span>\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+<span class="linenos"> 98</span>% Comandos
+<span class="linenos"> 99</span>	\renewcommand{\familydefault}{\sfdefault}
+<span class="linenos">100</span>	\renewcommand{\headrulewidth}{0pt}
+<span class="linenos">101</span>	\renewcommand{\topfraction}{1}
+<span class="linenos">102</span>	\renewcommand{\bottomfraction}{1}
+<span class="linenos">103</span>	\renewcommand{\textfraction}{0}
+<span class="linenos">104</span>	\renewcommand{\floatpagefraction}{0.8}
+<span class="linenos">105</span>	\newcommand{\n}[1]{$\text{#1}$}
+<span class="linenos">106</span>	\newcommand{\docNum}[1]{\gdef\inserirDocNum{#1}}
+<span class="linenos">107</span>	\newcommand{\cancelaDoc}[1]{\gdef\inserirCancelaDoc{#1}}
+<span class="linenos">108</span>	\newcommand{\cliente}[6]{
+<span class="linenos">109</span>        \gdef\inserirNomeCliente{#1}
+<span class="linenos">110</span>        \gdef\inserirSiglaCliente{#2}
+<span class="linenos">111</span>		\gdef\inserirLocalCliente{#3}
+<span class="linenos">112</span>        \gdef\inserirCEPCliente{#4}
+<span class="linenos">113</span>		\gdef\inserirCidadeCliente{#5}
+<span class="linenos">114</span>        \gdef\inserirEstadoCliente{#6}
+<span class="linenos">115</span>    }
+<span class="linenos">116</span>	\newcommand{\interessado}[5]{
+<span class="linenos">117</span>        \gdef\inserirNomeInt{#1}
+<span class="linenos">118</span>		\gdef\inserirLocalInt{#2}
+<span class="linenos">119</span>        \gdef\inserirCEPInt{#3}
+<span class="linenos">120</span>		\gdef\inserirCidadeInt{#4}
+<span class="linenos">121</span>        \gdef\inserirEstadoInt{#5}
+<span class="linenos">122</span>    }
+<span class="linenos">123</span>	\newcommand{\equip}[1]{\gdef\inserirEquip{#1}}
+<span class="linenos">124</span>	\newcommand{\referencia}[1]{\gdef\inserirReferencia{#1}}
+<span class="linenos">125</span>	\newcommand{\data}[1]{\gdef\inserirData{#1}}
+<span class="linenos">126</span>	\newcommand{\titulo}[1]{\gdef\inserirTitulo{#1}}
+<span class="linenos">127</span>	\newcommand{\tipo}[1]{\gdef\inserirTipo{#1}}
+<span class="linenos">128</span>	\newcommand{\unidade}[2]{
+<span class="linenos">129</span>        \gdef\inserirUnidade{#1}
+<span class="linenos">130</span>        \gdef\inserirUnidadeSigla{#2}
+<span class="linenos">131</span>    }
+<span class="linenos">132</span>	\newcommand{\lab}[1]{\gdef\inserirLab{#1}}
+<span class="linenos">133</span>	\newcommand{\cabecalhoAcred}[1]{\gdef\inserirCabecalhoAcred{#1}}
+<span class="linenos">134</span>	\newcommand{\selo}[1]{\gdef\inserirSelo{#1}}
+<span class="linenos">135</span>	\newcommand{\parConfig}[1]{#1}
+<span class="linenos">136</span>	\newcommand{\dummylabel}[2]{
+<span class="linenos">137</span>        \def\@currentlabel{#2}
+<span class="linenos">138</span>        \label{#1}
+<span class="linenos">139</span>    }
+<span class="linenos">140</span>	\newcommand{\periodo}[2]{
+<span class="linenos">141</span>        \gdef\inserirInicio{#1}
+<span class="linenos">142</span>        \gdef\inserirFim{#2}
+<span class="linenos">143</span>    }
+<span class="linenos">144</span>    \newcommand{\iptFootImagePath}{tex/figuras_tex/footImage.pdf}
+<span class="linenos">145</span>    \IfFileExists{tex/figuras_tex/footImage.pdf}{}{
+<span class="linenos">146</span>        \IfFileExists{tex/figuras_tex/footer_IPT.png}{
+<span class="linenos">147</span>            \renewcommand{\iptFootImagePath}{tex/figuras_tex/footer_IPT.png}
+<span class="linenos">148</span>        }{}
+<span class="linenos">149</span>    }
+<span class="linenos">150</span>	\newcommand\firstup[1]{\firstupaux#1\relax}
+<span class="linenos">151</span>	\def\firstupaux#1#2\relax{
+<span class="linenos">152</span>        \MakeUppercase{#1}
+<span class="linenos">153</span>        \MakeLowercase{#2}
+<span class="linenos">154</span>    }
+<span class="linenos">155</span>% Parágrafo
+<span class="linenos">156</span>	\setlength{\voffset}{-25.4mm}
+<span class="linenos">157</span>	\setlength{\oddsidemargin}{-3.5mm}
+<span class="linenos">158</span>	\setlength{\topmargin}{5mm}
+<span class="linenos">159</span>	\setlength{\headheight}{28mm}
+<span class="linenos">160</span>	\setlength{\headsep}{5mm}
+<span class="linenos">161</span>	\setlength{\marginparsep}{0mm}
+<span class="linenos">162</span>	\setlength{\textheight}{230mm}
+<span class="linenos">163</span>	\setlength{\textwidth}{170mm}
+<span class="linenos">164</span>	\setlength{\footskip}{25mm}
+<span class="linenos">165</span>	\setlength{\marginparwidth}{0mm}
+<span class="linenos">166</span>	\def\mypagestyle#1{\csname myps#1\endcsname}
+<span class="linenos">167</span>	\newcommand{\mypsCC}{
+<span class="linenos">168</span>		\setlength{\voffset}{-25.4mm}
+<span class="linenos">169</span>		\setlength{\oddsidemargin}{-3.5mm}
+<span class="linenos">170</span>		\setlength{\topmargin}{5mm}
+<span class="linenos">171</span>		\setlength{\headheight}{42mm}
+<span class="linenos">172</span>		\setlength{\headsep}{5mm}
+<span class="linenos">173</span>		\setlength{\marginparsep}{0mm}
+<span class="linenos">174</span>		\setlength{\textheight}{215mm}
+<span class="linenos">175</span>		\setlength{\textwidth}{170mm}
+<span class="linenos">176</span>		\setlength{\footskip}{25mm}
+<span class="linenos">177</span>		\setlength{\marginparwidth}{0mm}
+<span class="linenos">178</span>	}
+<span class="linenos">179</span>	\linespread{1.3} % espaçamento de 1,5 parecido com Word
+<span class="linenos">180</span>	\setcounter{topnumber}{5}
+<span class="linenos">181</span>	\setcounter{bottomnumber}{5}
+<span class="linenos">182</span>	\setcounter{totalnumber}{10}
+<span class="linenos">183</span>	\setlength{\floatsep}{15pt}
+<span class="linenos">184</span>	\setlength{\textfloatsep}{20pt}
+<span class="linenos">185</span>	\setlength{\parskip}{6pt}
+<span class="linenos">186</span>	\setlength{\parindent}{1.25cm}
+<span class="linenos">187</span>
+<span class="linenos">188</span>% Cabeçalhos e rodapé
+<span class="linenos">189</span>	\lhead{\includegraphics[scale=0.9]{tex/figuras_tex/headImage.pdf}}
+<span class="linenos">190</span>	\chead{}
+<span class="linenos">191</span>    \rhead{{\footnotesize \thepage}}
+<span class="linenos">192</span>	\lfoot{}
+<span class="linenos">193</span>	\cfoot{}
+<span class="linenos">194</span>	\rfoot{\includegraphics[scale=1.0]{\iptFootImagePath}}
+<span class="linenos">195</span>	\pagestyle{fancy}
+<span class="linenos">196</span>	\fancypagestyle{geral}{
+<span class="linenos">197</span>    		\rhead{{\footnotesize \thepage /\pageref{LastPage}}}
+<span class="linenos">198</span>	}
+<span class="linenos">199</span>
+<span class="linenos">200</span>	\fancypagestyle{timbrado}{
+<span class="linenos">201</span>        \rhead{}   
+<span class="linenos">202</span>    }
+<span class="linenos">203</span>    \fancypagestyle{tipo_pre}{\rhead{\footnotesize \inserirTipo~n\textordmasculine~\inserirDocNum~-~\thepage}}
+<span class="linenos">204</span>    \fancypagestyle{tipo_doc}{\rhead{{\footnotesize \inserirTipo~n\textordmasculine~\inserirDocNum~-~\thepage /\pageref{LastPage}}}}
+<span class="linenos">205</span>	\fancypagestyle{calibr_pag1}{
+<span class="linenos">206</span>		\lhead{\renewcommand{\arraystretch}{1.0}
+<span class="linenos">207</span>			\noindent\begin{tabular}{@{}l}
+<span class="linenos">208</span>			\includegraphics[scale=0.9]{tex/figuras_tex/headImage.pdf}\\
+<span class="linenos">209</span>			\footnotesize\textbf{\inserirLab/\inserirUnidade}\\
+<span class="linenos">210</span>			\footnotesize\textbf{}
+<span class="linenos">211</span>			\end{tabular}
+<span class="linenos">212</span>		}
+<span class="linenos">213</span>		\rhead{
+<span class="linenos">214</span>            \renewcommand{\arraystretch}{1.3}
+<span class="linenos">215</span>			\noindent\begin{tabular}{@{}r}\\
+<span class="linenos">216</span>			\thepage /\pageref{LastPage} \\
+<span class="linenos">217</span>			\small\textbf{}
+<span class="linenos">218</span>			\end{tabular}
+<span class="linenos">219</span>		}
+<span class="linenos">220</span>		\rfoot{
+<span class="linenos">221</span>            \includegraphics[scale=1.2]{\iptFootImagePath}}
+<span class="linenos">222</span>	}
+<span class="linenos">223</span>	\fancypagestyle{calibr_doc}{
+<span class="linenos">224</span>		\lhead{
+<span class="linenos">225</span>            \renewcommand{\arraystretch}{1.0}
+<span class="linenos">226</span>		    \noindent\begin{tabular}{@{}l}
+<span class="linenos">227</span>			\includegraphics[scale=0.9]{tex/figuras_tex/headImage.pdf}\\
+<span class="linenos">228</span>			\footnotesize\textbf{\inserirLab/\inserirUnidade} \\
+<span class="linenos">229</span>			\ifdefined
+<span class="linenos">230</span>                \inserirCabecalhoAcred
+<span class="linenos">231</span>                \footnotesize\textbf{\inserirCabecalhoAcred}\\
+<span class="linenos">232</span>			\else\\
+<span class="linenos">233</span>				\fi
+<span class="linenos">234</span>			\end{tabular}
+<span class="linenos">235</span>		}
+<span class="linenos">236</span>		\rhead{
+<span class="linenos">237</span>            \renewcommand{\arraystretch}{1.3}
+<span class="linenos">238</span>			\noindent\begin{tabular}{@{}r} \\
+<span class="linenos">239</span>			\thepage /\pageref{LastPage} \\
+<span class="linenos">240</span>			\footnotesize\textbf{\inserirTipo~n\textordmasculine~\inserirDocNum}
+<span class="linenos">241</span>            \end{tabular}
+<span class="linenos">242</span>		}
+<span class="linenos">243</span>		\rfoot{
+<span class="linenos">244</span>            \includegraphics[scale=1.2]{\iptFootImagePath}}
+<span class="linenos">245</span>	}
+<span class="linenos">246</span>
+<span class="linenos">247</span>% Capa
+<span class="linenos">248</span>	\newcommand{\capa}{
+<span class="linenos">249</span>	\thispagestyle{timbrado}
+<span class="linenos">250</span>	\begin{adjustwidth*}{1.5cm}{1.5cm}
+<span class="linenos">251</span>		{\setstretch{1.0}
+<span class="linenos">252</span>			\begin{flushright}
+<span class="linenos">253</span>				\textbf{\large\MakeUppercase{\inserirTipo}}\\
+<span class="linenos">254</span>				\ifdefined\inserirDocNum
+<span class="linenos">255</span>					\textbf{\large\inserirDocNum}\\
+<span class="linenos">256</span>				\fi
+<span class="linenos">257</span>
+<span class="linenos">258</span>				\ifdefined\inserirSiglaCliente
+<span class="linenos">259</span>					\inserirSiglaCliente\\
+<span class="linenos">260</span>				\fi
+<span class="linenos">261</span>
+<span class="linenos">262</span>				\inserirData \\
+<span class="linenos">263</span>				\vspace{3cm}
+<span class="linenos">264</span>				\inserirTitulo \\
+<span class="linenos">265</span>
+<span class="linenos">266</span>				\ifdefined\inserirNomeCliente
+<span class="linenos">267</span>					\vspace{3cm}
+<span class="linenos">268</span>					\textbf{CLIENTE} \\
+<span class="linenos">269</span>					\inserirNomeCliente \\
+<span class="linenos">270</span>				\fi
+<span class="linenos">271</span>
+<span class="linenos">272</span>				\vspace{3cm}
+<span class="linenos">273</span>
+<span class="linenos">274</span>				\ifdefined\inserirUnidade
+<span class="linenos">275</span>					\textbf{UNIDADE RESPONSÁVEL} \\
+<span class="linenos">276</span>					\inserirUnidade ~-- \inserirUnidadeSigla \\
+<span class="linenos">277</span>				\fi
+<span class="linenos">278</span>
+<span class="linenos">279</span>				\ifdefined\inserirLab
+<span class="linenos">280</span>					\inserirLab \\
+<span class="linenos">281</span>				\fi
+<span class="linenos">282</span>
+<span class="linenos">283</span>				\vspace{3cm}
+<span class="linenos">284</span>
+<span class="linenos">285</span>                \ifdefined\periodo
+<span class="linenos">286</span>                    \textbf{PERÍODO DE ANÁLISE} \\
+<span class="linenos">287</span>                    \textbf{Início: }\inserirInicio \\
+<span class="linenos">288</span>                    \textbf{Fim: }\inserirFim \\
+<span class="linenos">289</span>                \fi
+<span class="linenos">290</span>
+<span class="linenos">291</span>			\end{flushright}
+<span class="linenos">292</span>		}
+<span class="linenos">293</span>	\end{adjustwidth*}
+<span class="linenos">294</span>	\clearpage
+<span class="linenos">295</span>}
+<span class="linenos">296</span>
+<span class="linenos">297</span>% Resumo
+<span class="linenos">298</span>	\newcommand{\resumo}[3][\textbf{Palavras-chave:}]{
+<span class="linenos">299</span>		\setcounter{page}{1}
+<span class="linenos">300</span>		\renewcommand{\thepage}{\roman{page}}
+<span class="linenos">301</span>		\section*{RESUMO}
+<span class="linenos">302</span>		#2
+<span class="linenos">303</span>		\vspace{0.5cm}
+<span class="linenos">304</span>		#1 #3
+<span class="linenos">305</span>		\pagebreak
+<span class="linenos">306</span>	}
+<span class="linenos">307</span>
+<span class="linenos">308</span>% Abstract
+<span class="linenos">309</span>    \newcommand{\resumoeng}[3][\textbf{Keywords:}]{
+<span class="linenos">310</span>        \setcounter{page}{1}
+<span class="linenos">311</span>        \renewcommand{\thepage}{\roman{page}}
+<span class="linenos">312</span>        \section*{ABSTRACT}
+<span class="linenos">313</span>        #2
+<span class="linenos">314</span>        \vspace{0.5cm}
+<span class="linenos">315</span>        #1 #3
+<span class="linenos">316</span>        \pagebreak
+<span class="linenos">317</span>    }
+<span class="linenos">318</span>
+<span class="linenos">319</span>% Página com dados do cliente e título para documentos em geral
+<span class="linenos">320</span>	\newcommand{\idCliente}{
+<span class="linenos">321</span>		\begin{center}
+<span class="linenos">322</span>		{\setstretch{0.5}
+<span class="linenos">323</span>			\begin{tabular}{c}
+<span class="linenos">324</span>				{\large \textbf{\MakeUppercase{\inserirTipo}~N\textordmasculine~\inserirDocNum}} \\
+<span class="linenos">325</span>				\ifdefined\inserirCancelaDoc
+<span class="linenos">326</span>					Cancela e substitui o~\inserirCancelaDoc
+<span class="linenos">327</span>				\fi
+<span class="linenos">328</span>			\end{tabular}
+<span class="linenos">329</span>		}
+<span class="linenos">330</span>		\end{center}
+<span class="linenos">331</span>		\vspace{0.2cm}
+<span class="linenos">332</span>
+<span class="linenos">333</span>		{\setstretch{0.5}
+<span class="linenos">334</span>		\noindent\begin{tabular}{lp{0.75\textwidth}}
+<span class="linenos">335</span>		\ifdefined\inserirTitulo
+<span class="linenos">336</span>			\textbf{Título:} &amp; \textbf{\inserirTitulo} \\
+<span class="linenos">337</span>			&amp; \\
+<span class="linenos">338</span>		\fi
+<span class="linenos">339</span>		\textbf{Cliente:} &amp; \textbf{\inserirNomeCliente} \\
+<span class="linenos">340</span>			&amp; \textbf{\inserirLocalCliente} \\
+<span class="linenos">341</span>			&amp; \textbf{CEP \inserirCEPCliente ~-- \inserirCidadeCliente ~-- \inserirEstadoCliente} \\
+<span class="linenos">342</span>		\ifdefined\inserirNomeInt
+<span class="linenos">343</span>		&amp; \\
+<span class="linenos">344</span>		\textbf{Interessado:} &amp; \textbf{\inserirNomeInt} \\
+<span class="linenos">345</span>			&amp; \textbf{\inserirLocalInt} \\
+<span class="linenos">346</span>			&amp; \textbf{\inserirCEPInt ~-- \inserirCidadeInt ~-- \inserirEstadoInt} \\
+<span class="linenos">347</span>		\fi
+<span class="linenos">348</span>		\ifdefined\inserirEquip
+<span class="linenos">349</span>		&amp; \\
+<span class="linenos">350</span>		\textbf{Item:} &amp; \textbf{\inserirEquip} \\
+<span class="linenos">351</span>		\fi
+<span class="linenos">352</span>		\ifdefined\inserirReferencia
+<span class="linenos">353</span>		&amp; \\
+<span class="linenos">354</span>		\textbf{Referência:} &amp; \textbf{\inserirReferencia} \\
+<span class="linenos">355</span>		\fi
+<span class="linenos">356</span>		\end{tabular}
+<span class="linenos">357</span>		}
+<span class="linenos">358</span>	}
+<span class="linenos">359</span>
+<span class="linenos">360</span>% Página com dados do cliente para certificado acreditado
+<span class="linenos">361</span>	\newcommand{\idClienteAcred}{
+<span class="linenos">362</span>		\begin{center}
+<span class="linenos">363</span>		{\setstretch{0.5}
+<span class="linenos">364</span>			\begin{tabular}{c}
+<span class="linenos">365</span>				{\large \textbf{\MakeUppercase{\inserirTipo}~N\textordmasculine~\inserirDocNum}} \\
+<span class="linenos">366</span>				\ifdefined\inserirCancelaDoc
+<span class="linenos">367</span>				Cancela e substitui o~\inserirCancelaDoc
+<span class="linenos">368</span>				\fi
+<span class="linenos">369</span>			\end{tabular}
+<span class="linenos">370</span>		}
+<span class="linenos">371</span>		\end{center}
+<span class="linenos">372</span>		\ifdefined\inserirEquip
+<span class="linenos">373</span>			\vspace{0.2cm}
+<span class="linenos">374</span>		\fi
+<span class="linenos">375</span>
+<span class="linenos">376</span>		\ifdefined\inserirNomeInt
+<span class="linenos">377</span>			\vspace{-1cm}
+<span class="linenos">378</span>		\else
+<span class="linenos">379</span>			\vspace{-2cm}
+<span class="linenos">380</span>		\fi
+<span class="linenos">381</span>
+<span class="linenos">382</span>		{\setstretch{0.5}
+<span class="linenos">383</span>		\noindent\begin{tabular}{lp{0.6\textwidth}}
+<span class="linenos">384</span>		\textbf{Cliente:} &amp; \textbf{\inserirNomeCliente}\\
+<span class="linenos">385</span>			&amp; \textbf{\inserirLocalCliente} \\
+<span class="linenos">386</span>			&amp; \textbf{\inserirCEPCliente ~-- \inserirCidadeCliente ~-- \inserirEstadoCliente}\\
+<span class="linenos">387</span>		\ifdefined\inserirNomeInt
+<span class="linenos">388</span>		&amp; \\
+<span class="linenos">389</span>		\textbf{Interessado:} &amp; \textbf{\inserirNomeInt}\\
+<span class="linenos">390</span>			&amp; \textbf{\inserirLocalInt} \\
+<span class="linenos">391</span>			&amp; \textbf{\inserirCEPInt ~-- \inserirCidadeInt ~-- \inserirEstadoInt}\\
+<span class="linenos">392</span>		\fi
+<span class="linenos">393</span>		\ifdefined\inserirEquip
+<span class="linenos">394</span>		&amp; \\
+<span class="linenos">395</span>		\textbf{Item:} &amp; \textbf{\inserirEquip} \\
+<span class="linenos">396</span>		\fi
+<span class="linenos">397</span>		\ifdefined\inserirReferencia
+<span class="linenos">398</span>		&amp; \\
+<span class="linenos">399</span>		\textbf{Referência:} &amp; \textbf{\inserirReferencia}\\
+<span class="linenos">400</span>		\fi
+<span class="linenos">401</span>		\end{tabular}}  \hfill  \ifdefined\selo \includegraphics[height=0.15\textheight]{\inserirSelo} \fi
+<span class="linenos">402</span>	}
+<span class="linenos">403</span>
+<span class="linenos">404</span>	\newcommand{\inserirFigura}[6][htb!]{
+<span class="linenos">405</span>		\begin{figure}[#1]
+<span class="linenos">406</span>			\centering
+<span class="linenos">407</span>			\captionsetup{justification=raggedright,
+<span class="linenos">408</span>				singlelinecheck=false
+<span class="linenos">409</span>			}
+<span class="linenos">410</span>			\captionsetup{#3}
+<span class="linenos">411</span>			\caption{#4}
+<span class="linenos">412</span>			\includegraphics[#3]{tex/figuras_tex/#2}
+<span class="linenos">413</span>			\caption*{#5}
+<span class="linenos">414</span>			#6
+<span class="linenos">415</span>		\end{figure}
+<span class="linenos">416</span>	}
+<span class="linenos">417</span>
+<span class="linenos">418</span>% Tabelas
+<span class="linenos">419</span>% Função de repetição
+<span class="linenos">420</span>\makeatletter
+<span class="linenos">421</span>\newcount\my@repeat@count
+<span class="linenos">422</span>\newcommand{\myrepeat}[2]{%
+<span class="linenos">423</span>	\begingroup
+<span class="linenos">424</span>	\my@repeat@count=\z@
+<span class="linenos">425</span>	\@whilenum\my@repeat@count&lt;#1\do{#2\advance\my@repeat@count\@ne}%
+<span class="linenos">426</span>	\endgroup
+<span class="linenos">427</span>}
+<span class="linenos">428</span>\makeatother
+<span class="linenos">429</span>
+<span class="linenos">430</span>	\newcommandx{\inserirTabela}[8][1=H, 2=\normalsize]{
+<span class="linenos">431</span>		\begin{table}[#1]
+<span class="linenos">432</span>			#2
+<span class="linenos">433</span>			\centering
+<span class="linenos">434</span>			\begin{minipage}{#4} \centering
+<span class="linenos">435</span>				\captionsetup{justification=raggedright,
+<span class="linenos">436</span>					singlelinecheck=false
+<span class="linenos">437</span>				}
+<span class="linenos">438</span>				\caption{#6}
+<span class="linenos">439</span>				\begin{tabular}{#3}
+<span class="linenos">440</span>					#5
+<span class="linenos">441</span>				\end{tabular}
+<span class="linenos">442</span>				\caption*{#7}
+<span class="linenos">443</span>				#8
+<span class="linenos">444</span>			\end{minipage}
+<span class="linenos">445</span>		\end{table}
+<span class="linenos">446</span>
+<span class="linenos">447</span>}
+<span class="linenos">448</span>	\newcommand{\inserirTabelaLonga}[7]{
+<span class="linenos">449</span>        \begin{small}
+<span class="linenos">450</span>		\begin{center}
+<span class="linenos">451</span>        \begin{landscape}
+<span class="linenos">452</span>			\begin{longtable}{#1}
+<span class="linenos">453</span>				\captionsetup{justification=raggedright,
+<span class="linenos">454</span>					singlelinecheck=false
+<span class="linenos">455</span>				}
+<span class="linenos">456</span>				\multicolumn{#2}{l}{\parbox{\LTcapwidth}{\small\singlespacing\textbf{Tabela \thetable} -- #6}}
+<span class="linenos">457</span>				\vspace{0.3cm} \\
+<span class="linenos">458</span>				\hline
+<span class="linenos">459</span>				#3 \\
+<span class="linenos">460</span>				\hline
+<span class="linenos">461</span>				\endhead
+<span class="linenos">462</span>				\hline
+<span class="linenos">463</span>				\multicolumn{#2}{l}{\small\textit{Continua na próxima página}} \\
+<span class="linenos">464</span>				\endfoot
+<span class="linenos">465</span>				\hline
+<span class="linenos">466</span>				\multicolumn{#2}{l}{\parbox{\LTcapwidth}{\small\singlespacing#7}}
+<span class="linenos">467</span>				\endlastfoot
+<span class="linenos">468</span>				#5
+<span class="linenos">469</span>			\end{longtable}
+<span class="linenos">470</span>        \end{landscape}
+<span class="linenos">471</span>        \end{center}
+<span class="linenos">472</span>        \end{small}
+<span class="linenos">473</span>	}
+<span class="linenos">474</span>
+<span class="linenos">475</span>% Página com assinaturas
+<span class="linenos">476</span>    \newcommand{\assinaturaLucas}{
+<span class="linenos">477</span>        \begin{table}[b]
+<span class="linenos">478</span>        \begin{adjustwidth}{0pt}{-9cm} % Ajusta a margem direita em -3cm
+<span class="linenos">479</span>        \centering
+<span class="linenos">480</span>        \setlength{\arrayrulewidth}{0.9pt} % Espessura das linhas verticais
+<span class="linenos">481</span>        \begin{tabular}{|c|}
+<span class="linenos">482</span>            \hline
+<span class="linenos">483</span>            Cidades, Infraestrutura e Meio Ambiente \\
+<span class="linenos">484</span>            \hline
+<span class="linenos">485</span>            Seção de Obras Civis \\
+<span class="linenos">486</span>            \hline \\[1.0pt]
+<span class="linenos">487</span>            \includegraphics{tex/figuras_tex/assinatura.png} \\[5.0pt]
+<span class="linenos">488</span>            \hline \\[-25.0pt]
+<span class="linenos">489</span>            Físico Me. Lucas Alexandre Schirbel \\[-7.0pt]
+<span class="linenos">490</span>            Pesquisador \\[-7.0pt]
+<span class="linenos">491</span>            RE: 117113 \\[0.0pt]
+<span class="linenos">492</span>            \hline
+<span class="linenos">493</span>        \end{tabular}
+<span class="linenos">494</span>        \end{adjustwidth}
+<span class="linenos">495</span>        \end{table}
+<span class="linenos">496</span>}                
+<span class="linenos">497</span>
+<span class="linenos">498</span>%% Três assinaturas digitais
+<span class="linenos">499</span>	\newcommand{\assinaturaTresDigital}[6]{
+<span class="linenos">500</span>		\begin{flushright}
+<span class="linenos">501</span>		\textbf{São Paulo, \inserirData.}
+<span class="linenos">502</span>		% Assinaturas
+<span class="linenos">503</span>			{\scriptsize\singlespacing
+<span class="linenos">504</span>			\begin{tabular}{p{8cm}p{8cm}}
+<span class="linenos">505</span>				\begin{center} \textbf{#1} \\ \vspace{0.2cm} {\color{blue} Assinado Digitalmente} \vspace{0.2cm} \\ \textbf{#2} \end{center} &amp;
+<span class="linenos">506</span>				\begin{center} \textbf{#3} \\ \vspace{0.2cm} {\color{blue} Assinado Digitalmente} \vspace{0.2cm} \\ \textbf{#4} \end{center} \\
+<span class="linenos">507</span>				&amp; \begin{center} \textbf{#5} \\ \vspace{0.2cm} {\color{blue} Assinado Digitalmente} \vspace{0.2cm} \\ \textbf{#6} \end{center}\\ \\
+<span class="linenos">508</span>			\end{tabular}
+<span class="linenos">509</span>			}
+<span class="linenos">510</span>		\end{flushright}
+<span class="linenos">511</span>		\begin{center}
+<span class="linenos">512</span>			\includegraphics[scale=1]{tex/figuras_tex/digital.png}
+<span class="linenos">513</span>		\end{center}
+<span class="linenos">514</span>		\pagebreak
+<span class="linenos">515</span>	}
+<span class="linenos">516</span>
+<span class="linenos">517</span>%% Três assinaturas sem identificação de ass. digital
+<span class="linenos">518</span>	\newcommand{\assinaturaTres}[6]{
+<span class="linenos">519</span>	\begin{flushright}
+<span class="linenos">520</span>		\textbf{São Paulo, \inserirData.}
+<span class="linenos">521</span>	% Assinaturas
+<span class="linenos">522</span>		{\scriptsize\singlespacing
+<span class="linenos">523</span>			\begin{tabular}{p{8cm}p{8cm}}
+<span class="linenos">524</span>				\begin{center} \textbf{#1} \\ \vspace{1.2cm} \textbf{#2} \end{center} &amp;
+<span class="linenos">525</span>				\begin{center} \textbf{#3} \\ \vspace{1.2cm} \textbf{#4} \end{center} \\
+<span class="linenos">526</span>				&amp; \begin{center} \textbf{#5} \\ \vspace{1.2cm} \textbf{#6} \end{center}\\ \\
+<span class="linenos">527</span>			\end{tabular}
+<span class="linenos">528</span>		}
+<span class="linenos">529</span>	\end{flushright}
+<span class="linenos">530</span>	\pagebreak
+<span class="linenos">531</span>}
+<span class="linenos">532</span>
+<span class="linenos">533</span>%% Três assinaturas digitais - especial p/ certificado acreditado
+<span class="linenos">534</span>	\newcommand{\assinaturaTresAcred}[6]{
+<span class="linenos">535</span>		\begin{flushright}
+<span class="linenos">536</span>			\textbf{São Paulo, \inserirData.}
+<span class="linenos">537</span>		% Assinaturas
+<span class="linenos">538</span>			{\scriptsize\singlespacing
+<span class="linenos">539</span>			\begin{tabular}{p{8cm}p{8cm}}
+<span class="linenos">540</span>				\begin{center} \textbf{#1} \\ \vspace{0.2cm} {\color{blue} Assinado Digitalmente} \vspace{0.2cm} \\ \textbf{#2} \end{center} &amp;
+<span class="linenos">541</span>				\begin{center} \textbf{#3} \\ \vspace{0.2cm} {\color{blue} Assinado Digitalmente} \vspace{0.2cm} \\ \textbf{#4} \end{center} \\
+<span class="linenos">542</span>				\begin{center} \textbf{#5} \\ \vspace{0.2cm} {\color{blue} Assinado Digitalmente} \vspace{0.2cm} \\ \textbf{#6} \end{center}\\ \\
+<span class="linenos">543</span>			\end{tabular}
+<span class="linenos">544</span>			}
+<span class="linenos">545</span>		\end{flushright}
+<span class="linenos">546</span>		\begin{center}
+<span class="linenos">547</span>			\includegraphics[scale=1]{tex/figuras_tex/digital.png}
+<span class="linenos">548</span>		\end{center}
+<span class="linenos">549</span>		\noindent\textbf{“Este certificado atende aos requisitos de acreditação pela Cgcre, que avaliou a competência do laboratório e 		comprovou sua rastreabilidade a padrões nacionais de medida (ou ao Sistema Internacional de Unidades – SI).”}
+<span class="linenos">550</span>		\pagebreak
+<span class="linenos">551</span>	}
+<span class="linenos">552</span>
+<span class="linenos">553</span>%% Duas assinaturas digitais Relatório Técnico
+<span class="linenos">554</span>    \newcommand{\assinaturaDoisDigitalRelatorio}{
+<span class="linenos">555</span>        \begin{flushright}
+<span class="linenos">556</span>            \textbf{São Paulo, \inserirData.}
+<span class="linenos">557</span>            % Assinaturas
+<span class="linenos">558</span>            {\scriptsize\singlespacing
+<span class="linenos">559</span>                \begin{tabular}{p{8cm}p{8cm}}
+<span class="linenos">560</span>                    \hline
+<span class="linenos">561</span>                    \begin{center} \textbf{CIDADES, INFRAESTRUTURA E MEIO AMBIENTE} \\ \vspace{0.1cm}
+<span class="linenos">562</span>                        \textbf{Seção de Obras Civis} \\ \vspace{0.1cm}
+<span class="linenos">563</span>                        \textbf{Engº Civil Diego Lapolli Bressan} \\ \vspace{0.1cm}
+<span class="linenos">564</span>                        \textbf{Gerente Técnico} \\ \vspace{0.1cm}
+<span class="linenos">565</span>                        \textbf{CREA 170028342-1 – RE 08733} \\ \vspace{0.1cm}
+<span class="linenos">566</span>                        {\color{blue} Assinado Digitalmente} \\ \vspace{0.1cm}
+<span class="linenos">567</span>                    \end{center} &amp;
+<span class="linenos">568</span>
+<span class="linenos">569</span>                    \begin{center} \textbf{CIDADES, INFRAESTRUTURA E MEIO AMBIENTE} \\ \vspace{0.1cm}
+<span class="linenos">570</span>                        \textbf{Seção de Obras Civis} \\ \vspace{0.1cm}
+<span class="linenos">571</span>                        \textbf{Geól. Me. Fabrício Araujo Mirandola} \\ \vspace{0.1cm}
+<span class="linenos">572</span>                        \textbf{Diretor Técnico} \\ \vspace{0.1cm}
+<span class="linenos">573</span>                        \textbf{CREASP Nº 5062055808 – RE 8658} \\ \vspace{0.1cm}
+<span class="linenos">574</span>                        {\color{blue} Assinado Digitalmente}\\ \vspace{0.1cm} 
+<span class="linenos">575</span>                    \end{center}
+<span class="linenos">576</span>                \end{tabular}
+<span class="linenos">577</span>            }
+<span class="linenos">578</span>        \end{flushright}
+<span class="linenos">579</span>        \begin{center}
+<span class="linenos">580</span>            \includegraphics[scale=1]{tex/figuras_tex/digital.png}
+<span class="linenos">581</span>        \end{center}
+<span class="linenos">582</span>        \pagebreak
+<span class="linenos">583</span>    }
+<span class="linenos">584</span>
+<span class="linenos">585</span>%% Duas assinaturas digitais
+<span class="linenos">586</span>	\newcommand{\assinaturaDoisDigital}[4]{
+<span class="linenos">587</span>		\begin{flushright}
+<span class="linenos">588</span>			\textbf{São Paulo, \inserirData.}
+<span class="linenos">589</span>		% Assinaturas
+<span class="linenos">590</span>			{\scriptsize\singlespacing
+<span class="linenos">591</span>			\begin{tabular}{p{8cm}p{8cm}}
+<span class="linenos">592</span>				\begin{center} \textbf{#1} \\ \vspace{0.2cm} {\color{blue} Assinado Digitalmente} \vspace{0.2cm} \\ \textbf{#2} \end{center} &amp;
+<span class="linenos">593</span>				\begin{center} \textbf{#3} \\ \vspace{0.2cm} {\color{blue} Assinado Digitalmente} \vspace{0.2cm} \\ \textbf{#4} \end{center}\\ \\
+<span class="linenos">594</span>			\end{tabular}
+<span class="linenos">595</span>			}
+<span class="linenos">596</span>		\end{flushright}
+<span class="linenos">597</span>		\begin{center}
+<span class="linenos">598</span>			\includegraphics[scale=1]{tex/figuras_tex/digital.png}
+<span class="linenos">599</span>		\end{center}
+<span class="linenos">600</span>		\pagebreak
+<span class="linenos">601</span>	}
+<span class="linenos">602</span>
+<span class="linenos">603</span>%% Duas assinaturas sem identificação de ass. digital
+<span class="linenos">604</span>	\newcommand{\assinaturaDois}[4]{
+<span class="linenos">605</span>	\begin{flushright}
+<span class="linenos">606</span>		\textbf{São Paulo, \inserirData.}
+<span class="linenos">607</span>	% Assinaturas
+<span class="linenos">608</span>		{\scriptsize\singlespacing
+<span class="linenos">609</span>			\begin{tabular}{p{8cm}p{8cm}}
+<span class="linenos">610</span>				\begin{center} \textbf{#1} \\ \vspace{0.8cm} \textbf{#2} \end{center} &amp;
+<span class="linenos">611</span>				\begin{center} \textbf{#3} \\ \vspace{0.8cm} \textbf{#4} \end{center}\\ \\
+<span class="linenos">612</span>			\end{tabular}
+<span class="linenos">613</span>		}
+<span class="linenos">614</span>	\end{flushright}
+<span class="linenos">615</span>	\pagebreak
+<span class="linenos">616</span>}
+<span class="linenos">617</span>
+<span class="linenos">618</span>%% Duas assinaturas digitais - especial p/ certificado acreditado
+<span class="linenos">619</span>	\newcommand{\assinaturaDoisAcred}[4]{
+<span class="linenos">620</span>		\begin{flushright}
+<span class="linenos">621</span>			\textbf{São Paulo, \inserirData.}
+<span class="linenos">622</span>		% Assinaturas
+<span class="linenos">623</span>			{\scriptsize\singlespacing
+<span class="linenos">624</span>			\begin{tabular}{p{8cm}p{8cm}}
+<span class="linenos">625</span>				\begin{center} \textbf{#1} \\ \vspace{0.2cm} {\color{blue} Assinado Digitalmente} \vspace{0.2cm} \\ \textbf{#2} \end{center} &amp;
+<span class="linenos">626</span>				\begin{center} \textbf{#3} \\ \vspace{0.2cm} {\color{blue} Assinado Digitalmente} \vspace{0.2cm} \\\textbf{#4} \end{center}\\ \\
+<span class="linenos">627</span>			\end{tabular}
+<span class="linenos">628</span>			}
+<span class="linenos">629</span>		\end{flushright}
+<span class="linenos">630</span>		\begin{center}
+<span class="linenos">631</span>			\includegraphics[scale=1]{tex/figuras_tex/digital.png}
+<span class="linenos">632</span>		\end{center}
+<span class="linenos">633</span>		\noindent\textbf{“Este certificado atende aos requisitos de acreditação pela Cgcre, que avaliou a competência do laboratório e 		comprovou sua rastreabilidade a padrões nacionais de medida (ou ao Sistema Internacional de Unidades – SI).”}
+<span class="linenos">634</span>		\pagebreak
+<span class="linenos">635</span>	}
+<span class="linenos">636</span>
+<span class="linenos">637</span>%% Uma assinatura digital
+<span class="linenos">638</span>	\newcommand{\assinaturaUmDigital}[2]{
+<span class="linenos">639</span>		\begin{flushright}
+<span class="linenos">640</span>			\textbf{São Paulo, \inserirData.}
+<span class="linenos">641</span>		% Assinaturas
+<span class="linenos">642</span>			{\scriptsize\singlespacing
+<span class="linenos">643</span>				\begin{tabular}{p{8cm}}
+<span class="linenos">644</span>					\begin{center} \textbf{#1} \\ \vspace{0.2cm} {\color{blue} Assinado Digitalmente} \vspace{0.2cm} \\ \textbf{#2} \end{center} \\
+<span class="linenos">645</span>				\end{tabular}
+<span class="linenos">646</span>			}
+<span class="linenos">647</span>		\end{flushright}
+<span class="linenos">648</span>		\begin{center}
+<span class="linenos">649</span>			\includegraphics[scale=1]{tex/figuras_tex/digital.png}
+<span class="linenos">650</span>		\end{center}
+<span class="linenos">651</span>		\pagebreak
+<span class="linenos">652</span>	}
+<span class="linenos">653</span>
+<span class="linenos">654</span>%% Uma assinatura sem identificação de ass. digital
+<span class="linenos">655</span>\newcommand{\assinaturaUm}[2]{
+<span class="linenos">656</span>	\begin{flushright}
+<span class="linenos">657</span>		\textbf{São Paulo, \inserirData.}
+<span class="linenos">658</span>	% Assinaturas
+<span class="linenos">659</span>		{\scriptsize\singlespacing
+<span class="linenos">660</span>			\begin{tabular}{p{8cm}}
+<span class="linenos">661</span>				\begin{center} \textbf{#1} \\ \vspace{0.8cm} \textbf{#2} \end{center} \\
+<span class="linenos">662</span>			\end{tabular}
+<span class="linenos">663</span>		}
+<span class="linenos">664</span>	\end{flushright}
+<span class="linenos">665</span>	\pagebreak
+<span class="linenos">666</span>}
+<span class="linenos">667</span>
+<span class="linenos">668</span>%% Uma assinatura - especial p/ certificado acreditado
+<span class="linenos">669</span>	\newcommand{\assinaturaUmAcred}[2]{
+<span class="linenos">670</span>		\begin{flushright}
+<span class="linenos">671</span>			\textbf{São Paulo, \inserirData.}
+<span class="linenos">672</span>		% Assinaturas
+<span class="linenos">673</span>			{\scriptsize\singlespacing
+<span class="linenos">674</span>				\begin{tabular}{p{8cm}}
+<span class="linenos">675</span>					\begin{center} \textbf{#1} \\ \vspace{0.2cm} {\color{blue} Assinado Digitalmente} \vspace{0.2cm} \\ \textbf{#2} \end{center} \\
+<span class="linenos">676</span>				\end{tabular}
+<span class="linenos">677</span>			}
+<span class="linenos">678</span>		\end{flushright}
+<span class="linenos">679</span>		\begin{center}
+<span class="linenos">680</span>			\includegraphics[scale=1]{tex/figuras_tex/digital.png}
+<span class="linenos">681</span>		\end{center}
+<span class="linenos">682</span>		\noindent\textbf{“Este certificado atende aos requisitos de acreditação pela Cgcre, que avaliou a competência do laboratório e 		comprovou sua rastreabilidade a padrões nacionais de medida (ou ao Sistema Internacional de Unidades – SI).”}
+<span class="linenos">683</span>		\pagebreak
+<span class="linenos">684</span>	}
+<span class="linenos">685</span>
+<span class="linenos">686</span>%% Bibliografia
+<span class="linenos">687</span>	\newcommand{\bibliografia}[1]{
+<span class="linenos">688</span>		\renewcommand{\refname}{Bibliografia}
+<span class="linenos">689</span>		\addcontentsline{toc}{section}{Referências}
+<span class="linenos">690</span>		\bibliography{#1}
+<span class="linenos">691</span>	}
+<span class="linenos">692</span>
+<span class="linenos">693</span>% Apêndices
+<span class="linenos">694</span>% Apêndice de Relatório Técnico
+<span class="linenos">695</span>\newcommand{\apendice}[4]{
+<span class="linenos">696</span>
+<span class="linenos">697</span>	\dummylabel{#3}{#1}
+<span class="linenos">698</span>
+<span class="linenos">699</span>	\addcontentsline{toc}{section}{APÊNDICE #1 - #2}
+<span class="linenos">700</span>	\section*{APÊNDICE #1 - \MakeUppercase{#2}}
+<span class="linenos">701</span>
+<span class="linenos">702</span>	\renewcommand{\thefigure}{#1.\arabic{figure}}
+<span class="linenos">703</span>	\renewcommand{\thetable}{#1.\arabic{table}}
+<span class="linenos">704</span>	\setcounter{figure}{0}
+<span class="linenos">705</span>	\setcounter{table}{0}
+<span class="linenos">706</span>}
+<span class="linenos">707</span>
+<span class="linenos">708</span>% Anexos
+<span class="linenos">709</span>% Anexo de Relatório Técnico, com folha de rosto
+<span class="linenos">710</span>	\newcommand{\anexo}[4]{
+<span class="linenos">711</span>	\dummylabel{#3}{#1}
+<span class="linenos">712</span>	\fancypagestyle{anexo}{
+<span class="linenos">713</span>		\rhead{{\footnotesize Anexo #1 do \inserirTipo~n\textordmasculine~\inserirDocNum~-~\thepage /\pageref{LastPage}}}
+<span class="linenos">714</span>	}
+<span class="linenos">715</span>	\pagestyle{anexo}
+<span class="linenos">716</span>	\vspace*{5cm}
+<span class="linenos">717</span>	\begin{center}
+<span class="linenos">718</span>		\cftaddtitleline{toc}{section}{ANEXO #1 - #2}{#4 pág.}
+<span class="linenos">719</span>		\large\textbf{ANEXO #1}
+<span class="linenos">720</span>		\vspace{4cm}
+<span class="linenos">721</span>		\large\bfseries\MakeUppercase{#2}
+<span class="linenos">722</span>	\end{center}
+<span class="linenos">723</span>	\pagebreak
+<span class="linenos">724</span>	}
+<span class="linenos">725</span>
+<span class="linenos">726</span>% Anexo de Certificado de Calibração, sem folha de rosto
+<span class="linenos">727</span>	\newcommand{\anexoSemFolhaRosto}[3]{
+<span class="linenos">728</span>	\dummylabel{#3}{#1}
+<span class="linenos">729</span>	\fancypagestyle{anexo_sfr}{
+<span class="linenos">730</span>		\lhead{\renewcommand{\arraystretch}{1.0}
+<span class="linenos">731</span>				\noindent\begin{tabular}{@{}l}
+<span class="linenos">732</span>				\includegraphics[scale=0.9]{tex/figuras_tex/headImage.pdf}\\
+<span class="linenos">733</span>				\footnotesize\textbf{\inserirLab/\inserirUnidade} \\
+<span class="linenos">734</span>				\ifdefined\inserirCabecalhoAcred
+<span class="linenos">735</span>					\footnotesize\textbf{\inserirCabecalhoAcred}\\
+<span class="linenos">736</span>				\else
+<span class="linenos">737</span>					\\
+<span class="linenos">738</span>				\fi
+<span class="linenos">739</span>			\end{tabular}
+<span class="linenos">740</span>		}
+<span class="linenos">741</span>		\rhead{\renewcommand{\arraystretch}{1.3}
+<span class="linenos">742</span>				\noindent\begin{tabular}{@{}r}
+<span class="linenos">743</span>				\\
+<span class="linenos">744</span>				\thepage /\pageref{LastPage} \\
+<span class="linenos">745</span>			 	\footnotesize \textbf{Anexo #1 do~\footnotesize\inserirTipo~n\textordmasculine~\inserirDocNum}
+<span class="linenos">746</span>			\end{tabular}
+<span class="linenos">747</span>		}
+<span class="linenos">748</span>		\rfoot{\includegraphics[scale=1.2]{\iptFootImagePath}}
+<span class="linenos">749</span>	}
+<span class="linenos">750</span>	\pagestyle{anexo_sfr}
+<span class="linenos">751</span>	\begin{center}
+<span class="linenos">752</span>		{\large \textbf{ANEXO #1 - #2}}
+<span class="linenos">753</span>	\end{center}
+<span class="linenos">754</span>	\renewcommand{\thefigure}{#1.\arabic{figure}}
+<span class="linenos">755</span>	\renewcommand{\thetable}{#1.\arabic{table}}
+<span class="linenos">756</span>	\setcounter{figure}{0}
+<span class="linenos">757</span>	\setcounter{table}{0}
+<span class="linenos">758</span>	}
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Artefatos</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#fluxo-de-navegacao">Fluxo De Navegacao</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../anexos/index.html">Anexos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Artefatos</a><ul>
+      <li>Previous: <a href="relatorio-preditivo-tex.html" title="previous chapter">Artefato: relatorio_preditivo.tex</a></li>
+      <li>Next: <a href="setup-pyenv-dual-envs-sh.html" title="next chapter">Artefato: setup_pyenv_dual_envs.sh</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/artefatos/sismo-iptex-cls.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

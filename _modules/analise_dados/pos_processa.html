@@ -1633,11 +1633,27 @@
 <span class="c1"># --------------------------- CRIAR ARQUIVOS</span>
 <span class="k">def</span> <span class="nf">carregar_dado</span><span class="p">(</span><span class="n">w</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;arquivos/resultados/predito.csv&#39;</span><span class="p">)</span>
+    <span class="n">required_cols</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;MLv&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Distance&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Cat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Event Pred&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Pick Prob_Nat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;SNR_P&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;SNR_S&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Noise&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;p&#39;</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="n">missing_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">required_cols</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">missing_cols</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Warning: colunas ausentes em predito.csv: </span><span class="si">{</span><span class="n">missing_cols</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">missing_cols</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MLv&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">]</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Distance&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">d</span><span class="p">]</span>
     <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Pick Prob_Nat&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Cat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;earthquake&#39;</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Event Pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Event Pred&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Event Pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Event Pred&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
     <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Event&#39;</span><span class="p">,</span> <span class="s1">&#39;Station&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">snr</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;SNR_P&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">]</span>
@@ -1799,6 +1815,11 @@
 <a class="viewcode-back" href="../../api/generated/analise_dados.pos_processa.main.html#analise_dados.pos_processa.main">[docs]</a>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">carregar_dado</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sem picks validos para pos-processamento; gerando saida vazia.&#39;</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;arquivos/resultados/nc_analisado_final.csv&#39;</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;arquivos/resultados/analisado_final.csv&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="n">df</span>
     <span class="c1"># print(df.columns)</span>
     <span class="c1"># df = pd.read_csv(&#39;arquivos/resultados/304008_analisado.csv&#39;, sep=&#39;,&#39;)</span>
     <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Hora&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Origin Time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">UTCDateTime</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span>
@@ -1888,6 +1909,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../guia/index.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../anexos/index.html">Anexos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../operacoes/index.html">Operacoes</a></li>
 </ul>
 
