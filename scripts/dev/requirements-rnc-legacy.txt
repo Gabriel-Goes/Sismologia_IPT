@@ -1,9 +1,9 @@
-ipython==7.28.0
+ipython==8.10.0
 matplotlib==3.4.3
-numpy==1.21.3
+numpy==1.22.0
 obspy==1.2.2
 pandas==1.2.0
-tensorflow==2.8.0
+tensorflow==2.12.1
 tensorflow-estimator==2.8.0
 keras-applications==1.0.8
 tensorflow-io-gcs-filesystem==0.24.0
