@@ -23,3 +23,31 @@ Fluxo De Navegacao
    anexo-0021-matriz-completa-10-tsv
    anexo-0021-falha-eventos-fdsn-log
    anexo-0021-falha-todos-fdsn-log
+   anexo-0023-requirements-main-compat-log
+   anexo-0023-train-legacy-379-log
+   anexo-0023-train-modern-311-log
+   anexo-0023-analisado-schema-check-log
+   anexo-0025-matriz-sem-e-com-pre-10-tsv
+   anexo-0025-manifest-env
+   anexo-0025-pre-10-log
+   anexo-0025-predict-0-eventos-log
+   anexo-0025-pos-sem-picks-log
+   anexo-0025b-matriz-sem-e-com-pre-10-tsv
+   anexo-0025b-manifest-env
+   anexo-0025b-predict-10-eventos-log
+   anexo-0025b-pos-com-dados-log
+   anexo-0025c-summary-todos-tsv
+   anexo-0025c-todos-falha-e-log
+   anexo-0025c-predict-after-eventos-fail-log
+   anexo-0025c-pre-processado-csv
+   anexo-0025c-predito-csv
+   anexo-0025c-erros-csv
+   anexo-0025c-catalogo-jul-filtrado-filtrado-csv
+   anexo-0025c-eventos-integridade-txt
+   anexo-0026a-summary-tsv
+   anexo-0026a-manifest-env
+   anexo-0026a-predict-log
+   anexo-0026a-pre-processado-csv
+   anexo-0026a-predito-csv
+   anexo-0026a-analisado-final-csv
+   anexo-0026a-erros-csv

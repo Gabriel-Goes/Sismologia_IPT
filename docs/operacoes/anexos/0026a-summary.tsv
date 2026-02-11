@@ -1,0 +1,2 @@
+case	rc	duration_s	timeout_s	log
+predict	0	15	300	arquivos/registros/test_matrix/predict_20260211_085515.log

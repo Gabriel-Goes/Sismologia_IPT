@@ -1,0 +1,40 @@
+Catalogo: catalogo_jul_filtrado.csv
+/tmp/classificador-matrix-m9nFXF ~/projetos/ClassificadorSismologico
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul_filtrado.csv
+  EVENTS: False
+  TREATCATALOG: False
+  PREDICT: True
+  POSPROCESS: False
+  MAPS: False
+  REPORT: False
+  TEST: True
+
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+ Ambiente RNC (somente predição): PYENV_VERSION=sismo-rnc-379
+ Modo de teste RNC: limite de 10 eventos
+2026-02-11 08:41:39.357679: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/lib/:/usr/local/lib/
+2026-02-11 08:41:39.357704: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2026-02-11 08:41:41.040786: E tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_OPERATING_SYSTEM: OS call failed or operation not supported on this OS
+2026-02-11 08:41:41.040813: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: GeoServer
+2026-02-11 08:41:41.040819: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: GeoServer
+2026-02-11 08:41:41.040895: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:200] libcuda reported version is: 590.48.1
+2026-02-11 08:41:41.040920: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:204] kernel reported version is: NOT_FOUND: could not find kernel module information in driver version file contents: "NVRM version: NVIDIA UNIX Open Kernel Module for x86_64  590.48.01  Release Build  (root@)  
+GCC version:  gcc version 15.2.1 20260103 (GCC) 
+"
+2026-02-11 08:41:41.041151: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+ --> Modo de teste RNC: 0 eventos unicos selecionados (0 picks).
+Number of events: 0
+Number of events: 0
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
+~/projetos/ClassificadorSismologico

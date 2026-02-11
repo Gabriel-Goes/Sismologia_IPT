@@ -1,0 +1,27 @@
+Catalogo: catalogo_jul_filtrado.csv
+/tmp/classificador-matrix-m9nFXF ~/projetos/ClassificadorSismologico
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul_filtrado.csv
+  EVENTS: False
+  TREATCATALOG: False
+  PREDICT: False
+  POSPROCESS: True
+  MAPS: False
+  REPORT: False
+  TEST: True
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+Warning: colunas ausentes em predito.csv: ['SNR_P', 'SNR_S', 'Noise', 'p']
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+Sem picks validos para pos-processamento; gerando saida vazia.
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
+~/projetos/ClassificadorSismologico

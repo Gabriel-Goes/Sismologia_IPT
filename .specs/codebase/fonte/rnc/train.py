@@ -16,7 +16,8 @@ from tensorflow.keras.utils import to_categorical
 
 file_path = 'arquivos/resultados/analisado.csv'
 metadata = pd.read_csv(file_path)
-metadata_features = metadata[['MLv', 'SNR_P', 'Distance', 'Num_Stations']].values
+station_col = 'Num_Stations' if 'Num_Stations' in metadata.columns else 'Num_Estacoes'
+metadata_features = metadata[['MLv', 'SNR_P', 'Distance', station_col]].values
 labels = metadata['Label'].values  # Supondo que 'Event Class' seja a coluna com as labels
 
 scaler = StandardScaler()

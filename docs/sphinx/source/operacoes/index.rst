@@ -34,3 +34,8 @@ Fluxo De Navegacao
    0019-padrao-links-e-anexos-renderizados
    0020-contrato-pr-po-sem-dados
    0021-matriz-completa-pos-0020
+   0022-diagnostico-dependabot-ambiente-rnc-legado
+   0023-diagnostico-rnc-main-e-reteste-train
+   0024-organizacao-fase-testes-execucao
+   0025-matriz-sem-e-com-pre-10-eventos
+   0026-protocolo-importacao-test-matrix

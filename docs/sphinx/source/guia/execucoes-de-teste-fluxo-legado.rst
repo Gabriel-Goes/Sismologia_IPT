@@ -147,6 +147,7 @@ Nesta fase, sucesso nao significa "pipeline completo verde". Sucesso significa:
 Proximo passo
 -------------
 
+- :doc:`/guia/scripts-de-encapsulamento`
 - :doc:`/guia/fluxo-e-referencias`
 - :doc:`/api/index`
 - :doc:`/operacoes/0007-compreensao-comportamento-fluxo-sismo`
