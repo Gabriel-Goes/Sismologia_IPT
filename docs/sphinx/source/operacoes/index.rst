@@ -36,3 +36,4 @@ Fluxo De Navegacao
    0021-matriz-completa-pos-0020
    0022-diagnostico-dependabot-ambiente-rnc-legado
    0023-diagnostico-rnc-main-e-reteste-train
+   0024-organizacao-fase-testes-execucao
