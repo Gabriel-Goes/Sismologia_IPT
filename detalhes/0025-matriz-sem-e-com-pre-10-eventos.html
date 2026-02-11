@@ -80,7 +80,27 @@ pre-processamento, para validar o comportamento integrado de:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">archive_id=20260211_084816</span></code></p></li>
 </ul>
 </li>
+<li><p><strong>Tentativa C (validacao definitiva do comportamento com falha em <code class="docutils literal notranslate"><span class="pre">-e</span></code>):</strong></p>
+<ul class="simple">
+<li><p>execucao completa:</p></li>
+</ul>
+</li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scripts/dev/run_fluxo_test_matrix_archived.sh<span class="w"> </span>--cases<span class="w"> </span>todos<span class="w"> </span>--test-limit<span class="w"> </span><span class="m">10</span><span class="w"> </span>--keep-run-dir
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">archive_id=20260211_092006</span></code> (<code class="docutils literal notranslate"><span class="pre">todos</span></code> retorna <code class="docutils literal notranslate"><span class="pre">rc=1</span></code> por falha de FDSN)</p></li>
+<li><p>reteste de <code class="docutils literal notranslate"><span class="pre">-pr</span></code> no mesmo <code class="docutils literal notranslate"><span class="pre">run_dir</span></code>, usando <code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code> existente:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/tmp/classificador-matrix-3i2BZ6
+env<span class="w"> </span><span class="nv">TEST_EVENT_LIMIT</span><span class="o">=</span><span class="m">10</span><span class="w"> </span><span class="nv">PYENV_VERSION</span><span class="o">=</span>sismo-core-311<span class="w"> </span><span class="nv">RNC_PYENV_VERSION</span><span class="o">=</span>sismo-rnc-379<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>bash<span class="w"> </span>./fluxo_sismo.sh<span class="w"> </span>catalogo_jul_filtrado.csv<span class="w"> </span>-pr<span class="w"> </span>-t
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>resultado do reteste: <code class="docutils literal notranslate"><span class="pre">rc=0</span></code>, <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">eventos</span></code>, <code class="docutils literal notranslate"><span class="pre">32</span> <span class="pre">picks</span></code>, <code class="docutils literal notranslate"><span class="pre">28</span> <span class="pre">picks</span> <span class="pre">processados</span></code>.</p></li>
+</ul>
 </section>
 <section id="evidencias">
 <h2>Evidencias<a class="headerlink" href="#evidencias" title="Link to this heading">¶</a></h2>
@@ -139,6 +159,116 @@ pre-processamento, para validar o comportamento integrado de:</p>
 </li>
 </ol>
 </section>
+<section id="tentativa-c-20260211-092006-reteste-pr-validacao-final">
+<h3>Tentativa C (<code class="docutils literal notranslate"><span class="pre">20260211_092006</span></code> + reteste <code class="docutils literal notranslate"><span class="pre">-pr</span></code>) - validacao final<a class="headerlink" href="#tentativa-c-20260211-092006-reteste-pr-validacao-final" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Matriz completa (<code class="docutils literal notranslate"><span class="pre">todos</span></code>) com falha esperada em <code class="docutils literal notranslate"><span class="pre">-e</span></code>:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../anexos/anexo-0025c-summary-todos-tsv.html"><span class="doc std std-doc">0025c-summary-todos.tsv</span></a></p></li>
+<li><p><a class="reference internal" href="../anexos/anexo-0025c-todos-falha-e-log.html"><span class="doc std std-doc">0025c-todos-falha-e.log</span></a></p></li>
+</ul>
+</li>
+<li><p>Integridade do <code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code> preservada:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../anexos/anexo-0025c-eventos-integridade-txt.html"><span class="doc std std-doc">0025c-eventos-integridade.txt</span></a></p></li>
+</ul>
+</li>
+<li><p>Reteste <code class="docutils literal notranslate"><span class="pre">-pr</span> <span class="pre">-t</span></code> no mesmo <code class="docutils literal notranslate"><span class="pre">run_dir</span></code>:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../anexos/anexo-0025c-predict-after-eventos-fail-log.html"><span class="doc std std-doc">0025c-predict-after-eventos-fail.log</span></a></p></li>
+</ul>
+</li>
+<li><p>Tabelas de resultado (artefatos principais):</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../anexos/anexo-0025c-predito-csv.html"><span class="doc std std-doc">0025c-predito.csv</span></a></p></li>
+<li><p><a class="reference internal" href="../anexos/anexo-0025c-pre-processado-csv.html"><span class="doc std std-doc">0025c-pre_processado.csv</span></a></p></li>
+<li><p><a class="reference internal" href="../anexos/anexo-0025c-erros-csv.html"><span class="doc std std-doc">0025c-erros.csv</span></a></p></li>
+<li><p><a class="reference internal" href="../anexos/anexo-0025c-catalogo-jul-filtrado-filtrado-csv.html"><span class="doc std std-doc">0025c-catalogo_jul_filtrado_filtrado.csv</span></a></p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="resultado-tabular-consolidado-da-tentativa-c">
+<h2>Resultado tabular consolidado da tentativa C<a class="headerlink" href="#resultado-tabular-consolidado-da-tentativa-c" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Event</p></th>
+<th class="head text-right"><p>Picks selecionados</p></th>
+<th class="head text-right"><p>Picks processados</p></th>
+<th class="head text-right"><p>Erros</p></th>
+<th class="head text-right"><p>Descartados</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>20150317T190704</p></td>
+<td class="text-right"><p>3</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>20150923T124902</p></td>
+<td class="text-right"><p>5</p></td>
+<td class="text-right"><p>5</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>20160111T033106</p></td>
+<td class="text-right"><p>5</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>3</p></td>
+<td class="text-right"><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>20170405T233728</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>20190514T063803</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>20190830T014731</p></td>
+<td class="text-right"><p>3</p></td>
+<td class="text-right"><p>3</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>20200717T144815</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>20200910T062943</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>20220328T072623</p></td>
+<td class="text-right"><p>4</p></td>
+<td class="text-right"><p>4</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>20230524T184558</p></td>
+<td class="text-right"><p>4</p></td>
+<td class="text-right"><p>4</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>TOTAL</strong></p></td>
+<td class="text-right"><p><strong>32</strong></p></td>
+<td class="text-right"><p><strong>28</strong></p></td>
+<td class="text-right"><p><strong>4</strong></p></td>
+<td class="text-right"><p><strong>4</strong></p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="resultado-consolidado-da-operacao">
 <h2>Resultado consolidado da operacao<a class="headerlink" href="#resultado-consolidado-da-operacao" title="Link to this heading">¶</a></h2>
@@ -173,12 +303,22 @@ com insumo degradado:</p>
 <code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code> de entrada.</p></li>
 </ul>
 </li>
+<li><p>A tentativa C adiciona a validacao comportamental do fluxo completo:</p>
+<ul class="simple">
+<li><p>no comando unico <code class="docutils literal notranslate"><span class="pre">-pe</span> <span class="pre">-e</span> <span class="pre">-pr</span> <span class="pre">-po</span> <span class="pre">-m</span> <span class="pre">-r</span> <span class="pre">-t</span></code>, a falha de <code class="docutils literal notranslate"><span class="pre">-e</span></code> interrompe o
+restante por <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">-e</span></code> (nao chega em <code class="docutils literal notranslate"><span class="pre">-pr</span></code>);</p></li>
+<li><p>mesmo com essa falha, <code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code> nao foi sobrescrito com cabecalho
+vazio;</p></li>
+<li><p>ao rodar <code class="docutils literal notranslate"><span class="pre">-pr</span> <span class="pre">-t</span></code> separadamente no mesmo contexto, o pipeline usa o
+<code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code> existente e produz os artefatos de predicao esperados.</p></li>
+</ul>
+</li>
 </ol>
 </section>
 <section id="proximo-passo">
 <h2>Proximo passo<a class="headerlink" href="#proximo-passo" title="Link to this heading">¶</a></h2>
-<p>Repetir esta matriz com um recorte de eventos que garanta picks validos para a
-RNC, antes da validacao da etapa <code class="docutils literal notranslate"><span class="pre">-e</span></code> no ambiente IAG/SEISAPP.</p>
+<p>Levar a validacao da etapa <code class="docutils literal notranslate"><span class="pre">-e</span></code> para o ambiente IAG/SEISAPP (com acesso ao
+SeisComP/event), mantendo o mesmo protocolo de evidencias.</p>
 </section>
 </section>
 

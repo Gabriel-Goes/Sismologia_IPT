@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Anexo: 0025c-predict-after-eventos-fail.log &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Anexo: 0025c-pre_processado.csv" href="anexo-0025c-pre-processado-csv.html" />
+    <link rel="prev" title="Anexo: 0025c-todos-falha-e.log" href="anexo-0025c-todos-falha-e-log.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="anexo-0025c-predict-after-eventos-fail-log">
+<h1>Anexo: 0025c-predict-after-eventos-fail.log<a class="headerlink" href="#anexo-0025c-predict-after-eventos-fail-log" title="Link to this heading">¶</a></h1>
+<p>Arquivo de origem:</p>
+<ul class="simple">
+<li><p><a class="extlink-ghblob reference external" href="https://github.com/Gabriel-Goes/Sismologia_IPT/blob/main/docs/operacoes/anexos/0025c-predict-after-eventos-fail.log">docs/operacoes/anexos/0025c-predict-after-eventos-fail.log</a></p></li>
+</ul>
+<section id="conteudo">
+<h2>Conteudo<a class="headerlink" href="#conteudo" title="Link to this heading">¶</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span>Catalogo: catalogo_jul_filtrado.csv
+<span class="linenos">  2</span>/tmp/classificador-matrix-3i2BZ6 /tmp/classificador-matrix-3i2BZ6
+<span class="linenos">  3</span>
+<span class="linenos">  4</span>========================================================================
+<span class="linenos">  5</span>                       Iniciando do Pipeline                         
+<span class="linenos">  6</span>========================================================================
+<span class="linenos">  7</span>
+<span class="linenos">  8</span>Argumentos recebidos:
+<span class="linenos">  9</span>  Catalogo: catalogo_jul_filtrado.csv
+<span class="linenos"> 10</span>  EVENTS: False
+<span class="linenos"> 11</span>  TREATCATALOG: False
+<span class="linenos"> 12</span>  PREDICT: True
+<span class="linenos"> 13</span>  POSPROCESS: False
+<span class="linenos"> 14</span>  MAPS: False
+<span class="linenos"> 15</span>  REPORT: False
+<span class="linenos"> 16</span>  TEST: True
+<span class="linenos"> 17</span>
+<span class="linenos"> 18</span> ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+<span class="linenos"> 19</span> Ambiente RNC (somente predição): PYENV_VERSION=sismo-rnc-379
+<span class="linenos"> 20</span> Modo de teste RNC: limite de 10 eventos
+<span class="linenos"> 21</span>2026-02-11 09:20:46.287056: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/lib/:/usr/local/lib/
+<span class="linenos"> 22</span>2026-02-11 09:20:46.287079: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+<span class="linenos"> 23</span>2026-02-11 09:20:58.828096: E tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_OPERATING_SYSTEM: OS call failed or operation not supported on this OS
+<span class="linenos"> 24</span>2026-02-11 09:20:58.828133: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: GeoServer
+<span class="linenos"> 25</span>2026-02-11 09:20:58.828140: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: GeoServer
+<span class="linenos"> 26</span>2026-02-11 09:20:58.828242: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:200] libcuda reported version is: 590.48.1
+<span class="linenos"> 27</span>2026-02-11 09:20:58.828283: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:204] kernel reported version is: NOT_FOUND: could not find kernel module information in driver version file contents: &quot;NVRM version: NVIDIA UNIX Open Kernel Module for x86_64  590.48.01  Release Build  (root@)  
+<span class="linenos"> 28</span>GCC version:  gcc version 15.2.1 20260103 (GCC) 
+<span class="linenos"> 29</span>&quot;
+<span class="linenos"> 30</span>2026-02-11 09:20:58.828617: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+<span class="linenos"> 31</span>To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+<span class="linenos"> 32</span> --&gt; Modo de teste RNC: 10 eventos unicos selecionados (32 picks).
+<span class="linenos"> 33</span>Number of events: 10
+<span class="linenos"> 34</span>*****************
+<span class="linenos"> 35</span>EVENT: 20150317T190704 (1 / 10)
+<span class="linenos"> 36</span> - Number of picks: 3
+<span class="linenos"> 37</span>PICK: GDU01 (1 / 3)
+<span class="linenos"> 38</span> - Error! len(compo) != 3 ([&#39;Z&#39;])
+<span class="linenos"> 39</span>PICK: NBIT (2 / 3)
+<span class="linenos"> 40</span>PICK: NBPN (3 / 3)
+<span class="linenos"> 41</span>*****************
+<span class="linenos"> 42</span>EVENT: 20150923T124902 (2 / 10)
+<span class="linenos"> 43</span> - Number of picks: 5
+<span class="linenos"> 44</span>PICK: NBCL (1 / 5)
+<span class="linenos"> 45</span>PICK: NBLV (2 / 5)
+<span class="linenos"> 46</span>PICK: NBMA (3 / 5)
+<span class="linenos"> 47</span>PICK: NBPV (4 / 5)
+<span class="linenos"> 48</span>PICK: NBRF (5 / 5)
+<span class="linenos"> 49</span>*****************
+<span class="linenos"> 50</span>EVENT: 20160111T033106 (3 / 10)
+<span class="linenos"> 51</span> - Number of picks: 5
+<span class="linenos"> 52</span>PICK: CMC01 (1 / 5)
+<span class="linenos"> 53</span> - Error! len(compo) != 3 ([&#39;Z&#39;])
+<span class="linenos"> 54</span>PICK: GDU01 (2 / 5)
+<span class="linenos"> 55</span> - Error! len(compo) != 3 ([&#39;Z&#39;])
+<span class="linenos"> 56</span>PICK: GUA01 (3 / 5)
+<span class="linenos"> 57</span>PICK: NAN01 (4 / 5)
+<span class="linenos"> 58</span> - Error! len(compo) != 3 ([&#39;Z&#39;])
+<span class="linenos"> 59</span>PICK: NBIT (5 / 5)
+<span class="linenos"> 60</span>*****************
+<span class="linenos"> 61</span>EVENT: 20170405T233728 (4 / 10)
+<span class="linenos"> 62</span> - Number of picks: 2
+<span class="linenos"> 63</span>PICK: SDBA (1 / 2)
+<span class="linenos"> 64</span>PICK: SMTB (2 / 2)
+<span class="linenos"> 65</span>*****************
+<span class="linenos"> 66</span>EVENT: 20190514T063803 (5 / 10)
+<span class="linenos"> 67</span> - Number of picks: 2
+<span class="linenos"> 68</span>PICK: ARAG (1 / 2)
+<span class="linenos"> 69</span>PICK: SNDB (2 / 2)
+<span class="linenos"> 70</span>*****************
+<span class="linenos"> 71</span>EVENT: 20190830T014731 (6 / 10)
+<span class="linenos"> 72</span> - Number of picks: 3
+<span class="linenos"> 73</span>PICK: CLDB (1 / 3)
+<span class="linenos"> 74</span>PICK: PDRB (2 / 3)
+<span class="linenos"> 75</span>PICK: VILB (3 / 3)
+<span class="linenos"> 76</span>*****************
+<span class="linenos"> 77</span>EVENT: 20200717T144815 (7 / 10)
+<span class="linenos"> 78</span> - Number of picks: 2
+<span class="linenos"> 79</span>PICK: NBMO (1 / 2)
+<span class="linenos"> 80</span>PICK: NBPS (2 / 2)
+<span class="linenos"> 81</span>*****************
+<span class="linenos"> 82</span>EVENT: 20200910T062943 (8 / 10)
+<span class="linenos"> 83</span> - Number of picks: 2
+<span class="linenos"> 84</span>PICK: NBPV (1 / 2)
+<span class="linenos"> 85</span>PICK: NBTA (2 / 2)
+<span class="linenos"> 86</span>*****************
+<span class="linenos"> 87</span>EVENT: 20220328T072623 (9 / 10)
+<span class="linenos"> 88</span> - Number of picks: 4
+<span class="linenos"> 89</span>PICK: PRPB (1 / 4)
+<span class="linenos"> 90</span>PICK: SLBO (2 / 4)
+<span class="linenos"> 91</span>PICK: SRN1 (3 / 4)
+<span class="linenos"> 92</span>PICK: SRSU (4 / 4)
+<span class="linenos"> 93</span>*****************
+<span class="linenos"> 94</span>EVENT: 20230524T184558 (10 / 10)
+<span class="linenos"> 95</span> - Number of picks: 4
+<span class="linenos"> 96</span>PICK: NBLV (1 / 4)
+<span class="linenos"> 97</span>PICK: NBPB (2 / 4)
+<span class="linenos"> 98</span>PICK: NBPN (3 / 4)
+<span class="linenos"> 99</span>PICK: NBTA (4 / 4)
+<span class="linenos">100</span>Number of events: 10
+<span class="linenos">101</span>*****************
+<span class="linenos">102</span>EVENT 1 / 10
+<span class="linenos">103</span>Number of Picks: 2
+<span class="linenos">104</span>Pick 1 / 2
+<span class="linenos">105</span>Pick 2 / 2
+<span class="linenos">106</span>*****************
+<span class="linenos">107</span>EVENT 2 / 10
+<span class="linenos">108</span>Number of Picks: 5
+<span class="linenos">109</span>Pick 1 / 5
+<span class="linenos">110</span>Pick 2 / 5
+<span class="linenos">111</span>Pick 3 / 5
+<span class="linenos">112</span>Pick 4 / 5
+<span class="linenos">113</span>Pick 5 / 5
+<span class="linenos">114</span>*****************
+<span class="linenos">115</span>EVENT 3 / 10
+<span class="linenos">116</span>Number of Picks: 2
+<span class="linenos">117</span>Pick 1 / 2
+<span class="linenos">118</span>Pick 2 / 2
+<span class="linenos">119</span>*****************
+<span class="linenos">120</span>EVENT 4 / 10
+<span class="linenos">121</span>Number of Picks: 2
+<span class="linenos">122</span>Pick 1 / 2
+<span class="linenos">123</span>Pick 2 / 2
+<span class="linenos">124</span>*****************
+<span class="linenos">125</span>EVENT 5 / 10
+<span class="linenos">126</span>Number of Picks: 2
+<span class="linenos">127</span>Pick 1 / 2
+<span class="linenos">128</span>Pick 2 / 2
+<span class="linenos">129</span>*****************
+<span class="linenos">130</span>EVENT 6 / 10
+<span class="linenos">131</span>Number of Picks: 3
+<span class="linenos">132</span>Pick 1 / 3
+<span class="linenos">133</span>Pick 2 / 3
+<span class="linenos">134</span>Pick 3 / 3
+<span class="linenos">135</span>*****************
+<span class="linenos">136</span>EVENT 7 / 10
+<span class="linenos">137</span>Number of Picks: 2
+<span class="linenos">138</span>Pick 1 / 2
+<span class="linenos">139</span>Pick 2 / 2
+<span class="linenos">140</span>*****************
+<span class="linenos">141</span>EVENT 8 / 10
+<span class="linenos">142</span>Number of Picks: 2
+<span class="linenos">143</span>Pick 1 / 2
+<span class="linenos">144</span>Pick 2 / 2
+<span class="linenos">145</span>*****************
+<span class="linenos">146</span>EVENT 9 / 10
+<span class="linenos">147</span>Number of Picks: 4
+<span class="linenos">148</span>Pick 1 / 4
+<span class="linenos">149</span>Pick 2 / 4
+<span class="linenos">150</span>Pick 3 / 4
+<span class="linenos">151</span>Pick 4 / 4
+<span class="linenos">152</span>*****************
+<span class="linenos">153</span>EVENT 10 / 10
+<span class="linenos">154</span>Number of Picks: 4
+<span class="linenos">155</span>Pick 1 / 4
+<span class="linenos">156</span>Pick 2 / 4
+<span class="linenos">157</span>Pick 3 / 4
+<span class="linenos">158</span>Pick 4 / 4
+<span class="linenos">159</span>========================================================================
+<span class="linenos">160</span>                        Fim do Pipeline                                 
+<span class="linenos">161</span>========================================================================
+<span class="linenos">162</span>
+<span class="linenos">163</span>/tmp/classificador-matrix-3i2BZ6
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Anexos</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#fluxo-de-navegacao">Fluxo De Navegacao</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Anexos</a><ul>
+      <li>Previous: <a href="anexo-0025c-todos-falha-e-log.html" title="previous chapter">Anexo: 0025c-todos-falha-e.log</a></li>
+      <li>Next: <a href="anexo-0025c-pre-processado-csv.html" title="next chapter">Anexo: 0025c-pre_processado.csv</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/anexos/anexo-0025c-predict-after-eventos-fail-log.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

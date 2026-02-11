@@ -43,7 +43,7 @@
 <section id="resumo">
 <h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
 <p>Validacao e depuracao local da cadeia <code class="docutils literal notranslate"><span class="pre">pre</span> <span class="pre">-&gt;</span> <span class="pre">predict</span> <span class="pre">-&gt;</span> <span class="pre">pos</span> <span class="pre">-&gt;</span> <span class="pre">maps</span> <span class="pre">-&gt;</span>
-<span class="pre">report</span></code> sem executar aquisicao (<code class="docutils literal notranslate"><span class="pre">-e</span></code>), com <code class="docutils literal notranslate"><span class="pre">--test-limit</span> <span class="pre">10</span></code>, em duas
+<span class="pre">report</span></code> sem executar aquisicao (<code class="docutils literal notranslate"><span class="pre">-e</span></code>), com <code class="docutils literal notranslate"><span class="pre">--test-limit</span> <span class="pre">10</span></code>, em tres
 tentativas dentro da mesma operacao.</p>
 </section>
 <section id="efeito-principal">
@@ -52,6 +52,8 @@ tentativas dentro da mesma operacao.</p>
 <li><p>confirmacao de <code class="docutils literal notranslate"><span class="pre">rc=0</span></code> em todas as etapas da matriz sem <code class="docutils literal notranslate"><span class="pre">-e</span></code>;</p></li>
 <li><p>identificacao de causa-raiz para <code class="docutils literal notranslate"><span class="pre">predict</span></code> com <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">eventos</span></code>;</p></li>
 <li><p>confirmacao de processamento real apos restauracao de <code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code>.</p></li>
+<li><p>validacao final de comportamento com falha em <code class="docutils literal notranslate"><span class="pre">-e</span></code> sem corromper
+<code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code>.</p></li>
 </ul>
 </section>
 <section id="arquivos-de-interesse">
@@ -65,6 +67,11 @@ tentativas dentro da mesma operacao.</p>
 <a class="reference internal" href="../anexos/anexo-0025b-matriz-sem-e-com-pre-10-tsv.html"><span class="doc">Matriz</span></a>,
 <a class="reference internal" href="../anexos/anexo-0025b-predict-10-eventos-log.html"><span class="doc">Predict 10 eventos</span></a>,
 <a class="reference internal" href="../anexos/anexo-0025b-pos-com-dados-log.html"><span class="doc">Pos com dados</span></a>.</p></li>
+<li><p>Tentativa C (falha controlada de <code class="docutils literal notranslate"><span class="pre">-e</span></code> + reteste <code class="docutils literal notranslate"><span class="pre">-pr</span></code>):
+<a class="reference internal" href="../anexos/anexo-0025c-summary-todos-tsv.html"><span class="doc">Resumo do todos</span></a>,
+<a class="reference internal" href="../anexos/anexo-0025c-todos-falha-e-log.html"><span class="doc">Log falha em e</span></a>,
+<a class="reference internal" href="../anexos/anexo-0025c-eventos-integridade-txt.html"><span class="doc">Integridade do eventos.csv</span></a>,
+<a class="reference internal" href="../anexos/anexo-0025c-predito-csv.html"><span class="doc">Tabela final de predito</span></a>.</p></li>
 </ul>
 </section>
 <section id="documento-detalhado">
