@@ -27,3 +27,4 @@ Documento detalhado
 
 - :doc:`Documento detalhado </detalhes/0006-organizacao-documentacao-e-runner-isolado>`
 - :doc:`Outline do paper </detalhes/possible-paper-outline>`
+- :doc:`Conexao no User Guide (encapsulamento) </guia/scripts-de-encapsulamento>`

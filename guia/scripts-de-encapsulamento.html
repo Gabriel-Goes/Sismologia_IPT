@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Scripts De Encapsulamento &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Execucoes De Teste Do Fluxo Legado" href="execucoes-de-teste-fluxo-legado.html" />
+    <link rel="prev" title="Fluxo E Referencias" href="fluxo-e-referencias.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="scripts-de-encapsulamento">
+<h1>Scripts De Encapsulamento<a class="headerlink" href="#scripts-de-encapsulamento" title="Link to this heading">¶</a></h1>
+<section id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">¶</a></h2>
+<p>Explicar por que criamos scripts de encapsulamento ao redor do
+<code class="docutils literal notranslate"><span class="pre">fluxo_sismo.sh</span></code> e como eles devem ser usados no ciclo de testes e
+documentacao.</p>
+</section>
+<section id="problema-que-existia">
+<h2>Problema que existia<a class="headerlink" href="#problema-que-existia" title="Link to this heading">¶</a></h2>
+<p>Executar o legado diretamente em <code class="docutils literal notranslate"><span class="pre">.specs/codebase/</span></code> gera artefatos em massa
+(logs, CSVs, PDFs e saidas intermediarias). Isso causava:</p>
+<ol class="arabic simple">
+<li><p>sujeira recorrente na worktree;</p></li>
+<li><p>risco de commit acidental de runtime;</p></li>
+<li><p>baixa reprodutibilidade entre tentativas de teste;</p></li>
+<li><p>dificuldade para publicar evidencias no Sphinx de forma padronizada.</p></li>
+</ol>
+</section>
+<section id="decisao-de-arquitetura">
+<h2>Decisao de arquitetura<a class="headerlink" href="#decisao-de-arquitetura" title="Link to this heading">¶</a></h2>
+<p>Manter <code class="docutils literal notranslate"><span class="pre">fluxo_sismo.sh</span></code> como orquestrador cientifico e criar wrappers
+operacionais em <code class="docutils literal notranslate"><span class="pre">scripts/dev/</span></code> para separar:</p>
+<ol class="arabic simple">
+<li><p>execucao tecnica;</p></li>
+<li><p>arquivamento de evidencias;</p></li>
+<li><p>publicacao na documentacao.</p></li>
+</ol>
+</section>
+<section id="linha-de-evolucao-0006-0017-0026">
+<h2>Linha de evolucao (0006 -&gt; 0017 -&gt; 0026)<a class="headerlink" href="#linha-de-evolucao-0006-0017-0026" title="Link to this heading">¶</a></h2>
+<p>As tres operacoes formam uma cadeia unica de maturacao operacional:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../operacoes/0006-organizacao-documentacao-e-runner-isolado.html"><span class="doc">Operacao 0006</span></a>
+- institui o runner isolado para reduzir poluicao da worktree.</p></li>
+<li><p><a class="reference internal" href="../operacoes/0017-runner-matriz-testes-e-guia-operacional.html"><span class="doc">Operacao 0017</span></a>
+- amplia para matriz de testes com arquivamento padronizado de execucoes.</p></li>
+<li><p><a class="reference internal" href="../operacoes/0026-protocolo-importacao-test-matrix.html"><span class="doc">Operacao 0026</span></a>
+- fecha o ciclo com importacao automatica de evidencias para o Sphinx.</p></li>
+</ol>
+<p>Em termos de fluxo, isso estabelece o trilho:</p>
+<ol class="arabic simple">
+<li><p>executar sem poluir;</p></li>
+<li><p>arquivar com rastreabilidade;</p></li>
+<li><p>publicar com navegacao web.</p></li>
+</ol>
+</section>
+<section id="scripts-criados-e-funcao-de-cada-um">
+<h2>Scripts criados e funcao de cada um<a class="headerlink" href="#scripts-criados-e-funcao-de-cada-um" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Runner isolado:
+<a class="reference internal" href="../artefatos/run-fluxo-isolated-sh.html"><span class="doc">Artefato: run_fluxo_isolated.sh</span></a></p>
+<ul class="simple">
+<li><p>Script: <code class="docutils literal notranslate"><span class="pre">scripts/dev/run_fluxo_isolated.sh</span></code></p></li>
+<li><p>Funcao: executar <code class="docutils literal notranslate"><span class="pre">fluxo_sismo.sh</span></code> em copia temporaria (<code class="docutils literal notranslate"><span class="pre">/tmp</span></code>),
+reduzindo poluicao da branch.</p></li>
+<li><p>Quando usar: testes pontuais por flag (<code class="docutils literal notranslate"><span class="pre">-pe</span></code>, <code class="docutils literal notranslate"><span class="pre">-pr</span></code>, <code class="docutils literal notranslate"><span class="pre">-po</span></code> etc.).</p></li>
+</ul>
+</li>
+<li><p>Runner de matriz com arquivamento:
+<a class="reference internal" href="../artefatos/run-fluxo-test-matrix-archived-sh.html"><span class="doc">Artefato: run_fluxo_test_matrix_archived.sh</span></a></p>
+<ul class="simple">
+<li><p>Script: <code class="docutils literal notranslate"><span class="pre">scripts/dev/run_fluxo_test_matrix_archived.sh</span></code></p></li>
+<li><p>Funcao: rodar bateria de casos com timeouts e salvar evidencias em
+<code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/test_matrix/&lt;archive_id&gt;/</span></code>.</p></li>
+<li><p>Quando usar: validacao comparativa e reproducivel por operacao.</p></li>
+</ul>
+</li>
+<li><p>Importador de evidencias para docs:
+<a class="reference internal" href="../artefatos/import-test-matrix-to-docs-sh.html"><span class="doc">Artefato: import_test_matrix_to_docs.sh</span></a></p>
+<ul class="simple">
+<li><p>Script: <code class="docutils literal notranslate"><span class="pre">scripts/dev/import_test_matrix_to_docs.sh</span></code></p></li>
+<li><p>Funcao: importar anexos de uma execucao <code class="docutils literal notranslate"><span class="pre">test_matrix</span></code> para
+<code class="docutils literal notranslate"><span class="pre">docs/operacoes/anexos</span></code> e gerar paginas renderizadas em
+<code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/anexos</span></code>.</p></li>
+<li><p>Quando usar: fechamento de operacao com publicacao no Sphinx/GitHub Pages.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="fluxo-recomendado">
+<h2>Fluxo recomendado<a class="headerlink" href="#fluxo-recomendado" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Executar teste isolado rapido (runner isolado), se necessario.</p></li>
+<li><p>Executar matriz oficial da operacao (runner arquivado).</p></li>
+<li><p>Importar evidencias selecionadas para documentacao (importador).</p></li>
+<li><p>Registrar conclusoes em <code class="docutils literal notranslate"><span class="pre">docs/operacoes/&lt;id&gt;.md</span></code>.</p></li>
+</ol>
+</section>
+<section id="por-que-isso-foi-feito-resumo">
+<h2>Por que isso foi feito (resumo)<a class="headerlink" href="#por-que-isso-foi-feito-resumo" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>preserva a logica cientifica do legado, sem refatoracao prematura;</p></li>
+<li><p>melhora higiene de repositorio durante investigacao;</p></li>
+<li><p>torna as execucoes auditaveis por <code class="docutils literal notranslate"><span class="pre">archive_id</span></code>;</p></li>
+<li><p>padroniza a trilha “teste -&gt; anexo -&gt; pagina Sphinx”.</p></li>
+</ol>
+</section>
+<section id="referencias">
+<h2>Referencias<a class="headerlink" href="#referencias" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../operacoes/0006-organizacao-documentacao-e-runner-isolado.html"><span class="doc">Operacao 0006</span></a></p></li>
+<li><p><a class="reference internal" href="../operacoes/0017-runner-matriz-testes-e-guia-operacional.html"><span class="doc">Operacao 0017</span></a></p></li>
+<li><p><a class="reference internal" href="../operacoes/0026-protocolo-importacao-test-matrix.html"><span class="doc">Operacao 0026</span></a></p></li>
+<li><p><a class="reference internal" href="execucoes-de-teste-fluxo-legado.html"><span class="doc">Execucoes de teste do fluxo legado</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#fluxo-de-navegacao">Fluxo De Navegacao</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../anexos/index.html">Anexos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">User Guide</a><ul>
+      <li>Previous: <a href="fluxo-e-referencias.html" title="previous chapter">Fluxo E Referencias</a></li>
+      <li>Next: <a href="execucoes-de-teste-fluxo-legado.html" title="next chapter">Execucoes De Teste Do Fluxo Legado</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/guia/scripts-de-encapsulamento.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
