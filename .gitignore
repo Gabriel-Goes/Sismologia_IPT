@@ -1,0 +1,16 @@
+# Local legacy material kept outside the new cleanroom history
+.specs/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.env
+
+# Data/artifacts
+arquivos/
+data/
+logs/
+
+# Sphinx build
+docs/sphinx/build/
