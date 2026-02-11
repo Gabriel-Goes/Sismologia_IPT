@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documento detalhado: 0024-organizacao-fase-testes-execucao &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="documento-detalhado-0024-organizacao-fase-testes-execucao">
+<h1>Documento detalhado: 0024-organizacao-fase-testes-execucao<a class="headerlink" href="#documento-detalhado-0024-organizacao-fase-testes-execucao" title="Link to this heading">¶</a></h1>
+</section>
+<section id="operacao-0024-organizacao-da-fase-de-testes-de-execucao">
+<h1>Operacao 0024 - Organizacao da fase de testes de execucao<a class="headerlink" href="#operacao-0024-organizacao-da-fase-de-testes-de-execucao" title="Link to this heading">¶</a></h1>
+<p><strong>Data:</strong> 2026-02-11<br />
+<strong>Branch:</strong> <code class="docutils literal notranslate"><span class="pre">refactor/fluxo-v2-documentado</span></code><br />
+<strong>Contexto:</strong> <code class="docutils literal notranslate"><span class="pre">refatoracao</span></code><br />
+<strong>Status:</strong> <code class="docutils literal notranslate"><span class="pre">concluida</span></code><br />
+<strong>Fase:</strong> <code class="docutils literal notranslate"><span class="pre">execucao-legado</span></code><br />
+<strong>Tag:</strong> <code class="docutils literal notranslate"><span class="pre">teste-execucao</span></code></p>
+<section id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">¶</a></h2>
+<p>Formalizar a transicao da fase de leitura/compreensao do legado para a fase de
+teste de execucao do codigo, mantendo rastreabilidade por operacao e commit.</p>
+</section>
+<section id="decisao-de-organizacao">
+<h2>Decisao de organizacao<a class="headerlink" href="#decisao-de-organizacao" title="Link to this heading">¶</a></h2>
+<p>A numeracao das operacoes continua linear (<code class="docutils literal notranslate"><span class="pre">0001</span></code>, <code class="docutils literal notranslate"><span class="pre">0002</span></code>, …), mas a partir
+desta etapa cada operacao passa a explicitar duas marcacoes sinteticas:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Fase</span></code>: identifica o macrobloco de trabalho.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Tag</span></code>: identifica o tipo da operacao dentro da fase.</p></li>
+</ol>
+</section>
+<section id="convencao-adotada-para-as-proximas-operacoes">
+<h2>Convencao adotada para as proximas operacoes<a class="headerlink" href="#convencao-adotada-para-as-proximas-operacoes" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Operacoes de teste de execucao do legado:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Fase:</span> <span class="pre">execucao-legado</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Tag:</span> <span class="pre">teste-execucao</span></code></p></li>
+</ul>
+</li>
+<li><p>Operacoes de estabilizacao de dependencias/ambiente:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Fase:</span> <span class="pre">execucao-legado</span></code> ou <code class="docutils literal notranslate"><span class="pre">modernizacao-rnc</span></code> (quando aplicavel)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Tag:</span> <span class="pre">hardening-ambiente</span></code></p></li>
+</ul>
+</li>
+<li><p>Operacoes de implementacao da refatoracao v2:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Fase:</span> <span class="pre">implementacao-v2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Tag:</span> <span class="pre">refactor-codigo</span></code></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="diretriz-para-os-testes-imediatos">
+<h2>Diretriz para os testes imediatos<a class="headerlink" href="#diretriz-para-os-testes-imediatos" title="Link to this heading">¶</a></h2>
+<p>Como o acervo local de formas de onda ja existe, os testes desta fase devem
+priorizar fluxo sem aquisicao (<code class="docutils literal notranslate"><span class="pre">-e</span></code>), validando primeiro:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-pr</span></code> (predicao)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-po</span></code> (pos-processamento)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-m</span></code> (mapas)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-r</span></code> (relatorio)</p></li>
+</ol>
+<p>Somente depois disso sera executada a validacao no IAG da etapa de aquisicao
+(<code class="docutils literal notranslate"><span class="pre">-e</span></code>) via <code class="docutils literal notranslate"><span class="pre">seisarc</span></code>.</p>
+</section>
+<section id="resultado-desta-operacao">
+<h2>Resultado desta operacao<a class="headerlink" href="#resultado-desta-operacao" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Estrutura de classificacao das operacoes definida.</p></li>
+<li><p>Fronteira clara entre fase de compreensao e fase de execucao estabelecida.</p></li>
+<li><p>Proximo passo de teste pratico sem <code class="docutils literal notranslate"><span class="pre">-e</span></code> pronto para execucao e registro.</p></li>
+</ol>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../anexos/index.html">Anexos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/detalhes/0024-organizacao-fase-testes-execucao.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

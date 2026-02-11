@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documento detalhado: 0022-diagnostico-dependabot-ambiente-rnc-legado &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="documento-detalhado-0022-diagnostico-dependabot-ambiente-rnc-legado">
+<h1>Documento detalhado: 0022-diagnostico-dependabot-ambiente-rnc-legado<a class="headerlink" href="#documento-detalhado-0022-diagnostico-dependabot-ambiente-rnc-legado" title="Link to this heading">¶</a></h1>
+</section>
+<section id="operacao-0022-diagnostico-do-dependabot-no-ambiente-rnc-legado">
+<h1>Operacao 0022 - Diagnostico do Dependabot no ambiente RNC legado<a class="headerlink" href="#operacao-0022-diagnostico-do-dependabot-no-ambiente-rnc-legado" title="Link to this heading">¶</a></h1>
+<p><strong>Data:</strong> 2026-02-11<br />
+<strong>Branch:</strong> <code class="docutils literal notranslate"><span class="pre">refactor/fluxo-v2-documentado</span></code><br />
+<strong>Contexto:</strong> <code class="docutils literal notranslate"><span class="pre">refatoracao</span></code><br />
+<strong>Status:</strong> <code class="docutils literal notranslate"><span class="pre">concluida</span></code></p>
+<section id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">¶</a></h2>
+<p>Avaliar o impacto dos bumps de dependencias mesclados no <code class="docutils literal notranslate"><span class="pre">main</span></code> sobre o
+ambiente legado RNC (<code class="docutils literal notranslate"><span class="pre">sismo-rnc-379</span></code>, Python 3.7.9) e definir a acao tecnica
+para preservar a reproducibilidade do fluxo legado.</p>
+<p>A presente etapa foi motivada pela identificacao de alertas criticos de
+seguranca emitidos pelo Dependabot no conjunto de dependencias da trilha RNC.
+Nesse contexto, tornou-se necessario avaliar, de forma sistematica, os efeitos
+das atualizacoes propostas sobre a reprodutibilidade do ambiente legado
+(<code class="docutils literal notranslate"><span class="pre">sismo-rnc-379</span></code>, Python 3.7.9), de modo a equilibrar requisitos de seguranca
+e continuidade operacional.</p>
+</section>
+<section id="escopo-da-verificacao">
+<h2>Escopo da verificacao<a class="headerlink" href="#escopo-da-verificacao" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Comparacao entre <code class="docutils literal notranslate"><span class="pre">origin/main</span></code> e <code class="docutils literal notranslate"><span class="pre">origin/refactor/fluxo-v2-documentado</span></code> no
+arquivo <code class="docutils literal notranslate"><span class="pre">scripts/dev/requirements-rnc-legacy.txt</span></code>.</p></li>
+<li><p>Validacao de resolucao de dependencias com <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">--dry-run</span></code> em:</p>
+<ul class="simple">
+<li><p>ambiente legado (<code class="docutils literal notranslate"><span class="pre">PYENV_VERSION=sismo-rnc-379</span></code>, Python 3.7.9);</p></li>
+<li><p>ambiente Python 3.11 para isolar conflitos entre pacotes.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="diagnostico">
+<h2>Diagnostico<a class="headerlink" href="#diagnostico" title="Link to this heading">¶</a></h2>
+<p>Bumps identificados no <code class="docutils literal notranslate"><span class="pre">main</span></code>:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ipython</span> <span class="pre">7.28.0</span> <span class="pre">-&gt;</span> <span class="pre">8.10.0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span> <span class="pre">1.21.3</span> <span class="pre">-&gt;</span> <span class="pre">1.22.0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tensorflow</span> <span class="pre">2.8.0</span> <span class="pre">-&gt;</span> <span class="pre">2.12.1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">protobuf</span> <span class="pre">3.20.0</span> <span class="pre">-&gt;</span> <span class="pre">5.29.6</span></code></p></li>
+</ol>
+<p>Incompatibilidades confirmadas:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ipython==8.10.0</span></code> requer Python &gt;= 3.8.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy==1.22.0</span></code> requer Python &gt;= 3.8.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tensorflow==2.12.1</span></code> nao fecha no Python 3.7.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tensorflow==2.12.1</span></code> conflita com <code class="docutils literal notranslate"><span class="pre">protobuf==5.29.6</span></code>
+(<code class="docutils literal notranslate"><span class="pre">tensorflow</span> <span class="pre">2.12</span></code> exige <code class="docutils literal notranslate"><span class="pre">protobuf</span> <span class="pre">&lt;</span> <span class="pre">5</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tensorflow==2.12.1</span></code> conflita com <code class="docutils literal notranslate"><span class="pre">tensorflow-estimator==2.8.0</span></code>
+(<code class="docutils literal notranslate"><span class="pre">tensorflow</span> <span class="pre">2.12</span></code> exige <code class="docutils literal notranslate"><span class="pre">tensorflow-estimator</span> <span class="pre">&gt;=</span> <span class="pre">2.12,&lt;2.13</span></code>).</p></li>
+<li><p>Mesmo em Python 3.11, <code class="docutils literal notranslate"><span class="pre">tensorflow-io-gcs-filesystem==0.24.0</span></code> nao possui
+distribuicao compativel.</p></li>
+</ol>
+</section>
+<section id="acao-tomada-com-base-no-diagnostico">
+<h2>Acao tomada com base no diagnostico<a class="headerlink" href="#acao-tomada-com-base-no-diagnostico" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Mantido <code class="docutils literal notranslate"><span class="pre">scripts/dev/requirements-rnc-legacy.txt</span></code> da branch de refatoracao
+com pins legados para nao quebrar o ambiente <code class="docutils literal notranslate"><span class="pre">sismo-rnc-379</span></code>.</p></li>
+<li><p>Registrada memoria tecnica consolidada em:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">documentação/memoria_dependabot_rnc_compatibilidade.md</span></code></p></li>
+</ul>
+</li>
+<li><p>Definida diretriz operacional:</p>
+<ul class="simple">
+<li><p>separar trilhas de dependencia (<code class="docutils literal notranslate"><span class="pre">legado</span></code> x <code class="docutils literal notranslate"><span class="pre">modernizada</span></code>) antes de aceitar
+bumps automaticos no mesmo arquivo de requirements.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="resultado">
+<h2>Resultado<a class="headerlink" href="#resultado" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Reprodutibilidade do fluxo legado RNC preservada na branch de refatoracao.</p></li>
+<li><p>Risco de quebra por merges automaticos documentado e rastreavel.</p></li>
+<li><p>Base tecnica pronta para migracao controlada de stack em operacao futura.</p></li>
+</ol>
+</section>
+<section id="proximo-passo">
+<h2>Proximo passo<a class="headerlink" href="#proximo-passo" title="Link to this heading">¶</a></h2>
+<p>Planejar operacao de separacao de requirements (legado x modernizado), com
+politica explicita para Dependabot por trilha.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../anexos/index.html">Anexos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/detalhes/0022-diagnostico-dependabot-ambiente-rnc-legado.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

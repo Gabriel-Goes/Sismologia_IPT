@@ -20,5 +20,6 @@ Fluxo De Navegacao
    setup-pyenv-dual-envs-sh
    python-version
    memoria-ambiente-pyenv-virtualenv-md
+   memoria-dependabot-rnc-compatibilidade-md
    requirements-core-pipeline-txt
    requirements-rnc-legacy-txt

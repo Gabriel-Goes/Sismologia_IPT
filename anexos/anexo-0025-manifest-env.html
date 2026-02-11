@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Artefato: requirements-rnc-legacy.txt &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <title>Anexo: 0025-manifest.env &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
@@ -19,8 +19,8 @@
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Anexos" href="../anexos/index.html" />
-    <link rel="prev" title="Artefato: requirements-core-pipeline.txt" href="requirements-core-pipeline-txt.html" />
+    <link rel="next" title="Anexo: 0025-pre-10.log" href="anexo-0025-pre-10-log.html" />
+    <link rel="prev" title="Anexo: 0025-matriz-sem-e-com-pre-10.tsv" href="anexo-0025-matriz-sem-e-com-pre-10-tsv.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -38,25 +38,23 @@
 
           <div class="body" role="main">
             
-  <section id="artefato-requirements-rnc-legacy-txt">
-<h1>Artefato: requirements-rnc-legacy.txt<a class="headerlink" href="#artefato-requirements-rnc-legacy-txt" title="Link to this heading">¶</a></h1>
+  <section id="anexo-0025-manifest-env">
+<h1>Anexo: 0025-manifest.env<a class="headerlink" href="#anexo-0025-manifest-env" title="Link to this heading">¶</a></h1>
 <p>Arquivo de origem:</p>
 <ul class="simple">
-<li><p><a class="extlink-ghblob reference external" href="https://github.com/Gabriel-Goes/Sismologia_IPT/blob/main/scripts/dev/requirements-rnc-legacy.txt">scripts/dev/requirements-rnc-legacy.txt</a></p></li>
+<li><p><a class="extlink-ghblob reference external" href="https://github.com/Gabriel-Goes/Sismologia_IPT/blob/main/docs/operacoes/anexos/0025-manifest.env">docs/operacoes/anexos/0025-manifest.env</a></p></li>
 </ul>
 <section id="conteudo">
 <h2>Conteudo<a class="headerlink" href="#conteudo" title="Link to this heading">¶</a></h2>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>ipython==7.28.0
-<span class="linenos"> 2</span>matplotlib==3.4.3
-<span class="linenos"> 3</span>numpy==1.21.3
-<span class="linenos"> 4</span>obspy==1.2.2
-<span class="linenos"> 5</span>pandas==1.2.0
-<span class="linenos"> 6</span>tensorflow==2.8.0
-<span class="linenos"> 7</span>tensorflow-estimator==2.8.0
-<span class="linenos"> 8</span>keras-applications==1.0.8
-<span class="linenos"> 9</span>tensorflow-io-gcs-filesystem==0.24.0
-<span class="linenos">10</span>protobuf==3.20.0
-<span class="linenos">11</span>scikit-learn==1.0.2
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>archive_id=20260211_084132
+<span class="linenos">2</span>created_at=2026-02-11T08:41:49-03:00
+<span class="linenos">3</span>catalog=catalogo_jul_filtrado.csv
+<span class="linenos">4</span>test_limit=10
+<span class="linenos">5</span>core_env=sismo-core-311
+<span class="linenos">6</span>rnc_env=sismo-rnc-379
+<span class="linenos">7</span>cases=pre,predict,pos,maps,report
+<span class="linenos">8</span>run_dir=/tmp/classificador-matrix-m9nFXF
+<span class="linenos">9</span>archive_dir=/home/ggrl/projetos/ClassificadorSismologico/.specs/codebase/arquivos/registros/test_matrix/20260211_084132
 </pre></div>
 </div>
 </section>
@@ -94,11 +92,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Artefatos</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Anexos</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#fluxo-de-navegacao">Fluxo De Navegacao</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../anexos/index.html">Anexos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
 </ul>
 
@@ -106,9 +104,9 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="index.html">Artefatos</a><ul>
-      <li>Previous: <a href="requirements-core-pipeline-txt.html" title="previous chapter">Artefato: requirements-core-pipeline.txt</a></li>
-      <li>Next: <a href="../anexos/index.html" title="next chapter">Anexos</a></li>
+  <li><a href="index.html">Anexos</a><ul>
+      <li>Previous: <a href="anexo-0025-matriz-sem-e-com-pre-10-tsv.html" title="previous chapter">Anexo: 0025-matriz-sem-e-com-pre-10.tsv</a></li>
+      <li>Next: <a href="anexo-0025-pre-10-log.html" title="next chapter">Anexo: 0025-pre-10.log</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -133,7 +131,7 @@
       &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
-      <a href="../_sources/artefatos/requirements-rnc-legacy-txt.rst.txt"
+      <a href="../_sources/anexos/anexo-0025-manifest-env.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

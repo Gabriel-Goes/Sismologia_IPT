@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Operacao 0021 - Matriz completa apos correcao 0020 &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <title>Operacao 0023 - Diagnostico da RNC pos-merge Dependabot e reteste do train.py &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
@@ -19,8 +19,8 @@
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Operacao 0022 - Diagnostico do Dependabot no ambiente RNC legado" href="0022-diagnostico-dependabot-ambiente-rnc-legado.html" />
-    <link rel="prev" title="Operacao 0020 - Contrato pr-&gt;po para cenarios sem dados" href="0020-contrato-pr-po-sem-dados.html" />
+    <link rel="next" title="Operacao 0024 - Organizacao da fase de testes de execucao" href="0024-organizacao-fase-testes-execucao.html" />
+    <link rel="prev" title="Operacao 0022 - Diagnostico do Dependabot no ambiente RNC legado" href="0022-diagnostico-dependabot-ambiente-rnc-legado.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -38,33 +38,40 @@
 
           <div class="body" role="main">
             
-  <section id="operacao-0021-matriz-completa-apos-correcao-0020">
-<h1>Operacao 0021 - Matriz completa apos correcao 0020<a class="headerlink" href="#operacao-0021-matriz-completa-apos-correcao-0020" title="Link to this heading">¶</a></h1>
+  <section id="operacao-0023-diagnostico-da-rnc-pos-merge-dependabot-e-reteste-do-train-py">
+<h1>Operacao 0023 - Diagnostico da RNC pos-merge Dependabot e reteste do train.py<a class="headerlink" href="#operacao-0023-diagnostico-da-rnc-pos-merge-dependabot-e-reteste-do-train-py" title="Link to this heading">¶</a></h1>
 <section id="resumo">
 <h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
-<p>Validacao da matriz completa com 10 eventos apos a correcao do contrato
-<code class="docutils literal notranslate"><span class="pre">-pr</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">-po</span></code>.</p>
+<p>Consolidacao tecnica do estado da RNC apos merge de dependencias no <code class="docutils literal notranslate"><span class="pre">main</span></code>,
+incluindo reteste de <code class="docutils literal notranslate"><span class="pre">train.py</span></code> com <code class="docutils literal notranslate"><span class="pre">analisado.csv</span></code> presente e mapeamento
+dos bloqueios reais de stack e schema.
+A trilha em Python 3.11 e tratada como etapa de migracao controlada para
+responder aos alertas criticos de seguranca do Dependabot, sem descontinuar
+abruptamente a trilha legada.</p>
 </section>
 <section id="efeito-principal">
 <h2>Efeito principal<a class="headerlink" href="#efeito-principal" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>confirmacao de <code class="docutils literal notranslate"><span class="pre">pos=0</span></code> em matriz completa;</p></li>
-<li><p>consolidacao de que o unico bloqueio remanescente e FDSN/event fora do IAG;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">todos</span></code> permanece dependente da resolucao de <code class="docutils literal notranslate"><span class="pre">eventos</span></code>.</p></li>
+<li><p>confirmacao de que os pins do <code class="docutils literal notranslate"><span class="pre">main</span></code> nao fecham em trilha legada nem em
+trilha Python 3.11 como arquivo unico;</p></li>
+<li><p>confirmacao de falhas objetivas de <code class="docutils literal notranslate"><span class="pre">train.py</span></code> em ambos ambientes testados;</p></li>
+<li><p>definicao de proximo incremento: <code class="docutils literal notranslate"><span class="pre">requirements-rnc-modern.txt</span></code> minimo e
+validado.</p></li>
 </ul>
 </section>
 <section id="arquivos-de-interesse">
 <h2>Arquivos de interesse<a class="headerlink" href="#arquivos-de-interesse" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="../anexos/anexo-0021-matriz-completa-10-tsv.html"><span class="doc">Matriz completa (anexo)</span></a></p></li>
-<li><p><a class="reference internal" href="../anexos/anexo-0021-falha-eventos-fdsn-log.html"><span class="doc">Falha FDSN em eventos (anexo)</span></a></p></li>
-<li><p><a class="reference internal" href="../anexos/anexo-0021-falha-todos-fdsn-log.html"><span class="doc">Falha FDSN em todos (anexo)</span></a></p></li>
+<li><p><a class="reference internal" href="../anexos/anexo-0023-requirements-main-compat-log.html"><span class="doc">Compatibilidade do requirements do main</span></a></p></li>
+<li><p><a class="reference internal" href="../anexos/anexo-0023-train-legacy-379-log.html"><span class="doc">Reteste train legado (log)</span></a></p></li>
+<li><p><a class="reference internal" href="../anexos/anexo-0023-train-modern-311-log.html"><span class="doc">Reteste train moderno (log)</span></a></p></li>
+<li><p><a class="reference internal" href="../anexos/anexo-0023-analisado-schema-check-log.html"><span class="doc">Checagem de schema do analisado.csv</span></a></p></li>
 </ul>
 </section>
 <section id="documento-detalhado">
 <h2>Documento detalhado<a class="headerlink" href="#documento-detalhado" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="../detalhes/0021-matriz-completa-pos-0020.html"><span class="doc">Documento detalhado</span></a></p></li>
+<li><p><a class="reference internal" href="../detalhes/0023-diagnostico-rnc-main-e-reteste-train.html"><span class="doc">Documento detalhado</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -114,8 +121,8 @@
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="index.html">Operacoes</a><ul>
-      <li>Previous: <a href="0020-contrato-pr-po-sem-dados.html" title="previous chapter">Operacao 0020 - Contrato pr-&gt;po para cenarios sem dados</a></li>
-      <li>Next: <a href="0022-diagnostico-dependabot-ambiente-rnc-legado.html" title="next chapter">Operacao 0022 - Diagnostico do Dependabot no ambiente RNC legado</a></li>
+      <li>Previous: <a href="0022-diagnostico-dependabot-ambiente-rnc-legado.html" title="previous chapter">Operacao 0022 - Diagnostico do Dependabot no ambiente RNC legado</a></li>
+      <li>Next: <a href="0024-organizacao-fase-testes-execucao.html" title="next chapter">Operacao 0024 - Organizacao da fase de testes de execucao</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -140,7 +147,7 @@
       &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
-      <a href="../_sources/operacoes/0021-matriz-completa-pos-0020.rst.txt"
+      <a href="../_sources/operacoes/0023-diagnostico-rnc-main-e-reteste-train.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
