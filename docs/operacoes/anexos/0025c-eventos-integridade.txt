@@ -1,0 +1,6 @@
+eventos_csv_path=.specs/codebase/arquivos/eventos/eventos.csv
+eventos_csv_lines=8118
+eventos_csv_md5=511f64d28f52171887cd705904782fdd
+evidencia_run_dir=/tmp/classificador-matrix-3i2BZ6
+todos_log=arquivos/registros/test_matrix/todos_20260211_092006.log
+predict_retest_log=arquivos/registros/test_matrix/predict_after_eventos_fail.log

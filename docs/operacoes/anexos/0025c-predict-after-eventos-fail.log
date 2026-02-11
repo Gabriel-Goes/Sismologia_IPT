@@ -1,0 +1,136 @@
+Catalogo: catalogo_jul_filtrado.csv
+/tmp/classificador-matrix-3i2BZ6 /tmp/classificador-matrix-3i2BZ6
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul_filtrado.csv
+  EVENTS: False
+  TREATCATALOG: False
+  PREDICT: True
+  POSPROCESS: False
+  MAPS: False
+  REPORT: False
+  TEST: True
+
+ ----------------- INICIANDO O PREDICT.PY ---------------------------- 
+ Ambiente RNC (somente predição): PYENV_VERSION=sismo-rnc-379
+ Modo de teste RNC: limite de 10 eventos
+2026-02-11 09:20:46.287056: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/lib/:/usr/local/lib/
+2026-02-11 09:20:46.287079: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2026-02-11 09:20:58.828096: E tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_OPERATING_SYSTEM: OS call failed or operation not supported on this OS
+2026-02-11 09:20:58.828133: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: GeoServer
+2026-02-11 09:20:58.828140: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: GeoServer
+2026-02-11 09:20:58.828242: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:200] libcuda reported version is: 590.48.1
+2026-02-11 09:20:58.828283: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:204] kernel reported version is: NOT_FOUND: could not find kernel module information in driver version file contents: "NVRM version: NVIDIA UNIX Open Kernel Module for x86_64  590.48.01  Release Build  (root@)  
+GCC version:  gcc version 15.2.1 20260103 (GCC) 
+"
+2026-02-11 09:20:58.828617: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+ --> Modo de teste RNC: 10 eventos unicos selecionados (32 picks).
+Number of events: 10
+*****************
+EVENT: 20150317T190704 (1 / 10)
+ - Number of picks: 3
+PICK: GDU01 (1 / 3)
+ - Error! len(compo) != 3 (['Z'])
+PICK: NBIT (2 / 3)
+PICK: NBPN (3 / 3)
+*****************
+EVENT: 20150923T124902 (2 / 10)
+ - Number of picks: 5
+PICK: NBCL (1 / 5)
+PICK: NBLV (2 / 5)
+PICK: NBMA (3 / 5)
+PICK: NBPV (4 / 5)
+PICK: NBRF (5 / 5)
+*****************
+EVENT: 20160111T033106 (3 / 10)
+ - Number of picks: 5
+PICK: CMC01 (1 / 5)
+ - Error! len(compo) != 3 (['Z'])
+PICK: GDU01 (2 / 5)
+ - Error! len(compo) != 3 (['Z'])
+PICK: GUA01 (3 / 5)
+PICK: NAN01 (4 / 5)
+ - Error! len(compo) != 3 (['Z'])
+PICK: NBIT (5 / 5)
+*****************
+EVENT: 20170405T233728 (4 / 10)
+ - Number of picks: 2
+PICK: SDBA (1 / 2)
+PICK: SMTB (2 / 2)
+*****************
+EVENT: 20190514T063803 (5 / 10)
+ - Number of picks: 2
+PICK: ARAG (1 / 2)
+PICK: SNDB (2 / 2)
+*****************
+EVENT: 20190830T014731 (6 / 10)
+ - Number of picks: 3
+PICK: CLDB (1 / 3)
+PICK: PDRB (2 / 3)
+PICK: VILB (3 / 3)
+*****************
+EVENT: 20200717T144815 (7 / 10)
+ - Number of picks: 2
+PICK: NBMO (1 / 2)
+PICK: NBPS (2 / 2)
+*****************
+EVENT: 20200910T062943 (8 / 10)
+ - Number of picks: 2
+PICK: NBPV (1 / 2)
+PICK: NBTA (2 / 2)
+*****************
+EVENT: 20220328T072623 (9 / 10)
+ - Number of picks: 4
+PICK: PRPB (1 / 4)
+PICK: SLBO (2 / 4)
+PICK: SRN1 (3 / 4)
+PICK: SRSU (4 / 4)
+*****************
+EVENT: 20230524T184558 (10 / 10)
+ - Number of picks: 4
+PICK: NBLV (1 / 4)
+PICK: NBPB (2 / 4)
+PICK: NBPN (3 / 4)
+PICK: NBTA (4 / 4)
+Number of events: 10
+*****************
+EVENT 1 / 10
+Number of Picks: 2
+Pick 1 / 2Pick 2 / 2*****************
+EVENT 2 / 10
+Number of Picks: 5
+Pick 1 / 5Pick 2 / 5Pick 3 / 5Pick 4 / 5Pick 5 / 5*****************
+EVENT 3 / 10
+Number of Picks: 2
+Pick 1 / 2Pick 2 / 2*****************
+EVENT 4 / 10
+Number of Picks: 2
+Pick 1 / 2Pick 2 / 2*****************
+EVENT 5 / 10
+Number of Picks: 2
+Pick 1 / 2Pick 2 / 2*****************
+EVENT 6 / 10
+Number of Picks: 3
+Pick 1 / 3Pick 2 / 3Pick 3 / 3*****************
+EVENT 7 / 10
+Number of Picks: 2
+Pick 1 / 2Pick 2 / 2*****************
+EVENT 8 / 10
+Number of Picks: 2
+Pick 1 / 2Pick 2 / 2*****************
+EVENT 9 / 10
+Number of Picks: 4
+Pick 1 / 4Pick 2 / 4Pick 3 / 4Pick 4 / 4*****************
+EVENT 10 / 10
+Number of Picks: 4
+Pick 1 / 4Pick 2 / 4Pick 3 / 4Pick 4 / 4
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
+/tmp/classificador-matrix-3i2BZ6
