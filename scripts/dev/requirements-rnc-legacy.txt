@@ -1,4 +1,4 @@
-ipython==7.28.0
+ipython==8.10.0
 matplotlib==3.4.3
 numpy==1.21.3
 obspy==1.2.2
