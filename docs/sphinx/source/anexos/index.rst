@@ -27,3 +27,8 @@ Fluxo De Navegacao
    anexo-0023-train-legacy-379-log
    anexo-0023-train-modern-311-log
    anexo-0023-analisado-schema-check-log
+   anexo-0025-matriz-sem-e-com-pre-10-tsv
+   anexo-0025-manifest-env
+   anexo-0025-pre-10-log
+   anexo-0025-predict-0-eventos-log
+   anexo-0025-pos-sem-picks-log
