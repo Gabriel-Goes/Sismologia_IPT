@@ -36,3 +36,10 @@ Fluxo De Navegacao
    anexo-0025b-manifest-env
    anexo-0025b-predict-10-eventos-log
    anexo-0025b-pos-com-dados-log
+   anexo-0026a-summary-tsv
+   anexo-0026a-manifest-env
+   anexo-0026a-predict-log
+   anexo-0026a-pre-processado-csv
+   anexo-0026a-predito-csv
+   anexo-0026a-analisado-final-csv
+   anexo-0026a-erros-csv
