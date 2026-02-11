@@ -19,6 +19,7 @@
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Operacao 0026 - Protocolo de importacao test_matrix" href="0026-protocolo-importacao-test-matrix.html" />
     <link rel="prev" title="Operacao 0024 - Organizacao da fase de testes de execucao" href="0024-organizacao-fase-testes-execucao.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -41,25 +42,29 @@
 <h1>Operacao 0025 - Matriz sem -e com pre (10 eventos)<a class="headerlink" href="#operacao-0025-matriz-sem-e-com-pre-10-eventos" title="Link to this heading">¶</a></h1>
 <section id="resumo">
 <h2>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">¶</a></h2>
-<p>Validacao local da cadeia <code class="docutils literal notranslate"><span class="pre">pre</span> <span class="pre">-&gt;</span> <span class="pre">predict</span> <span class="pre">-&gt;</span> <span class="pre">pos</span> <span class="pre">-&gt;</span> <span class="pre">maps</span> <span class="pre">-&gt;</span> <span class="pre">report</span></code> sem
-executar aquisicao (<code class="docutils literal notranslate"><span class="pre">-e</span></code>), com <code class="docutils literal notranslate"><span class="pre">--test-limit</span> <span class="pre">10</span></code>.</p>
+<p>Validacao e depuracao local da cadeia <code class="docutils literal notranslate"><span class="pre">pre</span> <span class="pre">-&gt;</span> <span class="pre">predict</span> <span class="pre">-&gt;</span> <span class="pre">pos</span> <span class="pre">-&gt;</span> <span class="pre">maps</span> <span class="pre">-&gt;</span>
+<span class="pre">report</span></code> sem executar aquisicao (<code class="docutils literal notranslate"><span class="pre">-e</span></code>), com <code class="docutils literal notranslate"><span class="pre">--test-limit</span> <span class="pre">10</span></code>, em duas
+tentativas dentro da mesma operacao.</p>
 </section>
 <section id="efeito-principal">
 <h2>Efeito principal<a class="headerlink" href="#efeito-principal" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>confirmacao de <code class="docutils literal notranslate"><span class="pre">rc=0</span></code> em todas as etapas da matriz sem <code class="docutils literal notranslate"><span class="pre">-e</span></code>;</p></li>
-<li><p>confirmacao de que <code class="docutils literal notranslate"><span class="pre">predict</span></code> segue com <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">eventos</span></code> no recorte atual;</p></li>
-<li><p>consolidacao de que <code class="docutils literal notranslate"><span class="pre">pos</span></code> trata entrada vazia sem quebrar o fluxo.</p></li>
+<li><p>identificacao de causa-raiz para <code class="docutils literal notranslate"><span class="pre">predict</span></code> com <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">eventos</span></code>;</p></li>
+<li><p>confirmacao de processamento real apos restauracao de <code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code>.</p></li>
 </ul>
 </section>
 <section id="arquivos-de-interesse">
 <h2>Arquivos de interesse<a class="headerlink" href="#arquivos-de-interesse" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="../anexos/anexo-0025-matriz-sem-e-com-pre-10-tsv.html"><span class="doc">Matriz consolidada (anexo)</span></a></p></li>
-<li><p><a class="reference internal" href="../anexos/anexo-0025-manifest-env.html"><span class="doc">Manifest da execucao (anexo)</span></a></p></li>
-<li><p><a class="reference internal" href="../anexos/anexo-0025-pre-10-log.html"><span class="doc">Log do pre-processamento (anexo)</span></a></p></li>
-<li><p><a class="reference internal" href="../anexos/anexo-0025-predict-0-eventos-log.html"><span class="doc">Log da predicao (0 eventos)</span></a></p></li>
-<li><p><a class="reference internal" href="../anexos/anexo-0025-pos-sem-picks-log.html"><span class="doc">Log do pos-processamento (sem picks)</span></a></p></li>
+<li><p>Tentativa A (diagnostico):
+<a class="reference internal" href="../anexos/anexo-0025-matriz-sem-e-com-pre-10-tsv.html"><span class="doc">Matriz</span></a>,
+<a class="reference internal" href="../anexos/anexo-0025-predict-0-eventos-log.html"><span class="doc">Predict 0 eventos</span></a>,
+<a class="reference internal" href="../anexos/anexo-0025-pos-sem-picks-log.html"><span class="doc">Pos sem picks</span></a>.</p></li>
+<li><p>Tentativa B (apos restaurar <code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code>):
+<a class="reference internal" href="../anexos/anexo-0025b-matriz-sem-e-com-pre-10-tsv.html"><span class="doc">Matriz</span></a>,
+<a class="reference internal" href="../anexos/anexo-0025b-predict-10-eventos-log.html"><span class="doc">Predict 10 eventos</span></a>,
+<a class="reference internal" href="../anexos/anexo-0025b-pos-com-dados-log.html"><span class="doc">Pos com dados</span></a>.</p></li>
 </ul>
 </section>
 <section id="documento-detalhado">
@@ -116,6 +121,7 @@ executar aquisicao (<code class="docutils literal notranslate"><span class="pre"
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="index.html">Operacoes</a><ul>
       <li>Previous: <a href="0024-organizacao-fase-testes-execucao.html" title="previous chapter">Operacao 0024 - Organizacao da fase de testes de execucao</a></li>
+      <li>Next: <a href="0026-protocolo-importacao-test-matrix.html" title="next chapter">Operacao 0026 - Protocolo de importacao test_matrix</a></li>
   </ul></li>
   </ul></li>
 </ul>

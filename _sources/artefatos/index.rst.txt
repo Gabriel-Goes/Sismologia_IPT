@@ -15,6 +15,7 @@ Fluxo De Navegacao
 
    fluxo-sismo-sh
    run-fluxo-test-matrix-archived-sh
+   import-test-matrix-to-docs-sh
    relatorio-preditivo-tex
    sismo-iptex-cls
    setup-pyenv-dual-envs-sh

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documento detalhado: 0026-protocolo-importacao-test-matrix &#8212; ClassificadorSismologico Refatoracao 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="documento-detalhado-0026-protocolo-importacao-test-matrix">
+<h1>Documento detalhado: 0026-protocolo-importacao-test-matrix<a class="headerlink" href="#documento-detalhado-0026-protocolo-importacao-test-matrix" title="Link to this heading">¶</a></h1>
+</section>
+<section id="operacao-0026-protocolo-de-importacao-test-matrix-para-documentacao">
+<h1>Operacao 0026 - Protocolo de importacao test_matrix para documentacao<a class="headerlink" href="#operacao-0026-protocolo-de-importacao-test-matrix-para-documentacao" title="Link to this heading">¶</a></h1>
+<p><strong>Data:</strong> 2026-02-11<br />
+<strong>Branch:</strong> <code class="docutils literal notranslate"><span class="pre">refactor/fluxo-v2-documentado</span></code><br />
+<strong>Contexto:</strong> <code class="docutils literal notranslate"><span class="pre">refatoracao</span></code><br />
+<strong>Status:</strong> <code class="docutils literal notranslate"><span class="pre">concluida</span></code><br />
+<strong>Fase:</strong> <code class="docutils literal notranslate"><span class="pre">execucao-legado</span></code><br />
+<strong>Tag:</strong> <code class="docutils literal notranslate"><span class="pre">hardening-ambiente</span></code></p>
+<section id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">¶</a></h2>
+<p>Separar explicitamente:</p>
+<ol class="arabic simple">
+<li><p>operacoes de teste de codigo (ex.: <code class="docutils literal notranslate"><span class="pre">0025</span></code>);</p></li>
+<li><p>operacoes de evolucao de protocolo/ferramenta de documentacao.</p></li>
+</ol>
+<p>Nesta operacao, foi criado um script dedicado para importar artefatos de
+<code class="docutils literal notranslate"><span class="pre">test_matrix</span></code> para a documentacao Sphinx, padronizando o processo.</p>
+</section>
+<section id="mudanca-implementada">
+<h2>Mudanca implementada<a class="headerlink" href="#mudanca-implementada" title="Link to this heading">¶</a></h2>
+<p>Novo script:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/dev/import_test_matrix_to_docs.sh</span></code></p></li>
+</ul>
+<p>Capacidades:</p>
+<ol class="arabic simple">
+<li><p>importa anexos a partir de uma execucao em
+<code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/registros/test_matrix/&lt;archive_id&gt;</span></code>;</p></li>
+<li><p>copia os arquivos para <code class="docutils literal notranslate"><span class="pre">docs/operacoes/anexos/</span></code> com prefixo de operacao;</p></li>
+<li><p>cria/atualiza paginas em <code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/anexos/anexo-*.rst</span></code>;</p></li>
+<li><p>atualiza automaticamente <code class="docutils literal notranslate"><span class="pre">docs/sphinx/source/anexos/index.rst</span></code> sem duplicar
+entradas.</p></li>
+</ol>
+</section>
+<section id="validacao-da-automacao">
+<h2>Validacao da automacao<a class="headerlink" href="#validacao-da-automacao" title="Link to this heading">¶</a></h2>
+<p>Comando executado:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scripts/dev/import_test_matrix_to_docs.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--archive-id<span class="w"> </span>20260211_085515<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--op-tag<span class="w"> </span>0026a<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--files<span class="w"> </span>summary,manifest,predict,pre_processado,predito,analisado_final,erros
+</pre></div>
+</div>
+<p>Resultado:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">itens</span> <span class="pre">ok:</span> <span class="pre">7</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">itens</span> <span class="pre">skip:</span> <span class="pre">0</span></code></p></li>
+<li><p>anexos renderizados criados no Sphinx para a operacao <code class="docutils literal notranslate"><span class="pre">0026a</span></code>.</p></li>
+</ol>
+</section>
+<section id="evidencias-importadas-0026a">
+<h2>Evidencias importadas (0026a)<a class="headerlink" href="#evidencias-importadas-0026a" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../anexos/anexo-0026a-summary-tsv.html"><span class="doc std std-doc">0026a-summary.tsv</span></a></p></li>
+<li><p><a class="reference internal" href="../anexos/anexo-0026a-manifest-env.html"><span class="doc std std-doc">0026a-manifest.env</span></a></p></li>
+<li><p><a class="reference internal" href="../anexos/anexo-0026a-predict-log.html"><span class="doc std std-doc">0026a-predict.log</span></a></p></li>
+<li><p><a class="reference internal" href="../anexos/anexo-0026a-pre-processado-csv.html"><span class="doc std std-doc">0026a-pre_processado.csv</span></a></p></li>
+<li><p><a class="reference internal" href="../anexos/anexo-0026a-predito-csv.html"><span class="doc std std-doc">0026a-predito.csv</span></a></p></li>
+<li><p><a class="reference internal" href="../anexos/anexo-0026a-analisado-final-csv.html"><span class="doc std std-doc">0026a-analisado_final.csv</span></a></p></li>
+<li><p><a class="reference internal" href="../anexos/anexo-0026a-erros-csv.html"><span class="doc std std-doc">0026a-erros.csv</span></a></p></li>
+</ol>
+</section>
+<section id="resultado">
+<h2>Resultado<a class="headerlink" href="#resultado" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0025</span></code> permanece focada em teste e diagnostico de execucao.</p></li>
+<li><p>A mudanca de comportamento/protocolo ficou isolada em <code class="docutils literal notranslate"><span class="pre">0026</span></code>.</p></li>
+<li><p>O fluxo de publicacao de evidencias passou a ser reproduzivel por script.</p></li>
+</ol>
+</section>
+<section id="proximo-passo">
+<h2>Proximo passo<a class="headerlink" href="#proximo-passo" title="Link to this heading">¶</a></h2>
+<p>Usar o script como procedimento padrao ao final de cada nova matriz relevante de
+teste, evitando importacao manual de anexos.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ClassificadorSismologico Refatoracao</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../visao_geral.html">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dois_objetivos.html">Dois Objetivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guia/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../artefatos/index.html">Artefatos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../anexos/index.html">Anexos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operacoes/index.html">Operacoes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Gabriel Goes Rocha de Lima.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/detalhes/0026-protocolo-importacao-test-matrix.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

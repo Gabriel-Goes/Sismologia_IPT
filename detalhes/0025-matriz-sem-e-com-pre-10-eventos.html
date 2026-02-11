@@ -49,8 +49,8 @@
 <strong>Tag:</strong> <code class="docutils literal notranslate"><span class="pre">teste-execucao</span></code></p>
 <section id="objetivo">
 <h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">¶</a></h2>
-<p>Executar uma matriz local sem aquisicao (<code class="docutils literal notranslate"><span class="pre">-e</span></code>) incluindo pre-processamento,
-para validar o comportamento integrado de:</p>
+<p>Executar e depurar uma matriz local sem aquisicao (<code class="docutils literal notranslate"><span class="pre">-e</span></code>) incluindo
+pre-processamento, para validar o comportamento integrado de:</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-pe</span></code> (pre-processamento)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-pr</span></code> (predicao)</p></li>
@@ -58,19 +58,34 @@ para validar o comportamento integrado de:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">-m</span></code> (mapas)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-r</span></code> (relatorio)</p></li>
 </ol>
-<p>com <code class="docutils literal notranslate"><span class="pre">--test-limit</span> <span class="pre">10</span></code>.</p>
+<p>com <code class="docutils literal notranslate"><span class="pre">--test-limit</span> <span class="pre">10</span></code>, tratando a investigacao como uma unica operacao.</p>
 </section>
-<section id="comando-executado">
-<h2>Comando executado<a class="headerlink" href="#comando-executado" title="Link to this heading">¶</a></h2>
+<section id="comandos-executados-na-mesma-operacao">
+<h2>Comandos executados na mesma operacao<a class="headerlink" href="#comandos-executados-na-mesma-operacao" title="Link to this heading">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scripts/dev/run_fluxo_test_matrix_archived.sh<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--cases<span class="w"> </span>pre,predict,pos,maps,report<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--test-limit<span class="w"> </span><span class="m">10</span>
 </pre></div>
 </div>
-<p><strong>Archive ID:</strong> <code class="docutils literal notranslate"><span class="pre">20260211_084132</span></code></p>
+<ol class="arabic simple">
+<li><p><strong>Tentativa A (estado inicial da operacao):</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">archive_id=20260211_084132</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Tentativa B (apos correcao de insumo):</strong></p>
+<ul class="simple">
+<li><p>restauracao de <code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code> completo a partir de
+<code class="docutils literal notranslate"><span class="pre">.specs/codebase/arquivos/eventos/.bkp/eventos.csv.20260210163707</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">archive_id=20260211_084816</span></code></p></li>
+</ul>
+</li>
+</ol>
 </section>
 <section id="evidencias">
 <h2>Evidencias<a class="headerlink" href="#evidencias" title="Link to this heading">¶</a></h2>
+<section id="tentativa-a-20260211-084132-diagnostico-do-problema">
+<h3>Tentativa A (<code class="docutils literal notranslate"><span class="pre">20260211_084132</span></code>) - diagnostico do problema<a class="headerlink" href="#tentativa-a-20260211-084132-diagnostico-do-problema" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Matriz consolidada:</p>
 <ul class="simple">
@@ -99,8 +114,34 @@ para validar o comportamento integrado de:</p>
 </li>
 </ol>
 </section>
-<section id="resultado">
-<h2>Resultado<a class="headerlink" href="#resultado" title="Link to this heading">¶</a></h2>
+<section id="tentativa-b-20260211-084816-reteste-com-eventos-csv-restaurado">
+<h3>Tentativa B (<code class="docutils literal notranslate"><span class="pre">20260211_084816</span></code>) - reteste com <code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code> restaurado<a class="headerlink" href="#tentativa-b-20260211-084816-reteste-com-eventos-csv-restaurado" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Matriz consolidada:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../anexos/anexo-0025b-matriz-sem-e-com-pre-10-tsv.html"><span class="doc std std-doc">0025b-matriz-sem-e-com-pre-10.tsv</span></a></p></li>
+</ul>
+</li>
+<li><p>Contexto de execucao (ambientes/casos):</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../anexos/anexo-0025b-manifest-env.html"><span class="doc std std-doc">0025b-manifest.env</span></a></p></li>
+</ul>
+</li>
+<li><p>Log da etapa <code class="docutils literal notranslate"><span class="pre">predict</span></code> (10 eventos):</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../anexos/anexo-0025b-predict-10-eventos-log.html"><span class="doc std std-doc">0025b-predict-10-eventos.log</span></a></p></li>
+</ul>
+</li>
+<li><p>Log da etapa <code class="docutils literal notranslate"><span class="pre">pos</span></code> (com dados):</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../anexos/anexo-0025b-pos-com-dados-log.html"><span class="doc std std-doc">0025b-pos-com-dados.log</span></a></p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="resultado-consolidado-da-operacao">
+<h2>Resultado consolidado da operacao<a class="headerlink" href="#resultado-consolidado-da-operacao" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pre</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">rc=0</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">predict</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">rc=0</span></code></p></li>
@@ -112,23 +153,24 @@ para validar o comportamento integrado de:</p>
 <section id="interpretacao">
 <h2>Interpretacao<a class="headerlink" href="#interpretacao" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
-<li><p>A trilha sem <code class="docutils literal notranslate"><span class="pre">-e</span></code> permanece executavel ponta a ponta para as etapas
-posteriores, com retorno de sucesso em todos os casos desta matriz.</p></li>
-<li><p>Mesmo com <code class="docutils literal notranslate"><span class="pre">pre</span></code> executado, <code class="docutils literal notranslate"><span class="pre">predict</span></code> seguiu com:</p>
+<li><p>A tentativa A mostrou que o fluxo estava tecnicamente estavel (<code class="docutils literal notranslate"><span class="pre">rc=0</span></code>), mas
+com insumo degradado:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Modo</span> <span class="pre">de</span> <span class="pre">teste</span> <span class="pre">RNC:</span> <span class="pre">0</span> <span class="pre">eventos</span> <span class="pre">unicos</span> <span class="pre">selecionados</span> <span class="pre">(0</span> <span class="pre">picks)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code> vigente continha apenas cabecalho (1 linha).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">predict</span></code> retornou <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">eventos</span> <span class="pre">unicos</span> <span class="pre">selecionados</span> <span class="pre">(0</span> <span class="pre">picks)</span></code>.</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pos</span></code> respondeu de forma consistente ao estado de entrada:</p>
+<li><p>A tentativa B confirmou a causa-raiz ao restaurar <code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code> completo:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Sem</span> <span class="pre">picks</span> <span class="pre">validos</span> <span class="pre">para</span> <span class="pre">pos-processamento;</span> <span class="pre">gerando</span> <span class="pre">saida</span> <span class="pre">vazia.</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">predict</span></code> passou para <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">eventos</span> <span class="pre">unicos</span> <span class="pre">selecionados</span> <span class="pre">(32</span> <span class="pre">picks)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pos</span></code> executou com dados reais (sem a mensagem de “sem picks validos”).</p></li>
 </ul>
 </li>
-<li><p>A diferenca entre “pipeline executa” e “pipeline produz classificacao”
-ficou explicita nesta iteracao:</p>
+<li><p>Portanto, esta operacao valida duas propriedades:</p>
 <ul class="simple">
-<li><p>execucao tecnica: valida;</p></li>
-<li><p>volume util para classificacao: nulo no recorte atual (<code class="docutils literal notranslate"><span class="pre">--test-limit</span> <span class="pre">10</span></code>).</p></li>
+<li><p>o pipeline sem <code class="docutils literal notranslate"><span class="pre">-e</span></code> executa ponta a ponta;</p></li>
+<li><p>a utilidade do resultado depende diretamente da qualidade do
+<code class="docutils literal notranslate"><span class="pre">eventos.csv</span></code> de entrada.</p></li>
 </ul>
 </li>
 </ol>
