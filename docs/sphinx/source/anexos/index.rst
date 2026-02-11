@@ -32,3 +32,7 @@ Fluxo De Navegacao
    anexo-0025-pre-10-log
    anexo-0025-predict-0-eventos-log
    anexo-0025-pos-sem-picks-log
+   anexo-0025b-matriz-sem-e-com-pre-10-tsv
+   anexo-0025b-manifest-env
+   anexo-0025b-predict-10-eventos-log
+   anexo-0025b-pos-com-dados-log

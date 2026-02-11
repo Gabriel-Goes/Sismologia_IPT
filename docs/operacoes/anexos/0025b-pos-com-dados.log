@@ -1,0 +1,679 @@
+Catalogo: catalogo_jul_filtrado.csv
+/tmp/classificador-matrix-pfWxBn ~/projetos/ClassificadorSismologico
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul_filtrado.csv
+  EVENTS: False
+  TREATCATALOG: False
+  PREDICT: False
+  POSPROCESS: True
+  MAPS: False
+  REPORT: False
+  TEST: True
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+Warning: colunas ausentes em predito.csv: ['SNR_P', 'SNR_S', 'Noise', 'p']
+0it [00:00, ?it/s]1it [00:00,  5.77it/s]17it [00:00, 72.97it/s]28it [00:00, 79.49it/s]
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1334: Pandas4Warning: Constructing a Categorical with a dtype and values containing non-null entries not in that dtype's categories is deprecated and will raise in a future version.
+  df['SNR_P_Q2_cat'] = pd.Categorical(
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1808: Pandas4Warning: Constructing a Categorical with a dtype and values containing non-null entries not in that dtype's categories is deprecated and will raise in a future version.
+  df.loc[:, 'SNR_P_cat'] = pd.Categorical(
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1811: Pandas4Warning: Constructing a Categorical with a dtype and values containing non-null entries not in that dtype's categories is deprecated and will raise in a future version.
+  df.loc[:, 'Pick Prob_Nat_cat'] = pd.Categorical(
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1815: Pandas4Warning: Constructing a Categorical with a dtype and values containing non-null entries not in that dtype's categories is deprecated and will raise in a future version.
+  df.loc[:, 'Prob_Nat_std_cat'] = pd.Categorical(
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:798: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:894: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  fig, ax = plt.subplots(figsize=(19, 9))
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [47.2 47.2]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [75.05 75.05]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [30.9 30.9]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [nan nan]
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [47.2 47.2]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [75.05 75.05]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [30.9 30.9]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [nan nan]
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [47.2 47.2]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [75.05 75.05]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [30.9 30.9]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [nan nan]
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [47.2 47.2]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [75.05 75.05]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [30.9 30.9]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [nan nan]
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [47.2 47.2]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [98.8 98.8]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [30.9 30.9]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [51.3 51.3]
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [nan nan]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [98.8 98.8]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [30.9 30.9]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [nan nan]
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [nan nan]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [98.8 98.8]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [30.9 30.9]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [nan nan]
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [nan nan]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [98.8 98.8]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [30.9 30.9]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [nan nan]
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [nan nan]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [98.8 98.8]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [30.9 30.9]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [nan nan]
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [nan nan]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [98.8 98.8]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [nan nan]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [30.9 30.9]
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [nan nan]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [98.8 98.8]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [nan nan]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [30.9 30.9]
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [nan nan]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [nan nan]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [nan nan]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [30.9 30.9]
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [nan nan]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [nan nan]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [nan nan]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [30.9 30.9]
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [nan nan]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [nan nan]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [nan nan]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [30.9 30.9]
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [nan nan]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [nan nan]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [nan nan]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [nan nan]
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1562: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.boxplot(
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1282: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:798: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:84: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.boxplot(x='Network', y='Pick Prob_Nat', data=df, palette=station_colors, showfliers=False, ax=ax)
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:90: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:117: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.boxplot(x='Station', y='Pick Prob_Nat', data=network_data, palette=station_colors, showfliers=False)
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:122: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
+/tmp/classificador-matrix-pfWxBn/fonte/analise_dados/pos_processa.py:1562: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.boxplot(
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [nan nan]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [nan nan]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [nan nan]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [nan nan]
+ pos: 0
+ media_getydata: [72.5 72.5]
+ pos: 1
+ media_getydata: [98.4 98.4]
+ pos: 2
+ media_getydata: [nan nan]
+ pos: 3
+ media_getydata: [nan nan]
+ pos: 4
+ media_getydata: [nan nan]
+ pos: 5
+ media_getydata: [nan nan]
+ pos: 6
+ media_getydata: [nan nan]
+ pos: 7
+ media_getydata: [nan nan]
+ pos: 8
+ media_getydata: [nan nan]
+ pos: 9
+ media_getydata: [nan nan]
+ pos: 10
+ media_getydata: [nan nan]
+ pos: 11
+ media_getydata: [nan nan]
+ pos: 12
+ media_getydata: [nan nan]
+ pos: 13
+ media_getydata: [nan nan]
+ pos: 14
+ media_getydata: [nan nan]
+CategoricalIndex(['<1', '[1-2[', '[2-3[', '>=3'], categories=['<1', '[1-2[', '[2-3[', '>=3'], ordered=True, dtype='category', name='Magnitude_cat')
+
+========================================================================
+                        Fim do Pipeline                                 
+========================================================================
+
+~/projetos/ClassificadorSismologico
