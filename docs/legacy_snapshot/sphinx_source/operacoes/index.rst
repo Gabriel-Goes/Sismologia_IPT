@@ -1,0 +1,42 @@
+Operacoes
+=========
+
+Historico incremental das operacoes executadas durante a refatoracao.
+Cada operacao deve registrar contexto explicito: ``refatoracao`` ou ``legado``.
+
+Fluxo De Navegacao
+------------------
+
+- Voltar para inicio: :doc:`/index`
+- Voltar para contexto do projeto: :doc:`/visao_geral`
+
+.. toctree::
+   :maxdepth: 1
+
+   0001-ajuste-caminhos-baseline
+   0002-inicializacao-sphinx-github-pages
+   0003-inicializacao-specs-project
+   0004-consolidacao-baseline-em-specs-codebase
+   0005-analise-historica-logs-pipeline
+   0006-organizacao-documentacao-e-runner-isolado
+   0007-compreensao-comportamento-fluxo-sismo
+   0008-preparacao-ambiente-pyenv-duplo
+   0009-estrutura-sphinx-api-source-e-artefatos
+   0010-correcao-autosummary-dependencias-ci
+   0011-preenchimento-docs-api-metodos
+   0012-ordenacao-topo-api-preview
+   0013-fluxo-legado-fluxo-sismo-em-visao-geral
+   0014-padrao-verde-api-source-legado
+   0015-correcao-deploy-gh-pages-workspace-sujo
+   0016-estabilizacao-testes-fluxo-sismo-50-amostras
+   0017-runner-matriz-testes-e-guia-operacional
+   0018-validacao-runner-matriz-10-eventos
+   0019-padrao-links-e-anexos-renderizados
+   0020-contrato-pr-po-sem-dados
+   0021-matriz-completa-pos-0020
+   0022-diagnostico-dependabot-ambiente-rnc-legado
+   0023-diagnostico-rnc-main-e-reteste-train
+   0024-organizacao-fase-testes-execucao
+   0025-matriz-sem-e-com-pre-10-eventos
+   0026-protocolo-importacao-test-matrix
+   0027-validacao-tunel-seisarc-e-t-100-eventos

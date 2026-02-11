@@ -10,3 +10,4 @@ Bem-vindo a documentacao da refatoracao cleanroom (v3).
    visao_geral
    arquitetura
    plano_refatoracao
+   legado_snapshot

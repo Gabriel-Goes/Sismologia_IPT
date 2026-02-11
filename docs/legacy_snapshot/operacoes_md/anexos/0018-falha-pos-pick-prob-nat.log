@@ -1,0 +1,30 @@
+Catalogo: catalogo_jul_filtrado.csv
+/tmp/classificador-matrix-aEFf7m ~/projetos/ClassificadorSismologico
+
+========================================================================
+                       Iniciando do Pipeline                         
+========================================================================
+
+Argumentos recebidos:
+  Catalogo: catalogo_jul_filtrado.csv
+  EVENTS: False
+  TREATCATALOG: False
+  PREDICT: False
+  POSPROCESS: True
+  MAPS: False
+  REPORT: False
+  TEST: True
+
+ ---------------- INICIANDO DATA_ANALYSIS/POSPROCESS.PY ---------------------------- 
+Traceback (most recent call last):
+  File "/tmp/classificador-matrix-aEFf7m/fonte/analise_dados/pos_processa.py", line 1809, in <module>
+    df_nc, df = main()
+                ^^^^^^
+  File "/tmp/classificador-matrix-aEFf7m/fonte/analise_dados/pos_processa.py", line 1755, in main
+    df = carregar_dado()
+         ^^^^^^^^^^^^^^^
+  File "/tmp/classificador-matrix-aEFf7m/fonte/analise_dados/pos_processa.py", line 1597, in carregar_dado
+    df.dropna(subset=['Pick Prob_Nat'], inplace=True)
+  File "/home/ggrl/.pyenv/versions/sismo-core-311/lib/python3.11/site-packages/pandas/core/frame.py", line 7789, in dropna
+    raise KeyError(np.array(subset)[check].tolist())
+KeyError: ['Pick Prob_Nat']

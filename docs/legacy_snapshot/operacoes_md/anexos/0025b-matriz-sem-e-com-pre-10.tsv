@@ -1,0 +1,6 @@
+case	rc	duration_s	timeout_s	log
+pre	0	6	240	arquivos/registros/test_matrix/pre_20260211_084816.log
+predict	0	14	300	arquivos/registros/test_matrix/predict_20260211_084816.log
+pos	0	28	240	arquivos/registros/test_matrix/pos_20260211_084816.log
+maps	0	0	180	arquivos/registros/test_matrix/maps_20260211_084816.log
+report	0	6	240	arquivos/registros/test_matrix/report_20260211_084816.log
