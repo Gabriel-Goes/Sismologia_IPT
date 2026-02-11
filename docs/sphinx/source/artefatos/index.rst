@@ -14,6 +14,7 @@ Fluxo De Navegacao
    :maxdepth: 1
 
    fluxo-sismo-sh
+   run-fluxo-isolated-sh
    run-fluxo-test-matrix-archived-sh
    import-test-matrix-to-docs-sh
    relatorio-preditivo-tex

@@ -29,3 +29,4 @@ Documento detalhado
 -------------------
 
 - :doc:`Documento detalhado </detalhes/0017-runner-matriz-testes-e-guia-operacional>`
+- :doc:`Conexao no User Guide (encapsulamento) </guia/scripts-de-encapsulamento>`

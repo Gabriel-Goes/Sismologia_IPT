@@ -26,3 +26,4 @@ Documento detalhado
 -------------------
 
 - :doc:`Documento detalhado </detalhes/0026-protocolo-importacao-test-matrix>`
+- :doc:`Conexao no User Guide (encapsulamento) </guia/scripts-de-encapsulamento>`
