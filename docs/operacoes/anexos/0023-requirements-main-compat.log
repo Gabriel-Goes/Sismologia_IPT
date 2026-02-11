@@ -1,0 +1,62 @@
+# Evidencias de compatibilidade - requirements RNC do main
+
+## Python 3.7.9 (rnc-main-main-379) com requirements-rnc-legacy.txt do main
+
+- ERRO: ipython==8.10.0 exige Python >= 3.8
+- ERRO: No matching distribution found for ipython==8.10.0
+
+## Python 3.11.9 (rnc-main-main-311) com requirements-rnc-legacy.txt do main
+
+- ERRO: No matching distribution found for tensorflow-io-gcs-filesystem==0.24.0
+
+## Conflitos internos de pin (testes isolados)
+
+### tensorflow==2.12.1 + protobuf==5.29.6
+- ERRO: ResolutionImpossible
+- Causa: tensorflow 2.12.1 exige protobuf < 5.0.0dev e >= 3.20.3
+
+### tensorflow==2.12.1 + tensorflow-estimator==2.8.0
+- ERRO: ResolutionImpossible
+- Causa: tensorflow 2.12.1 exige tensorflow-estimator >= 2.12.0 e < 2.13
+
+## Reexecucao de train.py apos adicao de analisado.csv
+
+### Ambiente legado (sismo-rnc-379)
+- ERRO: ModuleNotFoundError: No module named 'sklearn'
+
+### Ambiente moderno de teste (rnc-main-main-311)
+- ERRO: KeyError: "['Num_Stations'] not in index"
+- Observacao: analisado.csv possui coluna Num_Estacoes (nao Num_Stations)
+
+## Estrutura de dados esperada para treino
+
+- Nao existe diretorio `.specs/codebase/arquivos/espectros/` nesta arvore.
+- Portanto, apos corrigir schema/colunas, o passo de carga de `.npy` ainda
+  exigira ajuste de caminho ou geracao previa dos espectros.
+
+## Incremento apos correção de coluna em train.py
+
+- Alteracao aplicada em `.specs/codebase/fonte/rnc/train.py`:
+  - fallback de coluna: `Num_Stations` -> `Num_Estacoes`.
+
+### Reexecucao de train.py apos o fallback de coluna
+
+#### Ambiente legado (sismo-rnc-379)
+- ERRO permanece: `ModuleNotFoundError: No module named 'sklearn'`.
+
+#### Ambiente moderno de teste (rnc-main-main-311)
+- `KeyError` de coluna foi resolvido.
+- Novo bloqueio observado: `FileNotFoundError` para espectro `.npy`
+  (ex.: `20120122T071034/BL_PEXB_20120122T071034.npy`).
+
+## Incremento: instalacao de scikit-learn no legado
+
+- Pacote instalado no ambiente `sismo-rnc-379`:
+  - `scikit-learn==1.0.2`
+
+### Reexecucao de train.py no legado apos instalar scikit-learn
+
+- `ModuleNotFoundError: sklearn` foi resolvido.
+- Novo bloqueio observado: `FileNotFoundError` para espectro `.npy`
+  (ex.: `20120122T071034/BL_PEXB_20120122T071034.npy`).
+

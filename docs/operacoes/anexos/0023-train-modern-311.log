@@ -1,0 +1,13 @@
+2026-02-11 07:18:45.813815: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+2026-02-11 07:18:45.856405: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+2026-02-11 07:18:45.856829: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-02-11 07:18:46.580358: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Traceback (most recent call last):
+  File "/home/ggrl/projetos/ClassificadorSismologico/.specs/codebase/fonte/rnc/train.py", line 29, in <module>
+    spectrogram = np.load(spect_path)
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/home/ggrl/.pyenv/versions/rnc-main-main-311/lib/python3.11/site-packages/numpy/lib/npyio.py", line 405, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '20120122T071034/BL_PEXB_20120122T071034.npy'

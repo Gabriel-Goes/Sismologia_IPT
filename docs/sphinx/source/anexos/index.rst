@@ -23,3 +23,7 @@ Fluxo De Navegacao
    anexo-0021-matriz-completa-10-tsv
    anexo-0021-falha-eventos-fdsn-log
    anexo-0021-falha-todos-fdsn-log
+   anexo-0023-requirements-main-compat-log
+   anexo-0023-train-legacy-379-log
+   anexo-0023-train-modern-311-log
+   anexo-0023-analisado-schema-check-log
