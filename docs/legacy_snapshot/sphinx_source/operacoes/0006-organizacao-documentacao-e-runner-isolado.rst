@@ -4,14 +4,14 @@ Operacao 0006 - Organizacao da documentacao e runner isolado
 Resumo
 ------
 
-Consolidacao da documentacao da iteracao v2 na raiz do repositorio e adicao
+Consolidacao da documentacao da iteracao na raiz do repositorio e adicao
 de um runner isolado para executar o baseline sem poluir a worktree principal
 com artefatos de teste.
 
 Efeito principal
 ----------------
 
-- separacao clara entre baseline legado e documentacao da iteracao v2;
+- separacao clara entre baseline legado e documentacao da iteracao;
 - reducao de risco de commit acidental de arquivos gerados pelo pipeline;
 - registro das diretrizes iniciais para escrita do paper tecnico.
 

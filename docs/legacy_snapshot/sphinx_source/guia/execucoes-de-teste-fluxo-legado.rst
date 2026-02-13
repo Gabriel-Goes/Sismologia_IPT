@@ -142,7 +142,7 @@ Nesta fase, sucesso nao significa "pipeline completo verde". Sucesso significa:
 
 1. reproduzir comportamento por etapa;
 2. identificar dependencias/contratos de cada fase;
-3. transformar isso em insumo para a reescrita v2.
+3. transformar isso em insumo para a reescrita.
 
 Proximo passo
 -------------

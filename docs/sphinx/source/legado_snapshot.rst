@@ -8,7 +8,7 @@ Publicacao no GitHub Pages
 --------------------------
 
 O snapshot pode ser publicado como **subsite** no GitHub Pages, abaixo da
-documentacao principal (v3), por exemplo em ``/legado/``. Isso permite que o
+documentacao principal, por exemplo em ``/legado/``. Isso permite que o
 leitor navegue pelo material antigo sem precisar trocar de branch.
 
 Localizacao do snapshot no repositorio:

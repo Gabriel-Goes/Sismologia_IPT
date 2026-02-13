@@ -12,7 +12,7 @@ Efeito principal
 
 - reduz conflito entre stack de processamento e stack legado da RNC;
 - transforma setup manual em roteiro reproduzivel via script;
-- prepara migracao do ambiente para o servidor SEISAPP antes da reescrita v2.
+- prepara migracao do ambiente para o servidor SEISAPP antes da reescrita.
 
 Artefatos
 ---------

@@ -13,7 +13,7 @@ Efeito principal
 
 - consolidacao de evidencia operacional em dados rastreaveis;
 - correlacao temporal entre execucoes e estado de codigo no Git;
-- base objetiva para a especificacao de refatoracao do fluxo v2.
+- base objetiva para a especificacao de refatoracao do fluxo.
 
 Documento detalhado
 -------------------

@@ -23,7 +23,7 @@ Trilho 2: Objetivo Da Refatoracao
 
 Pergunta central:
 
-- Como a refatoracao v2 sera planejada, executada e validada?
+- Como a refatoracao sera planejada, executada e validada?
 
 Fontes principais:
 

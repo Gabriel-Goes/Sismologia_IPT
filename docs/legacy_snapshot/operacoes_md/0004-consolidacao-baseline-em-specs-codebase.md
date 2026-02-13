@@ -1,12 +1,12 @@
 # Operacao 0004 - Consolidacao do baseline em `.specs/codebase`
 
-**Data:** 2026-02-10  
-**Branch:** `refactor/fluxo-v2-documentado`
+**Data:** 2026-02-10
+**Branch:** `refactor/fluxo-Alpha-documentado`
 
 ## Objetivo
 
 Consolidar em commit único a realocação do legado para `.specs/codebase/`,
-preservando o baseline histórico como referência para a reescrita v2.
+preservando o baseline histórico como referência para a reescrita.
 
 ## Escopo da operação
 

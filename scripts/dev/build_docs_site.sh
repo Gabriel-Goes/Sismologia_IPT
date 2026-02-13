@@ -9,7 +9,7 @@ OUT_ROOT="$ROOT_DIR/docs/site"
 
 mkdir -p "$OUT_ROOT"
 
-echo "[docs] Building main docs (v3) -> $OUT_ROOT"
+echo "[docs] Building main docs Alpha -> $OUT_ROOT"
 sphinx-build -b html "$NEW_SRC" "$OUT_ROOT"
 
 if [[ "${BUILD_LEGACY:-0}" == "1" ]]; then

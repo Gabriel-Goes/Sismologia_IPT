@@ -1,17 +1,17 @@
 # Operacao 0006 - Organizacao da documentacao e runner isolado
 
-**Data:** 2026-02-10  
-**Branch:** `refactor/fluxo-v2-documentado`
+**Data:** 2026-02-10
+**Branch:** `refactor/fluxo-Alpha-documentado`
 
 ## Objetivo
 
-Consolidar a documentacao da iteracao v2 na raiz do repositorio e reduzir
+Consolidar a documentacao da iteracao na raiz do repositorio e reduzir
 ruido operacional durante testes do baseline legado, preservando a rastreabilidade
 por commit.
 
 ## Commits vinculados
 
-1. `7af9b70` - `docs(repo): mover documentação v2 para a raiz`
+1. `7af9b70` - `docs(repo): mover documentação para a raiz`
 2. `9e8cf72` - `chore(dev): adicionar runner isolado do fluxo_sismo`
 3. `d5eac5b` - `docs(article): adicionar outline inicial do paper`
 
@@ -42,7 +42,7 @@ os testes seguem executaveis, mas em um espaco descartavel.
 ## Impacto no projeto
 
 - melhora da higiene do repositório para ciclos de analise/refatoracao;
-- documentacao da branch v2 separada do baseline legado;
+- documentacao da branch Alpha separada do baseline legado;
 - diretriz inicial consolidada para redacao do paper.
 
 ## Fora de escopo

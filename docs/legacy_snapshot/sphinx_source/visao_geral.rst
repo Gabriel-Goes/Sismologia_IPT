@@ -14,7 +14,7 @@ Dois Trilhos
 Esta documentacao trabalha com dois objetivos em paralelo:
 
 1. **Legado:** o que a codebase atual executa e como executa.
-2. **Refatoracao:** como o v2 sera planejado, implementado e validado.
+2. **Refatoracao:** como sera planejado, implementado e validado.
 
 Detalhamento: :doc:`/dois_objetivos`
 

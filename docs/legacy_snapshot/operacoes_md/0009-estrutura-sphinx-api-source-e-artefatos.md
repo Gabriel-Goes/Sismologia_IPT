@@ -1,6 +1,6 @@
 # Operacao 0009 - Estrutura Sphinx API/source e artefatos renderizados
 
-**Data:** 2026-02-10  
+**Data:** 2026-02-10
 **Branch:** `refactor/fluxo-v2-documentado`
 
 ## Objetivo
@@ -69,4 +69,4 @@ Resultado:
 
 - nem todo script da baseline e seguro para autodoc em tempo de importacao;
 - escopo da API atual cobre objetos com import mais previsivel;
-- novos modulos podem ser incluidos gradualmente conforme refatoracao v2.
+- novos modulos podem ser incluidos gradualmente conforme refatoracao.

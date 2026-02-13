@@ -1,7 +1,7 @@
 # Operacao 0008 - Preparacao de ambiente com pyenv duplo
 
-**Data:** 2026-02-10  
-**Branch:** `refactor/fluxo-v2-documentado`
+**Data:** 2026-02-10
+**Branch:** `refactor/fluxo-Alpha-documentado`
 
 ## Objetivo
 
@@ -14,7 +14,7 @@ Criar um passo reprodutivel de ambiente de desenvolvimento com `pyenv` +
 ## Contexto operacional
 
 - Execucao desta fase: **GeoServer** (`ggrl@GeoServer`).
-- Reescrita do codigo v2: planejada para **SEISAPP** (`gabrielgoes@SEISAPP`).
+- Reescrita do codigo: planejada para **SEISAPP** (`gabrielgoes@SEISAPP`).
 - Restricao atual: ainda sem acesso remoto ao SEISAPP fora da rede fisica do IAG.
 
 Por isso, nesta operacao o foco foi preparar roteiro e automacao de ambiente, e
@@ -35,26 +35,26 @@ legado vs bibliotecas atuais do pipeline).
 
 ## Decisao de versoes
 
-1. **Core pipeline**  
-   - Python: `3.11.9`  
-   - Virtualenv: `sismo-core-311`  
+1. **Core pipeline**
+   - Python: `3.11.9`
+   - Virtualenv: `sismo-core-311`
    - Escopo: pre-processamento, aquisicao, pos-processamento, mapas e relatorio.
 
-2. **RNC legado**  
-   - Python: `3.7.9`  
-   - Virtualenv: `sismo-rnc-379`  
+2. **RNC legado**
+   - Python: `3.7.9`
+   - Virtualenv: `sismo-rnc-379`
    - Escopo: `fonte/rnc/*` com stack compativel ao historico do modelo
      (`tensorflow==2.8.0`).
 
 ## Artefatos criados
 
-1. `scripts/dev/setup_pyenv_dual_envs.sh`  
+1. `scripts/dev/setup_pyenv_dual_envs.sh`
    Script de bootstrap para criar/configurar os dois ambientes.
 
-2. `scripts/dev/requirements-core-pipeline.txt`  
+2. `scripts/dev/requirements-core-pipeline.txt`
    Dependencias do fluxo geral (sem TensorFlow legado).
 
-3. `scripts/dev/requirements-rnc-legacy.txt`  
+3. `scripts/dev/requirements-rnc-legacy.txt`
    Dependencias fixadas da stack legado da RNC.
 
 ## Evidencias coletadas no GeoServer
@@ -102,6 +102,6 @@ o bootstrap Python/pip; pacotes de sistema devem ser validados no host do IAG.
 
 ## Conclusao
 
-A base de ambiente para iniciar a refatoracao v2 foi formalizada e automatizada.
+A base de ambiente para iniciar a refatoracao foi formalizada e automatizada.
 O proximo passo e reproduzir esse mesmo bootstrap no SEISAPP quando houver
-acesso de rede local no IAG, antes de iniciar a primeira mudanca de codigo v2.
+acesso de rede local no IAG, antes de iniciar a primeira mudanca de codigo.

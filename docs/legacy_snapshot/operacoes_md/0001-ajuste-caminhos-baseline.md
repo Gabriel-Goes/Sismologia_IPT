@@ -1,12 +1,12 @@
 # Operacao 0001 - Ajuste de caminhos do baseline em `.specs/codebase`
 
-**Data:** 2026-02-09  
-**Branch:** `refactor/fluxo-v2-documentado`  
+**Data:** 2026-02-09
+**Branch:** `refactor/fluxo-v2-documentado`
 **Objetivo:** Corrigir paths hardcoded que apontavam para a raiz antiga do repositório, agora que o baseline foi movido para `.specs/codebase/`.
 
 ## Contexto
 
-O baseline legado foi realocado para `.specs/codebase/` para servir como referência de leitura durante a reescrita do fluxo v2.
+O baseline legado foi realocado para `.specs/codebase/` para servir como referência de leitura durante a reescrita do fluxo.
 
 Com isso, scripts de entrada e módulos utilitários que assumiam `~/projetos/ClassificadorSismologico` deixaram de resolver corretamente quando executados no novo layout.
 
@@ -36,7 +36,7 @@ Com isso, scripts de entrada e módulos utilitários que assumiam `~/projetos/Cl
 ## Resultado esperado
 
 - Baseline antigo permanece utilizável como referência operacional.
-- Reescrita do fluxo v2 pode começar sem depender da antiga raiz do projeto.
+- Reescrita do fluxo pode começar sem depender da antiga raiz do projeto.
 - Menor acoplamento a ambiente local específico.
 
 ## Observações

@@ -11,7 +11,7 @@ Efeito principal
 ----------------
 
 - baseline historico centralizado;
-- raiz preparada para evolucao do fluxo v2 limpo.
+- raiz preparada para evolucao do fluxo limpo.
 
 Documento detalhado
 -------------------

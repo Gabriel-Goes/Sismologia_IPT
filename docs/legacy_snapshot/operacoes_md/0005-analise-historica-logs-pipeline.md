@@ -1,13 +1,13 @@
 # Operacao 0005 - Analise historica dos logs do pipeline
 
-**Data:** 2026-02-10  
+**Data:** 2026-02-10
 **Branch:** `refactor/fluxo-v2-documentado`
 
 ## Objetivo
 
 Documentar o comportamento real do pipeline legado a partir dos logs de
 execucao em `.specs/codebase/arquivos/registros/.bkp/`, antes da reescrita do
-fluxo v2.
+fluxo.
 
 ## Escopo desta leitura
 
@@ -75,23 +75,23 @@ Anexo gerado nesta operacao:
 
 ## Padroes temporais observados
 
-1. **2024-07-31 a 2024-08-03**  
+1. **2024-07-31 a 2024-08-03**
    Predominio de execucoes curtas de pre-processamento (`P`) e falhas de
    inicializacao/parametrizacao.
 
-2. **2024-08-05**  
+2. **2024-08-05**
    Execucao `PE` de longa duracao conclui com `ok`, salva `eventos.csv` e
    `erros.csv`.
 
-3. **2024-08-06 a 2024-08-08 (janela de aquisicao intensa)**  
+3. **2024-08-06 a 2024-08-08 (janela de aquisicao intensa)**
    Logs gigantes de `E` mostram repeticao de mensagens de metadado de canal e
    erros de finalizacao.
 
-4. **2024-08-26 a 2024-10-10**  
+4. **2024-08-26 a 2024-10-10**
    Cresce o uso de fluxo completo (`PERO`, `PEROMT`), com recorrencia de
    falha em `pos_processa.py` por ausencia da coluna `CFT`.
 
-5. **2024-10-14 em diante**  
+5. **2024-10-14 em diante**
    Aparecem falhas no `rnc` (`Series.append`) e, em execucoes headless, falha
    de backend `Qt5Agg`.
 
@@ -100,20 +100,20 @@ Anexo gerado nesta operacao:
 Correlacao feita por `prev_commit` (ultimo commit com data anterior ao timestamp
 do log). Destaques:
 
-1. `Sismo_Pipeline.log.20240805141037`  
+1. `Sismo_Pipeline.log.20240805141037`
    commit anterior `5b3ee71` (altera `fluxo_sismo.sh`).
 
-2. `Sismo_Pipeline.log.20240806150022`  
+2. `Sismo_Pipeline.log.20240806150022`
    commit anterior `922e674` (alteracoes em `fonte/nucleo/fluxo_eventos.py`).
 
-3. `Sismo_Pipeline.log.20240808123655`  
+3. `Sismo_Pipeline.log.20240808123655`
    commit anterior `d65a262` (janela de repeticao de testes do pipeline).
 
-4. `Sismo_Pipeline.log.20241008170339`  
+4. `Sismo_Pipeline.log.20241008170339`
    commit anterior `44d4d65` (estado estavel longo entre 2024-08-27 e
    2024-10-10).
 
-5. `Sismo_Pipeline.log.20241014090430`  
+5. `Sismo_Pipeline.log.20241014090430`
    commit anterior `2c6e2ac` (mudancas em `pos_processa.py` e
    `fluxo_eventos.py`).
 

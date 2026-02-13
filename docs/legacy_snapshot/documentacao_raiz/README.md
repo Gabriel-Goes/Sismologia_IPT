@@ -3,7 +3,7 @@
 Este diretorio complementa a estrategia de dois trilhos:
 
 1. **Legado:** o que o sistema atual faz e como executa.
-2. **Refatoracao:** como vamos reescrever e validar o v2.
+2. **Refatoracao:** como vamos reescrever e validar.
 
 ## Trilho Legado
 
