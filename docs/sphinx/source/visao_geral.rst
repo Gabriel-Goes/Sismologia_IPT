@@ -19,3 +19,12 @@ Implementacao atual
 
 - Etapas 1+2 comecadas em ``src/seismic_event_discriminator/step01_catalogo_selecao.py``.
 - Notebooks didaticos no diretorio ``notebooks/`` para execucao e validacao no SEISAPP.
+
+Catalogos e boletins
+--------------------
+
+Para manter o fluxo reprodutivel, os catalogos de entrada ficam versionados em
+``catalogs/``:
+
+- **SISBRA (boletim estatico/citavel)**: ``catalogs/sisbra/`` (inclui v2024May09).
+- **FDSN (catalogo dinamico, com EventID)**: ``catalogs/query.txt`` e ``catalogs/query.xml`` (snapshot de consulta).

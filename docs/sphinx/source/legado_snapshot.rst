@@ -4,6 +4,13 @@ Snapshot Legado
 Uma copia congelada da documentacao legado foi arquivada nesta branch para
 consulta historica durante a refatoracao cleanroom.
 
+Publicacao no GitHub Pages
+--------------------------
+
+O snapshot pode ser publicado como **subsite** no GitHub Pages, abaixo da
+documentacao principal (v3), por exemplo em ``/legado/``. Isso permite que o
+leitor navegue pelo material antigo sem precisar trocar de branch.
+
 Localizacao do snapshot no repositorio:
 
 - ``docs/legacy_snapshot/README.md``

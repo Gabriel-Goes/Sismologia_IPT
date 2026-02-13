@@ -151,7 +151,7 @@ Sim, nosso objetivo agora é usar o catálogo do boletim.Pelo que entendi do ht
 Para deixar claro, o método antigo que eu fazia era entrar em moho.iag.br -> Dados -> Catálogo e baixar o arquivo no formato txt e salvando o .miniseed de acordo com a estrutura estabelecida pelo software da Celine Hourcade:
 Sendo evento o DateTime:
 mseeds/EVENTO/net_sta_EVENTO.MSEED.
-Estabelecendo a nova estrutura, posso utilizar o "./sisbra/catalogo_RAW.dat" diponibilizado no TAR.GZ como fonte "estática/citável", e então:
+Estabelecendo a nova estrutura, posso utilizar o catalogo estatico do boletim SISBRA (versao v2024May09) em ``catalogs/sisbra/catalogo_RAW.dat`` como fonte "estatica/citavel", e entao:
  1. Filtrar o RAW e gerar um catálogo derivado só com os eventos de interesse, por exemplo:
      catalogo_MG_mag<4.9_deep<10km.dat (e equivalente em CSV, se ajudar).
  2. Converter esse catálogo filtrado para um QuakeML (mínimo: origin + magnitude + informações básicas), e em seguida “quebrar” em 1 metadado por
@@ -164,7 +164,7 @@ Estabelecendo a nova estrutura, posso utilizar o "./sisbra/catalogo_RAW.dat" d
   3.2 os .mseed baixados (1 por estação/pick), mantendo uma convenção consistente de nomes.
 
   Faz sentido para vocês esta estrutura?
-  - "./sisbra/Makefile" gera catalogo_MG_mag<4.9_deep<10km.dat
+  - ``catalogs/sisbra/Makefile`` gera catalogos derivados (filtros) a partir do boletim
   - criamos um QuakeML
   - cria a árvore   -> ./data/YYYYMMDDTHHMMSS/                       -> event.xml ou event.json;                       -> NET_STA_DATETIME.miniseed (-10s p +50s)
 O miniseed será adquirido através do obspy buscando pelo evento;
