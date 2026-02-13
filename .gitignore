@@ -14,3 +14,6 @@ logs/
 
 # Sphinx build
 docs/sphinx/build/
+
+# Local scratch
+boilerplate*
