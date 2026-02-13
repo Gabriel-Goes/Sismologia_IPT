@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Visao Geral &#8212; Seismic Event Discriminator 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=01f34227"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Arquitetura Inicial" href="arquitetura.html" />
+    <link rel="prev" title="Seismic Event Discriminator" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="visao-geral">
+<h1>Visao Geral<a class="headerlink" href="#visao-geral" title="Link to this heading">¶</a></h1>
+<p>Esta branch inicia uma nova historia do projeto, sem dependencia do historico de
+commits anteriores, para permitir reescrita completa com foco em qualidade de
+engenharia e rastreabilidade academica.</p>
+<section id="fluxo-alvo-v3">
+<h2>Fluxo alvo (v3)<a class="headerlink" href="#fluxo-alvo-v3" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Construcao de catalogo a partir de consulta MOHO.</p></li>
+<li><p>Selecao de eventos em regiao de atividade mineira em MG (<code class="docutils literal notranslate"><span class="pre">M</span> <span class="pre">&lt;</span> <span class="pre">4.9</span></code> e <code class="docutils literal notranslate"><span class="pre">depth</span> <span class="pre">&lt;</span> <span class="pre">10</span> <span class="pre">km</span></code>).</p></li>
+<li><p>Aquisicao de formas de onda (janela de 60 s).</p></li>
+<li><p>Preparacao de entrada da CNN (<code class="docutils literal notranslate"><span class="pre">.mseed</span> <span class="pre">-&gt;</span> <span class="pre">.npy</span></code>).</p></li>
+<li><p>Analise dos resultados (graficos e mapas).</p></li>
+</ol>
+</section>
+<section id="implementacao-atual">
+<h2>Implementacao atual<a class="headerlink" href="#implementacao-atual" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Etapas 1+2 comecadas em <code class="docutils literal notranslate"><span class="pre">src/seismic_event_discriminator/step01_catalogo_selecao.py</span></code>.</p></li>
+<li><p>Notebooks didaticos no diretorio <code class="docutils literal notranslate"><span class="pre">notebooks/</span></code> para execucao e validacao no SEISAPP.</p></li>
+</ul>
+</section>
+<section id="catalogos-e-boletins">
+<h2>Catalogos e boletins<a class="headerlink" href="#catalogos-e-boletins" title="Link to this heading">¶</a></h2>
+<p>Para manter o fluxo reprodutivel, os catalogos de entrada ficam versionados em
+<code class="docutils literal notranslate"><span class="pre">catalogs/</span></code>:</p>
+<ul class="simple">
+<li><p><strong>SISBRA (boletim estatico/citavel)</strong>: <code class="docutils literal notranslate"><span class="pre">catalogs/sisbra/</span></code> (inclui v2024May09).</p></li>
+<li><p><strong>FDSN (catalogo dinamico, com EventID)</strong>: <code class="docutils literal notranslate"><span class="pre">catalogs/query.txt</span></code> e <code class="docutils literal notranslate"><span class="pre">catalogs/query.xml</span></code> (snapshot de consulta).</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Seismic Event Discriminator</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Conteudo</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Visao Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arquitetura.html">Arquitetura Inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plano_refatoracao.html">Plano de Refatoracao</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legado_snapshot.html">Snapshot Legado</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Legado (snapshot)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="legado/index.html">Legado (Snapshot)</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="legado/index.html">Legado (snapshot)</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/Gabriel-Goes/Sismologia_IPT">Repositorio (GitHub)</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Seismic Event Discriminator</a></li>
+      <li>Next: <a href="arquitetura.html" title="next chapter">Arquitetura Inicial</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/visao_geral.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
