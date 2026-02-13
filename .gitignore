@@ -1,5 +1,5 @@
-# Local legacy material kept outside the new cleanroom history
-.specs/
+# Keep spec-driven docs versioned, but ignore heavy legacy mappings if recreated
+.specs/codebase/
 
 # Python
 __pycache__/
