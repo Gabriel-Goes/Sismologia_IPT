@@ -11,6 +11,9 @@ __pycache__/
 arquivos/
 data/
 logs/
+outputs/
+data_test_run/
+wget-log*
 
 # Sphinx build
 docs/sphinx/build/
