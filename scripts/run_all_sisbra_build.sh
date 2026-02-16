@@ -22,6 +22,32 @@ LOG_FILE="$LOG_DIR/run_all_sisbra_${RUN_TS}.log"
 REPORT_FILE="$LOG_DIR/run_all_sisbra_${RUN_TS}.md"
 SUMMARY_CSV="$LOG_DIR/run_all_sisbra_${RUN_TS}_summary.csv"
 
+PYENV_OK="no"
+if command -v pyenv >/dev/null 2>&1; then
+  PYENV_OK="yes"
+  PYTHON_RUNNER=(pyenv exec python)
+  PYTHON_DESC="pyenv exec python"
+elif command -v python3 >/dev/null 2>&1; then
+  PYTHON_RUNNER=(python3)
+  PYTHON_DESC="python3"
+elif command -v python >/dev/null 2>&1; then
+  PYTHON_RUNNER=(python)
+  PYTHON_DESC="python"
+else
+  {
+    echo "# SISBRA Full Run Report ($RUN_TS)"
+    echo
+    echo "## Exit"
+    echo "- error: \`python interpreter not found (pyenv/python3/python)\`"
+  } >"$REPORT_FILE"
+  echo "[run-all] error: python interpreter not found (pyenv/python3/python)"
+  echo "[run-all] report: $REPORT_FILE"
+  exit 2
+fi
+
+PYTHON_EXE="$("${PYTHON_RUNNER[@]}" -c 'import sys; print(sys.executable)' 2>/dev/null || true)"
+OBSPY_VER="$("${PYTHON_RUNNER[@]}" -c 'import obspy; print(obspy.__version__)' 2>/dev/null || true)"
+
 echo "[run-all] run_ts=$RUN_TS"
 echo "[run-all] report=$REPORT_FILE"
 echo "[run-all] log=$LOG_FILE"
@@ -41,24 +67,19 @@ echo "[run-all] summary_csv=$SUMMARY_CSV"
   echo "- TIME_WINDOW_S: \`$TIME_WINDOW_S\`"
   echo "- MAXRADIUS_DEG: \`$MAXRADIUS_DEG\`"
   echo "- MAG_PAD: \`$MAG_PAD\`"
+  echo "- PYTHON_CMD: \`$PYTHON_DESC\`"
   echo
   echo "## Endpoint Checks"
 } >"$REPORT_FILE"
-
-if command -v pyenv >/dev/null 2>&1; then
-  PYENV_OK="yes"
-else
-  PYENV_OK="no"
-fi
 
 {
   echo "- pyenv available: \`$PYENV_OK\`"
   if [ "$PYENV_OK" = "yes" ]; then
     echo "- pyenv version: \`$(pyenv --version)\`"
     echo "- pyenv env: \`$(pyenv version-name 2>/dev/null || true)\`"
-    echo "- python exe: \`$(pyenv exec python -c 'import sys; print(sys.executable)')\`"
-    echo "- obspy: \`$(pyenv exec python -c 'import obspy; print(obspy.__version__)')\`"
   fi
+  echo "- python exe: \`${PYTHON_EXE:-unavailable}\`"
+  echo "- obspy: \`${OBSPY_VER:-unavailable}\`"
 } >>"$REPORT_FILE"
 
 SEISARC_CHECK="fail"
@@ -89,7 +110,7 @@ fi
   echo
   echo "## Run Command"
   echo '```bash'
-  echo "pyenv exec python src/seismic_event_discriminator/step02_fdsn_picks_export.py \\"
+  echo "$PYTHON_DESC src/seismic_event_discriminator/step02_fdsn_picks_export.py \\"
   echo "  --sisbra-csv \"$SISBRA_CSV\" \\"
   echo "  --client-url \"$CLIENT_URL\" \\"
   echo "  --n-last \"$N_LAST\" \\"
@@ -106,7 +127,7 @@ fi
 echo "[run-all] starting step02 full run ..."
 
 CMD=(
-  pyenv exec python src/seismic_event_discriminator/step02_fdsn_picks_export.py
+  "${PYTHON_RUNNER[@]}" src/seismic_event_discriminator/step02_fdsn_picks_export.py
   --sisbra-csv "$SISBRA_CSV"
   --client-url "$CLIENT_URL"
   --n-last "$N_LAST"
@@ -124,7 +145,7 @@ RUN_RC="${PIPESTATUS[0]}"
 set -e
 echo "[run-all] step02 rc=$RUN_RC"
 
-pyenv exec python - "$OUT_ROOT" "$SUMMARY_CSV" "$REPORT_FILE" <<'PY'
+"${PYTHON_RUNNER[@]}" - "$OUT_ROOT" "$SUMMARY_CSV" "$REPORT_FILE" <<'PY'
 import csv
 import glob
 import json

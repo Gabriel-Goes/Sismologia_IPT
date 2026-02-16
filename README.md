@@ -4,6 +4,8 @@
 
 Este repo assume uso de `pyenv` e, no GeoServer, o virtualenv `geo-seis` (ObsPy instalado).
 O arquivo `.python-version` fixa automaticamente o ambiente ao entrar no diretório.
+Nos wrappers (`scripts/run_all_sisbra_build.sh` e `scripts/run_step02.sh`), se `pyenv`
+não existir o fallback automático é `python3` (ou `python`).
 
 ```bash
 cd /home/ggrl/projetos/ClassificadorSismologico
@@ -73,7 +75,6 @@ Para processar todo o catálogo SISBRA e gerar os bundles em lote com log + rela
 
 ```bash
 cd /home/ggrl/projetos/ClassificadorSismologico
-pyenv activate geo-seis
 bash scripts/run_all_sisbra_build.sh
 ```
 
@@ -89,7 +90,6 @@ Para um smoke test paralelo antes do lote completo:
 
 ```bash
 cd /home/ggrl/projetos/ClassificadorSismologico
-pyenv activate geo-seis
 bash scripts/run_parallel_smoketest_seisapp.sh
 ```
 

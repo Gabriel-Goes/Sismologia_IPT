@@ -32,15 +32,24 @@ echo "[run_step02] N_LAST=$N_LAST OUT_ROOT=$OUT_ROOT MAX_PICK_DIST_KM=$MAX_PICK_
 echo
 
 if command -v pyenv >/dev/null 2>&1; then
+  PYTHON_RUNNER=(pyenv exec python)
+  PYTHON_DESC="pyenv exec python"
   echo "[run_step02] pyenv: $(pyenv --version)"
   echo "[run_step02] pyenv version: $(pyenv version-name 2>/dev/null || true)"
+elif command -v python3 >/dev/null 2>&1; then
+  PYTHON_RUNNER=(python3)
+  PYTHON_DESC="python3"
+elif command -v python >/dev/null 2>&1; then
+  PYTHON_RUNNER=(python)
+  PYTHON_DESC="python"
 else
-  echo "[run_step02] ERROR: pyenv not found in PATH"
+  echo "[run_step02] ERROR: python interpreter not found (pyenv/python3/python)"
   exit 2
 fi
 
-echo "[run_step02] python: $(pyenv exec python -c 'import sys; print(sys.executable)')"
-pyenv exec python -c "import obspy; print('[run_step02] obspy', obspy.__version__)"
+echo "[run_step02] python_cmd: $PYTHON_DESC"
+echo "[run_step02] python: $("${PYTHON_RUNNER[@]}" -c 'import sys; print(sys.executable)')"
+"${PYTHON_RUNNER[@]}" -c "import obspy; print('[run_step02] obspy', obspy.__version__)"
 
 echo
 echo "[run_step02] checking FDSN endpoint (tunnel) ..."
@@ -49,7 +58,7 @@ curl -fsS --max-time 5 "${CLIENT_URL}/fdsnws/event/1/application.wadl" | head -n
 echo
 echo "[run_step02] running step02 export ..."
 rm -rf "$OUT_ROOT"
-pyenv exec python src/seismic_event_discriminator/step02_fdsn_picks_export.py \
+"${PYTHON_RUNNER[@]}" src/seismic_event_discriminator/step02_fdsn_picks_export.py \
   --sisbra-csv "$SISBRA_CSV" \
   --client-url "$CLIENT_URL" \
   --n-last "$N_LAST" \
@@ -65,7 +74,7 @@ find "$OUT_ROOT" -maxdepth 2 -type f -name event.json -o -name event.xml | sort 
 
 echo
 echo "[run_step02] quick summary:"
-pyenv exec python - <<PY
+"${PYTHON_RUNNER[@]}" - <<PY
 import glob, json, os
 out_root = ${OUT_ROOT!r}
 paths = sorted(glob.glob(os.path.join(out_root, "*", "event.json")))
