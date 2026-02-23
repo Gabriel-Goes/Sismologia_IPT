@@ -1,0 +1,1846 @@
+/usr/local/lib/python3.9/dist-packages/obspy/core/inventory/network.py:321: UserWarning: Found more than one matching channel metadata. Returning first.
+  warnings.warn(msg)
+Running with workers=24 events=500
+[1/500] SISBRA 2022-07-21T15:19:25 lat=-7.410 lon=-35.090 mag=2.2 window=+/-120.0s r=1.0deg
+[2/500] SISBRA 2022-07-23T13:57:09 lat=-11.270 lon=-40.520 mag=2.5 window=+/-120.0s r=1.0deg
+[3/500] SISBRA 2022-07-24T08:17:08 lat=-8.970 lon=-71.300 mag=4.3 window=+/-120.0s r=1.0deg
+[4/500] SISBRA 2022-07-25T14:56:05 lat=-19.490 lon=-44.250 mag=2.2 window=+/-120.0s r=1.0deg
+[5/500] SISBRA 2022-07-27T17:29:07 lat=-8.510 lon=-35.700 mag=2.1 window=+/-120.0s r=1.0deg
+[6/500] SISBRA 2022-07-29T20:44:51 lat=-19.500 lon=-44.240 mag=2.9 window=+/-120.0s r=1.0deg
+[7/500] SISBRA 2022-07-31T03:34:46 lat=-5.280 lon=-35.290 mag=2.4 window=+/-120.0s r=1.0deg
+[8/500] SISBRA 2022-07-31T19:05:27 lat=-5.050 lon=-34.920 mag=3.7 window=+/-120.0s r=1.0deg
+[9/500] SISBRA 2022-07-31T19:19:54 lat=-4.680 lon=-34.440 mag=2.1 window=+/-120.0s r=1.0deg
+[10/500] SISBRA 2022-07-31T19:39:58 lat=-5.260 lon=-35.110 mag=2.4 window=+/-120.0s r=1.0deg
+[11/500] SISBRA 2022-08-01T02:59:33 lat=-5.340 lon=-35.100 mag=2.1 window=+/-120.0s r=1.0deg
+[12/500] SISBRA 2022-08-01T03:36:25 lat=-18.760 lon=-44.900 mag=1.9 window=+/-120.0s r=1.0deg
+[13/500] SISBRA 2022-08-03T06:02:00 lat=-4.690 lon=-35.180 mag=2.0 window=+/-120.0s r=1.0deg
+[14/500] SISBRA 2022-08-03T07:33:36 lat=-8.590 lon=-74.460 mag=4.6 window=+/-120.0s r=1.0deg
+[15/500] SISBRA 2022-08-03T14:59:15 lat=-3.910 lon=-40.460 mag=2.9 window=+/-120.0s r=1.0deg
+[16/500] SISBRA 2022-08-04T10:39:29 lat=-20.130 lon=-44.830 mag=2.5 window=+/-120.0s r=1.0deg
+[17/500] SISBRA 2022-08-04T20:44:53 lat=-24.320 lon=-48.040 mag=2.0 window=+/-120.0s r=1.0deg
+[18/500] SISBRA 2022-08-05T14:01:27 lat=-7.290 lon=-35.830 mag=1.9 window=+/-120.0s r=1.0deg
+[19/500] SISBRA 2022-08-05T19:41:48 lat=-9.610 lon=-36.760 mag=1.5 window=+/-120.0s r=1.0deg
+[20/500] SISBRA 2022-08-07T04:14:26 lat=-18.220 lon=-41.560 mag=1.9 window=+/-120.0s r=1.0deg
+[21/500] SISBRA 2022-08-07T04:17:32 lat=-9.850 lon=-39.820 mag=2.0 window=+/-120.0s r=1.0deg
+[22/500] SISBRA 2022-08-08T23:09:46 lat=-5.450 lon=-35.790 mag=2.1 window=+/-120.0s r=1.0deg
+[23/500] SISBRA 2022-08-12T21:19:44 lat=-5.500 lon=-36.160 mag=2.0 window=+/-120.0s r=1.0deg
+[24/500] SISBRA 2022-08-14T12:30:36 lat=-15.320 lon=-51.650 mag=3.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-08-04T20:44:53Z -> data/sisbra_smoke_w24/20220804T204453_row5089
+[25/500] SISBRA 2022-08-15T09:41:03 lat=-8.640 lon=-74.350 mag=4.2 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-07-23T13:57:09Z -> data/sisbra_smoke_w24/20220723T135709_row5074
+[26/500] SISBRA 2022-08-15T13:38:00 lat=-3.110 lon=-40.620 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022ovug dt_s=0.539 dist_km=0.276 picks<=400.0km=2
+MATCHED: 2022-07-31T03:34:46Z -> data/sisbra_smoke_w24/20220731T033446_usp2022ovug_row5079 picks=2
+[27/500] SISBRA 2022-08-19T09:33:16 lat=-9.780 lon=-39.860 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022owzk dt_s=0.592 dist_km=0.538 picks<=400.0km=0
+MATCHED: 2022-07-31T19:19:54Z -> data/sisbra_smoke_w24/20220731T191954_usp2022owzk_row5081 picks=0
+[28/500] SISBRA 2022-08-19T19:06:52 lat=-7.790 lon=-74.630 mag=4.5 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-07-21T15:19:25Z -> data/sisbra_smoke_w24/20220721T151925_row5073
+[29/500] SISBRA 2022-08-19T20:15:14 lat=-24.750 lon=-50.120 mag=1.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022piqb dt_s=0.574 dist_km=0.170 picks<=400.0km=3
+MATCHED: 2022-08-07T04:14:26Z -> data/sisbra_smoke_w24/20220807T041426_usp2022piqb_row5092 picks=3
+[30/500] SISBRA 2022-08-22T14:55:53 lat=-19.570 lon=-44.080 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022pfsk dt_s=0.463 dist_km=0.455 picks<=400.0km=5
+MATCHED: 2022-08-05T14:01:27Z -> data/sisbra_smoke_w24/20220805T140127_usp2022pfsk_row5090 picks=5
+[31/500] SISBRA 2022-08-23T18:22:10 lat=-13.100 lon=-39.560 mag=2.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-08-15T13:38:00Z -> data/sisbra_smoke_w24/20220815T133800_row5098
+[32/500] SISBRA 2022-08-24T07:08:00 lat=-6.190 lon=-37.540 mag=1.9 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-08-12T21:19:44Z -> data/sisbra_smoke_w24/20220812T211944_row5095
+[33/500] SISBRA 2022-08-25T22:15:59 lat=-13.070 lon=-39.550 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022piqe dt_s=0.868 dist_km=0.415 picks<=400.0km=4
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022oxpu dt_s=0.917 dist_km=0.084 picks<=400.0km=5
+MATCHED: 2022-08-07T04:17:32Z -> data/sisbra_smoke_w24/20220807T041732_usp2022piqe_row5093 picks=4
+[34/500] SISBRA 2022-08-28T11:50:00 lat=-4.840 lon=-36.060 mag=2.0 window=+/-120.0s r=1.0deg
+MATCHED: 2022-08-01T03:36:25Z -> data/sisbra_smoke_w24/20220801T033625_usp2022oxpu_row5084 picks=5
+[35/500] SISBRA 2022-08-31T15:02:49 lat=-10.860 lon=-39.400 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022oxoo dt_s=0.139 dist_km=0.510 picks<=400.0km=1
+MATCHED: 2022-08-01T02:59:33Z -> data/sisbra_smoke_w24/20220801T025933_usp2022oxoo_row5083 picks=1
+[36/500] SISBRA 2022-08-31T16:04:23 lat=-8.290 lon=-36.030 mag=2.0 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-08-19T20:15:14Z -> data/sisbra_smoke_w24/20220819T201514_row5101
+[37/500] SISBRA 2022-09-01T07:12:36 lat=-12.570 lon=-55.690 mag=2.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022oxab dt_s=0.881 dist_km=0.501 picks<=400.0km=4
+MATCHED: 2022-07-31T19:39:58Z -> data/sisbra_smoke_w24/20220731T193958_usp2022oxab_row5082 picks=4
+[38/500] SISBRA 2022-09-02T03:57:41 lat=-16.480 lon=-52.950 mag=2.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022opnt dt_s=0.617 dist_km=0.669 picks<=400.0km=4
+MATCHED: 2022-07-27T17:29:07Z -> data/sisbra_smoke_w24/20220727T172907_usp2022opnt_row5077 picks=4
+[39/500] SISBRA 2022-09-05T19:16:17 lat=-19.610 lon=-44.290 mag=2.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-08-23T18:22:10Z -> data/sisbra_smoke_w24/20220823T182210_row5103
+[40/500] SISBRA 2022-09-07T08:28:41 lat=-8.880 lon=-40.360 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022qeyq dt_s=0.620 dist_km=2.720 picks<=400.0km=4
+MATCHED: 2022-08-19T09:33:16Z -> data/sisbra_smoke_w24/20220819T093316_usp2022qeyq_row5099 picks=4
+[41/500] SISBRA 2022-09-07T08:29:00 lat=-8.790 lon=-40.370 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022pgdq dt_s=0.797 dist_km=0.371 picks<=400.0km=3
+MATCHED: 2022-08-05T19:41:48Z -> data/sisbra_smoke_w24/20220805T194148_usp2022pgdq_row5091 picks=3
+[42/500] SISBRA 2022-09-08T14:25:09 lat=-22.920 lon=-47.710 mag=2.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022pcdi dt_s=0.883 dist_km=0.508 picks<=400.0km=2
+MATCHED: 2022-08-03T14:59:15Z -> data/sisbra_smoke_w24/20220803T145915_usp2022pcdi_row5087 picks=2
+[43/500] SISBRA 2022-09-09T15:02:20 lat=-10.550 lon=-40.600 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022plxa dt_s=1.955 dist_km=0.528 picks<=400.0km=5
+MATCHED: 2022-08-08T23:09:46Z -> data/sisbra_smoke_w24/20220808T230947_usp2022plxa_row5094 picks=5
+[44/500] SISBRA 2022-09-12T19:27:13 lat=-3.770 lon=-40.640 mag=2.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-08-31T16:04:23Z -> data/sisbra_smoke_w24/20220831T160423_row5108
+[45/500] SISBRA 2022-09-12T19:45:39 lat=-8.540 lon=-37.080 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022pdqg dt_s=0.627 dist_km=0.290 picks<=400.0km=10
+MATCHED: 2022-08-04T10:39:29Z -> data/sisbra_smoke_w24/20220804T103929_usp2022pdqg_row5088 picks=10
+[46/500] SISBRA 2022-09-14T01:44:35 lat=-16.700 lon=-59.040 mag=3.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022pblp dt_s=0.000 dist_km=0.489 picks<=400.0km=1
+MATCHED: 2022-08-03T06:02:00Z -> data/sisbra_smoke_w24/20220803T060200_usp2022pblp_row5085 picks=1
+[47/500] SISBRA 2022-09-15T20:21:32 lat=-18.750 lon=-48.220 mag=2.9 window=+/-120.0s r=1.0deg/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,1.0,20)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)->ITAPER(30)->BW(3,5.0,15)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)->ITAPER(30)->BW(3,2.0,10)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)->ITAPER(30)->BW(3,3.0,6)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+
+NO_MATCH: 2022-08-25T22:15:59Z -> data/sisbra_smoke_w24/20220825T221559_row5105
+[48/500] SISBRA 2022-09-19T03:43:21 lat=-9.850 lon=-39.900 mag=2.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-09-05T19:16:17Z -> data/sisbra_smoke_w24/20220905T191617_row5111
+[49/500] SISBRA 2022-09-19T21:59:00 lat=-9.850 lon=-39.910 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022rcnn dt_s=0.024 dist_km=0.578 picks<=400.0km=2
+MATCHED: 2022-09-01T07:12:36Z -> data/sisbra_smoke_w24/20220901T071235_usp2022rcnn_row5109 picks=2
+[50/500] SISBRA 2022-09-20T19:10:46 lat=-14.160 lon=-39.800 mag=2.2 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-08-31T15:02:49Z -> data/sisbra_smoke_w24/20220831T150249_row5107
+[51/500] SISBRA 2022-09-20T21:07:34 lat=-24.410 lon=-48.050 mag=2.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022ojja dt_s=0.164 dist_km=8.240 picks<=400.0km=2
+MATCHED: 2022-07-24T08:17:08Z -> data/sisbra_smoke_w24/20220724T081708_usp2022ojja_row5075 picks=2
+[52/500] SISBRA 2022-09-21T08:50:54 lat=-21.680 lon=-46.700 mag=2.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022otlf dt_s=0.612 dist_km=0.726 picks<=400.0km=11
+MATCHED: 2022-07-29T20:44:51Z -> data/sisbra_smoke_w24/20220729T204451_usp2022otlf_row5078 picks=11
+[53/500] SISBRA 2022-09-22T18:15:16 lat=-11.240 lon=-40.510 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022qkvt dt_s=0.885 dist_km=0.564 picks<=400.0km=7
+MATCHED: 2022-08-22T14:55:53Z -> data/sisbra_smoke_w24/20220822T145553_usp2022qkvt_row5102 picks=7
+[54/500] SISBRA 2022-09-23T16:01:20 lat=-14.160 lon=-39.790 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022olrr dt_s=0.887 dist_km=0.648 picks<=400.0km=5
+MATCHED: 2022-07-25T14:56:05Z -> data/sisbra_smoke_w24/20220725T145605_usp2022olrr_row5076 picks=5
+[55/500] SISBRA 2022-09-26T18:42:14 lat=-14.180 lon=-39.190 mag=2.0 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-09-09T15:02:20Z -> data/sisbra_smoke_w24/20220909T150220_row5115
+[56/500] SISBRA 2022-09-27T11:58:39 lat=-30.770 lon=-51.830 mag=2.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-09-19T21:59:00Z -> data/sisbra_smoke_w24/20220919T215900_row5121
+[57/500] SISBRA 2022-09-27T15:24:29 lat=-25.010 lon=-48.060 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022owyy dt_s=2.228 dist_km=49.310 picks<=400.0km=4
+NO_MATCH: 2022-09-20T19:10:46Z -> data/sisbra_smoke_w24/20220920T191046_row5122
+[58/500] SISBRA 2022-09-28T18:20:49 lat=-8.980 lon=-35.780 mag=2.1 window=+/-120.0s r=1.0deg
+MATCHED: 2022-07-31T19:05:27Z -> data/sisbra_smoke_w24/20220731T190529_usp2022owyy_row5080 picks=4
+[59/500] SISBRA 2022-09-28T21:15:37 lat=-25.820 lon=-56.980 mag=3.2 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-09-20T21:07:34Z -> data/sisbra_smoke_w24/20220920T210734_row5123
+[60/500] SISBRA 2022-09-30T19:34:49 lat=-5.610 lon=-36.230 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022rnpb dt_s=18.519 dist_km=10.053 picks<=400.0km=7
+NO_MATCH: 2022-09-22T18:15:16Z -> data/sisbra_smoke_w24/20220922T181516_row5125
+[61/500] SISBRA 2022-10-01T01:16:41 lat=-12.620 lon=-40.270 mag=1.7 window=+/-120.0s r=1.0deg
+MATCHED: 2022-09-07T08:29:00Z -> data/sisbra_smoke_w24/20220907T082841_usp2022rnpb_row5113 picks=7
+[62/500] SISBRA 2022-10-01T06:23:55 lat=-7.950 lon=-74.530 mag=4.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022sdcp dt_s=0.420 dist_km=1.072 picks<=400.0km=4
+MATCHED: 2022-09-15T20:21:32Z -> data/sisbra_smoke_w24/20220915T202132_usp2022sdcp_row5119 picks=4
+[63/500] SISBRA 2022-10-06T16:29:24 lat=-14.820 lon=-58.780 mag=2.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022qnxi dt_s=0.872 dist_km=0.595 picks<=400.0km=3
+MATCHED: 2022-08-24T07:08:00Z -> data/sisbra_smoke_w24/20220824T070800_usp2022qnxi_row5104 picks=3
+[64/500] SISBRA 2022-10-08T17:58:51 lat=-11.310 lon=-40.450 mag=2.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-09-08T14:25:09Z -> data/sisbra_smoke_w24/20220908T142509_row5114
+[65/500] SISBRA 2022-10-10T06:35:35 lat=-17.380 lon=-52.140 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022rnpb dt_s=0.481 dist_km=0.099 picks<=400.0km=7
+MATCHED: 2022-09-07T08:28:41Z -> data/sisbra_smoke_w24/20220907T082841_usp2022rnpb_row5112 picks=7
+[66/500] SISBRA 2022-10-11T15:03:23 lat=-22.340 lon=-47.940 mag=2.7 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-10-06T16:29:24Z -> data/sisbra_smoke_w24/20221006T162924_row5135
+[67/500] SISBRA 2022-10-12T15:03:29 lat=-5.060 lon=-40.890 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022syqv dt_s=0.068 dist_km=0.352 picks<=400.0km=2
+MATCHED: 2022-09-27T15:24:29Z -> data/sisbra_smoke_w24/20220927T152429_usp2022syqv_row5129 picks=2
+[68/500] SISBRA 2022-10-15T15:13:12 lat=-13.660 lon=-56.490 mag=2.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022rzwg dt_s=0.122 dist_km=0.118 picks<=400.0km=6
+NO_MATCH: 2022-09-30T19:34:49Z -> data/sisbra_smoke_w24/20220930T193449_row5132
+[69/500] SISBRA 2022-10-16T12:18:24 lat=-19.780 lon=-44.170 mag=2.5 window=+/-120.0s r=1.0deg
+MATCHED: 2022-09-14T01:44:35Z -> data/sisbra_smoke_w24/20220914T014434_usp2022rzwg_row5118 picks=6
+[70/500] SISBRA 2022-10-16T14:24:20 lat=-5.400 lon=-36.170 mag=2.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-08-28T11:50:00Z -> data/sisbra_smoke_w24/20220828T115000_row5106
+[71/500] SISBRA 2022-10-17T20:43:59 lat=-5.660 lon=-35.980 mag=2.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-09-26T18:42:14Z -> data/sisbra_smoke_w24/20220926T184214_row5127
+[72/500] SISBRA 2022-10-17T20:44:01 lat=-5.550 lon=-36.010 mag=2.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022pxqw dt_s=0.366 dist_km=45.851 picks<=400.0km=1
+MATCHED: 2022-08-15T09:41:03Z -> data/sisbra_smoke_w24/20220815T094103_usp2022pxqw_row5097 picks=1
+[73/500] SISBRA 2022-10-19T21:55:29 lat=-14.000 lon=-40.100 mag=2.7 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-10-11T15:03:23Z -> data/sisbra_smoke_w24/20221011T150323_row5138
+[74/500] SISBRA 2022-10-20T21:57:11 lat=-19.560 lon=-43.970 mag=1.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022syka dt_s=0.284 dist_km=0.229 picks<=400.0km=3
+MATCHED: 2022-09-27T11:58:39Z -> data/sisbra_smoke_w24/20220927T115839_usp2022syka_row5128 picks=3
+[75/500] SISBRA 2022-10-21T22:59:17 lat=-19.970 lon=-49.550 mag=2.9 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-10-16T12:18:24Z -> data/sisbra_smoke_w24/20221016T121824_row5141
+[76/500] SISBRA 2022-10-24T15:48:55 lat=-5.690 lon=-38.740 mag=2.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022taxx dt_s=0.724 dist_km=0.394 picks<=400.0km=5
+MATCHED: 2022-09-28T21:15:37Z -> data/sisbra_smoke_w24/20220928T211537_usp2022taxx_row5131 picks=5
+[77/500] SISBRA 2022-10-28T15:54:47 lat=-27.230 lon=-50.000 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022uaar dt_s=0.840 dist_km=0.223 picks<=400.0km=4
+MATCHED: 2022-10-12T15:03:29Z -> data/sisbra_smoke_w24/20221012T150329_usp2022uaar_row5139 picks=4
+[78/500] SISBRA 2022-10-29T13:34:43 lat=-16.200 lon=-55.930 mag=2.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022uhhk dt_s=0.345 dist_km=0.254 picks<=400.0km=3
+MATCHED: 2022-10-16T14:24:20Z -> data/sisbra_smoke_w24/20221016T142420_usp2022uhhk_row5142 picks=3
+[79/500] SISBRA 2022-10-30T04:08:48 lat=-4.580 lon=-37.780 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022teww dt_s=0.319 dist_km=0.651 picks<=400.0km=3
+MATCHED: 2022-10-01T01:16:41Z -> data/sisbra_smoke_w24/20221001T011641_usp2022teww_row5133 picks=3
+[80/500] SISBRA 2022-11-01T10:57:41 lat=-18.060 lon=-50.810 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022ujpl dt_s=0.951 dist_km=0.372 picks<=400.0km=3/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,0.7,2)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,2.5,7)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,15.0,35)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,2.5,8)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)->ITAPER(30)->BW(3,3.0,10)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,1.0,5)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+
+MATCHED: 2022-10-17T20:43:59Z -> data/sisbra_smoke_w24/20221017T204359_usp2022ujpl_row5143 picks=3
+[81/500] SISBRA 2022-11-03T07:42:22 lat=-5.940 lon=-50.620 mag=3.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022snev dt_s=0.189 dist_km=2.213 picks<=400.0km=11
+MATCHED: 2022-09-21T08:50:54Z -> data/sisbra_smoke_w24/20220921T085054_usp2022snev_row5124 picks=11
+[82/500] SISBRA 2022-11-03T07:57:58 lat=-5.940 lon=-50.620 mag=3.4 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-10-21T22:59:17Z -> data/sisbra_smoke_w24/20221021T225917_row5147
+[83/500] SISBRA 2022-11-03T13:47:00 lat=-7.940 lon=-40.220 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022tvsx dt_s=0.171 dist_km=0.507 picks<=400.0km=1
+MATCHED: 2022-10-10T06:35:35Z -> data/sisbra_smoke_w24/20221010T063535_usp2022tvsx_row5137 picks=1
+[84/500] SISBRA 2022-11-03T15:01:35 lat=-10.880 lon=-39.330 mag=2.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-09-19T03:43:21Z -> data/sisbra_smoke_w24/20220919T034321_row5120
+[85/500] SISBRA 2022-11-06T05:08:44 lat=-24.690 lon=-48.020 mag=1.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022rxox dt_s=0.088 dist_km=0.471 picks<=400.0km=7
+MATCHED: 2022-09-12T19:45:39Z -> data/sisbra_smoke_w24/20220912T194539_usp2022rxox_row5117 picks=7
+[86/500] SISBRA 2022-11-10T11:51:56 lat=-10.140 lon=-36.890 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022recp dt_s=1.421 dist_km=6.259 picks<=400.0km=3
+MATCHED: 2022-09-02T03:57:41Z -> data/sisbra_smoke_w24/20220902T035742_usp2022recp_row5110 picks=3
+[87/500] SISBRA 2022-11-11T05:50:46 lat=-7.210 lon=-50.570 mag=3.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022vgcd dt_s=0.935 dist_km=0.565 picks<=400.0km=4
+MATCHED: 2022-10-30T04:08:48Z -> data/sisbra_smoke_w24/20221030T040848_usp2022vgcd_row5151 picks=4
+[88/500] SISBRA 2022-11-11T12:34:46 lat=-8.580 lon=-71.360 mag=4.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022qfro dt_s=3.404 dist_km=29.424 picks<=400.0km=2
+MATCHED: 2022-08-19T19:06:52Z -> data/sisbra_smoke_w24/20220819T190648_usp2022qfro_row5100 picks=2
+[89/500] SISBRA 2022-11-12T21:29:15 lat=-19.480 lon=-44.270 mag=2.4 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-11-03T13:47:00Z -> data/sisbra_smoke_w24/20221103T134700_row5155
+[90/500] SISBRA 2022-11-16T02:51:16 lat=-6.590 lon=-50.080 mag=2.8 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-09-23T16:01:20Z -> data/sisbra_smoke_w24/20220923T160120_row5126
+[91/500] SISBRA 2022-11-18T03:30:34 lat=-19.530 lon=-44.060 mag=1.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022uniu dt_s=0.744 dist_km=0.209 picks<=400.0km=2
+MATCHED: 2022-10-19T21:55:29Z -> data/sisbra_smoke_w24/20221019T215529_usp2022uniu_row5145 picks=2
+[92/500] SISBRA 2022-11-20T03:36:47 lat=-16.640 lon=-50.480 mag=2.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-10-15T15:13:12Z -> data/sisbra_smoke_w24/20221015T151312_row5140
+[93/500] SISBRA 2022-11-20T09:32:20 lat=-11.350 lon=-40.310 mag=1.7 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-11-10T11:51:56Z -> data/sisbra_smoke_w24/20221110T115156_row5158
+[94/500] SISBRA 2022-11-22T16:34:21 lat=-19.520 lon=-44.010 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022tasd dt_s=0.131 dist_km=0.095 picks<=400.0km=4
+MATCHED: 2022-09-28T18:20:49Z -> data/sisbra_smoke_w24/20220928T182049_usp2022tasd_row5130 picks=4
+[95/500] SISBRA 2022-11-23T15:02:48 lat=-8.830 lon=-36.480 mag=1.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022uwaf dt_s=0.284 dist_km=2.275 picks<=400.0km=5
+MATCHED: 2022-10-24T15:48:55Z -> data/sisbra_smoke_w24/20221024T154854_usp2022uwaf_row5148 picks=5
+[96/500] SISBRA 2022-11-24T02:02:35 lat=-19.520 lon=-44.170 mag=2.2 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-11-11T05:50:46Z -> data/sisbra_smoke_w24/20221111T055046_row5159
+[97/500] SISBRA 2022-11-24T21:57:03 lat=-18.450 lon=-44.210 mag=3.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022vdik dt_s=0.090 dist_km=0.237 picks<=400.0km=8
+MATCHED: 2022-10-28T15:54:47Z -> data/sisbra_smoke_w24/20221028T155446_usp2022vdik_row5149 picks=8
+[98/500] SISBRA 2022-11-27T09:24:42 lat=-8.320 lon=-36.040 mag=1.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022vsyq dt_s=0.381 dist_km=0.317 picks<=400.0km=6
+MATCHED: 2022-11-06T05:08:44Z -> data/sisbra_smoke_w24/20221106T050844_usp2022vsyq_row5157 picks=6
+[99/500] SISBRA 2022-11-27T20:07:12 lat=-33.650 lon=-55.830 mag=3.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022rxoh dt_s=0.473 dist_km=0.580 picks<=400.0km=3
+NO_MATCH: 2022-11-16T02:51:16Z -> data/sisbra_smoke_w24/20221116T025116_row5162
+[100/500] SISBRA 2022-11-29T02:27:27 lat=-8.110 lon=-35.100 mag=2.0 window=+/-120.0s r=1.0deg
+MATCHED: 2022-09-12T19:27:13Z -> data/sisbra_smoke_w24/20220912T192713_usp2022rxoh_row5116 picks=3
+[101/500] SISBRA 2022-11-30T16:03:10 lat=-8.310 lon=-36.080 mag=1.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022wswj dt_s=0.838 dist_km=0.377 picks<=400.0km=2
+MATCHED: 2022-11-20T09:32:20Z -> data/sisbra_smoke_w24/20221120T093220_usp2022wswj_row5165 picks=2
+[102/500] SISBRA 2022-12-01T19:41:53 lat=-8.120 lon=-39.040 mag=1.9 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-11-18T03:30:34Z -> data/sisbra_smoke_w24/20221118T033034_row5163
+[103/500] SISBRA 2022-12-02T09:56:01 lat=-16.010 lon=-51.250 mag=2.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022wytu dt_s=0.370 dist_km=0.988 picks<=400.0km=9
+MATCHED: 2022-11-23T15:02:48Z -> data/sisbra_smoke_w24/20221123T150248_usp2022wytu_row5167 picks=9
+[104/500] SISBRA 2022-12-03T17:17:21 lat=-11.250 lon=-40.500 mag=2.5 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-11-30T16:03:10Z -> data/sisbra_smoke_w24/20221130T160310_row5173
+[105/500] SISBRA 2022-12-04T04:05:30 lat=-9.830 lon=-39.920 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022wzpo dt_s=0.956 dist_km=0.537 picks<=400.0km=8
+MATCHED: 2022-11-24T02:02:35Z -> data/sisbra_smoke_w24/20221124T020235_usp2022wzpo_row5168 picks=8
+[106/500] SISBRA 2022-12-05T11:47:33 lat=-9.840 lon=-39.910 mag=2.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022ujpl dt_s=1.049 dist_km=12.809 picks<=400.0km=3
+MATCHED: 2022-10-17T20:44:01Z -> data/sisbra_smoke_w24/20221017T204359_usp2022ujpl_row5144 picks=3
+[107/500] SISBRA 2022-12-06T18:57:27 lat=-10.070 lon=-37.100 mag=1.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022vnre dt_s=0.300 dist_km=0.384 picks<=400.0km=4
+MATCHED: 2022-11-03T07:42:22Z -> data/sisbra_smoke_w24/20221103T074222_usp2022vnre_row5153 picks=4
+[108/500] SISBRA 2022-12-07T15:40:42 lat=-19.010 lon=-43.530 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022xbcy dt_s=0.052 dist_km=13.452 picks<=400.0km=12
+MATCHED: 2022-11-24T21:57:03Z -> data/sisbra_smoke_w24/20221124T215703_usp2022xbcy_row5169 picks=12
+[109/500] SISBRA 2022-12-07T19:08:09 lat=-6.420 lon=-50.190 mag=3.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022wfdz dt_s=0.954 dist_km=7.267 picks<=400.0km=5
+MATCHED: 2022-11-12T21:29:15Z -> data/sisbra_smoke_w24/20221112T212914_usp2022wfdz_row5161 picks=5
+[110/500] SISBRA 2022-12-08T11:01:48 lat=-9.920 lon=-39.860 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022vkgq dt_s=0.857 dist_km=0.408 picks<=400.0km=4
+MATCHED: 2022-11-01T10:57:41Z -> data/sisbra_smoke_w24/20221101T105741_usp2022vkgq_row5152 picks=4
+[111/500] SISBRA 2022-12-13T01:25:37 lat=-18.700 lon=-44.940 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022xitw dt_s=0.735 dist_km=0.460 picks<=400.0km=4/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)->BW(3,2.5,8.0)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,5,10)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,1.5,3.5)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,2,8)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>ITAPER(30)>>BW(2,2,10)>>STALTA(0.5,10)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)->BW(3,1.5,5.0)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,1.6,6)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+
+MATCHED: 2022-11-29T02:27:27Z -> data/sisbra_smoke_w24/20221129T022727_usp2022xitw_row5172 picks=4
+[112/500] SISBRA 2022-12-13T03:26:27 lat=-9.850 lon=-39.910 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022xglv dt_s=0.157 dist_km=4.934 picks<=400.0km=5
+MATCHED: 2022-11-27T20:07:12Z -> data/sisbra_smoke_w24/20221127T200712_usp2022xglv_row5171 picks=5
+[113/500] SISBRA 2022-12-14T01:28:44 lat=-11.210 lon=-40.500 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022pboq dt_s=1.165 dist_km=3.613 picks<=400.0km=1
+MATCHED: 2022-08-03T07:33:36Z -> data/sisbra_smoke_w24/20220803T073334_usp2022pboq_row5086 picks=1
+[114/500] SISBRA 2022-12-15T19:45:05 lat=-9.480 lon=-35.760 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022xove dt_s=0.028 dist_km=0.432 picks<=400.0km=2
+MATCHED: 2022-12-02T09:56:01Z -> data/sisbra_smoke_w24/20221202T095601_usp2022xove_row5175 picks=2
+[115/500] SISBRA 2022-12-19T13:31:08 lat=-28.110 lon=-50.500 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022wskq dt_s=0.514 dist_km=0.476 picks<=400.0km=2
+MATCHED: 2022-11-20T03:36:47Z -> data/sisbra_smoke_w24/20221120T033647_usp2022wskq_row5164 picks=2
+[116/500] SISBRA 2022-12-20T15:08:32 lat=-20.810 lon=-50.170 mag=2.9 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-10-20T21:57:11Z -> data/sisbra_smoke_w24/20221020T215711_row5146
+[117/500] SISBRA 2022-12-22T13:13:57 lat=-8.060 lon=-74.300 mag=5.5 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-12-07T19:08:09Z -> data/sisbra_smoke_w24/20221207T190809_row5181
+[118/500] SISBRA 2022-12-25T15:02:54 lat=-16.710 lon=-44.320 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022xulj dt_s=0.528 dist_km=0.292 picks<=400.0km=4
+MATCHED: 2022-12-05T11:47:33Z -> data/sisbra_smoke_w24/20221205T114733_usp2022xulj_row5178 picks=4
+[119/500] SISBRA 2022-12-27T10:14:36 lat=-19.090 lon=-47.660 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022xsaq dt_s=0.658 dist_km=0.406 picks<=400.0km=3
+MATCHED: 2022-12-04T04:05:30Z -> data/sisbra_smoke_w24/20221204T040530_usp2022xsaq_row5177 picks=3
+[120/500] SISBRA 2022-12-28T03:42:30 lat=-19.510 lon=-44.220 mag=2.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022yigx dt_s=0.277 dist_km=0.548 picks<=400.0km=5
+MATCHED: 2022-12-13T01:25:37Z -> data/sisbra_smoke_w24/20221213T012537_usp2022yigx_row5183 picks=5
+[121/500] SISBRA 2022-12-28T13:52:47 lat=-19.510 lon=-44.220 mag=1.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022tsyl dt_s=0.543 dist_km=0.522 picks<=400.0km=4
+MATCHED: 2022-10-08T17:58:51Z -> data/sisbra_smoke_w24/20221008T175851_usp2022tsyl_row5136 picks=4
+[122/500] SISBRA 2022-12-29T00:57:59 lat=-12.650 lon=-48.950 mag=3.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022pway dt_s=0.509 dist_km=0.547 picks<=400.0km=1
+MATCHED: 2022-08-14T12:30:36Z -> data/sisbra_smoke_w24/20220814T123036_usp2022pway_row5096 picks=1
+[123/500] SISBRA 2022-12-29T14:39:59 lat=-5.530 lon=-35.660 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022ykcm dt_s=0.742 dist_km=0.322 picks<=400.0km=2
+MATCHED: 2022-12-14T01:28:44Z -> data/sisbra_smoke_w24/20221214T012844_usp2022ykcm_row5185 picks=2
+[124/500] SISBRA 2022-12-29T19:55:00 lat=-10.550 lon=-40.590 mag=2.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-12-27T10:14:36Z -> data/sisbra_smoke_w24/20221227T101436_row5191
+[125/500] SISBRA 2022-12-30T18:05:00 lat=-11.250 lon=-40.540 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022xwvb dt_s=0.610 dist_km=0.443 picks<=400.0km=3
+MATCHED: 2022-12-06T18:57:27Z -> data/sisbra_smoke_w24/20221206T185727_usp2022xwvb_row5179 picks=3
+[126/500] SISBRA 2023-01-01T00:24:39 lat=-25.360 lon=-46.610 mag=2.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022vnrs dt_s=0.193 dist_km=0.162 picks<=400.0km=4
+MATCHED: 2022-11-03T07:57:58Z -> data/sisbra_smoke_w24/20221103T075758_usp2022vnrs_row5154 picks=4
+[127/500] SISBRA 2023-01-04T11:42:48 lat=-19.730 lon=-43.980 mag=2.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022xzwj dt_s=0.133 dist_km=0.295 picks<=400.0km=4
+MATCHED: 2022-12-08T11:01:48Z -> data/sisbra_smoke_w24/20221208T110148_usp2022xzwj_row5182 picks=4
+[128/500] SISBRA 2023-01-05T20:45:39 lat=-11.280 lon=-40.530 mag=2.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022zjvy dt_s=0.656 dist_km=0.669 picks<=400.0km=10
+MATCHED: 2022-12-28T03:42:30Z -> data/sisbra_smoke_w24/20221228T034230_usp2022zjvy_row5192 picks=10
+[129/500] SISBRA 2023-01-06T05:09:23 lat=-9.860 lon=-39.820 mag=2.4 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-12-29T14:39:59Z -> data/sisbra_smoke_w24/20221229T143959_row5195
+[130/500] SISBRA 2023-01-06T14:56:08 lat=-10.970 lon=-39.320 mag=2.0 window=+/-120.0s r=1.0deg
+NO_MATCH: 2022-12-28T13:52:47Z -> data/sisbra_smoke_w24/20221228T135247_row5193
+[131/500] SISBRA 2023-01-09T15:26:09 lat=-7.620 lon=-40.290 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022wxbh dt_s=0.141 dist_km=0.039 picks<=400.0km=4
+MATCHED: 2022-11-22T16:34:21Z -> data/sisbra_smoke_w24/20221122T163421_usp2022wxbh_row5166 picks=4
+[132/500] SISBRA 2023-01-10T21:15:56 lat=-20.400 lon=-56.210 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022vofr dt_s=0.089 dist_km=0.490 picks<=400.0km=3
+MATCHED: 2022-11-03T15:01:35Z -> data/sisbra_smoke_w24/20221103T150135_usp2022vofr_row5156 picks=3
+[133/500] SISBRA 2023-01-12T15:18:18 lat=-17.970 lon=-47.790 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022yudv dt_s=0.344 dist_km=0.347 picks<=400.0km=5
+MATCHED: 2022-12-19T13:31:08Z -> data/sisbra_smoke_w24/20221219T133107_usp2022yudv_row5187 picks=5
+[134/500] SISBRA 2023-01-12T20:51:51 lat=-3.920 lon=-40.150 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022vezh dt_s=0.144 dist_km=0.145 picks<=400.0km=1
+MATCHED: 2022-10-29T13:34:43Z -> data/sisbra_smoke_w24/20221029T133443_usp2022vezh_row5150 picks=1
+[135/500] SISBRA 2023-01-16T17:33:55 lat=-11.320 lon=-40.450 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022xnta dt_s=0.167 dist_km=0.131 picks<=400.0km=5
+MATCHED: 2022-12-01T19:41:53Z -> data/sisbra_smoke_w24/20221201T194153_usp2022xnta_row5174 picks=5
+[136/500] SISBRA 2023-01-17T00:22:56 lat=-19.120 lon=-47.650 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022zopl dt_s=48.801 dist_km=10.698 picks<=400.0km=3
+MATCHED: 2022-12-30T18:05:00Z -> data/sisbra_smoke_w24/20221230T180548_usp2022zopl_row5197 picks=3
+[137/500] SISBRA 2023-01-17T09:59:25 lat=-8.100 lon=-71.250 mag=4.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022ywco dt_s=1.187 dist_km=5.297 picks<=400.0km=7
+MATCHED: 2022-12-20T15:08:32Z -> data/sisbra_smoke_w24/20221220T150830_usp2022ywco_row5188 picks=7
+[138/500] SISBRA 2023-01-17T21:27:18 lat=-11.270 lon=-40.500 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023akhc dt_s=0.229 dist_km=0.449 picks<=400.0km=3
+MATCHED: 2023-01-06T14:56:08Z -> data/sisbra_smoke_w24/20230106T145607_usp2023akhc_row5202 picks=3
+[139/500] SISBRA 2023-01-20T07:20:59 lat=1.360 lon=-55.780 mag=3.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023avgv dt_s=0.079 dist_km=0.475 picks<=400.0km=4
+MATCHED: 2023-01-12T15:18:18Z -> data/sisbra_smoke_w24/20230112T151818_usp2023avgv_row5205 picks=4
+[140/500] SISBRA 2023-01-21T04:08:27 lat=-21.100 lon=-44.120 mag=3.0 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-01-17T00:22:56Z/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)->ITAPER(30)->BW(3,1.0,10)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,1.5,5.0)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,1.0,12)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,1.0,10)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)->ITAPER(30)->BW(3,5.0,20)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)->ITAPER(30)->BW(3,2.0,20)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,1.0,3)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,1.0,2)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,3.0,8)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,1.0,7)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+ -> data/sisbra_smoke_w24/20230117T002256_row5208
+[141/500] SISBRA 2023-01-21T04:48:12 lat=-21.010 lon=-44.180 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023apuo dt_s=0.318 dist_km=0.352 picks<=400.0km=4
+NO_MATCH: 2022-12-29T19:55:00Z -> data/sisbra_smoke_w24/20221229T195500_row5196
+[142/500] SISBRA 2023-01-21T05:58:29 lat=-21.090 lon=-44.130 mag=1.9 window=+/-120.0s r=1.0deg
+MATCHED: 2023-01-09T15:26:09Z -> data/sisbra_smoke_w24/20230109T152608_usp2023apuo_row5203 picks=4
+[143/500] SISBRA 2023-01-23T02:34:49 lat=-6.400 lon=-50.070 mag=3.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023aaav dt_s=0.058 dist_km=0.360 picks<=400.0km=6
+MATCHED: 2023-01-01T00:24:39Z -> data/sisbra_smoke_w24/20230101T002438_usp2023aaav_row5198 picks=6
+[144/500] SISBRA 2023-01-23T10:20:43 lat=-21.280 lon=-48.510 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023bcti dt_s=0.256 dist_km=0.537 picks<=400.0km=3
+MATCHED: 2023-01-16T17:33:55Z -> data/sisbra_smoke_w24/20230116T173354_usp2023bcti_row5207 picks=3
+[145/500] SISBRA 2023-01-23T14:58:14 lat=-20.340 lon=-45.660 mag=2.6 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-01-20T07:20:59Z -> data/sisbra_smoke_w24/20230120T072059_row5211
+[146/500] SISBRA 2023-01-26T13:08:33 lat=-20.990 lon=-48.590 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022xfqq dt_s=0.363 dist_km=5.300 picks<=400.0km=7
+MATCHED: 2022-11-27T09:24:42Z -> data/sisbra_smoke_w24/20221127T092442_usp2022xfqq_row5170 picks=7
+[147/500] SISBRA 2023-01-27T10:07:00 lat=-9.840 lon=-39.880 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ajns dt_s=0.159 dist_km=0.682 picks<=400.0km=5
+MATCHED: 2023-01-06T05:09:23Z -> data/sisbra_smoke_w24/20230106T050922_usp2023ajns_row5201 picks=5
+[148/500] SISBRA 2023-01-29T18:39:20 lat=-11.270 lon=-40.500 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023bkxo dt_s=0.040 dist_km=0.468 picks<=400.0km=4
+MATCHED: 2023-01-21T04:48:12Z -> data/sisbra_smoke_w24/20230121T044812_usp2023bkxo_row5213 picks=4
+[149/500] SISBRA 2023-01-30T04:28:49 lat=-18.960 lon=-56.550 mag=3.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023burp dt_s=0.174 dist_km=0.112 picks<=400.0km=4
+MATCHED: 2023-01-26T13:08:33Z -> data/sisbra_smoke_w24/20230126T130832_usp2023burp_row5218 picks=4
+[150/500] SISBRA 2023-01-30T22:35:19 lat=-21.230 lon=-50.180 mag=2.4 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-01-05T20:45:39Z -> data/sisbra_smoke_w24/20230105T204539_row5200
+[151/500] SISBRA 2023-02-01T01:35:36 lat=-21.670 lon=-46.700 mag=2.9 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-01-27T10:07:00Z -> data/sisbra_smoke_w24/20230127T100700_row5219
+[152/500] SISBRA 2023-02-01T18:03:28 lat=-3.970 lon=-40.210 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022ynie dt_s=0.827 dist_km=0.293 picks<=400.0km=3
+MATCHED: 2022-12-15T19:45:05Z -> data/sisbra_smoke_w24/20221215T194505_usp2022ynie_row5186 picks=3
+[153/500] SISBRA 2023-02-03T04:17:54 lat=-16.470 lon=-60.050 mag=3.2 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-01-17T21:27:18Z -> data/sisbra_smoke_w24/20230117T212718_row5210
+[154/500] SISBRA 2023-02-04T05:37:38 lat=-21.270 lon=-48.500 mag=2.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-01-29T18:39:20Z -> data/sisbra_smoke_w24/20230129T183920_row5220
+[155/500] SISBRA 2023-02-05T12:54:00 lat=-11.270 lon=-40.530 mag=2.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023bozo dt_s=0.348 dist_km=0.331 picks<=400.0km=2
+MATCHED: 2023-01-23T10:20:43Z -> data/sisbra_smoke_w24/20230123T102042_usp2023bozo_row5216 picks=2
+[156/500] SISBRA 2023-02-05T20:45:37 lat=-11.280 lon=-40.520 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023bkwg dt_s=0.010 dist_km=0.631 picks<=400.0km=4
+MATCHED: 2023-01-21T04:08:27Z -> data/sisbra_smoke_w24/20230121T040827_usp2023bkwg_row5212 picks=4
+[157/500] SISBRA 2023-02-06T02:23:27 lat=-21.090 lon=-48.630 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022yikw dt_s=0.849 dist_km=0.230 picks<=400.0km=3
+MATCHED: 2022-12-13T03:26:27Z -> data/sisbra_smoke_w24/20221213T032627_usp2022yikw_row5184 picks=3
+[158/500] SISBRA 2023-02-06T05:36:42 lat=-21.000 lon=-48.620 mag=2.5 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-02-05T12:54:00Z -> data/sisbra_smoke_w24/20230205T125400_row5227
+[159/500] SISBRA 2023-02-07T08:46:32 lat=-22.140 lon=-44.580 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023bpis dt_s=0.423 dist_km=0.333 picks<=400.0km=7
+MATCHED: 2023-01-23T14:58:14Z -> data/sisbra_smoke_w24/20230123T145814_usp2023bpis_row5217 picks=7
+[160/500] SISBRA 2023-02-08T03:19:49 lat=-8.360 lon=-36.050 mag=2.0 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-02-06T05:36:42Z -> data/sisbra_smoke_w24/20230206T053642_row5230
+[161/500] SISBRA 2023-02-09T09:26:20 lat=-5.040 lon=-35.130 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022zffw dt_s=0.760 dist_km=0.531 picks<=400.0km=5
+MATCHED: 2022-12-25T15:02:54Z -> data/sisbra_smoke_w24/20221225T150254_usp2022zffw_row5190 picks=5
+[162/500] SISBRA 2023-02-09T19:34:29 lat=-8.300 lon=-36.100 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022xykb dt_s=0.528 dist_km=0.658 picks<=400.0km=5
+MATCHED: 2022-12-07T15:40:42Z -> data/sisbra_smoke_w24/20221207T154042_usp2022xykb_row5180 picks=5
+[163/500] SISBRA 2023-02-13T08:55:51 lat=-21.060 lon=-48.680 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023avrv dt_s=0.280 dist_km=0.182 picks<=400.0km=4
+MATCHED: 2023-01-12T20:51:51Z -> data/sisbra_smoke_w24/20230112T205150_usp2023avrv_row5206 picks=4
+[164/500] SISBRA 2023-02-13T19:53:59 lat=-11.260 lon=-40.510 mag=1.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ccsh dt_s=0.048 dist_km=0.500 picks<=400.0km=5
+MATCHED: 2023-01-30T22:35:19Z -> data/sisbra_smoke_w24/20230130T223518_usp2023ccsh_row5222 picks=5
+[165/500] SISBRA 2023-02-15T12:29:45 lat=-10.090 lon=-36.550 mag=2.0 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-02-09T19:34:29Z -> data/sisbra_smoke_w24/20230209T193429_row5234
+[166/500] SISBRA 2023-02-15T14:07:14 lat=-10.170 lon=-36.470 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023agjs dt_s=0.190 dist_km=0.152 picks<=400.0km=3
+MATCHED: 2023-01-04T11:42:48Z -> data/sisbra_smoke_w24/20230104T114247_usp2023agjs_row5199 picks=3
+[167/500] SISBRA 2023-02-15T15:12:32 lat=-10.080 lon=-36.560 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023bkzx dt_s=0.069 dist_km=0.342 picks<=400.0km=3
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023boke dt_s=4.134 dist_km=22.579 picks<=400.0km=3
+MATCHED: 2023-01-21T05:58:29Z -> data/sisbra_smoke_w24/20230121T055828_usp2023bkzx_row5214 picks=3
+[168/500] SISBRA 2023-02-16T03:52:39 lat=-9.860 lon=-39.870 mag=2.1 window=+/-120.0s r=1.0deg
+MATCHED: 2023-01-23T02:34:49Z -> data/sisbra_smoke_w24/20230123T023444_usp2023boke_row5215 picks=3
+[169/500] SISBRA 2023-02-16T12:18:37 lat=-16.460 lon=-40.550 mag=3.4 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-02-13T08:55:51Z -> data/sisbra_smoke_w24/20230213T085551_row5235
+[170/500] SISBRA 2023-02-21T19:11:21 lat=-14.080 lon=-38.980 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023asbq dt_s=0.184 dist_km=0.519 picks<=400.0km=5
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023cnns dt_s=0.362 dist_km=0.416 picks<=400.0km=2
+MATCHED: 2023-02-05T20:45:37Z -> data/sisbra_smoke_w24/20230205T204537_usp2023cnns_row5228 picks=2
+[171/500] SISBRA 2023-02-21T19:16:30 lat=-14.110 lon=-39.000 mag=2.2 window=+/-120.0s r=1.0deg
+MATCHED: 2023-01-10T21:15:56Z -> data/sisbra_smoke_w24/20230110T211555_usp2023asbq_row5204 picks=5
+[172/500] SISBRA 2023-02-21T19:19:00 lat=-14.110 lon=-38.990 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023cett dt_s=0.440 dist_km=0.142 picks<=400.0km=14
+MATCHED: 2023-02-01T01:35:36Z -> data/sisbra_smoke_w24/20230201T013535_usp2023cett_row5223 picks=14
+[173/500] SISBRA 2023-02-24T00:56:29 lat=-11.210 lon=-40.600 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023cgai dt_s=0.246 dist_km=0.599 picks<=400.0km=4
+NO_MATCH: 2023-02-16T03:52:39Z -> data/sisbra_smoke_w24/20230216T035239_row5240
+[174/500] SISBRA 2023-02-25T21:24:25 lat=-16.370 lon=-40.550 mag=2.4 window=+/-120.0s r=1.0deg
+MATCHED: 2023-02-01T18:03:28Z -> data/sisbra_smoke_w24/20230201T180327_usp2023cgai_row5224 picks=4
+[175/500] SISBRA 2023-02-26T20:54:45 lat=-12.700 lon=-38.340 mag=1.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ckog dt_s=0.145 dist_km=0.465 picks<=400.0km=7
+MATCHED: 2023-02-04T05:37:38Z -> data/sisbra_smoke_w24/20230204T053737_usp2023ckog_row5226 picks=7
+[176/500] SISBRA 2023-02-27T07:17:10 lat=-3.590 lon=-40.540 mag=1.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022xrfg dt_s=0.787 dist_km=0.312 picks<=400.0km=3
+NO_MATCH: 2023-02-21T19:19:00Z -> data/sisbra_smoke_w24/20230221T191900_row5244
+[177/500] SISBRA 2023-02-27T18:07:53 lat=-3.810 lon=-40.660 mag=1.9 window=+/-120.0s r=1.0deg
+MATCHED: 2022-12-03T17:17:21Z -> data/sisbra_smoke_w24/20221203T171721_usp2022xrfg_row5176 picks=3
+[178/500] SISBRA 2023-02-27T22:30:27 lat=-13.500 lon=-44.250 mag=3.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023dcca dt_s=0.228 dist_km=0.305 picks<=400.0km=2
+MATCHED: 2023-02-13T19:53:59Z -> data/sisbra_smoke_w24/20230213T195358_usp2023dcca_row5236 picks=2
+[179/500] SISBRA 2023-02-28T17:54:22 lat=-13.480 lon=-44.230 mag=2.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022zlma dt_s=2.669 dist_km=9.145 picks<=400.0km=0
+MATCHED: 2022-12-29T00:57:59Z -> data/sisbra_smoke_w24/20221229T005756_usp2022zlma_row5194 picks=0
+[180/500] SISBRA 2023-03-01T13:23:00 lat=-3.540 lon=-40.540 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023crrs dt_s=0.101 dist_km=0.089 picks<=400.0km=5
+MATCHED: 2023-02-08T03:19:49Z -> data/sisbra_smoke_w24/20230208T031948_usp2023crrs_row5232 picks=5
+[181/500] SISBRA 2023-03-01T15:48:15 lat=-3.680 lon=-40.470 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ctzh dt_s=0.375 dist_km=0.242 picks<=400.0km=3
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023dfhp dt_s=0.264 dist_km=0.415 picks<=400.0km=5
+MATCHED: 2023-02-09T09:26:20Z -> data/sisbra_smoke_w24/20230209T092620_usp2023ctzh_row5233 picks=3
+[182/500] SISBRA 2023-03-05T04:40:02 lat=-19.060 lon=-43.120 mag=2.1 window=+/-120.0s r=1.0deg
+MATCHED: 2023-02-15T14:07:14Z -> data/sisbra_smoke_w24/20230215T140714_usp2023dfhp_row5238 picks=5
+[183/500] SISBRA 2023-03-10T15:20:30 lat=-10.790 lon=-39.430 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023cqgz dt_s=0.183 dist_km=0.334 picks<=400.0km=4
+MATCHED: 2023-02-07T08:46:32Z -> data/sisbra_smoke_w24/20230207T084631_usp2023cqgz_row5231 picks=4
+[184/500] SISBRA 2023-03-11T19:19:44 lat=-3.920 lon=-39.520 mag=2.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023dqqq dt_s=0.464 dist_km=0.529 picks<=400.0km=2
+MATCHED: 2023-02-21T19:11:21Z -> data/sisbra_smoke_w24/20230221T191120_usp2023dqqq_row5242 picks=2
+[185/500] SISBRA 2023-03-12T18:38:57 lat=1.780 lon=-49.480 mag=3.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023dqqu dt_s=0.373 dist_km=0.569 picks<=400.0km=2
+MATCHED: 2023-02-21T19:16:30Z -> data/sisbra_smoke_w24/20230221T191629_usp2023dqqu_row5243 picks=2
+[186/500] SISBRA 2023-03-14T06:46:21 lat=-21.310 lon=-48.490 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023dfej dt_s=0.037 dist_km=0.630 picks<=400.0km=4
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ciqc dt_s=0.426 dist_km=0.521 picks<=400.0km=1
+MATCHED: 2023-02-03T04:17:54Z -> data/sisbra_smoke_w24/20230203T041754_usp2023ciqc_row5225 picks=1
+[187/500] SISBRA 2023-03-14T06:47:21 lat=-21.290 lon=-48.510 mag=2.0 window=+/-120.0s r=1.0deg
+MATCHED: 2023-02-15T12:29:45Z -> data/sisbra_smoke_w24/20230215T122945_usp2023dfej_row5237 picks=4
+[188/500] SISBRA 2023-03-14T08:34:12 lat=-21.090 lon=-48.660 mag=0.8 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-03-01T13:23:00Z -> data/sisbra_smoke_w24/20230301T132300_row5252
+[189/500] SISBRA 2023-03-14T14:57:18 lat=-21.060 lon=-48.670 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023dydb dt_s=0.177 dist_km=0.440 picks<=400.0km=2
+NO_MATCH: 2023-03-12T18:38:57Z -> data/sisbra_smoke_w24/20230312T183857_row5257
+[190/500] SISBRA 2023-03-15T19:02:41 lat=-11.020 lon=-39.320 mag=2.0 window=+/-120.0s r=1.0deg
+MATCHED: 2023-02-25T21:24:25Z -> data/sisbra_smoke_w24/20230225T212424_usp2023dydb_row5246 picks=2
+[191/500] SISBRA 2023-03-16T12:23:51 lat=-13.420 lon=-44.820 mag=3.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023duta dt_s=0.013 dist_km=0.658 picks<=400.0km=2
+MATCHED: 2023-02-24T00:56:29Z -> data/sisbra_smoke_w24/20230224T005629_usp2023duta_row5245 picks=2
+[192/500] SISBRA 2023-03-17T01:11:08 lat=-3.240 lon=-40.530 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023cbil dt_s=0.179 dist_km=0.243 picks<=400.0km=6
+MATCHED: 2023-01-30T04:28:49Z -> data/sisbra_smoke_w24/20230130T042848_usp2023cbil_row5221 picks=6
+[193/500] SISBRA 2023-03-17T05:34:07 lat=-3.560 lon=-40.530 mag=1.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023dzxo dt_s=0.317 dist_km=0.622 picks<=400.0km=2
+MATCHED: 2023-02-26T20:54:45Z -> data/sisbra_smoke_w24/20230226T205444_usp2023dzxo_row5247 picks=2
+[194/500] SISBRA 2023-03-17T19:06:26 lat=-11.360 lon=-39.320 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ebno dt_s=0.013 dist_km=0.329 picks<=400.0km=3
+MATCHED: 2023-02-27T18:07:53Z -> data/sisbra_smoke_w24/20230227T180752_usp2023ebno_row5249 picks=3
+[195/500] SISBRA 2023-03-17T21:42:35 lat=-5.750 lon=-49.640 mag=3.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-03-16T12:23:51Z -> data/sisbra_smoke_w24/20230316T122351_row5263
+[196/500] SISBRA 2023-03-18T03:41:49 lat=-10.100 lon=-73.100 mag=4.0 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-03-15T19:02:41Z -> data/sisbra_smoke_w24/20230315T190241_row5262
+[197/500] SISBRA 2023-03-19T01:23:38 lat=-3.440 lon=-44.360 mag=2.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023bdzv dt_s=0.165 dist_km=0.606 picks<=400.0km=1
+MATCHED: 2023-01-17T09:59:25Z -> data/sisbra_smoke_w24/20230117T095925_usp2023bdzv_row5209 picks=1
+[198/500] SISBRA 2023-03-19T08:51:38 lat=-13.160 lon=-41.730 mag=2.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023easc dt_s=0.166 dist_km=0.463 picks<=400.0km=3
+MATCHED: 2023-02-27T07:17:10Z -> data/sisbra_smoke_w24/20230227T071709_usp2023easc_row5248 picks=3
+[199/500] SISBRA 2023-03-20T21:33:52 lat=-13.400 lon=-38.780 mag=2.8 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-03-17T21:42:35Z -> data/sisbra_smoke_w24/20230317T214235_row5267
+[200/500] SISBRA 2023-03-24T02:26:07 lat=-21.280 lon=-48.480 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023fcfe dt_s=0.000 dist_km=0.522 picks<=400.0km=2
+MATCHED: 2023-03-14T08:34:12Z -> data/sisbra_smoke_w24/20230314T083412_usp2023fcfe_row5260 picks=2
+[201/500] SISBRA 2023-03-24T14:23:15 lat=-20.160 lon=-48.380 mag=2.4 window=+/-120.0s r=1.0deg/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(2,5.0,15)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023evko dt_s=0.143 dist_km=0.536 picks<=400.0km=2
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023dfjt dt_s=0.174 dist_km=0.433 picks<=400.0km=5
+MATCHED: 2023-03-10T15:20:30Z -> data/sisbra_smoke_w24/20230310T152029_usp2023evko_row5255 picks=2
+[202/500] SISBRA 2023-03-24T14:44:32 lat=-3.830 lon=-40.520 mag=1.6 window=+/-120.0s r=1.0deg
+MATCHED: 2023-02-15T15:12:32Z -> data/sisbra_smoke_w24/20230215T151231_usp2023dfjt_row5239 picks=5
+[203/500] SISBRA 2023-03-24T22:40:00 lat=-13.100 lon=-41.980 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ediq dt_s=0.120 dist_km=0.195 picks<=400.0km=0
+MATCHED: 2023-02-28T17:54:22Z -> data/sisbra_smoke_w24/20230228T175421_usp2023ediq_row5251 picks=0
+[204/500] SISBRA 2023-03-25T04:51:26 lat=-13.190 lon=-44.830 mag=3.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023dgzn dt_s=0.020 dist_km=0.595 picks<=400.0km=3
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023eezz dt_s=0.162 dist_km=0.385 picks<=400.0km=4
+MATCHED: 2023-02-16T12:18:37Z -> data/sisbra_smoke_w24/20230216T121837_usp2023dgzn_row5241 picks=3
+[205/500] SISBRA 2023-03-25T16:38:00 lat=-13.720 lon=-40.340 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023elly dt_s=0.063 dist_km=0.492 picks<=400.0km=5
+MATCHED: 2023-03-01T15:48:15Z -> data/sisbra_smoke_w24/20230301T154814_usp2023eezz_row5253 picks=4
+[206/500] SISBRA 2023-03-28T01:23:25 lat=-4.040 lon=-40.530 mag=1.9 window=+/-120.0s r=1.0deg
+MATCHED: 2023-03-05T04:40:02Z -> data/sisbra_smoke_w24/20230305T044001_usp2023elly_row5254 picks=5
+[207/500] SISBRA 2023-03-30T16:40:58 lat=-8.820 lon=-36.420 mag=2.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-03-24T22:40:00Z -> data/sisbra_smoke_w24/20230324T224000_row5275
+[208/500] SISBRA 2023-03-31T14:54:43 lat=-10.940 lon=-39.310 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023fcrv dt_s=0.248 dist_km=0.619 picks<=400.0km=5
+MATCHED: 2023-03-14T14:57:18Z -> data/sisbra_smoke_w24/20230314T145718_usp2023fcrv_row5261 picks=5
+[209/500] SISBRA 2023-03-31T17:54:00 lat=-12.510 lon=-41.650 mag=2.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-03-25T04:51:26Z -> data/sisbra_smoke_w24/20230325T045126_row5276
+[210/500] SISBRA 2023-04-01T10:13:38 lat=-14.100 lon=-39.820 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023exnz dt_s=0.199 dist_km=0.287 picks<=400.0km=5
+MATCHED: 2023-03-11T19:19:44Z -> data/sisbra_smoke_w24/20230311T191943_usp2023exnz_row5256 picks=5
+[211/500] SISBRA 2023-04-01T14:38:46 lat=-20.980 lon=-48.610 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=2 scored=2
+  best=smi:org.gfz-potsdam.de/geofon/usp2023fcbq dt_s=0.152 dist_km=0.517 picks<=400.0km=4
+MATCHED: 2023-03-14T06:46:21Z -> data/sisbra_smoke_w24/20230314T064621_usp2023fcbq_row5258 picks=4
+[212/500] SISBRA 2023-04-01T19:09:18 lat=-6.380 lon=-50.860 mag=3.5 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-03-31T14:54:43Z -> data/sisbra_smoke_w24/20230331T145443_row5280
+[213/500] SISBRA 2023-04-02T07:33:50 lat=-20.970 lon=-48.600 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022wcqw dt_s=0.372 dist_km=16.843 picks<=400.0km=1
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023fhlt dt_s=0.160 dist_km=0.542 picks<=400.0km=5
+MATCHED: 2022-11-11T12:34:46Z -> data/sisbra_smoke_w24/20221111T123446_usp2022wcqw_row5160 picks=1
+[214/500] SISBRA 2023-04-05T06:19:29 lat=-9.460 lon=-71.620 mag=5.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-03-31T17:54:00Z -> data/sisbra_smoke_w24/20230331T175400_row5281
+[215/500] SISBRA 2023-04-05T18:27:55 lat=-21.250 lon=-48.520 mag=2.3 window=+/-120.0s r=1.0deg
+MATCHED: 2023-03-17T05:34:07Z -> data/sisbra_smoke_w24/20230317T053407_usp2023fhlt_row5265 picks=5
+[216/500] SISBRA 2023-04-05T22:11:04 lat=-21.310 lon=-48.540 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023fimo dt_s=0.381 dist_km=0.522 picks<=400.0km=2
+MATCHED: 2023-03-17T19:06:26Z -> data/sisbra_smoke_w24/20230317T190626_usp2023fimo_row5266 picks=2
+[217/500] SISBRA 2023-04-06T06:24:19 lat=-21.340 lon=-48.510 mag=1.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023fhdb dt_s=0.026 dist_km=0.465 picks<=400.0km=4
+MATCHED: 2023-03-17T01:11:08Z -> data/sisbra_smoke_w24/20230317T011107_usp2023fhdb_row5264 picks=4
+[218/500] SISBRA 2023-04-06T08:22:01 lat=-13.090 lon=-48.680 mag=1.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023cnyv dt_s=0.217 dist_km=0.521 picks<=400.0km=11
+MATCHED: 2023-02-06T02:23:27Z -> data/sisbra_smoke_w24/20230206T022326_usp2023cnyv_row5229 picks=11
+[219/500] SISBRA 2023-04-06T15:27:04 lat=-3.830 lon=-40.580 mag=1.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023fuab dt_s=1.292 dist_km=5.853 picks<=400.0km=3
+MATCHED: 2023-03-24T02:26:07Z -> data/sisbra_smoke_w24/20230324T022608_usp2023fuab_row5272 picks=3
+[220/500] SISBRA 2023-04-07T16:16:38 lat=-21.270 lon=-48.510 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=2 scored=2
+  best=smi:org.gfz-potsdam.de/geofon/usp2023fcbr dt_s=0.472 dist_km=0.297 picks<=400.0km=4
+MATCHED: 2023-03-14T06:47:21Z -> data/sisbra_smoke_w24/20230314T064720_usp2023fcbr_row5259 picks=4
+[221/500] SISBRA 2023-04-08T04:55:08 lat=-23.090 lon=-51.220 mag=1.8 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-04-06T08:22:01Z -> data/sisbra_smoke_w24/20230406T082201_row5290
+[222/500] SISBRA 2023-04-08T04:56:53 lat=-23.090 lon=-51.220 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023fwxs dt_s=83.997 dist_km=9.007 picks<=400.0km=2
+MATCHED: 2023-03-25T16:38:00Z -> data/sisbra_smoke_w24/20230325T163923_usp2023fwxs_row5277 picks=2
+[223/500] SISBRA 2023-04-08T10:34:13 lat=-0.810 lon=-49.170 mag=4.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023fuyl dt_s=0.077 dist_km=0.524 picks<=400.0km=4
+MATCHED: 2023-03-24T14:44:32Z -> data/sisbra_smoke_w24/20230324T144432_usp2023fuyl_row5274 picks=4
+[224/500] SISBRA 2023-04-08T19:40:02 lat=-20.980 lon=-48.590 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023fkun dt_s=0.329 dist_km=0.264 picks<=400.0km=0
+MATCHED: 2023-03-19T01:23:38Z -> data/sisbra_smoke_w24/20230319T012337_usp2023fkun_row5269 picks=0
+[225/500] SISBRA 2023-04-08T21:01:38 lat=-20.980 lon=-48.590 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023gjfn dt_s=0.165 dist_km=0.379 picks<=400.0km=2
+MATCHED: 2023-04-01T10:13:38Z -> data/sisbra_smoke_w24/20230401T101337_usp2023gjfn_row5282 picks=2
+[226/500] SISBRA 2023-04-09T09:33:39 lat=-3.620 lon=-40.490 mag=1.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023fljh dt_s=0.394 dist_km=0.535 picks<=400.0km=0
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023fuxs dt_s=0.140 dist_km=0.511 picks<=400.0km=7
+MATCHED: 2023-03-19T08:51:38Z -> data/sisbra_smoke_w24/20230319T085137_usp2023fljh_row5270 picks=0
+[227/500] SISBRA 2023-04-10T06:18:30 lat=-19.430 lon=-44.310 mag=2.1 window=+/-120.0s r=1.0deg
+MATCHED: 2023-03-24T14:23:15Z -> data/sisbra_smoke_w24/20230324T142314_usp2023fuxs_row5273 picks=7
+[228/500] SISBRA 2023-04-12T14:14:00 lat=-7.720 lon=-40.220 mag=2.0 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-04-08T10:34:13Z -> data/sisbra_smoke_w24/20230408T103413_row5295
+[229/500] SISBRA 2023-04-13T01:52:24 lat=-8.960 lon=-40.270 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023gbga dt_s=7.476 dist_km=37.876 picks<=400.0km=7
+MATCHED: 2023-03-28T01:23:25Z -> data/sisbra_smoke_w24/20230328T012317_usp2023gbga_row5278 picks=7
+[230/500] SISBRA 2023-04-13T08:08:39 lat=-8.990 lon=-40.220 mag=1.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ggbh dt_s=0.034 dist_km=0.661 picks<=400.0km=4/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,1.0,2.6)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,0.6,6)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,2.0,4)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,2.0,5)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023grlf dt_s=0.356 dist_km=0.593 picks<=400.0km=4
+MATCHED: 2023-03-30T16:40:58Z -> data/sisbra_smoke_w24/20230330T164058_usp2023ggbh_row5279 picks=4
+[231/500] SISBRA 2023-04-14T11:54:48 lat=-17.610 lon=-55.950 mag=3.1 window=+/-120.0s r=1.0deg
+MATCHED: 2023-04-05T22:11:04Z -> data/sisbra_smoke_w24/20230405T221104_usp2023grlf_row5288 picks=4
+[232/500] SISBRA 2023-04-14T21:06:57 lat=-20.960 lon=-48.610 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023grdv dt_s=0.212 dist_km=0.477 picks<=400.0km=6
+MATCHED: 2023-04-05T18:27:55Z -> data/sisbra_smoke_w24/20230405T182754_usp2023grdv_row5287 picks=6
+[233/500] SISBRA 2023-04-14T22:37:18 lat=-3.690 lon=-40.440 mag=1.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023gjxe dt_s=5.205 dist_km=53.174 picks<=400.0km=3
+MATCHED: 2023-04-01T19:09:18Z -> data/sisbra_smoke_w24/20230401T190923_usp2023gjxe_row5284 picks=3
+[234/500] SISBRA 2023-04-15T01:34:55 lat=-21.090 lon=-48.610 mag=1.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023gsbm dt_s=0.394 dist_km=0.496 picks<=400.0km=4
+NO_MATCH: 2023-04-12T14:14:00Z -> data/sisbra_smoke_w24/20230412T141400_row5300
+[235/500] SISBRA 2023-04-15T18:56:32 lat=-18.420 lon=-41.180 mag=1.7 window=+/-120.0s r=1.0deg
+MATCHED: 2023-04-06T06:24:19Z -> data/sisbra_smoke_w24/20230406T062419_usp2023gsbm_row5289 picks=4
+[236/500] SISBRA 2023-04-15T23:31:00 lat=-21.090 lon=-48.660 mag=1.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023fjdo dt_s=0.452 dist_km=0.319 picks<=400.0km=0
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023gkvt dt_s=0.057 dist_km=0.135 picks<=400.0km=3
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022tfha dt_s=1.350 dist_km=7.360 picks<=400.0km=2
+MATCHED: 2023-03-18T03:41:49Z -> data/sisbra_smoke_w24/20230318T034149_usp2023fjdo_row5268 picks=0
+[237/500] SISBRA 2023-04-17T03:32:38 lat=-18.830 lon=-45.170 mag=1.9 window=+/-120.0s r=1.0deg
+MATCHED: 2023-04-02T07:33:50Z -> data/sisbra_smoke_w24/20230402T073349_usp2023gkvt_row5285 picks=3
+[238/500] SISBRA 2023-04-18T13:38:23 lat=-9.650 lon=-36.660 mag=2.1 window=+/-120.0s r=1.0deg
+MATCHED: 2022-10-01T06:23:55Z -> data/sisbra_smoke_w24/20221001T062353_usp2022tfha_row5134 picks=2
+[239/500] SISBRA 2023-04-20T08:49:32 lat=-20.040 lon=-48.840 mag=2.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ebwf dt_s=0.040 dist_km=0.601 picks<=400.0km=0
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023gjog dt_s=0.255 dist_km=0.483 picks<=400.0km=6
+MATCHED: 2023-02-27T22:30:27Z -> data/sisbra_smoke_w24/20230227T223027_usp2023ebwf_row5250 picks=0
+[240/500] SISBRA 2023-04-20T14:59:00 lat=-9.640 lon=-36.580 mag=2.2 window=+/-120.0s r=1.0deg
+MATCHED: 2023-04-01T14:38:46Z -> data/sisbra_smoke_w24/20230401T143845_usp2023gjog_row5283 picks=6
+[241/500] SISBRA 2023-04-20T15:58:00 lat=-14.290 lon=-40.220 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023gstj dt_s=0.128 dist_km=0.353 picks<=400.0km=4
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023fodx dt_s=0.019 dist_km=0.219 picks<=400.0km=3
+MATCHED: 2023-04-06T15:27:04Z -> data/sisbra_smoke_w24/20230406T152703_usp2023gstj_row5291 picks=4
+[242/500] SISBRA 2023-04-20T16:49:20 lat=-20.600 lon=-43.770 mag=2.4 window=+/-120.0s r=1.0deg
+MATCHED: 2023-03-20T21:33:52Z -> data/sisbra_smoke_w24/20230320T213352_usp2023fodx_row5271 picks=3
+[243/500] SISBRA 2023-04-21T02:10:38 lat=-20.050 lon=-48.800 mag=2.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023guqn dt_s=0.384 dist_km=0.551 picks<=400.0km=12
+MATCHED: 2023-04-07T16:16:38Z -> data/sisbra_smoke_w24/20230407T161637_usp2023guqn_row5292 picks=12
+[244/500] SISBRA 2023-04-21T06:34:30 lat=-9.560 lon=-36.330 mag=1.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hezl dt_s=0.170 dist_km=0.384 picks<=400.0km=2
+MATCHED: 2023-04-13T08:08:39Z -> data/sisbra_smoke_w24/20230413T080838_usp2023hezl_row5302 picks=2
+[245/500] SISBRA 2023-04-21T06:40:00 lat=-3.800 lon=-47.850 mag=3.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023gwvk dt_s=0.172 dist_km=0.556 picks<=400.0km=5
+MATCHED: 2023-04-08T21:01:38Z -> data/sisbra_smoke_w24/20230408T210137_usp2023gwvk_row5297 picks=5
+[246/500] SISBRA 2023-04-21T09:47:50 lat=-11.250 lon=-40.520 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023gzjh dt_s=0.105 dist_km=0.450 picks<=400.0km=4
+MATCHED: 2023-04-10T06:18:30Z -> data/sisbra_smoke_w24/20230410T061830_usp2023gzjh_row5299 picks=4
+[247/500] SISBRA 2023-04-22T06:42:10 lat=-20.660 lon=-43.830 mag=2.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-04-14T22:37:18Z -> data/sisbra_smoke_w24/20230414T223718_row5305
+[248/500] SISBRA 2023-04-22T10:22:24 lat=-9.870 lon=-39.890 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=2 scored=2
+  best=smi:org.gfz-potsdam.de/geofon/usp2023gvpn dt_s=0.139 dist_km=0.428 picks<=400.0km=5
+NO_MATCH: 2023-04-20T14:59:00Z -> data/sisbra_smoke_w24/20230420T145900_row5312
+[249/500] SISBRA 2023-04-22T16:07:00 lat=-14.650 lon=-40.420 mag=2.3 window=+/-120.0s r=1.0deg
+MATCHED: 2023-04-08T04:55:08Z -> data/sisbra_smoke_w24/20230408T045507_usp2023gvpn_row5293 picks=5
+[250/500] SISBRA 2023-04-22T16:10:00 lat=-13.800 lon=-39.890 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023gwss dt_s=0.481 dist_km=0.554 picks<=400.0km=7
+MATCHED: 2023-04-08T19:40:02Z -> data/sisbra_smoke_w24/20230408T194001_usp2023gwss_row5296 picks=7
+[251/500] SISBRA 2023-04-22T20:55:00 lat=-13.490 lon=-41.130 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=2 scored=2
+  best=smi:org.gfz-potsdam.de/geofon/usp2023gvpp dt_s=0.147 dist_km=0.270 picks<=400.0km=4
+MATCHED: 2023-04-08T04:56:53Z -> data/sisbra_smoke_w24/20230408T045653_usp2023gvpp_row5294 picks=4
+[252/500] SISBRA 2023-04-22T20:55:37 lat=-13.480 lon=-41.130 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2022yzpu dt_s=0.186 dist_km=0.492 picks<=400.0km=2
+NO_MATCH: 2023-04-20T15:58:00Z -> data/sisbra_smoke_w24/20230420T155800_row5313
+[253/500] SISBRA 2023-04-23T05:52:29 lat=-4.120 lon=-38.920 mag=2.0 window=+/-120.0s r=1.0deg
+MATCHED: 2022-12-22T13:13:57Z -> data/sisbra_smoke_w24/20221222T131356_usp2022yzpu_row5189 picks=2
+[254/500] SISBRA 2023-04-23T07:04:16 lat=-4.130 lon=-39.080 mag=1.7 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-04-21T09:47:50Z -> data/sisbra_smoke_w24/20230421T094750_row5318
+[255/500] SISBRA 2023-04-24T08:41:02 lat=-4.140 lon=-39.030 mag=1.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hjuw dt_s=0.000 dist_km=0.000 picks<=400.0km=1
+MATCHED: 2023-04-15T23:31:00Z -> data/sisbra_smoke_w24/20230415T233100_usp2023hjuw_row5308 picks=1
+[256/500] SISBRA 2023-04-24T13:10:29 lat=-4.240 lon=-39.190 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023gxuf dt_s=0.351 dist_km=0.482 picks<=400.0km=4
+NO_MATCH: 2023-04-22T16:10:00Z -> data/sisbra_smoke_w24/20230422T161000_row5322
+[257/500] SISBRA 2023-04-24T14:54:06 lat=-20.330 lon=-45.610 mag=2.8 window=+/-120.0s r=1.0deg
+MATCHED: 2023-04-09T09:33:39Z -> data/sisbra_smoke_w24/20230409T093339_usp2023gxuf_row5298 picks=4
+[258/500] SISBRA 2023-04-24T19:18:18 lat=-20.970 lon=-48.600 mag=1.8 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-04-22T16:07:00Z -> data/sisbra_smoke_w24/20230422T160700_row5321
+[259/500] SISBRA 2023-04-24T20:46:22 lat=-31.800 lon=-52.580 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023htdq dt_s=0.129 dist_km=0.274 picks<=400.0km=7
+MATCHED: 2023-04-21T02:10:38Z -> data/sisbra_smoke_w24/20230421T021037_usp2023htdq_row5315 picks=7
+[260/500] SISBRA 2023-04-24T23:03:38 lat=-21.270 lon=-48.480 mag=1.0 window=+/-120.0s r=1.0deg/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,1.0,8)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,2.0,20)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(2,5.0,30)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,0.9,7)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hena dt_s=0.257 dist_km=0.655 picks<=400.0km=3
+MATCHED: 2023-04-13T01:52:24Z -> data/sisbra_smoke_w24/20230413T015223_usp2023hena_row5301 picks=3
+[261/500] SISBRA 2023-04-25T19:26:47 lat=-3.880 lon=-39.480 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hhup dt_s=0.118 dist_km=0.337 picks<=400.0km=2
+MATCHED: 2023-04-14T21:06:57Z -> data/sisbra_smoke_w24/20230414T210656_usp2023hhup_row5304 picks=2
+[262/500] SISBRA 2023-04-26T13:32:00 lat=-5.170 lon=-39.260 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023honv dt_s=0.436 dist_km=0.440 picks<=400.0km=4
+MATCHED: 2023-04-18T13:38:23Z -> data/sisbra_smoke_w24/20230418T133823_usp2023honv_row5310 picks=4
+[263/500] SISBRA 2023-04-27T03:44:55 lat=-9.870 lon=-39.900 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hjlv dt_s=0.288 dist_km=0.510 picks<=400.0km=3
+MATCHED: 2023-04-15T18:56:32Z -> data/sisbra_smoke_w24/20230415T185632_usp2023hjlv_row5307 picks=3
+[264/500] SISBRA 2023-04-27T19:13:32 lat=-28.490 lon=-53.480 mag=2.8 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-04-23T05:52:29Z -> data/sisbra_smoke_w24/20230423T055229_row5325
+[265/500] SISBRA 2023-04-29T14:19:07 lat=-24.830 lon=-49.750 mag=2.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-04-22T10:22:24Z -> data/sisbra_smoke_w24/20230422T102224_row5320
+[266/500] SISBRA 2023-04-30T12:16:05 lat=-2.850 lon=-40.880 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hvic dt_s=0.245 dist_km=0.652 picks<=400.0km=4
+MATCHED: 2023-04-22T06:42:10Z -> data/sisbra_smoke_w24/20230422T064210_usp2023hvic_row5319 picks=4
+[267/500] SISBRA 2023-05-01T09:31:09 lat=-7.410 lon=-74.590 mag=5.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hrvh dt_s=0.420 dist_km=0.543 picks<=400.0km=6
+MATCHED: 2023-04-20T08:49:32Z -> data/sisbra_smoke_w24/20230420T084931_usp2023hrvh_row5311 picks=6
+[268/500] SISBRA 2023-05-01T13:26:08 lat=-4.100 lon=-38.930 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hzyb dt_s=0.000 dist_km=0.546 picks<=400.0km=1
+MATCHED: 2023-04-24T19:18:18Z -> data/sisbra_smoke_w24/20230424T191818_usp2023hzyb_row5330 picks=1
+[269/500] SISBRA 2023-05-01T14:33:23 lat=-16.290 lon=-50.170 mag=2.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-04-21T06:34:30Z -> data/sisbra_smoke_w24/20230421T063430_row5316
+[270/500] SISBRA 2023-05-02T15:51:17 lat=-14.010 lon=-50.640 mag=3.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023iafm dt_s=0.000 dist_km=0.000 picks<=400.0km=1
+MATCHED: 2023-04-24T23:03:38Z -> data/sisbra_smoke_w24/20230424T230338_usp2023iafm_row5332 picks=1
+[271/500] SISBRA 2023-05-02T21:30:21 lat=-20.910 lon=-43.850 mag=2.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hidl dt_s=0.467 dist_km=0.514 picks<=400.0km=2
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hwkg dt_s=36.888 dist_km=0.716 picks<=400.0km=1
+MATCHED: 2023-04-22T20:55:00Z -> data/sisbra_smoke_w24/20230422T205536_usp2023hwkg_row5323 picks=1
+[272/500] SISBRA 2023-05-02T23:40:10 lat=-4.150 lon=-39.070 mag=1.9 window=+/-120.0s r=1.0deg
+MATCHED: 2023-04-15T01:34:55Z -> data/sisbra_smoke_w24/20230415T013455_usp2023hidl_row5306 picks=2
+[273/500] SISBRA 2023-05-03T03:37:25 lat=-4.200 lon=-38.990 mag=1.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hlyi dt_s=0.128 dist_km=0.412 picks<=400.0km=5
+MATCHED: 2023-04-17T03:32:38Z -> data/sisbra_smoke_w24/20230417T033237_usp2023hlyi_row5309 picks=5
+[274/500] SISBRA 2023-05-03T04:41:29 lat=-20.050 lon=-48.800 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023iaaz dt_s=0.188 dist_km=0.467 picks<=400.0km=5
+MATCHED: 2023-04-24T20:46:22Z -> data/sisbra_smoke_w24/20230424T204621_usp2023iaaz_row5331 picks=5
+[275/500] SISBRA 2023-05-03T18:29:06 lat=-14.070 lon=-39.310 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023iefu dt_s=0.194 dist_km=0.162 picks<=400.0km=3
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hwkg dt_s=0.112 dist_km=0.391 picks<=400.0km=1
+MATCHED: 2023-04-27T03:44:55Z -> data/sisbra_smoke_w24/20230427T034454_usp2023iefu_row5335 picks=3
+[276/500] SISBRA 2023-05-03T18:30:00 lat=-14.070 lon=-39.310 mag=2.0 window=+/-120.0s r=1.0deg
+MATCHED: 2023-04-22T20:55:37Z -> data/sisbra_smoke_w24/20230422T205536_usp2023hwkg_row5324 picks=1
+[277/500] SISBRA 2023-05-03T18:32:22 lat=-13.960 lon=-39.110 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hzly dt_s=0.388 dist_km=0.454 picks<=400.0km=6
+MATCHED: 2023-04-24T13:10:29Z -> data/sisbra_smoke_w24/20230424T131028_usp2023hzly_row5328 picks=6
+[278/500] SISBRA 2023-05-03T20:57:59 lat=-19.500 lon=-44.240 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hxei dt_s=0.170 dist_km=0.762 picks<=400.0km=3
+MATCHED: 2023-04-23T07:04:16Z -> data/sisbra_smoke_w24/20230423T070415_usp2023hxei_row5326 picks=3
+[279/500] SISBRA 2023-05-04T03:12:11 lat=-4.440 lon=-39.490 mag=1.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hzpi dt_s=0.047 dist_km=0.511 picks<=400.0km=5
+MATCHED: 2023-04-24T14:54:06Z -> data/sisbra_smoke_w24/20230424T145405_usp2023hzpi_row5329 picks=5
+[280/500] SISBRA 2023-05-04T03:13:39 lat=-17.460 lon=-41.260 mag=1.7 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-05-03T18:30:00Z -> data/sisbra_smoke_w24/20230503T183000_row5348
+[281/500] SISBRA 2023-05-04T12:30:31 lat=-21.090 lon=-48.680 mag=1.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023htmn dt_s=0.408 dist_km=0.727 picks<=400.0km=1
+MATCHED: 2023-04-21T06:40:00Z -> data/sisbra_smoke_w24/20230421T064000_usp2023htmn_row5317 picks=1
+[282/500] SISBRA 2023-05-04T16:13:24 lat=-20.140 lon=-44.480 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hhck dt_s=0.298 dist_km=0.393 picks<=400.0km=15
+NO_MATCH: 2023-05-03T18:29:06Z -> data/sisbra_smoke_w24/20230503T182906_row5347
+[283/500] SISBRA 2023-05-04T17:38:11 lat=-26.510 lon=-57.460 mag=3.0 window=+/-120.0s r=1.0deg
+MATCHED: 2023-04-14T11:54:48Z -> data/sisbra_smoke_w24/20230414T115447_usp2023hhck_row5303 picks=15
+[284/500] SISBRA 2023-05-04T18:41:12 lat=-14.230 lon=-51.450 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ibtv dt_s=0.163 dist_km=0.550 picks<=400.0km=4
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ifkl dt_s=37.000 dist_km=0.363 picks<=400.0km=1
+MATCHED: 2023-04-25T19:26:47Z -> data/sisbra_smoke_w24/20230425T192647_usp2023ibtv_row5333 picks=4
+[285/500] SISBRA 2023-05-04T20:12:21 lat=-9.410 lon=-35.830 mag=2.1 window=+/-120.0s r=1.0deg
+MATCHED: 2023-04-27T19:13:32Z -> data/sisbra_smoke_w24/20230427T191409_usp2023ifkl_row5336 picks=1
+[286/500] SISBRA 2023-05-06T09:56:59 lat=-21.270 lon=-48.480 mag=1.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023gqfu dt_s=0.280 dist_km=0.388 picks<=400.0km=2
+NO_MATCH: 2023-05-04T03:12:11Z -> data/sisbra_smoke_w24/20230504T031211_row5351
+[287/500] SISBRA 2023-05-08T18:03:15 lat=-11.190 lon=-40.540 mag=2.3 window=+/-120.0s r=1.0deg
+MATCHED: 2023-04-05T06:19:29Z -> data/sisbra_smoke_w24/20230405T061928_usp2023gqfu_row5286 picks=2
+[288/500] SISBRA 2023-05-10T11:55:14 lat=-20.970 lon=-48.610 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hzda dt_s=0.372 dist_km=0.663 picks<=400.0km=3
+MATCHED: 2023-04-24T08:41:02Z -> data/sisbra_smoke_w24/20230424T084101_usp2023hzda_row5327 picks=3
+[289/500] SISBRA 2023-05-11T15:00:29 lat=-10.110 lon=-37.730 mag=2.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ikjd dt_s=0.302 dist_km=0.387 picks<=400.0km=8/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,1.0,4)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,2.5,9)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,3.0,10)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023iohg dt_s=0.209 dist_km=0.284 picks<=400.0km=2
+
+MATCHED: 2023-04-30T12:16:05Z -> data/sisbra_smoke_w24/20230430T121604_usp2023ikjd_row5338 picks=8
+[290/500] SISBRA 2023-05-11T17:51:44 lat=-8.520 lon=-36.300 mag=2.1 window=+/-120.0s r=1.0deg
+MATCHED: 2023-05-02T15:51:17Z -> data/sisbra_smoke_w24/20230502T155117_usp2023iohg_row5342 picks=2
+[291/500] SISBRA 2023-05-12T14:51:47 lat=-20.230 lon=-43.890 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023iirs dt_s=0.275 dist_km=0.533 picks<=400.0km=5
+MATCHED: 2023-04-29T14:19:07Z -> data/sisbra_smoke_w24/20230429T141906_usp2023iirs_row5337 picks=5
+[292/500] SISBRA 2023-05-13T08:33:11 lat=-11.450 lon=-57.750 mag=2.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023iows dt_s=0.181 dist_km=0.388 picks<=400.0km=5
+MATCHED: 2023-05-02T23:40:10Z -> data/sisbra_smoke_w24/20230502T234010_usp2023iows_row5344 picks=5
+[293/500] SISBRA 2023-05-13T15:13:48 lat=-12.830 lon=-41.910 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023iqly dt_s=0.063 dist_km=0.340 picks<=400.0km=4
+MATCHED: 2023-05-03T20:57:59Z -> data/sisbra_smoke_w24/20230503T205758_usp2023iqly_row5350 picks=4
+[294/500] SISBRA 2023-05-13T17:02:00 lat=-13.520 lon=-40.600 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023hsld dt_s=0.133 dist_km=0.310 picks<=400.0km=6
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023imje dt_s=0.193 dist_km=0.553 picks<=400.0km=2
+MATCHED: 2023-04-20T16:49:20Z -> data/sisbra_smoke_w24/20230420T164919_usp2023hsld_row5314 picks=6
+[295/500] SISBRA 2023-05-16T00:07:26 lat=-13.500 lon=-44.280 mag=2.8 window=+/-120.0s r=1.0deg
+MATCHED: 2023-05-01T14:33:23Z -> data/sisbra_smoke_w24/20230501T143323_usp2023imje_row5341 picks=2
+[296/500] SISBRA 2023-05-16T00:08:56 lat=-20.190 lon=-42.970 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023imgy dt_s=0.146 dist_km=0.403 picks<=400.0km=4
+MATCHED: 2023-05-01T13:26:08Z -> data/sisbra_smoke_w24/20230501T132608_usp2023imgy_row5340 picks=4
+[297/500] SISBRA 2023-05-17T20:28:14 lat=-8.240 lon=-35.040 mag=1.6 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-05-11T15:00:29Z -> data/sisbra_smoke_w24/20230511T150029_row5361
+[298/500] SISBRA 2023-05-18T17:10:59 lat=-13.450 lon=-40.430 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023iosl dt_s=1.388 dist_km=5.087 picks<=400.0km=6
+MATCHED: 2023-05-02T21:30:21Z -> data/sisbra_smoke_w24/20230502T213019_usp2023iosl_row5343 picks=6
+[299/500] SISBRA 2023-05-18T17:12:00 lat=-13.680 lon=-40.680 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023iqib dt_s=0.349 dist_km=0.439 picks<=400.0km=3
+MATCHED: 2023-05-03T18:32:22Z -> data/sisbra_smoke_w24/20230503T183221_usp2023iqib_row5349 picks=3
+[300/500] SISBRA 2023-05-20T12:26:54 lat=-22.620 lon=-55.920 mag=2.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023iqzg dt_s=0.137 dist_km=0.429 picks<=400.0km=3
+MATCHED: 2023-05-04T03:13:39Z -> data/sisbra_smoke_w24/20230504T031338_usp2023iqzg_row5352 picks=3
+[301/500] SISBRA 2023-05-22T22:51:10 lat=-11.750 lon=-43.460 mag=2.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-04-26T13:32:00Z -> data/sisbra_smoke_w24/20230426T133200_row5334
+[302/500] SISBRA 2023-05-23T06:36:54 lat=-13.270 lon=-45.010 mag=2.7 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-05-03T03:37:25Z -> data/sisbra_smoke_w24/20230503T033725_row5345
+[303/500] SISBRA 2023-05-23T14:57:59 lat=-4.110 lon=-40.640 mag=2.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-05-13T17:02:00Z -> data/sisbra_smoke_w24/20230513T170200_row5366
+[304/500] SISBRA 2023-05-24T12:57:52 lat=-13.660 lon=-39.940 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ivdo dt_s=0.000 dist_km=0.000 picks<=400.0km=1
+MATCHED: 2023-05-06T09:56:59Z -> data/sisbra_smoke_w24/20230506T095659_usp2023ivdo_row5358 picks=1
+[305/500] SISBRA 2023-05-24T18:45:59 lat=-7.780 lon=-39.940 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ipgr dt_s=0.031 dist_km=0.739 picks<=400.0km=7
+MATCHED: 2023-05-03T04:41:29Z -> data/sisbra_smoke_w24/20230503T044129_usp2023ipgr_row5346 picks=7
+[306/500] SISBRA 2023-05-25T04:51:26 lat=-13.270 lon=-45.000 mag=3.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023jmrf dt_s=0.179 dist_km=0.445 picks<=400.0km=3
+MATCHED: 2023-05-16T00:08:56Z -> data/sisbra_smoke_w24/20230516T000856_usp2023jmrf_row5368 picks=3
+[307/500] SISBRA 2023-05-25T07:43:49 lat=-2.970 lon=-40.850 mag=1.9 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-05-13T15:13:48Z -> data/sisbra_smoke_w24/20230513T151348_row5365
+[308/500] SISBRA 2023-05-26T14:29:34 lat=-8.350 lon=-36.120 mag=2.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-05-20T12:26:54Z -> data/sisbra_smoke_w24/20230520T122654_row5372
+[309/500] SISBRA 2023-05-27T03:27:50 lat=-0.380 lon=-60.400 mag=4.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023jewt dt_s=2.953 dist_km=12.362 picks<=400.0km=1
+MATCHED: 2023-05-11T17:51:44Z -> data/sisbra_smoke_w24/20230511T175146_usp2023jewt_row5362 picks=1
+[310/500] SISBRA 2023-05-27T04:34:35 lat=-21.060 lon=-48.620 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023jrpy dt_s=60.357 dist_km=37.632 picks<=400.0km=2
+MATCHED: 2023-05-18T17:12:00Z -> data/sisbra_smoke_w24/20230518T171059_usp2023jrpy_row5371 picks=2
+[311/500] SISBRA 2023-05-27T05:07:38 lat=-11.280 lon=-40.570 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023isgw dt_s=0.314 dist_km=0.224 picks<=400.0km=5
+MATCHED: 2023-05-04T20:12:21Z -> data/sisbra_smoke_w24/20230504T201221_usp2023isgw_row5357 picks=5
+[312/500] SISBRA 2023-05-27T13:15:41 lat=-21.090 lon=-48.630 mag=2.2 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-05-17T20:28:14Z -> data/sisbra_smoke_w24/20230517T202814_row5369
+[313/500] SISBRA 2023-05-27T14:55:00 lat=-13.750 lon=-40.690 mag=2.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-05-24T12:57:52Z -> data/sisbra_smoke_w24/20230524T125752_row5376
+[314/500] SISBRA 2023-05-27T21:52:55 lat=-10.550 lon=-44.300 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023isdw dt_s=0.473 dist_km=0.380 picks<=400.0km=2
+MATCHED: 2023-05-04T18:41:12Z -> data/sisbra_smoke_w24/20230504T184111_usp2023isdw_row5356 picks=2
+[315/500] SISBRA 2023-05-28T18:52:40 lat=-5.000 lon=-48.750 mag=3.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023khcn dt_s=0.208 dist_km=0.441 picks<=400.0km=9
+MATCHED: 2023-05-27T04:34:35Z -> data/sisbra_smoke_w24/20230527T043435_usp2023khcn_row5382 picks=9
+[316/500] SISBRA 2023-05-29T04:57:34 lat=-8.040 lon=-74.350 mag=5.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023jrpy dt_s=0.643 dist_km=0.489 picks<=400.0km=2
+MATCHED: 2023-05-18T17:10:59Z -> data/sisbra_smoke_w24/20230518T171059_usp2023jrpy_row5370 picks=2
+[317/500] SISBRA 2023-05-29T15:02:26 lat=-7.880 lon=-40.080 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023jmre dt_s=0.414 dist_km=0.511 picks<=400.0km=2
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023izkq dt_s=0.369 dist_km=0.066 picks<=400.0km=2
+MATCHED: 2023-05-16T00:07:26Z -> data/sisbra_smoke_w24/20230516T000725_usp2023jmre_row5367 picks=2
+[318/500] SISBRA 2023-05-30T07:22:28 lat=-12.470 lon=-61.540 mag=2.5 window=+/-120.0s r=1.0deg
+MATCHED: 2023-05-08T18:03:15Z -> data/sisbra_smoke_w24/20230508T180315_usp2023izkq_row5359 picks=2
+[319/500] SISBRA 2023-05-30T21:25:24 lat=-14.200 lon=-51.380 mag=2.5 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-05-27T14:55:00Z -> data/sisbra_smoke_w24/20230527T145500_row5385
+[320/500] SISBRA 2023-06-01T16:09:39 lat=-22.430 lon=-55.750 mag=2.3 window=+/-120.0s r=1.0deg/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,2.0,7)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,2.0,10)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,1.0,15)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,0.5,5)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,0.8,8.0)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023kapb dt_s=0.162 dist_km=0.471 picks<=400.0km=3
+MATCHED: 2023-05-23T14:57:59Z -> data/sisbra_smoke_w24/20230523T145758_usp2023kapb_row5375 picks=3
+[321/500] SISBRA 2023-06-01T20:34:36 lat=-21.060 lon=-44.710 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023kgaq dt_s=0.407 dist_km=0.410 picks<=400.0km=5
+NO_MATCH: 2023-05-28T18:52:40Z -> data/sisbra_smoke_w24/20230528T185240_row5387
+[322/500] SISBRA 2023-06-03T09:49:07 lat=-8.770 lon=-40.230 mag=2.3 window=+/-120.0s r=1.0deg
+MATCHED: 2023-05-26T14:29:34Z -> data/sisbra_smoke_w24/20230526T142934_usp2023kgaq_row5380 picks=5
+[323/500] SISBRA 2023-06-04T18:13:25 lat=-16.440 lon=-60.050 mag=3.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023irrq dt_s=0.000 dist_km=0.000 picks<=400.0km=1
+MATCHED: 2023-05-04T12:30:31Z -> data/sisbra_smoke_w24/20230504T123031_usp2023irrq_row5353 picks=1
+[324/500] SISBRA 2023-06-07T16:36:46 lat=-18.750 lon=-43.400 mag=2.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023khah dt_s=0.270 dist_km=0.589 picks<=400.0km=0
+MATCHED: 2023-05-27T03:27:50Z -> data/sisbra_smoke_w24/20230527T032750_usp2023khah_row5381 picks=0
+[325/500] SISBRA 2023-06-09T10:39:15 lat=-19.520 lon=-44.180 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023kcsc dt_s=0.452 dist_km=0.291 picks<=400.0km=8
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023kikt dt_s=0.171 dist_km=0.594 picks<=400.0km=1
+MATCHED: 2023-05-27T21:52:55Z -> data/sisbra_smoke_w24/20230527T215254_usp2023kikt_row5386 picks=1
+[326/500] SISBRA 2023-06-09T18:26:55 lat=-4.280 lon=-40.220 mag=1.5 window=+/-120.0s r=1.0deg
+MATCHED: 2023-05-24T18:45:59Z -> data/sisbra_smoke_w24/20230524T184558_usp2023kcsc_row5377 picks=8
+[327/500] SISBRA 2023-06-09T21:49:18 lat=-21.100 lon=-59.350 mag=2.8 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-06-01T16:09:39Z -> data/sisbra_smoke_w24/20230601T160939_row5392
+[328/500] SISBRA 2023-06-14T16:46:42 lat=-13.630 lon=-40.680 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023jgmi dt_s=3.060 dist_km=4.121 picks<=400.0km=3
+MATCHED: 2023-05-12T14:51:47Z -> data/sisbra_smoke_w24/20230512T145143_usp2023jgmi_row5363 picks=3
+[329/500] SISBRA 2023-06-15T20:00:08 lat=-15.890 lon=-43.000 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023isbu dt_s=0.060 dist_km=0.449 picks<=400.0km=3
+MATCHED: 2023-05-04T17:38:11Z -> data/sisbra_smoke_w24/20230504T173811_usp2023isbu_row5355 picks=3
+[330/500] SISBRA 2023-06-16T11:22:06 lat=-24.500 lon=-47.400 mag=4.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023iryz dt_s=0.127 dist_km=0.167 picks<=400.0km=6
+MATCHED: 2023-05-04T16:13:24Z -> data/sisbra_smoke_w24/20230504T161323_usp2023iryz_row5354 picks=6
+[331/500] SISBRA 2023-06-16T19:23:19 lat=-9.420 lon=-35.800 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023kdmb dt_s=0.493 dist_km=0.589 picks<=400.0km=2
+MATCHED: 2023-05-25T04:51:26Z -> data/sisbra_smoke_w24/20230525T045126_usp2023kdmb_row5378 picks=2
+[332/500] SISBRA 2023-06-18T16:36:35 lat=-11.210 lon=-40.390 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023kwto dt_s=0.459 dist_km=0.443 picks<=400.0km=2
+MATCHED: 2023-06-04T18:13:25Z -> data/sisbra_smoke_w24/20230604T181324_usp2023kwto_row5395 picks=2
+[333/500] SISBRA 2023-06-18T21:13:46 lat=-21.050 lon=-48.620 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023lccw dt_s=2.899 dist_km=16.845 picks<=400.0km=4
+MATCHED: 2023-06-07T16:36:46Z -> data/sisbra_smoke_w24/20230607T163643_usp2023lccw_row5396 picks=4
+[334/500] SISBRA 2023-06-19T03:29:12 lat=-20.990 lon=-48.610 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023lfib dt_s=0.090 dist_km=0.462 picks<=400.0km=2
+MATCHED: 2023-06-09T10:39:15Z -> data/sisbra_smoke_w24/20230609T103914_usp2023lfib_row5397 picks=2
+[335/500] SISBRA 2023-06-19T05:57:50 lat=-20.870 lon=-48.530 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023jzje dt_s=0.203 dist_km=0.534 picks<=400.0km=3
+MATCHED: 2023-05-22T22:51:10Z -> data/sisbra_smoke_w24/20230522T225110_usp2023jzje_row5373 picks=3
+[336/500] SISBRA 2023-06-19T19:59:08 lat=-11.450 lon=-41.790 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023loxs dt_s=0.477 dist_km=0.296 picks<=400.0km=1
+MATCHED: 2023-06-14T16:46:42Z -> data/sisbra_smoke_w24/20230614T164641_usp2023loxs_row5400 picks=1
+[337/500] SISBRA 2023-06-22T03:29:49 lat=-7.810 lon=-74.360 mag=4.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023jhvi dt_s=0.075 dist_km=0.328 picks<=400.0km=2
+MATCHED: 2023-05-13T08:33:11Z -> data/sisbra_smoke_w24/20230513T083310_usp2023jhvi_row5364 picks=2
+[338/500] SISBRA 2023-06-23T02:12:16 lat=-13.370 lon=-40.400 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023knwj dt_s=0.051 dist_km=0.512 picks<=400.0km=2
+MATCHED: 2023-05-30T21:25:24Z -> data/sisbra_smoke_w24/20230530T212524_usp2023knwj_row5391 picks=2
+[339/500] SISBRA 2023-06-23T03:32:50 lat=-9.760 lon=-39.970 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023lfxn dt_s=0.233 dist_km=0.130 picks<=400.0km=5
+MATCHED: 2023-06-09T18:26:55Z -> data/sisbra_smoke_w24/20230609T182654_usp2023lfxn_row5398 picks=5
+[340/500] SISBRA 2023-06-23T04:24:33 lat=-6.640 lon=-50.040 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023kmuo dt_s=0.345 dist_km=0.663 picks<=400.0km=1
+MATCHED: 2023-05-30T07:22:28Z -> data/sisbra_smoke_w24/20230530T072227_usp2023kmuo_row5390 picks=1
+[341/500] SISBRA 2023-06-23T04:24:58 lat=-6.630 lon=-50.010 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023khdp dt_s=0.466 dist_km=0.581 picks<=400.0km=2
+MATCHED: 2023-05-27T05:07:38Z -> data/sisbra_smoke_w24/20230527T050737_usp2023khdp_row5383 picks=2
+[342/500] SISBRA 2023-06-23T04:25:04 lat=-6.650 lon=-50.090 mag=3.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023lqzp dt_s=0.036 dist_km=0.272 picks<=400.0km=4
+MATCHED: 2023-06-15T20:00:08Z -> data/sisbra_smoke_w24/20230615T200008_usp2023lqzp_row5401 picks=4
+[343/500] SISBRA 2023-06-23T05:55:11 lat=-10.080 lon=-39.520 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023lwon dt_s=0.090 dist_km=0.597 picks<=400.0km=6
+MATCHED: 2023-06-18T21:13:46Z -> data/sisbra_smoke_w24/20230618T211345_usp2023lwon_row5405 picks=6
+[344/500] SISBRA 2023-06-23T15:02:23 lat=-10.940 lon=-39.320 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023lstw dt_s=0.461 dist_km=0.326 picks<=400.0km=4
+MATCHED: 2023-06-16T19:23:19Z -> data/sisbra_smoke_w24/20230616T192318_usp2023lstw_row5403 picks=4
+[345/500] SISBRA 2023-06-23T17:01:45 lat=-6.430 lon=-50.090 mag=3.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ilzf dt_s=0.359 dist_km=0.624 picks<=400.0km=0
+MATCHED: 2023-05-01T09:31:09Z -> data/sisbra_smoke_w24/20230501T093108_usp2023ilzf_row5339 picks=0
+[346/500] SISBRA 2023-06-24T03:31:33 lat=-8.070 lon=-74.460 mag=5.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023lxax dt_s=0.111 dist_km=0.043 picks<=400.0km=13
+MATCHED: 2023-06-19T03:29:12Z -> data/sisbra_smoke_w24/20230619T032911_usp2023lxax_row5406 picks=13
+[347/500] SISBRA 2023-06-27T16:29:16 lat=-4.170 lon=-40.630 mag=1.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023mejb dt_s=0.022 dist_km=0.687 picks<=400.0km=3
+NO_MATCH: /usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,0.8,1.5)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+2023-06-23T02:12:16Z -> data/sisbra_smoke_w24/20230623T021216_row5410
+[348/500] SISBRA 2023-06-29T15:01:08 lat=-16.390 lon=-44.840 mag=2.1 window=+/-120.0s r=1.0deg
+MATCHED: 2023-06-23T03:32:50Z -> data/sisbra_smoke_w24/20230623T033249_usp2023mejb_row5411 picks=3
+[349/500] SISBRA 2023-07-03T17:32:42 lat=-23.270 lon=-51.070 mag=2.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023krlr dt_s=0.127 dist_km=0.503 picks<=400.0km=4
+MATCHED: 2023-06-01T20:34:36Z -> data/sisbra_smoke_w24/20230601T203435_usp2023krlr_row5393 picks=4
+[350/500] SISBRA 2023-07-04T14:24:56 lat=-4.770 lon=-38.370 mag=2.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-06-23T15:02:23Z -> data/sisbra_smoke_w24/20230623T150223_row5416
+[351/500] SISBRA 2023-07-07T03:40:15 lat=-8.300 lon=-73.970 mag=4.5 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-06-18T16:36:35Z -> data/sisbra_smoke_w24/20230618T163635_row5404
+[352/500] SISBRA 2023-07-07T19:25:36 lat=-4.480 lon=-49.900 mag=2.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023khts dt_s=0.153 dist_km=0.609 picks<=400.0km=6
+MATCHED: 2023-05-27T13:15:41Z -> data/sisbra_smoke_w24/20230527T131541_usp2023khts_row5384 picks=6
+[353/500] SISBRA 2023-07-12T14:39:46 lat=-6.260 lon=-38.920 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ment dt_s=0.398 dist_km=0.596 picks<=400.0km=4
+MATCHED: 2023-06-23T05:55:11Z -> data/sisbra_smoke_w24/20230623T055511_usp2023ment_row5415 picks=4
+[354/500] SISBRA 2023-07-15T21:28:31 lat=-20.460 lon=-56.300 mag=1.8 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-06-19T19:59:08Z -> data/sisbra_smoke_w24/20230619T195908_row5408
+[355/500] SISBRA 2023-07-16T06:12:13 lat=-14.540 lon=-45.600 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023jzyn dt_s=0.183 dist_km=0.278 picks<=400.0km=2
+MATCHED: 2023-05-23T06:36:54Z -> data/sisbra_smoke_w24/20230523T063654_usp2023jzyn_row5374 picks=2
+[356/500] SISBRA 2023-07-16T13:45:59 lat=-9.470 lon=-35.710 mag=1.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023jcpm dt_s=0.159 dist_km=0.413 picks<=400.0km=5
+MATCHED: 2023-05-10T11:55:14Z -> data/sisbra_smoke_w24/20230510T115513_usp2023jcpm_row5360 picks=5
+[357/500] SISBRA 2023-07-18T22:44:12 lat=-9.910 lon=-39.840 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023mqeu dt_s=0.263 dist_km=0.474 picks<=400.0km=4
+MATCHED: 2023-06-29T15:01:08Z -> data/sisbra_smoke_w24/20230629T150107_usp2023mqeu_row5420 picks=4
+[358/500] SISBRA 2023-07-19T10:12:30 lat=-8.010 lon=-74.310 mag=4.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023lsea dt_s=0.620 dist_km=4.413 picks<=400.0km=7
+MATCHED: 2023-06-16T11:22:06Z -> data/sisbra_smoke_w24/20230616T112205_usp2023lsea_row5402 picks=7
+[359/500] SISBRA 2023-07-19T15:05:18 lat=-8.610 lon=-36.310 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023kdrt dt_s=0.006 dist_km=0.698 picks<=400.0km=3
+MATCHED: 2023-05-25T07:43:49Z -> data/sisbra_smoke_w24/20230525T074348_usp2023kdrt_row5379 picks=3
+[360/500] SISBRA 2023-07-20T19:11:00 lat=-4.000 lon=-50.010 mag=3.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023nnxp dt_s=0.094 dist_km=0.592 picks<=400.0km=3
+MATCHED: 2023-07-12T14:39:46Z -> data/sisbra_smoke_w24/20230712T143946_usp2023nnxp_row5425 picks=3
+[361/500] SISBRA 2023-07-21T14:58:22 lat=-9.850 lon=-36.720 mag=1.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ntxp dt_s=0.451 dist_km=0.450 picks<=400.0km=3
+MATCHED: 2023-07-15T21:28:31Z -> data/sisbra_smoke_w24/20230715T212830_usp2023ntxp_row5426 picks=3
+[362/500] SISBRA 2023-07-23T05:39:07 lat=-6.440 lon=-50.330 mag=2.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023lxfv dt_s=0.085 dist_km=0.502 picks<=400.0km=13
+MATCHED: 2023-06-19T05:57:50Z -> data/sisbra_smoke_w24/20230619T055750_usp2023lxfv_row5407 picks=13
+[363/500] SISBRA 2023-07-25T17:53:49 lat=-20.140 lon=-43.630 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023nuow dt_s=0.002 dist_km=0.363 picks<=400.0km=2
+MATCHED: 2023-07-16T06:12:13Z -> data/sisbra_smoke_w24/20230716T061213_usp2023nuow_row5427 picks=2
+[364/500] SISBRA 2023-07-27T00:47:14 lat=-4.430 lon=-38.460 mag=2.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023mfjt dt_s=0.085 dist_km=0.351 picks<=400.0km=5
+MATCHED: 2023-06-23T17:01:45Z -> data/sisbra_smoke_w24/20230623T170145_usp2023mfjt_row5417 picks=5
+[365/500] SISBRA 2023-07-28T12:19:06 lat=-8.380 lon=-36.130 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023mxru dt_s=0.388 dist_km=0.425 picks<=400.0km=4
+MATCHED: 2023-07-03T17:32:42Z -> data/sisbra_smoke_w24/20230703T173242_usp2023mxru_row5421 picks=4
+[366/500] SISBRA 2023-07-28T16:10:58 lat=-4.150 lon=-40.580 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023klog dt_s=0.174 dist_km=0.299 picks<=400.0km=4
+MATCHED: 2023-05-29T15:02:26Z -> data/sisbra_smoke_w24/20230529T150225_usp2023klog_row5389 picks=4
+[367/500] SISBRA 2023-07-30T23:46:59 lat=-19.330 lon=-45.220 mag=3.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023oasz dt_s=0.005 dist_km=0.223 picks<=400.0km=4
+MATCHED: 2023-07-19T15:05:18Z -> data/sisbra_smoke_w24/20230719T150517_usp2023oasz_row5431 picks=4
+[368/500] SISBRA 2023-08-01T06:41:27 lat=-21.080 lon=-48.690 mag=1.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023kuhk dt_s=0.147 dist_km=0.250 picks<=400.0km=4
+MATCHED: 2023-06-03T09:49:07Z -> data/sisbra_smoke_w24/20230603T094907_usp2023kuhk_row5394 picks=4
+[369/500] SISBRA 2023-08-01T09:41:22 lat=-11.240 lon=-40.550 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023mzhc dt_s=0.190 dist_km=0.033 picks<=400.0km=6
+MATCHED: 2023-07-04T14:24:56Z -> data/sisbra_smoke_w24/20230704T142456_usp2023mzhc_row5422 picks=6
+[370/500] SISBRA 2023-08-02T16:49:58 lat=-13.690 lon=-40.760 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023nfdn dt_s=0.076 dist_km=0.324 picks<=400.0km=2
+MATCHED: 2023-07-07T19:25:36Z -> data/sisbra_smoke_w24/20230707T192535_usp2023nfdn_row5424 picks=2
+[371/500] SISBRA 2023-08-03T01:27:39 lat=-6.590 lon=-38.340 mag=1.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023oqza dt_s=0.158 dist_km=0.550 picks<=400.0km=6
+MATCHED: 2023-07-28T12:19:06Z -> data/sisbra_smoke_w24/20230728T121905_usp2023oqza_row5437 picks=6
+[372/500] SISBRA 2023-08-03T04:58:38 lat=-21.230 lon=-57.180 mag=2.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ohii dt_s=0.090 dist_km=0.147 picks<=400.0km=2
+MATCHED: 2023-07-23T05:39:07Z -> data/sisbra_smoke_w24/20230723T053906_usp2023ohii_row5434 picks=2
+[373/500] SISBRA 2023-08-04T05:31:40 lat=-9.700 lon=-36.610 mag=2.0 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-08-01T09:41:22Z -> data/sisbra_smoke_w24/20230801T094122_row5441
+[374/500] SISBRA 2023-08-05T03:52:39 lat=-11.240 lon=-40.530 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023oxvx dt_s=0.000 dist_km=0.000 picks<=400.0km=0
+MATCHED: 2023-08-01T06:41:27Z -> data/sisbra_smoke_w24/20230801T064127_usp2023oxvx_row5440 picks=0
+[375/500] SISBRA 2023-08-05T03:54:16 lat=-11.240 lon=-40.540 mag=2.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-07-25T17:53:49Z -> data/sisbra_smoke_w24/20230725T175349_row5435
+[376/500] SISBRA 2023-08-06T19:24:09 lat=-19.980 lon=-48.820 mag=2.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023oogs dt_s=0.118 dist_km=0.383 picks<=400.0km=6
+MATCHED: 2023-07-27T00:47:14Z -> data/sisbra_smoke_w24/20230727T004714_usp2023oogs_row5436/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,3.0,5)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+ picks=6
+[377/500] SISBRA 2023-08-06T23:07:11 lat=-19.960 lon=-48.740 mag=2.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023nvdw dt_s=0.183 dist_km=0.331 picks<=400.0km=3
+MATCHED: 2023-07-16T13:45:59Z -> data/sisbra_smoke_w24/20230716T134558_usp2023nvdw_row5428 picks=3
+[378/500] SISBRA 2023-08-08T03:36:24 lat=-9.870 lon=-39.880 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ocwp dt_s=0.000 dist_km=0.000 picks<=400.0km=0
+MATCHED: 2023-07-20T19:11:00Z -> data/sisbra_smoke_w24/20230720T191100_usp2023ocwp_row5432 picks=0
+[379/500] SISBRA 2023-08-09T07:31:21 lat=-4.220 lon=-39.740 mag=1.6 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-08-03T01:27:39Z -> data/sisbra_smoke_w24/20230803T012739_row5443
+[380/500] SISBRA 2023-08-10T04:30:25 lat=-7.990 lon=-74.410 mag=4.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ndyi dt_s=0.439 dist_km=0.597 picks<=400.0km=2
+MATCHED: 2023-07-07T03:40:15Z -> data/sisbra_smoke_w24/20230707T034014_usp2023ndyi_row5423 picks=2
+[381/500] SISBRA 2023-08-10T20:32:10 lat=-10.580 lon=-40.390 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023oejt dt_s=0.068 dist_km=0.469 picks<=400.0km=4
+MATCHED: 2023-07-21T14:58:22Z -> data/sisbra_smoke_w24/20230721T145822_usp2023oejt_row5433 picks=4
+[382/500] SISBRA 2023-08-10T21:46:59 lat=-9.830 lon=-39.880 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023oajh dt_s=0.354 dist_km=0.339 picks<=400.0km=0
+MATCHED: 2023-07-19T10:12:30Z -> data/sisbra_smoke_w24/20230719T101229_usp2023oajh_row5430 picks=0
+[383/500] SISBRA 2023-08-11T04:36:51 lat=-9.860 lon=-39.860 mag=2.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-08-09T07:31:21Z -> data/sisbra_smoke_w24/20230809T073121_row5451
+[384/500] SISBRA 2023-08-13T16:38:58 lat=-4.410 lon=-38.410 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023palm dt_s=0.191 dist_km=0.398 picks<=400.0km=0
+MATCHED: 2023-08-02T16:49:58Z -> data/sisbra_smoke_w24/20230802T164957_usp2023palm_row5442 picks=0
+[385/500] SISBRA 2023-08-14T11:33:14 lat=-11.250 lon=-40.500 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023pdgc dt_s=0.283 dist_km=0.580 picks<=400.0km=4
+MATCHED: 2023-08-04T05:31:40Z -> data/sisbra_smoke_w24/20230804T053140_usp2023pdgc_row5445 picks=4
+[386/500] SISBRA 2023-08-14T16:14:02 lat=-9.880 lon=-39.870 mag=2.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-08-10T20:32:10Z -> data/sisbra_smoke_w24/20230810T203210_row5453
+[387/500] SISBRA 2023-08-14T17:38:21 lat=-5.880 lon=-50.660 mag=3.7 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-08-11T04:36:51Z -> data/sisbra_smoke_w24/20230811T043651_row5455
+[388/500] SISBRA 2023-08-15T16:42:49 lat=-13.490 lon=-49.060 mag=2.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023mmqr dt_s=0.131 dist_km=0.168 picks<=400.0km=4
+MATCHED: 2023-06-27T16:29:16Z -> data/sisbra_smoke_w24/20230627T162915_usp2023mmqr_row5419 picks=4
+[389/500] SISBRA 2023-08-15T18:29:16 lat=-20.440 lon=-43.170 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023peyi dt_s=0.164 dist_km=0.285 picks<=400.0km=2
+MATCHED: 2023-08-05T03:52:39Z -> data/sisbra_smoke_w24/20230805T035238_usp2023peyi_row5446 picks=2
+[390/500] SISBRA 2023-08-17T18:52:53 lat=-6.040 lon=-50.210 mag=3.2 window=+/-120.0s r=1.0deg
+  candidates=3 scored=3
+  best=smi:org.gfz-potsdam.de/geofon/usp2023mekv dt_s=0.108 dist_km=0.182 picks<=400.0km=4
+NO_MATCH: 2023-08-10T21:46:59Z -> data/sisbra_smoke_w24/20230810T214659_row5454
+[391/500] SISBRA 2023-08-22T21:19:39 lat=-24.320 lon=-50.670 mag=2.4 window=+/-120.0s r=1.0deg
+MATCHED: 2023-06-23T04:24:33Z -> data/sisbra_smoke_w24/20230623T042433_usp2023mekv_row5412 picks=4
+[392/500] SISBRA 2023-08-23T01:25:32 lat=-7.470 lon=-49.690 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023pkki dt_s=0.198 dist_km=0.377 picks<=400.0km=4
+MATCHED: 2023-08-08T03:36:24Z -> data/sisbra_smoke_w24/20230808T033623_usp2023pkki_row5450 picks=4
+[393/500] SISBRA 2023-08-24T08:38:08 lat=-13.400 lon=-38.840 mag=2.2 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-08-17T18:52:53Z -> data/sisbra_smoke_w24/20230817T185253_row5462
+[394/500] SISBRA 2023-08-24T13:03:06 lat=-5.380 lon=-39.930 mag=2.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-08-14T11:33:14Z -> data/sisbra_smoke_w24/20230814T113314_row5457
+[395/500] SISBRA 2023-08-24T14:07:41 lat=-14.220 lon=-50.190 mag=2.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023nzmp dt_s=0.169 dist_km=0.159 picks<=400.0km=3
+MATCHED: 2023-07-18T22:44:12Z -> data/sisbra_smoke_w24/20230718T224411_usp2023nzmp_row5429 picks=3
+[396/500] SISBRA 2023-08-25T00:28:17 lat=-3.910 lon=-39.410 mag=1.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023podc dt_s=0.009 dist_km=0.335 picks<=400.0km=0
+MATCHED: 2023-08-10T04:30:25Z -> data/sisbra_smoke_w24/20230810T043025_usp2023podc_row5452 picks=0
+[397/500] SISBRA 2023-08-25T09:47:44 lat=-9.900 lon=-39.840 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023lgee dt_s=0.388 dist_km=0.491 picks<=400.0km=3
+  candidates=3 scored=3
+  best=smi:org.gfz-potsdam.de/geofon/usp2023meku dt_s=0.314 dist_km=0.225 picks<=400.0km=4
+MATCHED: 2023-06-09T21:49:18Z -> data/sisbra_smoke_w24/20230609T214917_usp2023lgee_row5399 picks=3
+[398/500] SISBRA 2023-08-25T19:34:40 lat=-9.760 lon=-36.700 mag=2.1 window=+/-120.0s r=1.0deg
+MATCHED: 2023-06-23T04:24:58Z -> data/sisbra_smoke_w24/20230623T042457_usp2023meku_row5413 picks=4
+[399/500] SISBRA 2023-08-28T14:14:09 lat=-5.080 lon=-38.230 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ovms dt_s=0.257 dist_km=0.598 picks<=400.0km=13
+MATCHED: 2023-07-30T23:46:59Z -> data/sisbra_smoke_w24/20230730T234659_usp2023ovms_row5439 picks=13
+[400/500] SISBRA 2023-08-29T03:35:17 lat=-8.110 lon=-35.220 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023pyih dt_s=0.310 dist_km=0.553 picks<=400.0km=2
+MATCHED: 2023-08-15T18:29:16Z -> data/sisbra_smoke_w24/20230815T182916_usp2023pyih_row5461 picks=2
+[401/500] SISBRA 2023-08-29T16:39:15 lat=-19.410 lon=-44.160 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023pyeu dt_s=0.443 dist_km=0.406 picks<=400.0km=5
+MATCHED: 2023-08-15T16:42:49Z -> data/sisbra_smoke_w24/20230815T164248_usp2023pyeu_row5460 picks=5
+[402/500] SISBRA 2023-08-29T19:55:20 lat=-10.240 lon=-36.880 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023punq dt_s=0.189 dist_km=0.179 picks<=400.0km=6
+MATCHED: 2023-08-13T16:38:58Z -> data/sisbra_smoke_w24/20230813T163857_usp2023punq_row5456 picks=6
+[403/500] SISBRA 2023-08-30T21:09:19 lat=-11.230 lon=-40.510 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023qoai dt_s=0.330 dist_km=0.339 picks<=400.0km=1
+  candidates=3 scored=3
+  best=smi:org.gfz-potsdam.de/geofon/usp2023mekt dt_s=0.015 dist_km=0.142 picks<=400.0km=4
+MATCHED: 2023-06-23T04:25:04Z -> data/sisbra_smoke_w24/20230623T042503_usp2023mekt_row5414 picks=4
+[404/500] SISBRA 2023-08-30T21:37:50 lat=-11.250 lon=-40.510 mag=2.4 window=+/-120.0s r=1.0deg
+MATCHED: 2023-08-24T08:38:08Z -> data/sisbra_smoke_w24/20230824T083808_usp2023qoai_row5465 picks=1
+[405/500] SISBRA 2023-08-31T00:01:09 lat=-9.820 lon=-39.840 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023qlil dt_s=0.340 dist_km=0.682 picks<=400.0km=5
+MATCHED: 2023-08-22T21:19:39Z -> data/sisbra_smoke_w24/20230822T211939_usp2023qlil_row5463 picks=5
+[406/500] SISBRA 2023-08-31T04:19:08 lat=-9.810 lon=-39.840 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023qojb dt_s=0.013 dist_km=0.406 picks<=400.0km=4/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,2.6,8)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)->ITAPER(30)->BW(3,1.0,12)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+
+MATCHED: 2023-08-24T13:03:06Z -> data/sisbra_smoke_w24/20230824T130305_usp2023qojb_row5466 picks=4
+[407/500] SISBRA 2023-08-31T04:20:13 lat=-9.850 lon=-39.860 mag=2.6 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-08-29T19:55:20Z -> data/sisbra_smoke_w24/20230829T195520_row5474
+[408/500] SISBRA 2023-08-31T13:07:24 lat=-9.910 lon=-39.770 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023mcnl dt_s=1.478 dist_km=33.100 picks<=400.0km=2
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023kkug dt_s=0.488 dist_km=0.494 picks<=400.0km=1
+MATCHED: 2023-06-22T03:29:49Z -> data/sisbra_smoke_w24/20230622T032947_usp2023mcnl_row5409 picks=2
+[409/500] SISBRA 2023-08-31T13:53:15 lat=-9.780 lon=-39.760 mag=2.2 window=+/-120.0s r=1.0deg
+MATCHED: 2023-05-29T04:57:34Z -> data/sisbra_smoke_w24/20230529T045733_usp2023kkug_row5388 picks=1
+[410/500] SISBRA 2023-08-31T17:50:23 lat=-2.500 lon=-50.180 mag=2.5 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-08-30T21:37:50Z -> data/sisbra_smoke_w24/20230830T213750_row5476
+[411/500] SISBRA 2023-09-01T17:02:27 lat=-9.880 lon=-39.850 mag=2.0 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-08-30T21:09:19Z -> data/sisbra_smoke_w24/20230830T210919_row5475
+[412/500] SISBRA 2023-09-02T05:31:55 lat=-20.620 lon=-44.810 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023peyi dt_s=97.164 dist_km=0.841 picks<=400.0km=2
+MATCHED: 2023-08-05T03:54:16Z -> data/sisbra_smoke_w24/20230805T035238_usp2023peyi_row5447 picks=2
+[413/500] SISBRA 2023-09-02T11:11:02 lat=-8.220 lon=-74.220 mag=5.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-08-31T00:01:09Z -> data/sisbra_smoke_w24/20230831T000109_row5477
+[414/500] SISBRA 2023-09-04T09:40:24 lat=-9.900 lon=-39.780 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023orgr dt_s=0.201 dist_km=0.473 picks<=400.0km=4
+MATCHED: 2023-07-28T16:10:58Z -> data/sisbra_smoke_w24/20230728T161057_usp2023orgr_row5438 picks=4
+[415/500] SISBRA 2023-09-04T09:54:57 lat=-9.870 lon=-39.860 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023qvtk dt_s=0.150 dist_km=0.575 picks<=400.0km=4
+MATCHED: 2023-08-28T14:14:09Z -> data/sisbra_smoke_w24/20230828T141408_usp2023qvtk_row5471 picks=4
+[416/500] SISBRA 2023-09-04T10:56:03 lat=-9.880 lon=-39.860 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023qole dt_s=0.192 dist_km=0.522 picks<=400.0km=6
+MATCHED: 2023-08-24T14:07:41Z -> data/sisbra_smoke_w24/20230824T140740_usp2023qole_row5467 picks=6
+[417/500] SISBRA 2023-09-05T16:00:06 lat=-3.560 lon=-50.160 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023qwtv dt_s=0.281 dist_km=0.487 picks<=400.0km=5
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023qqrm dt_s=0.068 dist_km=0.720 picks<=400.0km=5
+MATCHED: 2023-08-29T03:35:17Z -> data/sisbra_smoke_w24/20230829T033517_usp2023qwtv_row5472 picks=5
+[418/500] SISBRA 2023-09-05T16:34:50 lat=-2.440 lon=-49.240 mag=3.0 window=+/-120.0s r=1.0deg
+MATCHED: 2023-08-25T19:34:40Z -> data/sisbra_smoke_w24/20230825T193439_usp2023qqrm_row5470 picks=5
+[419/500] SISBRA 2023-09-05T18:40:45 lat=-2.770 lon=-49.990 mag=2.7 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-08-31T17:50:23Z -> data/sisbra_smoke_w24/20230831T175023_row5482
+[420/500] SISBRA 2023-09-05T21:20:40 lat=-22.430 lon=-58.170 mag=2.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023pbjn dt_s=0.270 dist_km=0.562 picks<=400.0km=4
+MATCHED: 2023-08-03T04:58:38Z -> data/sisbra_smoke_w24/20230803T045837_usp2023pbjn_row5444 picks=4
+[421/500] SISBRA 2023-09-06T17:53:16 lat=-5.040 lon=-48.970 mag=2.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023rbds dt_s=0.482 dist_km=0.745 picks<=400.0km=3
+MATCHED: 2023-08-31T13:07:24Z -> data/sisbra_smoke_w24/20230831T130724_usp2023rbds_row5480 picks=3
+[422/500] SISBRA 2023-09-06T23:02:19 lat=-24.300 lon=-48.100 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023riex dt_s=0.241 dist_km=0.220 picks<=400.0km=3
+NO_MATCH: 2023-09-05T16:34:50Z -> data/sisbra_smoke_w24/20230905T163450_row5490
+[423/500] SISBRA 2023-09-07T16:33:47 lat=-20.410 lon=-44.060 mag=2.4 window=+/-120.0s r=1.0deg
+MATCHED: 2023-09-04T09:40:24Z -> data/sisbra_smoke_w24/20230904T094023_usp2023riex_row5486 picks=3
+[424/500] SISBRA 2023-09-08T17:01:34 lat=-5.790 lon=-50.460 mag=3.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023pify dt_s=0.351 dist_km=0.414 picks<=400.0km=7
+MATCHED: 2023-08-06T23:07:11Z -> data/sisbra_smoke_w24/20230806T230711_usp2023pify_row5449 picks=7
+[425/500] SISBRA 2023-09-10T17:05:14 lat=-19.580 lon=-43.380 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023phyo dt_s=0.270 dist_km=0.545 picks<=400.0km=8
+MATCHED: 2023-08-06T19:24:09Z -> data/sisbra_smoke_w24/20230806T192408_usp2023phyo_row5448 picks=8
+[426/500] SISBRA 2023-09-12T13:03:02 lat=-8.460 lon=-36.600 mag=1.8 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-08-31T04:20:13Z -> data/sisbra_smoke_w24/20230831T042013_row5479
+[427/500] SISBRA 2023-09-14T20:38:15 lat=-5.230 lon=-49.690 mag=2.8 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-09-05T16:00:06Z -> data/sisbra_smoke_w24/20230905T160006_row5489
+[428/500] SISBRA 2023-09-17T15:45:27 lat=-9.970 lon=-39.810 mag=2.7 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-09-05T18:40:45Z -> data/sisbra_smoke_w24/20230905T184045_row5491
+[429/500] SISBRA 2023-09-19T01:13:36 lat=-20.980 lon=-48.620 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023rifj dt_s=0.039 dist_km=0.326 picks<=400.0km=3
+MATCHED: 2023-09-04T09:54:57Z -> data/sisbra_smoke_w24/20230904T095456_usp2023rifj_row5487 picks=3
+[430/500] SISBRA 2023-09-21T07:24:32 lat=-13.540 lon=-42.640 mag=3.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023rkxn dt_s=0.500 dist_km=0.591 picks<=400.0km=3
+MATCHED: 2023-09-05T21:20:40Z -> data/sisbra_smoke_w24/20230905T212039_usp2023rkxn_row5492 picks=3
+[431/500] SISBRA 2023-09-22T02:11:57 lat=-8.800 lon=-74.230 mag=4.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023pwlc dt_s=0.100 dist_km=30.802 picks<=400.0km=1
+MATCHED: 2023-08-14T17:38:21Z -> data/sisbra_smoke_w24/20230814T173820_usp2023pwlc_row5459 picks=1
+[432/500] SISBRA 2023-09-22T10:14:54 lat=-10.060 lon=-73.050 mag=4.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023rbff dt_s=0.116 dist_km=0.621 picks<=400.0km=3
+MATCHED: 2023-08-31T13:53:15Z -> data/sisbra_smoke_w24/20230831T135314_usp2023rbff_row5481 picks=3
+[433/500] SISBRA 2023-09-24T12:13:00 lat=-9.590 lon=-39.890 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023qpyc dt_s=0.104 dist_km=0.391 picks<=400.0km=4
+MATCHED: 2023-08-25T09:47:44Z -> data/sisbra_smoke_w24/20230825T094743_usp2023qpyc_row5469 picks=4
+[434/500] SISBRA 2023-09-26T02:27:59 lat=-9.920 lon=-39.840 mag=2.5 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-09-10T17:05:14Z -> data/sisbra_smoke_w24/20230910T170514_row5497
+[435/500] SISBRA 2023-09-27T08:47:50 lat=-13.730 lon=-48.630 mag=2.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023qlqo dt_s=0.473 dist_km=0.460 picks<=400.0km=2
+MATCHED: 2023-08-23T01:25:32Z -> data/sisbra_smoke_w24/20230823T012531_usp2023qlqo_row5464 picks=2
+[436/500] SISBRA 2023-10-01T05:48:58 lat=-13.530 lon=-48.840 mag=3.0 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-09-14T20:38:15Z -> data/sisbra_smoke_w24/20230914T203815_row5499
+[437/500] SISBRA 2023-10-01T17:09:04 lat=-20.630 lon=-44.540 mag=2.6 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-09-08T17:01:34Z -> data/sisbra_smoke_w24/20230908T170134_row5496
+[438/500] SISBRA 2023-10-03T05:15:34 lat=-9.830 lon=-39.890 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023siys dt_s=0.217 dist_km=0.545 picks<=400.0km=4/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)->ITAPER(30)->BW(3,4.0,8)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,0.5,3)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,0.4,1)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+
+MATCHED: 2023-09-19T01:13:36Z -> data/sisbra_smoke_w24/20230919T011335_usp2023siys_row5501 picks=4
+[439/500] SISBRA 2023-10-04T19:33:58 lat=-20.500 lon=-56.180 mag=1.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023refs dt_s=0.198 dist_km=0.476 picks<=400.0km=5
+MATCHED: 2023-09-02T05:31:55Z -> data/sisbra_smoke_w24/20230902T053155_usp2023refs_row5484 picks=5
+[440/500] SISBRA 2023-10-05T09:40:12 lat=-9.840 lon=-39.890 mag=2.2 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-08-31T04:19:08Z -> data/sisbra_smoke_w24/20230831T041908_row5478
+[441/500] SISBRA 2023-10-08T12:52:08 lat=-17.000 lon=-57.270 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023qpfr dt_s=0.212 dist_km=0.553 picks<=400.0km=4
+NO_MATCH: 2023-09-01T17:02:27Z -> data/sisbra_smoke_w24/20230901T170227_row5483
+[442/500] SISBRA 2023-10-10T14:28:15 lat=-8.070 lon=-37.870 mag=2.1 window=+/-120.0s r=1.0deg
+MATCHED: 2023-08-25T00:28:17Z -> data/sisbra_smoke_w24/20230825T002817_usp2023qpfr_row5468 picks=4
+[443/500] SISBRA 2023-10-11T14:46:04 lat=-8.360 lon=-36.190 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023rmwj dt_s=6.930 dist_km=44.576 picks<=400.0km=3
+MATCHED: 2023-09-06T23:02:19Z -> data/sisbra_smoke_w24/20230906T230212_usp2023rmwj_row5494 picks=3
+[444/500] SISBRA 2023-10-14T00:19:26 lat=-19.730 lon=-46.980 mag=2.0 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-09-04T10:56:03Z -> data/sisbra_smoke_w24/20230904T105603_row5488
+[445/500] SISBRA 2023-10-14T15:14:21 lat=-12.910 lon=-43.840 mag=3.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023sydt dt_s=0.438 dist_km=0.374 picks<=400.0km=2
+MATCHED: 2023-09-27T08:47:50Z -> data/sisbra_smoke_w24/20230927T084749_usp2023sydt_row5507 picks=2
+[446/500] SISBRA 2023-10-23T04:27:26 lat=-5.260 lon=-34.810 mag=2.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-09-24T12:13:00Z -> data/sisbra_smoke_w24/20230924T121300_row5505
+[447/500] SISBRA 2023-10-24T15:50:42 lat=-9.870 lon=-39.880 mag=2.0 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-09-12T13:03:02Z -> data/sisbra_smoke_w24/20230912T130302_row5498
+[448/500] SISBRA 2023-10-25T15:03:14 lat=-10.950 lon=-39.260 mag=2.2 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-09-06T17:53:16Z -> data/sisbra_smoke_w24/20230906T175316_row5493
+[449/500] SISBRA 2023-10-26T01:18:07 lat=-8.330 lon=-36.150 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023sgkm dt_s=0.448 dist_km=0.451 picks<=400.0km=3
+MATCHED: 2023-09-17T15:45:27Z -> data/sisbra_smoke_w24/20230917T154526_usp2023sgkm_row5500 picks=3
+[450/500] SISBRA 2023-10-26T09:38:42 lat=-9.830 lon=-39.920 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023tivt dt_s=0.263 dist_km=0.188 picks<=400.0km=5
+MATCHED: 2023-10-03T05:15:34Z -> data/sisbra_smoke_w24/20231003T051534_usp2023tivt_row5510 picks=5
+[451/500] SISBRA 2023-10-26T19:12:47 lat=-20.540 lon=-56.660 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023tlto dt_s=0.462 dist_km=0.611 picks<=400.0km=4
+MATCHED: 2023-10-04T19:33:58Z -> data/sisbra_smoke_w24/20231004T193357_usp2023tlto_row5511 picks=4
+[452/500] SISBRA 2023-10-27T08:20:14 lat=-19.510 lon=-44.070 mag=2.2 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-10-24T15:50:42Z -> data/sisbra_smoke_w24/20231024T155042_row5519
+[453/500] SISBRA 2023-10-27T14:48:42 lat=-20.350 lon=-45.580 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023svvs dt_s=0.546 dist_km=0.492 picks<=400.0km=0
+MATCHED: 2023-09-26T02:27:59Z -> data/sisbra_smoke_w24/20230926T022759_usp2023svvs_row5506 picks=0
+[454/500] SISBRA 2023-11-02T15:07:14 lat=-8.960 lon=-35.770 mag=2.3 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-10-23T04:27:26Z -> data/sisbra_smoke_w24/20231023T042726_row5518
+[455/500] SISBRA 2023-11-02T19:13:12 lat=-14.000 lon=-46.510 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ucon dt_s=0.312 dist_km=0.620 picks<=400.0km=7
+MATCHED: 2023-10-14T00:19:26Z -> data/sisbra_smoke_w24/20231014T001925_usp2023ucon_row5516 picks=7
+[456/500] SISBRA 2023-11-05T04:35:24 lat=-13.070 lon=-43.470 mag=2.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023twin dt_s=0.259 dist_km=0.244 picks<=400.0km=12
+MATCHED: 2023-10-10T14:28:15Z -> data/sisbra_smoke_w24/20231010T142814_usp2023twin_row5514 picks=12
+[457/500] SISBRA 2023-11-07T07:52:52 lat=-20.260 lon=-43.870 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023tmvm dt_s=0.202 dist_km=0.559 picks<=400.0km=4
+MATCHED: 2023-10-05T09:40:12Z -> data/sisbra_smoke_w24/20231005T094012_usp2023tmvm_row5512 picks=4
+[458/500] SISBRA 2023-11-11T05:29:10 lat=-20.070 lon=-49.050 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023tgch dt_s=0.258 dist_km=0.332 picks<=400.0km=9
+MATCHED: 2023-10-01T17:09:04Z -> data/sisbra_smoke_w24/20231001T170903_usp2023tgch_row5509 picks=9
+[459/500] SISBRA 2023-11-14T03:38:43 lat=-15.180 lon=-36.940 mag=2.9 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023mgen dt_s=0.253 dist_km=0.539 picks<=400.0km=2
+MATCHED: 2023-06-24T03:31:33Z -> data/sisbra_smoke_w24/20230624T033132_usp2023mgen_row5418 picks=2
+[460/500] SISBRA 2023-11-15T22:39:38 lat=-18.570 lon=-44.200 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023spdb dt_s=0.170 dist_km=0.665 picks<=400.0km=0
+MATCHED: 2023-09-22T10:14:54Z -> data/sisbra_smoke_w24/20230922T101454_usp2023spdb_row5504 picks=0
+[461/500] SISBRA 2023-11-16T09:22:54 lat=-16.480 lon=-40.660 mag=2.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023reqw dt_s=0.035 dist_km=0.105 picks<=400.0km=0
+MATCHED: 2023-09-02T11:11:02Z -> data/sisbra_smoke_w24/20230902T111102_usp2023reqw_row5485 picks=0
+[462/500] SISBRA 2023-11-16T16:41:37 lat=-8.020 lon=-37.870 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023uxuf dt_s=0.147 dist_km=0.209 picks<=400.0km=3
+MATCHED: 2023-10-25T15:03:14Z -> data/sisbra_smoke_w24/20231025T150314_usp2023uxuf_row5520 picks=3
+[463/500] SISBRA 2023-11-18T01:13:38 lat=-4.040 lon=-38.980 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023uzfa dt_s=0.152 dist_km=0.304 picks<=400.0km=1
+MATCHED: 2023-10-26T09:38:42Z -> data/sisbra_smoke_w24/20231026T093841_usp2023uzfa_row5522 picks=1
+[464/500] SISBRA 2023-11-19T03:20:21 lat=-29.430 lon=-54.570 mag=2.0 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023tyep dt_s=0.103 dist_km=0.382 picks<=400.0km=7
+MATCHED: 2023-10-11T14:46:04Z -> data/sisbra_smoke_w24/20231011T144603_usp2023tyep_row5515 picks=7
+[465/500] SISBRA 2023-11-19T09:30:39 lat=-29.430 lon=-54.570 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023qxts dt_s=0.082 dist_km=0.624 picks<=400.0km=4
+MATCHED: 2023-08-29T16:39:15Z -> data/sisbra_smoke_w24/20230829T163914_usp2023qxts_row5473 picks=4
+[466/500] SISBRA 2023-11-20T06:56:57 lat=-6.260 lon=-50.960 mag=2.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023vmsm dt_s=0.499 dist_km=0.314 picks<=400.0km=3
+MATCHED: 2023-11-02T19:13:12Z -> data/sisbra_smoke_w24/20231102T191312_usp2023vmsm_row5527 picks=3
+[467/500] SISBRA 2023-11-20T06:57:14 lat=-7.540 lon=-50.810 mag=2.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023snbz dt_s=0.370 dist_km=0.443 picks<=400.0km=1
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023pwii dt_s=0.307 dist_km=0.435 picks<=400.0km=4
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023vaxx dt_s=0.060 dist_km=0.358 picks<=400.0km=6
+MATCHED: 2023-08-14T16:14:02Z -> data/sisbra_smoke_w24/20230814T161401_usp2023pwii_row5458/usr/local/lib/python3.9/dist-packages/obspy/io/quakeml/core.py:1112: UserWarning: 'smi:org.gfz-potsdam.de/geofon/RMHP(10)>>BW(3,1.0,30)' is not a valid QuakeML URI. It will be in the final file but note that the file will not be a valid QuakeML file.
+  warnings.warn(msg % obj.id)
+MATCHED: 2023-09-21T07:24:32Z -> data/sisbra_smoke_w24/20230921T072432_usp2023snbz_row5502 picks=1
+[468/500] SISBRA 2023-11-20T07:49:57 lat=2.590 lon=-59.250 mag=3.8 window=+/-120.0s r=1.0deg
+ picks=4
+[469/500] SISBRA 2023-11-24T05:46:14 lat=-9.740 lon=-36.670 mag=1.8 window=+/-120.0s r=1.0deg
+MATCHED: 2023-10-27T08:20:14Z -> data/sisbra_smoke_w24/20231027T082013_usp2023vaxx_row5524 picks=6
+[470/500] SISBRA 2023-11-25T13:51:27 lat=-13.380 lon=-38.260 mag=2.5 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023tffw dt_s=0.130 dist_km=0.363 picks<=400.0km=4
+MATCHED: 2023-10-01T05:48:58Z -> data/sisbra_smoke_w24/20231001T054857_usp2023tffw_row5508 picks=4
+[471/500] SISBRA 2023-11-26T03:03:09 lat=-5.880 lon=-50.600 mag=3.0 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-11-20T06:56:57Z -> data/sisbra_smoke_w24/20231120T065657_row5538
+[472/500] SISBRA 2023-11-26T22:25:07 lat=-3.300 lon=-40.530 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023vuzo dt_s=0.321 dist_km=0.545 picks<=400.0km=4
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023uyom dt_s=0.290 dist_km=0.383 picks<=400.0km=6
+MATCHED: 2023-11-07T07:52:52Z -> data/sisbra_smoke_w24/20231107T075251_usp2023vuzo_row5529 picks=4
+[473/500] SISBRA 2023-11-27T02:33:04 lat=-11.270 lon=-40.570 mag=2.0 window=+/-120.0s r=1.0deg
+MATCHED: 2023-10-26T01:18:07Z -> data/sisbra_smoke_w24/20231026T011806_usp2023uyom_row5521 picks=6
+[474/500] SISBRA 2023-11-27T04:48:16 lat=-9.650 lon=-35.730 mag=1.4 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023vmkj dt_s=0.419 dist_km=0.505 picks<=400.0km=6
+MATCHED: 2023-11-02T15:07:14Z -> data/sisbra_smoke_w24/20231102T150714_usp2023vmkj_row5526 picks=6
+[475/500] SISBRA 2023-11-27T23:55:03 lat=-8.070 lon=-35.190 mag=1.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023tsoi dt_s=0.282 dist_km=0.598 picks<=400.0km=4
+MATCHED: 2023-10-08T12:52:08Z -> data/sisbra_smoke_w24/20231008T125207_usp2023tsoi_row5513 picks=4
+[476/500] SISBRA 2023-11-28T05:50:40 lat=-9.610 lon=-35.750 mag=1.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023uzxy dt_s=0.493 dist_km=0.116 picks<=400.0km=3
+MATCHED: 2023-10-26T19:12:47Z -> data/sisbra_smoke_w24/20231026T191247_usp2023uzxy_row5523 picks=3
+[477/500] SISBRA 2023-11-28T12:43:12 lat=-9.750 lon=-37.260 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023whlr dt_s=0.473 dist_km=0.260 picks<=400.0km=0
+MATCHED: 2023-11-14T03:38:43Z -> data/sisbra_smoke_w24/20231114T033842_usp2023whlr_row5531 picks=0
+[478/500] SISBRA 2023-11-28T19:12:18 lat=-9.630 lon=-35.720 mag=1.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023vrca dt_s=0.388 dist_km=0.148 picks<=400.0km=2
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023wqop dt_s=0.130 dist_km=0.439 picks<=400.0km=6
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023vbkt dt_s=0.155 dist_km=0.574 picks<=400.0km=7
+MATCHED: 2023-11-05T04:35:24Z -> data/sisbra_smoke_w24/20231105T043523_usp2023vrca_row5528 picks=2
+[479/500] SISBRA 2023-11-28T20:42:51 lat=-8.100 lon=-34.980 mag=1.8 window=+/-120.0s r=1.0deg
+MATCHED: 2023-11-19T03:20:21Z -> data/sisbra_smoke_w24/20231119T032020_usp2023wqop_row5536 picks=6
+[480/500] SISBRA 2023-11-29T16:22:59 lat=-9.680 lon=-36.680 mag=1.7 window=+/-120.0s r=1.0deg
+MATCHED: 2023-10-27T14:48:42Z -> data/sisbra_smoke_w24/20231027T144841_usp2023vbkt_row5525 picks=7
+[481/500] SISBRA 2023-12-01T04:12:01 lat=-18.580 lon=-45.140 mag=3.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023woox dt_s=0.149 dist_km=0.637 picks<=400.0km=4
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023wmcn dt_s=0.286 dist_km=0.565 picks<=400.0km=5
+MATCHED: 2023-11-18T01:13:38Z -> data/sisbra_smoke_w24/20231118T011338_usp2023woox_row5535 picks=4
+[482/500] SISBRA 2023-12-02T02:23:31 lat=-11.180 lon=-70.070 mag=4.8 window=+/-120.0s r=1.0deg
+MATCHED: 2023-11-16T16:41:37Z -> data/sisbra_smoke_w24/20231116T164136_usp2023wmcn_row5534 picks=5
+[483/500] SISBRA 2023-12-09T04:10:04 lat=-9.760 lon=-39.910 mag=1.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023wccv dt_s=0.488 dist_km=0.162 picks<=400.0km=7
+MATCHED: 2023-11-11T05:29:10Z -> data/sisbra_smoke_w24/20231111T052909_usp2023wccv_row5530 picks=7
+[484/500] SISBRA 2023-12-09T16:35:04 lat=-5.920 lon=-50.690 mag=3.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023wksv dt_s=0.426 dist_km=0.421 picks<=400.0km=9
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023rofb dt_s=1.705 dist_km=12.523 picks<=400.0km=8
+MATCHED: 2023-11-15T22:39:38Z -> data/sisbra_smoke_w24/20231115T223938_usp2023wksv_row5532 picks=9
+[485/500] SISBRA 2023-12-10T01:25:45 lat=-9.880 lon=-39.950 mag=2.0 window=+/-120.0s r=1.0deg
+MATCHED: 2023-09-07T16:33:47Z -> data/sisbra_smoke_w24/20230907T163345_usp2023rofb_row5495 picks=8
+[486/500] SISBRA 2023-12-14T00:52:19 lat=-20.050 lon=-48.870 mag=2.3 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023udsb dt_s=0.186 dist_km=0.511 picks<=400.0km=2
+MATCHED: 2023-10-14T15:14:21Z -> data/sisbra_smoke_w24/20231014T151420_usp2023udsb_row5517 picks=2
+[487/500] SISBRA 2023-12-14T02:33:59 lat=-21.410 lon=-57.130 mag=3.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-11-25T13:51:27Z -> data/sisbra_smoke_w24/20231125T135127_row5542
+[488/500] SISBRA 2023-12-14T03:36:44 lat=-9.860 lon=-39.890 mag=2.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-11-26T22:25:07Z -> data/sisbra_smoke_w24/20231126T222507_row5544
+[489/500] SISBRA 2023-12-14T05:19:04 lat=-8.230 lon=-35.780 mag=2.2 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-11-27T02:33:04Z -> data/sisbra_smoke_w24/20231127T023304_row5545
+[490/500] SISBRA 2023-12-15T17:06:04 lat=-17.200 lon=-56.520 mag=2.7 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023wlob dt_s=0.153 dist_km=0.458 picks<=400.0km=2
+MATCHED: 2023-11-16T09:22:54Z -> data/sisbra_smoke_w24/20231116T092253_usp2023wlob_row5533 picks=2
+[491/500] SISBRA 2023-12-16T10:06:50 lat=-21.710 lon=-46.510 mag=2.6 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023wzwy dt_s=0.312 dist_km=0.357 picks<=400.0km=5
+MATCHED: 2023-11-24T05:46:14Z -> data/sisbra_smoke_w24/20231124T054613_usp2023wzwy_row5541 picks=5
+[492/500] SISBRA 2023-12-16T12:25:50 lat=-19.530 lon=-44.140 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023sond dt_s=0.396 dist_km=7.958 picks<=400.0km=0
+MATCHED: 2023-09-22T02:11:57Z -> data/sisbra_smoke_w24/20230922T021156_usp2023sond_row5503 picks=0
+[493/500] SISBRA 2023-12-20T18:14:20 lat=-7.520 lon=-52.320 mag=3.1 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-11-27T23:55:03Z -> data/sisbra_smoke_w24/20231127T235503_row5547
+[494/500] SISBRA 2023-12-22T04:22:11 lat=-2.220 lon=-53.550 mag=1.0 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-12-10T01:25:45Z -> data/sisbra_smoke_w24/20231210T012545_row5557
+[495/500] SISBRA 2023-12-24T19:33:02 lat=-6.160 lon=-50.930 mag=2.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ybeh dt_s=0.094 dist_km=0.244 picks<=400.0km=2
+MATCHED: 2023-12-09T04:10:04Z -> data/sisbra_smoke_w24/20231209T041003_usp2023ybeh_row5555 picks=2
+[496/500] SISBRA 2023-12-28T04:05:46 lat=-11.270 lon=-40.540 mag=2.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023xiin dt_s=0.283 dist_km=0.587 picks<=400.0km=5
+MATCHED: 2023-11-28T20:42:51Z -> data/sisbra_smoke_w24/20231128T204250_usp2023xiin_row5551 picks=5
+[497/500] SISBRA 2023-12-29T05:25:40 lat=-13.710 lon=-58.880 mag=3.1 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ykkc dt_s=0.374 dist_km=0.593 picks<=400.0km=4
+MATCHED: 2023-12-14T05:19:04Z -> data/sisbra_smoke_w24/20231214T051903_usp2023ykkc_row5561 picks=4
+[498/500] SISBRA 2023-12-29T15:48:15 lat=-9.840 lon=-39.950 mag=2.0 window=+/-120.0s r=1.0deg
+NO_MATCH: 2023-12-14T03:36:44Z -> data/sisbra_smoke_w24/20231214T033644_row5560
+[499/500] SISBRA 2023-12-29T16:01:00 lat=-8.350 lon=-35.990 mag=2.2 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023xjvl dt_s=0.923 dist_km=0.164 picks<=400.0km=4
+MATCHED: 2023-11-29T16:22:59Z -> data/sisbra_smoke_w24/20231129T162259_usp2023xjvl_row5552 picks=4
+[500/500] SISBRA 2023-12-30T13:59:36 lat=-16.590 lon=-55.370 mag=2.8 window=+/-120.0s r=1.0deg
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023wssz dt_s=0.121 dist_km=0.581 picks<=400.0km=0
+MATCHED: 2023-11-20T07:49:57Z -> data/sisbra_smoke_w24/20231120T074956_usp2023wssz_row5540 picks=0
+NO_MATCH: 2023-12-24T19:33:02Z -> data/sisbra_smoke_w24/20231224T193302_row5567
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023xhfc dt_s=0.406 dist_km=0.366 picks<=400.0km=6
+MATCHED: 2023-11-28T05:50:40Z -> data/sisbra_smoke_w24/20231128T055040_usp2023xhfc_row5548 picks=6
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023wrav dt_s=0.288 dist_km=0.408 picks<=400.0km=6
+MATCHED: 2023-11-19T09:30:39Z -> data/sisbra_smoke_w24/20231119T093038_usp2023wrav_row5537 picks=6
+NO_MATCH: 2023-12-22T04:22:11Z -> data/sisbra_smoke_w24/20231222T042211_row5566
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023xdio dt_s=0.469 dist_km=0.529 picks<=400.0km=2
+MATCHED: 2023-11-26T03:03:09Z -> data/sisbra_smoke_w24/20231126T030308_usp2023xdio_row5543 picks=2
+NO_MATCH: 2023-12-29T15:48:15Z -> data/sisbra_smoke_w24/20231229T154815_row5570
+NO_MATCH: 2023-12-28T04:05:46Z -> data/sisbra_smoke_w24/20231228T040546_row5568
+NO_MATCH: 2023-12-29T16:01:00Z -> data/sisbra_smoke_w24/20231229T160100_row5571
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023xifn dt_s=0.313 dist_km=0.405 picks<=400.0km=4
+MATCHED: 2023-11-28T19:12:18Z -> data/sisbra_smoke_w24/20231128T191217_usp2023xifn_row5550 picks=4
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023xfhn dt_s=0.460 dist_km=0.537 picks<=400.0km=3
+MATCHED: 2023-11-27T04:48:16Z -> data/sisbra_smoke_w24/20231127T044816_usp2023xfhn_row5546 picks=3
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ywir dt_s=0.570 dist_km=0.588 picks<=400.0km=0
+MATCHED: 2023-12-20T18:14:20Z -> data/sisbra_smoke_w24/20231220T181419_usp2023ywir_row5565 picks=0
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023yccw dt_s=1.370 dist_km=19.347 picks<=400.0km=0
+MATCHED: 2023-12-09T16:35:04Z -> data/sisbra_smoke_w24/20231209T163505_usp2023yccw_row5556 picks=0
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ykbh dt_s=0.092 dist_km=0.482 picks<=400.0km=4
+MATCHED: 2023-12-14T00:52:19Z -> data/sisbra_smoke_w24/20231214T005218_usp2023ykbh_row5558 picks=4
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023yope dt_s=0.254 dist_km=0.410 picks<=400.0km=9
+MATCHED: 2023-12-16T12:25:50Z -> data/sisbra_smoke_w24/20231216T122549_usp2023yope_row5564 picks=9
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023wsrg dt_s=0.043 dist_km=0.379 picks<=400.0km=1
+MATCHED: 2023-11-20T06:57:14Z -> data/sisbra_smoke_w24/20231120T065713_usp2023wsrg_row5539 picks=1
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023yncs dt_s=0.293 dist_km=1.056 picks<=400.0km=6
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023yokp dt_s=1.237 dist_km=1.385 picks<=400.0km=8
+MATCHED: 2023-12-16T10:06:50Z -> data/sisbra_smoke_w24/20231216T100648_usp2023yokp_row5563 picks=8
+MATCHED: 2023-12-15T17:06:04Z -> data/sisbra_smoke_w24/20231215T170603_usp2023yncs_row5562 picks=6
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023xogg dt_s=0.427 dist_km=0.088 picks<=400.0km=0
+MATCHED: 2023-12-02T02:23:31Z -> data/sisbra_smoke_w24/20231202T022331_usp2023xogg_row5554 picks=0
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023zohi dt_s=1.371 dist_km=30.963 picks<=400.0km=3
+MATCHED: 2023-12-30T13:59:36Z -> data/sisbra_smoke_w24/20231230T135934_usp2023zohi_row5572 picks=3
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023xhsr dt_s=0.470 dist_km=0.534 picks<=400.0km=4
+MATCHED: 2023-11-28T12:43:12Z -> data/sisbra_smoke_w24/20231128T124311_usp2023xhsr_row5549 picks=4
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023xmoi dt_s=0.100 dist_km=0.493 picks<=400.0km=9
+MATCHED: 2023-12-01T04:12:01Z -> data/sisbra_smoke_w24/20231201T041200_usp2023xmoi_row5553 picks=9
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023zluw dt_s=0.199 dist_km=0.404 picks<=400.0km=1
+MATCHED: 2023-12-29T05:25:40Z -> data/sisbra_smoke_w24/20231229T052539_usp2023zluw_row5569 picks=1
+  candidates=1 scored=1
+  best=smi:org.gfz-potsdam.de/geofon/usp2023ykeq dt_s=0.519 dist_km=13.367 picks<=400.0km=4
+MATCHED: 2023-12-14T02:33:59Z -> data/sisbra_smoke_w24/20231214T023358_usp2023ykeq_row5559 picks=4
+Done. Counts: {'matched': 369, 'no_match': 131, 'ambiguous': 0, 'error': 0}
