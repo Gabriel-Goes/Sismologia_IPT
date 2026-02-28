@@ -8,7 +8,7 @@ This does NOT write files. It prints:
 - pick counts within a max distance (requires station metadata)
 
 Example:
-  pyenv exec python scripts/run_step02_one.py \
+  pyenv exec python scripts/legacy/run_step02_one.py \
     --client-url http://127.0.0.1:28080 \
     --time 2023-12-01T04:12:01Z --lat -18.58 --lon -45.14 --mag 3.1
 """
@@ -119,4 +119,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

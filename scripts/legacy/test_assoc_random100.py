@@ -6,7 +6,7 @@ Saída principal:
 - CSV com uma linha por evento SISBRA testado e melhor candidato FDSN (se houver).
 
 Exemplo:
-  pyenv exec python scripts/test_assoc_random100.py \
+  pyenv exec python scripts/legacy/test_assoc_random100.py \
     --client-url http://127.0.0.1:28080 \
     --sample-size 100 \
     --seed 42
@@ -29,7 +29,8 @@ from obspy.clients.fdsn.header import FDSNNoDataException, FDSNNoServiceExceptio
 from obspy.geodetics import gps2dist_azimuth
 
 # Allow imports from src/ without installing package.
-_SRC_DIR = Path(__file__).resolve().parents[1] / "src"
+# This script lives in scripts/legacy/, so repo root is parents[2].
+_SRC_DIR = Path(__file__).resolve().parents[2] / "src"
 if str(_SRC_DIR) not in sys.path:
     sys.path.insert(0, str(_SRC_DIR))
 
