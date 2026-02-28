@@ -24,6 +24,10 @@ MAX_PICK_DIST_KM="${MAX_PICK_DIST_KM:-400}"
 TIME_WINDOW_S="${TIME_WINDOW_S:-120}"
 MAXRADIUS_DEG="${MAXRADIUS_DEG:-1.0}"
 MAG_PAD="${MAG_PAD:-0.7}"
+EXPECTED_PYENV_ENV=""
+if [ -f .python-version ]; then
+  EXPECTED_PYENV_ENV="$(head -n1 .python-version | tr -d '[:space:]')"
+fi
 
 echo "[run_step02] repo: $(pwd)"
 echo "[run_step02] CLIENT_URL=$CLIENT_URL"
@@ -34,8 +38,13 @@ echo
 if command -v pyenv >/dev/null 2>&1; then
   PYTHON_RUNNER=(pyenv exec python)
   PYTHON_DESC="pyenv exec python"
+  CURRENT_PYENV_ENV="$(pyenv version-name 2>/dev/null || true)"
   echo "[run_step02] pyenv: $(pyenv --version)"
-  echo "[run_step02] pyenv version: $(pyenv version-name 2>/dev/null || true)"
+  echo "[run_step02] pyenv version: ${CURRENT_PYENV_ENV}"
+  echo "[run_step02] pyenv expected (.python-version): ${EXPECTED_PYENV_ENV:-unset}"
+  if [ -n "${EXPECTED_PYENV_ENV:-}" ] && [ "$CURRENT_PYENV_ENV" != "$EXPECTED_PYENV_ENV" ]; then
+    echo "[run_step02] WARN: pyenv env ativo ($CURRENT_PYENV_ENV) difere de .python-version ($EXPECTED_PYENV_ENV)"
+  fi
 elif command -v python3 >/dev/null 2>&1; then
   PYTHON_RUNNER=(python3)
   PYTHON_DESC="python3"

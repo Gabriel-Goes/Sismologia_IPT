@@ -5,6 +5,11 @@ Keep only events with required 3-channel triplet in compatible root.
 Rule:
 - event remains in compatible root if at least one station (net, sta, loc)
   has all required channels (default HHZ,HHN,HHE) in waveform files.
+  This supports both:
+  - split files per channel: NET.STA.LOC.HHZ_...mseed
+  - merged 3C files: NET.STA.LOC.HH3_...mseed
+  - merged 3C files: NET_STA_DATETIME.mseed
+  (for merged files, channels are read from mseed headers)
 - otherwise event is moved to incompatible root.
 """
 
@@ -19,19 +24,38 @@ from collections import Counter
 from datetime import datetime, timezone
 
 
-def _station_channels_from_mseed(event_dir: str, waveforms_subdir: str) -> dict[tuple[str, str, str], set[str]]:
+def _station_channels_from_mseed(
+    event_dir: str,
+    waveforms_subdir: str,
+    required_channels: set[str],
+) -> dict[tuple[str, str, str], set[str]]:
     out: dict[tuple[str, str, str], set[str]] = {}
     pattern = os.path.join(event_dir, waveforms_subdir, "*.mseed")
     for fp in glob.glob(pattern):
         base = os.path.basename(fp)
-        # name format: NET.STA.LOC.CHA_YYYY...mseed
+        # Split-format hint in filename: NET.STA.LOC.CHA_YYYY...mseed
         left = base.split("_", 1)[0]
         parts = left.split(".")
-        if len(parts) < 4:
+        if len(parts) >= 4:
+            net, sta, loc, cha = parts[0], parts[1], parts[2], parts[3].upper()
+            key = (net, sta, loc)
+            if cha in required_channels:
+                out.setdefault(key, set()).add(cha)
+                continue
+        try:
+            from obspy import read
+
+            st = read(fp, headonly=True)
+            for tr in st:
+                net = str(getattr(tr.stats, "network", "") or (parts[0] if len(parts) >= 1 else ""))
+                sta = str(getattr(tr.stats, "station", "") or (parts[1] if len(parts) >= 2 else ""))
+                loc = str(getattr(tr.stats, "location", "") or (parts[2] if len(parts) >= 3 else ""))
+                cha = str(getattr(tr.stats, "channel", "")).upper()
+                if not net or not sta or not cha:
+                    continue
+                out.setdefault((net, sta, loc), set()).add(cha)
+        except Exception:
             continue
-        net, sta, loc, cha = parts[0], parts[1], parts[2], parts[3].upper()
-        key = (net, sta, loc)
-        out.setdefault(key, set()).add(cha)
     return out
 
 
@@ -61,7 +85,7 @@ def main() -> int:
     stats = Counter()
     for d in comp_dirs:
         folder = os.path.basename(d)
-        by_sta = _station_channels_from_mseed(d, args.waveforms_subdir)
+        by_sta = _station_channels_from_mseed(d, args.waveforms_subdir, req)
         max_sta_channels = max((len(v) for v in by_sta.values()), default=0)
         has_triplet = any(req.issubset(chs) for chs in by_sta.values())
 
@@ -126,4 +150,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

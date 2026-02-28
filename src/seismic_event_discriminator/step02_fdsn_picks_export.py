@@ -40,6 +40,9 @@ from seismic_event_discriminator.step01_catalogo_selecao import SisbraEvent, rea
 
 
 _THREAD_LOCAL = threading.local()
+STEP03_FILENAME_PATTERN = "NET_STA_DATETIME.mseed"
+STEP03_DATETIME_SOURCE = "event_origin_utc"
+STEP03_DATETIME_FORMAT = "%Y%jT%H%M%S"
 
 
 def _utc_iso(dt: datetime) -> str:
@@ -202,6 +205,8 @@ def _write_event_bundle(
     ev: Optional[Event],
     picks_ok: list[dict],
     picks_skipped: list[dict],
+    step03_output_mode: str,
+    step03_component_channels: list[str],
 ) -> str:
     os.makedirs(out_root, exist_ok=True)
 
@@ -226,6 +231,13 @@ def _write_event_bundle(
         "fdsn": None,
         "picks": picks_ok,
         "picks_skipped": picks_skipped,
+        "waveform_download_contract": {
+            "step03_output_mode": step03_output_mode,
+            "step03_component_channels": step03_component_channels,
+            "step03_filename_pattern": STEP03_FILENAME_PATTERN,
+            "step03_datetime_source": STEP03_DATETIME_SOURCE,
+            "step03_datetime_format": STEP03_DATETIME_FORMAT,
+        },
     }
 
     if ev is not None:
@@ -265,6 +277,8 @@ def _process_one_event(
     max_pick_dist_km: float,
     out_root: str,
     inventory,
+    step03_output_mode: str,
+    step03_component_channels: list[str],
 ) -> str:
     s = sisbra_event
     t0 = UTCDateTime(s.origin_time)
@@ -300,6 +314,8 @@ def _process_one_event(
             ev=None,
             picks_ok=[],
             picks_skipped=[],
+            step03_output_mode=step03_output_mode,
+            step03_component_channels=step03_component_channels,
         )
         print("NO_MATCH:", _utc_iso(s.origin_time), "->", out_dir)
         return "no_match"
@@ -312,6 +328,8 @@ def _process_one_event(
             ev=None,
             picks_ok=[],
             picks_skipped=[],
+            step03_output_mode=step03_output_mode,
+            step03_component_channels=step03_component_channels,
         )
         print("NO_MATCH:", _utc_iso(s.origin_time), "->", out_dir)
         return "no_match"
@@ -325,6 +343,8 @@ def _process_one_event(
             ev=None,
             picks_ok=[],
             picks_skipped=[],
+            step03_output_mode=step03_output_mode,
+            step03_component_channels=step03_component_channels,
         )
         print("NO_MATCH:", _utc_iso(s.origin_time), "->", out_dir)
         return "no_match"
@@ -352,6 +372,8 @@ def _process_one_event(
             ev=None,
             picks_ok=[],
             picks_skipped=[],
+            step03_output_mode=step03_output_mode,
+            step03_component_channels=step03_component_channels,
         )
         print("NO_MATCH:", _utc_iso(s.origin_time), "->", out_dir)
         return "no_match"
@@ -390,6 +412,8 @@ def _process_one_event(
         ev=best_ev,
         picks_ok=picks_ok,
         picks_skipped=picks_skipped,
+        step03_output_mode=step03_output_mode,
+        step03_component_channels=step03_component_channels,
     )
     print(status.upper() + ":", _utc_iso(s.origin_time), "->", out_dir, f"picks={len(picks_ok)}")
     return status
@@ -411,8 +435,20 @@ def main() -> int:
     ap.add_argument("--max-pick-dist-km", type=float, default=400.0, help="Distância máxima (km) para reter picks.")
     ap.add_argument("--workers", type=int, default=1, help="Número de workers paralelos para consultas FDSN.")
     ap.add_argument("--out-root", default="data", help="Diretório raiz de saída (um subdir por evento).")
+    ap.add_argument(
+        "--step03-output-mode",
+        default="triplet_single_file",
+        choices=["triplet_single_file", "split_component_files"],
+        help="Contrato esperado para o Step03 na etapa de download de formas de onda.",
+    )
+    ap.add_argument(
+        "--step03-component-channels",
+        default="HHZ,HHN,HHE",
+        help="Canais alvo para Step03 (armazenados no event.json como contrato).",
+    )
 
     args = ap.parse_args()
+    step03_component_channels = [x.strip().upper() for x in str(args.step03_component_channels).split(",") if x.strip()]
 
     sisbra = read_sisbra_clean_csv(args.sisbra_csv, min_year=args.min_year, require_utc=True)
     if not sisbra:
@@ -450,6 +486,8 @@ def main() -> int:
                 max_pick_dist_km=args.max_pick_dist_km,
                 out_root=args.out_root,
                 inventory=inventory,
+                step03_output_mode=args.step03_output_mode,
+                step03_component_channels=step03_component_channels,
             )
             counts[status] = counts.get(status, 0) + 1
     else:
@@ -468,6 +506,8 @@ def main() -> int:
                     max_pick_dist_km=args.max_pick_dist_km,
                     out_root=args.out_root,
                     inventory=inventory,
+                    step03_output_mode=args.step03_output_mode,
+                    step03_component_channels=step03_component_channels,
                 )
                 futs.append(fut)
 

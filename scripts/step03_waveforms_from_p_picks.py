@@ -7,6 +7,9 @@ Rules implemented:
 - use only picks with dist_km <= --max-pick-dist-km
 - fetch 60 s windows: [pick_time - --pre-p-s, pick_time + --post-p-s]
 - do not fetch any waveform for events without qualifying P picks
+- when --component-channels is provided, default output is one 3C mseed per
+  station using event origin tag (NET_STA_DATETIME.mseed)
+  (use --split-component-files for legacy split-per-channel mode)
 """
 
 from __future__ import annotations
@@ -19,13 +22,18 @@ import os
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from typing import Any
 
 from obspy import UTCDateTime
+from obspy import Stream
 from obspy.clients.fdsn import Client
 
 
 _THREAD_LOCAL = threading.local()
+STEP03_FILENAME_PATTERN = "NET_STA_DATETIME.mseed"
+STEP03_DATETIME_SOURCE = "event_origin_utc"
+STEP03_DATETIME_FORMAT = "%Y%jT%H%M%S"
 
 
 def _client_for(base_url: str) -> Client:
@@ -54,6 +62,40 @@ def _event_id(payload: dict[str, Any]) -> str:
     return rid.split("/")[-1] if rid else ""
 
 
+def _parse_utc_datetime(raw: Any) -> datetime | None:
+    if raw is None:
+        return None
+    try:
+        if isinstance(raw, datetime):
+            dt = raw
+        else:
+            s = str(raw).strip()
+            if not s:
+                return None
+            dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc)
+    except Exception:
+        return None
+
+
+def _event_datetime_tag(payload: dict[str, Any], event_folder: str) -> str | None:
+    sis = payload.get("sisbra") or {}
+    fdsn = payload.get("fdsn") or {}
+    for candidate in (sis.get("origin_time"), fdsn.get("origin_time")):
+        dt = _parse_utc_datetime(candidate)
+        if dt is not None:
+            return dt.strftime(STEP03_DATETIME_FORMAT)
+
+    folder_head = str(event_folder or "").split("_")[0]
+    try:
+        dt = datetime.strptime(folder_head, "%Y%m%dT%H%M%S").replace(tzinfo=timezone.utc)
+        return dt.strftime(STEP03_DATETIME_FORMAT)
+    except Exception:
+        return None
+
+
 @dataclass(frozen=True)
 class PickTask:
     event_dir: str
@@ -66,6 +108,23 @@ class PickTask:
     channel: str
     phase_hint: str
     pick_time: str
+    dist_km: float | None
+    source_seed_id: str
+
+
+@dataclass(frozen=True)
+class TripletTask:
+    event_dir: str
+    event_folder: str
+    match_status: str
+    fdsn_event_id: str
+    network: str
+    station: str
+    location: str
+    channels: tuple[str, ...]
+    phase_hint: str
+    pick_time: str
+    event_datetime_tag: str
     dist_km: float | None
     source_seed_id: str
 
@@ -138,6 +197,59 @@ def _station_level_tasks(
     return tasks
 
 
+def _station_level_triplet_tasks(
+    *,
+    selected_picks: list[dict[str, Any]],
+    channels: list[str],
+) -> list[dict[str, Any]]:
+    """
+    From selected P picks, keep one reference pick per station (earliest pick time),
+    and emit one task per station requesting all channels in a single output file.
+    """
+    by_sta: dict[tuple[str, str, str], dict[str, Any]] = {}
+    for p in selected_picks:
+        key = (
+            str(p.get("network") or ""),
+            str(p.get("station") or ""),
+            str(p.get("location") or ""),
+        )
+        prev = by_sta.get(key)
+        if prev is None or str(p.get("time") or "") < str(prev.get("time") or ""):
+            by_sta[key] = p
+
+    tasks: list[dict[str, Any]] = []
+    for (_net, _sta, _loc), ref in sorted(by_sta.items(), key=lambda kv: (kv[0][0], kv[0][1], kv[0][2])):
+        tasks.append(
+            {
+                "network": str(ref.get("network") or ""),
+                "station": str(ref.get("station") or ""),
+                "location": str(ref.get("location") or ""),
+                "channels": tuple(channels),
+                "phase_hint": str(ref.get("phase_hint") or ""),
+                "time": str(ref.get("time") or ""),
+                "dist_km": _safe_float(ref.get("dist_km")),
+                "source_seed_id": str(ref.get("seed_id") or ""),
+            }
+        )
+    return tasks
+
+
+def _triplet_channel_tag(channels: tuple[str, ...]) -> str:
+    prefixes = {ch[:2].upper() for ch in channels if len(ch) >= 2}
+    if len(prefixes) == 1:
+        prefix = list(prefixes)[0]
+        return f"{prefix}3"
+    return "CH3"
+
+
+def _triplet_filename(task: TripletTask) -> str:
+    return f"{task.network}_{task.station}_{task.event_datetime_tag}.mseed"
+
+
+def _triplet_relpath(task: TripletTask, waveforms_subdir: str) -> str:
+    return os.path.join(waveforms_subdir, _triplet_filename(task))
+
+
 def _download_pick(
     *,
     client_url: str,
@@ -173,6 +285,10 @@ def _download_pick(
         "end_time": "",
         "status": "",
         "mseed_path": "",
+        "channels_requested": channel,
+        "event_datetime_tag": "",
+        "filename_pattern": "",
+        "name_collision": "0",
         "source_seed_id": task.source_seed_id,
         "error": "",
     }
@@ -213,6 +329,176 @@ def _download_pick(
         return row
 
 
+def _download_triplet(
+    *,
+    client_url: str,
+    task: TripletTask,
+    waveforms_subdir: str,
+    pre_p_s: float,
+    post_p_s: float,
+    overwrite: bool,
+    dry_run: bool,
+) -> dict[str, Any]:
+    network = task.network
+    station = task.station
+    location = task.location
+    channels = tuple(ch.upper() for ch in task.channels)
+    channel_tag = _triplet_channel_tag(channels)
+    phase_hint = task.phase_hint
+    seed_id = f"{network}.{station}.{location}.TRIPLET"
+    dist_km = task.dist_km
+    pick_time_str = task.pick_time
+
+    row = {
+        "event_folder": task.event_folder,
+        "match_status": task.match_status,
+        "fdsn_event_id": task.fdsn_event_id,
+        "seed_id": seed_id,
+        "network": network,
+        "station": station,
+        "location": location,
+        "channel": channel_tag,
+        "phase_hint": phase_hint,
+        "pick_time": pick_time_str,
+        "dist_km": dist_km if dist_km is not None else "",
+        "start_time": "",
+        "end_time": "",
+        "status": "",
+        "mseed_path": "",
+        "channels_requested": ",".join(channels),
+        "event_datetime_tag": task.event_datetime_tag,
+        "filename_pattern": STEP03_FILENAME_PATTERN,
+        "name_collision": "0",
+        "source_seed_id": task.source_seed_id,
+        "error": "",
+    }
+
+    try:
+        if not task.event_datetime_tag:
+            row["status"] = "error_missing_event_datetime"
+            row["error"] = "could not resolve event origin datetime tag"
+            return row
+
+        pick_time = UTCDateTime(pick_time_str)
+        t0 = pick_time - float(pre_p_s)
+        t1 = pick_time + float(post_p_s)
+        row["start_time"] = t0.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+        row["end_time"] = t1.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+
+        rel = _triplet_relpath(task, waveforms_subdir=waveforms_subdir)
+        out_path = os.path.join(task.event_dir, rel)
+        row["mseed_path"] = out_path
+
+        if os.path.exists(out_path) and not overwrite:
+            row["status"] = "skipped_exists"
+            return row
+
+        if dry_run:
+            row["status"] = "planned"
+            return row
+
+        os.makedirs(os.path.dirname(out_path), exist_ok=True)
+        client = _client_for(client_url)
+
+        out = Stream()
+        missing: list[str] = []
+        for ch in channels:
+            st = client.get_waveforms(network, station, location, ch, t0, t1)
+            selected = st.select(channel=ch)
+            if len(selected) == 0:
+                missing.append(ch)
+                continue
+            out += selected[0].copy()
+
+        if missing:
+            raise RuntimeError(f"missing channels in download: {missing}")
+        if len(out) == 0:
+            raise RuntimeError("empty stream")
+
+        out.write(out_path, format="MSEED")
+        row["status"] = "downloaded"
+        return row
+
+    except Exception as e:
+        row["status"] = "error"
+        row["error"] = str(e)
+        return row
+
+
+def _triplet_collision_row(
+    *,
+    task: TripletTask,
+    out_path: str,
+    pre_p_s: float,
+    post_p_s: float,
+) -> dict[str, Any]:
+    seed_id = f"{task.network}.{task.station}.{task.location}.TRIPLET"
+    row = {
+        "event_folder": task.event_folder,
+        "match_status": task.match_status,
+        "fdsn_event_id": task.fdsn_event_id,
+        "seed_id": seed_id,
+        "network": task.network,
+        "station": task.station,
+        "location": task.location,
+        "channel": _triplet_channel_tag(tuple(ch.upper() for ch in task.channels)),
+        "phase_hint": task.phase_hint,
+        "pick_time": task.pick_time,
+        "dist_km": task.dist_km if task.dist_km is not None else "",
+        "start_time": "",
+        "end_time": "",
+        "status": "error_name_collision",
+        "mseed_path": out_path,
+        "channels_requested": ",".join(ch.upper() for ch in task.channels),
+        "event_datetime_tag": task.event_datetime_tag,
+        "filename_pattern": STEP03_FILENAME_PATTERN,
+        "name_collision": "1",
+        "source_seed_id": task.source_seed_id,
+        "error": "duplicate NET_STA_DATETIME target for this event",
+    }
+    try:
+        pick_time = UTCDateTime(task.pick_time)
+        row["start_time"] = (pick_time - float(pre_p_s)).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+        row["end_time"] = (pick_time + float(post_p_s)).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+    except Exception:
+        pass
+    return row
+
+
+def _split_triplet_tasks_by_collision(
+    *,
+    tasks: list[TripletTask],
+    waveforms_subdir: str,
+    pre_p_s: float,
+    post_p_s: float,
+) -> tuple[list[TripletTask], list[dict[str, Any]]]:
+    by_out_path: dict[str, list[TripletTask]] = {}
+    valid: list[TripletTask] = []
+    collision_rows: list[dict[str, Any]] = []
+
+    for t in tasks:
+        if not t.event_datetime_tag:
+            valid.append(t)
+            continue
+        out_path = os.path.join(t.event_dir, _triplet_relpath(t, waveforms_subdir=waveforms_subdir))
+        by_out_path.setdefault(out_path, []).append(t)
+
+    for out_path, bucket in by_out_path.items():
+        if len(bucket) == 1:
+            valid.append(bucket[0])
+            continue
+        for t in bucket:
+            collision_rows.append(
+                _triplet_collision_row(
+                    task=t,
+                    out_path=out_path,
+                    pre_p_s=pre_p_s,
+                    post_p_s=post_p_s,
+                )
+            )
+    return valid, collision_rows
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Download 60 s waveform windows around P picks from step02 bundles.")
     ap.add_argument("--events-root", default="data/sisbra_mg_maglt4_depthlt10_w24")
@@ -236,8 +522,20 @@ def main() -> int:
         help="Comma-separated channel list to force per station, e.g. HHZ,HHN,HHE. "
         "If empty, downloads only picked channel.",
     )
+    ap.add_argument(
+        "--single-file-triplet",
+        action="store_true",
+        default=True,
+        help="When component-channels are set, store one mseed per station using NET_STA_DATETIME naming (default: enabled).",
+    )
+    ap.add_argument(
+        "--split-component-files",
+        action="store_false",
+        dest="single_file_triplet",
+        help="When component-channels are set, store one mseed per channel (legacy mode).",
+    )
     args = ap.parse_args()
-    component_channels = [x.strip().upper() for x in str(args.component_channels).split(",") if x.strip()]
+    component_channels_cli = [x.strip().upper() for x in str(args.component_channels).split(",") if x.strip()]
 
     event_json_paths = sorted(glob.glob(os.path.join(args.events_root, "*", "event.json")))
     if args.limit_events and args.limit_events > 0:
@@ -245,7 +543,8 @@ def main() -> int:
     if not event_json_paths:
         raise SystemExit(f"No event.json found under: {args.events_root}")
 
-    tasks: list[PickTask] = []
+    pick_tasks_queue: list[PickTask] = []
+    triplet_tasks_queue: list[TripletTask] = []
     events_scanned = 0
     events_selected = 0
     events_skipped_filters = 0
@@ -286,12 +585,42 @@ def main() -> int:
         events_with_p += 1
         event_dir = os.path.dirname(p)
         folder = os.path.basename(event_dir)
+        event_datetime_tag = _event_datetime_tag(payload, folder)
         ev_id = _event_id(payload)
+        contract = payload.get("waveform_download_contract") or {}
+        raw_contract_channels = contract.get("step03_component_channels")
+        if isinstance(raw_contract_channels, list):
+            contract_channels = [str(x).strip().upper() for x in raw_contract_channels if str(x).strip()]
+        else:
+            contract_channels = [
+                x.strip().upper() for x in str(raw_contract_channels or "").split(",") if x.strip()
+            ]
+        event_component_channels = list(component_channels_cli) if component_channels_cli else contract_channels
+        event_single_file_triplet = bool(args.single_file_triplet)
+        contract_mode = str(contract.get("step03_output_mode") or "")
+        if contract_mode == "triplet_single_file":
+            event_single_file_triplet = True
+        elif contract_mode == "split_component_files":
+            event_single_file_triplet = False
+
         pick_tasks: list[dict[str, Any]]
-        if component_channels:
-            pick_tasks = _station_level_tasks(selected_picks=selected, channels=component_channels)
+        triplet_tasks: list[dict[str, Any]]
+        if event_component_channels:
+            if event_single_file_triplet:
+                pick_tasks = []
+                triplet_tasks = _station_level_triplet_tasks(
+                    selected_picks=selected,
+                    channels=event_component_channels,
+                )
+            else:
+                pick_tasks = _station_level_tasks(
+                    selected_picks=selected,
+                    channels=event_component_channels,
+                )
+                triplet_tasks = []
         else:
             pick_tasks = []
+            triplet_tasks = []
             for pick in selected:
                 pick_tasks.append(
                     {
@@ -307,7 +636,7 @@ def main() -> int:
                 )
 
         for pick in pick_tasks:
-            tasks.append(
+            pick_tasks_queue.append(
                 PickTask(
                     event_dir=event_dir,
                     event_folder=folder,
@@ -323,22 +652,63 @@ def main() -> int:
                     source_seed_id=pick["source_seed_id"],
                 )
             )
-
-    rows: list[dict[str, Any]] = []
-    with ThreadPoolExecutor(max_workers=max(1, int(args.workers))) as ex:
-        futs = [
-            ex.submit(
-                _download_pick,
-                client_url=args.client_url,
-                task=t,
-                waveforms_subdir=args.waveforms_subdir,
-                pre_p_s=float(args.pre_p_s),
-                post_p_s=float(args.post_p_s),
-                overwrite=bool(args.overwrite),
-                dry_run=bool(args.dry_run),
+        for triplet in triplet_tasks:
+            triplet_tasks_queue.append(
+                TripletTask(
+                    event_dir=event_dir,
+                    event_folder=folder,
+                    match_status=status,
+                    fdsn_event_id=ev_id,
+                    network=triplet["network"],
+                    station=triplet["station"],
+                    location=triplet["location"],
+                    channels=triplet["channels"],
+                    phase_hint=triplet["phase_hint"],
+                    pick_time=triplet["time"],
+                    event_datetime_tag=event_datetime_tag or "",
+                    dist_km=triplet["dist_km"],
+                    source_seed_id=triplet["source_seed_id"],
+                )
             )
-            for t in tasks
-        ]
+
+    pre_p_s = float(args.pre_p_s)
+    post_p_s = float(args.post_p_s)
+    triplet_tasks_queue, collision_rows = _split_triplet_tasks_by_collision(
+        tasks=triplet_tasks_queue,
+        waveforms_subdir=args.waveforms_subdir,
+        pre_p_s=pre_p_s,
+        post_p_s=post_p_s,
+    )
+
+    rows: list[dict[str, Any]] = list(collision_rows)
+    with ThreadPoolExecutor(max_workers=max(1, int(args.workers))) as ex:
+        futs = []
+        for t in pick_tasks_queue:
+            futs.append(
+                ex.submit(
+                    _download_pick,
+                    client_url=args.client_url,
+                    task=t,
+                    waveforms_subdir=args.waveforms_subdir,
+                    pre_p_s=pre_p_s,
+                    post_p_s=post_p_s,
+                    overwrite=bool(args.overwrite),
+                    dry_run=bool(args.dry_run),
+                )
+            )
+        for t in triplet_tasks_queue:
+            futs.append(
+                ex.submit(
+                    _download_triplet,
+                    client_url=args.client_url,
+                    task=t,
+                    waveforms_subdir=args.waveforms_subdir,
+                    pre_p_s=pre_p_s,
+                    post_p_s=post_p_s,
+                    overwrite=bool(args.overwrite),
+                    dry_run=bool(args.dry_run),
+                )
+            )
         for fut in as_completed(futs):
             rows.append(fut.result())
 
@@ -360,6 +730,10 @@ def main() -> int:
         "end_time",
         "status",
         "mseed_path",
+        "channels_requested",
+        "event_datetime_tag",
+        "filename_pattern",
+        "name_collision",
         "source_seed_id",
         "error",
     ]
@@ -379,9 +753,16 @@ def main() -> int:
     print(f"events_skipped_filters={events_skipped_filters}")
     print(f"events_with_p={events_with_p}")
     print(f"events_no_p={events_no_p}")
-    if component_channels:
-        print(f"component_channels={component_channels}")
-    print(f"pick_tasks={len(tasks)}")
+    if component_channels_cli:
+        print(f"component_channels_cli={component_channels_cli}")
+    print(f"default_single_file_triplet={args.single_file_triplet}")
+    print(f"single_file_pattern={STEP03_FILENAME_PATTERN}")
+    print(f"single_file_datetime_source={STEP03_DATETIME_SOURCE}")
+    print(f"single_file_datetime_format={STEP03_DATETIME_FORMAT}")
+    print(f"name_collision_rows={len(collision_rows)}")
+    print(f"pick_tasks={len(pick_tasks_queue)}")
+    print(f"triplet_tasks={len(triplet_tasks_queue)}")
+    print(f"download_jobs={len(pick_tasks_queue) + len(triplet_tasks_queue)}")
     print(f"summary_csv={args.summary_csv}")
     print(f"status_counts={counts}")
     return 0
