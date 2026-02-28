@@ -12,11 +12,11 @@ Construir base local de analise por evento, acoplando metadados e waveform.
 - Endpoint FDSN para aquisicao de waveform.
 
 ## Outputs
-- `data/events/<event_id>/waveform.mseed`
+- `data/events/<event_folder>/waveform/*.mseed`
 - `event.json` atualizado com picks e status.
 
 ## Requirements
-1. Download de waveform em janela de 60s.
+1. Download de waveform em janela de 60s (P-10s a P+50s).
 2. Persistir picks por estacao quando disponiveis.
 3. Base incremental (nao recriar tudo em cada run).
 4. Preparar campos para SNR por pick (mesmo que calculo venha depois).

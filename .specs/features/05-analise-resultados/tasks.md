@@ -1,9 +1,9 @@
 # Tasks: 05-analise-resultados
 
 ## T1 - Consolidar dataset analitico
-- Status: pending
+- Status: completed
 - Verification:
-  - dataset unico com campos de evento + predicao
+  - datasets de auditoria gerados em CSV (`events`, `picks`, `errors`)
 
 ## T2 - Gerar estatisticas e tabelas
 - Status: pending

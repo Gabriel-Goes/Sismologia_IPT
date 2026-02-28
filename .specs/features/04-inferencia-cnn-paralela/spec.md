@@ -8,21 +8,19 @@ maiores.
 Executar inferencia da CNN por evento com suporte a processamento paralelo.
 
 ## Inputs
-- `data/events/<event_id>/event.json`
-- `data/events/<event_id>/waveform.mseed`
+- `event.json` por evento compativel
+- arquivos `.mseed` por evento (split por canal ou triplet por estacao)
 
 ## Outputs
-Opcao A:
-- `data/events/<event_id>/prediction.json`
-
-Opcao B:
-- atualizar `event.json` com campos de predicao
+- atualizar `event.json` com bloco `rnc_prediction`
+- gerar CSVs de auditoria (`events`, `picks`, `errors`)
 
 ## Requirements
 1. Unidade de trabalho independente por evento.
 2. Suporte a N workers configuravel.
 3. Falhas por evento nao devem abortar lote inteiro.
 4. Resultado deve ser rastreavel por evento.
+5. Persistencia da inferencia deve ocorrer no proprio `event.json`.
 
 ## Acceptance Criteria
 1. Lote de teste executa com workers > 1.

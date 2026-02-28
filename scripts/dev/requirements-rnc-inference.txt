@@ -1,0 +1,4 @@
+# RNC inference dependencies (includes core stack).
+-r requirements-core-pipeline.txt
+tensorflow
+

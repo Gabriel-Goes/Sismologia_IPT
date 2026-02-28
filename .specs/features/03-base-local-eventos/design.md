@@ -3,15 +3,15 @@
 ## Directory Contract
 ```
 data/events/
-  <event_id>/
+  <event_folder>/
     event.json
     event.xml        # opcional
-    waveform.mseed
+    waveform/*.mseed
 ```
 
 ## update rules
 1. Se `event.json` ja existe, atualizar apenas campos derivados.
-2. Se `waveform.mseed` ja existe e nao houver `--force`, pular download.
+2. Se arquivos em `waveform/` ja existem e nao houver `--overwrite`, pular download.
 3. Registrar erros por evento sem interromper lote completo.
 
 ## event.json extension (v2)

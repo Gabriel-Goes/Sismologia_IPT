@@ -8,7 +8,7 @@ interpretar e comunicar.
 Gerar notebooks de analise com tabelas, graficos e mapas para leitura academica.
 
 ## Inputs
-- `event.json` e `prediction.json` por evento.
+- `event.json` por evento (com bloco `rnc_prediction` quando inferido).
 - Dados derivados das etapas anteriores.
 
 ## Outputs

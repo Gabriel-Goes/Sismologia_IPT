@@ -5,7 +5,7 @@
 2. Normalizar estrutura em tabela temporaria para filtro.
 3. Aplicar filtros espaciais e fisicos.
 4. Para cada evento selecionado:
-   - criar pasta `data/events/<event_id>/`,
+   - criar pasta `data/events/<event_folder>/`,
    - escrever `event.json`,
    - escrever `event.xml` quando disponivel.
 
@@ -17,17 +17,15 @@
 ## Minimal event.json (v1)
 ```json
 {
-  "event_id": "uspXXXX",
-  "origin_time": "2026-01-01T00:00:00Z",
-  "latitude": -20.0,
-  "longitude": -44.0,
-  "depth_km": 5.0,
-  "magnitude": 2.5,
-  "picks": [],
-  "status": {
-    "selected": true,
-    "waveform_downloaded": false,
-    "cnn_processed": false
+  "schema": "seismic_event_discriminator.event_bundle.v1",
+  "match_status": "matched",
+  "sisbra": {
+    "origin_time": "2026-01-01T00:00:00Z",
+    "latitude": -20.0,
+    "longitude": -44.0,
+    "depth_km": 5.0,
+    "magnitude": 2.5,
+    "state": "MG"
   }
 }
 ```

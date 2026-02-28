@@ -1,5 +1,11 @@
 # Keep spec-driven docs versioned, but ignore heavy legacy mappings if recreated
-.specs/codebase/
+.specs/codebase/*
+!.specs/codebase/STACK.md
+!.specs/codebase/ARCHITECTURE.md
+!.specs/codebase/CONVENTIONS.md
+!.specs/codebase/STRUCTURE.md
+!.specs/codebase/TESTING.md
+!.specs/codebase/INTEGRATIONS.md
 
 # Python
 __pycache__/

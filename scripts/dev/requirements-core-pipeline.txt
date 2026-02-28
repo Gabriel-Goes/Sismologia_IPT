@@ -1,0 +1,6 @@
+# Core dependencies for Step01/Step02/Step03 and event organization scripts.
+numpy
+pandas
+obspy
+matplotlib
+

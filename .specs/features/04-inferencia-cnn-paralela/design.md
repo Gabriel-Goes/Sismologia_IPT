@@ -13,15 +13,17 @@
 Comecar com shell runner simples para menor atrito operacional.
 
 ## Output Contract
-`prediction.json` (preferencial v1):
+Bloco `rnc_prediction` persistido no `event.json`:
 ```json
 {
-  "event_id": "uspXXXX",
-  "model": "cnn_v1",
-  "pick_predictions": [],
-  "event_score_natural": 0.73,
-  "event_label": "natural"
+  "rnc_prediction": {
+    "model_path": "models/rnc/model_2021354T1554.h5",
+    "status": "ok",
+    "event_label": "natural",
+    "event_score_natural": 0.73,
+    "pick_predictions": []
+  }
 }
 ```
 
-Em seguida, espelhar resumo em `event.json.status`.
+Resumo agregado exportado em CSVs para auditoria.

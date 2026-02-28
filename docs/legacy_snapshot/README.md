@@ -1,5 +1,8 @@
 # Snapshot da Documentacao Legado
 
+> Aviso: conteudo historico para consulta. Este snapshot nao e fonte normativa
+> de arquitetura/plano atual e pode conter referencias antigas ou quebradas.
+
 - Data do snapshot: 2026-02-11
 - Branch de origem: `refactor/fluxo-v2-documentado`
 - Commit de origem: `33abed6d704417a2f3d70470268d822647741772`

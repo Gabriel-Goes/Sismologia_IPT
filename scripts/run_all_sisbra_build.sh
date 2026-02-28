@@ -23,6 +23,10 @@ REPORT_FILE="$LOG_DIR/run_all_sisbra_${RUN_TS}.md"
 SUMMARY_CSV="$LOG_DIR/run_all_sisbra_${RUN_TS}_summary.csv"
 
 PYENV_OK="no"
+EXPECTED_PYENV_ENV=""
+if [ -f .python-version ]; then
+  EXPECTED_PYENV_ENV="$(head -n1 .python-version | tr -d '[:space:]')"
+fi
 if command -v pyenv >/dev/null 2>&1; then
   PYENV_OK="yes"
   PYTHON_RUNNER=(pyenv exec python)
@@ -47,11 +51,18 @@ fi
 
 PYTHON_EXE="$("${PYTHON_RUNNER[@]}" -c 'import sys; print(sys.executable)' 2>/dev/null || true)"
 OBSPY_VER="$("${PYTHON_RUNNER[@]}" -c 'import obspy; print(obspy.__version__)' 2>/dev/null || true)"
+CURRENT_PYENV_ENV=""
+if [ "$PYENV_OK" = "yes" ]; then
+  CURRENT_PYENV_ENV="$(pyenv version-name 2>/dev/null || true)"
+fi
 
 echo "[run-all] run_ts=$RUN_TS"
 echo "[run-all] report=$REPORT_FILE"
 echo "[run-all] log=$LOG_FILE"
 echo "[run-all] summary_csv=$SUMMARY_CSV"
+if [ "$PYENV_OK" = "yes" ] && [ -n "${EXPECTED_PYENV_ENV:-}" ] && [ "$CURRENT_PYENV_ENV" != "$EXPECTED_PYENV_ENV" ]; then
+  echo "[run-all] WARN: pyenv env ativo ($CURRENT_PYENV_ENV) difere de .python-version ($EXPECTED_PYENV_ENV)"
+fi
 
 {
   echo "# SISBRA Full Run Report ($RUN_TS)"
@@ -76,7 +87,8 @@ echo "[run-all] summary_csv=$SUMMARY_CSV"
   echo "- pyenv available: \`$PYENV_OK\`"
   if [ "$PYENV_OK" = "yes" ]; then
     echo "- pyenv version: \`$(pyenv --version)\`"
-    echo "- pyenv env: \`$(pyenv version-name 2>/dev/null || true)\`"
+    echo "- pyenv env: \`${CURRENT_PYENV_ENV}\`"
+    echo "- pyenv expected (.python-version): \`${EXPECTED_PYENV_ENV:-unset}\`"
   fi
   echo "- python exe: \`${PYTHON_EXE:-unavailable}\`"
   echo "- obspy: \`${OBSPY_VER:-unavailable}\`"

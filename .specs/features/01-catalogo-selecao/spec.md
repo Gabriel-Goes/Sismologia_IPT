@@ -20,8 +20,8 @@ Gerar um conjunto de eventos selecionados, cada um com arquivo parametrico
 ## Outputs
 - Lista/indice de eventos selecionados.
 - Arquivo por evento:
-  - `data/events/<event_id>/event.xml` (quando houver QuakeML),
-  - `data/events/<event_id>/event.json` (estrutura operacional).
+  - `data/events/<event_folder>/event.xml` (quando houver QuakeML),
+  - `data/events/<event_folder>/event.json` (estrutura operacional).
 
 ## Requirements
 1. Etapas 1 e 2 devem estar no mesmo notebook/script.

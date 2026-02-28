@@ -1,22 +1,23 @@
 # Tasks: 03-base-local-eventos
 
 ## T1 - Carregar lista de eventos selecionados
-- Status: pending
+- Status: completed
 - Verification:
   - percorre eventos selecionados com IDs unicos
 
 ## T2 - Baixar waveform 60s por evento
-- Status: pending
+- Status: completed
 - Verification:
-  - salva `waveform.mseed` por evento valido
+  - salva waveform por estacao/canal ou triplet por estacao
+  - janela `P-10s` a `P+50s` aplicada
 
 ## T3 - Persistir picks por estacao em event.json
-- Status: pending
+- Status: completed
 - Verification:
   - bloco `picks` populado quando dados existirem
 
 ## T4 - Estrategia incremental
-- Status: pending
+- Status: completed
 - Verification:
   - reexecucao parcial funciona sem duplicacao
 

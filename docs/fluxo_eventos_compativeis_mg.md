@@ -4,6 +4,34 @@ Este fluxo gera dois conjuntos finais:
 - `data/eventos_compativeis`: apenas eventos prontos para classificacao
 - `data/eventos_nao_compativeis`: eventos fora dos criterios ou sem onda P utilizavel
 
+## Execucao Real (target `data/events`)
+
+Para a execucao operacional que para antes da rede neural, use:
+
+```bash
+cd /home/ggrl/projetos/ClassificadorSismologico
+bash scripts/run_real_mg_maglt4_depthlt10.sh
+```
+
+Este wrapper aplica os criterios estritos:
+- `match_status == matched`
+- `state == MG`
+- `year >= 2020`
+- `magnitude < 4`
+- `depth_km < 10`
+- pick `P*` com `dist_km <= 400`
+- janela `P-10s` a `P+50s`
+- canais `HHZ,HHN,HHE`
+
+Layout final:
+- `data/events/YYYYJJJTHHMMSS/event.json`
+- `data/events/YYYYJJJTHHMMSS/event.xml`
+- `data/events/YYYYJJJTHHMMSS/waveform/NET_STA_DATETIME.mseed`
+
+Regra de seguranca:
+- o wrapper aborta se `data/events` nao estiver vazio (nao faz limpeza automatica).
+- precheck funcional de endpoint e feito com cliente `obspy` (nao usa `curl`).
+
 ## Criterios de Compatibilidade
 - `match_status == matched`
 - `ST == MG`
@@ -24,6 +52,14 @@ Este fluxo gera dois conjuntos finais:
 - Step03 (ondas por pick P): `scripts/step03_waveforms_from_p_picks.py`
 - Organizacao final: `scripts/organize_compatible_events.py`
 
+Observacao:
+- O Step02 grava no `event.json` o bloco `waveform_download_contract`
+  (modo + canais + padrao de nome). O Step03 usa esse contrato automaticamente quando
+  `--component-channels` nao e informado via CLI.
+- Setup/check de ambiente pyenv: `docs/ambiente_pyenv.md`.
+- Arquitetura e planejamento canonicos: `.specs/project/`, `.specs/codebase/` e `.specs/features/`.
+- Scripts de diagnostico historico: `scripts/legacy/`.
+
 ## Execucao Recomendada
 1. Gerar CSV filtrado MG/M<4/depth<10:
 ```bash
@@ -36,11 +72,13 @@ with open(src,encoding='utf-8',newline='') as f:
     r=csv.DictReader(f); fn=r.fieldnames
     for row in r:
         st=(row.get('ST') or '').strip().upper()
+        try: year=int(row.get('year',''))
+        except: continue
         try: mag=float(row.get('mag',''))
         except: continue
         try: dep=float(row.get('depth',''))
         except: continue
-        if st=='MG' and mag<4 and dep<10:
+        if st=='MG' and year>=2020 and mag<4 and dep<10:
             rows.append(row)
 with open(out,'w',encoding='utf-8',newline='') as f:
     w=csv.DictWriter(f,fieldnames=fn); w.writeheader(); w.writerows(rows)
@@ -57,6 +95,11 @@ cd /home/ggrl/projetos/ClassificadorSismologico && LOG_DIR=outputs/logs_mg_maglt
 ```bash
 cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/step03_waveforms_from_p_picks.py --events-root data/sisbra_mg_maglt4_depthlt10_w24 --client-url http://127.0.0.1:28080 --max-pick-dist-km 400 --pre-p-s 10 --post-p-s 50 --workers 12 --state-filter MG --max-mag 4 --max-depth-km 10 --component-channels HHZ,HHN,HHE --summary-csv outputs/waveform_triplet_download_summary_mg.csv
 ```
+- Com `--component-channels HHZ,HHN,HHE`, o default agora e salvar **1 arquivo 3C**
+  por estacao no formato `NET_STA_DATETIME.mseed`.
+- `DATETIME` usa origem do evento em UTC no formato juliano `%Y%jT%H%M%S`
+  (ex.: `2022004T134407`).
+- Para manter o modo legado (1 arquivo por canal), adicionar `--split-component-files`.
 
 4. Organizar compativeis/incompativeis:
 ```bash
@@ -68,8 +111,22 @@ cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/org
 cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/enforce_triplet_channels.py --compatible-root data/eventos_compativeis --incompatible-root data/eventos_nao_compativeis --required-channels HHZ,HHN,HHE --report-csv outputs/eventos_triplet_filter_report.csv --report-md outputs/eventos_triplet_filter_report.md
 ```
 
+6. Opcional: consolidar 3 arquivos (`HHZ/HHN/HHE`) em um unico `.mseed` 3C por estacao com nome `NET_STA_DATETIME.mseed`:
+```bash
+cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/merge_triplet_waveforms.py --compatible-root data/eventos_compativeis --waveforms-subdir waveforms --merged-subdir waveforms_3c --required-channels HHZ,HHN,HHE --summary-csv outputs/waveforms_3c_merge_summary.csv
+```
+
+7. Rodar inferencia RNC e persistir resultado no `event.json`:
+```bash
+cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/run_rnc_eventos_compativeis.py --compatible-root data/eventos_compativeis --model-path models/rnc/model_2021354T1554.h5 --workers 4 --skip-existing --summary-events-csv outputs/rnc_prediction_events.csv --summary-picks-csv outputs/rnc_prediction_picks.csv --summary-errors-csv outputs/rnc_prediction_errors.csv
+```
+
 ## Auditoria
 - Relatorio por evento: `outputs/eventos_compatibilidade_report.csv`
 - Relatorio resumido: `outputs/eventos_compatibilidade_report.md`
 - Resumo de download por pick/canal: `outputs/waveform_triplet_download_summary_mg.csv`
 - Relatorio de filtro por triplet: `outputs/eventos_triplet_filter_report.md`
+- Resumo de consolidacao 3C (opcional): `outputs/waveforms_3c_merge_summary.csv`
+- Predicao RNC por evento: `outputs/rnc_prediction_events.csv`
+- Predicao RNC por pick: `outputs/rnc_prediction_picks.csv`
+- Erros da etapa RNC: `outputs/rnc_prediction_errors.csv`

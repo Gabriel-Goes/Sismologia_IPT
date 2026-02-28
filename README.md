@@ -2,16 +2,47 @@
 
 ## Ambiente (GeoServer)
 
-Este repo assume uso de `pyenv` e, no GeoServer, o virtualenv `geo-seis` (ObsPy instalado).
-O arquivo `.python-version` fixa automaticamente o ambiente ao entrar no diretório.
-Nos wrappers (`scripts/run_all_sisbra_build.sh` e `scripts/run_step02.sh`), se `pyenv`
-não existir o fallback automático é `python3` (ou `python`).
+Este repo usa `pyenv` com `.python-version` para fixar o ambiente local no GeoServer.
+Ambiente padrão do projeto: `geo-seis`.
+
+Bootstrap/check recomendado:
 
 ```bash
 cd /home/ggrl/projetos/ClassificadorSismologico
-pyenv version
-python -c "import obspy; print('obspy ok', obspy.__version__)"
+scripts/dev/setup_pyenv_project.sh --env geo-seis --python 3.12.11 --set-local
+scripts/dev/setup_pyenv_project.sh --check-only
 ```
+
+Para RNC (TensorFlow), use ambiente dedicado:
+
+```bash
+cd /home/ggrl/projetos/ClassificadorSismologico
+scripts/dev/setup_pyenv_project.sh --env geo-seis-rnc --python 3.11.9 --with-rnc
+PYENV_VERSION=geo-seis-rnc pyenv exec python scripts/run_rnc_eventos_compativeis.py --help
+```
+
+Guia completo: `docs/ambiente_pyenv.md`.
+
+Nos wrappers (`scripts/run_all_sisbra_build.sh` e `scripts/run_step02.sh`), se `pyenv`
+não existir, o fallback automático é `python3` (ou `python`).
+
+## Arquitetura e Planejamento
+
+Fonte canônica de arquitetura e planejamento do projeto:
+- `.specs/project/`
+- `.specs/codebase/`
+- `.specs/features/`
+
+Documentacao em `docs/` pode conter material historico e operacional, mas as
+decisoes de arquitetura e roadmap devem ser registradas em `.specs/`.
+
+## Scripts Legados de Diagnostico
+
+Os utilitarios de diagnostico historico foram movidos para:
+- `scripts/legacy/`
+
+Indice e contexto de uso:
+- `scripts/legacy/README.md`
 
 ## Acesso ao seisArc (FDSNWS) via túnel reverso
 
@@ -29,6 +60,9 @@ nohup ssh -N -T -p 62222 \
   ggrl@geodb.duckdns.org \
   >/tmp/tunnel_seisarc_28080.log 2>&1 & disown
 ```
+
+Script legado equivalente para keepalive interativo:
+- `scripts/legacy/keep_tunnel_seisapp_interativo.sh`
 
 Teste no GeoServer:
 
@@ -69,6 +103,10 @@ data/YYYYMMDDTHHMMSS_<eventid>_rowNNNN/
   event.json  (SISBRA + match + picks filtrados < 400 km)
 ```
 
+O `event.json` exportado pelo Step02 inclui `waveform_download_contract`,
+usado pelo Step03 para definir o formato/canais de download por padrao,
+incluindo o padrao de nome `NET_STA_DATETIME.mseed`.
+
 ## Execução completa (todos os eventos SISBRA)
 
 Para processar todo o catálogo SISBRA e gerar os bundles em lote com log + relatório:
@@ -108,3 +146,53 @@ Observação:
 
 - O endpoint UnB (`http://164.41.28.122:5831`) pode estar indisponível por rede/firewall.
   O runner registra essa verificação no relatório.
+
+## Inferencia RNC em `eventos_compativeis`
+
+Modelo legado versionado no repo:
+- `models/rnc/model_2021354T1554.h5`
+
+Runner principal (persistencia em `event.json` + CSVs de auditoria):
+
+```bash
+cd /home/ggrl/projetos/ClassificadorSismologico
+pyenv exec python scripts/run_rnc_eventos_compativeis.py \
+  --compatible-root data/eventos_compativeis \
+  --model-path models/rnc/model_2021354T1554.h5 \
+  --workers 4 \
+  --skip-existing \
+  --summary-events-csv outputs/rnc_prediction_events.csv \
+  --summary-picks-csv outputs/rnc_prediction_picks.csv \
+  --summary-errors-csv outputs/rnc_prediction_errors.csv
+```
+
+Contrato de saida:
+- Atualiza `data/eventos_compativeis/<DATETIME>/event.json` com bloco `rnc_prediction`.
+- Gera:
+  - `outputs/rnc_prediction_events.csv`
+  - `outputs/rnc_prediction_picks.csv`
+  - `outputs/rnc_prediction_errors.csv`
+
+Opcional (formato mais proximo do esperado pela RNC original):
+- no Step03, ao usar `--component-channels HHZ,HHN,HHE`, o default ja e gerar
+  um unico `.mseed` 3C por estacao no formato `NET_STA_DATETIME.mseed`.
+- `DATETIME` usa origem do evento em UTC no formato juliano `%Y%jT%H%M%S`
+  (ex.: `2022004T134407`).
+- para bases antigas no formato split por canal, consolidar `HHZ/HHN/HHE`
+  em um unico `.mseed` 3C por estacao com o mesmo padrao:
+
+```bash
+cd /home/ggrl/projetos/ClassificadorSismologico
+pyenv exec python scripts/merge_triplet_waveforms.py \
+  --compatible-root data/eventos_compativeis \
+  --waveforms-subdir waveforms \
+  --merged-subdir waveforms_3c \
+  --required-channels HHZ,HHN,HHE \
+  --summary-csv outputs/waveforms_3c_merge_summary.csv
+```
+
+Dependencias para etapa RNC:
+- `numpy`
+- `pandas`
+- `obspy`
+- `tensorflow`
