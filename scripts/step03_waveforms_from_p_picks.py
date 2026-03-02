@@ -83,7 +83,7 @@ def _parse_utc_datetime(raw: Any) -> datetime | None:
 def _event_datetime_tag(payload: dict[str, Any], event_folder: str) -> str | None:
     sis = payload.get("sisbra") or {}
     fdsn = payload.get("fdsn") or {}
-    for candidate in (sis.get("origin_time"), fdsn.get("origin_time")):
+    for candidate in (fdsn.get("origin_time"), sis.get("origin_time")):
         dt = _parse_utc_datetime(candidate)
         if dt is not None:
             return dt.strftime(STEP03_DATETIME_FORMAT)
@@ -507,8 +507,8 @@ def main() -> int:
     ap.add_argument("--pre-p-s", type=float, default=10.0)
     ap.add_argument("--post-p-s", type=float, default=50.0)
     ap.add_argument("--workers", type=int, default=8)
-    ap.add_argument("--waveforms-subdir", default="waveforms")
-    ap.add_argument("--summary-csv", default="outputs/waveform_picks_download_summary.csv")
+    ap.add_argument("--waveforms-subdir", default="waveform")
+    ap.add_argument("--summary-csv", default="outputs/waveform_triplet_download_summary_events.csv")
     ap.add_argument("--limit-events", type=int, default=0, help="Optional event limit (0 = all).")
     ap.add_argument("--overwrite", action="store_true")
     ap.add_argument("--dry-run", action="store_true")

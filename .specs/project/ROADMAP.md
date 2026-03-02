@@ -1,5 +1,9 @@
 # ROADMAP
 
+## Decisao transversal (2026-03-02)
+- Filtro geografico de MG passa a ser deterministico por coordenadas (ponto-poligono).
+- Campos `ST`, toponimias e localidades ficam apenas como auditoria de consistencia.
+
 ## M0 - Bootstrap cleanroom (done)
 - Branch cleanroom criada.
 - Snapshot do legado arquivado.
@@ -18,6 +22,39 @@ em arquivos por evento (`xml|json`) para alimentar a etapa 3.
 ### Verification
 - Regras de filtro reproduziveis (regiao, magnitude, profundidade).
 - Contagem de eventos antes/depois registrada.
+
+## M1.1 - Alinhamento notebook -> pipeline Python+Bash (planned)
+### Goal
+Levar para os scripts operacionais a mesma regra validada no notebook Step1:
+inclusao de evento em MG por interseccao ponto-poligono, com `ST` apenas para
+auditoria.
+
+### Discovery baseline (Step1 RAW)
+- `rows_raw_total=5934`
+- `rows_keep_in_mg=918`
+- `rows_drop_outside_mg=4872`
+- `rows_drop_no_valid_coords=144`
+- `incons_st_mg_outside=15`
+- `incons_st_not_mg_inside=13`
+- `incons_st_empty_inside=0`
+
+### Deliverables
+- Documentacao de estado atual vs estado alvo em `.specs` e `docs/`.
+- Checklist tecnico fechado de migracao para:
+  - `scripts/filter_sisbra_csv.py`
+  - `scripts/step03_waveforms_from_p_picks.py`
+  - `scripts/materialize_events_dataset.py`
+  - `scripts/organize_compatible_events.py`
+  - `scripts/run_real_mg_maglt4_depthlt10.sh`
+- Politica de compatibilidade temporaria:
+  - manter `--state`/`--state-filter` na CLI;
+  - marcar como parametro de auditoria/deprecacao para gate geografico.
+
+### Verification
+- Mesma entrada de catalogo gera contagens iguais entre notebook Step1 e
+  pipeline migrado para o gate geografico.
+- Tabelas de inconsistencias `ST x geometria` disponiveis para auditoria.
+- Sem fallback silencioso para `ST` no criterio de inclusao em MG.
 
 ## M2 - Etapa 3: Base local incremental de analise
 ### Goal
@@ -78,3 +115,24 @@ Consolidar resultados em notebooks para avaliacao cientifica.
 ### Verification
 - Pipeline completo reproduzivel em ambiente SEISAPP.
 - Resultados
+
+## M5 - Contexto minerario ANM para priorizacao (future)
+### Goal
+Incorporar vetores oficiais da Agencia Nacional de Mineracao (ANM) para
+priorizar eventos em regioes de maior atividade mineraria e apoiar a validacao
+dos resultados da rede neural.
+
+### Deliverables
+- Ingestao vetorial ANM com versionamento de fonte e data de referencia.
+- Camada espacial derivada com atributos relevantes (substancia, estagio da
+  atividade, status operacional).
+- Regra de priorizacao por proximidade de origem sismica a minas ativas.
+- Indicadores de consistencia para classificacao antropogenica:
+  - maior confianca quando proximo de atividade mineraria ativa;
+  - alerta de possivel falso positivo quando distante de atividade mineraria.
+
+### Verification
+- Pipeline espacial reprodutivel e auditavel (mesma entrada -> mesmo resultado).
+- Relatorio comparando evento classificado vs contexto minerario de entorno.
+- Lista de casos inconsistentes para revisao com professores e responsaveis
+  pelo catalogo.

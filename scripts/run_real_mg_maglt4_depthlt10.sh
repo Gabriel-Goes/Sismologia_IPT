@@ -15,6 +15,7 @@ Environment overrides:
   FILTERED_CSV            (default: outputs/sisbra_mg_maglt4_depthlt10.csv)
   MIN_YEAR                (default: 2020, inclusive)
   STAGE_ROOT              (default: data/events_stage)
+  NON_MATCHED_ROOT        (default: data/events_stage_non_matched)
   FINAL_ROOT              (default: data/events)
   WORKERS_STEP02          (default: 12)
   WORKERS_STEP03          (default: 12)
@@ -33,10 +34,15 @@ CLIENT_URL="${CLIENT_URL:-http://127.0.0.1:28080}"
 SISBRA_CSV="${SISBRA_CSV:-catalogs/sisbra/sisbra_v2024May09/catalogo_CLEAN_v2024May09.csv}"
 FILTERED_CSV="${FILTERED_CSV:-outputs/sisbra_mg_maglt4_depthlt10.csv}"
 STAGE_ROOT="${STAGE_ROOT:-data/events_stage}"
+NON_MATCHED_ROOT="${NON_MATCHED_ROOT:-data/events_stage_non_matched}"
 FINAL_ROOT="${FINAL_ROOT:-data/events}"
 SUMMARY_CSV="${SUMMARY_CSV:-outputs/waveform_triplet_download_summary_events.csv}"
 REPORT_CSV="${REPORT_CSV:-outputs/events_materialize_report.csv}"
 REPORT_MD="${REPORT_MD:-outputs/events_materialize_report.md}"
+NON_MATCHED_AUDIT_CSV="${NON_MATCHED_AUDIT_CSV:-outputs/non_matched_audit.csv}"
+NON_MATCHED_AUDIT_MD="${NON_MATCHED_AUDIT_MD:-outputs/non_matched_audit.md}"
+AMBIGUOUS_EVENTS_CSV="${AMBIGUOUS_EVENTS_CSV:-outputs/ambiguous_events.csv}"
+NO_MATCH_EVENTS_CSV="${NO_MATCH_EVENTS_CSV:-outputs/no_match_events.csv}"
 WORKERS_STEP02="${WORKERS_STEP02:-12}"
 WORKERS_STEP03="${WORKERS_STEP03:-12}"
 TIME_WINDOW_S="${TIME_WINDOW_S:-120}"
@@ -84,8 +90,13 @@ if [ "$STAGE_MUST_BE_EMPTY" = "1" ] && [ -d "$STAGE_ROOT" ] && [ -n "$(find "$ST
   echo "[run-real] Clean it manually or set STAGE_MUST_BE_EMPTY=0."
   exit 1
 fi
+if [ "$STAGE_MUST_BE_EMPTY" = "1" ] && [ -d "$NON_MATCHED_ROOT" ] && [ -n "$(find "$NON_MATCHED_ROOT" -mindepth 1 -print -quit 2>/dev/null || true)" ]; then
+  echo "[run-real] ERROR: $NON_MATCHED_ROOT is not empty and STAGE_MUST_BE_EMPTY=1."
+  echo "[run-real] Clean it manually or set STAGE_MUST_BE_EMPTY=0."
+  exit 1
+fi
 
-mkdir -p "$(dirname "$FILTERED_CSV")" "$STAGE_ROOT" "$FINAL_ROOT"
+mkdir -p "$(dirname "$FILTERED_CSV")" "$STAGE_ROOT" "$NON_MATCHED_ROOT" "$FINAL_ROOT"
 
 {
   echo "# Real Run Report ($RUN_TS)"
@@ -95,6 +106,7 @@ mkdir -p "$(dirname "$FILTERED_CSV")" "$STAGE_ROOT" "$FINAL_ROOT"
   echo "- SISBRA_CSV: \`$SISBRA_CSV\`"
   echo "- FILTERED_CSV: \`$FILTERED_CSV\`"
   echo "- STAGE_ROOT: \`$STAGE_ROOT\`"
+  echo "- NON_MATCHED_ROOT: \`$NON_MATCHED_ROOT\`"
   echo "- FINAL_ROOT: \`$FINAL_ROOT\`"
   echo "- SUMMARY_CSV: \`$SUMMARY_CSV\`"
   echo "- STATE_FILTER: \`$STATE_FILTER\`"
@@ -169,6 +181,7 @@ $PYTHON_DESC src/seismic_event_discriminator/step02_fdsn_picks_export.py \\
   --n-last 0 \\
   --workers "$WORKERS_STEP02" \\
   --out-root "$STAGE_ROOT" \\
+  --non-matched-root "$NON_MATCHED_ROOT" \\
   --max-pick-dist-km "$MAX_PICK_DIST_KM" \\
   --time-window-s "$TIME_WINDOW_S" \\
   --maxradius-deg "$MAXRADIUS_DEG" \\
@@ -183,12 +196,37 @@ EOF
   --n-last 0 \
   --workers "$WORKERS_STEP02" \
   --out-root "$STAGE_ROOT" \
+  --non-matched-root "$NON_MATCHED_ROOT" \
   --max-pick-dist-km "$MAX_PICK_DIST_KM" \
   --time-window-s "$TIME_WINDOW_S" \
   --maxradius-deg "$MAXRADIUS_DEG" \
   --mag-pad "$MAG_PAD" \
   --step03-output-mode triplet_single_file \
   --step03-component-channels "$COMPONENT_CHANNELS"
+
+echo "[run-real] step B2: audit non-matched bundles"
+cat >> "$REPORT_FILE" <<EOF
+
+b2) Audit no_match + ambiguous
+\`\`\`bash
+$PYTHON_DESC scripts/audit_non_matched_events.py \\
+  --non-matched-root "$NON_MATCHED_ROOT" \\
+  --report-csv "$NON_MATCHED_AUDIT_CSV" \\
+  --report-md "$NON_MATCHED_AUDIT_MD" \\
+  --ambiguous-csv "$AMBIGUOUS_EVENTS_CSV" \\
+  --no-match-csv "$NO_MATCH_EVENTS_CSV"
+\`\`\`
+EOF
+if find "$NON_MATCHED_ROOT" -type f -name event.json -print -quit 2>/dev/null | grep -q .; then
+  "${PYTHON_RUNNER[@]}" scripts/audit_non_matched_events.py \
+    --non-matched-root "$NON_MATCHED_ROOT" \
+    --report-csv "$NON_MATCHED_AUDIT_CSV" \
+    --report-md "$NON_MATCHED_AUDIT_MD" \
+    --ambiguous-csv "$AMBIGUOUS_EVENTS_CSV" \
+    --no-match-csv "$NO_MATCH_EVENTS_CSV"
+else
+  echo "[run-real] no non-matched bundles found under $NON_MATCHED_ROOT; skipping audit"
+fi
 
 echo "[run-real] step C: step03"
 cat >> "$REPORT_FILE" <<EOF
@@ -264,7 +302,12 @@ EOF
   echo
   echo "## Outputs"
   echo "- Stage root: \`$STAGE_ROOT\`"
+  echo "- Non-matched root: \`$NON_MATCHED_ROOT\`"
   echo "- Final root: \`$FINAL_ROOT\`"
+  echo "- Non-matched audit CSV: \`$NON_MATCHED_AUDIT_CSV\`"
+  echo "- Non-matched audit MD: \`$NON_MATCHED_AUDIT_MD\`"
+  echo "- Ambiguous events CSV: \`$AMBIGUOUS_EVENTS_CSV\`"
+  echo "- No-match events CSV: \`$NO_MATCH_EVENTS_CSV\`"
   echo "- Waveform summary: \`$SUMMARY_CSV\`"
   echo "- Materialize report CSV: \`$REPORT_CSV\`"
   echo "- Materialize report MD: \`$REPORT_MD\`"

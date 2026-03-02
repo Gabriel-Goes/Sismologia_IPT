@@ -4,6 +4,27 @@ Este fluxo gera dois conjuntos finais:
 - `data/eventos_compativeis`: apenas eventos prontos para classificacao
 - `data/eventos_nao_compativeis`: eventos fora dos criterios ou sem onda P utilizavel
 
+## Descobertas do Notebook Step1 (RAW + ponto-poligono)
+Fonte: `notebooks/step1_sisbra_selfcontained.ipynb` (execucao registrada no notebook).
+
+- `rows_raw_total=5934`
+- `rows_keep_in_mg=918`
+- `rows_drop_outside_mg=4872`
+- `rows_drop_no_valid_coords=144`
+- `incons_st_mg_outside=15`
+- `incons_st_not_mg_inside=13`
+- `incons_st_empty_inside=0`
+
+Conclusao:
+- a pergunta "evento ocorreu em MG?" deve ser respondida por coordenadas
+  (ponto-poligono), nao por `ST`/toponimia/localidade.
+- `ST` deve ficar como trilha de auditoria para detectar inconsistencias do catalogo.
+
+## Estado atual vs estado alvo
+- Estado atual (scripts Python+Bash): ainda usa gates por `ST` em partes do fluxo.
+- Estado alvo (aprovado): usar gate geografico deterministico em todo o pipeline.
+- Impacto atual: notebook e pipeline podem divergir na selecao de eventos em MG.
+
 ## Execucao Real (target `data/events`)
 
 Para a execucao operacional que para antes da rede neural, use:
@@ -13,7 +34,7 @@ cd /home/ggrl/projetos/ClassificadorSismologico
 bash scripts/run_real_mg_maglt4_depthlt10.sh
 ```
 
-Este wrapper aplica os criterios estritos:
+No codigo atual, este wrapper aplica os criterios estritos:
 - `match_status == matched`
 - `state == MG`
 - `year >= 2020`
@@ -28,18 +49,35 @@ Layout final:
 - `data/events/YYYYJJJTHHMMSS/event.xml`
 - `data/events/YYYYJJJTHHMMSS/waveform/NET_STA_DATETIME.mseed`
 
+Layout de investigacao (nao-matched):
+- `data/events_stage_non_matched/ambiguous/*/event.json`
+- `data/events_stage_non_matched/no_match/*/event.json`
+- `outputs/non_matched_audit.csv`
+- `outputs/non_matched_audit.md`
+- `outputs/ambiguous_events.csv`
+- `outputs/no_match_events.csv`
+
+Observacao:
+- eventos `no_match`/`ambiguous` com agencia SISBRA contendo `IAG/USP` sao marcados como
+  severidade `critical` na auditoria para investigacao prioritaria.
+
 Regra de seguranca:
 - o wrapper aborta se `data/events` nao estiver vazio (nao faz limpeza automatica).
 - precheck funcional de endpoint e feito com cliente `obspy` (nao usa `curl`).
 
 ## Criterios de Compatibilidade
-- `match_status == matched`
-- `ST == MG`
-- `magnitude < 4`
-- `depth_km < 10`
-- existe pelo menos 1 pick `P*` com `dist_km <= 400`
-- forma de onda baixada em janela `P-10s` a `P+50s`
-- precisa haver pelo menos um conjunto 3C por estacao com canais: `HHZ`, `HHN`, `HHE`
+- Implementado hoje (scripts):
+  - `match_status == matched`
+  - `ST == MG`
+  - `magnitude < 4`
+  - `depth_km < 10`
+  - existe pelo menos 1 pick `P*` com `dist_km <= 400`
+  - forma de onda baixada em janela `P-10s` a `P+50s`
+  - precisa haver pelo menos um conjunto 3C por estacao com canais: `HHZ`, `HHN`, `HHE`
+- Criterio alvo aprovado (ainda nao migrado no pipeline completo):
+  - `inside_mg_polygon == True` (interseccao ponto-poligono)
+  - `ST`/toponimia/localidade usados somente para auditoria de consistencia
+  - manter os demais gates tecnicos (mag/depth/picks/janela/canais)
 
 ## Nomenclatura de Diretorio Final
 - Em `eventos_compativeis`, o nome do diretorio e **somente**:
@@ -85,6 +123,8 @@ with open(out,'w',encoding='utf-8',newline='') as f:
 print(out, len(rows))
 PY
 ```
+Observacao: este passo ainda usa `ST` no codigo atual e sera substituido por
+filtro ponto-poligono na migracao do pipeline.
 
 2. Executar Step02 no subconjunto:
 ```bash
@@ -124,6 +164,10 @@ cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/run
 ## Auditoria
 - Relatorio por evento: `outputs/eventos_compatibilidade_report.csv`
 - Relatorio resumido: `outputs/eventos_compatibilidade_report.md`
+- Auditoria de nao-matched (consolidado): `outputs/non_matched_audit.csv`
+- Auditoria de nao-matched (resumo): `outputs/non_matched_audit.md`
+- Lista dedicada de `ambiguous`: `outputs/ambiguous_events.csv`
+- Lista dedicada de `no_match`: `outputs/no_match_events.csv`
 - Resumo de download por pick/canal: `outputs/waveform_triplet_download_summary_mg.csv`
 - Relatorio de filtro por triplet: `outputs/eventos_triplet_filter_report.md`
 - Resumo de consolidacao 3C (opcional): `outputs/waveforms_3c_merge_summary.csv`

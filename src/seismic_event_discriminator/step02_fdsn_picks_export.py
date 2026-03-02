@@ -17,6 +17,7 @@ import concurrent.futures
 import json
 import math
 import os
+import re
 import sys
 import threading
 from pathlib import Path
@@ -136,6 +137,66 @@ def _safe_dirname_for_event(ev: Event) -> str:
         if tail:
             base = f"{tag}_{tail}"
     return base
+
+
+def _extract_agency_tag(source_comments: str) -> str:
+    s = (source_comments or "").strip()
+    if not s:
+        return "UNKNOWN"
+    m = re.search(r"\(([^)]+)\)", s)
+    if m:
+        tag = m.group(1).strip()
+    else:
+        tag = s.split()[0].strip()
+    return tag if tag else "UNKNOWN"
+
+
+def _normalize_agency_tag(tag: str) -> str:
+    t = str(tag or "").upper()
+    t = re.sub(r"[^A-Z0-9]+", " ", t)
+    t = re.sub(r"\s+", " ", t).strip()
+    return t if t else "UNKNOWN"
+
+
+def _is_critical_agency(agency_tag_normalized: str, critical_patterns: list[str]) -> bool:
+    if not critical_patterns:
+        return False
+    haystack = _normalize_agency_tag(agency_tag_normalized)
+    for p in critical_patterns:
+        needle = _normalize_agency_tag(p)
+        if not needle or needle == "UNKNOWN":
+            continue
+        if needle in haystack:
+            return True
+    return False
+
+
+def _severity_for_status(match_status: str, is_critical_agency: bool) -> str:
+    status = str(match_status or "").strip().lower()
+    if status == "matched":
+        return "none"
+    if is_critical_agency:
+        return "critical"
+    if status == "ambiguous":
+        return "high"
+    if status == "no_match":
+        return "medium"
+    return "high"
+
+
+def _target_root_for_status(
+    *,
+    match_status: str,
+    out_root: str,
+    non_matched_root: str,
+    non_matched_split_status: bool,
+) -> str:
+    status = str(match_status or "").strip().lower()
+    if status == "matched" or not str(non_matched_root or "").strip():
+        return out_root
+    if non_matched_split_status:
+        return os.path.join(non_matched_root, status)
+    return non_matched_root
 
 
 def _extract_picks_json(
@@ -276,6 +337,9 @@ def _process_one_event(
     mag_pad: float,
     max_pick_dist_km: float,
     out_root: str,
+    non_matched_root: str,
+    non_matched_split_status: bool,
+    critical_agency_patterns: list[str],
     inventory,
     step03_output_mode: str,
     step03_component_channels: list[str],
@@ -302,15 +366,37 @@ def _process_one_event(
         f" mag={s.magnitude} window=+/-{time_window_s}s r={maxradius_deg}deg"
     )
 
+    sisbra_agency_tag_raw = _extract_agency_tag(s.source_comments)
+    sisbra_agency_tag_normalized = _normalize_agency_tag(sisbra_agency_tag_raw)
+
+    def _bundle_meta(status: str, extra_meta: dict | None = None) -> dict:
+        meta = dict(extra_meta or {})
+        is_critical = _is_critical_agency(
+            sisbra_agency_tag_normalized,
+            critical_patterns=critical_agency_patterns,
+        )
+        meta["sisbra_agency_tag_raw"] = sisbra_agency_tag_raw
+        meta["sisbra_agency_tag_normalized"] = sisbra_agency_tag_normalized
+        meta["is_critical_agency"] = bool(is_critical)
+        meta["severity"] = _severity_for_status(status, is_critical)
+        return meta
+
     try:
         c = _get_thread_client(client_url)
         cat = c.get_events(**q)
     except FDSNNoDataException as e:
-        out_dir = _write_event_bundle(
+        status = "no_match"
+        target_root = _target_root_for_status(
+            match_status=status,
             out_root=out_root,
+            non_matched_root=non_matched_root,
+            non_matched_split_status=non_matched_split_status,
+        )
+        out_dir = _write_event_bundle(
+            out_root=target_root,
             sisbra=s,
-            match_status="no_match",
-            match_meta={"error": f"no_data: {e}", "query": _json_sanitize(q)},
+            match_status=status,
+            match_meta=_bundle_meta(status, {"error": f"no_data: {e}", "query": _json_sanitize(q)}),
             ev=None,
             picks_ok=[],
             picks_skipped=[],
@@ -318,13 +404,20 @@ def _process_one_event(
             step03_component_channels=step03_component_channels,
         )
         print("NO_MATCH:", _utc_iso(s.origin_time), "->", out_dir)
-        return "no_match"
+        return status
     except Exception as e:
-        out_dir = _write_event_bundle(
+        status = "no_match"
+        target_root = _target_root_for_status(
+            match_status=status,
             out_root=out_root,
+            non_matched_root=non_matched_root,
+            non_matched_split_status=non_matched_split_status,
+        )
+        out_dir = _write_event_bundle(
+            out_root=target_root,
             sisbra=s,
-            match_status="no_match",
-            match_meta={"error": f"get_events_failed: {e}", "query": _json_sanitize(q)},
+            match_status=status,
+            match_meta=_bundle_meta(status, {"error": f"get_events_failed: {e}", "query": _json_sanitize(q)}),
             ev=None,
             picks_ok=[],
             picks_skipped=[],
@@ -332,14 +425,21 @@ def _process_one_event(
             step03_component_channels=step03_component_channels,
         )
         print("NO_MATCH:", _utc_iso(s.origin_time), "->", out_dir)
-        return "no_match"
+        return status
 
     if not cat.events:
-        out_dir = _write_event_bundle(
+        status = "no_match"
+        target_root = _target_root_for_status(
+            match_status=status,
             out_root=out_root,
+            non_matched_root=non_matched_root,
+            non_matched_split_status=non_matched_split_status,
+        )
+        out_dir = _write_event_bundle(
+            out_root=target_root,
             sisbra=s,
-            match_status="no_match",
-            match_meta={"query": _json_sanitize(q), "candidate_count": 0},
+            match_status=status,
+            match_meta=_bundle_meta(status, {"query": _json_sanitize(q), "candidate_count": 0}),
             ev=None,
             picks_ok=[],
             picks_skipped=[],
@@ -347,7 +447,7 @@ def _process_one_event(
             step03_component_channels=step03_component_channels,
         )
         print("NO_MATCH:", _utc_iso(s.origin_time), "->", out_dir)
-        return "no_match"
+        return status
 
     scored = []
     for ev in cat.events:
@@ -360,15 +460,22 @@ def _process_one_event(
     print(f"  candidates={len(cat.events)} scored={len(scored)}")
 
     if not scored:
-        out_dir = _write_event_bundle(
+        status = "no_match"
+        target_root = _target_root_for_status(
+            match_status=status,
             out_root=out_root,
+            non_matched_root=non_matched_root,
+            non_matched_split_status=non_matched_split_status,
+        )
+        out_dir = _write_event_bundle(
+            out_root=target_root,
             sisbra=s,
-            match_status="no_match",
-            match_meta={
+            match_status=status,
+            match_meta=_bundle_meta(status, {
                 "query": _json_sanitize(q),
                 "candidate_count": len(cat.events),
                 "error": "no_scored_candidates",
-            },
+            }),
             ev=None,
             picks_ok=[],
             picks_skipped=[],
@@ -376,7 +483,7 @@ def _process_one_event(
             step03_component_channels=step03_component_channels,
         )
         print("NO_MATCH:", _utc_iso(s.origin_time), "->", out_dir)
-        return "no_match"
+        return status
 
     best_key, best_meta, best_ev = scored[0]
     second = scored[1] if len(scored) > 1 else None
@@ -398,14 +505,21 @@ def _process_one_event(
     best_meta["query"] = _json_sanitize(q)
     best_meta["candidate_count"] = len(cat.events)
     best_meta["score_key"] = {"dt_s": best_key[0], "dist_km": best_key[1], "mag_key": best_key[2]}
+    best_meta = _bundle_meta(status, best_meta)
 
     picks_ok, picks_skipped = _extract_picks_json(ev=best_ev, inventory=inventory, max_dist_km=max_pick_dist_km)
     print(
         f"  best={best_meta.get('fdsn_event_resource_id','')} dt_s={best_meta['dt_s']:.3f}"
         f" dist_km={best_meta['dist_km']:.3f} picks<={max_pick_dist_km}km={len(picks_ok)}"
     )
-    out_dir = _write_event_bundle(
+    target_root = _target_root_for_status(
+        match_status=status,
         out_root=out_root,
+        non_matched_root=non_matched_root,
+        non_matched_split_status=non_matched_split_status,
+    )
+    out_dir = _write_event_bundle(
+        out_root=target_root,
         sisbra=s,
         match_status=status,
         match_meta=best_meta,
@@ -434,7 +548,29 @@ def main() -> int:
     ap.add_argument("--mag-pad", type=float, default=0.7, help="Tolerância de magnitude (SISBRA +/- mag-pad).")
     ap.add_argument("--max-pick-dist-km", type=float, default=400.0, help="Distância máxima (km) para reter picks.")
     ap.add_argument("--workers", type=int, default=1, help="Número de workers paralelos para consultas FDSN.")
-    ap.add_argument("--out-root", default="data", help="Diretório raiz de saída (um subdir por evento).")
+    ap.add_argument("--out-root", default="data", help="Diretório raiz para bundles matched.")
+    ap.add_argument(
+        "--non-matched-root",
+        default="",
+        help="Diretório opcional para bundles non-matched (no_match/ambiguous).",
+    )
+    ap.add_argument(
+        "--non-matched-split-status",
+        action="store_true",
+        default=True,
+        help="Quando --non-matched-root for usado, separar por status em subdirs (default: true).",
+    )
+    ap.add_argument(
+        "--no-non-matched-split-status",
+        action="store_false",
+        dest="non_matched_split_status",
+        help="Quando --non-matched-root for usado, gravar todos os non-matched na mesma pasta.",
+    )
+    ap.add_argument(
+        "--critical-agency-patterns",
+        default="IAG,USP,IAG-USP",
+        help="Padrões (CSV) para marcar no_match/ambiguous como severidade critical.",
+    )
     ap.add_argument(
         "--step03-output-mode",
         default="triplet_single_file",
@@ -449,6 +585,9 @@ def main() -> int:
 
     args = ap.parse_args()
     step03_component_channels = [x.strip().upper() for x in str(args.step03_component_channels).split(",") if x.strip()]
+    critical_agency_patterns = [
+        _normalize_agency_tag(x) for x in str(args.critical_agency_patterns).split(",") if x.strip()
+    ]
 
     sisbra = read_sisbra_clean_csv(args.sisbra_csv, min_year=args.min_year, require_utc=True)
     if not sisbra:
@@ -467,6 +606,8 @@ def main() -> int:
     inventory = c.get_stations(level="channel")
 
     os.makedirs(args.out_root, exist_ok=True)
+    if str(args.non_matched_root or "").strip():
+        os.makedirs(args.non_matched_root, exist_ok=True)
 
     counts: dict[str, int] = {"matched": 0, "no_match": 0, "ambiguous": 0, "error": 0}
     total = len(subset)
@@ -485,6 +626,9 @@ def main() -> int:
                 mag_pad=args.mag_pad,
                 max_pick_dist_km=args.max_pick_dist_km,
                 out_root=args.out_root,
+                non_matched_root=args.non_matched_root,
+                non_matched_split_status=bool(args.non_matched_split_status),
+                critical_agency_patterns=critical_agency_patterns,
                 inventory=inventory,
                 step03_output_mode=args.step03_output_mode,
                 step03_component_channels=step03_component_channels,
@@ -505,6 +649,9 @@ def main() -> int:
                     mag_pad=args.mag_pad,
                     max_pick_dist_km=args.max_pick_dist_km,
                     out_root=args.out_root,
+                    non_matched_root=args.non_matched_root,
+                    non_matched_split_status=bool(args.non_matched_split_status),
+                    critical_agency_patterns=critical_agency_patterns,
                     inventory=inventory,
                     step03_output_mode=args.step03_output_mode,
                     step03_component_channels=step03_component_channels,
