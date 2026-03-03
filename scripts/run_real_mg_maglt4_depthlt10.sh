@@ -2,7 +2,8 @@
 set -euo pipefail
 
 # Real run until final compatible events dataset (pre-RNC).
-# Criteria (strict): state=MG, mag<4, depth<10, P<=400km, window P-10/P+50, channels HHZ/HHN/HHE.
+# Criteria (strict): inside MG polygon, mag<4, depth<10, year>=MIN_YEAR(last),
+# P<=400km, window P-10/P+50, channels HHZ/HHN/HHE.
 
 if [ "${1:-}" = "--help" ] || [ "${1:-}" = "-h" ]; then
   cat <<'EOF'
@@ -10,15 +11,19 @@ Usage:
   bash scripts/run_real_mg_maglt4_depthlt10.sh
 
 Environment overrides:
-  CLIENT_URL              (default: http://127.0.0.1:28080)
+  CLIENT_URL              (default: auto: seisapp->http://10.110.0.134, other->http://127.0.0.1:28080)
   SISBRA_CSV              (default: catalogs/sisbra/.../catalogo_CLEAN_v2024May09.csv)
   FILTERED_CSV            (default: outputs/sisbra_mg_maglt4_depthlt10.csv)
+  STATE_FILTER            (default: MG, audit only for ST-vs-geometry)
   MIN_YEAR                (default: 2020, inclusive)
   STAGE_ROOT              (default: data/events_stage)
   NON_MATCHED_ROOT        (default: data/events_stage_non_matched)
   FINAL_ROOT              (default: data/events)
   WORKERS_STEP02          (default: 12)
   WORKERS_STEP03          (default: 12)
+  MG_POLYGON_YEAR         (default: 2020)
+  MG_GPKG_PATH            (default: ~/geodatabase.gpkg, from GeoServer rsync)
+  MG_GPKG_LAYER           (default: ibge_mg_uf_2024)
   MAX_MAG                 (default: 4, strict '<')
   MAX_DEPTH_KM            (default: 10, strict '<')
   MAX_PICK_DIST_KM        (default: 400)
@@ -30,7 +35,17 @@ EOF
   exit 0
 fi
 
-CLIENT_URL="${CLIENT_URL:-http://127.0.0.1:28080}"
+HOSTNAME_FULL="$(hostname 2>/dev/null || true)"
+HOSTNAME_LC="$(printf '%s' "$HOSTNAME_FULL" | tr '[:upper:]' '[:lower:]')"
+DEFAULT_CLIENT_URL="http://127.0.0.1:28080"
+if [[ "$HOSTNAME_LC" == *"seisapp"* ]]; then
+  DEFAULT_CLIENT_URL="http://10.110.0.134"
+fi
+CLIENT_URL_SOURCE="auto"
+if [ -n "${CLIENT_URL:-}" ]; then
+  CLIENT_URL_SOURCE="env"
+fi
+CLIENT_URL="${CLIENT_URL:-$DEFAULT_CLIENT_URL}"
 SISBRA_CSV="${SISBRA_CSV:-catalogs/sisbra/sisbra_v2024May09/catalogo_CLEAN_v2024May09.csv}"
 FILTERED_CSV="${FILTERED_CSV:-outputs/sisbra_mg_maglt4_depthlt10.csv}"
 STAGE_ROOT="${STAGE_ROOT:-data/events_stage}"
@@ -48,7 +63,11 @@ WORKERS_STEP03="${WORKERS_STEP03:-12}"
 TIME_WINDOW_S="${TIME_WINDOW_S:-120}"
 MAXRADIUS_DEG="${MAXRADIUS_DEG:-1.0}"
 MAG_PAD="${MAG_PAD:-0.7}"
+# Deprecated inclusion parameter: kept for ST-vs-geometry audit labels.
 STATE_FILTER="${STATE_FILTER:-MG}"
+MG_POLYGON_YEAR="${MG_POLYGON_YEAR:-2020}"
+MG_GPKG_PATH="${MG_GPKG_PATH:-$HOME/geodatabase.gpkg}"
+MG_GPKG_LAYER="${MG_GPKG_LAYER:-ibge_mg_uf_2024}"
 MIN_YEAR="${MIN_YEAR:-2020}"
 MAX_MAG="${MAX_MAG:-4}"
 MAX_DEPTH_KM="${MAX_DEPTH_KM:-10}"
@@ -103,13 +122,18 @@ mkdir -p "$(dirname "$FILTERED_CSV")" "$STAGE_ROOT" "$NON_MATCHED_ROOT" "$FINAL_
   echo
   echo "## Config"
   echo "- CLIENT_URL: \`$CLIENT_URL\`"
+  echo "- CLIENT_URL_SOURCE: \`$CLIENT_URL_SOURCE\`"
+  echo "- HOSTNAME: \`$HOSTNAME_FULL\`"
   echo "- SISBRA_CSV: \`$SISBRA_CSV\`"
   echo "- FILTERED_CSV: \`$FILTERED_CSV\`"
   echo "- STAGE_ROOT: \`$STAGE_ROOT\`"
   echo "- NON_MATCHED_ROOT: \`$NON_MATCHED_ROOT\`"
   echo "- FINAL_ROOT: \`$FINAL_ROOT\`"
   echo "- SUMMARY_CSV: \`$SUMMARY_CSV\`"
-  echo "- STATE_FILTER: \`$STATE_FILTER\`"
+  echo "- STATE_FILTER (audit only): \`$STATE_FILTER\`"
+  echo "- MG_POLYGON_YEAR: \`$MG_POLYGON_YEAR\`"
+  echo "- MG_GPKG_PATH: \`$MG_GPKG_PATH\`"
+  echo "- MG_GPKG_LAYER: \`$MG_GPKG_LAYER\`"
   echo "- MIN_YEAR (inclusive): \`>= $MIN_YEAR\`"
   echo "- MAX_MAG (strict): \`< $MAX_MAG\`"
   echo "- MAX_DEPTH_KM (strict): \`< $MAX_DEPTH_KM\`"
@@ -157,6 +181,9 @@ $PYTHON_DESC scripts/filter_sisbra_csv.py \\
   --input-csv "$SISBRA_CSV" \\
   --output-csv "$FILTERED_CSV" \\
   --state "$STATE_FILTER" \\
+  --mg-polygon-year "$MG_POLYGON_YEAR" \\
+  --mg-polygon-gpkg "$MG_GPKG_PATH" \\
+  --mg-polygon-layer "$MG_GPKG_LAYER" \\
   --min-year "$MIN_YEAR" \\
   --max-mag "$MAX_MAG" \\
   --max-depth-km "$MAX_DEPTH_KM"
@@ -166,6 +193,9 @@ EOF
   --input-csv "$SISBRA_CSV" \
   --output-csv "$FILTERED_CSV" \
   --state "$STATE_FILTER" \
+  --mg-polygon-year "$MG_POLYGON_YEAR" \
+  --mg-polygon-gpkg "$MG_GPKG_PATH" \
+  --mg-polygon-layer "$MG_GPKG_LAYER" \
   --min-year "$MIN_YEAR" \
   --max-mag "$MAX_MAG" \
   --max-depth-km "$MAX_DEPTH_KM"
@@ -243,8 +273,12 @@ $PYTHON_DESC scripts/step03_waveforms_from_p_picks.py \\
   --waveforms-subdir "$WAVEFORMS_SUBDIR" \\
   --summary-csv "$SUMMARY_CSV" \\
   --state-filter "$STATE_FILTER" \\
+  --mg-polygon-year "$MG_POLYGON_YEAR" \\
+  --mg-polygon-gpkg "$MG_GPKG_PATH" \\
+  --mg-polygon-layer "$MG_GPKG_LAYER" \\
   --max-mag "$MAX_MAG" \\
   --max-depth-km "$MAX_DEPTH_KM" \\
+  --min-year "$MIN_YEAR" \\
   --component-channels "$COMPONENT_CHANNELS"
 \`\`\`
 EOF
@@ -258,8 +292,12 @@ EOF
   --waveforms-subdir "$WAVEFORMS_SUBDIR" \
   --summary-csv "$SUMMARY_CSV" \
   --state-filter "$STATE_FILTER" \
+  --mg-polygon-year "$MG_POLYGON_YEAR" \
+  --mg-polygon-gpkg "$MG_GPKG_PATH" \
+  --mg-polygon-layer "$MG_GPKG_LAYER" \
   --max-mag "$MAX_MAG" \
   --max-depth-km "$MAX_DEPTH_KM" \
+  --min-year "$MIN_YEAR" \
   --component-channels "$COMPONENT_CHANNELS"
 
 echo "[run-real] step D: materialize final dataset"
@@ -272,8 +310,12 @@ $PYTHON_DESC scripts/materialize_events_dataset.py \\
   --download-summary-csv "$SUMMARY_CSV" \\
   --output-root "$FINAL_ROOT" \\
   --state-filter "$STATE_FILTER" \\
+  --mg-polygon-year "$MG_POLYGON_YEAR" \\
+  --mg-polygon-gpkg "$MG_GPKG_PATH" \\
+  --mg-polygon-layer "$MG_GPKG_LAYER" \\
   --max-mag "$MAX_MAG" \\
   --max-depth-km "$MAX_DEPTH_KM" \\
+  --min-year "$MIN_YEAR" \\
   --max-pick-dist-km "$MAX_PICK_DIST_KM" \\
   --datetime-source fdsn_then_sisbra \\
   --datetime-format %Y%jT%H%M%S \\
@@ -288,8 +330,12 @@ EOF
   --download-summary-csv "$SUMMARY_CSV" \
   --output-root "$FINAL_ROOT" \
   --state-filter "$STATE_FILTER" \
+  --mg-polygon-year "$MG_POLYGON_YEAR" \
+  --mg-polygon-gpkg "$MG_GPKG_PATH" \
+  --mg-polygon-layer "$MG_GPKG_LAYER" \
   --max-mag "$MAX_MAG" \
   --max-depth-km "$MAX_DEPTH_KM" \
+  --min-year "$MIN_YEAR" \
   --max-pick-dist-km "$MAX_PICK_DIST_KM" \
   --datetime-source fdsn_then_sisbra \
   --datetime-format %Y%jT%H%M%S \

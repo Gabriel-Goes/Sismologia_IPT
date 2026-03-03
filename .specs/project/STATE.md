@@ -30,6 +30,10 @@
 10. Compatibilidade de CLI durante migracao:
    - manter `--state`/`--state-filter` por compatibilidade;
    - tratar esses campos como auditoria/deprecacao no criterio geografico alvo.
+11. Fonte primaria do poligono de MG (2026-03-03):
+   - usar GeoPackage local sincronizado via `rsync` do GeoServer
+     (`/home/gabrielgoes/geodatabase.gpkg`, camada `ibge_mg_uf_2024`);
+   - manter `geobr` apenas como fallback quando o arquivo local nao estiver disponivel.
 
 ## Notebook Evidence (Step1 RAW, 2026-03-02)
 - Fonte: `notebooks/step1_sisbra_selfcontained.ipynb` (execucao registrada no proprio notebook).
@@ -48,8 +52,15 @@
 
 ## Implementation Status (2026-03-02)
 - Notebook Step1 ja usa regra deterministica por ponto-poligono.
-- Pipeline Python+Bash de producao ainda contem gates por `ST` em scripts-chave.
-- Migracao de scripts fica registrada no roadmap e ainda nao foi implementada neste ciclo.
+- Pipeline Python+Bash foi migrado para gate geografico deterministico em:
+  - `scripts/filter_sisbra_csv.py`
+  - `scripts/step03_waveforms_from_p_picks.py`
+  - `scripts/materialize_events_dataset.py`
+  - `scripts/organize_compatible_events.py`
+  - `scripts/run_real_mg_maglt4_depthlt10.sh`
+- `--state`/`--state-filter` foram mantidos por compatibilidade como auditoria.
+- Filtro de ano (`min-year`) foi movido para o ultimo gate nos scripts migrados.
+- Gate de MG agora suporta fonte local offline por GeoPackage (`--mg-polygon-gpkg`/`--mg-polygon-layer`).
 
 ## Active Feature Set
 - `01-catalogo-selecao`
@@ -94,6 +105,6 @@ P0:
 4. Ausencia de testes unitarios formais para schema/naming (dependencia de smoke operacional).
 
 ## Next Action
-Executar a migracao controlada dos gates de `ST` para ponto-poligono nos
-scripts do pipeline, mantendo compatibilidade de CLI e validando paridade
-com o notebook Step1.
+Executar run E2E de validacao (Step02+Step03+materialize) e conferir paridade
+de contagens do gate geografico com o notebook Step1, incluindo auditoria
+`ST x geometria`.

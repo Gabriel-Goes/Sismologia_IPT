@@ -21,9 +21,9 @@ Conclusao:
 - `ST` deve ficar como trilha de auditoria para detectar inconsistencias do catalogo.
 
 ## Estado atual vs estado alvo
-- Estado atual (scripts Python+Bash): ainda usa gates por `ST` em partes do fluxo.
-- Estado alvo (aprovado): usar gate geografico deterministico em todo o pipeline.
-- Impacto atual: notebook e pipeline podem divergir na selecao de eventos em MG.
+- Estado atual (scripts Python+Bash): gate de MG por ponto-poligono.
+- `ST`/toponimia/localidade: somente auditoria de consistencia.
+- Filtro de ano: aplicado por ultimo (`min-year`) nos scripts migrados.
 
 ## Execucao Real (target `data/events`)
 
@@ -34,12 +34,15 @@ cd /home/ggrl/projetos/ClassificadorSismologico
 bash scripts/run_real_mg_maglt4_depthlt10.sh
 ```
 
+No host `seisapp`, o wrapper detecta automaticamente o ambiente e usa
+`CLIENT_URL=http://10.110.0.134` (sem precisar de tunel reverso).
+
 No codigo atual, este wrapper aplica os criterios estritos:
 - `match_status == matched`
-- `state == MG`
-- `year >= 2020`
+- origem do evento dentro do poligono de MG
 - `magnitude < 4`
 - `depth_km < 10`
+- `year >= 2020` (ultimo filtro)
 - pick `P*` com `dist_km <= 400`
 - janela `P-10s` a `P+50s`
 - canais `HHZ,HHN,HHE`
@@ -60,6 +63,8 @@ Layout de investigacao (nao-matched):
 Observacao:
 - eventos `no_match`/`ambiguous` com agencia SISBRA contendo `IAG/USP` sao marcados como
   severidade `critical` na auditoria para investigacao prioritaria.
+- o filtro de MG usa preferencialmente o GeoPackage local (`/home/gabrielgoes/geodatabase.gpkg`),
+  sincronizado via `rsync` do GeoServer; `geobr` vira fallback.
 
 Regra de seguranca:
 - o wrapper aborta se `data/events` nao estiver vazio (nao faz limpeza automatica).
@@ -68,16 +73,15 @@ Regra de seguranca:
 ## Criterios de Compatibilidade
 - Implementado hoje (scripts):
   - `match_status == matched`
-  - `ST == MG`
+  - `inside_mg_polygon == True` (interseccao ponto-poligono)
   - `magnitude < 4`
   - `depth_km < 10`
+  - `year >= min-year` (aplicado por ultimo)
   - existe pelo menos 1 pick `P*` com `dist_km <= 400`
   - forma de onda baixada em janela `P-10s` a `P+50s`
   - precisa haver pelo menos um conjunto 3C por estacao com canais: `HHZ`, `HHN`, `HHE`
-- Criterio alvo aprovado (ainda nao migrado no pipeline completo):
-  - `inside_mg_polygon == True` (interseccao ponto-poligono)
-  - `ST`/toponimia/localidade usados somente para auditoria de consistencia
-  - manter os demais gates tecnicos (mag/depth/picks/janela/canais)
+- Auditoria:
+  - `ST`/toponimia/localidade usados somente para comparacao com a geometria.
 
 ## Nomenclatura de Diretorio Final
 - Em `eventos_compativeis`, o nome do diretorio e **somente**:
@@ -99,32 +103,20 @@ Observacao:
 - Scripts de diagnostico historico: `scripts/legacy/`.
 
 ## Execucao Recomendada
-1. Gerar CSV filtrado MG/M<4/depth<10:
+1. Gerar CSV filtrado por geometria MG/M<4/depth<10/ano:
 ```bash
-cd /home/ggrl/projetos/ClassificadorSismologico && python3 - <<'PY'
-import csv
-src='catalogs/sisbra/sisbra_v2024May09/catalogo_CLEAN_v2024May09.csv'
-out='outputs/sisbra_mg_maglt4_depthlt10.csv'
-rows=[]
-with open(src,encoding='utf-8',newline='') as f:
-    r=csv.DictReader(f); fn=r.fieldnames
-    for row in r:
-        st=(row.get('ST') or '').strip().upper()
-        try: year=int(row.get('year',''))
-        except: continue
-        try: mag=float(row.get('mag',''))
-        except: continue
-        try: dep=float(row.get('depth',''))
-        except: continue
-        if st=='MG' and year>=2020 and mag<4 and dep<10:
-            rows.append(row)
-with open(out,'w',encoding='utf-8',newline='') as f:
-    w=csv.DictWriter(f,fieldnames=fn); w.writeheader(); w.writerows(rows)
-print(out, len(rows))
-PY
+cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/filter_sisbra_csv.py \
+  --input-csv catalogs/sisbra/sisbra_v2024May09/catalogo_CLEAN_v2024May09.csv \
+  --output-csv outputs/sisbra_mg_maglt4_depthlt10.csv \
+  --state MG \
+  --mg-polygon-year 2020 \
+  --mg-polygon-gpkg /home/gabrielgoes/geodatabase.gpkg \
+  --mg-polygon-layer ibge_mg_uf_2024 \
+  --max-mag 4 \
+  --max-depth-km 10 \
+  --min-year 2020
 ```
-Observacao: este passo ainda usa `ST` no codigo atual e sera substituido por
-filtro ponto-poligono na migracao do pipeline.
+Observacao: `--state` e mantido apenas para auditoria de consistencia (`ST x geometria`).
 
 2. Executar Step02 no subconjunto:
 ```bash
@@ -133,7 +125,7 @@ cd /home/ggrl/projetos/ClassificadorSismologico && LOG_DIR=outputs/logs_mg_maglt
 
 3. Baixar formas de onda (60 s = P-10 / P+50):
 ```bash
-cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/step03_waveforms_from_p_picks.py --events-root data/sisbra_mg_maglt4_depthlt10_w24 --client-url http://127.0.0.1:28080 --max-pick-dist-km 400 --pre-p-s 10 --post-p-s 50 --workers 12 --state-filter MG --max-mag 4 --max-depth-km 10 --component-channels HHZ,HHN,HHE --summary-csv outputs/waveform_triplet_download_summary_mg.csv
+cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/step03_waveforms_from_p_picks.py --events-root data/sisbra_mg_maglt4_depthlt10_w24 --client-url http://127.0.0.1:28080 --max-pick-dist-km 400 --pre-p-s 10 --post-p-s 50 --workers 12 --state-filter MG --mg-polygon-year 2020 --mg-polygon-gpkg /home/gabrielgoes/geodatabase.gpkg --mg-polygon-layer ibge_mg_uf_2024 --max-mag 4 --max-depth-km 10 --min-year 2020 --component-channels HHZ,HHN,HHE --summary-csv outputs/waveform_triplet_download_summary_mg.csv
 ```
 - Com `--component-channels HHZ,HHN,HHE`, o default agora e salvar **1 arquivo 3C**
   por estacao no formato `NET_STA_DATETIME.mseed`.
@@ -143,7 +135,7 @@ cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/ste
 
 4. Organizar compativeis/incompativeis:
 ```bash
-cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/organize_compatible_events.py --events-root data/sisbra_mg_maglt4_depthlt10_w24 --download-summary-csv outputs/waveform_triplet_download_summary_mg.csv --compatible-root data/eventos_compativeis --incompatible-root data/eventos_nao_compativeis --state-filter MG --max-mag 4 --max-depth-km 10 --max-pick-dist-km 400 --report-csv outputs/eventos_compatibilidade_report.csv --report-md outputs/eventos_compatibilidade_report.md
+cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/organize_compatible_events.py --events-root data/sisbra_mg_maglt4_depthlt10_w24 --download-summary-csv outputs/waveform_triplet_download_summary_mg.csv --compatible-root data/eventos_compativeis --incompatible-root data/eventos_nao_compativeis --state-filter MG --mg-polygon-year 2020 --mg-polygon-gpkg /home/gabrielgoes/geodatabase.gpkg --mg-polygon-layer ibge_mg_uf_2024 --max-mag 4 --max-depth-km 10 --min-year 2020 --max-pick-dist-km 400 --report-csv outputs/eventos_compatibilidade_report.csv --report-md outputs/eventos_compatibilidade_report.md
 ```
 
 5. Enforce de triplet HHZ/HHN/HHE em `eventos_compativeis`:

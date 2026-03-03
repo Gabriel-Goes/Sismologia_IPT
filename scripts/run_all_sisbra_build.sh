@@ -4,7 +4,17 @@ set -euo pipefail
 # Full run: process all SISBRA events and build event bundles.
 # It also records endpoint connectivity checks for reporting.
 
-CLIENT_URL="${CLIENT_URL:-http://127.0.0.1:28080}"
+HOSTNAME_FULL="$(hostname 2>/dev/null || true)"
+HOSTNAME_LC="$(printf '%s' "$HOSTNAME_FULL" | tr '[:upper:]' '[:lower:]')"
+DEFAULT_CLIENT_URL="http://127.0.0.1:28080"
+if [[ "$HOSTNAME_LC" == *"seisapp"* ]]; then
+  DEFAULT_CLIENT_URL="http://10.110.0.134"
+fi
+CLIENT_URL_SOURCE="auto"
+if [ -n "${CLIENT_URL:-}" ]; then
+  CLIENT_URL_SOURCE="env"
+fi
+CLIENT_URL="${CLIENT_URL:-$DEFAULT_CLIENT_URL}"
 UNB_WADL_URL="${UNB_WADL_URL:-http://164.41.28.122:5831/fdsnws/event/1/application.wadl}"
 SISBRA_CSV="${SISBRA_CSV:-catalogs/sisbra/sisbra_v2024May09/catalogo_CLEAN_v2024May09.csv}"
 OUT_ROOT="${OUT_ROOT:-data/sisbra_all}"
@@ -69,6 +79,8 @@ fi
   echo
   echo "## Config"
   echo "- CLIENT_URL: \`$CLIENT_URL\`"
+  echo "- CLIENT_URL_SOURCE: \`$CLIENT_URL_SOURCE\`"
+  echo "- HOSTNAME: \`$HOSTNAME_FULL\`"
   echo "- UNB_WADL_URL: \`$UNB_WADL_URL\`"
   echo "- SISBRA_CSV: \`$SISBRA_CSV\`"
   echo "- OUT_ROOT: \`$OUT_ROOT\`"
