@@ -1,7 +1,7 @@
 # STATE
 
 ## Last Update
-2026-03-02
+2026-03-03
 
 ## Current Branch
 `main`
@@ -30,6 +30,11 @@
 10. Compatibilidade de CLI durante migracao:
    - manter `--state`/`--state-filter` por compatibilidade;
    - tratar esses campos como auditoria/deprecacao no criterio geografico alvo.
+11. Baselines externos para implementacao futura confirmados:
+   - `~/projetos/ipt/SISMO/catalogo` como referencia para camada de adapters de catalogo;
+   - `~/projetos/ipt/SISMO/QA_SISMO/vetor_minerario` como referencia para enriquecimento ANM e QA STAC;
+   - integracao no Classificador deve usar schema canonico e modulos opcionais
+     desacoplados do caminho critico Step02->Step03->RNC.
 
 ## Notebook Evidence (Step1 RAW, 2026-03-02)
 - Fonte: `notebooks/step1_sisbra_selfcontained.ipynb` (execucao registrada no proprio notebook).

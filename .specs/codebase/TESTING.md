@@ -115,11 +115,45 @@ Checks:
 Aceite:
 - divergencias documentadas no handoff/STATE quando existir mismatch.
 
+## S6 - Catalog adapters parity (future)
+
+Checks:
+
+1. Adapter FDSN e adapter HTML produzem o mesmo schema canonico.
+2. Campos obrigatorios (`origin_time_utc`, `latitude`, `longitude`, `magnitude`) estao presentes.
+3. Dedupe por `event_id`/uid nao gera explosao de duplicatas.
+
+Aceite:
+- arquivo canonico de entrada do Step02 passa na validacao de schema.
+
+## S7 - Contexto minerario ANM (future)
+
+Checks:
+
+1. Evento em area proxima de mina recebe `mining_context.has_active_mine_nearby=true`.
+2. Evento distante recebe `false` ou distancia acima do limiar.
+3. Campo de versao de fonte (`source_version`) e preenchido.
+
+Aceite:
+- `event.json` enriquecido e CSV de auditoria espacial coerente.
+
+## S8 - STAC QA opcional (future)
+
+Checks:
+
+1. Falha no STAC nao interrompe pipeline principal.
+2. Casos com baixa confianca geram artefato de QA separado.
+
+Aceite:
+- execucao principal finaliza mesmo com QA indisponivel.
+
 ## Current Gaps
 
 - Sem testes unitarios formais para funcoes de parsing/naming.
 - Sem validacao automatica de schema de `event.json`.
 - Sem job CI para smoke minimo do pipeline.
+- Sem suite dedicada para adapters multi-fonte (FDSN + HTML).
+- Sem testes automatizados de join espacial com ANM.
 
 ## Evidence (arquivo:linha)
 
@@ -135,4 +169,3 @@ Aceite:
 1. Atualizar apenas comandos de smoke usados na ultima iteracao.
 2. Registrar novos arquivos de resumo/relatorio.
 3. Revisar apenas o bloco "Current Gaps" se mudou cobertura automatica.
-

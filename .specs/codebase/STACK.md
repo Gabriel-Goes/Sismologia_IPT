@@ -1,6 +1,6 @@
 # Tech Stack
 
-**Analyzed:** 2026-02-28  
+**Analyzed:** 2026-03-03  
 **Scope:** Pipeline ativo (Step02 -> Step03 -> organizacao -> filtro triplet -> RNC).
 
 ## Core
@@ -17,6 +17,22 @@
 
 - Pipeline core: `numpy`, `pandas`, `obspy`, `matplotlib`.
 - Inferencia RNC: core + `tensorflow`.
+
+## Candidate Libraries (Future Integration)
+
+- Catalog adapters (instituicoes sem FDSN padrao):
+  - `requests`
+  - `beautifulsoup4`
+- Geospatial contexto minerario (ANM):
+  - `geopandas`
+  - `shapely`
+  - `rasterio` (apenas se houver analise raster)
+- STAC imagery QA (opcional):
+  - `pystac-client`
+
+Observacao:
+- Estas dependencias sao candidatas para implementacao futura e nao sao
+  obrigatorias no fluxo Step02->Step03->RNC atual.
 
 ## Processing Model
 
@@ -66,4 +82,3 @@
 2. Confirmar se `.python-version` mudou.
 3. Conferir se Step03/RNC mudaram estrategia de concorrencia.
 4. Atualizar apenas se algum item acima mudou.
-

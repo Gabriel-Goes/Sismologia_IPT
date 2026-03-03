@@ -56,6 +56,55 @@ Paths chave:
 **SEISAPP:**
 - execucao direta com `python3` quando `pyenv` nao existe.
 
+## Planned Integrations (Future)
+
+### ANM Mining Vectors
+
+**Service:** ANM SIGMINE dados abertos  
+**Status:** planned (M5)  
+**Purpose:** enriquecer eventos com contexto minerario e proximidade de minas.  
+**Implementation target:** modulo de enriquecimento espacial antes da analise final.  
+**Expected artifact:** campo `mining_context` no `event.json` + CSV de auditoria.
+
+### Additional Catalog Sources
+
+**Services:** Labsis boletins (HTML), IAG FDSN, UnB FDSN  
+**Status:** planned  
+**Purpose:** ampliar cobertura de eventos com camada de adapters por fonte.  
+**Implementation target:** camada unificada de ingestao que exporta CSV canonico para Step02.
+
+### STAC Imagery for QA
+
+**Service:** INPE BDC STAC  
+**Status:** planned (optional)  
+**Purpose:** fornecer evidencia visual para revisao de casos ambiguos da classificacao.  
+**Implementation target:** pipeline opcional de QA, sem dependencia hard no fluxo principal.
+
+## Compatibility Assessment With External Baselines (2026-03-03)
+
+Sources avaliadas:
+- `/home/ggrl/projetos/ipt/SISMO/catalogo/.specs/codebase/*`
+- `/home/ggrl/projetos/ipt/SISMO/QA_SISMO/vetor_minerario/.specs/codebase/*`
+
+Status por trilha:
+
+1. Catalog adapters (Labsis/IAG/UnB): **compatible with mapping**
+- Reuso direto de padroes de coleta, dedupe e persistencia de bruto.
+- Ajuste necessario: mapeamento explicito para schema canonico (`origin_time_utc`, `depth_km`, `source_name`).
+
+2. Contexto minerario ANM: **compatible**
+- Reuso direto do fluxo ANM `zip -> shp -> gpkg` e padroes de auditoria espacial.
+- Ajuste necessario: parametrizar UFs e evitar hardcode de estados fixos na implementacao futura.
+
+3. STAC para QA: **compatible as optional module**
+- Reuso de busca STAC + corte por AOI + fluxos de validacao visual.
+- Restricao: permanecer desacoplado do caminho critico Step02->Step03->RNC.
+
+4. Endpoint UnB: **needs normalization**
+- Baseline `catalogo_novo.py` documenta default `164.41.28.154:5831`.
+- Wrapper atual de health-check no Classificador usa `164.41.28.122:5831`.
+- Regra alvo: endpoint sempre parametrizado por env/flag; sem host fixo em docs operacionais.
+
 ## Failure Modes and Signals
 
 1. Endpoint FDSN indisponivel:
@@ -74,6 +123,14 @@ Paths chave:
 - sinal: `model file not found` ou `error_preprocess/error_inference`
 - local: stdout + `outputs/rnc_prediction_errors.csv`
 
+5. Adapter de catalogo retorna schema inconsistente:
+- sinal: colunas obrigatorias ausentes no CSV canonico
+- local: validacao de schema no pre-Step02
+
+6. Enriquecimento ANM sem cobertura espacial:
+- sinal: `mining_context` vazio/indeterminado
+- local: CSV de auditoria espacial
+
 ## Evidence (arquivo:linha)
 
 - Step02 FDSN client: `src/seismic_event_discriminator/step02_fdsn_picks_export.py:459`
@@ -90,4 +147,3 @@ Paths chave:
 2. Confirmar caminho/versionamento do modelo.
 3. Confirmar se novos erros de integracao surgiram nos CSVs/relatorios.
 4. Atualizar somente os blocos alterados.
-

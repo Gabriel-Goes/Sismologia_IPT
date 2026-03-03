@@ -84,6 +84,53 @@ Implicacao:
   - Step03 depende da estrutura de `event.json` do Step02.
   - RNC depende de naming e consistencia 3C das formas de onda.
 
+## Future Integration Tracks (para implementacao futura)
+
+### Track A: Catalog Adapter Layer (Labsis/IAG/UnB)
+
+Objetivo:
+- incorporar fontes institucionais adicionais quando nao houver um unico
+  endpoint FDSN estavel para todos os provedores.
+
+Fluxo proposto:
+1. Adapter por fonte (`fdsn` ou `html scraping`) gera schema normalizado.
+2. Consolidacao em CSV canonico de entrada do Step02.
+3. Step02 segue sem dependencia direta do tipo de fonte.
+
+Contratos minimos do adapter:
+- `event_id` (ou uid deterministico)
+- `origin_time_utc`
+- `latitude`, `longitude`
+- `magnitude`, `depth_km`
+- `source_name`, `source_url`
+
+### Track B: Contexto Minerario ANM (M5)
+
+Objetivo:
+- enriquecer cada evento com contexto espacial de atividade mineraria para
+  apoiar interpretacao de sismo antropogenico.
+
+Fluxo proposto:
+1. Ingestao de vetores ANM em GeoPackage versionado por data de coleta.
+2. Join espacial evento x mina (intersecao/proximidade).
+3. Escrita de campos derivados no `event.json` e CSV de auditoria.
+
+Campos derivados sugeridos:
+- `mining_context.nearest_distance_km`
+- `mining_context.has_active_mine_nearby`
+- `mining_context.source_version`
+
+### Track C: Evidencia Satelital (opcional, QA)
+
+Objetivo:
+- usar imagens/tiles apenas como apoio de revisao de casos duvidosos, sem
+  bloquear pipeline principal.
+
+Fluxo proposto:
+1. Selecionar eventos candidatos com baixa confianca.
+2. Buscar tiles em STAC para area de interesse.
+3. Registrar evidencias em artefato separado de QA.
+
 ## Evidence (arquivo:linha)
 
 - Contrato Step03 no Step02: `src/seismic_event_discriminator/step02_fdsn_picks_export.py:234`
@@ -102,4 +149,3 @@ Implicacao:
 2. Conferir se houve mudanca nos gates (`organize`/`enforce`).
 3. Conferir se houve mudanca em integracao RNC (`adapter` + `run_rnc`).
 4. Atualizar somente os blocos afetados acima.
-

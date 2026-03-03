@@ -30,6 +30,27 @@
     └── rnc_legacy/
 ```
 
+## Planned Future Layout (not implemented yet)
+
+```text
+.
+├── data/
+│   └── geospatial/
+│       ├── anm/
+│       │   └── *.gpkg
+│       └── mg_boundary/
+├── src/seismic_event_discriminator/
+│   ├── catalog_adapters/
+│   │   ├── base.py
+│   │   ├── fdsn_adapter.py
+│   │   └── labsis_html_adapter.py
+│   └── spatial_enrichment/
+│       └── mining_context.py
+└── scripts/
+    ├── ingest_catalog_sources.py
+    └── enrich_events_with_mining_context.py
+```
+
 ## Module Organization
 
 ### Core Pipeline
@@ -62,6 +83,16 @@
 - Purpose:
   - `docs/`: runbooks operacionais.
   - `.specs/`: memoria de projeto e planejamento.
+
+### Planned: Catalog Adapter Layer
+
+- Location alvo: `src/seismic_event_discriminator/catalog_adapters/`
+- Purpose: uniformizar multiplas fontes (FDSN + HTML) em um contrato canonico.
+
+### Planned: Spatial Enrichment Layer (ANM)
+
+- Location alvo: `src/seismic_event_discriminator/spatial_enrichment/`
+- Purpose: calcular contexto minerario por evento.
 
 ## Where Things Live
 
@@ -108,6 +139,7 @@
 1. `README.md`
 2. `docs/fluxo_eventos_compativeis_mg.md`
 3. `docs/ambiente_pyenv.md`
+4. `.specs/project/ROADMAP.md` (secoes M5 e futuras integracoes)
 
 ## Evidence (arquivo:linha)
 
@@ -121,4 +153,3 @@
 1. Rodar `find . -maxdepth 2 -type d` para checar mudancas de topologia.
 2. Validar lista P0/P1/P2 com base no ultimo run real.
 3. Ajustar apenas os blocos de localizacao/ownership alterados.
-

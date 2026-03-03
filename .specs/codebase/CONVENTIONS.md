@@ -41,6 +41,32 @@
 - Step03 consome esse contrato quando `--component-channels` nao e informado.
 - Campo `match_status` e chave de gate para organizacao.
 
+### Future Contracts (planned)
+
+- Catalog adapter canonico deve usar campos em snake_case:
+  - `event_id`, `origin_time_utc`, `latitude`, `longitude`, `depth_km`, `magnitude`, `source_name`.
+- Enriquecimento ANM deve ser aninhado em `event.json` sob:
+  - `mining_context.nearest_distance_km`
+  - `mining_context.has_active_mine_nearby`
+  - `mining_context.source_version`
+
+### External Baseline Mapping Rules (catalogo -> canonico)
+
+- `origin_time_utc`:
+  - preferir campo nativo UTC quando existir;
+  - fallback: `data + "T" + hora_utc + "Z"`.
+- `depth_km`:
+  - usar valor da fonte quando existir;
+  - manter `null` quando a fonte nao fornecer profundidade.
+- `event_id`:
+  - usar `event_id` da fonte quando existir;
+  - fallback para UID deterministico (tempo + lat/lon + origem).
+- `source_name`:
+  - preencher explicitamente (`labsis_html`, `iag_fdsn`, `unb_fdsn`).
+- `state_uf`:
+  - manter como campo auxiliar de auditoria; criterio geografico principal segue
+    coordenada + geometria.
+
 ## Status/Errors Conventions
 
 - Status por etapa (exemplos):
@@ -71,4 +97,3 @@
 2. Validar se schema de `event.json` (contrato) mudou.
 3. Validar novos status de erro nos CSVs.
 4. Atualizar apenas as secoes afetadas.
-
