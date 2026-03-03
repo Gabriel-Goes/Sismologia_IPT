@@ -10,13 +10,14 @@ Final layout target:
 
 Compatibility policy (strict):
 - match_status == matched
-- state == target state (default MG)
+- event origin inside MG polygon (deterministic point-in-polygon)
 - magnitude < max-mag
 - depth_km < max-depth-km
 - has at least one P* pick with dist_km <= max-pick-dist-km
 - has at least one successful waveform download (downloaded or skipped_exists)
 - event.xml exists
 - datetime tag resolvable
+- optional year >= min-year (applied last)
 
 Collision policy:
 - abort (default): if any two compatible events map to the same target folder,
@@ -31,10 +32,25 @@ import glob
 import json
 import os
 import shutil
+import sys
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
+
+_THIS_DIR = Path(__file__).resolve().parent
+_SRC_DIR = _THIS_DIR.parent / "src"
+if str(_SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(_SRC_DIR))
+
+from seismic_event_discriminator.mg_geo_filter import (  # noqa: E402
+    DROP_NO_VALID_COORDS,
+    DROP_OUTSIDE_MG,
+    KEEP_IN_MG,
+    ensure_mg_polygon_loaded,
+    evaluate_mg_filter,
+)
 
 
 @dataclass
@@ -48,6 +64,10 @@ class EventEval:
     action: str
     match_status: str
     state: str
+    year: int | None
+    inside_mg_polygon: bool
+    mg_filter_status: str
+    st_geo_consistency: str
     magnitude: float | None
     depth_km: float | None
     p_picks_lte_maxdist: int
@@ -72,6 +92,18 @@ def _safe_float(value: Any) -> float | None:
         return None
 
 
+def _safe_int(value: Any) -> int | None:
+    try:
+        if value is None:
+            return None
+        s = str(value).strip()
+        if not s:
+            return None
+        return int(s)
+    except Exception:
+        return None
+
+
 def _is_p_phase(phase_hint: Any) -> bool:
     return str(phase_hint or "").upper().startswith("P")
 
@@ -89,6 +121,16 @@ def _parse_utc_datetime(raw: Any) -> datetime | None:
         return dt.astimezone(timezone.utc)
     except Exception:
         return None
+
+
+def _sis_event_year(sis: dict[str, Any]) -> int | None:
+    year = _safe_int(sis.get("year"))
+    if year is not None:
+        return year
+    dt = _parse_utc_datetime(sis.get("origin_time"))
+    if dt is None:
+        return None
+    return int(dt.year)
 
 
 def _resolve_datetime_tag(
@@ -154,6 +196,10 @@ def _scan_event(
     output_root: str,
     dl_stats: dict[str, dict[str, int]],
     state_filter: str,
+    min_year: int | None,
+    mg_polygon_year: int,
+    mg_polygon_gpkg: str,
+    mg_polygon_layer: str,
     max_mag: float,
     max_depth_km: float,
     max_pick_dist_km: float,
@@ -170,8 +216,21 @@ def _scan_event(
 
     sis = payload.get("sisbra") or {}
     state = str(sis.get("state") or "").strip().upper()
+    year = _sis_event_year(sis)
     magnitude = _safe_float(sis.get("magnitude"))
     depth_km = _safe_float(sis.get("depth_km"))
+    geo = evaluate_mg_filter(
+        latitude=sis.get("latitude"),
+        longitude=sis.get("longitude"),
+        state_value=state,
+        state_target=str(state_filter or "MG"),
+        mg_polygon_year=int(mg_polygon_year),
+        mg_polygon_gpkg_path=str(mg_polygon_gpkg or ""),
+        mg_polygon_layer=str(mg_polygon_layer or ""),
+    )
+    inside_mg_polygon = bool(geo["inside_mg_polygon"])
+    mg_filter_status = str(geo["mg_filter_status"])
+    st_geo_consistency = str(geo["st_geo_consistency"])
 
     picks = payload.get("picks") or []
     p_picks_lte = 0
@@ -201,8 +260,13 @@ def _scan_event(
 
     if match_status != "matched":
         reasons.append("not_matched")
-    if state != str(state_filter).strip().upper():
-        reasons.append("state_mismatch")
+    if mg_filter_status != KEEP_IN_MG:
+        if mg_filter_status == DROP_OUTSIDE_MG:
+            reasons.append("outside_mg_polygon")
+        elif mg_filter_status == DROP_NO_VALID_COORDS:
+            reasons.append("no_valid_coords")
+        else:
+            reasons.append("outside_mg_polygon")
     if magnitude is None or not (magnitude < float(max_mag)):
         reasons.append("mag_not_lt_max")
     if depth_km is None or not (depth_km < float(max_depth_km)):
@@ -217,6 +281,9 @@ def _scan_event(
         reasons.append("missing_event_xml")
     if not target_folder:
         reasons.append("invalid_event_datetime")
+    if min_year is not None:
+        if year is None or year < int(min_year):
+            reasons.append("year_lt_min_or_missing")
 
     eligible = len(reasons) == 0
     target_path = os.path.join(output_root, target_folder) if target_folder else ""
@@ -231,6 +298,10 @@ def _scan_event(
         action="pending" if eligible else "skipped",
         match_status=match_status,
         state=state,
+        year=year,
+        inside_mg_polygon=inside_mg_polygon,
+        mg_filter_status=mg_filter_status,
+        st_geo_consistency=st_geo_consistency,
         magnitude=magnitude,
         depth_km=depth_km,
         p_picks_lte_maxdist=p_picks_lte,
@@ -276,6 +347,10 @@ def _write_reports(
                 "reasons": ";".join(ev.reasons),
                 "match_status": ev.match_status,
                 "state": ev.state,
+                "year": "" if ev.year is None else f"{ev.year}",
+                "inside_mg_polygon": "1" if ev.inside_mg_polygon else "0",
+                "mg_filter_status": ev.mg_filter_status,
+                "st_geo_consistency": ev.st_geo_consistency,
                 "magnitude": "" if ev.magnitude is None else f"{ev.magnitude}",
                 "depth_km": "" if ev.depth_km is None else f"{ev.depth_km}",
                 "picks_total": ev.picks_total,
@@ -302,6 +377,10 @@ def _write_reports(
                 "reasons",
                 "match_status",
                 "state",
+                "year",
+                "inside_mg_polygon",
+                "mg_filter_status",
+                "st_geo_consistency",
                 "magnitude",
                 "depth_km",
                 "picks_total",
@@ -356,7 +435,28 @@ def main() -> int:
         help="Step03 summary CSV.",
     )
     ap.add_argument("--output-root", default="data/events", help="Final output root.")
-    ap.add_argument("--state-filter", default="MG")
+    ap.add_argument(
+        "--state-filter",
+        default="MG",
+        help="Deprecated inclusion parameter. Used only for ST-vs-geometry audit labels.",
+    )
+    ap.add_argument(
+        "--mg-polygon-year",
+        type=int,
+        default=2020,
+        help="geobr year used if GeoPackage is unavailable.",
+    )
+    ap.add_argument(
+        "--mg-polygon-gpkg",
+        default="~/geodatabase.gpkg",
+        help="Local GeoPackage path for MG polygon (preferred in offline environments).",
+    )
+    ap.add_argument(
+        "--mg-polygon-layer",
+        default="ibge_mg_uf_2024",
+        help="Layer name inside GeoPackage used for MG polygon.",
+    )
+    ap.add_argument("--min-year", type=int, default=None, help="Optional minimum year filter (applied last).")
     ap.add_argument("--max-mag", type=float, default=4.0, help="Strict upper bound (mag < max-mag).")
     ap.add_argument(
         "--max-depth-km",
@@ -388,6 +488,14 @@ def main() -> int:
         help="Allow output root with existing content (default: disabled).",
     )
     args = ap.parse_args()
+    try:
+        ensure_mg_polygon_loaded(
+            mg_polygon_year=int(args.mg_polygon_year),
+            mg_polygon_gpkg_path=str(args.mg_polygon_gpkg or ""),
+            mg_polygon_layer=str(args.mg_polygon_layer or ""),
+        )
+    except Exception as exc:
+        raise SystemExit(f"MG polygon load failed: {exc}") from exc
 
     if not os.path.isdir(args.events_root):
         raise SystemExit(f"events_root not found: {args.events_root}")
@@ -410,6 +518,10 @@ def main() -> int:
                 output_root=args.output_root,
                 dl_stats=dl_stats,
                 state_filter=args.state_filter,
+                min_year=args.min_year,
+                mg_polygon_year=int(args.mg_polygon_year),
+                mg_polygon_gpkg=str(args.mg_polygon_gpkg or ""),
+                mg_polygon_layer=str(args.mg_polygon_layer or ""),
                 max_mag=float(args.max_mag),
                 max_depth_km=float(args.max_depth_km),
                 max_pick_dist_km=float(args.max_pick_dist_km),
@@ -449,6 +561,10 @@ def main() -> int:
             "download_summary_csv": args.download_summary_csv,
             "output_root": args.output_root,
             "state_filter": args.state_filter,
+            "mg_polygon_year": args.mg_polygon_year,
+            "mg_polygon_gpkg": args.mg_polygon_gpkg,
+            "mg_polygon_layer": args.mg_polygon_layer,
+            "min_year": args.min_year,
             "max_mag": args.max_mag,
             "max_depth_km": args.max_depth_km,
             "max_pick_dist_km": args.max_pick_dist_km,
@@ -498,6 +614,10 @@ def main() -> int:
         "download_summary_csv": args.download_summary_csv,
         "output_root": args.output_root,
         "state_filter": args.state_filter,
+        "mg_polygon_year": args.mg_polygon_year,
+        "mg_polygon_gpkg": args.mg_polygon_gpkg,
+        "mg_polygon_layer": args.mg_polygon_layer,
+        "min_year": args.min_year,
         "max_mag": args.max_mag,
         "max_depth_km": args.max_depth_km,
         "max_pick_dist_km": args.max_pick_dist_km,

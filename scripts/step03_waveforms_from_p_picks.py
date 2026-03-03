@@ -3,10 +3,12 @@
 Step 03: download waveform windows around P picks from step02 event bundles.
 
 Rules implemented:
+- use deterministic geographic gate: event origin must be inside MG polygon
 - use only picks with phase_hint starting with "P" (P, Pg, Pn, ...)
 - use only picks with dist_km <= --max-pick-dist-km
 - fetch 60 s windows: [pick_time - --pre-p-s, pick_time + --post-p-s]
 - do not fetch any waveform for events without qualifying P picks
+- optional min-year gate is applied last
 - when --component-channels is provided, default output is one 3C mseed per
   station using event origin tag (NET_STA_DATETIME.mseed)
   (use --split-component-files for legacy split-per-channel mode)
@@ -19,15 +21,28 @@ import csv
 import glob
 import json
 import os
+import sys
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
 
 from obspy import UTCDateTime
 from obspy import Stream
 from obspy.clients.fdsn import Client
+
+_THIS_DIR = Path(__file__).resolve().parent
+_SRC_DIR = _THIS_DIR.parent / "src"
+if str(_SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(_SRC_DIR))
+
+from seismic_event_discriminator.mg_geo_filter import (  # noqa: E402
+    KEEP_IN_MG,
+    ensure_mg_polygon_loaded,
+    evaluate_mg_filter,
+)
 
 
 _THREAD_LOCAL = threading.local()
@@ -57,6 +72,18 @@ def _safe_float(v: Any) -> float | None:
         return None
 
 
+def _safe_int(v: Any) -> int | None:
+    try:
+        if v is None:
+            return None
+        s = str(v).strip()
+        if not s:
+            return None
+        return int(s)
+    except Exception:
+        return None
+
+
 def _event_id(payload: dict[str, Any]) -> str:
     rid = ((payload.get("fdsn") or {}).get("resource_id") or "").strip()
     return rid.split("/")[-1] if rid else ""
@@ -78,6 +105,16 @@ def _parse_utc_datetime(raw: Any) -> datetime | None:
         return dt.astimezone(timezone.utc)
     except Exception:
         return None
+
+
+def _sis_event_year(sis: dict[str, Any]) -> int | None:
+    year = _safe_int(sis.get("year"))
+    if year is not None:
+        return year
+    dt = _parse_utc_datetime(sis.get("origin_time"))
+    if dt is None:
+        return None
+    return int(dt.year)
 
 
 def _event_datetime_tag(payload: dict[str, Any], event_folder: str) -> str | None:
@@ -513,9 +550,30 @@ def main() -> int:
     ap.add_argument("--overwrite", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--include-non-matched", action="store_true")
-    ap.add_argument("--state-filter", default="", help="Optional SISBRA state filter, e.g. MG.")
+    ap.add_argument(
+        "--state-filter",
+        default="MG",
+        help="Deprecated inclusion parameter. Used only for ST-vs-geometry audit labels.",
+    )
+    ap.add_argument(
+        "--mg-polygon-year",
+        type=int,
+        default=2020,
+        help="geobr year used if GeoPackage is unavailable.",
+    )
+    ap.add_argument(
+        "--mg-polygon-gpkg",
+        default="~/geodatabase.gpkg",
+        help="Local GeoPackage path for MG polygon (preferred in offline environments).",
+    )
+    ap.add_argument(
+        "--mg-polygon-layer",
+        default="ibge_mg_uf_2024",
+        help="Layer name inside GeoPackage used for MG polygon.",
+    )
     ap.add_argument("--max-mag", type=float, default=None, help="Optional strict upper bound for magnitude (mag < max-mag).")
     ap.add_argument("--max-depth-km", type=float, default=None, help="Optional strict upper bound for depth (depth_km < max-depth-km).")
+    ap.add_argument("--min-year", type=int, default=None, help="Optional minimum year filter (applied last).")
     ap.add_argument(
         "--component-channels",
         default="",
@@ -535,6 +593,14 @@ def main() -> int:
         help="When component-channels are set, store one mseed per channel (legacy mode).",
     )
     args = ap.parse_args()
+    try:
+        ensure_mg_polygon_loaded(
+            mg_polygon_year=int(args.mg_polygon_year),
+            mg_polygon_gpkg_path=str(args.mg_polygon_gpkg or ""),
+            mg_polygon_layer=str(args.mg_polygon_layer or ""),
+        )
+    except Exception as exc:
+        raise SystemExit(f"MG polygon load failed: {exc}") from exc
     component_channels_cli = [x.strip().upper() for x in str(args.component_channels).split(",") if x.strip()]
 
     event_json_paths = sorted(glob.glob(os.path.join(args.events_root, "*", "event.json")))
@@ -550,6 +616,9 @@ def main() -> int:
     events_skipped_filters = 0
     events_with_p = 0
     events_no_p = 0
+    events_state_inconsistent_audit = 0
+    events_state_unknown_audit = 0
+    skip_reason_counts: dict[str, int] = {}
 
     for p in event_json_paths:
         events_scanned += 1
@@ -559,20 +628,46 @@ def main() -> int:
             continue
 
         sis = payload.get("sisbra") or {}
-        if args.state_filter:
-            state = str(sis.get("state") or "").strip().upper()
-            if state != str(args.state_filter).strip().upper():
-                events_skipped_filters += 1
-                continue
+        geo = evaluate_mg_filter(
+            latitude=sis.get("latitude"),
+            longitude=sis.get("longitude"),
+            state_value=sis.get("state"),
+            state_target=str(args.state_filter or "MG"),
+            mg_polygon_year=int(args.mg_polygon_year),
+            mg_polygon_gpkg_path=str(args.mg_polygon_gpkg or ""),
+            mg_polygon_layer=str(args.mg_polygon_layer or ""),
+        )
+        st_geo_consistency = str(geo["st_geo_consistency"])
+        if st_geo_consistency.startswith("INCONSISTENT_"):
+            events_state_inconsistent_audit += 1
+        elif st_geo_consistency == "UNKNOWN_ST":
+            events_state_unknown_audit += 1
+
+        if str(geo["mg_filter_status"]) != KEEP_IN_MG:
+            events_skipped_filters += 1
+            reason = str(geo["mg_filter_status"]).lower()
+            skip_reason_counts[reason] = skip_reason_counts.get(reason, 0) + 1
+            continue
+
         if args.max_mag is not None:
             mag = _safe_float(sis.get("magnitude"))
             if mag is None or not (mag < float(args.max_mag)):
                 events_skipped_filters += 1
+                skip_reason_counts["mag_not_lt_max"] = skip_reason_counts.get("mag_not_lt_max", 0) + 1
                 continue
         if args.max_depth_km is not None:
             depth_km = _safe_float(sis.get("depth_km"))
             if depth_km is None or not (depth_km < float(args.max_depth_km)):
                 events_skipped_filters += 1
+                skip_reason_counts["depth_not_lt_max"] = skip_reason_counts.get("depth_not_lt_max", 0) + 1
+                continue
+        if args.min_year is not None:
+            year = _sis_event_year(sis)
+            if year is None or year < int(args.min_year):
+                events_skipped_filters += 1
+                skip_reason_counts["year_lt_min_or_missing"] = (
+                    skip_reason_counts.get("year_lt_min_or_missing", 0) + 1
+                )
                 continue
 
         events_selected += 1
@@ -753,6 +848,15 @@ def main() -> int:
     print(f"events_skipped_filters={events_skipped_filters}")
     print(f"events_with_p={events_with_p}")
     print(f"events_no_p={events_no_p}")
+    print(f"state_filter_audit_only={args.state_filter}")
+    print(f"mg_polygon_year={args.mg_polygon_year}")
+    print(f"mg_polygon_gpkg={args.mg_polygon_gpkg}")
+    print(f"mg_polygon_layer={args.mg_polygon_layer}")
+    if args.min_year is not None:
+        print(f"min_year={args.min_year}")
+    print(f"events_state_inconsistent_audit={events_state_inconsistent_audit}")
+    print(f"events_state_unknown_audit={events_state_unknown_audit}")
+    print(f"skip_reason_counts={skip_reason_counts}")
     if component_channels_cli:
         print(f"component_channels_cli={component_channels_cli}")
     print(f"default_single_file_triplet={args.single_file_triplet}")

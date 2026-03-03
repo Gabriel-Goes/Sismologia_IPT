@@ -3,6 +3,8 @@
 ## Decisao transversal (2026-03-02)
 - Filtro geografico de MG passa a ser deterministico por coordenadas (ponto-poligono).
 - Campos `ST`, toponimias e localidades ficam apenas como auditoria de consistencia.
+- Fonte primaria do poligono de MG: GeoPackage local sincronizado via `rsync` do GeoServer
+  (fallback para `geobr` somente quando necessario).
 
 ## M0 - Bootstrap cleanroom (done)
 - Branch cleanroom criada.
@@ -23,7 +25,7 @@ em arquivos por evento (`xml|json`) para alimentar a etapa 3.
 - Regras de filtro reproduziveis (regiao, magnitude, profundidade).
 - Contagem de eventos antes/depois registrada.
 
-## M1.1 - Alinhamento notebook -> pipeline Python+Bash (planned)
+## M1.1 - Alinhamento notebook -> pipeline Python+Bash (in progress)
 ### Goal
 Levar para os scripts operacionais a mesma regra validada no notebook Step1:
 inclusao de evento em MG por interseccao ponto-poligono, com `ST` apenas para

@@ -1,8 +1,18 @@
 # Descrição do GeoPackage `geodatabase.gpkg`
 
-- Arquivo analisado: `/home/database/geodatabase.gpkg`
+- Arquivo analisado (seisapp): `/home/gabrielgoes/geodatabase.gpkg`
+- Origem de sincronizacao (GeoServer): `/home/database/geodatabase.gpkg`
 - Data da análise (UTC): `2026-03-03 01:04:35Z`
 - Total de camadas: **23**
+
+## Proveniencia do arquivo
+
+- Origem: copiado via `rsync` do servidor **GeoServer** para o ambiente atual.
+- Objetivo no pipeline: fornecer o poligono de MG em modo offline (sem depender de download `geobr`).
+- Camada prioritaria para filtro deterministico MG:
+  - `ibge_mg_uf_2024` (1 poligono de MG)
+- Camada de fallback no mesmo arquivo:
+  - `ibge_br_ufs_2024` (27 UFs; filtrar `SIGLA_UF == "MG"`).
 
 ## Compreensão Breve
 
