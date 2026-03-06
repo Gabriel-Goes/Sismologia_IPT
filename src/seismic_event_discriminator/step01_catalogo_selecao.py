@@ -80,7 +80,7 @@ def _haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     return r * c
 
 
-def read_sisbra_clean_csv(path: str, *, min_year: int = 2000, require_utc: bool = True) -> list[SisbraEvent]:
+def read_sisbra_csv(path: str, *, min_year: int = 2000, require_utc: bool = True) -> list[SisbraEvent]:
     events: list[SisbraEvent] = []
     with open(path, "r", encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
@@ -129,14 +129,14 @@ def read_sisbra_clean_csv(path: str, *, min_year: int = 2000, require_utc: bool 
             except Exception:
                 continue
 
-            lat = _safe_float(row.get("latit", "") or "")
-            lon = _safe_float(row.get("longit", "") or "")
+            lat = _safe_float(row.get("latit_num", "") or row.get("latit", "") or "")
+            lon = _safe_float(row.get("longit_num", "") or row.get("longit", "") or "")
             if lat is None or lon is None:
                 continue
 
             depth = _safe_float(row.get("depth", "") or "")
             mag = _safe_float(row.get("mag", "") or "")
-            st = (row.get("ST", "") or "").strip()
+            st = (row.get("ST_norm", "") or row.get("ST", "") or "").strip()
             loc = (row.get("Localities", "") or "").strip()
             src = (row.get("(source) comments", "") or "").strip()
 
@@ -156,6 +156,12 @@ def read_sisbra_clean_csv(path: str, *, min_year: int = 2000, require_utc: bool 
 
     events.sort(key=lambda e: e.origin_time)
     return events
+
+
+def read_sisbra_clean_csv(path: str, *, min_year: int = 2000, require_utc: bool = True) -> list[SisbraEvent]:
+    # Backward-compatible alias while the codebase migrates from CLEAN to
+    # project-owned CSVs derived from RAW.
+    return read_sisbra_csv(path, min_year=min_year, require_utc=require_utc)
 
 
 def read_fdsn_query_txt(path: str) -> list[FdsnEvent]:
@@ -359,8 +365,8 @@ def main() -> int:
     )
     ap.add_argument(
         "--sisbra-csv",
-        default="catalogs/sisbra/sisbra_v2024May09/catalogo_CLEAN_v2024May09.csv",
-        help="Caminho para o SISBRA CLEAN CSV.",
+        default="outputs/catalogs/sisbra_v2024May09/sisbra_raw_mg_maglt4_depthlt10_yearge2020_v2024May09.csv",
+        help="Caminho para o CSV SISBRA preparado pelo pipeline a partir do RAW.",
     )
     ap.add_argument(
         "--fdsn-query",
@@ -386,7 +392,7 @@ def main() -> int:
 
     args = ap.parse_args()
 
-    sisbra_events = read_sisbra_clean_csv(args.sisbra_csv, min_year=args.min_year, require_utc=True)
+    sisbra_events = read_sisbra_csv(args.sisbra_csv, min_year=args.min_year, require_utc=True)
     if not sisbra_events:
         raise SystemExit(f"Nenhum evento SISBRA lido de: {args.sisbra_csv}")
 

@@ -17,7 +17,7 @@ set -euo pipefail
 #   MAG_PAD=0.7
 
 CLIENT_URL="${CLIENT_URL:-http://127.0.0.1:28080}"
-SISBRA_CSV="${SISBRA_CSV:-catalogs/sisbra/sisbra_v2024May09/catalogo_CLEAN_v2024May09.csv}"
+SISBRA_CSV="${SISBRA_CSV:-outputs/catalogs/sisbra_v2024May09/sisbra_raw_mg_maglt4_depthlt10_yearge2020_v2024May09.csv}"
 N_LAST="${N_LAST:-3}"
 OUT_ROOT="${OUT_ROOT:-data_test_run}"
 MAX_PICK_DIST_KM="${MAX_PICK_DIST_KM:-400}"

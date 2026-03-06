@@ -16,7 +16,7 @@ if [ -n "${CLIENT_URL:-}" ]; then
 fi
 CLIENT_URL="${CLIENT_URL:-$DEFAULT_CLIENT_URL}"
 UNB_WADL_URL="${UNB_WADL_URL:-http://164.41.28.122:5831/fdsnws/event/1/application.wadl}"
-SISBRA_CSV="${SISBRA_CSV:-catalogs/sisbra/sisbra_v2024May09/catalogo_CLEAN_v2024May09.csv}"
+SISBRA_CSV="${SISBRA_CSV:-outputs/catalogs/sisbra_v2024May09/sisbra_raw_mg_maglt4_depthlt10_yearge2020_v2024May09.csv}"
 OUT_ROOT="${OUT_ROOT:-data/sisbra_all}"
 N_LAST="${N_LAST:-0}"
 WORKERS="${WORKERS:-1}"

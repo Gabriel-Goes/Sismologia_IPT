@@ -37,7 +37,7 @@ _SRC_DIR = Path(__file__).resolve().parents[1]
 if str(_SRC_DIR) not in sys.path:
     sys.path.insert(0, str(_SRC_DIR))
 
-from seismic_event_discriminator.step01_catalogo_selecao import SisbraEvent, read_sisbra_clean_csv
+from seismic_event_discriminator.step01_catalogo_selecao import SisbraEvent, read_sisbra_csv
 
 
 _THREAD_LOCAL = threading.local()
@@ -537,8 +537,8 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Consulta seisArc (FDSNWS) e exporta picks por evento.")
     ap.add_argument(
         "--sisbra-csv",
-        default="catalogs/sisbra/sisbra_v2024May09/catalogo_CLEAN_v2024May09.csv",
-        help="Caminho para o SISBRA CLEAN CSV.",
+        default="outputs/catalogs/sisbra_v2024May09/sisbra_raw_mg_maglt4_depthlt10_yearge2020_v2024May09.csv",
+        help="Caminho para o CSV SISBRA preparado pelo pipeline a partir do RAW.",
     )
     ap.add_argument("--min-year", type=int, default=2000, help="Ano mínimo do SISBRA para considerar.")
     ap.add_argument("--n-last", type=int, default=50, help="Número de eventos mais recentes do SISBRA a processar.")
@@ -589,7 +589,7 @@ def main() -> int:
         _normalize_agency_tag(x) for x in str(args.critical_agency_patterns).split(",") if x.strip()
     ]
 
-    sisbra = read_sisbra_clean_csv(args.sisbra_csv, min_year=args.min_year, require_utc=True)
+    sisbra = read_sisbra_csv(args.sisbra_csv, min_year=args.min_year, require_utc=True)
     if not sisbra:
         raise SystemExit(f"Nenhum evento SISBRA lido de: {args.sisbra_csv}")
     subset = sisbra[-args.n_last :] if args.n_last > 0 else sisbra

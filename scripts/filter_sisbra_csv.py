@@ -64,12 +64,12 @@ def main() -> int:
     )
     ap.add_argument(
         "--input-csv",
-        default="catalogs/sisbra/sisbra_v2024May09/catalogo_CLEAN_v2024May09.csv",
-        help="Input SISBRA CSV path.",
+        default="outputs/catalogs/sisbra_v2024May09/sisbra_raw_normalized_v2024May09.csv",
+        help="Input SISBRA CSV path (default: project-owned normalized RAW).",
     )
     ap.add_argument(
         "--output-csv",
-        default="outputs/sisbra_mg_maglt4_depthlt10.csv",
+        default="outputs/catalogs/sisbra_v2024May09/sisbra_raw_mg_maglt4_depthlt10_yearge2020_v2024May09.csv",
         help="Output filtered CSV path.",
     )
     ap.add_argument(
@@ -155,9 +155,9 @@ def main() -> int:
             rows_in += 1
 
             geo = evaluate_mg_filter(
-                latitude=row.get("latit"),
-                longitude=row.get("longit"),
-                state_value=row.get("ST"),
+                latitude=row.get("latit_num") or row.get("latit"),
+                longitude=row.get("longit_num") or row.get("longit"),
+                state_value=row.get("ST_norm") or row.get("ST"),
                 state_target=state_target,
                 mg_polygon_year=int(args.mg_polygon_year),
                 mg_polygon_gpkg_path=str(args.mg_polygon_gpkg or ""),

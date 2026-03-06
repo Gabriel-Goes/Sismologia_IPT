@@ -73,21 +73,30 @@ python -c "from obspy.clients.fdsn import Client; c=Client('http://127.0.0.1:280
 
 ## Pipeline (SISBRA -> FDSN -> picks export)
 
-1) Associação SISBRA->FDSN via catálogo estático (builder text `catalogs/query.txt`):
+1) Normalização do RAW SISBRA em um CSV derivado próprio:
+
+```bash
+python scripts/normalize_sisbra_raw.py \
+  --input-csv catalogs/sisbra/sisbra_v2024May09/catalogo_RAW_v2024May09.csv \
+  --output-csv outputs/catalogs/sisbra_v2024May09/sisbra_raw_normalized_v2024May09.csv \
+  --rejected-no-valid-coords-csv outputs/catalogs/sisbra_v2024May09/sisbra_raw_rejected_no_valid_coords_v2024May09.csv
+```
+
+2) Associação SISBRA->FDSN via catálogo estático (builder text `catalogs/query.txt`):
 
 ```bash
 python src/seismic_event_discriminator/step01_catalogo_selecao.py \
-  --sisbra-csv catalogs/sisbra/sisbra_v2024May09/catalogo_CLEAN_v2024May09.csv \
+  --sisbra-csv outputs/catalogs/sisbra_v2024May09/sisbra_raw_mg_maglt4_depthlt10_yearge2020_v2024May09.csv \
   --fdsn-query catalogs/query.txt \
   --n-last 100 \
   --out outputs/sisbra_to_fdsn_last100.csv
 ```
 
-2) Enriquecimento via FDSN live (seisArc via túnel) e export por evento:
+3) Enriquecimento via FDSN live (seisArc via túnel) e export por evento:
 
 ```bash
 python src/seismic_event_discriminator/step02_fdsn_picks_export.py \
-  --sisbra-csv catalogs/sisbra/sisbra_v2024May09/catalogo_CLEAN_v2024May09.csv \
+  --sisbra-csv outputs/catalogs/sisbra_v2024May09/sisbra_raw_mg_maglt4_depthlt10_yearge2020_v2024May09.csv \
   --client-url http://127.0.0.1:28080 \
   --workers 1 \
   --n-last 50 \

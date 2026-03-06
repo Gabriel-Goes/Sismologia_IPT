@@ -103,11 +103,20 @@ Observacao:
 - Scripts de diagnostico historico: `scripts/legacy/`.
 
 ## Execucao Recomendada
-1. Gerar CSV filtrado por geometria MG/M<4/depth<10/ano:
+1. Normalizar o `RAW` em um CSV derivado proprio e separar linhas sem coordenadas validas:
+```bash
+cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/normalize_sisbra_raw.py \
+  --input-csv catalogs/sisbra/sisbra_v2024May09/catalogo_RAW_v2024May09.csv \
+  --output-csv outputs/catalogs/sisbra_v2024May09/sisbra_raw_normalized_v2024May09.csv \
+  --rejected-no-valid-coords-csv outputs/catalogs/sisbra_v2024May09/sisbra_raw_rejected_no_valid_coords_v2024May09.csv \
+  --report-md outputs/catalogs/sisbra_v2024May09/sisbra_raw_normalization_report_v2024May09.md
+```
+
+2. Gerar CSV filtrado por geometria MG/M<4/depth<10/ano a partir do derivado normalizado:
 ```bash
 cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/filter_sisbra_csv.py \
-  --input-csv catalogs/sisbra/sisbra_v2024May09/catalogo_CLEAN_v2024May09.csv \
-  --output-csv outputs/sisbra_mg_maglt4_depthlt10.csv \
+  --input-csv outputs/catalogs/sisbra_v2024May09/sisbra_raw_normalized_v2024May09.csv \
+  --output-csv outputs/catalogs/sisbra_v2024May09/sisbra_raw_mg_maglt4_depthlt10_yearge2020_v2024May09.csv \
   --state MG \
   --mg-polygon-year 2020 \
   --mg-polygon-gpkg /home/gabrielgoes/geodatabase.gpkg \
@@ -118,12 +127,12 @@ cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/fil
 ```
 Observacao: `--state` e mantido apenas para auditoria de consistencia (`ST x geometria`).
 
-2. Executar Step02 no subconjunto:
+3. Executar Step02 no subconjunto:
 ```bash
-cd /home/ggrl/projetos/ClassificadorSismologico && LOG_DIR=outputs/logs_mg_maglt4_depthlt10_w24 WORKERS=24 N_LAST=0 OUT_ROOT=data/sisbra_mg_maglt4_depthlt10_w24 SISBRA_CSV=outputs/sisbra_mg_maglt4_depthlt10.csv CLIENT_URL=http://127.0.0.1:28080 bash scripts/run_all_sisbra_build.sh
+cd /home/ggrl/projetos/ClassificadorSismologico && LOG_DIR=outputs/logs_mg_maglt4_depthlt10_w24 WORKERS=24 N_LAST=0 OUT_ROOT=data/sisbra_mg_maglt4_depthlt10_w24 SISBRA_CSV=outputs/catalogs/sisbra_v2024May09/sisbra_raw_mg_maglt4_depthlt10_yearge2020_v2024May09.csv CLIENT_URL=http://127.0.0.1:28080 bash scripts/run_all_sisbra_build.sh
 ```
 
-3. Baixar formas de onda (60 s = P-10 / P+50):
+4. Baixar formas de onda (60 s = P-10 / P+50):
 ```bash
 cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/step03_waveforms_from_p_picks.py --events-root data/sisbra_mg_maglt4_depthlt10_w24 --client-url http://127.0.0.1:28080 --max-pick-dist-km 400 --pre-p-s 10 --post-p-s 50 --workers 12 --state-filter MG --mg-polygon-year 2020 --mg-polygon-gpkg /home/gabrielgoes/geodatabase.gpkg --mg-polygon-layer ibge_mg_uf_2024 --max-mag 4 --max-depth-km 10 --min-year 2020 --component-channels HHZ,HHN,HHE --summary-csv outputs/waveform_triplet_download_summary_mg.csv
 ```
@@ -133,7 +142,7 @@ cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/ste
   (ex.: `2022004T134407`).
 - Para manter o modo legado (1 arquivo por canal), adicionar `--split-component-files`.
 
-4. Organizar compativeis/incompativeis:
+5. Organizar compativeis/incompativeis:
 ```bash
 cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/organize_compatible_events.py --events-root data/sisbra_mg_maglt4_depthlt10_w24 --download-summary-csv outputs/waveform_triplet_download_summary_mg.csv --compatible-root data/eventos_compativeis --incompatible-root data/eventos_nao_compativeis --state-filter MG --mg-polygon-year 2020 --mg-polygon-gpkg /home/gabrielgoes/geodatabase.gpkg --mg-polygon-layer ibge_mg_uf_2024 --max-mag 4 --max-depth-km 10 --min-year 2020 --max-pick-dist-km 400 --report-csv outputs/eventos_compatibilidade_report.csv --report-md outputs/eventos_compatibilidade_report.md
 ```

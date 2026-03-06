@@ -12,8 +12,10 @@ Usage:
 
 Environment overrides:
   CLIENT_URL              (default: auto: seisapp->http://10.110.0.134, other->http://127.0.0.1:28080)
-  SISBRA_CSV              (default: catalogs/sisbra/.../catalogo_CLEAN_v2024May09.csv)
-  FILTERED_CSV            (default: outputs/sisbra_mg_maglt4_depthlt10.csv)
+  SISBRA_RAW_CSV          (default: catalogs/sisbra/.../catalogo_RAW_v2024May09.csv)
+  NORMALIZED_CSV          (default: outputs/catalogs/.../sisbra_raw_normalized_v2024May09.csv)
+  REJECTED_NO_COORDS_CSV  (default: outputs/catalogs/.../sisbra_raw_rejected_no_valid_coords_v2024May09.csv)
+  FILTERED_CSV            (default: outputs/catalogs/.../sisbra_raw_mg_maglt4_depthlt10_yearge2020_v2024May09.csv)
   STATE_FILTER            (default: MG, audit only for ST-vs-geometry)
   MIN_YEAR                (default: 2020, inclusive)
   STAGE_ROOT              (default: data/events_stage)
@@ -46,8 +48,11 @@ if [ -n "${CLIENT_URL:-}" ]; then
   CLIENT_URL_SOURCE="env"
 fi
 CLIENT_URL="${CLIENT_URL:-$DEFAULT_CLIENT_URL}"
-SISBRA_CSV="${SISBRA_CSV:-catalogs/sisbra/sisbra_v2024May09/catalogo_CLEAN_v2024May09.csv}"
-FILTERED_CSV="${FILTERED_CSV:-outputs/sisbra_mg_maglt4_depthlt10.csv}"
+SISBRA_RAW_CSV="${SISBRA_RAW_CSV:-catalogs/sisbra/sisbra_v2024May09/catalogo_RAW_v2024May09.csv}"
+NORMALIZED_CSV="${NORMALIZED_CSV:-outputs/catalogs/sisbra_v2024May09/sisbra_raw_normalized_v2024May09.csv}"
+REJECTED_NO_COORDS_CSV="${REJECTED_NO_COORDS_CSV:-outputs/catalogs/sisbra_v2024May09/sisbra_raw_rejected_no_valid_coords_v2024May09.csv}"
+NORMALIZATION_REPORT_MD="${NORMALIZATION_REPORT_MD:-outputs/catalogs/sisbra_v2024May09/sisbra_raw_normalization_report_v2024May09.md}"
+FILTERED_CSV="${FILTERED_CSV:-outputs/catalogs/sisbra_v2024May09/sisbra_raw_mg_maglt4_depthlt10_yearge2020_v2024May09.csv}"
 STAGE_ROOT="${STAGE_ROOT:-data/events_stage}"
 NON_MATCHED_ROOT="${NON_MATCHED_ROOT:-data/events_stage_non_matched}"
 FINAL_ROOT="${FINAL_ROOT:-data/events}"
@@ -115,7 +120,13 @@ if [ "$STAGE_MUST_BE_EMPTY" = "1" ] && [ -d "$NON_MATCHED_ROOT" ] && [ -n "$(fin
   exit 1
 fi
 
-mkdir -p "$(dirname "$FILTERED_CSV")" "$STAGE_ROOT" "$NON_MATCHED_ROOT" "$FINAL_ROOT"
+mkdir -p \
+  "$(dirname "$NORMALIZED_CSV")" \
+  "$(dirname "$REJECTED_NO_COORDS_CSV")" \
+  "$(dirname "$FILTERED_CSV")" \
+  "$STAGE_ROOT" \
+  "$NON_MATCHED_ROOT" \
+  "$FINAL_ROOT"
 
 {
   echo "# Real Run Report ($RUN_TS)"
@@ -124,7 +135,10 @@ mkdir -p "$(dirname "$FILTERED_CSV")" "$STAGE_ROOT" "$NON_MATCHED_ROOT" "$FINAL_
   echo "- CLIENT_URL: \`$CLIENT_URL\`"
   echo "- CLIENT_URL_SOURCE: \`$CLIENT_URL_SOURCE\`"
   echo "- HOSTNAME: \`$HOSTNAME_FULL\`"
-  echo "- SISBRA_CSV: \`$SISBRA_CSV\`"
+  echo "- SISBRA_RAW_CSV: \`$SISBRA_RAW_CSV\`"
+  echo "- NORMALIZED_CSV: \`$NORMALIZED_CSV\`"
+  echo "- REJECTED_NO_COORDS_CSV: \`$REJECTED_NO_COORDS_CSV\`"
+  echo "- NORMALIZATION_REPORT_MD: \`$NORMALIZATION_REPORT_MD\`"
   echo "- FILTERED_CSV: \`$FILTERED_CSV\`"
   echo "- STAGE_ROOT: \`$STAGE_ROOT\`"
   echo "- NON_MATCHED_ROOT: \`$NON_MATCHED_ROOT\`"
@@ -172,13 +186,31 @@ except Exception as e:
     raise
 PY
 
-echo "[run-real] step A: filter SISBRA"
+echo "[run-real] step A: normalize SISBRA RAW"
 cat >> "$REPORT_FILE" <<EOF
 
-a) Filter SISBRA
+a) Normalize SISBRA RAW
+\`\`\`bash
+$PYTHON_DESC scripts/normalize_sisbra_raw.py \\
+  --input-csv "$SISBRA_RAW_CSV" \\
+  --output-csv "$NORMALIZED_CSV" \\
+  --rejected-no-valid-coords-csv "$REJECTED_NO_COORDS_CSV" \\
+  --report-md "$NORMALIZATION_REPORT_MD"
+\`\`\`
+EOF
+"${PYTHON_RUNNER[@]}" scripts/normalize_sisbra_raw.py \
+  --input-csv "$SISBRA_RAW_CSV" \
+  --output-csv "$NORMALIZED_CSV" \
+  --rejected-no-valid-coords-csv "$REJECTED_NO_COORDS_CSV" \
+  --report-md "$NORMALIZATION_REPORT_MD"
+
+echo "[run-real] step B: filter SISBRA normalized"
+cat >> "$REPORT_FILE" <<EOF
+
+b) Filter SISBRA normalized
 \`\`\`bash
 $PYTHON_DESC scripts/filter_sisbra_csv.py \\
-  --input-csv "$SISBRA_CSV" \\
+  --input-csv "$NORMALIZED_CSV" \\
   --output-csv "$FILTERED_CSV" \\
   --state "$STATE_FILTER" \\
   --mg-polygon-year "$MG_POLYGON_YEAR" \\
@@ -190,7 +222,7 @@ $PYTHON_DESC scripts/filter_sisbra_csv.py \\
 \`\`\`
 EOF
 "${PYTHON_RUNNER[@]}" scripts/filter_sisbra_csv.py \
-  --input-csv "$SISBRA_CSV" \
+  --input-csv "$NORMALIZED_CSV" \
   --output-csv "$FILTERED_CSV" \
   --state "$STATE_FILTER" \
   --mg-polygon-year "$MG_POLYGON_YEAR" \
@@ -200,10 +232,10 @@ EOF
   --max-mag "$MAX_MAG" \
   --max-depth-km "$MAX_DEPTH_KM"
 
-echo "[run-real] step B: step02"
+echo "[run-real] step C: step02"
 cat >> "$REPORT_FILE" <<EOF
 
-b) Step02
+c) Step02
 \`\`\`bash
 $PYTHON_DESC src/seismic_event_discriminator/step02_fdsn_picks_export.py \\
   --sisbra-csv "$FILTERED_CSV" \\
@@ -234,10 +266,10 @@ EOF
   --step03-output-mode triplet_single_file \
   --step03-component-channels "$COMPONENT_CHANNELS"
 
-echo "[run-real] step B2: audit non-matched bundles"
+echo "[run-real] step C2: audit non-matched bundles"
 cat >> "$REPORT_FILE" <<EOF
 
-b2) Audit no_match + ambiguous
+c2) Audit no_match + ambiguous
 \`\`\`bash
 $PYTHON_DESC scripts/audit_non_matched_events.py \\
   --non-matched-root "$NON_MATCHED_ROOT" \\
@@ -258,10 +290,10 @@ else
   echo "[run-real] no non-matched bundles found under $NON_MATCHED_ROOT; skipping audit"
 fi
 
-echo "[run-real] step C: step03"
+echo "[run-real] step D: step03"
 cat >> "$REPORT_FILE" <<EOF
 
-c) Step03
+d) Step03
 \`\`\`bash
 $PYTHON_DESC scripts/step03_waveforms_from_p_picks.py \\
   --events-root "$STAGE_ROOT" \\
@@ -300,10 +332,10 @@ EOF
   --min-year "$MIN_YEAR" \
   --component-channels "$COMPONENT_CHANNELS"
 
-echo "[run-real] step D: materialize final dataset"
+echo "[run-real] step E: materialize final dataset"
 cat >> "$REPORT_FILE" <<EOF
 
-d) Materialize final dataset
+e) Materialize final dataset
 \`\`\`bash
 $PYTHON_DESC scripts/materialize_events_dataset.py \\
   --events-root "$STAGE_ROOT" \\
@@ -350,6 +382,9 @@ EOF
   echo "- Stage root: \`$STAGE_ROOT\`"
   echo "- Non-matched root: \`$NON_MATCHED_ROOT\`"
   echo "- Final root: \`$FINAL_ROOT\`"
+  echo "- Normalized CSV: \`$NORMALIZED_CSV\`"
+  echo "- Rejected no-coords CSV: \`$REJECTED_NO_COORDS_CSV\`"
+  echo "- Normalization report MD: \`$NORMALIZATION_REPORT_MD\`"
   echo "- Non-matched audit CSV: \`$NON_MATCHED_AUDIT_CSV\`"
   echo "- Non-matched audit MD: \`$NON_MATCHED_AUDIT_MD\`"
   echo "- Ambiguous events CSV: \`$AMBIGUOUS_EVENTS_CSV\`"

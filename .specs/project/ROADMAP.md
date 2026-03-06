@@ -5,13 +5,15 @@
 - Campos `ST`, toponimias e localidades ficam apenas como auditoria de consistencia.
 - Fonte primaria do poligono de MG: GeoPackage local sincronizado via `rsync` do GeoServer
   (fallback para `geobr` somente quando necessario).
+- Fonte canonica do SISBRA passa a ser o `RAW`; o projeto materializa seus
+  proprios CSVs derivados e nao assume `CLEAN` como entrada confiavel.
 
 ## M0 - Bootstrap cleanroom (done)
 - Branch cleanroom criada.
 - Snapshot do legado arquivado.
 - Estrutura inicial de notebooks e script linear criada.
 
-## M1 - Etapas 1+2: Catalogo e selecao (in progress)
+## M1 - Etapas 1+2: Catalogo e selecao (done)
 ### Goal
 Ler catalogo (`QuakeML` ou texto de builder), selecionar eventos alvo e quebrar
 em arquivos por evento (`xml|json`) para alimentar a etapa 3.
@@ -25,7 +27,7 @@ em arquivos por evento (`xml|json`) para alimentar a etapa 3.
 - Regras de filtro reproduziveis (regiao, magnitude, profundidade).
 - Contagem de eventos antes/depois registrada.
 
-## M1.1 - Alinhamento notebook -> pipeline Python+Bash (in progress)
+## M1.1 - Alinhamento notebook -> pipeline Python+Bash (done, smoke validado em 2026-03-04)
 ### Goal
 Levar para os scripts operacionais a mesma regra validada no notebook Step1:
 inclusao de evento em MG por interseccao ponto-poligono, com `ST` apenas para
@@ -42,7 +44,9 @@ auditoria.
 
 ### Deliverables
 - Documentacao de estado atual vs estado alvo em `.specs` e `docs/`.
+- Etapa explicita `RAW -> normalized -> filtered` no pipeline oficial.
 - Checklist tecnico fechado de migracao para:
+  - `scripts/normalize_sisbra_raw.py`
   - `scripts/filter_sisbra_csv.py`
   - `scripts/step03_waveforms_from_p_picks.py`
   - `scripts/materialize_events_dataset.py`
@@ -55,8 +59,51 @@ auditoria.
 ### Verification
 - Mesma entrada de catalogo gera contagens iguais entre notebook Step1 e
   pipeline migrado para o gate geografico.
+- CSV normalizado derivado do `RAW` e CSV de rejeitados sem coordenadas validas
+  ficam auditaveis e reproduziveis.
 - Tabelas de inconsistencias `ST x geometria` disponiveis para auditoria.
 - Sem fallback silencioso para `ST` no criterio de inclusao em MG.
+
+### Validation update (2026-03-04, smoke controlado)
+- Execucao E2E com `seed=42`, amostra `n=300`:
+  - input smoke: `outputs/smoke/sisbra_clean_smoke_seed42_n300.csv`
+  - filtro: `rows_in=300`, `passed_geo_inside_mg=51`, `rows_out=14`
+  - Step02: `matched=14`, `no_match=0`, `ambiguous=0`, `error=0`
+  - Step03: `triplet_tasks=75`, `downloaded=58`, `error=17` (HTTP 204 no data)
+  - materialize: `eligible=14`, `moved=14`, sem colisao
+- Artefatos:
+  - `outputs/logs_real_events/run_real_mg_maglt4_depthlt10_20260304T121721Z.md`
+  - `outputs/smoke/waveform_triplet_download_summary_smoke.csv`
+  - `outputs/smoke/events_materialize_report_smoke.csv`
+
+### Validation update (2026-03-06, trilha RAW derivada)
+- Normalizacao do `RAW`:
+  - `rows_raw_total=5934`
+  - `rows_valid_coords=5790`
+  - `rows_invalid_coords=144`
+- Filtro operacional no derivado normalizado:
+  - `passed_geo_inside_mg=918`
+  - `rows_out=210`
+  - `dropped_geo_outside_mg=4872`
+  - `dropped_geo_no_valid_coords=144`
+- Conclusao:
+  - notebook Step1 e filtro oficial passam a convergir sobre a mesma fonte
+    canonica (`RAW`), eliminando a dependencia operacional do `CLEAN`.
+
+## M1.2 - Validacao E2E em lote completo (pending)
+### Goal
+Repetir o fluxo E2E no catalogo `RAW` completo, passando pela etapa de
+normalizacao propria, para fechar a validacao operacional antes de avancar
+para M2.
+
+### Verification
+- Runner `run_real_mg_maglt4_depthlt10.sh` finaliza com `rc=0`.
+- Runner gera e registra:
+  - CSV normalizado derivado do `RAW`;
+  - CSV de rejeitados sem coordenadas validas;
+  - CSV filtrado operacional para Step02.
+- Relatorios de smoke e lote completo permanecem coerentes no criterio de gate.
+- Taxa de `error` no Step03 fica auditada por estacao/canal para triagem.
 
 ## M2 - Etapa 3: Base local incremental de analise
 ### Goal

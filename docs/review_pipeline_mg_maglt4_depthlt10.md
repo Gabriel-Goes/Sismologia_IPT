@@ -10,12 +10,43 @@ Review do fluxo principal E2E que implementa:
 - triplet de canais HHZ/HHN/HHE
 - alinhamento com as descobertas do notebook Step1 (filtro MG por geometria)
 
+> Update 2026-03-02: migracao M1.1 implementada nos scripts principais.
+> Este review permanece como registro dos gaps identificados antes da migracao.
+> Update 2026-03-04: smoke E2E executado com endpoint interno SEISAPP e
+> evidencia operacional registrada em `outputs/logs_real_events/`.
+> Update 2026-03-06: `catalogo_RAW_v2024May09.csv` passa a ser a fonte canonica
+> e o pipeline ganha uma etapa explicita de normalizacao propria antes do filtro MG.
+
 Arquivos revisados:
 - scripts/run_real_mg_maglt4_depthlt10.sh
 - scripts/filter_sisbra_csv.py
 - src/seismic_event_discriminator/step02_fdsn_picks_export.py
 - scripts/step03_waveforms_from_p_picks.py
 - scripts/materialize_events_dataset.py
+
+## Update 2026-03-04 (smoke controlado, seed=42 n=300)
+Status dos gaps historicos deste review:
+- S1 (gate MG por `ST`): **resolvido**. Gate atual usa ponto-poligono e `ST`
+  fica apenas para auditoria (`scripts/filter_sisbra_csv.py`,
+  `scripts/step03_waveforms_from_p_picks.py`, `scripts/materialize_events_dataset.py`).
+- S2 (prioridade de datetime no Step03): **resolvido**.
+  `fdsn.origin_time` agora e priorizado na tag `YYYYJJJTHHMMSS`
+  (`scripts/step03_waveforms_from_p_picks.py`).
+- S3 (defaults Step03 x materialize): **resolvido**.
+  Ambos usam `waveform` e summary triplet por padrao.
+
+Resumo do smoke:
+- filtro: `rows_in=300`, `passed_geo_inside_mg=51`, `rows_out=14`
+- Step02: `matched=14`, `no_match=0`, `ambiguous=0`, `error=0`
+- Step03: `triplet_tasks=75`, `downloaded=58`, `error=17`
+- materialize: `eligible=14`, `moved=14`
+- erro predominante do Step03: `HTTP 204 No data available for request`
+  (faltas de canal/estacao, sem bloquear elegibilidade dos eventos).
+
+Artefatos:
+- `outputs/logs_real_events/run_real_mg_maglt4_depthlt10_20260304T121721Z.md`
+- `outputs/smoke/waveform_triplet_download_summary_smoke.csv`
+- `outputs/smoke/events_materialize_report_smoke.csv`
 
 ## Visao do fluxo implementado
 1. Filtro SISBRA (state/year/mag/depth) em `filter_sisbra_csv.py`.
@@ -150,5 +181,7 @@ Fonte: `notebooks/step1_sisbra_selfcontained.ipynb`.
    - regras de leitura no materialize.
 
 ## Estado geral
-- Requisitos funcionais principais (MG, mag<4, depth<10, P<=400, P-10/P+50, 3 canais no fluxo real) estao implementados.
-- Foi identificado gap S1 de alinhamento entre notebook (geometria) e scripts (gate por `ST`).
+- Requisitos funcionais principais (MG por geometria, mag<4, depth<10, P<=400,
+  P-10/P+50, triplet HHZ/HHN/HHE) estao implementados e validados em smoke E2E.
+- Gaps historicos S1/S2/S3 deste documento foram resolvidos no estado atual da
+  codebase; este arquivo permanece como trilha de auditoria da migracao.
