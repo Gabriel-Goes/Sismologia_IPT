@@ -12,6 +12,7 @@ __pycache__/
 *.py[cod]
 .venv/
 .env
+.ipynb_checkpoints/
 
 # Data/artifacts
 arquivos/
@@ -26,3 +27,4 @@ docs/sphinx/build/
 
 # Local scratch
 boilerplate*
+.backup_rerun/
