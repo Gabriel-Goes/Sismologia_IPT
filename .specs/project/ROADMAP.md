@@ -90,7 +90,7 @@ auditoria.
   - notebook Step1 e filtro oficial passam a convergir sobre a mesma fonte
     canonica (`RAW`), eliminando a dependencia operacional do `CLEAN`.
 
-## M1.2 - Validacao E2E em lote completo (in progress, bloqueado por colisao de datetime em 2026-03-06)
+## M1.2 - Validacao E2E em lote completo (done, rerun validado em 2026-03-06)
 ### Goal
 Repetir o fluxo E2E no catalogo `RAW` completo, passando pela etapa de
 normalizacao propria, para fechar a validacao operacional antes de avancar
@@ -105,7 +105,7 @@ para M2.
 - Relatorios de smoke e lote completo permanecem coerentes no criterio de gate.
 - Taxa de `error` no Step03 fica auditada por estacao/canal para triagem.
 
-### Validation update (2026-03-06, lote completo)
+### Validation update (2026-03-06, primeira execucao em lote completo)
 - Filtro operacional:
   - `rows_in=5934`
   - `passed_geo_inside_mg=918`
@@ -133,6 +133,36 @@ para M2.
     em lote completo;
   - falta definir e implementar a politica de deduplicacao/colisao para fechar
     M1.2 com `rc=0`.
+
+### Validation update (2026-03-06, rerun com `merge_by_fdsn`)
+- Politica adotada:
+  - um unico evento final por `fdsn.resource_id`
+  - linhas SISBRA duplicadas ficam auditadas em `event.json` e em relatorio CSV/MD
+- Step02:
+  - `matched=190`
+  - `no_match=19`
+  - `ambiguous=1`
+- Step03:
+  - `triplet_tasks=996`
+  - `downloaded=823`
+  - `error=173`
+- Materialize:
+  - `event_json_found=190`
+  - `eligible=189`
+  - `moved=189`
+  - `merged_duplicate=1`
+  - `collision_count=0`
+- Caso consolidado:
+  - `smi:org.gfz-potsdam.de/geofon/usp2021flcy`
+  - canonico: `20210319T053957_usp2021flcy_row44`
+  - duplicado absorvido: `20210319T053957_usp2021flcy_row45`
+- Artefatos:
+  - `outputs/logs_real_events/run_real_mg_maglt4_depthlt10_20260306T005607Z.md`
+  - `outputs/events_materialize_report_m12_merge_v2.csv`
+  - `outputs/events_duplicate_merge_report_m12_merge_v2.csv`
+- Conclusao:
+  - M1.2 fica fechado com `rc=0`;
+  - o pipeline passa a tratar explicitamente o caso “duas linhas SISBRA -> um evento FDSN”.
 
 ## M2 - Etapa 3: Base local incremental de analise
 ### Goal

@@ -16,6 +16,9 @@ Review do fluxo principal E2E que implementa:
 > evidencia operacional registrada em `outputs/logs_real_events/`.
 > Update 2026-03-06: `catalogo_RAW_v2024May09.csv` passa a ser a fonte canonica
 > e o pipeline ganha uma etapa explicita de normalizacao propria antes do filtro MG.
+> Update 2026-03-06: M1.2 foi rerodado com sucesso apos introduzir
+> `merge_by_fdsn` no materialize; o caso `usp2021flcy` agora consolida duas
+> linhas SISBRA em um unico evento final auditavel.
 
 Arquivos revisados:
 - scripts/run_real_mg_maglt4_depthlt10.sh

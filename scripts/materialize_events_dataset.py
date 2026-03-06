@@ -22,6 +22,9 @@ Compatibility policy (strict):
 Collision policy:
 - abort (default): if any two compatible events map to the same target folder,
   or if target folder already exists in output root, no moves/copies are applied.
+- merge_by_fdsn: if multiple compatible bundles map to the same FDSN resource_id,
+  keep one canonical bundle in the final dataset and audit the absorbed SISBRA
+  rows in the final event.json plus dedicated merge reports.
 """
 
 from __future__ import annotations
@@ -57,6 +60,7 @@ from seismic_event_discriminator.mg_geo_filter import (  # noqa: E402
 class EventEval:
     source_folder: str
     source_dir: str
+    event_json_path: str
     target_folder: str
     target_path: str
     eligible: bool
@@ -78,6 +82,12 @@ class EventEval:
     waveform_files_count: int
     xml_exists: bool
     datetime_source: str
+    fdsn_resource_id: str
+    sisbra_rownum: int | None
+    sisbra_rownum_source: int | None
+    match_dt_s: float | None
+    match_dist_km: float | None
+    merged_into_source_folder: str
 
 
 def _safe_float(value: Any) -> float | None:
@@ -209,16 +219,24 @@ def _scan_event(
 ) -> EventEval:
     event_dir = os.path.dirname(event_json_path)
     source_folder = os.path.basename(event_dir)
-    payload = json.load(open(event_json_path, "r", encoding="utf-8"))
+    with open(event_json_path, "r", encoding="utf-8") as f:
+        payload = json.load(f)
 
     reasons: list[str] = []
     match_status = str(payload.get("match_status") or "")
 
     sis = payload.get("sisbra") or {}
+    fdsn = payload.get("fdsn") or {}
+    match = payload.get("match") or {}
     state = str(sis.get("state") or "").strip().upper()
     year = _sis_event_year(sis)
     magnitude = _safe_float(sis.get("magnitude"))
     depth_km = _safe_float(sis.get("depth_km"))
+    sisbra_rownum = _safe_int(sis.get("rownum"))
+    sisbra_rownum_source = _safe_int(sis.get("rownum_source"))
+    fdsn_resource_id = str(fdsn.get("resource_id") or "").strip()
+    match_dt_s = _safe_float(match.get("dt_s"))
+    match_dist_km = _safe_float(match.get("dist_km"))
     geo = evaluate_mg_filter(
         latitude=sis.get("latitude"),
         longitude=sis.get("longitude"),
@@ -291,6 +309,7 @@ def _scan_event(
     return EventEval(
         source_folder=source_folder,
         source_dir=event_dir,
+        event_json_path=event_json_path,
         target_folder=target_folder or "",
         target_path=target_path,
         eligible=eligible,
@@ -312,12 +331,191 @@ def _scan_event(
         waveform_files_count=waveform_files_count,
         xml_exists=xml_exists,
         datetime_source=dt_source,
+        fdsn_resource_id=fdsn_resource_id,
+        sisbra_rownum=sisbra_rownum,
+        sisbra_rownum_source=sisbra_rownum_source,
+        match_dt_s=match_dt_s,
+        match_dist_km=match_dist_km,
+        merged_into_source_folder="",
     )
 
 
 def _append_reason(ev: EventEval, reason: str) -> None:
     if reason not in ev.reasons:
         ev.reasons.append(reason)
+
+
+def _canonical_sort_key(ev: EventEval) -> tuple[float, float, int, float, str]:
+    match_dt = float("inf") if ev.match_dt_s is None else float(ev.match_dt_s)
+    match_dist = float("inf") if ev.match_dist_km is None else float(ev.match_dist_km)
+    sisbra_rownum = float("inf") if ev.sisbra_rownum is None else float(ev.sisbra_rownum)
+    return (
+        match_dt,
+        match_dist,
+        -int(ev.waveforms_ok_count),
+        sisbra_rownum,
+        ev.source_folder,
+    )
+
+
+def _sisbra_audit_entry(payload: dict[str, Any], ev: EventEval) -> dict[str, Any]:
+    sis = dict(payload.get("sisbra") or {})
+    sis["source_folder"] = ev.source_folder
+    sis["match_dt_s"] = ev.match_dt_s
+    sis["match_dist_km"] = ev.match_dist_km
+    return sis
+
+
+def _build_duplicate_merges(
+    events: list[EventEval],
+) -> tuple[list[dict[str, Any]], dict[str, dict[str, Any]]]:
+    by_resource_id: dict[str, list[int]] = defaultdict(list)
+    for idx, ev in enumerate(events):
+        if not ev.eligible:
+            continue
+        if ev.match_status != "matched":
+            continue
+        if not ev.fdsn_resource_id:
+            continue
+        by_resource_id[ev.fdsn_resource_id].append(idx)
+
+    merge_groups: list[dict[str, Any]] = []
+    merged_payloads: dict[str, dict[str, Any]] = {}
+
+    for resource_id, idxs in sorted(by_resource_id.items()):
+        if len(idxs) <= 1:
+            continue
+
+        ordered = sorted(idxs, key=lambda idx: _canonical_sort_key(events[idx]))
+        canonical_idx = ordered[0]
+        canonical_ev = events[canonical_idx]
+
+        with open(canonical_ev.event_json_path, "r", encoding="utf-8") as f:
+            canonical_payload = json.load(f)
+
+        duplicate_entries: list[dict[str, Any]] = []
+        duplicate_rows: list[dict[str, Any]] = []
+
+        for idx in ordered[1:]:
+            dup_ev = events[idx]
+            with open(dup_ev.event_json_path, "r", encoding="utf-8") as f:
+                dup_payload = json.load(f)
+
+            duplicate_entries.append(_sisbra_audit_entry(dup_payload, dup_ev))
+            duplicate_rows.append(
+                {
+                    "merge_key": resource_id,
+                    "merge_key_type": "fdsn.resource_id",
+                    "target_folder": canonical_ev.target_folder,
+                    "canonical_source_folder": canonical_ev.source_folder,
+                    "canonical_rownum": canonical_ev.sisbra_rownum,
+                    "canonical_rownum_source": canonical_ev.sisbra_rownum_source,
+                    "canonical_match_dt_s": canonical_ev.match_dt_s,
+                    "canonical_match_dist_km": canonical_ev.match_dist_km,
+                    "duplicate_source_folder": dup_ev.source_folder,
+                    "duplicate_rownum": dup_ev.sisbra_rownum,
+                    "duplicate_rownum_source": dup_ev.sisbra_rownum_source,
+                    "duplicate_match_dt_s": dup_ev.match_dt_s,
+                    "duplicate_match_dist_km": dup_ev.match_dist_km,
+                    "group_size": len(ordered),
+                    "merge_status": "merged_duplicate",
+                    "notes": "same_fdsn_resource_id",
+                }
+            )
+
+            _append_reason(dup_ev, "merged_into_canonical")
+            dup_ev.eligible = False
+            dup_ev.action = "merged_duplicate"
+            dup_ev.merged_into_source_folder = canonical_ev.source_folder
+
+        canonical_payload["dedup"] = {
+            "policy": "merge_by_fdsn",
+            "merge_key_type": "fdsn.resource_id",
+            "merge_key": resource_id,
+            "canonical_source_folder": canonical_ev.source_folder,
+            "canonical_sisbra_rownum": canonical_ev.sisbra_rownum,
+            "canonical_sisbra_rownum_source": canonical_ev.sisbra_rownum_source,
+            "merged_source_folders": [events[idx].source_folder for idx in ordered],
+            "merged_sisbra_rownums": [events[idx].sisbra_rownum for idx in ordered],
+            "merged_sisbra_rownums_source": [events[idx].sisbra_rownum_source for idx in ordered],
+            "merged_count": len(ordered),
+        }
+        canonical_payload["sisbra_duplicates"] = duplicate_entries
+        merged_payloads[canonical_ev.source_folder] = canonical_payload
+
+        merge_groups.append(
+            {
+                "merge_key": resource_id,
+                "merge_key_type": "fdsn.resource_id",
+                "target_folder": canonical_ev.target_folder,
+                "canonical_source_folder": canonical_ev.source_folder,
+                "canonical_rownum": canonical_ev.sisbra_rownum,
+                "canonical_rownum_source": canonical_ev.sisbra_rownum_source,
+                "canonical_match_dt_s": canonical_ev.match_dt_s,
+                "canonical_match_dist_km": canonical_ev.match_dist_km,
+                "group_size": len(ordered),
+                "duplicates": duplicate_rows,
+            }
+        )
+
+    return merge_groups, merged_payloads
+
+
+def _write_duplicate_reports(
+    *,
+    report_csv: str,
+    report_md: str,
+    groups: list[dict[str, Any]],
+) -> None:
+    os.makedirs(os.path.dirname(report_csv) or ".", exist_ok=True)
+    os.makedirs(os.path.dirname(report_md) or ".", exist_ok=True)
+
+    rows: list[dict[str, Any]] = []
+    for group in groups:
+        rows.extend(group["duplicates"])
+
+    with open(report_csv, "w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(
+            f,
+            fieldnames=[
+                "merge_key",
+                "merge_key_type",
+                "target_folder",
+                "canonical_source_folder",
+                "canonical_rownum",
+                "canonical_rownum_source",
+                "canonical_match_dt_s",
+                "canonical_match_dist_km",
+                "duplicate_source_folder",
+                "duplicate_rownum",
+                "duplicate_rownum_source",
+                "duplicate_match_dt_s",
+                "duplicate_match_dist_km",
+                "group_size",
+                "merge_status",
+                "notes",
+            ],
+        )
+        writer.writeheader()
+        writer.writerows(rows)
+
+    with open(report_md, "w", encoding="utf-8") as f:
+        f.write("# Duplicate Merge Report\n\n")
+        f.write(f"- merge_groups: `{len(groups)}`\n")
+        f.write(f"- absorbed_duplicates: `{len(rows)}`\n")
+        f.write("\n## Groups\n")
+        if not groups:
+            f.write("- none\n")
+        else:
+            for group in groups:
+                f.write(
+                    "- "
+                    f"`{group['merge_key']}` -> `{group['target_folder']}` "
+                    f"(canonical `{group['canonical_source_folder']}`, "
+                    f"group_size={group['group_size']})\n"
+                )
+        f.write("\n")
+        f.write(f"- report_csv: `{report_csv}`\n")
 
 
 def _write_reports(
@@ -345,7 +543,13 @@ def _write_reports(
                 "eligible": "1" if ev.eligible else "0",
                 "action": ev.action,
                 "reasons": ";".join(ev.reasons),
+                "merged_into_source_folder": ev.merged_into_source_folder,
                 "match_status": ev.match_status,
+                "fdsn_resource_id": ev.fdsn_resource_id,
+                "sisbra_rownum": "" if ev.sisbra_rownum is None else f"{ev.sisbra_rownum}",
+                "sisbra_rownum_source": "" if ev.sisbra_rownum_source is None else f"{ev.sisbra_rownum_source}",
+                "match_dt_s": "" if ev.match_dt_s is None else f"{ev.match_dt_s}",
+                "match_dist_km": "" if ev.match_dist_km is None else f"{ev.match_dist_km}",
                 "state": ev.state,
                 "year": "" if ev.year is None else f"{ev.year}",
                 "inside_mg_polygon": "1" if ev.inside_mg_polygon else "0",
@@ -375,7 +579,13 @@ def _write_reports(
                 "eligible",
                 "action",
                 "reasons",
+                "merged_into_source_folder",
                 "match_status",
+                "fdsn_resource_id",
+                "sisbra_rownum",
+                "sisbra_rownum_source",
+                "match_dt_s",
+                "match_dist_km",
                 "state",
                 "year",
                 "inside_mg_polygon",
@@ -475,11 +685,13 @@ def main() -> int:
     ap.add_argument(
         "--collision-policy",
         default="abort",
-        choices=["abort"],
+        choices=["abort", "merge_by_fdsn"],
         help="Collision behavior for target folder tags.",
     )
     ap.add_argument("--report-csv", default="outputs/events_materialize_report.csv")
     ap.add_argument("--report-md", default="outputs/events_materialize_report.md")
+    ap.add_argument("--duplicate-report-csv", default="outputs/events_duplicate_merge_report.csv")
+    ap.add_argument("--duplicate-report-md", default="outputs/events_duplicate_merge_report.md")
     ap.add_argument("--copy", action="store_true", help="Copy instead of move.")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument(
@@ -531,6 +743,17 @@ def main() -> int:
             )
         )
 
+    merge_groups: list[dict[str, Any]] = []
+    merged_payloads: dict[str, dict[str, Any]] = {}
+    if args.collision_policy == "merge_by_fdsn":
+        merge_groups, merged_payloads = _build_duplicate_merges(events)
+
+    _write_duplicate_reports(
+        report_csv=args.duplicate_report_csv,
+        report_md=args.duplicate_report_md,
+        groups=merge_groups,
+    )
+
     # Detect collisions only among currently eligible events.
     by_tag: dict[str, list[int]] = defaultdict(list)
     for i, ev in enumerate(events):
@@ -572,6 +795,8 @@ def main() -> int:
             "datetime_format": args.datetime_format,
             "waveforms_subdir": args.waveforms_subdir,
             "collision_policy": args.collision_policy,
+            "duplicate_report_csv": args.duplicate_report_csv,
+            "duplicate_report_md": args.duplicate_report_md,
             "copy_mode": args.copy,
             "dry_run": args.dry_run,
             "allow_nonempty_output_root": args.allow_nonempty_output_root,
@@ -584,6 +809,8 @@ def main() -> int:
         print(f"collision_count={len(collision_idxs)}")
         print(f"report_csv={args.report_csv}")
         print(f"report_md={args.report_md}")
+        print(f"duplicate_report_csv={args.duplicate_report_csv}")
+        print(f"duplicate_report_md={args.duplicate_report_md}")
         raise SystemExit(2)
 
     moved = 0
@@ -592,7 +819,8 @@ def main() -> int:
 
     for ev in events:
         if not ev.eligible:
-            ev.action = "skipped"
+            if ev.action == "pending":
+                ev.action = "skipped"
             skipped += 1
             continue
 
@@ -608,6 +836,12 @@ def main() -> int:
             shutil.move(ev.source_dir, ev.target_path)
             ev.action = "moved"
             moved += 1
+
+        merged_payload = merged_payloads.get(ev.source_folder)
+        if merged_payload is not None:
+            target_event_json = os.path.join(ev.target_path, "event.json")
+            with open(target_event_json, "w", encoding="utf-8") as f:
+                json.dump(merged_payload, f, ensure_ascii=True, indent=2, sort_keys=True)
 
     config = {
         "events_root": args.events_root,
@@ -625,6 +859,8 @@ def main() -> int:
         "datetime_format": args.datetime_format,
         "waveforms_subdir": args.waveforms_subdir,
         "collision_policy": args.collision_policy,
+        "duplicate_report_csv": args.duplicate_report_csv,
+        "duplicate_report_md": args.duplicate_report_md,
         "copy_mode": args.copy,
         "dry_run": args.dry_run,
         "allow_nonempty_output_root": args.allow_nonempty_output_root,
@@ -638,6 +874,8 @@ def main() -> int:
     print(f"skipped={skipped}")
     print(f"report_csv={args.report_csv}")
     print(f"report_md={args.report_md}")
+    print(f"duplicate_report_csv={args.duplicate_report_csv}")
+    print(f"duplicate_report_md={args.duplicate_report_md}")
     return 0
 
 

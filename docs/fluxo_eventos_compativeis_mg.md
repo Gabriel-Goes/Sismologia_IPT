@@ -46,6 +46,8 @@ No codigo atual, este wrapper aplica os criterios estritos:
 - pick `P*` com `dist_km <= 400`
 - janela `P-10s` a `P+50s`
 - canais `HHZ,HHN,HHE`
+- se duas linhas SISBRA casarem com o mesmo `fdsn.resource_id`, materializa
+  um unico evento final com auditoria de duplicacao
 
 Layout final:
 - `data/events/YYYYJJJTHHMMSS/event.json`
@@ -87,7 +89,11 @@ Regra de seguranca:
 - Em `eventos_compativeis`, o nome do diretorio e **somente**:
   - `YYYYMMDDTHHMMSS`
 - Nao inclui `usp...`, `row...`, etc.
-- Se houver colisao de datetime, o evento vai para `eventos_nao_compativeis` com motivo `datetime_collision`.
+- Se houver colisao explicada pelo mesmo `fdsn.resource_id`, o pipeline faz
+  merge do evento final e registra a duplicacao em `dedup` +
+  `sisbra_duplicates`.
+- Se houver colisao que **nao** possa ser explicada pelo mesmo
+  `fdsn.resource_id`, o fluxo continua abortando com `datetime_collision`.
 
 ## Arquivos e Scripts
 - Step02 (bundles): `src/seismic_event_discriminator/step02_fdsn_picks_export.py`
@@ -169,6 +175,7 @@ cd /home/ggrl/projetos/ClassificadorSismologico && pyenv exec python scripts/run
 - Auditoria de nao-matched (resumo): `outputs/non_matched_audit.md`
 - Lista dedicada de `ambiguous`: `outputs/ambiguous_events.csv`
 - Lista dedicada de `no_match`: `outputs/no_match_events.csv`
+- Relatorio de merge por duplicacao SISBRA->FDSN: `outputs/events_duplicate_merge_report.csv`
 - Resumo de download por pick/canal: `outputs/waveform_triplet_download_summary_mg.csv`
 - Relatorio de filtro por triplet: `outputs/eventos_triplet_filter_report.md`
 - Resumo de consolidacao 3C (opcional): `outputs/waveforms_3c_merge_summary.csv`

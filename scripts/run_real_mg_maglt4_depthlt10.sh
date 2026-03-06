@@ -23,6 +23,7 @@ Environment overrides:
   FINAL_ROOT              (default: data/events)
   WORKERS_STEP02          (default: 12)
   WORKERS_STEP03          (default: 12)
+  COLLISION_POLICY        (default: merge_by_fdsn)
   MG_POLYGON_YEAR         (default: 2020)
   MG_GPKG_PATH            (default: ~/geodatabase.gpkg, from GeoServer rsync)
   MG_GPKG_LAYER           (default: ibge_mg_uf_2024)
@@ -32,6 +33,8 @@ Environment overrides:
   PRE_P_S / POST_P_S      (default: 10 / 50)
   COMPONENT_CHANNELS      (default: HHZ,HHN,HHE)
   WAVEFORMS_SUBDIR        (default: waveform)
+  DUPLICATE_REPORT_CSV    (default: outputs/events_duplicate_merge_report.csv)
+  DUPLICATE_REPORT_MD     (default: outputs/events_duplicate_merge_report.md)
   STAGE_MUST_BE_EMPTY     (default: 1)
 EOF
   exit 0
@@ -59,6 +62,9 @@ FINAL_ROOT="${FINAL_ROOT:-data/events}"
 SUMMARY_CSV="${SUMMARY_CSV:-outputs/waveform_triplet_download_summary_events.csv}"
 REPORT_CSV="${REPORT_CSV:-outputs/events_materialize_report.csv}"
 REPORT_MD="${REPORT_MD:-outputs/events_materialize_report.md}"
+DUPLICATE_REPORT_CSV="${DUPLICATE_REPORT_CSV:-outputs/events_duplicate_merge_report.csv}"
+DUPLICATE_REPORT_MD="${DUPLICATE_REPORT_MD:-outputs/events_duplicate_merge_report.md}"
+COLLISION_POLICY="${COLLISION_POLICY:-merge_by_fdsn}"
 NON_MATCHED_AUDIT_CSV="${NON_MATCHED_AUDIT_CSV:-outputs/non_matched_audit.csv}"
 NON_MATCHED_AUDIT_MD="${NON_MATCHED_AUDIT_MD:-outputs/non_matched_audit.md}"
 AMBIGUOUS_EVENTS_CSV="${AMBIGUOUS_EVENTS_CSV:-outputs/ambiguous_events.csv}"
@@ -144,6 +150,11 @@ mkdir -p \
   echo "- NON_MATCHED_ROOT: \`$NON_MATCHED_ROOT\`"
   echo "- FINAL_ROOT: \`$FINAL_ROOT\`"
   echo "- SUMMARY_CSV: \`$SUMMARY_CSV\`"
+  echo "- REPORT_CSV: \`$REPORT_CSV\`"
+  echo "- REPORT_MD: \`$REPORT_MD\`"
+  echo "- DUPLICATE_REPORT_CSV: \`$DUPLICATE_REPORT_CSV\`"
+  echo "- DUPLICATE_REPORT_MD: \`$DUPLICATE_REPORT_MD\`"
+  echo "- COLLISION_POLICY: \`$COLLISION_POLICY\`"
   echo "- STATE_FILTER (audit only): \`$STATE_FILTER\`"
   echo "- MG_POLYGON_YEAR: \`$MG_POLYGON_YEAR\`"
   echo "- MG_GPKG_PATH: \`$MG_GPKG_PATH\`"
@@ -352,9 +363,11 @@ $PYTHON_DESC scripts/materialize_events_dataset.py \\
   --datetime-source fdsn_then_sisbra \\
   --datetime-format %Y%jT%H%M%S \\
   --waveforms-subdir "$WAVEFORMS_SUBDIR" \\
-  --collision-policy abort \\
+  --collision-policy "$COLLISION_POLICY" \\
   --report-csv "$REPORT_CSV" \\
-  --report-md "$REPORT_MD"
+  --report-md "$REPORT_MD" \\
+  --duplicate-report-csv "$DUPLICATE_REPORT_CSV" \\
+  --duplicate-report-md "$DUPLICATE_REPORT_MD"
 \`\`\`
 EOF
 "${PYTHON_RUNNER[@]}" scripts/materialize_events_dataset.py \
@@ -372,9 +385,11 @@ EOF
   --datetime-source fdsn_then_sisbra \
   --datetime-format %Y%jT%H%M%S \
   --waveforms-subdir "$WAVEFORMS_SUBDIR" \
-  --collision-policy abort \
+  --collision-policy "$COLLISION_POLICY" \
   --report-csv "$REPORT_CSV" \
-  --report-md "$REPORT_MD"
+  --report-md "$REPORT_MD" \
+  --duplicate-report-csv "$DUPLICATE_REPORT_CSV" \
+  --duplicate-report-md "$DUPLICATE_REPORT_MD"
 
 {
   echo
@@ -392,6 +407,8 @@ EOF
   echo "- Waveform summary: \`$SUMMARY_CSV\`"
   echo "- Materialize report CSV: \`$REPORT_CSV\`"
   echo "- Materialize report MD: \`$REPORT_MD\`"
+  echo "- Duplicate merge report CSV: \`$DUPLICATE_REPORT_CSV\`"
+  echo "- Duplicate merge report MD: \`$DUPLICATE_REPORT_MD\`"
   echo "- Log file: \`$LOG_FILE\`"
 } >> "$REPORT_FILE"
 

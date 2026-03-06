@@ -27,6 +27,7 @@ from typing import Iterable, Optional
 @dataclass(frozen=True)
 class SisbraEvent:
     rownum: int
+    rownum_source: Optional[int]
     origin_time: datetime
     latitude: float
     longitude: float
@@ -55,6 +56,16 @@ def _safe_float(s: str) -> Optional[float]:
         if s == "":
             return None
         return float(s)
+    except Exception:
+        return None
+
+
+def _safe_int(s: str) -> Optional[int]:
+    try:
+        s = s.strip()
+        if s == "":
+            return None
+        return int(s)
     except Exception:
         return None
 
@@ -143,6 +154,7 @@ def read_sisbra_csv(path: str, *, min_year: int = 2000, require_utc: bool = True
             events.append(
                 SisbraEvent(
                     rownum=i,
+                    rownum_source=_safe_int(row.get("rownum_source", "") or ""),
                     origin_time=ot,
                     latitude=float(lat),
                     longitude=float(lon),

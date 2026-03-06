@@ -47,6 +47,13 @@
    - gerar CSV normalizado e CSV de rejeitados sem coordenadas validas dentro do
      proprio pipeline;
    - `catalogo_CLEAN_v2024May09.csv` deixa de ser default operacional.
+15. Politica oficial de duplicacao SISBRA->FDSN (2026-03-06):
+   - quando multiplas linhas SISBRA casam com o mesmo `fdsn.resource_id`,
+     materializar um unico evento final;
+   - manter a linha canonica em `sisbra` e registrar as demais em
+     `sisbra_duplicates` + `dedup`;
+   - continuar abortando colisoes que nao possam ser explicadas pelo mesmo
+     `fdsn.resource_id`.
 
 ## Notebook Evidence (Step1 RAW, 2026-03-02)
 - Fonte: `notebooks/step1_sisbra_selfcontained.ipynb` (execucao registrada no proprio notebook).
@@ -173,6 +180,46 @@
   - o proximo gargalo real esta na politica de deduplicacao/colisao do dataset
     final.
 
+## RAW E2E Full Run (M1.2 resolved, 2026-03-06)
+- Wrapper:
+  - `outputs/logs_real_events/run_real_mg_maglt4_depthlt10_20260306T005607Z.md`
+  - `outputs/logs_real_events/run_real_mg_maglt4_depthlt10_20260306T005607Z.log`
+- Reexecucao:
+  - roots novos (`data/events_stage_m12_merge_v2`, `data/events_stage_non_matched_m12_merge_v2`, `data/events_m12_merge_v2`)
+  - politica `collision_policy=merge_by_fdsn`
+- Step02:
+  - `matched=190`
+  - `no_match=19`
+  - `ambiguous=1`
+  - `error=0`
+- Step03:
+  - `triplet_tasks=996`
+  - `downloaded=823`
+  - `error=173`
+- Materialize:
+  - `event_json_found=190`
+  - `eligible=189`
+  - `moved=189`
+  - `merged_duplicate=1`
+  - `collision_count=0`
+- Caso consolidado:
+  - `fdsn.resource_id=smi:org.gfz-potsdam.de/geofon/usp2021flcy`
+  - canonico: `20210319T053957_usp2021flcy_row44` (`rownum_source=4875`)
+  - absorvido: `20210319T053957_usp2021flcy_row45` (`rownum_source=4878`)
+- Novos artefatos de auditoria:
+  - `outputs/events_materialize_report_m12_merge_v2.csv`
+  - `outputs/events_materialize_report_m12_merge_v2.md`
+  - `outputs/events_duplicate_merge_report_m12_merge_v2.csv`
+  - `outputs/events_duplicate_merge_report_m12_merge_v2.md`
+- Estrutura do `event.json` final:
+  - `sisbra` continua sendo a linha canonica;
+  - `dedup` descreve a chave de merge e o grupo consolidado;
+  - `sisbra_duplicates` preserva as linhas SISBRA absorvidas para auditoria.
+- Conclusao:
+  - M1.2 fica fechado com `rc=0`;
+  - a descoberta cientifica “duas linhas SISBRA para um evento FDSN” passa a ser
+    tratada explicitamente no pipeline final.
+
 ## Filter Check (full CLEAN, 2026-03-04)
 - Comando:
   - `python3 scripts/filter_sisbra_csv.py --input-csv catalogs/sisbra/sisbra_v2024May09/catalogo_CLEAN_v2024May09.csv --output-csv outputs/smoke/sisbra_mg_maglt4_depthlt10_fullcheck.csv --mg-polygon-gpkg ~/geodatabase.gpkg --mg-polygon-layer ibge_mg_uf_2024`
@@ -242,12 +289,11 @@ P0:
 1. Dependencia de rede e de execucao fora do sandbox para validacao FDSN fim-a-fim.
 2. Drift entre versao de script e artefatos de `outputs/` (timestamp/header).
 3. Retornos `HTTP 204` no Step03 podem reduzir cobertura de canais em parte dos eventos.
-4. Colisoes de `fdsn.origin_time` entre linhas distintas do SISBRA ainda abortam a materializacao final.
-5. Ausencia de testes unitarios formais para schema/naming (dependencia de smoke operacional).
+4. Ausencia de testes unitarios formais para schema/naming/deduplicacao (dependencia de smoke operacional).
 
 ## Next Action
-Resolver o bloqueio de M1.2 na materializacao final:
-1. definir a politica para eventos SISBRA distintos que convergem no mesmo `fdsn.origin_time`;
-2. implementar a deduplicacao/merge no `materialize_events_dataset.py` ou em uma etapa anterior;
-3. rerodar o lote completo e confirmar `rc=0` com `collision_count=0` ou politica explicita;
-4. depois disso, consolidar a taxa de `HTTP 204` por rede/estacao/canal para triagem fina.
+Preparar a camada didatica e a proxima triagem operacional:
+1. criar notebook especifico para auditar casos `SISBRA duplicado -> mesmo fdsn.resource_id`;
+2. criar notebook/resumo do M1.2 completo usando os relatorios de merge, no-match e Step03;
+3. consolidar a taxa de `HTTP 204` por rede/estacao/canal para triagem fina;
+4. decidir quando fazer push remoto, mantendo por ora os commits locais ate acumular mais descobertas.
