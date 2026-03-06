@@ -90,7 +90,7 @@ auditoria.
   - notebook Step1 e filtro oficial passam a convergir sobre a mesma fonte
     canonica (`RAW`), eliminando a dependencia operacional do `CLEAN`.
 
-## M1.2 - Validacao E2E em lote completo (pending)
+## M1.2 - Validacao E2E em lote completo (in progress, bloqueado por colisao de datetime em 2026-03-06)
 ### Goal
 Repetir o fluxo E2E no catalogo `RAW` completo, passando pela etapa de
 normalizacao propria, para fechar a validacao operacional antes de avancar
@@ -104,6 +104,35 @@ para M2.
   - CSV filtrado operacional para Step02.
 - Relatorios de smoke e lote completo permanecem coerentes no criterio de gate.
 - Taxa de `error` no Step03 fica auditada por estacao/canal para triagem.
+
+### Validation update (2026-03-06, lote completo)
+- Filtro operacional:
+  - `rows_in=5934`
+  - `passed_geo_inside_mg=918`
+  - `rows_out=210`
+- Step02:
+  - `matched=190`
+  - `no_match=19`
+  - `ambiguous=1`
+  - `error=0`
+- Step03:
+  - `triplet_tasks=996`
+  - `downloaded=823`
+  - `error=173`
+- Materialize:
+  - `event_json_found=190`
+  - `eligible=188`
+  - `collision_count=2`
+  - `moved=0` porque `collision_policy=abort`
+- Bloqueio encontrado:
+  - duas linhas do SISBRA (`rownum_source=4875` e `4878`) colapsam no mesmo
+    `fdsn.origin_time`, gerando o alvo `2021078T053957` e abortando a
+    materializacao final.
+- Conclusao:
+  - a trilha `RAW -> normalized -> filtered -> Step02 -> Step03` esta validada
+    em lote completo;
+  - falta definir e implementar a politica de deduplicacao/colisao para fechar
+    M1.2 com `rc=0`.
 
 ## M2 - Etapa 3: Base local incremental de analise
 ### Goal

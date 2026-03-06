@@ -1,7 +1,7 @@
 # STATE
 
 ## Last Update
-2026-03-04
+2026-03-06
 
 ## Current Branch
 `main`
@@ -134,6 +134,45 @@
   - a nova orquestracao `RAW -> normalized -> filtered -> Step02 -> Step03 -> materialize`
     executa com sucesso.
 
+## RAW E2E Full Run (M1.2, 2026-03-06)
+- Wrapper:
+  - `outputs/logs_real_events/run_real_mg_maglt4_depthlt10_20260306T002948Z.md`
+  - `outputs/logs_real_events/run_real_mg_maglt4_depthlt10_20260306T002948Z.log`
+- Filtro operacional:
+  - `rows_in=5934`
+  - `passed_geo_inside_mg=918`
+  - `rows_out=210`
+- Step02:
+  - `matched=190`
+  - `no_match=19`
+  - `ambiguous=1`
+  - `error=0`
+- Auditoria no-match/ambiguous:
+  - `events=20`
+  - `severity_counts={'critical': 4, 'high': 1, 'medium': 15}`
+- Step03:
+  - `events_selected=190`
+  - `triplet_tasks=996`
+  - `downloaded=823`
+  - `error=173`
+- Materialize:
+  - `event_json_found=190`
+  - `eligible=188`
+  - `collision_count=2`
+  - `moved=0`
+  - `aborted_collision=2`
+- Bloqueio identificado:
+  - duas linhas SISBRA (`rownum_source=4875` e `4878`) casam com o mesmo
+    `fdsn.origin_time=2021078T053957`, produzindo o mesmo `target_folder`
+    `2021078T053957`;
+  - com `collision_policy=abort`, o wrapper interrompe no passo de
+    materializacao e M1.2 ainda nao fecha com `rc=0`.
+- Interpretacao:
+  - a parte de aquisicao (`normalize -> filter -> Step02 -> Step03`) ficou
+    operacional em lote completo;
+  - o proximo gargalo real esta na politica de deduplicacao/colisao do dataset
+    final.
+
 ## Filter Check (full CLEAN, 2026-03-04)
 - Comando:
   - `python3 scripts/filter_sisbra_csv.py --input-csv catalogs/sisbra/sisbra_v2024May09/catalogo_CLEAN_v2024May09.csv --output-csv outputs/smoke/sisbra_mg_maglt4_depthlt10_fullcheck.csv --mg-polygon-gpkg ~/geodatabase.gpkg --mg-polygon-layer ibge_mg_uf_2024`
@@ -203,11 +242,12 @@ P0:
 1. Dependencia de rede e de execucao fora do sandbox para validacao FDSN fim-a-fim.
 2. Drift entre versao de script e artefatos de `outputs/` (timestamp/header).
 3. Retornos `HTTP 204` no Step03 podem reduzir cobertura de canais em parte dos eventos.
-4. Ausencia de testes unitarios formais para schema/naming (dependencia de smoke operacional).
+4. Colisoes de `fdsn.origin_time` entre linhas distintas do SISBRA ainda abortam a materializacao final.
+5. Ausencia de testes unitarios formais para schema/naming (dependencia de smoke operacional).
 
 ## Next Action
-Executar validacao da nova trilha `RAW -> normalized -> filtered` e consolidar:
-1. paridade notebook Step1 vs `filter_sisbra_csv.py` usando o mesmo `RAW`;
-2. smoke E2E consumindo o CSV filtrado derivado do `RAW`;
-3. taxa de `HTTP 204` por rede/estacao/canal no Step03 para triagem;
-4. criterio de passagem para iniciar M2 no fluxo operacional.
+Resolver o bloqueio de M1.2 na materializacao final:
+1. definir a politica para eventos SISBRA distintos que convergem no mesmo `fdsn.origin_time`;
+2. implementar a deduplicacao/merge no `materialize_events_dataset.py` ou em uma etapa anterior;
+3. rerodar o lote completo e confirmar `rc=0` com `collision_count=0` ou politica explicita;
+4. depois disso, consolidar a taxa de `HTTP 204` por rede/estacao/canal para triagem fina.
