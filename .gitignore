@@ -28,3 +28,9 @@ docs/sphinx/build/
 # Local scratch
 boilerplate*
 .backup_rerun/
+
+# IDE / AI agent configs
+.agents/
+.claude/
+.cursor/
+.windsurf/
