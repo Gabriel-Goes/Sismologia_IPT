@@ -1,7 +1,7 @@
 # STATE
 
 ## Last Update
-2026-03-06
+2026-03-18
 
 ## Current Branch
 `main`
@@ -291,9 +291,73 @@ P0:
 3. Retornos `HTTP 204` no Step03 podem reduzir cobertura de canais em parte dos eventos.
 4. Ausencia de testes unitarios formais para schema/naming/deduplicacao (dependencia de smoke operacional).
 
+## Notebook Audit Layer (2026-03-06)
+- Criados notebooks didaticos self-contained:
+  - `notebooks/step2_sisbra_fdsn_duplicate_audit_selfcontained.ipynb`
+  - `notebooks/step3_m12_audit_selfcontained.ipynb`
+- Ambos seguem `docs/tlc_diretrizes_jupyter_notebooks.md`:
+  - sem `class`
+  - sem `def`
+  - leitura linear por celulas
+  - sem importar scripts Python do repositorio
+- Validacao:
+  - executados com `jupyter nbconvert --execute`
+  - `step2` audita o caso `usp2021flcy` e mostra `dedup + sisbra_duplicates`
+  - `step3` resume o rerun `m12_merge_v2` e ja gera triagens iniciais de `HTTP 204`
+- Artefatos auxiliares produzidos em runtime ficam sob `outputs/tables/` e `outputs/figures/` (ignorados pelo git).
+
+## M3 RNC Inference (2026-03-18)
+- Ambiente:
+  - `pyenv 2.6.26` instalado em seisapp
+  - virtualenv `geo-seis-rnc` (Python 3.11.9, TensorFlow 2.21.0, ObsPy 1.5.0)
+  - `pyenv local geo-seis-rnc` configurado no repositorio (`.python-version`)
+  - Script de setup: `scripts/dev/setup_pyenv_project.sh --env geo-seis-rnc --python 3.11.9 --with-rnc --set-local`
+- Decisao: pyenv-virtualenv em seisapp como ambiente padrao para RNC inference
+- Smoke test:
+  - `--limit-events=5`, `--workers=1`
+  - `status_counts={'ok': 5}`
+  - 4 Natural, 1 Anthropogenic
+- Full run:
+  - `--compatible-root=data/events_m12_merge_v2`
+  - `--waveforms-subdir=waveform`
+  - `--workers=4`, `--no-skip-existing`
+  - `model_sha256=574b7084f06a6e8b890a1f479cab39725cf9889ecd5b25057bd86073796a9881`
+  - `total_events=189`
+  - `status_counts={'ok': 183, 'partial': 6}`
+  - `label_counts={'Natural': 175, 'Anthropogenic': 14}`
+  - `total_picks=821`, `picks_ok=814`, `picks_error=7`
+- Erros de preprocessamento (7 picks em 6 eventos):
+  - Causa unica: `invalid spectrogram shape` — waveforms com duracao
+    insuficiente para gerar os 237 frames esperados (60s janela)
+  - Estacoes afetadas: BB19B, CANS, PMNB, DIAM, JANB
+- Artefatos:
+  - `outputs/rnc_prediction_events_m12v2.csv`
+  - `outputs/rnc_prediction_picks_m12v2.csv`
+  - `outputs/rnc_prediction_errors_m12v2.csv`
+  - Cada `event.json` atualizado com bloco `rnc_prediction`
+- Verificacao:
+  - `event.json` de evento arbitrario (`2022326T163421`) contem `rnc_prediction.summary`
+  - CSV de eventos tem 189 linhas com classificacao consistente
+
+## M4 Notebooks de Auditoria RNC (2026-03-18)
+- Criados notebooks self-contained:
+  - `notebooks/step4_rnc_inference_selfcontained.ipynb`
+    - Demonstra preprocessamento e inferencia CNN em 3 eventos exemplo
+    - Funcoes auxiliares replicam `rnc_infer.py` com justificativa em Markdown
+    - Visualiza waveforms brutos e espectrogramas 3C
+  - `notebooks/step5_results_analysis_selfcontained.ipynb`
+    - Distribuicao de classe (Natural vs Antropogenico)
+    - Mapa espacial de MG com poligono do GeoPackage
+    - Analise de confianca e eventos de baixa confianca
+    - Analise por estacao (frequencia e taxa de erro)
+    - Analise temporal (ano e mes)
+    - Tabela consolidada exportada como CSV
+- Ambos seguem `docs/tlc_diretrizes_jupyter_notebooks.md`
+- Step4 usa funcoes auxiliares com justificativa (excecao prevista nas diretrizes)
+
 ## Next Action
-Preparar a camada didatica e a proxima triagem operacional:
-1. criar notebook especifico para auditar casos `SISBRA duplicado -> mesmo fdsn.resource_id`;
-2. criar notebook/resumo do M1.2 completo usando os relatorios de merge, no-match e Step03;
-3. consolidar a taxa de `HTTP 204` por rede/estacao/canal para triagem fina;
-4. decidir quando fazer push remoto, mantendo por ora os commits locais ate acumular mais descobertas.
+Proxima triagem operacional:
+1. executar notebooks step4 e step5 com `jupyter nbconvert --execute` para validacao;
+2. revisar com os professores os 14 eventos classificados como Antropogenico;
+3. analisar eventos de baixa confianca para possivel revisao manual;
+4. decidir quando fazer push remoto.

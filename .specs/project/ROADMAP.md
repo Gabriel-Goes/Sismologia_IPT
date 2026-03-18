@@ -198,7 +198,7 @@ To apply the algorithm, we need a folder architecture:
 - Reexecucao nao perde nem duplica eventos ja persistidos.
 - Adicao de novos eventos sem reprocessar base completa.
 
-## M3 - Etapa 4: Inferencia CNN paralelizavel
+## M3 - Etapa 4: Inferencia CNN paralelizavel (done, validado em 2026-03-18)
 ### Goal
 Executar inferencia por evento com suporte a paralelismo simples.
 
@@ -211,7 +211,31 @@ Executar inferencia por evento com suporte a paralelismo simples.
 - Lote de teste executa com resultados consistentes. **LOTE DE TESTES DEVE USAR EVENTOS ALEATÓRIOS DO CATÁLOGO SEMPRE COM 42 COMO SED**
 - Escala linear basica ao aumentar workers.
 
-## M4 - Etapa 5: Analise e comunicacao de resultados
+### Validation update (2026-03-18, full run sobre m12_merge_v2)
+- Ambiente:
+  - pyenv-virtualenv `geo-seis-rnc` (Python 3.11.9, TF 2.21.0) em seisapp
+  - Setup via `scripts/dev/setup_pyenv_project.sh --env geo-seis-rnc --python 3.11.9 --with-rnc --set-local`
+- Smoke test:
+  - `--limit-events=5`, `--workers=1`
+  - `status_counts={'ok': 5}`
+- Full run:
+  - `--compatible-root=data/events_m12_merge_v2`, `--waveforms-subdir=waveform`
+  - `--workers=4`, `--no-skip-existing`
+  - `total_events=189`
+  - `status_counts={'ok': 183, 'partial': 6}`
+  - `label_counts={'Natural': 175, 'Anthropogenic': 14}`
+  - `total_picks=821`, `picks_ok=814`, `picks_error=7`
+- Erros (7 picks):
+  - Causa unica: `invalid spectrogram shape` (waveforms curtos)
+  - Nenhum evento sem classificacao
+- Artefatos:
+  - `outputs/rnc_prediction_events_m12v2.csv`
+  - `outputs/rnc_prediction_picks_m12v2.csv`
+  - `outputs/rnc_prediction_errors_m12v2.csv`
+- Conclusao:
+  - M3 fica fechado; todos os 189 eventos classificados com sucesso.
+
+## M4 - Etapa 5: Analise e comunicacao de resultados (active, notebooks criados em 2026-03-18)
 ### Goal
 Consolidar resultados em notebooks para avaliacao cientifica.
 
@@ -223,6 +247,15 @@ Consolidar resultados em notebooks para avaliacao cientifica.
 ### Verification
 - Pipeline completo reproduzivel em ambiente SEISAPP.
 - Resultados
+
+### Progress update (2026-03-18)
+- Criados notebooks self-contained:
+  - `notebooks/step4_rnc_inference_selfcontained.ipynb` (demonstracao de inferencia)
+  - `notebooks/step5_results_analysis_selfcontained.ipynb` (analise de resultados)
+- Pendente:
+  - Executar notebooks com `jupyter nbconvert --execute`
+  - Revisar com orientadores os 14 eventos Antropogenicos
+  - Analisar eventos de baixa confianca
 
 ## M5 - Contexto minerario ANM para priorizacao (future)
 ### Goal
