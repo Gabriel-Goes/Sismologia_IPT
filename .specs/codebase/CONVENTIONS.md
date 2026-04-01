@@ -2,98 +2,65 @@
 
 ## Naming Conventions
 
-### Directory Names
+### Python and modules
 
-- Bundle Step02: `YYYYMMDDTHHMMSS_<eventid>_rowNNN`
-- Base final compativel: `YYYYMMDDTHHMMSS` (somente datetime)
+- arquivos Python em `snake_case`
+- funcoes auxiliares privadas com prefixo `_`
+- dataclasses para contratos pequenos (`SisbraEvent`, `FdsnEvent`, `TripletInput`)
+- constantes em `UPPER_SNAKE_CASE`
 
-### Waveform Files
+### Event folders
 
-- Legado split por canal:
-  - `NET.STA.LOC.CHA_PICKTIME.mseed`
-  - Ex.: `BL.BB19B.--.HHN_20231214T005239108754Z.mseed`
-- Alvo triplet em arquivo unico:
-  - `NET_STA_DATETIME.mseed`
-  - `DATETIME` em UTC juliano `%Y%jT%H%M%S`
+- bundles do Step02: `YYYYMMDDTHHMMSS[_eventid]`
+- pasta final de compativeis: `YYYYMMDDTHHMMSS`
 
-### Metadata Files
+### Waveform files
 
-- `event.json`: payload principal por evento.
-- `event.xml`: QuakeML do evento selecionado.
+- legado split: `NET.STA.LOC.CHA_PICKTIME.mseed`
+- atual consolidado: `NET_STA_DATETIME.mseed`
+- o adapter RNC precisa suportar ambos
 
-### Report Files
+### Artifacts and reports
 
-- Prefixo `outputs/` para CSV/MD de auditoria.
-- Nome orientado a etapa:
-  - `waveform_*_summary*.csv`
-  - `eventos_*_report*.{csv,md}`
-  - `rnc_prediction_*.csv`
+- relatórios operacionais em `outputs/`
+- summaries com sufixo `_summary.csv`
+- reports humanos em `.md`
 
-## CLI and Script Conventions
+## File Organization
 
-- Estilo CLI: `argparse` com defaults declarados no script.
-- Wrappers bash usam env vars para parametrizacao sem editar codigo.
-- Fallback de interpretador no shell: `pyenv exec python` -> `python3` -> `python`.
+- scripts executaveis mantem `main()` e `argparse`
+- alguns scripts ajustam `sys.path` manualmente para importar `src/` sem instalacao do pacote
+- imports costumam seguir stdlib -> terceiros -> imports locais
 
-## Data Contract Conventions
+## Data and Schema Conventions
 
-- Step02 escreve `waveform_download_contract` em `event.json`.
-- Step03 consome esse contrato quando `--component-channels` nao e informado.
-- Campo `match_status` e chave de gate para organizacao.
+- `event.json` usa chaves em `snake_case`
+- blocos principais observados:
+  - `sisbra`
+  - `fdsn`
+  - `picks`
+  - `picks_skipped`
+  - `waveform_download_contract`
+  - `rnc_prediction`
+- CSVs de auditoria tendem a carregar contexto minimo suficiente para reprocessar ou investigar (`event_id`, status, mensagem, paths relativos)
 
-### Future Contracts (planned)
+## Error Handling
 
-- Catalog adapter canonico deve usar campos em snake_case:
-  - `event_id`, `origin_time_utc`, `latitude`, `longitude`, `depth_km`, `magnitude`, `source_name`.
-- Enriquecimento ANM deve ser aninhado em `event.json` sob:
-  - `mining_context.nearest_distance_km`
-  - `mining_context.has_active_mine_nearby`
-  - `mining_context.source_version`
+- abordagem defensiva, com muitos `try/except Exception`
+- helpers `_safe_float`, `_safe_int` e parse tolerante sao recorrentes
+- falhas operacionais costumam virar:
+  - linha em CSV de erro
+  - status textual
+  - `SystemExit` em CLIs
 
-### External Baseline Mapping Rules (catalogo -> canonico)
+## Comments and Documentation
 
-- `origin_time_utc`:
-  - preferir campo nativo UTC quando existir;
-  - fallback: `data + "T" + hora_utc + "Z"`.
-- `depth_km`:
-  - usar valor da fonte quando existir;
-  - manter `null` quando a fonte nao fornecer profundidade.
-- `event_id`:
-  - usar `event_id` da fonte quando existir;
-  - fallback para UID deterministico (tempo + lat/lon + origem).
-- `source_name`:
-  - preencher explicitamente (`labsis_html`, `iag_fdsn`, `unb_fdsn`).
-- `state_uf`:
-  - manter como campo auxiliar de auditoria; criterio geografico principal segue
-    coordenada + geometria.
+- docstrings no topo dos scripts explicam regras de negocio e modo de uso
+- comentarios inline aparecem pouco e geralmente justificam uma decisao operacional
+- `README.md` e docs em `docs/` funcionam como runbooks; `.specs/codebase/` deve refletir o baseline vivo
 
-## Status/Errors Conventions
+## Observed Style Notes
 
-- Status por etapa (exemplos):
-  - download: `downloaded`, `skipped_exists`, `error`
-  - organizacao: `compatible`/`incompatible` via `target_group`
-  - triplet gate: `keep_compatible`, `move_to_incompatible`
-  - inferencia: `ok`, `partial`, `no_valid_pick`, `error`, `skipped_existing`
-- Erros sao serializados em CSV com contexto minimo (`event_id`, `scope`, `kind`, `message`).
-
-## Known Variants (Documented, not hidden)
-
-- Base atual contem coexistencia de outputs legados e novos.
-- Adapter RNC aceita ambos os formatos de nome (`dotted` e `simple`).
-
-## Evidence (arquivo:linha)
-
-- Naming final compativel: `scripts/organize_compatible_events.py:14`
-- Nome legado split: `scripts/step03_waveforms_from_p_picks.py:305`
-- Nome alvo simple: `scripts/step03_waveforms_from_p_picks.py:245`
-- Contrato no `event.json`: `src/seismic_event_discriminator/step02_fdsn_picks_export.py:234`
-- Consumo do contrato no Step03: `scripts/step03_waveforms_from_p_picks.py:590`
-- Adapter dual-format: `src/seismic_event_discriminator/rnc_adapter.py:12`, `src/seismic_event_discriminator/rnc_adapter.py:15`
-- Fallback de interpretador em wrapper: `scripts/run_all_sisbra_build.sh:30`
-
-## Update In 5 Minutes
-
-1. Validar se naming do Step03 mudou.
-2. Validar se schema de `event.json` (contrato) mudou.
-3. Validar novos status de erro nos CSVs.
-4. Atualizar apenas as secoes afetadas.
+- codigo ASCII-first
+- typing moderno (`list[str]`, `dict[str, Any]`, `X | None`)
+- JSON persistido com `ensure_ascii=True`, `indent=2` e `sort_keys=True` na etapa RNC

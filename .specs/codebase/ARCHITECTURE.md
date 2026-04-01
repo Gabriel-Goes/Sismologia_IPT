@@ -1,151 +1,108 @@
 # Architecture
 
-**Pattern:** Pipeline modular orientado a scripts (CLI), com persistencia em filesystem.
+**Pattern:** pipeline modular orientado a arquivos, com CLIs Python e wrappers Bash.
 
 ## High-Level Structure
 
 ```text
-SISBRA CSV
-  -> Step02 (match FDSN + picks + contrato de download)
-  -> Step03 (download waveform, split ou triplet single-file)
-  -> Organize compatible/incompatible
-  -> Enforce triplet HHZ/HHN/HHE
-  -> (Opcional) Merge split->3C
-  -> RNC inference (atualiza event.json + CSVs)
+SISBRA RAW/CSV
+  -> normalize_sisbra_raw.py
+  -> filter_sisbra_csv.py
+  -> step01_catalogo_selecao.py / step02_fdsn_picks_export.py
+  -> step03_waveforms_from_p_picks.py
+  -> organize_compatible_events.py
+  -> enforce_triplet_channels.py
+  -> run_rnc_eventos_compativeis.py
 ```
 
-## Critical Flow: Arquivo `.mseed` de exemplo
+## Main Runtime Flow
 
-Exemplo atual (legado por canal):
-`data/eventos_compativeis/20231214T005219/waveforms/BL.BB19B.--.HHN_20231214T005239108754Z.mseed`
+### 1. Catalog preparation
 
-Fluxo causal:
+- `scripts/normalize_sisbra_raw.py` transforma o RAW SISBRA em CSV derivado do projeto.
+- `scripts/filter_sisbra_csv.py` aplica gate geografico e filtros de negocio antes do FDSN.
+- `src/seismic_event_discriminator/step01_catalogo_selecao.py` concentra parsing do CSV SISBRA e matching com catalogo FDSN estatico quando necessario.
 
-1. Step02 gera bundle do evento com picks e metadados (`event.json`, `event.xml`).
-2. Step03 seleciona pick `P*` e baixa janela `P-10s/P+50s`.
-3. Step03 grava arquivo `.mseed` por canal no formato legado quando o run esta em modo split (ou dados vieram de run legado).
-4. Organizacao move evento para `eventos_compativeis/<DATETIME>/`.
+### 2. Step02 bundle export
 
-## Modules and Responsibilities
+- `src/seismic_event_discriminator/step02_fdsn_picks_export.py` consulta FDSN live, escolhe o melhor candidato por tempo/distancia/magnitude e exporta um bundle por evento.
+- O bundle persistido em disco e o contrato central do pipeline:
+  - `event.xml`: QuakeML do evento selecionado
+  - `event.json`: dados SISBRA, match FDSN, picks filtrados e `waveform_download_contract`
+- Eventos `matched`, `ambiguous` e `no_match` podem ser materializados em roots diferentes.
 
-### Step02: Match + Bundle
+### 3. Step03 waveform acquisition
 
-- Entrada: CSV SISBRA.
-- Integracao: FDSN (events + stations).
-- Saida: pasta por evento com `event.json` + `event.xml`.
-- Contrato para Step03 embutido em `event.json` via `waveform_download_contract`.
+- `scripts/step03_waveforms_from_p_picks.py` le `event.json`, seleciona picks `P*`, baixa janelas de waveform e escreve MiniSEED.
+- O script suporta dois formatos de saida:
+  - legado por componente: `NET.STA.LOC.CHA_PICKTIME.mseed`
+  - formato consolidado atual: `NET_STA_DATETIME.mseed`
+- O contrato vindo do Step02 define padrao de nome e canais quando a CLI nao sobrescreve isso.
 
-### Step03: Waveform Download
+### 4. Compatibility gates
 
-- Entrada: bundles Step02.
-- Selecao: picks P dentro de distancia.
-- Modos:
-  - split por canal (`NET.STA.LOC.CHA_PICKTIME.mseed`)
-  - single-file 3C (`NET_STA_DATETIME.mseed`)
-- Saida: CSV de resumo do download.
+- `scripts/organize_compatible_events.py` decide se um evento vai para `eventos_compativeis` ou `eventos_nao_compativeis`.
+- Os gates combinam:
+  - `match_status`
+  - ponto-no-poligono MG
+  - magnitude/profundidade
+  - existencia de pick `P*`
+  - existencia de waveform baixada
+  - opcionalmente `min-year`
+- `scripts/enforce_triplet_channels.py` faz um gate adicional exigindo triplet 3C valido.
 
-### Compatibility Gate
+### 5. RNC inference
 
-- `organize_compatible_events.py` aplica regras de negocio (estado, mag, profundidade, pick P valido, waveform existente).
-- `enforce_triplet_channels.py` garante ao menos um triplet 3C por evento.
+- `scripts/run_rnc_eventos_compativeis.py` descobre triplets em cada evento compativel e executa a inferencia Natural vs Anthropogenic.
+- `src/seismic_event_discriminator/rnc_adapter.py` faz a ponte entre os nomes/arquivos do projeto e o input esperado pela inferencia.
+- O resultado e persistido de volta no `event.json` e em tres CSVs de auditoria.
 
-### RNC
+## Architectural Patterns Observed
 
-- `run_rnc_eventos_compativeis.py` descobre triplets (legado e novo), executa inferencia e persiste `rnc_prediction` no `event.json`.
-- Saidas de auditoria em 3 CSVs (`events`, `picks`, `errors`).
+### Filesystem as system of record
 
-## Data Flow by Artifact
+- O estado do pipeline nao fica em banco; fica em pastas, JSONs, XMLs, CSVs e arquivos `.mseed`.
+- Cada etapa assume o layout produzido pela etapa anterior.
 
-- `data/sisbra_*/*/event.json`: contrato e metadados por evento.
-- `data/*/waveforms/*.mseed`: sinais para classificacao.
-- `outputs/waveform_*_summary*.csv`: auditoria de download.
-- `outputs/eventos_*_report*.{csv,md}`: auditoria de compatibilidade.
-- `outputs/rnc_prediction_*.csv`: auditoria de inferencia.
+### Script-first orchestration
 
-## Drift Detection (Codigo x Artefatos)
+- A logica reutilizavel esta em `src/`, mas a operacao real acontece por CLIs em `scripts/`.
+- Wrappers Bash registram ambiente, health checks, logs e resumos de lote.
 
-Observacao operacional relevante:
+### Defensive parsing over strict typing
 
-- Scripts atuais foram atualizados depois de parte dos artefatos de `outputs/`.
-- Evidencia temporal:
-  - `outputs/waveform_triplet_download_summary_mg.csv` em `2026-02-27 18:24`
-  - `scripts/step03_waveforms_from_p_picks.py` em `2026-02-27 20:14`
-- Evidencia estrutural:
-  - Header de `outputs/waveform_triplet_download_summary_mg.csv` nao inclui `event_datetime_tag`/`filename_pattern`, embora o script atual escreva esses campos.
+- O codigo usa muitos helpers `_safe_*`, normalizacao de strings e `try/except` para lidar com dados heterogeneos.
+- Isso aumenta robustez operacional, mas os contratos ficam implícitos e pouco formalizados.
 
-Implicacao:
-- Reproducao de bugs/mudancas deve sempre registrar `timestamp + commit + comando`.
+### Backward compatibility in waveform naming
 
-## Boundaries
+- O adapter e os gates precisam aceitar simultaneamente naming legado e naming novo.
+- Isso reduz ruptura em bases antigas, mas aumenta o risco de drift entre scripts e artefatos.
 
-- Dominio: fluxo sismologico de preparo e classificacao.
-- Infra: filesystem local e endpoints FDSN; sem banco transacional.
-- Acoplamento principal:
-  - Step03 depende da estrutura de `event.json` do Step02.
-  - RNC depende de naming e consistencia 3C das formas de onda.
+## Module Boundaries
 
-## Future Integration Tracks (para implementacao futura)
+- `src/seismic_event_discriminator/`
+  - parsing SISBRA/FDSN
+  - filtro geografico
+  - adapter e inferencia RNC
+- `scripts/`
+  - orquestracao operacional
+  - preprocessamento
+  - download
+  - gates
+  - runners de lote
+- `third_party/rnc_legacy/`
+  - referencia historica da RNC original
+- `docs/legacy_snapshot/`
+  - snapshot documental historico, fora do baseline vivo
 
-### Track A: Catalog Adapter Layer (Labsis/IAG/UnB)
+## Data Contracts That Matter
 
-Objetivo:
-- incorporar fontes institucionais adicionais quando nao houver um unico
-  endpoint FDSN estavel para todos os provedores.
+- `event.json` e o contrato central entre Step02, Step03, gates e RNC.
+- O summary CSV do Step03 participa do gate de compatibilidade.
+- O layout/nome dos `.mseed` participa do gate de triplet e da descoberta de inputs da RNC.
 
-Fluxo proposto:
-1. Adapter por fonte (`fdsn` ou `html scraping`) gera schema normalizado.
-2. Consolidacao em CSV canonico de entrada do Step02.
-3. Step02 segue sem dependencia direta do tipo de fonte.
+## Operational Boundaries
 
-Contratos minimos do adapter:
-- `event_id` (ou uid deterministico)
-- `origin_time_utc`
-- `latitude`, `longitude`
-- `magnitude`, `depth_km`
-- `source_name`, `source_url`
-
-### Track B: Contexto Minerario ANM (M5)
-
-Objetivo:
-- enriquecer cada evento com contexto espacial de atividade mineraria para
-  apoiar interpretacao de sismo antropogenico.
-
-Fluxo proposto:
-1. Ingestao de vetores ANM em GeoPackage versionado por data de coleta.
-2. Join espacial evento x mina (intersecao/proximidade).
-3. Escrita de campos derivados no `event.json` e CSV de auditoria.
-
-Campos derivados sugeridos:
-- `mining_context.nearest_distance_km`
-- `mining_context.has_active_mine_nearby`
-- `mining_context.source_version`
-
-### Track C: Evidencia Satelital (opcional, QA)
-
-Objetivo:
-- usar imagens/tiles apenas como apoio de revisao de casos duvidosos, sem
-  bloquear pipeline principal.
-
-Fluxo proposto:
-1. Selecionar eventos candidatos com baixa confianca.
-2. Buscar tiles em STAC para area de interesse.
-3. Registrar evidencias em artefato separado de QA.
-
-## Evidence (arquivo:linha)
-
-- Contrato Step03 no Step02: `src/seismic_event_discriminator/step02_fdsn_picks_export.py:234`
-- Modos Step03: `scripts/step03_waveforms_from_p_picks.py:526`, `scripts/step03_waveforms_from_p_picks.py:532`
-- Nome alvo `NET_STA_DATETIME`: `scripts/step03_waveforms_from_p_picks.py:245`
-- Nome legado split por canal: `scripts/step03_waveforms_from_p_picks.py:305`
-- Organizacao compatibilidade: `scripts/organize_compatible_events.py:123`
-- Enforce triplet: `scripts/enforce_triplet_channels.py:90`
-- Merge opcional: `scripts/merge_triplet_waveforms.py:163`
-- Adapter legado/novo: `src/seismic_event_discriminator/rnc_adapter.py:70`
-- RNC persistindo em `event.json`: `scripts/run_rnc_eventos_compativeis.py:352`
-
-## Update In 5 Minutes
-
-1. Conferir se houve mudanca em Step02/Step03 (`event.json` contrato e naming).
-2. Conferir se houve mudanca nos gates (`organize`/`enforce`).
-3. Conferir se houve mudanca em integracao RNC (`adapter` + `run_rnc`).
-4. Atualizar somente os blocos afetados acima.
+- O pipeline depende fortemente de ambiente local, rede e filesystem.
+- `docs/` contem runbooks e memoria operacional; `.specs/` e a camada canônica para mapeamento e planejamento.
