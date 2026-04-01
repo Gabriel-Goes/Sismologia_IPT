@@ -2,6 +2,7 @@
 .specs/codebase/*
 !.specs/codebase/STACK.md
 !.specs/codebase/ARCHITECTURE.md
+!.specs/codebase/CONCERNS.md
 !.specs/codebase/CONVENTIONS.md
 !.specs/codebase/STRUCTURE.md
 !.specs/codebase/TESTING.md
