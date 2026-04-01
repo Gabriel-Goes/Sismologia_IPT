@@ -91,7 +91,7 @@ def _haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     return r * c
 
 
-def read_sisbra_csv(path: str, *, min_year: int = 2000, require_utc: bool = True) -> list[SisbraEvent]:
+def read_sisbra_csv(path: str, *, min_year: int | None = None, require_utc: bool = True) -> list[SisbraEvent]:
     events: list[SisbraEvent] = []
     with open(path, "r", encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
@@ -100,7 +100,7 @@ def read_sisbra_csv(path: str, *, min_year: int = 2000, require_utc: bool = True
             if not year.isdigit():
                 continue
             year_i = int(year)
-            if year_i < min_year:
+            if min_year is not None and year_i < min_year:
                 continue
 
             lflag = (row.get("L", "") or "").strip()
@@ -385,7 +385,7 @@ def main() -> int:
         default="catalogs/query.txt",
         help="Caminho para o catalogo FDSN (builder text) com EventID.",
     )
-    ap.add_argument("--min-year", type=int, default=2000, help="Ano mínimo do SISBRA para considerar.")
+    ap.add_argument("--min-year", type=int, default=None, help="Ano mínimo do SISBRA para considerar (omitir = sem filtro).")
     ap.add_argument(
         "--n-last",
         type=int,

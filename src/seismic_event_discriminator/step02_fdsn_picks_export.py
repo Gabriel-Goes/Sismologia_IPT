@@ -540,7 +540,7 @@ def main() -> int:
         default="outputs/catalogs/sisbra_v2024May09/sisbra_raw_mg_maglt4_depthlt10_yearge2020_v2024May09.csv",
         help="Caminho para o CSV SISBRA preparado pelo pipeline a partir do RAW.",
     )
-    ap.add_argument("--min-year", type=int, default=2000, help="Ano mínimo do SISBRA para considerar.")
+    ap.add_argument("--min-year", type=int, default=None, help="Ano mínimo do SISBRA para considerar (omitir = sem filtro).")
     ap.add_argument("--n-last", type=int, default=50, help="Número de eventos mais recentes do SISBRA a processar.")
     ap.add_argument("--client-url", default="http://127.0.0.1:28080", help="Base URL do FDSN (seisArc via túnel).")
     ap.add_argument("--time-window-s", type=float, default=120.0, help="Janela de tempo (s) em torno do origin_time SISBRA.")
